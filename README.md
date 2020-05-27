@@ -23,4 +23,4 @@ How to get things up and running after cloning:
 5. In 'backup.sql' the superuser is 'admin' and the password is 'admin'. This file is only for database testing.
 6. Start the local server for testing. With Django, in the created virtual enviroment: $ python manage.py runserver.
 7. Go to: http://127.0.0.1:8000/. You should see a working message. After dumping the 'backup.sql' file in the database, 
-go to http://127.0.0.1:8000/admin and try to access the admin account. That's it!
+go to http://127.0.0.1:8000/admin and try to access the admin account.
