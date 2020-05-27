@@ -6,11 +6,12 @@ How to get things up and running after cloning:
 
 1. Create a folder called 'laudario' anywhere on your local machine.
 2. cd into that folder.
+3. Clone this repository with "git clone https://github.com/netofarthur/laudario ." (with the dot at the end).
 3. Create a python virtual enviroment (Python 3 version) in that folder and activate it:
   $ python3 -m venv env
   $ source env/bin/activate
 4. Upgrade Pip and download the python packages in 'requirements.txt' to run this project on your local machine (it
-might be necessary to install openssl before doing this. $ brew install openssl, no Mac):
+might be necessary to install openssl before doing this. $ brew install openssl, no Mac will do it):
   $ pip install --upgrade pip
   $ pip install -r requirements.txt
 5. Install MariaDB on your system (these two resources might help):
