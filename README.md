@@ -5,7 +5,7 @@ Tool for radiologists build their report templates, to gain time in reporting.
 How to get things up and running after cloning:
 
 1. Create a python virtual enviroment (Python 3 version) in the folder of the cloned project and activate it:
-  $ python3 -m venv env
+  $ python3 -m venv env (the virtual enviroment should be named 'env', so it won't be tracked by git, as in '.gitignore')
   $ source env/bin/activate
 2. Download the python packages in 'requirements.txt' to run this project on your local machine (it might be necessary to download other required packages for your OS, like openssl and mysql for Mac OS with brew):
   $ pip install --upgrade pip
