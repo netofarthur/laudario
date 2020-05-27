@@ -10,10 +10,10 @@ How to get things up and running after cloning:
 2. Download the python packages in 'requirements.txt' to run this project on your local machine (it might be necessary to download other required packages for your OS, like openssl and mysql for Mac OS with brew):
   $ pip install --upgrade pip
   $ pip install -r requirements.txt
-3. Install MariaDB on your system (these two resources might help for Mac OS, Debian already comes with it installed):
+3. Install MariaDB (other technologies, like MySQL and PostgreSQL should work) on your system (these two resources might help for Mac OS, Debian already comes with it installed):
  - https://mariadb.com/resources/blog/installing-mariadb-10-1-16-on-mac-os-x-with-homebrew/
  - https://pypi.org/project/mysqlclient/
-4. Start the SQL server and setup MariaDB to work with Django:
+4. Start the SQL server and setup MariaDB (other technologies, like MySQL and PostgreSQL should work) to work with Django:
   $ mysql.server start (for example)
   $ mysql -u root -p
   > CREATE DATABASE laudario CHARACTER SET utf8;
