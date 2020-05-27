@@ -20,5 +20,4 @@ How to get things up and running after cloning:
   > CREATE USER laudariousr@localhost IDENTIFIED BY 'piabinha123';
   > GRANT ALL PRIVILEGES ON laudario.* TO laudariousr@localhost;
   > FLUSH PRIVILEGES;
-5. In 'backup.sql' the superuser is 'admin' and the password is 'admin'.
-
+5. In 'backup.sql' the superuser is 'admin' and the password is 'admin'. This file is only for database testing.
