@@ -11,7 +11,7 @@ How to get things up and running after cloning:
   $ python3 -m venv env
   $ source env/bin/activate
 4. Upgrade Pip and download the python packages in 'requirements.txt' to run this project on your local machine (it
-might be necessary to install openssl and mysql with Brew no Mac before doing this. $ brew install openssl and/or $ brew install mysql no Mac will do it. $ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/, may be necessary after):
+might be necessary to install openssl and mysql with Brew no Mac before doing this. $ brew install openssl and/or $ brew install mariadb no Mac will do it. $ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/, may be necessary after):
   $ pip install --upgrade pip
   $ pip install -r requirements.txt
 5. Install MariaDB on your system (these two resources might help):
