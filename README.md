@@ -22,7 +22,7 @@ might be necessary to install openssl and mysql with Brew no Mac before doing th
   $ mysql -u root -p
   > CREATE DATABASE laudario CHARACTER SET utf8;
   > CREATE USER laudariousr@localhost IDENTIFIED BY 'piabinha123';
-  > GRANT ALL PRIVILEGES ON laudario.* laudariousr@localhost;
+  > GRANT ALL PRIVILEGES ON laudario.* TO laudariousr@localhost;
   > FLUSH PRIVILEGES;  
 
 
