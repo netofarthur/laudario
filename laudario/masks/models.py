@@ -8,7 +8,7 @@ class Exam(models.Model):
     description_s = models.CharField(max_length=25)
     initials = models.CharField(max_length=3)
     
-class Especialty(models.Model):
+class Specialty(models.Model):
     id = models.AutoField(primary_key=True)
     description_l = models.CharField(max_length=50)
     description_s = models.CharField(max_length=25)
@@ -17,7 +17,7 @@ class System(models.Model):
     id = models.AutoField(primary_key=True)
     description_l = models.CharField(max_length=50)
     description_s = models.CharField(max_length=25)
-    especialty = models.ForeignKey(Especialty, on_delete=models.CASCADE)
+    specialty = models.ForeignKey(Specialty, on_delete=models.CASCADE)
 
 class Organ(models.Model):
     id = models.AutoField(primary_key=True)
