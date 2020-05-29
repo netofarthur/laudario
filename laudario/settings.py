@@ -76,8 +76,8 @@ WSGI_APPLICATION = 'laudario.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'laudario',
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'laudario',
 	'USER': 'laudariousr',
 	'PASSWORD': 'piabinha123',
 	'HOST': 'localhost',

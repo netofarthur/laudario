@@ -44,6 +44,9 @@ class Mask(models.Model):
     technique = models.CharField(max_length=500)
     report_header = models.CharField(max_length=500)
 
+    #The available Organs, when added to the database, have to be update here.
+    figado = models.TextField(default='')
+
     
 
     def __str__(self):
