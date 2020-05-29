@@ -1,4 +1,5 @@
 env
 /laudario/__pycache__
 /laudario/masks/__pycache__
+/laudario/masks/migrations/__pycache__
 
