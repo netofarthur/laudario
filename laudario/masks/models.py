@@ -12,15 +12,10 @@ class Especialidade(models.Model):
     def __str__(self):
         return self.descricao
 
-class Sistema(models.Model):
-    especialidade = models.ForeignKey(Especialidade, on_delete=models.CASCADE)
-    descricao = models.CharField(max_length=50)
-    def __str__(self):
-        return self.descricao
 
 # Normal masks (templates)
 class Mascara(models.Model):
-    sistema = models.ForeignKey(Sistema, on_delete=models.CASCADE)
+    especialidade = models.ForeignKey(Especialidade, on_delete=models.CASCADE)
     exame = models.ForeignKey(Exame, on_delete=models.CASCADE)
     nome = models.CharField(max_length=50)
     titulo = models.CharField(max_length=50)
