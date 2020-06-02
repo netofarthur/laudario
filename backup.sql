@@ -82,7 +82,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +91,7 @@ CREATE TABLE `auth_permission` (
 
 LOCK TABLES `auth_permission` WRITE;
 /*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
-INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can view log entry',1,'view_logentry'),(5,'Can add permission',2,'add_permission'),(6,'Can change permission',2,'change_permission'),(7,'Can delete permission',2,'delete_permission'),(8,'Can view permission',2,'view_permission'),(9,'Can add group',3,'add_group'),(10,'Can change group',3,'change_group'),(11,'Can delete group',3,'delete_group'),(12,'Can view group',3,'view_group'),(13,'Can add user',4,'add_user'),(14,'Can change user',4,'change_user'),(15,'Can delete user',4,'delete_user'),(16,'Can view user',4,'view_user'),(17,'Can add content type',5,'add_contenttype'),(18,'Can change content type',5,'change_contenttype'),(19,'Can delete content type',5,'delete_contenttype'),(20,'Can view content type',5,'view_contenttype'),(21,'Can add session',6,'add_session'),(22,'Can change session',6,'change_session'),(23,'Can delete session',6,'delete_session'),(24,'Can view session',6,'view_session'),(25,'Can add especialidade',7,'add_especialidade'),(26,'Can change especialidade',7,'change_especialidade'),(27,'Can delete especialidade',7,'delete_especialidade'),(28,'Can view especialidade',7,'view_especialidade'),(29,'Can add exame',8,'add_exame'),(30,'Can change exame',8,'change_exame'),(31,'Can delete exame',8,'delete_exame'),(32,'Can view exame',8,'view_exame'),(33,'Can add mascara',9,'add_mascara'),(34,'Can change mascara',9,'change_mascara'),(35,'Can delete mascara',9,'delete_mascara'),(36,'Can view mascara',9,'view_mascara'),(37,'Can add topico laudo',10,'add_topicolaudo'),(38,'Can change topico laudo',10,'change_topicolaudo'),(39,'Can delete topico laudo',10,'delete_topicolaudo'),(40,'Can view topico laudo',10,'view_topicolaudo'),(41,'Can add sistema',11,'add_sistema'),(42,'Can change sistema',11,'change_sistema'),(43,'Can delete sistema',11,'delete_sistema'),(44,'Can view sistema',11,'view_sistema');
+INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can view log entry',1,'view_logentry'),(5,'Can add permission',2,'add_permission'),(6,'Can change permission',2,'change_permission'),(7,'Can delete permission',2,'delete_permission'),(8,'Can view permission',2,'view_permission'),(9,'Can add group',3,'add_group'),(10,'Can change group',3,'change_group'),(11,'Can delete group',3,'delete_group'),(12,'Can view group',3,'view_group'),(13,'Can add user',4,'add_user'),(14,'Can change user',4,'change_user'),(15,'Can delete user',4,'delete_user'),(16,'Can view user',4,'view_user'),(17,'Can add content type',5,'add_contenttype'),(18,'Can change content type',5,'change_contenttype'),(19,'Can delete content type',5,'delete_contenttype'),(20,'Can view content type',5,'view_contenttype'),(21,'Can add session',6,'add_session'),(22,'Can change session',6,'change_session'),(23,'Can delete session',6,'delete_session'),(24,'Can view session',6,'view_session'),(25,'Can add especialidade',7,'add_especialidade'),(26,'Can change especialidade',7,'change_especialidade'),(27,'Can delete especialidade',7,'delete_especialidade'),(28,'Can view especialidade',7,'view_especialidade'),(29,'Can add exame',8,'add_exame'),(30,'Can change exame',8,'change_exame'),(31,'Can delete exame',8,'delete_exame'),(32,'Can view exame',8,'view_exame'),(33,'Can add mascara',9,'add_mascara'),(34,'Can change mascara',9,'change_mascara'),(35,'Can delete mascara',9,'delete_mascara'),(36,'Can view mascara',9,'view_mascara'),(37,'Can add topico laudo',10,'add_topicolaudo'),(38,'Can change topico laudo',10,'change_topicolaudo'),(39,'Can delete topico laudo',10,'delete_topicolaudo'),(40,'Can view topico laudo',10,'view_topicolaudo'),(41,'Can add sistema',11,'add_sistema'),(42,'Can change sistema',11,'change_sistema'),(43,'Can delete sistema',11,'delete_sistema'),(44,'Can view sistema',11,'view_sistema'),(45,'Can add topico normal',10,'add_topiconormal'),(46,'Can change topico normal',10,'change_topiconormal'),(47,'Can delete topico normal',10,'delete_topiconormal'),(48,'Can view topico normal',10,'view_topiconormal'),(49,'Can add topico anormal',12,'add_topicoanormal'),(50,'Can change topico anormal',12,'change_topicoanormal'),(51,'Can delete topico anormal',12,'delete_topicoanormal'),(52,'Can view topico anormal',12,'view_topicoanormal');
 /*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -232,7 +232,7 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,7 +241,7 @@ CREATE TABLE `django_content_type` (
 
 LOCK TABLES `django_content_type` WRITE;
 /*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
-INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(3,'auth','group'),(2,'auth','permission'),(4,'auth','user'),(5,'contenttypes','contenttype'),(7,'masks','especialidade'),(8,'masks','exame'),(9,'masks','mascara'),(11,'masks','sistema'),(10,'masks','topicolaudo'),(6,'sessions','session');
+INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(3,'auth','group'),(2,'auth','permission'),(4,'auth','user'),(5,'contenttypes','contenttype'),(7,'masks','especialidade'),(8,'masks','exame'),(9,'masks','mascara'),(11,'masks','sistema'),(12,'masks','topicoanormal'),(10,'masks','topiconormal'),(6,'sessions','session');
 /*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,7 +258,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,7 +267,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-06-02 02:43:40.081551'),(2,'auth','0001_initial','2020-06-02 02:43:40.268778'),(3,'admin','0001_initial','2020-06-02 02:43:40.795713'),(4,'admin','0002_logentry_remove_auto_add','2020-06-02 02:43:40.923442'),(5,'admin','0003_logentry_add_action_flag_choices','2020-06-02 02:43:40.934556'),(6,'contenttypes','0002_remove_content_type_name','2020-06-02 02:43:41.028115'),(7,'auth','0002_alter_permission_name_max_length','2020-06-02 02:43:41.085601'),(8,'auth','0003_alter_user_email_max_length','2020-06-02 02:43:41.112699'),(9,'auth','0004_alter_user_username_opts','2020-06-02 02:43:41.129195'),(10,'auth','0005_alter_user_last_login_null','2020-06-02 02:43:41.175895'),(11,'auth','0006_require_contenttypes_0002','2020-06-02 02:43:41.179246'),(12,'auth','0007_alter_validators_add_error_messages','2020-06-02 02:43:41.190702'),(13,'auth','0008_alter_user_username_max_length','2020-06-02 02:43:41.218364'),(14,'auth','0009_alter_user_last_name_max_length','2020-06-02 02:43:41.246052'),(15,'auth','0010_alter_group_name_max_length','2020-06-02 02:43:41.281664'),(16,'auth','0011_update_proxy_permissions','2020-06-02 02:43:41.296506'),(17,'masks','0001_initial','2020-06-02 02:43:41.510421'),(18,'sessions','0001_initial','2020-06-02 02:43:41.716690'),(19,'masks','0002_auto_20200602_0256','2020-06-02 02:57:11.247242');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-06-02 02:43:40.081551'),(2,'auth','0001_initial','2020-06-02 02:43:40.268778'),(3,'admin','0001_initial','2020-06-02 02:43:40.795713'),(4,'admin','0002_logentry_remove_auto_add','2020-06-02 02:43:40.923442'),(5,'admin','0003_logentry_add_action_flag_choices','2020-06-02 02:43:40.934556'),(6,'contenttypes','0002_remove_content_type_name','2020-06-02 02:43:41.028115'),(7,'auth','0002_alter_permission_name_max_length','2020-06-02 02:43:41.085601'),(8,'auth','0003_alter_user_email_max_length','2020-06-02 02:43:41.112699'),(9,'auth','0004_alter_user_username_opts','2020-06-02 02:43:41.129195'),(10,'auth','0005_alter_user_last_login_null','2020-06-02 02:43:41.175895'),(11,'auth','0006_require_contenttypes_0002','2020-06-02 02:43:41.179246'),(12,'auth','0007_alter_validators_add_error_messages','2020-06-02 02:43:41.190702'),(13,'auth','0008_alter_user_username_max_length','2020-06-02 02:43:41.218364'),(14,'auth','0009_alter_user_last_name_max_length','2020-06-02 02:43:41.246052'),(15,'auth','0010_alter_group_name_max_length','2020-06-02 02:43:41.281664'),(16,'auth','0011_update_proxy_permissions','2020-06-02 02:43:41.296506'),(17,'masks','0001_initial','2020-06-02 02:43:41.510421'),(18,'sessions','0001_initial','2020-06-02 02:43:41.716690'),(19,'masks','0002_auto_20200602_0256','2020-06-02 02:57:11.247242'),(20,'masks','0003_auto_20200602_2213','2020-06-02 22:13:50.214748');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -362,6 +362,7 @@ CREATE TABLE `masks_mascara` (
   `relatorio_header` varchar(500) NOT NULL,
   `exame_id` int(11) NOT NULL,
   `especialidade_id` int(11) NOT NULL,
+  `conclusao` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `masks_mascara_exame_id_a24888fb_fk_masks_exame_id` (`exame_id`),
   KEY `masks_mascara_especialidade_id_9c60390e_fk_masks_esp` (`especialidade_id`),
@@ -376,18 +377,45 @@ CREATE TABLE `masks_mascara` (
 
 LOCK TABLES `masks_mascara` WRITE;
 /*!40000 ALTER TABLE `masks_mascara` DISABLE KEYS */;
-INSERT INTO `masks_mascara` VALUES (1,'TC de Abdome S/C','Tomografia Computadorizada do Abdome','Técnica','Realizados cortes axiais tomográficos do abdome, sem a administração de contraste endovenoso.','Relatório',1,1);
+INSERT INTO `masks_mascara` VALUES (1,'TC de Abdome S/C','Tomografia Computadorizada do Abdome','Técnica','Realizados cortes axiais tomográficos do abdome, sem a administração de contraste endovenoso.','Relatório',1,1,'');
 /*!40000 ALTER TABLE `masks_mascara` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `masks_topicolaudo`
+-- Table structure for table `masks_topicoanormal`
 --
 
-DROP TABLE IF EXISTS `masks_topicolaudo`;
+DROP TABLE IF EXISTS `masks_topicoanormal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `masks_topicolaudo` (
+CREATE TABLE `masks_topicoanormal` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `relatorio` varchar(500) NOT NULL,
+  `conclusao` varchar(100) NOT NULL,
+  `topico_normal_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `masks_topicoanormal_topico_normal_id_34f25f74_fk_masks_top` (`topico_normal_id`),
+  CONSTRAINT `masks_topicoanormal_topico_normal_id_34f25f74_fk_masks_top` FOREIGN KEY (`topico_normal_id`) REFERENCES `masks_topiconormal` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `masks_topicoanormal`
+--
+
+LOCK TABLES `masks_topicoanormal` WRITE;
+/*!40000 ALTER TABLE `masks_topicoanormal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `masks_topicoanormal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `masks_topiconormal`
+--
+
+DROP TABLE IF EXISTS `masks_topiconormal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `masks_topiconormal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `orgao` varchar(50) NOT NULL,
   `relatorio` varchar(500) NOT NULL,
@@ -399,13 +427,13 @@ CREATE TABLE `masks_topicolaudo` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `masks_topicolaudo`
+-- Dumping data for table `masks_topiconormal`
 --
 
-LOCK TABLES `masks_topicolaudo` WRITE;
-/*!40000 ALTER TABLE `masks_topicolaudo` DISABLE KEYS */;
-INSERT INTO `masks_topicolaudo` VALUES (1,'Figado','Fígado de aspecto tomográfico habitual.',1),(2,'Pâncreas','Pâncreas sem alterações ao método.',1);
-/*!40000 ALTER TABLE `masks_topicolaudo` ENABLE KEYS */;
+LOCK TABLES `masks_topiconormal` WRITE;
+/*!40000 ALTER TABLE `masks_topiconormal` DISABLE KEYS */;
+INSERT INTO `masks_topiconormal` VALUES (1,'Figado','Fígado de aspecto tomográfico habitual.',1),(2,'Pâncreas','Pâncreas sem alterações ao método.',1);
+/*!40000 ALTER TABLE `masks_topiconormal` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -417,4 +445,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-02  0:03:13
+-- Dump completed on 2020-06-02 19:14:19

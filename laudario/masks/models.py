@@ -22,16 +22,29 @@ class Mascara(models.Model):
     tecnica_header = models.CharField(max_length=50)
     tecnica = models.CharField(max_length=500)
     relatorio_header = models.CharField(max_length=500)
+    conclusao = models.CharField(max_length=100)
     def __str__(self):
         return self.nome
 
 
-class TopicoLaudo(models.Model):
+class TopicoNormal(models.Model):
     mascara = models.ForeignKey(Mascara, on_delete=models.CASCADE)
     orgao = models.CharField(max_length=50)
     relatorio = models.CharField(max_length=500)
     def __str__(self):
-        return self.orgao
+        return self.orgao 
+
+
+class TopicoAnormal(models.Model):
+    topico_normal = models.ForeignKey(TopicoNormal, on_delete=models.CASCADE)
+    relatorio = models.CharField(max_length=500)
+    conclusao = models.CharField(max_length=100)
+
+
+
+
+
+
 
 
 
