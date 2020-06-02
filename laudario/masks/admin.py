@@ -1,10 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Exam, Organ, System, Specialty, Mask
+from .models import Exame, TopicoLaudo, Sistema, Especialidade, Mascara
 
-admin.site.register (Exam)
-admin.site.register (Organ)
-admin.site.register (System)
-admin.site.register (Specialty)
-admin.site.register (Mask)
+admin.site.register(Exame)
+admin.site.register(TopicoLaudo)
+admin.site.register(Sistema)
+admin.site.register(Especialidade)
+admin.site.register(Mascara)
