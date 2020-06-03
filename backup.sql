@@ -206,7 +206,7 @@ CREATE TABLE `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +215,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2020-06-03 19:25:16.644425','1','Abdome',1,'[{\"added\": {}}]',7,1),(2,'2020-06-03 19:26:06.383430','1','Ultrassom',1,'[{\"added\": {}}]',8,1),(3,'2020-06-03 19:28:56.561242','1','Ultrassom de Carótidas',1,'[{\"added\": {}}]',9,1),(4,'2020-06-03 19:35:08.249008','1','Artérias carótidas comuns, internas e externas',1,'[{\"added\": {}}]',10,1),(5,'2020-06-03 19:35:56.983159','2','Artérias vertebrais',1,'[{\"added\": {}}]',10,1),(6,'2020-06-03 20:07:09.191313','1','Ultrassom de Carótidas',2,'[{\"changed\": {\"fields\": [\"Conclusao header\"]}}]',9,1);
+INSERT INTO `django_admin_log` VALUES (1,'2020-06-03 19:25:16.644425','1','Abdome',1,'[{\"added\": {}}]',7,1),(2,'2020-06-03 19:26:06.383430','1','Ultrassom',1,'[{\"added\": {}}]',8,1),(3,'2020-06-03 19:28:56.561242','1','Ultrassom de Carótidas',1,'[{\"added\": {}}]',9,1),(4,'2020-06-03 19:35:08.249008','1','Artérias carótidas comuns, internas e externas',1,'[{\"added\": {}}]',10,1),(5,'2020-06-03 19:35:56.983159','2','Artérias vertebrais',1,'[{\"added\": {}}]',10,1),(6,'2020-06-03 20:07:09.191313','1','Ultrassom de Carótidas',2,'[{\"changed\": {\"fields\": [\"Conclusao header\"]}}]',9,1),(7,'2020-06-03 21:40:12.577092','1','TopicoAnormal object (1)',1,'[{\"added\": {}}]',11,1),(8,'2020-06-03 21:40:56.522401','1','TopicoAnormal object (1)',2,'[]',11,1),(9,'2020-06-03 21:41:15.217950','1','TopicoAnormal object (1)',2,'[]',11,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,7 +258,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,7 +267,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-06-03 19:21:43.480619'),(2,'auth','0001_initial','2020-06-03 19:21:44.358662'),(3,'admin','0001_initial','2020-06-03 19:21:46.492848'),(4,'admin','0002_logentry_remove_auto_add','2020-06-03 19:21:46.873467'),(5,'admin','0003_logentry_add_action_flag_choices','2020-06-03 19:21:46.883327'),(6,'contenttypes','0002_remove_content_type_name','2020-06-03 19:21:47.144925'),(7,'auth','0002_alter_permission_name_max_length','2020-06-03 19:21:47.398411'),(8,'auth','0003_alter_user_email_max_length','2020-06-03 19:21:47.500084'),(9,'auth','0004_alter_user_username_opts','2020-06-03 19:21:47.512198'),(10,'auth','0005_alter_user_last_login_null','2020-06-03 19:21:47.651178'),(11,'auth','0006_require_contenttypes_0002','2020-06-03 19:21:47.653366'),(12,'auth','0007_alter_validators_add_error_messages','2020-06-03 19:21:47.663175'),(13,'auth','0008_alter_user_username_max_length','2020-06-03 19:21:47.778366'),(14,'auth','0009_alter_user_last_name_max_length','2020-06-03 19:21:47.877887'),(15,'auth','0010_alter_group_name_max_length','2020-06-03 19:21:48.000436'),(16,'auth','0011_update_proxy_permissions','2020-06-03 19:21:48.011667'),(17,'masks','0001_initial','2020-06-03 19:21:48.647483'),(18,'sessions','0001_initial','2020-06-03 19:21:49.673040'),(19,'masks','0002_mascara_conclusao_header','2020-06-03 20:04:58.990694');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-06-03 19:21:43.480619'),(2,'auth','0001_initial','2020-06-03 19:21:44.358662'),(3,'admin','0001_initial','2020-06-03 19:21:46.492848'),(4,'admin','0002_logentry_remove_auto_add','2020-06-03 19:21:46.873467'),(5,'admin','0003_logentry_add_action_flag_choices','2020-06-03 19:21:46.883327'),(6,'contenttypes','0002_remove_content_type_name','2020-06-03 19:21:47.144925'),(7,'auth','0002_alter_permission_name_max_length','2020-06-03 19:21:47.398411'),(8,'auth','0003_alter_user_email_max_length','2020-06-03 19:21:47.500084'),(9,'auth','0004_alter_user_username_opts','2020-06-03 19:21:47.512198'),(10,'auth','0005_alter_user_last_login_null','2020-06-03 19:21:47.651178'),(11,'auth','0006_require_contenttypes_0002','2020-06-03 19:21:47.653366'),(12,'auth','0007_alter_validators_add_error_messages','2020-06-03 19:21:47.663175'),(13,'auth','0008_alter_user_username_max_length','2020-06-03 19:21:47.778366'),(14,'auth','0009_alter_user_last_name_max_length','2020-06-03 19:21:47.877887'),(15,'auth','0010_alter_group_name_max_length','2020-06-03 19:21:48.000436'),(16,'auth','0011_update_proxy_permissions','2020-06-03 19:21:48.011667'),(17,'masks','0001_initial','2020-06-03 19:21:48.647483'),(18,'sessions','0001_initial','2020-06-03 19:21:49.673040'),(19,'masks','0002_mascara_conclusao_header','2020-06-03 20:04:58.990694'),(20,'masks','0003_auto_20200603_2129','2020-06-03 21:29:11.520897');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,10 +395,13 @@ CREATE TABLE `masks_topicoanormal` (
   `relatorio` varchar(500) NOT NULL,
   `conclusao` varchar(100) NOT NULL,
   `topico_normal_id` int(11) NOT NULL,
+  `descricao` varchar(500) NOT NULL,
+  `javascript` varchar(50) NOT NULL,
+  `nome` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `masks_topicoanormal_topico_normal_id_34f25f74_fk_masks_top` (`topico_normal_id`),
   CONSTRAINT `masks_topicoanormal_topico_normal_id_34f25f74_fk_masks_top` FOREIGN KEY (`topico_normal_id`) REFERENCES `masks_topiconormal` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -407,6 +410,7 @@ CREATE TABLE `masks_topicoanormal` (
 
 LOCK TABLES `masks_topicoanormal` WRITE;
 /*!40000 ALTER TABLE `masks_topicoanormal` DISABLE KEYS */;
+INSERT INTO `masks_topicoanormal` VALUES (1,'\'\'','\'\'',1,'Critérios para estratificação de estenose segundo consenso da Society of Radiologists in Ultrasound.','us_estenose_carotidas_sru.js','Estenose de Carótidas (SRU)');
 /*!40000 ALTER TABLE `masks_topicoanormal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -447,4 +451,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-03 17:08:14
+-- Dump completed on 2020-06-03 18:47:20

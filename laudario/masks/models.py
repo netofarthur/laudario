@@ -39,8 +39,12 @@ class TopicoNormal(models.Model):
 
 class TopicoAnormal(models.Model):
     topico_normal = models.ForeignKey(TopicoNormal, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=100)
+    descricao = models.CharField(max_length=500)
     relatorio = models.CharField(max_length=500)
     conclusao = models.CharField(max_length=100)
+    javascript = models.CharField(max_length=50)
+
 
 
 
