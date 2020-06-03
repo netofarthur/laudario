@@ -16,6 +16,7 @@ class Especialidade(models.Model):
 # Normal masks (templates)
 class Mascara(models.Model):
     especialidade = models.ForeignKey(Especialidade, on_delete=models.CASCADE)
+    template_name = models.CharField(max_length=100)
     exame = models.ForeignKey(Exame, on_delete=models.CASCADE)
     nome = models.CharField(max_length=50)
     titulo = models.CharField(max_length=50)
