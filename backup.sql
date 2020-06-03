@@ -125,7 +125,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$180000$ptSeb18JIuM4$DV0vBJDfi+rpTBur/jBC2wePDnVZKHRUrteialHEM+g=',NULL,1,'admin','','','admin@localhost.com',1,1,'2020-06-03 19:22:18.379231');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$180000$ptSeb18JIuM4$DV0vBJDfi+rpTBur/jBC2wePDnVZKHRUrteialHEM+g=','2020-06-03 19:24:10.759091',1,'admin','','','admin@localhost.com',1,1,'2020-06-03 19:22:18.379231');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +206,7 @@ CREATE TABLE `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,6 +215,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
+INSERT INTO `django_admin_log` VALUES (1,'2020-06-03 19:25:16.644425','1','Abdome',1,'[{\"added\": {}}]',7,1),(2,'2020-06-03 19:26:06.383430','1','Ultrassom',1,'[{\"added\": {}}]',8,1),(3,'2020-06-03 19:28:56.561242','1','Ultrassom de Carótidas',1,'[{\"added\": {}}]',9,1),(4,'2020-06-03 19:35:08.249008','1','Artérias carótidas comuns, internas e externas',1,'[{\"added\": {}}]',10,1),(5,'2020-06-03 19:35:56.983159','2','Artérias vertebrais',1,'[{\"added\": {}}]',10,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -292,6 +293,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
+INSERT INTO `django_session` VALUES ('jjkr69dzwponh8u1bujtmfujrfjpw7cb','OWQyYjY3ZDVlOTkyYTJlMzU3NTA5MDNiNjhjMzRiN2YzZTE1Mjk1ZDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwMDgzYzY3NTg0NTFkMDZhNmUwM2Q0Mzk1YjA5NzY4NTMzMDVmOWU5In0=','2020-06-17 19:24:10.761855');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -306,7 +308,7 @@ CREATE TABLE `masks_especialidade` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -315,6 +317,7 @@ CREATE TABLE `masks_especialidade` (
 
 LOCK TABLES `masks_especialidade` WRITE;
 /*!40000 ALTER TABLE `masks_especialidade` DISABLE KEYS */;
+INSERT INTO `masks_especialidade` VALUES (1,'Abdome');
 /*!40000 ALTER TABLE `masks_especialidade` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -330,7 +333,7 @@ CREATE TABLE `masks_exame` (
   `descricao` varchar(50) NOT NULL,
   `initials` varchar(3) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -339,6 +342,7 @@ CREATE TABLE `masks_exame` (
 
 LOCK TABLES `masks_exame` WRITE;
 /*!40000 ALTER TABLE `masks_exame` DISABLE KEYS */;
+INSERT INTO `masks_exame` VALUES (1,'Ultrassom','US');
 /*!40000 ALTER TABLE `masks_exame` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -365,7 +369,7 @@ CREATE TABLE `masks_mascara` (
   KEY `masks_mascara_exame_id_a24888fb_fk_masks_exame_id` (`exame_id`),
   CONSTRAINT `masks_mascara_especialidade_id_9c60390e_fk_masks_esp` FOREIGN KEY (`especialidade_id`) REFERENCES `masks_especialidade` (`id`),
   CONSTRAINT `masks_mascara_exame_id_a24888fb_fk_masks_exame_id` FOREIGN KEY (`exame_id`) REFERENCES `masks_exame` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -374,6 +378,7 @@ CREATE TABLE `masks_mascara` (
 
 LOCK TABLES `masks_mascara` WRITE;
 /*!40000 ALTER TABLE `masks_mascara` DISABLE KEYS */;
+INSERT INTO `masks_mascara` VALUES (1,'us_carotidas.html','Ultrassom de Carótidas','Ultrassom de Carótidas','Técnica','Realizado varredura com transdutor linear de alta frequência das artérias carótidas e vertebrais.','Relatório','Ultrassom arterial com Doppler de carótidas e vertebrais sem alterações significativas.',1,1);
 /*!40000 ALTER TABLE `masks_mascara` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,7 +424,7 @@ CREATE TABLE `masks_topiconormal` (
   PRIMARY KEY (`id`),
   KEY `masks_topiconormal_mascara_id_80c9647b_fk_masks_mascara_id` (`mascara_id`),
   CONSTRAINT `masks_topiconormal_mascara_id_80c9647b_fk_masks_mascara_id` FOREIGN KEY (`mascara_id`) REFERENCES `masks_mascara` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -428,6 +433,7 @@ CREATE TABLE `masks_topiconormal` (
 
 LOCK TABLES `masks_topiconormal` WRITE;
 /*!40000 ALTER TABLE `masks_topiconormal` DISABLE KEYS */;
+INSERT INTO `masks_topiconormal` VALUES (1,'Artérias carótidas comuns, internas e externas','Aspecto ultrassonográfico normal das artérias carótidas comuns e suas bifurcações e carótidas internas e externas, tanto no modo B como no Doppler colorido.',1),(2,'Artérias vertebrais','Artérias vertebrais com fluxo cefálico preservado.',1);
 /*!40000 ALTER TABLE `masks_topiconormal` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -440,4 +446,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-03 16:22:45
+-- Dump completed on 2020-06-03 16:36:43
