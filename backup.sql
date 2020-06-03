@@ -258,7 +258,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,7 +267,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-06-03 19:21:43.480619'),(2,'auth','0001_initial','2020-06-03 19:21:44.358662'),(3,'admin','0001_initial','2020-06-03 19:21:46.492848'),(4,'admin','0002_logentry_remove_auto_add','2020-06-03 19:21:46.873467'),(5,'admin','0003_logentry_add_action_flag_choices','2020-06-03 19:21:46.883327'),(6,'contenttypes','0002_remove_content_type_name','2020-06-03 19:21:47.144925'),(7,'auth','0002_alter_permission_name_max_length','2020-06-03 19:21:47.398411'),(8,'auth','0003_alter_user_email_max_length','2020-06-03 19:21:47.500084'),(9,'auth','0004_alter_user_username_opts','2020-06-03 19:21:47.512198'),(10,'auth','0005_alter_user_last_login_null','2020-06-03 19:21:47.651178'),(11,'auth','0006_require_contenttypes_0002','2020-06-03 19:21:47.653366'),(12,'auth','0007_alter_validators_add_error_messages','2020-06-03 19:21:47.663175'),(13,'auth','0008_alter_user_username_max_length','2020-06-03 19:21:47.778366'),(14,'auth','0009_alter_user_last_name_max_length','2020-06-03 19:21:47.877887'),(15,'auth','0010_alter_group_name_max_length','2020-06-03 19:21:48.000436'),(16,'auth','0011_update_proxy_permissions','2020-06-03 19:21:48.011667'),(17,'masks','0001_initial','2020-06-03 19:21:48.647483'),(18,'sessions','0001_initial','2020-06-03 19:21:49.673040');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-06-03 19:21:43.480619'),(2,'auth','0001_initial','2020-06-03 19:21:44.358662'),(3,'admin','0001_initial','2020-06-03 19:21:46.492848'),(4,'admin','0002_logentry_remove_auto_add','2020-06-03 19:21:46.873467'),(5,'admin','0003_logentry_add_action_flag_choices','2020-06-03 19:21:46.883327'),(6,'contenttypes','0002_remove_content_type_name','2020-06-03 19:21:47.144925'),(7,'auth','0002_alter_permission_name_max_length','2020-06-03 19:21:47.398411'),(8,'auth','0003_alter_user_email_max_length','2020-06-03 19:21:47.500084'),(9,'auth','0004_alter_user_username_opts','2020-06-03 19:21:47.512198'),(10,'auth','0005_alter_user_last_login_null','2020-06-03 19:21:47.651178'),(11,'auth','0006_require_contenttypes_0002','2020-06-03 19:21:47.653366'),(12,'auth','0007_alter_validators_add_error_messages','2020-06-03 19:21:47.663175'),(13,'auth','0008_alter_user_username_max_length','2020-06-03 19:21:47.778366'),(14,'auth','0009_alter_user_last_name_max_length','2020-06-03 19:21:47.877887'),(15,'auth','0010_alter_group_name_max_length','2020-06-03 19:21:48.000436'),(16,'auth','0011_update_proxy_permissions','2020-06-03 19:21:48.011667'),(17,'masks','0001_initial','2020-06-03 19:21:48.647483'),(18,'sessions','0001_initial','2020-06-03 19:21:49.673040'),(19,'masks','0002_mascara_conclusao_header','2020-06-03 20:04:58.990694');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -364,6 +364,7 @@ CREATE TABLE `masks_mascara` (
   `conclusao` varchar(100) NOT NULL,
   `especialidade_id` int(11) NOT NULL,
   `exame_id` int(11) NOT NULL,
+  `conclusao_header` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `masks_mascara_especialidade_id_9c60390e_fk_masks_esp` (`especialidade_id`),
   KEY `masks_mascara_exame_id_a24888fb_fk_masks_exame_id` (`exame_id`),
@@ -378,7 +379,7 @@ CREATE TABLE `masks_mascara` (
 
 LOCK TABLES `masks_mascara` WRITE;
 /*!40000 ALTER TABLE `masks_mascara` DISABLE KEYS */;
-INSERT INTO `masks_mascara` VALUES (1,'us_carotidas.html','Ultrassom de Carótidas','Ultrassom de Carótidas','Técnica','Realizado varredura com transdutor linear de alta frequência das artérias carótidas e vertebrais.','Relatório','Ultrassom arterial com Doppler de carótidas e vertebrais sem alterações significativas.',1,1);
+INSERT INTO `masks_mascara` VALUES (1,'us_carotidas.html','Ultrassom de Carótidas','Ultrassom de Carótidas','Técnica','Realizado varredura com transdutor linear de alta frequência das artérias carótidas e vertebrais.','Relatório','Ultrassom arterial com Doppler de carótidas e vertebrais sem alterações significativas.',1,1,'');
 /*!40000 ALTER TABLE `masks_mascara` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -446,4 +447,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-03 16:36:43
+-- Dump completed on 2020-06-03 17:05:28

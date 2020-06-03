@@ -23,6 +23,7 @@ class Mascara(models.Model):
     tecnica_header = models.CharField(max_length=50)
     tecnica = models.CharField(max_length=500)
     relatorio_header = models.CharField(max_length=500)
+    conclusao_header = models.CharField(max_length=50)
     conclusao = models.CharField(max_length=100)
     def __str__(self):
         return self.nome
