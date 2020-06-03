@@ -206,7 +206,7 @@ CREATE TABLE `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +215,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2020-06-03 19:25:16.644425','1','Abdome',1,'[{\"added\": {}}]',7,1),(2,'2020-06-03 19:26:06.383430','1','Ultrassom',1,'[{\"added\": {}}]',8,1),(3,'2020-06-03 19:28:56.561242','1','Ultrassom de Carótidas',1,'[{\"added\": {}}]',9,1),(4,'2020-06-03 19:35:08.249008','1','Artérias carótidas comuns, internas e externas',1,'[{\"added\": {}}]',10,1),(5,'2020-06-03 19:35:56.983159','2','Artérias vertebrais',1,'[{\"added\": {}}]',10,1);
+INSERT INTO `django_admin_log` VALUES (1,'2020-06-03 19:25:16.644425','1','Abdome',1,'[{\"added\": {}}]',7,1),(2,'2020-06-03 19:26:06.383430','1','Ultrassom',1,'[{\"added\": {}}]',8,1),(3,'2020-06-03 19:28:56.561242','1','Ultrassom de Carótidas',1,'[{\"added\": {}}]',9,1),(4,'2020-06-03 19:35:08.249008','1','Artérias carótidas comuns, internas e externas',1,'[{\"added\": {}}]',10,1),(5,'2020-06-03 19:35:56.983159','2','Artérias vertebrais',1,'[{\"added\": {}}]',10,1),(6,'2020-06-03 20:07:09.191313','1','Ultrassom de Carótidas',2,'[{\"changed\": {\"fields\": [\"Conclusao header\"]}}]',9,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,7 +379,7 @@ CREATE TABLE `masks_mascara` (
 
 LOCK TABLES `masks_mascara` WRITE;
 /*!40000 ALTER TABLE `masks_mascara` DISABLE KEYS */;
-INSERT INTO `masks_mascara` VALUES (1,'us_carotidas.html','Ultrassom de Carótidas','Ultrassom de Carótidas','Técnica','Realizado varredura com transdutor linear de alta frequência das artérias carótidas e vertebrais.','Relatório','Ultrassom arterial com Doppler de carótidas e vertebrais sem alterações significativas.',1,1,'');
+INSERT INTO `masks_mascara` VALUES (1,'us_carotidas.html','Ultrassom de Carótidas','Ultrassom de Carótidas','Técnica','Realizado varredura com transdutor linear de alta frequência das artérias carótidas e vertebrais.','Relatório','Ultrassom arterial com Doppler de carótidas e vertebrais sem alterações significativas.',1,1,'Conclusão');
 /*!40000 ALTER TABLE `masks_mascara` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -447,4 +447,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-03 17:05:28
+-- Dump completed on 2020-06-03 17:08:14
