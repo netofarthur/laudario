@@ -1,8 +1,7 @@
 {% extends "masks/base.html" %}
 
-{% block conteudo %}
+{% block mascara %}
 
-#TESTE DO BOOTSTRAP. FUNCIONA!!!
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">Navbar</a>
@@ -25,7 +24,7 @@
                 </form>
             </div>
         </div>
-    </nav>
+</nav>
 
 
 
@@ -41,8 +40,9 @@
 <h2> {{ mascara.conclusao_header }} </h2>
 <p> {{ mascara.conclusao }} </p>
 
-{% for topico in topicos_anormais %}
-    <h3> {{ topico.nome }} </h3>
-{% endfor %}
 
-{% endblock conteudo %}
+{% endblock mascara %}
+
+
+
+

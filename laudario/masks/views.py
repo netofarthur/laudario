@@ -10,5 +10,11 @@ def mostrar_mascara(request, id_mascara):
     topicos_anormais = TopicoAnormal.objects.all()
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais, }
     template_name = mascara.template_name
-    return render(request, 'masks/' + template_name, context)
+    return render(request, 'masks/mascaras/' + template_name, context)
 
+
+
+
+def mostrar_modal(request, template_name):
+    context = {}
+    return render(request, 'masks/diagnosticos/' + template_name, context)
