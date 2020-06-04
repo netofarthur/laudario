@@ -63,8 +63,6 @@
         $('#myModal').on('show.bs.modal', function (e) {
               var button = e.relatedTarget;
               document.getElementById("template_name").setAttribute("w3-include-html", "../../diagnosticos/" + button.id);
-
-              alert(button.id);
               includeHTML();
         })
     </script>
