@@ -13,6 +13,7 @@
     </head>
     <body>
 
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">Navbar</a>
@@ -44,9 +45,9 @@
     {% block diagnosticos %}
     {% endblock diagnosticos %}
 
-    #Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
-    #Os htmls ficam nas pastas masks/diagnósticos.
-    <h3>Diagnósticos:</h3>
+    <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
+    Os htmls ficam nas pastas masks/diagnósticos.-->
+    <h4>Diagnósticos:</h4>
     {% for topicoanormal in topicos_anormais %}
         {% if topicoanormal.topico_normal.mascara == mascara %}
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id={{ topicoanormal.pk }}>{{ topicoanormal.nome }}</button>
