@@ -42,15 +42,15 @@
     {% block mascara %}
     {% endblock mascara %}
 
-    {% block diagnosticos %}
-    {% endblock diagnosticos %}
 
     <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
-    Os htmls ficam nas pastas masks/diagnósticos.-->
+    Os htmls ficam nas pastas masks/diagnósticos.
+    A variável name settada aqui corresponde ao tópico normal que vai ser alterado, para identificação
+    pelo botão de salvar alterações-->
     <h4>Diagnósticos:</h4>
     {% for topicoanormal in topicos_anormais %}
         {% if topicoanormal.topico_normal.mascara == mascara %}
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id={{ topicoanormal.pk }}>{{ topicoanormal.nome }}</button>
+            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id={{ topicoanormal.pk }}>{{ topicoanormal.nome }}</button>
         {% endif %}
     {% endfor %}
 
@@ -72,13 +72,22 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button id = "save_changes" type="button" class="btn btn-primary" onclick="alterar()">Save changes</button>
               </div>
             </div>
         </div>
     </div>
 
+<script>
+    function alterar() {
+        var topicoNormalParaAlterar = document.getElementById("save_changes").getAttribute("name");
 
+        document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio").innerHTML;
+
+    }
+
+
+</script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -89,10 +98,14 @@
 
     <!-- Script para mapear os botões/diagnósticos e abrir o template para preencher o modal adequadamente. Os templates
     deverão ficar na pasta diagnósticos e um template_name deve existir para cada TopicoAlterado.-->
+    <!-- setAttribute name coloca o id do topico normal a ser alterado no name do botal savechanges,
+     para poder alterar o tópico correto depois.-->
     <script>
         $('#myModal').on('show.bs.modal', function (e) {
               var button = e.relatedTarget;
               document.getElementById("template_name").setAttribute("w3-include-html", "../../diagnosticos/" + button.id);
+              document.getElementById("save_changes").setAttribute("name", button.name);
+
               includeHTML();
         })
     </script>

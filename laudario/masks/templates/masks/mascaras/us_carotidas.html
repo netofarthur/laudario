@@ -8,8 +8,10 @@
 <h2> {{ mascara.relatorio_header }} </h2>
 
 {% for topico in topicos_normais %}
-    <p> {{ topico.relatorio }} </p>
+    <p id="{{ topico.pk}}"> {{ topico.relatorio }} + {{ topico.pk }} </p>
 {% endfor %}
+
+
 
 <h2> {{ mascara.conclusao_header }} </h2>
 <p> {{ mascara.conclusao }} </p>
