@@ -9,6 +9,7 @@ def mostrar_mascara(request, id_mascara):
 
     topicos_anormais = TopicoAnormal.objects.all()
     topicos_anormais_builders = TopicoAnormalBuilder.objects.all()
+
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
                'topicos_anormais_builders': topicos_anormais_builders, }
     return render(request, 'masks/mascara.html', context)

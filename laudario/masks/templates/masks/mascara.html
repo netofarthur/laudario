@@ -23,11 +23,11 @@
     <h4>Diagnósticos:</h4>
     {% for topicoanormal in topicos_anormais %}
         {% if topicoanormal.topico_normal.mascara == mascara %}
-            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id={{ topicoanormal.pk }}>{{ topicoanormal.nome }}</button>
+            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="btn btn-primary" id={{ topicoanormal.pk }} onclick="alterar2(this.name)">{{ topicoanormal.nome }}</button>
         {% endif %}
     {% endfor %}
 
-    
+
     {% for topicoanormalbuilder in topicos_anormais_builders %}
         {% if topicoanormalbuilder.topico_normal.mascara == mascara %}
             <button name="{{ topicoanormalbuilder.topico_normal.pk }}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id={{ topicoanormalbuilder.template_name }}>{{ topicoanormalbuilder.nome }}</button>
@@ -67,6 +67,11 @@
         document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_alterada").innerHTML;
 
 
+    }
+
+    function alterar2(topicoid) {
+
+        alert(topicoid);
     }
 
 
