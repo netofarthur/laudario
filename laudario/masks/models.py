@@ -38,7 +38,6 @@ class TopicoNormal(models.Model):
 
 class TopicoAnormal(models.Model):
     topico_normal = models.ForeignKey(TopicoNormal, on_delete=models.CASCADE)
-    template_name = models.CharField(max_length=100)
     nome = models.CharField(max_length=100)
     descricao = models.CharField(max_length=500)
     relatorio = models.CharField(max_length=500)
@@ -46,7 +45,12 @@ class TopicoAnormal(models.Model):
     def __str__(self):
         return self.nome
 
-
+class TopicoAnormalBuilder(models.Model):
+    topico_normal = models.ForeignKey(TopicoNormal, on_delete=models.CASCADE)
+    template_name = models.CharField(max_length=100)
+    nome = models.CharField(max_length=100)
+    def __str__(self):
+        return self.nome
 
 
 

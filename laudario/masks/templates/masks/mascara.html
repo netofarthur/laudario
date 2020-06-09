@@ -18,13 +18,19 @@
 
 
     <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
-    Os htmls ficam nas pastas masks/diagnósticos.
-    A variável name settada aqui corresponde ao tópico normal que vai ser alterado, para identificação
-    pelo botão de salvar alterações-->
+    No primeiro loop são setados os ids dos topicos normais nos bancos de dados e no segundo loop o nome dos arquivos
+    html em templates/diagnosticos que também são colocados no banco de dados na entrada template_name em TopicoAnormalBuilders-->
     <h4>Diagnósticos:</h4>
     {% for topicoanormal in topicos_anormais %}
         {% if topicoanormal.topico_normal.mascara == mascara %}
             <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id={{ topicoanormal.pk }}>{{ topicoanormal.nome }}</button>
+        {% endif %}
+    {% endfor %}
+
+    
+    {% for topicoanormalbuilder in topicos_anormais_builders %}
+        {% if topicoanormalbuilder.topico_normal.mascara == mascara %}
+            <button name="{{ topicoanormalbuilder.topico_normal.pk }}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id={{ topicoanormalbuilder.template_name }}>{{ topicoanormalbuilder.nome }}</button>
         {% endif %}
     {% endfor %}
 
@@ -74,7 +80,7 @@
     <script>
         $('#myModal').on('show.bs.modal', function (e) {
               var button = e.relatedTarget;
-              document.getElementById("template_name").setAttribute("w3-include-html", "../../diagnosticos/" + button.id);
+              document.getElementById("template_name").setAttribute("w3-include-html", "../diagnosticos/" + button.id);
               document.getElementById("save_changes").setAttribute("name", button.name);
 
               includeHTML();
