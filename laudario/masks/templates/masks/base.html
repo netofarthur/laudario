@@ -50,7 +50,7 @@
 
 
 <h2> {{ mascara.conclusao_header }} </h2>
-<p> {{ mascara.conclusao }} </p>
+<p id="conclusao_normal"> {{ mascara.conclusao }} </p>
 
     <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
     Os htmls ficam nas pastas masks/diagnósticos.
@@ -92,6 +92,8 @@
         var topicoNormalParaAlterar = document.getElementById("save_changes").getAttribute("name");
 
         document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio").innerHTML;
+        document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_alterada").innerHTML;
+
 
     }
 
