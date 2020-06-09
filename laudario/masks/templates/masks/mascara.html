@@ -23,7 +23,7 @@
     <h4>Diagnósticos:</h4>
     {% for topicoanormal in topicos_anormais %}
         {% if topicoanormal.topico_normal.mascara == mascara %}
-            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="btn btn-primary" id={{ topicoanormal.pk }} onclick="alterar2(this.name, this.id)">{{ topicoanormal.nome }}</button>
+            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="btn btn-primary" id={{ topicoanormal.pk }} onclick="alterarDiagnosticoDireto(this.name, this.id)">{{ topicoanormal.nome }}</button>
         {% endif %}
     {% endfor %}
 
@@ -52,7 +52,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id = "save_changes" type="button" class="btn btn-primary" onclick="alterar()">Save changes</button>
+                <button id = "save_changes" type="button" class="btn btn-primary" onclick="alterarDiagnosticoModal()">Save changes</button>
               </div>
             </div>
         </div>
@@ -60,16 +60,31 @@
 
 
     <script>
-    function alterar() {
+
+
+    //Altera o diagnótico Personalizado com auxílio de um Modal, que busca o tópico a ser alterado no name do botão clicado, enviado com auxílio de jquery num script mais abaixo.
+
+    function alterarDiagnosticoModal() {
         var topicoNormalParaAlterar = document.getElementById("save_changes").getAttribute("name");
 
-        document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio").innerHTML;
-        document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_alterada").innerHTML;
+        if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
+            document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio").innerHTML;
+            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_alterada").innerHTML;
+            document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
+            document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+        } else {
+            document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio").innerHTML;
+            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + document.getElementById("conclusao_alterada").innerHTML;
+
+        }
+
+
 
 
     }
-
-    function alterar2(name, id) {
+    // Altera o diagnóstico Padrão diretamente, sem abrir outras janelas. Tive que usar serialização com JSON objects.
+    
+    function alterarDiagnosticoDireto(name, id) {
 
         var alterados = '{{ alterados|escapejs }}';
         var alteradosJSONObject = JSON.parse(alterados);
@@ -88,13 +103,15 @@
 
         }
 
-        document.getElementById(name).innerHTML = relatorio;
-        document.getElementById("conclusao_normal").innerHTML = conclusao;
-
-
-
-
-
+        if(document.getElementById(name).getAttribute("name") != "alterado") {
+            document.getElementById(name).innerHTML = relatorio;
+            document.getElementById("conclusao_normal").innerHTML = conclusao;
+            document.getElementById(name).setAttribute("name", "alterado");
+            document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+        } else {
+           document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
+            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + conclusao;
+        }
 
 
 
