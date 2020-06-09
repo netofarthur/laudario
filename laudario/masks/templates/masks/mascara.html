@@ -23,7 +23,7 @@
     <h4>Diagnósticos:</h4>
     {% for topicoanormal in topicos_anormais %}
         {% if topicoanormal.topico_normal.mascara == mascara %}
-            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="btn btn-primary" id={{ topicoanormal.pk }} onclick="alterar2(this.name)">{{ topicoanormal.nome }}</button>
+            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="btn btn-primary" id={{ topicoanormal.pk }} onclick="alterar2(this.name, this.id)">{{ topicoanormal.nome }}</button>
         {% endif %}
     {% endfor %}
 
@@ -69,9 +69,35 @@
 
     }
 
-    function alterar2(topicoid) {
+    function alterar2(name, id) {
 
-        alert(topicoid);
+        var alterados = '{{ alterados|escapejs }}';
+        var alteradosJSONObject = JSON.parse(alterados);
+
+        var relatorio;
+        var conclusao;
+
+        for(i = 0; i < alteradosJSONObject.length; i++) {
+
+            if(alteradosJSONObject[i].pk == id) {
+                relatorio = alteradosJSONObject[i].fields.relatorio;
+                conclusao = alteradosJSONObject[i].fields.conclusao;
+            }
+
+
+
+        }
+
+        document.getElementById(name).innerHTML = relatorio;
+        document.getElementById("conclusao_normal").innerHTML = conclusao;
+
+
+
+
+
+
+
+
     }
 
 

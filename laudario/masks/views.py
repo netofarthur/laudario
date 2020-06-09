@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core import serializers
 from .models import Mascara, TopicoNormal, TopicoAnormal, TopicoAnormalBuilder
 
 # Create your views here.
@@ -10,8 +11,11 @@ def mostrar_mascara(request, id_mascara):
     topicos_anormais = TopicoAnormal.objects.all()
     topicos_anormais_builders = TopicoAnormalBuilder.objects.all()
 
+    json_serializer = serializers.get_serializer("json")()
+    alterados = json_serializer.serialize(TopicoAnormal.objects.all())
+
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
-               'topicos_anormais_builders': topicos_anormais_builders, }
+               'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados }
     return render(request, 'masks/mascara.html', context)
 
 
@@ -20,6 +24,8 @@ def mostrar_mascara(request, id_mascara):
 def mostrar_modal_diagnostico(request, id_diagnostico):
     diagnostico = TopicoAnormal.objects.get(pk=id_diagnostico)
     context = {'diagnostico': diagnostico}
+
+
 
     return render(request, 'masks/topico_alterado.html', context)
 
