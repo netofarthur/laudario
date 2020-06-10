@@ -31,7 +31,7 @@ class Mascara(models.Model):
 class TopicoNormal(models.Model):
     mascara = models.ForeignKey(Mascara, on_delete=models.CASCADE)
     orgao = models.CharField(max_length=50)
-    relatorio = models.CharField(max_length=500)
+    relatorio = models.TextField(max_length=500)
     def __str__(self):
         return self.orgao 
 
