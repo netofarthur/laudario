@@ -94,18 +94,14 @@
 
 
                     if(result != null) {
-
+                        listaParagrafos[i].setAttribute("name", "variavel");
                         for(var z = 0; z < result.length; z++) {
+
                             listaVariaveis[z] = result[z].substring(1, result[z].length - 1);
                         }
 
 
                     }
-
-
-
-
-
 
 
         }
@@ -118,8 +114,10 @@
 
     function popularVariaveis() {
 
+
     var lista = obterListaVariaveis();
-    alert(lista[0]);
+
+    alert(lista);
 
 
     }
