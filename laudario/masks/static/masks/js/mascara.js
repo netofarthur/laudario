@@ -18,11 +18,10 @@
                     var provisoria = strReplacedLessAndGreaterThenAndBr;
 
 
-                      var children =  document.getElementById("template_name_variaveis").children;
+                      var children =  document.getElementsByName("var");
 
 
-                        // Dividi por 3 porque são 3 vezes mais children (inclui um input e um <br> alem do label.
-                      for(var z = 0; z < children.length/3; z++) {
+                      for(var z = 0; z < children.length; z++) {
                              provisoria = provisoria.replace("<" + document.getElementById("lab" + z).innerHTML + ">", document.getElementById("var" + z).value);
 
                       }
@@ -163,6 +162,7 @@
             var labelInput = document.createElement("label");
              labelInput.setAttribute("for", "var" + i);
              labelInput.setAttribute("id", "lab" + i);
+             labelInput.setAttribute("name", "var");
 
 
             labelInput.innerHTML = lista[i];
