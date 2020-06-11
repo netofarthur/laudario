@@ -24,7 +24,7 @@
 
 
                       for(var z = 0; z < children.length; z++) {
-                             var mystr = "var " + document.getElementById("lab" + z).innerHTML + " = " + document.getElementById("var" + z).value + ";";
+                             var mystr = "var " + document.getElementById("lab" + z).innerHTML + " = " + parseFloat(document.getElementById("var" + z).value.replace(",",".")) + ";";
 
 
                                //É variável, else, é expressão
@@ -36,7 +36,6 @@
 
                                 provisoria = provisoria.replace("<" + document.getElementById("lab" + z).innerHTML + ">", eval(document.getElementById("lab" + z).innerHTML));
                             }
-
 
 
 
