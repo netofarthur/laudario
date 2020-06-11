@@ -14,13 +14,15 @@
 {% for topico in topicos_normais %}
     <p name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</p>
 {% endfor %}
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalVariaveis" id=popular_variaveis onclick="popularVariaveis()">Popular Variáveis</button>
 
 
 
 
 <h2> {{ mascara.conclusao_header }} </h2>
 <p id="conclusao_normal"> {{ mascara.conclusao }} </p>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalVariaveis" id=popular_variaveis onclick="popularVariaveis()">Popular Variáveis</button>
+
 
 
 

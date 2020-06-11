@@ -2,10 +2,8 @@
 
 
 
-
+    //Função que coloca as variáveis preenchidas pelo usuário no Modal nos campos <> do laudo.
     function alterarVariaveisModal() {
-
-
 
         var listaParagrafos = document.getElementsByName("topicocomvariavel");
 
@@ -21,22 +19,34 @@
                       var children =  document.getElementsByName("var");
 
 
+
+
+
+
                       for(var z = 0; z < children.length; z++) {
-                             provisoria = provisoria.replace("<" + document.getElementById("lab" + z).innerHTML + ">", document.getElementById("var" + z).value);
+                             var mystr = "var " + document.getElementById("lab" + z).innerHTML + " = " + document.getElementById("var" + z).value + ";";
+
+
+                               //É variável, else, é expressão
+                            if(document.getElementById("lab" + z).innerHTML.split(/[*/+-]+/g).length == 1) {
+                                provisoria = provisoria.replace("<" + document.getElementById("lab" + z).innerHTML + ">", document.getElementById("var" + z).value);
+                                eval(mystr);
+
+                            } else {
+
+                                provisoria = provisoria.replace("<" + document.getElementById("lab" + z).innerHTML + ">", eval(document.getElementById("lab" + z).innerHTML));
+                            }
+
+
+
+
 
                       }
-
-
-
 
 
                     var nova = provisoria.split("|").join("<br>");
 
                     listaParagrafos[i].innerHTML = nova;
-
-
-
-
     }
 
 }
@@ -126,9 +136,6 @@
                     var strReplacedLessAndGreaterThenAndBr = strReplacedLessAndGreaterThen.split("<br>").join(" ");
 
                     var result = strReplacedLessAndGreaterThenAndBr.match(pattern);
-
-
-
                     if(result != null) {
                         listaParagrafos[i].setAttribute("name", "topicocomvariavel");
                         for(var z = 0; z < result.length; z++) {
@@ -138,22 +145,17 @@
 
 
                     }
-
-
         }
 
         return listaVariaveis;
-
-
-
     }
 
+    //Função coloca as variaveis a serem preenchidas pelo usuario em um Modal.
     function popularVariaveis() {
 
         var divVariaveis = document.getElementById("template_name_variaveis");
 
         var lista = obterListaVariaveis();
-
 
         for(var i = 0; i < lista.length; i++) {
             var input = document.createElement("input");
@@ -164,16 +166,24 @@
              labelInput.setAttribute("id", "lab" + i);
              labelInput.setAttribute("name", "var");
 
-
             labelInput.innerHTML = lista[i];
             divVariaveis.appendChild(labelInput);
               divVariaveis.appendChild(input);
-            divVariaveis.appendChild(document.createElement("br"));
+
+            //Se for expressão, não mostrar.
+            if(document.getElementById("lab" + i).innerHTML.split(/[*/+-]+/g).length > 1) {
+                labelInput.style.display = "none";
+                input.style.display = "none";
 
 
-    }
+            } else {
+                divVariaveis.appendChild(document.createElement("br"));
+
+            }
 
 
+
+        }
 
 
 
