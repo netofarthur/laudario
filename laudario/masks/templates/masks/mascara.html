@@ -14,7 +14,7 @@
 {% for topico in topicos_normais %}
     <p name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</p>
 {% endfor %}
-<button type="button" class="btn btn-primary" id=popular_variaveis onclick="popularVariaveis()">Popular Variáveis</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalVariaveis" id=popular_variaveis onclick="popularVariaveis()">Popular Variáveis</button>
 
 
 
@@ -60,6 +60,32 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button id = "save_changes" type="button" class="btn btn-primary" onclick="alterarDiagnosticoModal()">Save changes</button>
+              </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <!-- Modal de Variáveis do Usuário-->
+    <div class="modal fade" id="ModalVariaveis" tabindex="-1" role="dialog" aria-labelledby="tituloModalVariaveis" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="tituloModalVariaveis">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div id="template_name_variaveis"></div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id = "save_changes_variaveis" type="button" class="btn btn-primary" onclick="alterarVariaveisModal()">Save changes</button>
               </div>
             </div>
         </div>

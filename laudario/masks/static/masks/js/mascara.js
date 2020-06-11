@@ -3,9 +3,46 @@
 
 
 
+    function alterarVariaveisModal() {
+
+
+
+        var listaParagrafos = document.getElementsByName("topicocomvariavel");
+
+         for(var i = 0; i < listaParagrafos.length; i++) {
+                   var str = listaParagrafos[i].innerHTML.replace("&lt;", "<");
+                    var strReplacedLessThen = str.split("&lt;").join("<");
+                    var strReplacedLessAndGreaterThen = strReplacedLessThen.split("&gt;").join(">");
+                    var strReplacedLessAndGreaterThenAndBr = strReplacedLessAndGreaterThen.split("<br>").join("|");
+
+                    var provisoria = strReplacedLessAndGreaterThenAndBr;
+
+
+                      var children =  document.getElementById("template_name_variaveis").children;
+
+
+                        // Dividi por 3 porque são 3 vezes mais children (inclui um input e um <br> alem do label.
+                      for(var z = 0; z < children.length/3; z++) {
+                             provisoria = provisoria.replace("<" + document.getElementById("lab" + z).innerHTML + ">", document.getElementById("var" + z).value);
+
+                      }
+
+
+
+
+
+                    var nova = provisoria.split("|").join("<br>");
+
+                    listaParagrafos[i].innerHTML = nova;
+
+
+
+
+    }
+
+}
+
     //Altera o diagnótico Personalizado com auxílio de um Modal, que busca o tópico a ser alterado no name do botão clicado, enviado com auxílio de jquery num script em mascara.html
-
-
 
     function alterarDiagnosticoModal() {
         var topicoNormalParaAlterar = document.getElementById("save_changes").getAttribute("name");
@@ -94,7 +131,7 @@
 
 
                     if(result != null) {
-                        listaParagrafos[i].setAttribute("name", "variavel");
+                        listaParagrafos[i].setAttribute("name", "topicocomvariavel");
                         for(var z = 0; z < result.length; z++) {
 
                             listaVariaveis[z] = result[z].substring(1, result[z].length - 1);
@@ -114,10 +151,31 @@
 
     function popularVariaveis() {
 
+        var divVariaveis = document.getElementById("template_name_variaveis");
 
-    var lista = obterListaVariaveis();
+        var lista = obterListaVariaveis();
 
-    alert(lista);
+
+        for(var i = 0; i < lista.length; i++) {
+            var input = document.createElement("input");
+            input.setAttribute("type", "text");
+            input.setAttribute("id", "var" + i);
+            var labelInput = document.createElement("label");
+             labelInput.setAttribute("for", "var" + i);
+             labelInput.setAttribute("id", "lab" + i);
+
+
+            labelInput.innerHTML = lista[i];
+            divVariaveis.appendChild(labelInput);
+              divVariaveis.appendChild(input);
+            divVariaveis.appendChild(document.createElement("br"));
+
+
+    }
+
+
+
+
 
 
     }
