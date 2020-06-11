@@ -5,9 +5,10 @@
     //Função que coloca as variáveis preenchidas pelo usuário no Modal nos campos <> do laudo.
     function alterarVariaveisModal() {
 
-        var listaParagrafos = document.getElementsByName("topicocomvariavel");
+        var listaParagrafos = document.getElementsByName("topico");
 
          for(var i = 0; i < listaParagrafos.length; i++) {
+
                    var str = listaParagrafos[i].innerHTML.replace("&lt;", "<");
                     var strReplacedLessThen = str.split("&lt;").join("<");
                     var strReplacedLessAndGreaterThen = strReplacedLessThen.split("&gt;").join(">");
@@ -44,7 +45,6 @@
 
 
                     var nova = provisoria.split("|").join("<br>");
-
                     listaParagrafos[i].innerHTML = nova;
     }
 
@@ -127,25 +127,30 @@
     function obterListaVariaveis() {
         var listaVariaveis = [];
         var listaParagrafos = document.getElementsByName("topico");
+        alert(listaParagrafos.length);
         var pattern = /\<([^>]+)\>/g;
+
+
+        var counter = 0;
         for(var i = 0; i < listaParagrafos.length; i++) {
+
                     var str = listaParagrafos[i].innerHTML.replace("&lt;", "<");
                     var strReplacedLessThen = str.split("&lt;").join("<");
                     var strReplacedLessAndGreaterThen = strReplacedLessThen.split("&gt;").join(">");
                     var strReplacedLessAndGreaterThenAndBr = strReplacedLessAndGreaterThen.split("<br>").join(" ");
 
                     var result = strReplacedLessAndGreaterThenAndBr.match(pattern);
+
                     if(result != null) {
-                        listaParagrafos[i].setAttribute("name", "topicocomvariavel");
                         for(var z = 0; z < result.length; z++) {
 
-                            listaVariaveis[z] = result[z].substring(1, result[z].length - 1);
+                            listaVariaveis[counter] = result[z].substring(1, result[z].length - 1);
+                            counter = counter + 1;
                         }
 
 
                     }
         }
-
         return listaVariaveis;
     }
 
