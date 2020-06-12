@@ -66,7 +66,7 @@
             document.getElementById(name).innerHTML = relatorio;
             document.getElementById(name).setAttribute("name", "alterado");
         } else {
-           document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br><br>" + relatorio;
+           document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
         }
 
         if(document.getElementById("conclusao_normal").getAttribute("name") != "alterado") {
@@ -78,7 +78,7 @@
 
         } else {
             if(conclusao != null && conclusao != "") {
-                            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br><br>" + conclusao;
+                            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + conclusao;
 
 
             }
