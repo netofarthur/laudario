@@ -6,3 +6,8 @@
 #mascara_div {
     overflow: hidden;
 }
+
+.botao_diagnostico {
+    color: red;
+    width: 100%;
+}

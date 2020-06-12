@@ -18,14 +18,14 @@
     <h4>Diagnósticos:</h4>
     {% for topicoanormal in topicos_anormais %}
         {% if topicoanormal.topico_normal.mascara == mascara %}
-            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="btn btn-primary" id="b{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">{{ topicoanormal.nome }}</button>
+            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="botao_diagnostico" id="b{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">{{ topicoanormal.nome }}</button>
         {% endif %}
     {% endfor %}
 
 
     {% for topicoanormalbuilder in topicos_anormais_builders %}
         {% if topicoanormalbuilder.topico_normal.mascara == mascara %}
-            <button name="{{ topicoanormalbuilder.topico_normal.pk }}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id={{ topicoanormalbuilder.template_name }}>{{ topicoanormalbuilder.nome }}</button>
+            <button name="{{ topicoanormalbuilder.topico_normal.pk }}" type="button" class="botao_diagnostico" data-toggle="modal" data-target="#myModal" id={{ topicoanormalbuilder.template_name }}>{{ topicoanormalbuilder.nome }}</button>
         {% endif %}
     {% endfor %}
 
