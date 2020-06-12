@@ -15,7 +15,6 @@
     <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
     No primeiro loop são setados os ids dos topicos normais nos bancos de dados e no segundo loop o nome dos arquivos
     html em templates/diagnosticos que também são colocados no banco de dados na entrada template_name em TopicoAnormalBuilders-->
-    <h4>Diagnósticos:</h4>
     {% for topicoanormal in topicos_anormais %}
         {% if topicoanormal.topico_normal.mascara == mascara %}
             <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="botao_diagnostico" id="b{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">{{ topicoanormal.nome }}</button>
