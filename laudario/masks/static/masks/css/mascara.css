@@ -9,6 +9,8 @@
 
 #mascara_div {
     margin: 5px;
+    padding:5px;
+    margin-top: 80px;
     width: 70%;
 
 }
@@ -26,3 +28,4 @@
   top:0;
   width:100%;
 }
+
