@@ -27,6 +27,11 @@ class Mascara(models.Model):
     def __str__(self):
         return self.nome
 
+class GrupoDiagnostico(models.Model):
+    nome = models.CharField(max_length=100)
+    descricao = models.CharField(max_length=500)
+    def __str__(self):
+        return self.nome
 
 class TopicoNormal(models.Model):
     mascara = models.ForeignKey(Mascara, on_delete=models.CASCADE)
@@ -38,6 +43,7 @@ class TopicoNormal(models.Model):
 
 class TopicoAnormal(models.Model):
     topico_normal = models.ForeignKey(TopicoNormal, on_delete=models.CASCADE)
+    grupo_diagnostico = models.ForeignKey(GrupoDiagnostico, on_delete=models.CASCADE, default=1)
     nome = models.CharField(max_length=100)
     descricao = models.CharField(max_length=500)
     relatorio = models.CharField(max_length=500)
@@ -51,6 +57,9 @@ class TopicoAnormalBuilder(models.Model):
     nome = models.CharField(max_length=100)
     def __str__(self):
         return self.nome
+
+
+
 
 
 
