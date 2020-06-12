@@ -4,7 +4,29 @@
 
 {% block mascara %}
 
+<div id=diagnosticos_div style="width:80px">
 
+    <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
+    No primeiro loop são setados os ids dos topicos normais nos bancos de dados e no segundo loop o nome dos arquivos
+    html em templates/diagnosticos que também são colocados no banco de dados na entrada template_name em TopicoAnormalBuilders-->
+    <h4>Diagnósticos:</h4>
+    {% for topicoanormal in topicos_anormais %}
+        {% if topicoanormal.topico_normal.mascara == mascara %}
+            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="btn btn-primary" id="b{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">{{ topicoanormal.nome }}</button>
+        {% endif %}
+    {% endfor %}
+
+
+    {% for topicoanormalbuilder in topicos_anormais_builders %}
+        {% if topicoanormalbuilder.topico_normal.mascara == mascara %}
+            <button name="{{ topicoanormalbuilder.topico_normal.pk }}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id={{ topicoanormalbuilder.template_name }}>{{ topicoanormalbuilder.nome }}</button>
+        {% endif %}
+    {% endfor %}
+
+</div>
+
+
+<div id="mascara_div">
 
 <h1 name="titulo"> {{ mascara.titulo }} </h1>
 <h2 name="titulo"> {{ mascara.tecnica_header }} </h2>
@@ -22,26 +44,7 @@
 <p id="conclusao_normal"> {{ mascara.conclusao }} </p>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalVariaveis" id=popular_variaveis onclick="popularVariaveis()">Popular Variáveis</button>
-
-
-
-
-    <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
-    No primeiro loop são setados os ids dos topicos normais nos bancos de dados e no segundo loop o nome dos arquivos
-    html em templates/diagnosticos que também são colocados no banco de dados na entrada template_name em TopicoAnormalBuilders-->
-    <h4>Diagnósticos:</h4>
-    {% for topicoanormal in topicos_anormais %}
-        {% if topicoanormal.topico_normal.mascara == mascara %}
-            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="btn btn-primary" id={{ topicoanormal.pk }} onclick="alterarDiagnosticoDireto(this.name, this.id)">{{ topicoanormal.nome }}</button>
-        {% endif %}
-    {% endfor %}
-
-
-    {% for topicoanormalbuilder in topicos_anormais_builders %}
-        {% if topicoanormalbuilder.topico_normal.mascara == mascara %}
-            <button name="{{ topicoanormalbuilder.topico_normal.pk }}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id={{ topicoanormalbuilder.template_name }}>{{ topicoanormalbuilder.nome }}</button>
-        {% endif %}
-    {% endfor %}
+</div>
 
 
 

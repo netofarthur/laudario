@@ -53,11 +53,13 @@
 
     // Altera o diagnóstico Padrão diretamente, sem abrir outras janelas. Tive que usar serialização com JSON objects.
     function alterarDiagnosticoDireto(name, id) {
+        var idSemB = id.substring(1, id.length);
+        alert(idSemB);
         var alteradosJSONObject = JSON.parse(alterados);
         var relatorio;
         var conclusao;
         for(i = 0; i < alteradosJSONObject.length; i++) {
-            if(alteradosJSONObject[i].pk == id) {
+            if(alteradosJSONObject[i].pk == idSemB) {
                 relatorio = alteradosJSONObject[i].fields.relatorio;
                 conclusao = alteradosJSONObject[i].fields.conclusao;
             }
@@ -78,7 +80,7 @@
 
         } else {
             if(conclusao != null && conclusao != "") {
-                            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + conclusao;
+                            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>f" + conclusao;
 
 
             }

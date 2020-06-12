@@ -1,0 +1,9 @@
+#diagnosticos_div {
+    float: left;
+    width: 30%;
+}
+
+#mascara_div {
+    overflow: hidden;
+}
+
