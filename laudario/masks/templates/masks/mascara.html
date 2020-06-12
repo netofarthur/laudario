@@ -1,10 +1,16 @@
 {% extends "masks/base.html" %}
 
+   {% block css %}
 
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+
+    {% endblock css %}
 
 {% block mascara %}
 
-<div id=diagnosticos_div style="width:80px">
+<div id=diagnosticos_div>
 
     <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
     No primeiro loop são setados os ids dos topicos normais nos bancos de dados e no segundo loop o nome dos arquivos
