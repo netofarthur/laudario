@@ -1,16 +1,18 @@
 #diagnosticos_div {
-    float: left;
-    width: 30%;
-    margin: 5px;
-    height: 1%;
-    overflow: auto;
+    position: fixed;
+  right: 0;
+  top:0;
+  width: 30%;
+  overflow: auto;
 
 }
 
 #mascara_div {
-    overflow: hidden;
     margin: 5px;
+    width: 70%;
+
 }
+
 
 .botao_diagnostico {
     color: red;
