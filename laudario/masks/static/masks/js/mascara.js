@@ -9,20 +9,9 @@
 
          for(var i = 0; i < listaParagrafos.length; i++) {
 
-                   var str = listaParagrafos[i].innerHTML.replace("&lt;", "<");
-                    var strReplacedLessThen = str.split("&lt;").join("<");
-                    var strReplacedLessAndGreaterThen = strReplacedLessThen.split("&gt;").join(">");
-                    var strReplacedLessAndGreaterThenAndBr = strReplacedLessAndGreaterThen.split("<br>").join("|");
-
-                    var provisoria = strReplacedLessAndGreaterThenAndBr;
-
+                    var provisoria = listaParagrafos[i].innerHTML;
 
                       var children =  document.getElementsByName("var");
-
-
-
-
-
 
                       for(var z = 0; z < children.length; z++) {
                              var mystr = "var " + document.getElementById("lab" + z).innerHTML + " = " + parseFloat(document.getElementById("var" + z).value.replace(",",".")) + ";";
@@ -30,22 +19,16 @@
 
                                //É variável, else, é expressão
                             if(document.getElementById("lab" + z).innerHTML.split(/[*/+-]+/g).length == 1) {
-                                provisoria = provisoria.replace("<" + document.getElementById("lab" + z).innerHTML + ">", document.getElementById("var" + z).value);
+                                provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", document.getElementById("var" + z).value);
                                 eval(mystr);
 
                             } else {
 
-                                provisoria = provisoria.replace("<" + document.getElementById("lab" + z).innerHTML + ">", eval(document.getElementById("lab" + z).innerHTML));
+                                provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", eval(document.getElementById("lab" + z).innerHTML));
                             }
 
-
-
-
                       }
-
-
-                    var nova = provisoria.split("|").join("<br>");
-                    listaParagrafos[i].innerHTML = nova;
+                    listaParagrafos[i].innerHTML = provisoria;
     }
 
 }
@@ -67,6 +50,7 @@
         }
     }
 
+((t))
 
     // Altera o diagnóstico Padrão diretamente, sem abrir outras janelas. Tive que usar serialização com JSON objects.
     function alterarDiagnosticoDireto(name, id) {
@@ -139,31 +123,31 @@
     function obterListaVariaveis() {
         var listaVariaveis = [];
         var listaParagrafos = document.getElementsByName("topico");
-        alert(listaParagrafos.length);
-        var pattern = /\<([^>]+)\>/g;
+        var pattern = /\{([^}]+)\}/g;
 
 
         var counter = 0;
         for(var i = 0; i < listaParagrafos.length; i++) {
 
-                    var str = listaParagrafos[i].innerHTML.replace("&lt;", "<");
-                    var strReplacedLessThen = str.split("&lt;").join("<");
-                    var strReplacedLessAndGreaterThen = strReplacedLessThen.split("&gt;").join(">");
-                    var strReplacedLessAndGreaterThenAndBr = strReplacedLessAndGreaterThen.split("<br>").join(" ");
 
-                    var result = strReplacedLessAndGreaterThenAndBr.match(pattern);
+
+                    var result = listaParagrafos[i].innerHTML.match(pattern);
 
                     if(result != null) {
                         for(var z = 0; z < result.length; z++) {
 
+
                             listaVariaveis[counter] = result[z].substring(1, result[z].length - 1);
                             counter = counter + 1;
+
                         }
 
 
                     }
         }
+
         return listaVariaveis;
+
     }
 
     //Função coloca as variaveis a serem preenchidas pelo usuario em um Modal.
