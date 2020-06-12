@@ -64,24 +64,34 @@
         }
         if(document.getElementById(name).getAttribute("name") != "alterado") {
             document.getElementById(name).innerHTML = relatorio;
-
-            if(conclusao != null && conclusao != "") {
-                        document.getElementById("conclusao_normal").innerHTML = conclusao;
-
-            }
-
             document.getElementById(name).setAttribute("name", "alterado");
-            document.getElementById("conclusao_normal").setAttribute("name", "alterado");
         } else {
-           document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
+           document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br><br>" + relatorio;
+        }
 
-           if(conclusao != null && conclusao != "") {
-                        document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + conclusao;
-
+        if(document.getElementById("conclusao_normal").getAttribute("name") != "alterado") {
+            document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+            if(conclusao != null && conclusao != "") {
+                 document.getElementById("conclusao_normal").innerHTML = conclusao;
 
             }
 
+        } else {
+            if(conclusao != null && conclusao != "") {
+                            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br><br>" + conclusao;
+
+
+            }
         }
+
+
+
+
+
+
+
+
+
 
     }
 
