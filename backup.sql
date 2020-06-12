@@ -258,7 +258,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,7 +267,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-06-12 04:51:53.957120'),(2,'auth','0001_initial','2020-06-12 04:51:54.834672'),(3,'admin','0001_initial','2020-06-12 04:51:57.043892'),(4,'admin','0002_logentry_remove_auto_add','2020-06-12 04:51:57.522934'),(5,'admin','0003_logentry_add_action_flag_choices','2020-06-12 04:51:57.534909'),(6,'contenttypes','0002_remove_content_type_name','2020-06-12 04:51:57.930253'),(7,'auth','0002_alter_permission_name_max_length','2020-06-12 04:51:58.172101'),(8,'auth','0003_alter_user_email_max_length','2020-06-12 04:51:58.283832'),(9,'auth','0004_alter_user_username_opts','2020-06-12 04:51:58.295584'),(10,'auth','0005_alter_user_last_login_null','2020-06-12 04:51:58.447588'),(11,'auth','0006_require_contenttypes_0002','2020-06-12 04:51:58.449780'),(12,'auth','0007_alter_validators_add_error_messages','2020-06-12 04:51:58.459677'),(13,'auth','0008_alter_user_username_max_length','2020-06-12 04:51:58.584540'),(14,'auth','0009_alter_user_last_name_max_length','2020-06-12 04:51:58.758349'),(15,'auth','0010_alter_group_name_max_length','2020-06-12 04:51:58.940114'),(16,'auth','0011_update_proxy_permissions','2020-06-12 04:51:58.951775'),(17,'masks','0001_initial','2020-06-12 04:51:59.848138'),(18,'sessions','0001_initial','2020-06-12 04:52:01.811426');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-06-12 04:51:53.957120'),(2,'auth','0001_initial','2020-06-12 04:51:54.834672'),(3,'admin','0001_initial','2020-06-12 04:51:57.043892'),(4,'admin','0002_logentry_remove_auto_add','2020-06-12 04:51:57.522934'),(5,'admin','0003_logentry_add_action_flag_choices','2020-06-12 04:51:57.534909'),(6,'contenttypes','0002_remove_content_type_name','2020-06-12 04:51:57.930253'),(7,'auth','0002_alter_permission_name_max_length','2020-06-12 04:51:58.172101'),(8,'auth','0003_alter_user_email_max_length','2020-06-12 04:51:58.283832'),(9,'auth','0004_alter_user_username_opts','2020-06-12 04:51:58.295584'),(10,'auth','0005_alter_user_last_login_null','2020-06-12 04:51:58.447588'),(11,'auth','0006_require_contenttypes_0002','2020-06-12 04:51:58.449780'),(12,'auth','0007_alter_validators_add_error_messages','2020-06-12 04:51:58.459677'),(13,'auth','0008_alter_user_username_max_length','2020-06-12 04:51:58.584540'),(14,'auth','0009_alter_user_last_name_max_length','2020-06-12 04:51:58.758349'),(15,'auth','0010_alter_group_name_max_length','2020-06-12 04:51:58.940114'),(16,'auth','0011_update_proxy_permissions','2020-06-12 04:51:58.951775'),(17,'masks','0001_initial','2020-06-12 04:51:59.848138'),(18,'sessions','0001_initial','2020-06-12 04:52:01.811426'),(19,'masks','0002_auto_20200612_1719','2020-06-12 17:19:28.835065');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,31 +347,6 @@ INSERT INTO `masks_exame` VALUES (1,'Ultrassom','US');
 UNLOCK TABLES;
 
 --
--- Table structure for table `masks_grupodiagnostico`
---
-
-DROP TABLE IF EXISTS `masks_grupodiagnostico`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `masks_grupodiagnostico` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) NOT NULL,
-  `descricao` varchar(500) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `masks_grupodiagnostico`
---
-
-LOCK TABLES `masks_grupodiagnostico` WRITE;
-/*!40000 ALTER TABLE `masks_grupodiagnostico` DISABLE KEYS */;
-INSERT INTO `masks_grupodiagnostico` VALUES (1,'Não classificados','Grupo para os diagnósticos não classificados.');
-/*!40000 ALTER TABLE `masks_grupodiagnostico` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `masks_mascara`
 --
 
@@ -420,12 +395,9 @@ CREATE TABLE `masks_topicoanormal` (
   `descricao` varchar(500) NOT NULL,
   `relatorio` varchar(500) NOT NULL,
   `conclusao` varchar(100) DEFAULT NULL,
-  `grupo_diagnostico_id` int(11) NOT NULL,
   `topico_normal_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `masks_topicoanormal_grupo_diagnostico_id_0c08f74b_fk_masks_gru` (`grupo_diagnostico_id`),
   KEY `masks_topicoanormal_topico_normal_id_34f25f74_fk_masks_top` (`topico_normal_id`),
-  CONSTRAINT `masks_topicoanormal_grupo_diagnostico_id_0c08f74b_fk_masks_gru` FOREIGN KEY (`grupo_diagnostico_id`) REFERENCES `masks_grupodiagnostico` (`id`),
   CONSTRAINT `masks_topicoanormal_topico_normal_id_34f25f74_fk_masks_top` FOREIGN KEY (`topico_normal_id`) REFERENCES `masks_topiconormal` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -436,7 +408,7 @@ CREATE TABLE `masks_topicoanormal` (
 
 LOCK TABLES `masks_topicoanormal` WRITE;
 /*!40000 ALTER TABLE `masks_topicoanormal` DISABLE KEYS */;
-INSERT INTO `masks_topicoanormal` VALUES (1,'Placas Bulbos (sem repercussão hemodinâmica)','Placas Bulbos (sem repercussão hemodinâmica)','Placas ateromatosas nos bulbos carotídeos bilateralmente, sem determinar estenose significativa ao modo B.','Placas ateromatosas nos bulbos carotídeos, sem repercussão hemodinâmica significativa.',1,1),(2,'Fluxo reverso (vertebral direita)','Fluxo reverso na artéria vertebral direita.','Presença de fluxo retrógrado na artéria vertebral direita.','Fluxo retrógrada na artéria vertebral direita (síndrome do roubo de subclávia?).',1,2),(3,'Fluxo reverso (vertebral esquerda)','Fluxo reverso na artéria vertebral esquerda..','Presença de fluxo retrógrado na artéria vertebral esquerda..','Fluxo retrógrada na artéria vertebral esquerda (síndrome do roubo de subclávia?).',1,2),(4,'Espessamento medio-intimal das carótidas','Espessamento medio-intimal, sem placas.','Espessamento medio-intimal nas artérias carótidas comuns, sem evidências de placas ateromatosas.','Espessamento medio-intimal bilateral.',1,1);
+INSERT INTO `masks_topicoanormal` VALUES (1,'Placas Bulbos (sem repercussão hemodinâmica)','Placas Bulbos (sem repercussão hemodinâmica)','Placas ateromatosas nos bulbos carotídeos bilateralmente, sem determinar estenose significativa ao modo B.','Placas ateromatosas nos bulbos carotídeos, sem repercussão hemodinâmica significativa.',1),(2,'Fluxo reverso (vertebral direita)','Fluxo reverso na artéria vertebral direita.','Presença de fluxo retrógrado na artéria vertebral direita.','Fluxo retrógrada na artéria vertebral direita (síndrome do roubo de subclávia?).',2),(3,'Fluxo reverso (vertebral esquerda)','Fluxo reverso na artéria vertebral esquerda..','Presença de fluxo retrógrado na artéria vertebral esquerda..','Fluxo retrógrada na artéria vertebral esquerda (síndrome do roubo de subclávia?).',2),(4,'Espessamento medio-intimal das carótidas','Espessamento medio-intimal, sem placas.','Espessamento medio-intimal nas artérias carótidas comuns, sem evidências de placas ateromatosas.','Espessamento medio-intimal bilateral.',1);
 /*!40000 ALTER TABLE `masks_topicoanormal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,4 +477,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-12 14:03:29
+-- Dump completed on 2020-06-12 14:20:38
