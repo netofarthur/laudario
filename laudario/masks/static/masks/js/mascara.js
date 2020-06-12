@@ -50,7 +50,6 @@
         }
     }
 
-((t))
 
     // Altera o diagnóstico Padrão diretamente, sem abrir outras janelas. Tive que usar serialização com JSON objects.
     function alterarDiagnosticoDireto(name, id) {
