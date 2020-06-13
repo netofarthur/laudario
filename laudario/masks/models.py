@@ -52,6 +52,16 @@ class TopicoAnormalBuilder(models.Model):
     def __str__(self):
         return self.nome
 
+class Variavel(models.Model):
+    #Tem que ter um id (ForeignKey) para um usuário específico do sistema.
+
+    nome_da_variavel = models.CharField(max_length=100)
+    nome_amigavel = models.CharField(max_length=500)
+    unidade_medida = models.CharField(max_length=10)
+    def __str__(self):
+        return self.nome_amigavel
+
+
 
 
 

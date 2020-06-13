@@ -160,6 +160,28 @@
 
     }
 
+    function obterUnidadesMedida() {
+        var unidadesJSONObject = JSON.parse(nomesAmigaveis);
+        var listaUnidades = [];
+        for(var i = 0; i < unidadesJSONObject.length; i++) {
+            listaUnidades[i] = unidadesJSONObject[i].fields.unidade_medida;
+        }
+        return listaUnidades;
+    }
+
+
+    function obterNomesAmigaveisVariaveis() {
+        var variaveisJSONObject = JSON.parse(nomesAmigaveis);
+        var listaNomesAmigaveis = [];
+        for(var i = 0; i < variaveisJSONObject.length; i++) {
+            listaNomesAmigaveis[i] = variaveisJSONObject[i].fields.nome_amigavel;
+        }
+
+
+        return listaNomesAmigaveis;
+    }
+
+
     //Função coloca as variaveis a serem preenchidas pelo usuario em um Modal.
     function popularVariaveis() {
 
@@ -167,23 +189,41 @@
 
         var lista = obterListaVariaveis();
 
+        var nomesAmigaveisVars = obterNomesAmigaveisVariaveis();
+        var unidadesMedida = obterUnidadesMedida();
+
         for(var i = 0; i < lista.length; i++) {
             var input = document.createElement("input");
             input.setAttribute("type", "text");
             input.setAttribute("id", "var" + i);
+
+
+            //Labels invisíveis para fazer as contas em evals.
             var labelInput = document.createElement("label");
-             labelInput.setAttribute("for", "var" + i);
              labelInput.setAttribute("id", "lab" + i);
              labelInput.setAttribute("name", "var");
+             labelInput.style.visibility = "hidden";
+
+            //Labels visíveis amigáveis.
+             var labelVisivel = document.createElement("label");
+              labelVisivel.setAttribute("for", "var" + i);
+                labelVisivel.innerHTML = "teset";
+
 
             labelInput.innerHTML = lista[i];
-            divVariaveis.appendChild(labelInput);
+            labelVisivel.innerHTML = nomesAmigaveisVars[i] + " (" + unidadesMedida[i] + ")";
+            divVariaveis.appendChild(labelVisivel);
+
               divVariaveis.appendChild(input);
+              divVariaveis.appendChild(document.createElement("br"));
+              divVariaveis.appendChild(labelInput);
+
 
             //Se for expressão, não mostrar.
             if(document.getElementById("lab" + i).innerHTML.split(/[*/+-]+/g).length > 1) {
                 labelInput.style.display = "none";
                 input.style.display = "none";
+                labelVisivel.style.display = "none";
 
 
             } else {
