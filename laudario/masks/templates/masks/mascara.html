@@ -40,10 +40,11 @@
 <p> {{mascara.tecnica }} </p>
 <h2> {{ mascara.relatorio_header }} </h2>
 
+<div id="topicos_div">
 {% for topico in topicos_normais %}
     <p name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</p>
 {% endfor %}
-
+</div>
 
 
 

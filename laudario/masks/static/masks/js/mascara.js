@@ -38,6 +38,9 @@
     function alterarDiagnosticoModal() {
         var topicoNormalParaAlterar = document.getElementById("save_changes").getAttribute("name");
 
+        colocarElementosEmOrdem(topicoNormalParaAlterar);
+
+
         if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
             document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio").innerHTML;
             document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_alterada").innerHTML;
@@ -47,6 +50,20 @@
             document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio").innerHTML;
             document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + document.getElementById("conclusao_alterada").innerHTML;
 
+        }
+    }
+
+
+    //Função para colocar os tópicos diagnóstico na ordem em que as alterações forem adicionadas.
+    function colocarElementosEmOrdem(name) {
+        var lista = document.getElementById("topicos_div").children;
+        var topicoDiv = document.getElementById("topicos_div");
+        for(z = 0; z < lista.length; z++) {
+            if(lista[z].getAttribute("name") != "alterado" && document.getElementById(name).getAttribute("name") != "alterado") {
+
+                topicoDiv.insertBefore(document.getElementById(name), lista[z]);
+                break;
+            }
         }
     }
 
@@ -63,6 +80,13 @@
                 conclusao = alteradosJSONObject[i].fields.conclusao;
             }
         }
+
+
+
+    colocarElementosEmOrdem(name);
+
+
+
         if(document.getElementById(name).getAttribute("name") != "alterado") {
             document.getElementById(name).innerHTML = relatorio;
             document.getElementById(name).setAttribute("name", "alterado");
@@ -79,16 +103,11 @@
 
         } else {
             if(conclusao != null && conclusao != "") {
-                            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + conclusao;
+                    document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + conclusao;
 
 
             }
         }
-
-
-
-
-
 
 
 
