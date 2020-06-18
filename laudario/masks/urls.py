@@ -9,5 +9,7 @@ urlpatterns = [
     path('mascaras/nova/adicionar', views.adicionar_nova_mascara, name='adicionar_nova_mascara'),
     path('', views.mostrar_index, name='mostrar_index'),
     path('login', views.login, name='login'),
+    path('cadastro', views.cadastro, name='cadastro'),
+    path('cadastrar', views.cadastrar, name='cadastrar'),
 
 ]

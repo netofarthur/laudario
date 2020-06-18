@@ -83,3 +83,15 @@ def mostrar_index(request):
 def login(request):
     return HttpResponse("<html><body><p>Login efetuado</p></body></html>")
 
+def cadastro(request):
+    context = {}
+    return render(request, 'masks/cadastro.html/', context)
+
+
+def cadastrar(request):
+    usuario = request.POST['usuario']
+    primeiro_nome = request.POST['primeiro_nome']
+    segundo_nome = request.POST['segundo_nome']
+    email = request.POST['email']
+    senha = request.POST['senha']
+    return HttpResponse("<html><body><p>" + usuario + "</p></body></html>")
