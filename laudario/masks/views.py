@@ -29,8 +29,42 @@ def nova_mascara(request):
     return render(request, 'masks/nova_mascara.html', context)
 
 def adicionar_nova_mascara(request):
+    exame_id = request.POST['exames']
+    especialidade_id = request.POST['especialidades']
+    nome_exame = request.POST['nome_exame']
+    titulo_exame = request.POST['titulo_exame']
+    tecnica_header = request.POST['tecnica_header']
+    tecnica = request.POST['tecnica']
+    relatorio_header = request.POST['relatorio_header']
+
+    lista_orgaos = request.POST.getlist('orgao')
+    lista_relatorios_orgaos = request.POST.getlist('relatorio_orgao')
+
+    conclusao_header = request.POST['conclusao_header']
+    conclusao = request.POST['conclusao']
+
+
+
+
     st = request.POST['titulo_exame']
-    return HttpResponse("<html><body><p>Máscara adicionada" + st + "</p></body></html>")
+
+
+    especialidadeInstance = Especialidade.objects.get(pk=especialidade_id)
+    exameInstance = Exame.objects.get(pk=exame_id)
+
+    nova_mascara = Mascara(especialidade=especialidadeInstance, exame=exameInstance, nome=nome_exame, titulo=titulo_exame,
+                           tecnica_header=tecnica_header, tecnica=tecnica, relatorio_header=relatorio_header,
+                          conclusao_header=conclusao_header, conclusao=conclusao)
+    nova_mascara.save()
+
+
+    for i in range(len(lista_orgaos)):
+        topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i])
+        topico_normal.save()
+
+
+
+    return HttpResponse("<html><body><p>Máscara adicionada" + lista_orgaos[0] + lista_relatorios_orgaos[0] + "</p></body></html>")
 
 
 

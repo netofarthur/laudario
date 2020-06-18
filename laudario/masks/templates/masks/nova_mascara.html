@@ -2,8 +2,13 @@
 <html>
 <head>
 
+{% load static %}
+<script type="text/javascript" src="{% static 'masks/js/nova_mascara.js' %}"></script>
+
 </head>
 <body>
+
+
 <h1> NOVA MÁSCARA </h1>
 <p>MÁSCARA</p>
 
@@ -50,13 +55,14 @@
 <input type="text" id="relatorio_header" name="relatorio_header">
 <br>
 
+<div id="lista_orgaos">
 <label for="orgao">Órgão: </label>
 <input type="text" id="orgao" name="orgao">
 <span> : </span>
-<input type="text" id="relatorio_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão">
+<input type="text" name="relatorio_orgao" placeholder="Descrição normal do órgão">
 <br>
-<a href="novoorgao">Novo órgão</a>
-<br>
+<a href="javascript:adicionarEntradaOrgao()" id="adicionar_entrada_orgao">Novo órgão</a>
+</div>
 
 <label for="conclusao_header">Título da conclusão: </label>
 <input type="text" id="conclusao_header" name="conclusao_header">
@@ -67,9 +73,10 @@
 <input type="text" id="conclusao" name="conclusao">
 <br>
 
-<input type="submit" value="submeter_nova_mascara">
+<input type="submit" value="Adicionar">
 
 </form>
+
 
 
 
