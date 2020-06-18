@@ -19,7 +19,15 @@ def mostrar_mascara(request, id_mascara):
     if not request.user.is_authenticated:
         return redirect(views.mostrar_index)
 
+
+
     mascara = Mascara.objects.get(pk=id_mascara)
+
+    # Verifica se o usuário tem permissão para ver essa máscara
+    if request.user != mascara.usuario:
+        return redirect(views.mostrar_index)
+
+
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
 
 

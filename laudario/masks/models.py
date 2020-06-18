@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+
 
 class Exame(models.Model):
     descricao = models.CharField(max_length=50)
@@ -15,6 +17,8 @@ class Especialidade(models.Model):
 
 # Normal masks (templates)
 class Mascara(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
     especialidade = models.ForeignKey(Especialidade, on_delete=models.CASCADE)
     exame = models.ForeignKey(Exame, on_delete=models.CASCADE)
     nome = models.CharField(max_length=50)
