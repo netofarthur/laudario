@@ -7,5 +7,23 @@
 <h1> NOVA MÁSCARA </h1>
 <p>MÁSCARA</p>
 
+<div class="form-group">
+  <label for="exames">Exame: </label>
+  <select class="form-control" name ="exames" id="exames">
+    {% for exame in exames %}
+      <option value={{ exame.pk }}>{{exame.descricao}}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="especialidades">Especialidade: </label>
+  <select class="form-control" name ="especialidades" id="especialidades">
+    {% for especialidade in especialidades %}
+      <option value={{ especialidade.pk }}>{{especialidade.descricao}}</option>
+    {% endfor %}
+  </select>
+</div>
+
 </body>
 </html>

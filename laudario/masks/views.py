@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.core import serializers
-from .models import Mascara, TopicoNormal, TopicoAnormal, TopicoAnormalBuilder, Variavel
+from .models import Mascara, TopicoNormal, TopicoAnormal, TopicoAnormalBuilder, Variavel, Especialidade, Exame
 
 # Create your views here.
 
@@ -22,7 +22,9 @@ def mostrar_mascara(request, id_mascara):
     return render(request, 'masks/mascara.html', context)
 
 def nova_mascara(request):
-    context = {}
+    especialidades = Especialidade.objects.all()
+    exames = Exame.objects.all()
+    context = {'especialidades': especialidades, 'exames': exames}
     return render(request, 'masks/nova_mascara.html', context)
 
 
