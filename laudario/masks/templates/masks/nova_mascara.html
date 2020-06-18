@@ -7,6 +7,11 @@
 <h1> NOVA MÁSCARA </h1>
 <p>MÁSCARA</p>
 
+<form action="{% url 'adicionar_nova_mascara' %}" method="post">
+{% csrf_token %}
+
+
+
 <div class="form-group">
   <label for="exames">Exame: </label>
   <select class="form-control" name ="exames" id="exames">
@@ -24,6 +29,51 @@
     {% endfor %}
   </select>
 </div>
+
+<label for="nome_exame">Nome/descrição do exame: </label>
+<input type="text" id="nome_exame" name="nome_exame">
+<br>
+
+<label for="titulo_exame">Título do exame: </label>
+<input type="text" id="titulo_exame" name="titulo_exame">
+<br>
+
+<label for="tecnica_header">Título da técnica: </label>
+<input type="text" id="tecnica_header" name="tecnica_header">
+<br>
+
+<label for="tecnica">Descrição da técnica: </label>
+<input type="text" id="tecnica" name="tecnica">
+<br>
+
+<label for="relatorio_header">Título do relatório: </label>
+<input type="text" id="relatorio_header" name="relatorio_header">
+<br>
+
+<label for="orgao">Órgão: </label>
+<input type="text" id="orgao" name="orgao">
+<span> : </span>
+<input type="text" id="relatorio_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão">
+<br>
+<a href="novoorgao">Novo órgão</a>
+<br>
+
+<label for="conclusao_header">Título da conclusão: </label>
+<input type="text" id="conclusao_header" name="conclusao_header">
+<br>
+
+
+<label for="conclusao">Descrição da conclusão: </label>
+<input type="text" id="conclusao" name="conclusao">
+<br>
+
+<input type="submit" value="submeter_nova_mascara">
+
+</form>
+
+
+
+
 
 </body>
 </html>

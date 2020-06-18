@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core import serializers
+from django.http import HttpResponse
 from .models import Mascara, TopicoNormal, TopicoAnormal, TopicoAnormalBuilder, Variavel, Especialidade, Exame
 
 # Create your views here.
@@ -26,6 +27,11 @@ def nova_mascara(request):
     exames = Exame.objects.all()
     context = {'especialidades': especialidades, 'exames': exames}
     return render(request, 'masks/nova_mascara.html', context)
+
+def adicionar_nova_mascara(request):
+    st = request.POST['titulo_exame']
+    return HttpResponse("<html><body><p>Máscara adicionada" + st + "</p></body></html>")
+
 
 
 def mostrar_modal_diagnostico(request, id_diagnostico):
