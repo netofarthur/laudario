@@ -44,8 +44,6 @@ def adicionar_nova_mascara(request):
     conclusao = request.POST['conclusao']
 
 
-
-
     st = request.POST['titulo_exame']
 
 
@@ -77,3 +75,11 @@ def mostrar_modal_diagnostico(request, id_diagnostico):
 def mostrar_mascara_builder(request, template_name):
     context = {}
     return render(request, 'masks/diagnosticos/' + template_name, context)
+
+def mostrar_index(request):
+    context = {}
+    return render(request, 'masks/index.html/', context)
+
+def login(request):
+    return HttpResponse("<html><body><p>Login efetuado</p></body></html>")
+

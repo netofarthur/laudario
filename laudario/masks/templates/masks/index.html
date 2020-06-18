@@ -1,0 +1,18 @@
+<html>
+<head>
+
+</head>
+<body>
+
+<form action="{% url 'login' %}" method="post">
+{% csrf_token %}
+
+<input type="text" placeholder="Usuário">
+<input type="password" placeholder="Senha">
+<input type="submit" value="Entrar">
+<a href="#">Não possui cadastro?</a>
+
+</form>
+
+</body>
+</html>
