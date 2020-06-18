@@ -21,7 +21,9 @@ def mostrar_mascara(request, id_mascara):
                'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, }
     return render(request, 'masks/mascara.html', context)
 
-
+def nova_mascara(request):
+    context = {}
+    return render(request, 'masks/nova_mascara.html', context)
 
 
 def mostrar_modal_diagnostico(request, id_diagnostico):
