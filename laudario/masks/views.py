@@ -1,11 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core import serializers
 from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from . import views
+
+
+
+
 from .models import Mascara, TopicoNormal, TopicoAnormal, TopicoAnormalBuilder, Variavel, Especialidade, Exame
+
 
 # Create your views here.
 
 def mostrar_mascara(request, id_mascara):
+
+    #Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
     mascara = Mascara.objects.get(pk=id_mascara)
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
 
@@ -23,12 +36,18 @@ def mostrar_mascara(request, id_mascara):
     return render(request, 'masks/mascara.html', context)
 
 def nova_mascara(request):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
     especialidades = Especialidade.objects.all()
     exames = Exame.objects.all()
     context = {'especialidades': especialidades, 'exames': exames}
     return render(request, 'masks/nova_mascara.html', context)
 
 def adicionar_nova_mascara(request):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
     exame_id = request.POST['exames']
     especialidade_id = request.POST['especialidades']
     nome_exame = request.POST['nome_exame']
@@ -57,6 +76,7 @@ def adicionar_nova_mascara(request):
 
 
     for i in range(len(lista_orgaos)):
+
         topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i])
         topico_normal.save()
 
@@ -67,21 +87,36 @@ def adicionar_nova_mascara(request):
 
 
 def mostrar_modal_diagnostico(request, id_diagnostico):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
     diagnostico = TopicoAnormal.objects.get(pk=id_diagnostico)
     context = {'diagnostico': diagnostico}
     return render(request, 'masks/topico_alterado.html', context)
 
 
 def mostrar_mascara_builder(request, template_name):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
     context = {}
     return render(request, 'masks/diagnosticos/' + template_name, context)
 
 def mostrar_index(request):
+
     context = {}
     return render(request, 'masks/index.html/', context)
 
-def login(request):
-    return HttpResponse("<html><body><p>Login efetuado</p></body></html>")
+def login_usuario(request):
+    usuario = request.POST['usuario']
+    senha = request.POST['senha']
+    usr = authenticate(request, username=usuario, password=senha)
+    if usr is not None:
+        login(request, usr)
+        return HttpResponse("<html><body><p>Login efetuado</p></body></html>")
+    else:
+        return HttpResponse("<html><body><p>Usuário ou senha inválidos</p></body></html>")
+
 
 def cadastro(request):
     context = {}
@@ -90,8 +125,15 @@ def cadastro(request):
 
 def cadastrar(request):
     usuario = request.POST['usuario']
-    primeiro_nome = request.POST['primeiro_nome']
-    segundo_nome = request.POST['segundo_nome']
     email = request.POST['email']
     senha = request.POST['senha']
-    return HttpResponse("<html><body><p>" + usuario + "</p></body></html>")
+
+    user = User.objects.create_user(usuario, email, senha)
+    user.save()
+
+    return HttpResponse("<html><body><p>" + usuario + " criado!</p></body></html>")
+
+
+def logout_usuario(request):
+    logout(request)
+    return HttpResponse("<html><body><p>Loggeg out</p></body></html>")
