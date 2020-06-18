@@ -56,6 +56,8 @@ def adicionar_nova_mascara(request):
     # Verifica se o usuário está logado
     if not request.user.is_authenticated:
         return redirect(views.mostrar_index)
+
+    usuario = request.user
     exame_id = request.POST['exames']
     especialidade_id = request.POST['especialidades']
     nome_exame = request.POST['nome_exame']
@@ -77,7 +79,7 @@ def adicionar_nova_mascara(request):
     especialidadeInstance = Especialidade.objects.get(pk=especialidade_id)
     exameInstance = Exame.objects.get(pk=exame_id)
 
-    nova_mascara = Mascara(especialidade=especialidadeInstance, exame=exameInstance, nome=nome_exame, titulo=titulo_exame,
+    nova_mascara = Mascara(usuario=usuario, especialidade=especialidadeInstance, exame=exameInstance, nome=nome_exame, titulo=titulo_exame,
                            tecnica_header=tecnica_header, tecnica=tecnica, relatorio_header=relatorio_header,
                           conclusao_header=conclusao_header, conclusao=conclusao)
     nova_mascara.save()
