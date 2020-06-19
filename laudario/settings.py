@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'laudario.masks',
+    'django_email_verification',
+
 ]
 
 MIDDLEWARE = [
@@ -123,3 +125,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+#Settings for email verification
+EMAIL_ACTIVE_FIELD = 'is_active'
+EMAIL_SERVER = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_ADDRESS = 'doctortestisdev@gmail.com'
+EMAIL_PASSWORD = os.environ.get('SENHA_EMAIL')
+EMAIL_MAIL_SUBJECT = 'Confirm your email'
+EMAIL_MAIL_HTML = 'masks/mail_body.html'
+EMAIL_MAIL_PLAIN = 'masks/mail_body.txt'
+EMAIL_PAGE_TEMPLATE = 'masks/confirm_template.html'
+EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
+
+

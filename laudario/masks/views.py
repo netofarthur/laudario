@@ -3,6 +3,8 @@ from django.core import serializers
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django_email_verification import sendConfirm
+
 from . import views
 
 
@@ -139,6 +141,7 @@ def cadastrar(request):
     senha = request.POST['senha']
 
     user = User.objects.create_user(usuario, email, senha)
+    sendConfirm(user)
     user.save()
 
     return HttpResponse("<html><body><p>" + usuario + " criado!</p></body></html>")
