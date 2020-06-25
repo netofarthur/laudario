@@ -1,11 +1,43 @@
 {% extends "masks/base.html" %}
 
 
+
 {% block conteudo %}
+
+<script>
+
+function tornarExamesInvisiveis() {
+
+  let especialidadeSelecionada = document.getElementById("exames").value;
+  let todasMascaras = document.getElementsByClassName("list-group-item list-group-item-action");
+
+  for(i = 0; i < todasMascaras.length; i++) {
+
+      if(document.getElementById("exames").value == "todos") {
+          todasMascaras[i].style.display = "block";
+
+      } else {
+        if(todasMascaras[i].getAttribute("name") != especialidadeSelecionada) {
+            todasMascaras[i].style.display = "none";
+         } else {
+            todasMascaras[i].style.display = "block";
+
+         }
+      }
+
+
+  }
+
+}
+
+
+</script>
 
 <div class="form-group">
   <label for="exames">Exame: </label>
-  <select class="form-control" name ="exames" id="exames">
+  <select class="form-control" name ="exames" id="exames" onchange="tornarExamesInvisiveis()">
+    <option value="todos">Todos</option>
+
     {% for exame in exames %}
       <option value={{ exame.pk }}>{{exame.descricao}}</option>
     {% endfor %}
@@ -40,7 +72,7 @@
 
                 {% for mascara in mascaras %}
                 {% if mascara.especialidade == especialidade %}
-                <a href="#" class="list-group-item list-group-item-action">{{ mascara.nome }}</a>
+                <a href="#" class="list-group-item list-group-item-action" name="{{ mascara.especialidade.pk}}">{{ mascara.nome }}</a>
                 {% endif %}
                 {% endfor %}
 
@@ -61,3 +93,4 @@
 </div>
 
 {% endblock conteudo %}
+

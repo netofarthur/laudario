@@ -259,13 +259,6 @@
 
     }
 
-    //pegar uma lista com todos os paragrafos da página, fazer um loop no conteúdo de cada um
-    //procurando a tag <, assim que encontrar, registrar a string até a tag >, salvando o resultado
-    //numa lista.
 
-    //fazer um split na string usando espaços como delimitadores. Se o resultado for uma string única, então
-    //o resultado é uma variável, else, o resultado é uma conta a ser feita.
-
-    //
 
 
