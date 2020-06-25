@@ -14,6 +14,7 @@
 
 <div id=diagnosticos_div>
 
+
     <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
     No primeiro loop são setados os ids dos topicos normais nos bancos de dados e no segundo loop o nome dos arquivos
     html em templates/diagnosticos que também são colocados no banco de dados na entrada template_name em TopicoAnormalBuilders-->
@@ -29,6 +30,8 @@
             <button name="{{ topicoanormalbuilder.topico_normal.pk }}" type="button" class="botao_diagnostico" data-toggle="modal" data-target="#myModal" id={{ topicoanormalbuilder.template_name }}>{{ topicoanormalbuilder.nome }}</button>
         {% endif %}
     {% endfor %}
+        <button type="button" >Adicionar Frase Alterada</button>
+
 
 </div>
 
