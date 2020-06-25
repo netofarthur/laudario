@@ -150,3 +150,15 @@ def cadastrar(request):
 def logout_usuario(request):
     logout(request)
     return HttpResponse("<html><body><p>Loggeg out</p></body></html>")
+
+
+
+def mostrar_mascaras(request):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+    mascaras = Mascara.objects.filter(usuario=request.user)
+    especialidades = Especialidade.objects.all()
+    exames = Exame.objects.all()
+    context = {'mascaras': mascaras, 'exames': exames, 'especialidades': especialidades}
+    return render(request, 'masks/mascaras.html', context)

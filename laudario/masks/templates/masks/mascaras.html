@@ -1,0 +1,63 @@
+{% extends "masks/base.html" %}
+
+
+{% block conteudo %}
+
+<div class="form-group">
+  <label for="exames">Exame: </label>
+  <select class="form-control" name ="exames" id="exames">
+    {% for exame in exames %}
+      <option value={{ exame.pk }}>{{exame.descricao}}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<div class="list-group">
+
+
+
+
+
+
+  <div id="accordion">
+
+ {% for especialidade in especialidades %}
+    <div class="card">
+      <div class="card-header" id={{ especialidade.pk }}>
+        <h5 class="mb-0">
+
+
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ especialidade.pk }}" aria-expanded="true" aria-controls="collapse{{ especialidade.pk }}">
+                {{ especialidade.descricao }}
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapse{{ especialidade.pk }}" class="collapse show" aria-labelledby={{ especialidade.pk }} data-parent="#accordion">
+            <div class="card-body">
+
+              <div class="list-group">
+
+                {% for mascara in mascaras %}
+                {% if mascara.especialidade == especialidade %}
+                <a href="#" class="list-group-item list-group-item-action">{{ mascara.nome }}</a>
+                {% endif %}
+                {% endfor %}
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+  </div>
+
+
+
+
+
+</div>
+
+{% endblock conteudo %}

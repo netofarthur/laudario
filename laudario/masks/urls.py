@@ -12,5 +12,6 @@ urlpatterns = [
     path('cadastro', views.cadastro, name='cadastro'),
     path('cadastrar', views.cadastrar, name='cadastrar'),
     path('logout', views.logout_usuario, name='logout_usuario'),
+    path('mascaras/', views.mostrar_mascaras, name='mostrar_mascaras'),
 
 ]
