@@ -1,37 +1,12 @@
 {% extends "masks/base.html" %}
 
+{% load static %}
 
 
 {% block conteudo %}
 
-<script>
+<script type="text/javascript" src="{% static 'masks/js/mascaras.js' %}"></script>
 
-function tornarExamesInvisiveis() {
-
-  let especialidadeSelecionada = document.getElementById("exames").value;
-  let todasMascaras = document.getElementsByClassName("list-group-item list-group-item-action");
-
-  for(i = 0; i < todasMascaras.length; i++) {
-
-      if(document.getElementById("exames").value == "todos") {
-          todasMascaras[i].style.display = "block";
-
-      } else {
-        if(todasMascaras[i].getAttribute("name") != especialidadeSelecionada) {
-            todasMascaras[i].style.display = "none";
-         } else {
-            todasMascaras[i].style.display = "block";
-
-         }
-      }
-
-
-  }
-
-}
-
-
-</script>
 
 <div class="form-group">
   <label for="exames">Exame: </label>
@@ -72,7 +47,7 @@ function tornarExamesInvisiveis() {
 
                 {% for mascara in mascaras %}
                 {% if mascara.especialidade == especialidade %}
-                <a href="#" class="list-group-item list-group-item-action" name="{{ mascara.especialidade.pk}}">{{ mascara.nome }}</a>
+                <a href="{% url 'mostrar_mascara' id_mascara=mascara.pk %}" class="list-group-item list-group-item-action" name="{{ mascara.especialidade.pk}}">{{ mascara.nome }}</a>
                 {% endif %}
                 {% endfor %}
 
