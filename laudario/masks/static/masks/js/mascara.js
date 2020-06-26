@@ -262,21 +262,24 @@
 
     function adicionarAlteracoNaMascara() {
 
-        var topicoNormalParaAlterar = document.getElementById("exames").value;
+        if(document.getElementById("adicionar_no_atual").checked) {
+            var topicoNormalParaAlterar = document.getElementById("exames").value;
 
-        colocarElementosEmOrdem(topicoNormalParaAlterar);
+            colocarElementosEmOrdem(topicoNormalParaAlterar);
 
 
-        if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
-            document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
-            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_modal").value;
-            document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-            document.getElementById("conclusao_normal").setAttribute("name", "alterado");
-        } else {
-            document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio_modal").value;
-            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + document.getElementById("conclusao_modal").value;
+            if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
+                document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
+                document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_modal").value;
+                document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
+                document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+            } else {
+                document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio_modal").value;
+                document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + document.getElementById("conclusao_modal").value;
 
+            }
         }
+
     }
 
 
