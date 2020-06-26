@@ -156,6 +156,9 @@
                               <input type="text" id="conclusao_modal" name="conclusao_modal"/>
                         </div>
 
+                            <input type="checkbox" id="adicionar_no_banco" name="adicionar_no_banco" checked/>
+                            <label for="adicionar_no_banco">Adicionar no meu banco de frases</label>
+
 
                   </div>
 
@@ -163,7 +166,7 @@
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id ="salva_mudancas" type="submit">Salvar alteração</button>
+                <button id ="salva_mudancas" type="submit" onclick="adicionarAlteracoNaMascara()">Salvar alteração</button>
               </div>
              </form>
             </div>
