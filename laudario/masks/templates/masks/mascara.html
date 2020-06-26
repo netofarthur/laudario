@@ -30,7 +30,7 @@
             <button name="{{ topicoanormalbuilder.topico_normal.pk }}" type="button" class="botao_diagnostico" data-toggle="modal" data-target="#myModal" id={{ topicoanormalbuilder.template_name }}>{{ topicoanormalbuilder.nome }}</button>
         {% endif %}
     {% endfor %}
-        <button type="button" >Adicionar Frase Alterada</button>
+        <button id="botaoAdicionarAlteracao" type="button" data-toggle="modal" data-target="#myModalAlteracao">Adicionar Alteração</button>
 
 
 </div>
@@ -96,7 +96,10 @@
                 </button>
               </div>
               <div class="modal-body">
-                  <div id="template_name_variaveis"></div>
+                  <div id="template_name_variaveis">
+
+
+                  </div>
 
               </div>
               <div class="modal-footer">
@@ -108,6 +111,78 @@
 
 
     </div>
+
+
+
+
+
+    <!-- Modal de Adicionar Alteração-->
+    <div class="modal fade" id="myModalAlteracao" tabindex="-1" role="dialog" aria-labelledby="myModalAlteracaoTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                 <form action="{% url 'adicionar_alteracao' %}" method="post">
+                        {% csrf_token %}
+
+              <div class="modal-header">
+                <h5 class="modal-title" id="myModalAlteracaoTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div id="corpo_alteracao">
+
+
+
+                        <div class="form-group">
+                          <label for="exames">Tópico a ser alterado </label>
+                          <select class="form-control" name ="exames" id="exames">
+                            {% for topico_normal in topicos_normais %}
+                              <option value={{ topico_normal.pk }}>{{topico_normal.orgao}}</option>
+                            {% endfor %}
+
+                          </select>
+                            <label for="nome_modal">Nome: </label>
+                             <input type="text" id="nome_modal" name="nome_modal"/>
+                            <br>
+
+                            <label for="relatorio_modal">Relatório: </label>
+
+
+                              <input type="text" id="relatorio_modal" name="relatorio_modal"/>
+                            <br>
+
+                                <label for="conclusao_modal">Conclusão: </label>
+                              <input type="text" id="conclusao_modal" name="conclusao_modal"/>
+                        </div>
+
+
+                  </div>
+
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id ="salva_mudancas" type="submit">Salvar alteração</button>
+              </div>
+             </form>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+<script>
+    function salvarAlteracao() {
+        alert("acicionar");
+    }
+</script>
+
+
 
 
 

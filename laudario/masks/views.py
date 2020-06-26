@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django_email_verification import sendConfirm
+from django.http import HttpResponse
 
 from . import views
 
@@ -162,3 +163,14 @@ def mostrar_mascaras(request):
     exames = Exame.objects.all()
     context = {'mascaras': mascaras, 'exames': exames, 'especialidades': especialidades}
     return render(request, 'masks/mascaras.html', context)
+
+def adicionar_alteracao(request):
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+    topicoNormal = TopicoNormal.objects.get(pk=request.POST['exames'])
+
+    topicoAnormal = TopicoAnormal(topico_normal=topicoNormal, nome=request.POST['nome_modal'], relatorio=request.POST['relatorio_modal'], conclusao=request.POST['conclusao_modal'])
+    topicoAnormal.save()
+    return HttpResponse(status=204)
+

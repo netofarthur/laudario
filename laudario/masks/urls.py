@@ -13,5 +13,6 @@ urlpatterns = [
     path('cadastrar', views.cadastrar, name='cadastrar'),
     path('logout', views.logout_usuario, name='logout_usuario'),
     path('mascaras/', views.mostrar_mascaras, name='mostrar_mascaras'),
+    path('salvaralteracao/', views.adicionar_alteracao, name='adicionar_alteracao'),
 
 ]
