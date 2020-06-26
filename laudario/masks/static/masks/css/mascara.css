@@ -1,16 +1,21 @@
 #diagnosticos_div {
     position: fixed;
   right: 0;
-  top:80px;
+    height: 87vh;
   width: 30%;
   overflow: auto;
+  background-color: grey;
 
+}
+
+#container {
+    margin-top:13vh;
 }
 
 #mascara_div {
     margin: 5px;
     padding:5px;
-    margin-top: 80px;
+  height: 87vh;
     width: 70%;
 
 }
@@ -22,7 +27,7 @@
 }
 
 .navbar {
-  min-height: 80px;
+  height: 13vh;
   position:fixed;
   top:0;
   width:100%;
