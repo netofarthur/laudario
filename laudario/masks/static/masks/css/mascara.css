@@ -1,23 +1,26 @@
 #diagnosticos_div {
 
-    height: 90vh;
+    height: 85vh;
   overflow: auto;
   background-color: grey;
 
 }
 
-#mycontainer {
-    margin-top:10vh;
+#username {
+    color: orange;
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
 }
 
-#mycontainermascaras {
-    margin-top:10vh;
+#mycontainer {
+    margin-top:15vh;
 }
+
 
 
 
 #mascara_div {
-      height: 90vh;
+      height: 85vh;
   overflow: auto;
 }
 
@@ -39,8 +42,13 @@
 }
 
 .navbar {
-  height: 10vh;
+  height: 15vh;
 
 }
 
+#navbarSupportedContent a {
+    color: red;
+    font-size: 1.5rem;
+
+}
 
