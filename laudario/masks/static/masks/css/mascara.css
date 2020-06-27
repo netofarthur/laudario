@@ -1,9 +1,18 @@
 #diagnosticos_div {
 
-    height: 100vh;
+    height: 90vh;
   overflow: auto;
   background-color: grey;
 
+}
+
+#mycontainer {
+    margin-top:10vh;
+}
+
+#mascara_div {
+      height: 90vh;
+  overflow: auto;
 }
 
 
@@ -20,6 +29,11 @@
 .botao_diagnostico {
     color: red;
     width: 100%;
+
+}
+
+.navbar {
+  height: 10vh;
 
 }
 
