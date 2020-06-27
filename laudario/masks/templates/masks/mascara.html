@@ -10,31 +10,14 @@
 
 {% block conteudo %}
 
-<div id="container">
+<div class="container-fluid">
 
-<div id=diagnosticos_div>
-
-
-    <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
-    No primeiro loop são setados os ids dos topicos normais nos bancos de dados e no segundo loop o nome dos arquivos
-    html em templates/diagnosticos que também são colocados no banco de dados na entrada template_name em TopicoAnormalBuilders-->
-    {% for topicoanormal in topicos_anormais %}
-        {% if topicoanormal.topico_normal.mascara == mascara %}
-            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="botao_diagnostico" id="b{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">{{ topicoanormal.nome }}</button>
-        {% endif %}
-    {% endfor %}
+<div class="row">
 
 
-    {% for topicoanormalbuilder in topicos_anormais_builders %}
-        {% if topicoanormalbuilder.topico_normal.mascara == mascara %}
-            <button name="{{ topicoanormalbuilder.topico_normal.pk }}" type="button" class="botao_diagnostico" data-toggle="modal" data-target="#myModal" id={{ topicoanormalbuilder.template_name }}>{{ topicoanormalbuilder.nome }}</button>
-        {% endif %}
-    {% endfor %}
-        <button id="botaoAdicionarAlteracao" type="button" data-toggle="modal" data-target="#myModalAlteracao">Adicionar Alteração</button>
 
 
-</div>
-
+<div class="col">
 
 <div id="mascara_div">
 
@@ -56,6 +39,47 @@
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalVariaveis" id=popular_variaveis onclick="popularVariaveis()">Popular Variáveis</button>
 </div>
+</div>
+
+
+
+<div class="col-4">
+
+
+<div id=diagnosticos_div class="sticky-top">
+        <div class="sticky-top">
+    <button id="botaoAdicionarAlteracao" type="button" data-toggle="modal" data-target="#myModalAlteracao">Adicionar Alteração</button>
+    <input id = "procurarFrases" type="search" placeholder="Procurar frases"/>
+    </div>
+
+    <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
+    No primeiro loop são setados os ids dos topicos normais nos bancos de dados e no segundo loop o nome dos arquivos
+    html em templates/diagnosticos que também são colocados no banco de dados na entrada template_name em TopicoAnormalBuilders-->
+    {% for topicoanormal in topicos_anormais %}
+        {% if topicoanormal.topico_normal.mascara == mascara %}
+            <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="botao_diagnostico" id="b{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">{{ topicoanormal.nome }}</button>
+        {% endif %}
+    {% endfor %}
+
+
+    {% for topicoanormalbuilder in topicos_anormais_builders %}
+        {% if topicoanormalbuilder.topico_normal.mascara == mascara %}
+            <button name="{{ topicoanormalbuilder.topico_normal.pk }}" type="button" class="botao_diagnostico" data-toggle="modal" data-target="#myModal" id={{ topicoanormalbuilder.template_name }}>{{ topicoanormalbuilder.nome }}</button>
+        {% endif %}
+    {% endfor %}
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+</div>
+
 </div>
 
 
@@ -185,15 +209,6 @@
 
 
     </div>
-
-<script>
-    function salvarAlteracao() {
-        alert("acicionar");
-    }
-</script>
-
-
-
 
 
 
