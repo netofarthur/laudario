@@ -1,12 +1,19 @@
 {% extends "masks/base.html" %}
 
-{% load static %}
+{% block css %}
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascaras.css' %}">
+
+{% endblock css %}
 
 
 {% block conteudo %}
 
 <script type="text/javascript" src="{% static 'masks/js/mascaras.js' %}"></script>
 
+<div id="mycontainermascaras">
 
 <div class="container-fluid">
 
@@ -92,7 +99,7 @@
 
 
 
-
+</div>
 
 
 
