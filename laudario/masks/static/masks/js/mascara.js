@@ -284,6 +284,21 @@
 
 
 function popularMascara(mascaraId) {
+
+        var entradasNomesOrgaos = document.getElementsByName("orgao");
+        var entradasRelatorios = document.getElementsByName("relatorio_orgao");
+        var orgaoLabels = document.getElementsByName("orgaolabel");
+        var orgaoSpans = document.getElementsByName("orgaospan");
+        var orgaoBrs = document.getElementsByName("orgaobr");
+
+        for(i = 0; i < entradasNomesOrgaos.length; i++) {
+            entradasNomesOrgaos[i].style.display = "none";
+            entradasRelatorios[i].style.display = "none";
+            orgaoLabels[i].style.display = "none";
+            orgaoSpans[i].style.display = "none";
+            orgaoBrs[i].style.display = "none";
+        }
+
         var mascarasJSONObject = JSON.parse(mascarasJson);
 
         var topicosNormaisObject = JSON.parse(topicosNormais);
@@ -310,46 +325,45 @@ function popularMascara(mascaraId) {
             }
         }
 
-        var counter = 0;
         for(i = 0; i < topicosNormaisObject.length; i++) {
             if(topicosNormaisObject[i].fields.mascara == mascaraId) {
 
-                if(counter == 0) {
-                        document.getElementById("orgao").setAttribute("value", topicosNormaisObject[i].fields.orgao)
-                        document.getElementById("relatorio_orgao").setAttribute("value", topicosNormaisObject[i].fields.relatorio)
-                } else {
-                        let listaOrgaos = document.getElementById("lista_orgaos");
-                        let label = document.createElement("label");
-                        label.setAttribute("for", "orgao");
-                        label.innerHTML = "Órgão: ";
+                    document.getElementById("orgao").setAttribute("value", topicosNormaisObject[i].fields.orgao)
+                    document.getElementById("relatorio_orgao").setAttribute("value", topicosNormaisObject[i].fields.relatorio)
+                    let listaOrgaos = document.getElementById("lista_orgaos");
+                    let label = document.createElement("label");
+                    label.setAttribute("for", "orgao");
+                    label.setAttribute("name", "orgaolabel")
+                    label.innerHTML = "Órgão: ";
 
-                        let orgao = document.createElement("input");
-                        orgao.setAttribute("type", "text");
-                        orgao.setAttribute("id", "orgao");
-                        orgao.setAttribute("name", "orgao");
-                        orgao.setAttribute("value", topicosNormaisObject[i].fields.orgao)
+                    let orgao = document.createElement("input");
+                    orgao.setAttribute("type", "text");
+                    orgao.setAttribute("id", "orgao");
+                    orgao.setAttribute("name", "orgao");
+                    orgao.setAttribute("value", topicosNormaisObject[i].fields.orgao)
 
-                        let descricaoOrgao = document.createElement("input");
-                        descricaoOrgao.setAttribute("type", "text");
-                        descricaoOrgao.setAttribute("id", "relatorio_orgao");
-                        descricaoOrgao.setAttribute("name", "relatorio_orgao");
-                        descricaoOrgao.setAttribute("value", topicosNormaisObject[i].fields.relatorio);
+                    let descricaoOrgao = document.createElement("input");
+                    descricaoOrgao.setAttribute("type", "text");
+                    descricaoOrgao.setAttribute("id", "relatorio_orgao");
+                    descricaoOrgao.setAttribute("name", "relatorio_orgao");
+                    descricaoOrgao.setAttribute("value", topicosNormaisObject[i].fields.relatorio);
 
-                        let span = document.createElement("span");
-                        span.innerHTML = " : ";
-                        let br = document.createElement("br");
+                    let span = document.createElement("span");
+                    span.setAttribute("name", "orgaospan");
+                    span.innerHTML = " : ";
+                    let br = document.createElement("br");
+                    br.setAttribute("name", "orgaobr");
 
-                        let anchor = document.getElementById("adicionar_entrada_orgao");
+                    let anchor = document.getElementById("adicionar_entrada_orgao");
 
-                        listaOrgaos.removeChild(anchor);
-                        listaOrgaos.appendChild(label);
-                        listaOrgaos.appendChild(orgao);
-                        listaOrgaos.appendChild(span);
-                        listaOrgaos.appendChild(descricaoOrgao);
-                        listaOrgaos.appendChild(br);
-                        listaOrgaos.appendChild(anchor);
-                }
-                counter++;
+                    listaOrgaos.removeChild(anchor);
+                    listaOrgaos.appendChild(label);
+                    listaOrgaos.appendChild(orgao);
+                    listaOrgaos.appendChild(span);
+                    listaOrgaos.appendChild(descricaoOrgao);
+                    listaOrgaos.appendChild(br);
+                    listaOrgaos.appendChild(anchor);
+
 
             }
         }

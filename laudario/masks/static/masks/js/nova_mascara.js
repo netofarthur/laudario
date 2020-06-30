@@ -4,12 +4,14 @@
     let listaOrgaos = document.getElementById("lista_orgaos");
     let label = document.createElement("label");
     label.setAttribute("for", "orgao");
+    label.setAttribute("name", "orgaolabel")
     label.innerHTML = "Órgão: ";
 
     let orgao = document.createElement("input");
     orgao.setAttribute("type", "text");
     orgao.setAttribute("id", "orgao");
     orgao.setAttribute("name", "orgao");
+
 
     let descricaoOrgao = document.createElement("input");
     descricaoOrgao.setAttribute("type", "text");
@@ -18,8 +20,12 @@
     descricaoOrgao.setAttribute("placeholder", "Descrição normal do órgão");
 
     let span = document.createElement("span");
+    span.setAttribute("name", "orgaospan");
+
     span.innerHTML = " : ";
     let br = document.createElement("br");
+    br.setAttribute("name", "orgaobr");
+
 
     let anchor = document.getElementById("adicionar_entrada_orgao");
 
