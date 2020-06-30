@@ -59,7 +59,9 @@ def nova_mascara(request):
 
     mascaras = Mascara.objects.all()
 
-    context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson,}
+    topicos_normais = json_serializer.serialize(TopicoNormal.objects.all())
+
+    context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson, 'topicos_normais': topicos_normais,}
     return render(request, 'masks/nova_mascara.html', context)
 
 def adicionar_nova_mascara(request):

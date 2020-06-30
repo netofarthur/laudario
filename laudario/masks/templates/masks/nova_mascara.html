@@ -13,6 +13,7 @@
 
  <script>
     var mascarasJson = '{{ mascarasJson|escapejs }}';
+    var topicosNormais = '{{ topicos_normais|escapejs }}';
  </script>
 
 <script type="text/javascript" src="{% static 'masks/js/nova_mascara.js' %}"></script>
@@ -75,7 +76,7 @@
 <label for="orgao">Órgão: </label>
 <input type="text" id="orgao" name="orgao">
 <span> : </span>
-<input type="text" name="relatorio_orgao" placeholder="Descrição normal do órgão">
+<input type="text" id="relatorio_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão">
 <br>
 <a href="javascript:adicionarEntradaOrgao()" id="adicionar_entrada_orgao">Novo órgão</a>
 </div>
@@ -101,10 +102,6 @@
             <button type="button" class="botao_diagnostico" id="{{ mascara.pk }}" onclick="popularMascara(this.id)">{{ mascara.nome }}</button>
 
   {% endfor %}
-
-
-  <p>teste</p>
-  <h1>teste</h1>
 
 </div>
 
