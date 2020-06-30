@@ -1,16 +1,28 @@
-<!doctype html>
-<html>
-<head>
+{% extends "masks/base.html" %}
 
 {% load static %}
+
+{% block css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+
+{% endblock css %}
+
+
+{% block conteudo %}
+
 <script type="text/javascript" src="{% static 'masks/js/nova_mascara.js' %}"></script>
 
-</head>
-<body>
+<div id="mycontainer">
 
+<div class="container-fluid">
+
+<div class="row">
+
+<div class="col-6">
 
 <h1> NOVA MÁSCARA </h1>
-<p>MÁSCARA</p>
+
 
 <form action="{% url 'adicionar_nova_mascara' %}" method="post">
 {% csrf_token %}
@@ -77,10 +89,19 @@
 
 </form>
 
+</div>
 
+<div class="col">
 
+  <p>teste</p>
+  <h1>teste</h1>
 
+</div>
 
+</div>
 
-</body>
-</html>
+</div>
+
+</div>
+
+{% endblock conteudo %}
