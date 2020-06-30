@@ -11,6 +11,10 @@
 
 {% block conteudo %}
 
+ <script>
+    var mascarasJson = '{{ mascarasJson|escapejs }}';
+ </script>
+
 <script type="text/javascript" src="{% static 'masks/js/nova_mascara.js' %}"></script>
 
 <div id="mycontainer">
@@ -91,7 +95,13 @@
 
 </div>
 
-<div class="col">
+<div class="col-6">
+
+  {% for mascara in mascaras %}
+            <button type="button" class="botao_diagnostico" id="{{ mascara.pk }}" onclick="popularMascara(this.id)">{{ mascara.nome }}</button>
+
+  {% endfor %}
+
 
   <p>teste</p>
   <h1>teste</h1>

@@ -52,7 +52,14 @@ def nova_mascara(request):
         return redirect(views.mostrar_index)
     especialidades = Especialidade.objects.all()
     exames = Exame.objects.all()
-    context = {'especialidades': especialidades, 'exames': exames}
+
+    json_serializer = serializers.get_serializer("json")()
+
+    mascarasJson = json_serializer.serialize(Mascara.objects.all())
+
+    mascaras = Mascara.objects.all()
+
+    context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson,}
     return render(request, 'masks/nova_mascara.html', context)
 
 def adicionar_nova_mascara(request):

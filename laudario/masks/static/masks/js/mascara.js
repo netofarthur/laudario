@@ -283,7 +283,18 @@
     }
 
 
+function popularMascara(mascaraId) {
+        var mascarasJSONObject = JSON.parse(mascarasJson);
+        var nome;
 
+        for(i = 0; i < mascarasJSONObject.length; i++) {
+            if(mascarasJSONObject[i].pk == mascaraId) {
+                nome = mascarasJSONObject[i].fields.nome;
+            }
+        }
+
+    alert(nome);
+}
 
 
 
