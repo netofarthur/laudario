@@ -50,7 +50,7 @@ function popularMascara(mascaraId) {
 
                     }
                     entradasNomesOrgaos[counter].setAttribute("value", topicosNormaisObject[i].fields.orgao);
-                    entradasRelatorios[counter].setAttribute("value", topicosNormaisObject[i].fields.relatorio);
+                    entradasRelatorios[counter].innerHTML = topicosNormaisObject[i].fields.relatorio;
                     counter++;
 
 
@@ -82,15 +82,14 @@ function popularMascara(mascaraId) {
     orgao.setAttribute("name", "orgao");
 
 
-    let descricaoOrgao = document.createElement("input");
+    let descricaoOrgao = document.createElement("textarea");
     descricaoOrgao.setAttribute("type", "text");
     descricaoOrgao.setAttribute("name", "relatorio_orgao");
+        descricaoOrgao.setAttribute("class", "text_area_orgao");
+
     descricaoOrgao.setAttribute("placeholder", "Descrição normal do órgão");
 
-    let span = document.createElement("span");
-    span.setAttribute("name", "orgaospan");
 
-    span.innerHTML = " : ";
     let br = document.createElement("br");
     br.setAttribute("name", "orgaobr");
 
@@ -113,7 +112,7 @@ function popularMascara(mascaraId) {
 
     listaOrgaos.appendChild(label);
     listaOrgaos.appendChild(orgao);
-    listaOrgaos.appendChild(span);
+    listaOrgaos.appendChild(br);
     listaOrgaos.appendChild(descricaoOrgao);
     listaOrgaos.appendChild(br);
     listaOrgaos.appendChild(anchor);
