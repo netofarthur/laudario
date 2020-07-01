@@ -19,8 +19,6 @@ function popularMascara(mascaraId) {
             listaOrgaos.removeChild(listaOrgaos.firstChild);
         }
 
-
-
         var nome;
         var titulo;
         var tecnicaHeader;
@@ -124,9 +122,6 @@ function popularMascara(mascaraId) {
     orgaoDiv.appendChild(descricaoOrgao);
     listaOrgaos.appendChild(anchor);
 
-
-
-
   }
 
 
@@ -135,7 +130,6 @@ function removerEntradaOrgao(id) {
 
     listaOrgaos.removeChild(document.getElementById(id).parentNode);
 
-    alert(id);
 
 
 }
