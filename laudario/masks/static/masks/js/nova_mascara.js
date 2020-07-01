@@ -81,6 +81,9 @@ function popularMascara(mascaraId) {
     orgao.setAttribute("type", "text");
     orgao.setAttribute("name", "orgao");
 
+    let orgaoDiv = document.createElement("div");
+    orgaoDiv.setAttribute("name", "orgao_div");
+
 
     let descricaoOrgao = document.createElement("textarea");
     descricaoOrgao.setAttribute("type", "text");
@@ -97,8 +100,14 @@ function popularMascara(mascaraId) {
 
     let anchor = document.getElementById("adicionar_entrada_orgao");
 
+    let remover = document.createElement("button");
+    remover.setAttribute("type", "button");
+    remover.setAttribute("onclick", "removerEntradaOrgao(this.id)");
+     remover.setAttribute("id", listaOrgaos.children.length);
+        remover.innerHTML = "Remover";
 
     if(listaOrgaos.contains(anchor)) {
+
         listaOrgaos.removeChild(anchor);
 
     } else {
@@ -108,16 +117,25 @@ function popularMascara(mascaraId) {
         anchor.innerHTML = "Novo órgão";
 
     }
-
-
-    listaOrgaos.appendChild(label);
-    listaOrgaos.appendChild(orgao);
-    listaOrgaos.appendChild(br);
-    listaOrgaos.appendChild(descricaoOrgao);
-    listaOrgaos.appendChild(br);
+    listaOrgaos.appendChild(orgaoDiv);
+   orgaoDiv.appendChild(label);
+    orgaoDiv.appendChild(orgao);
+    orgaoDiv.appendChild(remover);
+    orgaoDiv.appendChild(descricaoOrgao);
     listaOrgaos.appendChild(anchor);
+
 
 
 
   }
 
+
+function removerEntradaOrgao(id) {
+    let listaOrgaos = document.getElementById("lista_orgaos");
+
+    listaOrgaos.removeChild(document.getElementById(id).parentNode);
+
+    alert(id);
+
+
+}
