@@ -68,7 +68,47 @@
     }
 
 
-    // Altera o diagnóstico Padrão diretamente, sem abrir outras janelas. Tive que usar serialização com JSON objects.
+
+
+
+    // Função que reverte a alteração.
+    // Se conclusão vazia, apresentar o laudo de conclusão normal da máscara.
+    function reverterAlteração(name, id) {
+        var idSemB = id.substring(1, id.length);
+        var normaisJSONObject = JSON.parse(normais);
+        var relatorio;
+        for(i = 0; i < normaisJSONObject.length; i++) {
+            if(normaisJSONObject[i].pk == name) {
+                relatorio = normaisJSONObject[i].fields.relatorio;
+
+            }
+        }
+
+        document.getElementById(name).innerHTML = relatorio;
+        document.getElementById(name).setAttribute("name", "topico");
+        document.getElementById("conclusao_normal").innerHTML = "";
+
+        document.getElementById(id).setAttribute("onclick", "alterarDiagnosticoDireto(this.name, this.id)");
+
+
+
+        var alteradosJSONObject = JSON.parse(alterados);
+        var nome;
+        for(i = 0; i < alteradosJSONObject.length; i++) {
+            if(alteradosJSONObject[i].pk == idSemB) {
+                nome = alteradosJSONObject[i].fields.nome;
+            }
+        }
+
+        document.getElementById(id).innerHTML = nome;
+
+
+
+    }
+
+
+
+ // Altera o diagnóstico Padrão diretamente, sem abrir outras janelas. Tive que usar serialização com JSON objects.
     function alterarDiagnosticoDireto(name, id) {
         var idSemB = id.substring(1, id.length);
         var alteradosJSONObject = JSON.parse(alterados);
@@ -110,10 +150,14 @@
         }
 
 
-
+       document.getElementById(id).innerHTML = "Reverter";
+        document.getElementById(id).setAttribute("onclick", "reverterAlteração(this.name, this.id)");
 
 
     }
+
+
+
 
 
     //função para inserir um html dentro de outro html no modal.
