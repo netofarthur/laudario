@@ -1,10 +1,29 @@
-<html>
-<body>
+{% extends "masks/base.html" %}
+
+   {% block css %}
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+
+    {% endblock css %}
+
+{% block conteudo %}
+
+<div id="mycontainer">
 
 
-{{ usuario }}
+<p> {{usuario}}</p>
+
+{% for variavel in variaveisusuario %}
+    <label>{{ variavel.nome_da_variavel }}</label>
+    <input name="variavel" type="text" placeholder="Nome da variável"/>
+    <br>
+{% endfor %}
 
 
 
-</body>
-</html>
+</div>
+
+{% endblock conteudo %}
+

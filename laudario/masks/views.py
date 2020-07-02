@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django_email_verification import sendConfirm
 from django.http import HttpResponse
+import re
 
 from . import views
 
@@ -90,9 +91,7 @@ def adicionar_nova_mascara(request):
 
 
 
-    variaveis = Variavel.objects.filter(usuario=usuario)
 
-    context = {'usuario': usuario, 'variaveis': variaveis,}
 
     especialidadeInstance = Especialidade.objects.get(pk=especialidade_id)
     exameInstance = Exame.objects.get(pk=exame_id)
@@ -103,16 +102,31 @@ def adicionar_nova_mascara(request):
     nova_mascara.save()
 
 
+
     for i in range(len(lista_orgaos)):
+
+        variaveis = obter_variaveis(lista_relatorios_orgaos[i])
+        for z in range(len(variaveis)):
+            variavel = Variavel(usuario=usuario, nome_da_variavel=variaveis[z])
+            variavel.save()
 
         topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i])
         topico_normal.save()
+
+
+    variaveisusuario = Variavel.objects.filter(usuario=usuario)
+    context = {'usuario': usuario, 'variaveisusuario': variaveisusuario,}
 
 
     return render(request, 'masks/variaveis_amigaveis.html', context)
 
     #return HttpResponse("<html><body><p>Máscara adicionada" + lista_orgaos[0] + lista_relatorios_orgaos[0] + "</p></body></html>")
 
+
+def obter_variaveis(frase):
+    variavelRegex = re.compile(r'\{([^}]+)\}')
+    achados = variavelRegex.findall(frase)
+    return achados
 
 
 def mostrar_modal_diagnostico(request, id_diagnostico):

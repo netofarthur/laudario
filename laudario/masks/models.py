@@ -62,7 +62,7 @@ class Variavel(models.Model):
     nome_amigavel = models.CharField(max_length=500)
     unidade_medida = models.CharField(max_length=10)
     def __str__(self):
-        return self.nome_amigavel
+        return self.nome_da_variavel
 
 
 
