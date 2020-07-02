@@ -2,10 +2,13 @@
 
 
 
+
+
+
     //Função que coloca as variáveis preenchidas pelo usuário no Modal nos campos <> do laudo.
     function alterarVariaveisModal() {
 
-        var listaParagrafos = document.getElementsByName("topico");
+        var listaParagrafos = document.getElementsByClassName("paragrafo_mascara");
 
          for(var i = 0; i < listaParagrafos.length; i++) {
 
@@ -14,13 +17,23 @@
                       var children =  document.getElementsByName("var");
 
                       for(var z = 0; z < children.length; z++) {
-                             var mystr = "var " + document.getElementById("lab" + z).innerHTML + " = " + parseFloat(document.getElementById("var" + z).value.replace(",",".")) + ";";
 
 
                                //É variável, else, é expressão
                             if(document.getElementById("lab" + z).innerHTML.split(/[*/+-]+/g).length == 1) {
-                                provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", document.getElementById("var" + z).value);
-                                eval(mystr);
+                                if(document.getElementById("lab" + z).innerHTML.split(/[|]+/g).length > 1) {
+                                    provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", document.getElementById("var" + z).value);
+
+                                } else {
+                                    var mystr = "var " + document.getElementById("lab" + z).innerHTML + " = " + parseFloat(document.getElementById("var" + z).value.replace(",",".")) + ";";
+                                    eval(mystr);
+
+                                    provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", document.getElementById("var" + z).value);
+
+                                }
+
+
+
 
                             } else {
 
@@ -166,12 +179,15 @@
         if(document.getElementById(name).getAttribute("name") != "alterado") {
             document.getElementById(name).innerHTML = relatorio;
             document.getElementById(name).setAttribute("name", "alterado");
+            document.getElementById(name).setAttribute("class", "paragrafo_mascara");
         } else {
            document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
         }
 
         if(document.getElementById("conclusao_normal").getAttribute("name") != "alterado") {
             document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+            document.getElementById("conclusao_normal").setAttribute("class", "paragrafo_mascara");
+
             if(conclusao != null && conclusao != "") {
                  document.getElementById("conclusao_normal").innerHTML = conclusao;
 
@@ -231,7 +247,9 @@
 
     function obterListaVariaveis() {
         var listaVariaveis = [];
-        var listaParagrafos = document.getElementsByName("topico");
+        var listaParagrafos = document.getElementsByClassName("paragrafo_mascara");
+
+
         var pattern = /\{([^}]+)\}/g;
 
 
@@ -245,15 +263,18 @@
                     if(result != null) {
                         for(var z = 0; z < result.length; z++) {
 
+                            if(!listaVariaveis.includes(result[z].substring(1, result[z].length - 1))) {
+                                listaVariaveis[counter] = result[z].substring(1, result[z].length - 1);
+                                counter = counter + 1;
+                            }
 
-                            listaVariaveis[counter] = result[z].substring(1, result[z].length - 1);
-                            counter = counter + 1;
 
                         }
 
 
                     }
         }
+
 
         return listaVariaveis;
 
@@ -296,16 +317,16 @@
     //Função coloca as variaveis a serem preenchidas pelo usuario em um Modal.
     function popularVariaveis() {
 
+
         var divVariaveis = document.getElementById("template_name_variaveis");
 
         var lista = obterListaVariaveis();
 
 
-
         for(var i = 0; i < lista.length; i++) {
             var input = document.createElement("input");
             input.setAttribute("type", "text");
-            input.setAttribute("id", "var" + i);
+
 
 
             //Labels invisíveis para fazer as contas em evals.
@@ -329,14 +350,33 @@
             divVariaveis.appendChild(labelVisivel);
 
 
+            var select = document.createElement("select");
 
 
-              divVariaveis.appendChild(input);
+            var opcoes = lista[i].split("|");
+
+            if(opcoes.length > 1) {
+                for(z = 0; z < opcoes.length; z++) {
+                    var opcao = document.createElement("option");
+                    opcao.innerHTML = opcoes[z];
+                    opcao.value = opcoes[z];
+
+                    select.appendChild(opcao);
+                }
+                select.setAttribute("id", "var" + i);
+                divVariaveis.appendChild(select);
+
+            } else {
+                    input.setAttribute("id", "var" + i);
+                  divVariaveis.appendChild(input);
+
+            }
+
               divVariaveis.appendChild(document.createElement("br"));
               divVariaveis.appendChild(labelInput);
 
 
-            //Se for expressão, não mostrar.
+            //Se for expressão ou repetida, não mostrar.
             if(document.getElementById("lab" + i).innerHTML.split(/[*/+-]+/g).length > 1) {
                 labelInput.style.display = "none";
                 input.style.display = "none";

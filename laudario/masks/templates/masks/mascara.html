@@ -30,14 +30,14 @@
 
 <div id="topicos_div">
 {% for topico in topicos_normais %}
-    <p name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</p>
+    <p class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</p>
 {% endfor %}
 </div>
 
 
 
 <h2> {{ mascara.conclusao_header }} </h2>
-    <div id="conclusao_normal" name="conclusao"> <p>{{ mascara.conclusao }}</p> </div>
+    <div id="conclusao_normal" name="conclusao"> <p class="paragrafo_mascara">{{ mascara.conclusao }}</p> </div>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalVariaveis" id=popular_variaveis onclick="popularVariaveis()">Popular Variáveis</button>
 </div>
