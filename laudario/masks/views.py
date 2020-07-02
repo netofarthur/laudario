@@ -89,6 +89,11 @@ def adicionar_nova_mascara(request):
     st = request.POST['titulo_exame']
 
 
+
+    variaveis = Variavel.objects.filter(usuario=usuario)
+
+    context = {'usuario': usuario, 'variaveis': variaveis,}
+
     especialidadeInstance = Especialidade.objects.get(pk=especialidade_id)
     exameInstance = Exame.objects.get(pk=exame_id)
 
@@ -104,8 +109,9 @@ def adicionar_nova_mascara(request):
         topico_normal.save()
 
 
+    return render(request, 'masks/variaveis_amigaveis.html', context)
 
-    return HttpResponse("<html><body><p>Máscara adicionada" + lista_orgaos[0] + lista_relatorios_orgaos[0] + "</p></body></html>")
+    #return HttpResponse("<html><body><p>Máscara adicionada" + lista_orgaos[0] + lista_relatorios_orgaos[0] + "</p></body></html>")
 
 
 
