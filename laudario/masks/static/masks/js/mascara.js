@@ -69,6 +69,15 @@
 
 
 
+    function filtrarParagrafo (paragrafoAlteradoMascara, fraseAlteradaBanco) {
+
+
+        paragrafoFinalComBrs = paragrafoAlteradoMascara.replace(fraseAlteradaBanco, "");
+        paragrafoFinalMenosUmBr = paragrafoFinalComBrs.replace("<br>", ""); //tira o <br> adicionado em cada alteração extra no tópico.
+
+
+        return paragrafoFinalMenosUmBr;
+    }
 
 
     // Função que reverte a alteração.
@@ -76,33 +85,43 @@
     function reverterAlteração(name, id) {
         var idSemB = id.substring(1, id.length);
         var normaisJSONObject = JSON.parse(normais);
-        var relatorio;
+        var relatorioNormal;
         for(i = 0; i < normaisJSONObject.length; i++) {
             if(normaisJSONObject[i].pk == name) {
-                relatorio = normaisJSONObject[i].fields.relatorio;
+                relatorioNormal = normaisJSONObject[i].fields.relatorio;
 
             }
         }
 
-        document.getElementById(name).innerHTML = relatorio;
-        document.getElementById(name).setAttribute("name", "topico");
-        document.getElementById("conclusao_normal").innerHTML = "";
 
-        document.getElementById(id).setAttribute("onclick", "alterarDiagnosticoDireto(this.name, this.id)");
 
 
 
         var alteradosJSONObject = JSON.parse(alterados);
         var nome;
+        var relatorioAlterado;
         for(i = 0; i < alteradosJSONObject.length; i++) {
             if(alteradosJSONObject[i].pk == idSemB) {
                 nome = alteradosJSONObject[i].fields.nome;
+                relatorioAlterado = alteradosJSONObject[i].fields.relatorio;
             }
         }
 
         document.getElementById(id).innerHTML = nome;
 
 
+        document.getElementById(name).innerHTML = filtrarParagrafo(document.getElementById(name).innerHTML, relatorioAlterado);
+
+
+
+        document.getElementById(name).setAttribute("name", "topico");
+        document.getElementById("conclusao_normal").innerHTML = "";
+
+        document.getElementById(id).setAttribute("onclick", "alterarDiagnosticoDireto(this.name, this.id)");
+
+        if(document.getElementById(name).innerHTML == "") {
+            document.getElementById(name).innerHTML = relatorioNormal;
+        }
 
     }
 
