@@ -259,25 +259,37 @@
 
     }
 
-    function obterUnidadesMedida() {
-        var unidadesJSONObject = JSON.parse(nomesAmigaveis);
-        var listaUnidades = [];
-        for(var i = 0; i < unidadesJSONObject.length; i++) {
-            listaUnidades[i] = unidadesJSONObject[i].fields.unidade_medida;
+
+    //ainda falta filtrar por usuário
+    function obterUnidadeMedida(variavel) {
+        var variaveisJSONObject = JSON.parse(nomesAmigaveis);
+        var unidadeMedida;
+        for(var i = 0; i < variaveisJSONObject.length; i++) {
+            if(variavel == variaveisJSONObject[i].fields.nome_da_variavel) {
+                unidadeMedida = variaveisJSONObject[i].fields.unidade_medida;
+            }
+
+
         }
-        return listaUnidades;
+        return unidadeMedida;
     }
 
 
-    function obterNomesAmigaveisVariaveis() {
+    //ainda falta filtrar por usuário
+    function obterNomeAmigavelVariavel(variavel) {
         var variaveisJSONObject = JSON.parse(nomesAmigaveis);
-        var listaNomesAmigaveis = [];
+        var nomeAmigavel;
         for(var i = 0; i < variaveisJSONObject.length; i++) {
-            listaNomesAmigaveis[i] = variaveisJSONObject[i].fields.nome_amigavel;
+            if(variavel == variaveisJSONObject[i].fields.nome_da_variavel) {
+                nomeAmigavel = variaveisJSONObject[i].fields.nome_amigavel;
+            }
+
+
         }
+        return nomeAmigavel;
 
 
-        return listaNomesAmigaveis;
+
     }
 
 
@@ -288,8 +300,7 @@
 
         var lista = obterListaVariaveis();
 
-        var nomesAmigaveisVars = obterNomesAmigaveisVariaveis();
-        var unidadesMedida = obterUnidadesMedida();
+
 
         for(var i = 0; i < lista.length; i++) {
             var input = document.createElement("input");
@@ -309,9 +320,16 @@
                 labelVisivel.innerHTML = "teset";
 
 
+
+
             labelInput.innerHTML = lista[i];
-            labelVisivel.innerHTML = nomesAmigaveisVars[i] + " (" + unidadesMedida[i] + ")";
+            labelVisivel.innerHTML = obterNomeAmigavelVariavel(lista[i]) + " (" + obterUnidadeMedida(lista[i]) + ")";
+
+
             divVariaveis.appendChild(labelVisivel);
+
+
+
 
               divVariaveis.appendChild(input);
               divVariaveis.appendChild(document.createElement("br"));
@@ -326,6 +344,7 @@
 
 
             } else {
+
                 divVariaveis.appendChild(document.createElement("br"));
 
             }
