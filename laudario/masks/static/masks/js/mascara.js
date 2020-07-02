@@ -86,10 +86,11 @@
         var idSemB = id.substring(1, id.length);
         var normaisJSONObject = JSON.parse(normais);
         var relatorioNormal;
+        var mascaraId;
         for(i = 0; i < normaisJSONObject.length; i++) {
             if(normaisJSONObject[i].pk == name) {
                 relatorioNormal = normaisJSONObject[i].fields.relatorio;
-
+                mascaraId = normaisJSONObject[i].fields.mascara;
             }
         }
 
@@ -104,8 +105,16 @@
             if(alteradosJSONObject[i].pk == idSemB) {
                 nome = alteradosJSONObject[i].fields.nome;
                 relatorioAlterado = alteradosJSONObject[i].fields.relatorio;
+                conclusaoAlterada = alteradosJSONObject[i].fields.conclusao;
             }
         }
+
+
+
+
+
+
+
 
         document.getElementById(id).innerHTML = nome;
 
@@ -114,13 +123,21 @@
 
 
 
-        document.getElementById(name).setAttribute("name", "topico");
-        document.getElementById("conclusao_normal").innerHTML = "";
+
+        document.getElementById("conclusao_normal").innerHTML = filtrarParagrafo(document.getElementById("conclusao_normal").innerHTML, conclusaoAlterada);
 
         document.getElementById(id).setAttribute("onclick", "alterarDiagnosticoDireto(this.name, this.id)");
 
         if(document.getElementById(name).innerHTML == "") {
+            document.getElementById(name).setAttribute("name", "topico");
+
             document.getElementById(name).innerHTML = relatorioNormal;
+        }
+
+        if(document.getElementById("conclusao_normal").innerHTML == "") {
+            document.getElementById("conclusao_normal").setAttribute("name", "conclusao");
+
+            document.getElementById("conclusao_normal").innerHTML = conclusaoMascaraAtual;
         }
 
     }
