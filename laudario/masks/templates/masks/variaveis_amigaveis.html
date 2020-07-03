@@ -15,6 +15,8 @@
 
 <p> {{usuario}}</p>
 
+
+<!-- Dá pra colocar espaços, mas sinal de maior e menor dá bug.-->
 {% for variavel in variaveisusuario %}
     <label>{{ variavel.nome_da_variavel }}</label>
     <input name="variavel" type="text" placeholder="Nome da variável"/>
