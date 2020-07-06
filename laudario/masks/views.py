@@ -107,8 +107,9 @@ def adicionar_nova_mascara(request):
 
         variaveis = obter_variaveis(lista_relatorios_orgaos[i])
         for z in range(len(variaveis)):
-            variavel = Variavel(usuario=usuario, nome_da_variavel=variaveis[z])
-            variavel.save()
+            if(variaveis[z] not in Variavel.objects.filter(usuario=usuario)):
+                variavel = Variavel(usuario=usuario, nome_da_variavel=variaveis[z])
+                variavel.save()
 
         topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i])
         topico_normal.save()
@@ -121,6 +122,21 @@ def adicionar_nova_mascara(request):
     return render(request, 'masks/variaveis_amigaveis.html', context)
 
     #return HttpResponse("<html><body><p>Máscara adicionada" + lista_orgaos[0] + lista_relatorios_orgaos[0] + "</p></body></html>")
+
+
+def adicionar_variaveis(request):
+    usuario = request.user
+    lista_nomes_variaveis = request.POST.getlist('nome_da_variavel')
+    lista_nomes_amigaveis = request.POST.getlist('nome_amigavel_variavel')
+    lista_unidades_de_medidas = request.POST.getlist('unidade_de_medida')
+
+    for i in range(len(lista_nomes_variaveis)):
+        variavel = Variavel.objects.get(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i])
+        variavel.nome_amigavel = lista_nomes_amigaveis[i]
+        variavel.unidade_medida = lista_unidades_de_medidas[i]
+        variavel.save()
+
+    return HttpResponse("<html><body><p>" + str(len(lista_nomes_variaveis)) + "</p></body></html>")
 
 
 def obter_variaveis(frase):
