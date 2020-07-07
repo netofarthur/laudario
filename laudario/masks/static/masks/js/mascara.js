@@ -175,6 +175,16 @@
     colocarElementosEmOrdem(name);
 
 
+        var pattern = /\{([^}]+)\}/g;
+        var result = document.getElementById(name).innerHTML.match(pattern);
+
+        if(result != null) {
+            document.getElementById(name).setAttribute("name", "alterado");
+
+        }
+
+
+        if(document.getElementById(name).innerHTML)
 
         if(document.getElementById(name).getAttribute("name") != "alterado") {
             document.getElementById(name).innerHTML = relatorio;
