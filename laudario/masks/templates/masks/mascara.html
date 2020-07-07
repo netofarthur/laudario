@@ -147,7 +147,7 @@
     <div class="modal fade" id="myModalAlteracao" tabindex="-1" role="dialog" aria-labelledby="myModalAlteracaoTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                 <form action="{% url 'adicionar_alteracao' %}" method="post">
+                 <form action="{% url 'adicionar_alteracao' %}" method="post" id="formulario_alteracao">
                         {% csrf_token %}
 
               <div class="modal-header">

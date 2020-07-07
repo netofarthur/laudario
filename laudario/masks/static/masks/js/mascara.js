@@ -400,7 +400,8 @@
 
 
     function colocarNomesAmigaveisAlteracao() {
-
+        formulario =  document.getElementById("formulario_alteracao");
+        formulario.setAttribute("action", "/mascaras/variaveis/adicionar");
     }
 
 
@@ -419,6 +420,8 @@
                 document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_modal").value;
                 document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
                 document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+                document.getElementById("conclusao_normal").setAttribute("class", "paragrafo_mascara");
+
             } else {
                 document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio_modal").value;
                 document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + document.getElementById("conclusao_modal").value;
@@ -426,8 +429,37 @@
             }
         }
 
+        corpo = document.getElementById("corpo_alteracao");
+
+
         var listaVars = obterListaVariaveis();
-        alert(listaVars.length);
+
+
+
+        for(var i = 0; i < listaVars.length; i++) {
+            var inputMedida = document.createElement("input");
+            inputMedida.setAttribute("name", "unidade_de_medida");
+
+            var input = document.createElement("input");
+            input.setAttribute("name", "nome_amigavel_variavel")
+            input.setAttribute("placeholder", "Nome da variável");
+
+            var inputHidden = document.createElement("input");
+            inputHidden.setAttribute("type", "hidden");
+            inputHidden.setAttribute("name", "nome_da_variavel");
+            inputHidden.setAttribute("value", listaVars[i]);
+
+
+            var label = document.createElement("label");
+            label.innerHTML = listaVars[i];
+            corpo.appendChild(document.createElement("br"));
+            corpo.appendChild(inputHidden);
+            corpo.appendChild(label);
+            corpo.appendChild(input);
+            corpo.appendChild(inputMedida);
+        }
+        var botao = document.getElementById("salva_mudancas");
+        botao.setAttribute("onclick", "colocarNomesAmigaveisAlteracao()");
 
     }
 

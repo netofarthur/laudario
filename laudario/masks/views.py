@@ -143,9 +143,13 @@ def adicionar_variaveis(request):
     lista_unidades_de_medidas = request.POST.getlist('unidade_de_medida')
 
     for i in range(len(lista_nomes_variaveis)):
-        variavel = Variavel.objects.get(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i])
-        variavel.nome_amigavel = lista_nomes_amigaveis[i]
-        variavel.unidade_medida = lista_unidades_de_medidas[i]
+        try:
+            variavel = Variavel.objects.get(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i])
+            variavel.nome_amigavel = lista_nomes_amigaveis[i]
+            variavel.unidade_medida = lista_unidades_de_medidas[i]
+        except Variavel.DoesNotExist:
+            variavel = Variavel(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i], nome_amigavel=lista_nomes_amigaveis[i], unidade_medida=lista_unidades_de_medidas[i])
+
         variavel.save()
 
     return HttpResponse("<html><body><p>" + str(len(lista_nomes_variaveis)) + "</p></body></html>")
