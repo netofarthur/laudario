@@ -445,31 +445,54 @@
         var listaVars = obterListaVariaveis();
 
 
+        var variaveisJSONObject = JSON.parse(nomesAmigaveis);
+
+
+
 
         for(var i = 0; i < listaVars.length; i++) {
-            var inputMedida = document.createElement("input");
-            inputMedida.setAttribute("name", "unidade_de_medida");
-
-            var input = document.createElement("input");
-            input.setAttribute("name", "nome_amigavel_variavel")
-            input.setAttribute("placeholder", "Nome da variável");
-
-            var inputHidden = document.createElement("input");
-            inputHidden.setAttribute("type", "hidden");
-            inputHidden.setAttribute("name", "nome_da_variavel");
-            inputHidden.setAttribute("value", listaVars[i]);
+            var variavelJaExiste = false;
+            for(var z = 0; z < variaveisJSONObject.length; z++) {
+                if(listaVars[i] == variaveisJSONObject[z].fields.nome_da_variavel) {
+                    variavelJaExiste = true;
+                }
 
 
-            var label = document.createElement("label");
-            label.innerHTML = listaVars[i];
-            corpo.appendChild(document.createElement("br"));
-            corpo.appendChild(inputHidden);
-            corpo.appendChild(label);
-            corpo.appendChild(input);
-            corpo.appendChild(inputMedida);
+            }
+
+            if(!variavelJaExiste) {
+                 var inputMedida = document.createElement("input");
+                inputMedida.setAttribute("name", "unidade_de_medida");
+
+                var input = document.createElement("input");
+                input.setAttribute("name", "nome_amigavel_variavel")
+                input.setAttribute("placeholder", "Nome da variável");
+
+                var inputHidden = document.createElement("input");
+                inputHidden.setAttribute("type", "hidden");
+                inputHidden.setAttribute("name", "nome_da_variavel");
+                inputHidden.setAttribute("value", listaVars[i]);
+
+
+                var label = document.createElement("label");
+                label.innerHTML = listaVars[i];
+                corpo.appendChild(document.createElement("br"));
+                corpo.appendChild(inputHidden);
+                corpo.appendChild(label);
+                corpo.appendChild(input);
+                corpo.appendChild(inputMedida);
+            }
+
+
         }
-        var botao = document.getElementById("salva_mudancas");
-        botao.setAttribute("onclick", "colocarNomesAmigaveisAlteracao()");
+
+
+        if(!variavelJaExiste) {
+            var botao = document.getElementById("salva_mudancas");
+            botao.setAttribute("onclick", "colocarNomesAmigaveisAlteracao()");
+
+        }
+
 
     }
 
