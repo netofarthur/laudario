@@ -63,6 +63,8 @@ class Variavel(models.Model):
     unidade_medida = models.CharField(max_length=10)
     def __str__(self):
         return self.nome_da_variavel
+    def __eq__(self, other):
+        return self.nome_da_variavel == other.nome_da_variavel
 
 
 

@@ -399,7 +399,14 @@
     }
 
 
+    function colocarNomesAmigaveisAlteracao() {
+
+    }
+
+
     function adicionarAlteracoNaMascara() {
+
+
 
         if(document.getElementById("adicionar_no_atual").checked) {
             var topicoNormalParaAlterar = document.getElementById("exames").value;
@@ -418,6 +425,9 @@
 
             }
         }
+
+        var listaVars = obterListaVariaveis();
+        alert(listaVars.length);
 
     }
 

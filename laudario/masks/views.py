@@ -101,18 +101,30 @@ def adicionar_nova_mascara(request):
                           conclusao_header=conclusao_header, conclusao=conclusao)
     nova_mascara.save()
 
+    variaveisConclusao = obter_variaveis(conclusao)
+    for z in range(len(variaveisConclusao)):
+        variavel = Variavel(usuario=usuario, nome_da_variavel=variaveisConclusao[z])
+
+        if (variavel not in Variavel.objects.filter(usuario=usuario)):
+            variavel.save()
 
 
     for i in range(len(lista_orgaos)):
 
         variaveis = obter_variaveis(lista_relatorios_orgaos[i])
         for z in range(len(variaveis)):
-            if(variaveis[z] not in Variavel.objects.filter(usuario=usuario)):
-                variavel = Variavel(usuario=usuario, nome_da_variavel=variaveis[z])
+            variavel = Variavel(usuario=usuario, nome_da_variavel=variaveis[z])
+
+            if(variavel not in Variavel.objects.filter(usuario=usuario)):
                 variavel.save()
+
+
+
 
         topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i])
         topico_normal.save()
+
+
 
 
     variaveisusuario = Variavel.objects.filter(usuario=usuario)
