@@ -66,6 +66,8 @@ class Variavel(models.Model):
     def __eq__(self, other):
         return self.nome_da_variavel == other.nome_da_variavel
 
+    def __hash__(self):
+        return id(self)
 
 
 
