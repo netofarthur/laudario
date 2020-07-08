@@ -184,8 +184,6 @@
         }
 
 
-        if(document.getElementById(name).innerHTML)
-
         if(document.getElementById(name).getAttribute("name") != "alterado") {
             document.getElementById(name).innerHTML = relatorio;
             document.getElementById(name).setAttribute("name", "alterado");
@@ -418,9 +416,21 @@
     function adicionarAlteracoNaMascara() {
 
 
+        var pattern = /\{([^}]+)\}/g;
+
+
+
 
         if(document.getElementById("adicionar_no_atual").checked) {
             var topicoNormalParaAlterar = document.getElementById("exames").value;
+
+
+            var result = document.getElementById(topicoNormalParaAlterar).innerHTML.match(pattern);
+
+            if(result != null) {
+                document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
+
+            }
 
             colocarElementosEmOrdem(topicoNormalParaAlterar);
 
