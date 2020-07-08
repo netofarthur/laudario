@@ -56,12 +56,12 @@
 
         if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
             document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio").innerHTML;
-            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_alterada").innerHTML;
+            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_alterada").innerHTML;
             document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
             document.getElementById("conclusao_normal").setAttribute("name", "alterado");
         } else {
             document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio").innerHTML;
-            document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + document.getElementById("conclusao_alterada").innerHTML;
+            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_alterada").innerHTML;
 
         }
     }
@@ -137,7 +137,7 @@
 
 
 
-        document.getElementById("conclusao_normal").innerHTML = filtrarParagrafo(document.getElementById("conclusao_normal").innerHTML, conclusaoAlterada);
+        document.getElementById("paragrafo_conclusao").innerHTML = filtrarParagrafo(document.getElementById("paragrafo_conclusao").innerHTML, conclusaoAlterada);
 
         document.getElementById(id).setAttribute("onclick", "alterarDiagnosticoDireto(this.name, this.id)");
 
@@ -147,10 +147,10 @@
             document.getElementById(name).innerHTML = relatorioNormal;
         }
 
-        if(document.getElementById("conclusao_normal").innerHTML == "") {
+        if(document.getElementById("paragrafo_conclusao").innerHTML == "") {
             document.getElementById("conclusao_normal").setAttribute("name", "conclusao");
 
-            document.getElementById("conclusao_normal").innerHTML = conclusaoMascaraAtual;
+            document.getElementById("paragrafo_conclusao").innerHTML = conclusaoMascaraAtual;
         }
 
     }
@@ -178,6 +178,17 @@
         var pattern = /\{([^}]+)\}/g;
         var result = document.getElementById(name).innerHTML.match(pattern);
 
+        var listaParagrafosConclusao = document.getElementById("conclusao_normal").children;
+
+        for (var i = 0; i < listaParagrafosConclusao.length; i++) {
+            var result2 = listaParagrafosConclusao[i].innerHTML.match(pattern);
+            if(result2 != null) {
+                document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+
+            }
+        }
+
+
         if(result != null) {
             document.getElementById(name).setAttribute("name", "alterado");
 
@@ -197,13 +208,13 @@
             document.getElementById("conclusao_normal").setAttribute("class", "paragrafo_mascara");
 
             if(conclusao != null && conclusao != "") {
-                 document.getElementById("conclusao_normal").innerHTML = conclusao;
+                 document.getElementById("paragrafo_conclusao").innerHTML = conclusao;
 
             }
 
         } else {
             if(conclusao != null && conclusao != "") {
-                    document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + conclusao;
+                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + conclusao;
 
 
             }
@@ -437,14 +448,14 @@
 
             if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
                 document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
-                document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_modal").value;
+                document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
                 document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
                 document.getElementById("conclusao_normal").setAttribute("name", "alterado");
                 document.getElementById("conclusao_normal").setAttribute("class", "paragrafo_mascara");
 
             } else {
                 document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio_modal").value;
-                document.getElementById("conclusao_normal").innerHTML = document.getElementById("conclusao_normal").innerHTML + "<br>" + document.getElementById("conclusao_modal").value;
+                document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_modal").value;
 
             }
         }
