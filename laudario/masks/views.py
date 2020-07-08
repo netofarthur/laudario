@@ -125,10 +125,10 @@ def adicionar_nova_mascara(request):
         topico_normal.save()
 
 
-
+    variaveisusuarioabertas = Variavel.objects.filter(usuario=usuario, nome_amigavel="", )
 
     variaveisusuario = Variavel.objects.filter(usuario=usuario)
-    context = {'usuario': usuario, 'variaveisusuario': variaveisusuario,}
+    context = {'usuario': usuario, 'variaveisusuario': variaveisusuario, 'variaveisusuarioabertas': variaveisusuarioabertas}
 
 
     return render(request, 'masks/variaveis_amigaveis.html', context)

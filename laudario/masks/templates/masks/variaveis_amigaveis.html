@@ -15,22 +15,33 @@
 
 <p> {{usuario}}</p>
 
-<form action="{% url 'adicionar_variaveis' %}" method="post">
-{% csrf_token %}
 
-<!-- Dá pra colocar espaços, mas sinal de maior e menor dá bug.-->
-{% for variavel in variaveisusuario %}
-    {% if variavel.nome_amigavel == "" %}
-    <label>{{ variavel.nome_da_variavel }}</label>
-    <input name="nome_amigavel_variavel" type="text" placeholder="Nome para a variável"/>
-    <input name="nome_da_variavel" type="hidden" value="{{ variavel.nome_da_variavel }}"/>
-    <input name="unidade_de_medida" type="text" placeholder="Unidade de medida (se houver)"/>
-    {% endif %}
-    <br>
-{% endfor %}
-    <button type="submit" id="adicionar_variaveis">Adicionar</button>
 
-</form>
+{% if variaveisusuarioabertas|length == 0 %}
+
+    <h1>Máscara adicionada com sucesso!</h1>
+
+{% else %}
+
+    <form action="{% url 'adicionar_variaveis' %}" method="post">
+    {% csrf_token %}
+        <!-- Dá pra colocar espaços, mas sinal de maior e menor dá bug.-->
+        {% for variavel in variaveisusuario %}
+            {% if variavel.nome_amigavel == "" %}
+            <label>{{ variavel.nome_da_variavel }}</label>
+            <input name="nome_amigavel_variavel" type="text" placeholder="Nome para a variável"/>
+            <input name="nome_da_variavel" type="hidden" value="{{ variavel.nome_da_variavel }}"/>
+            <input name="unidade_de_medida" type="text" placeholder="Unidade de medida (se houver)"/>
+            <br>
+            {% endif %}
+        {% endfor %}
+            <button type="submit" id="adicionar_variaveis">Adicionar</button>
+
+    </form>
+
+{% endif %}
+
+
 
 </div>
 
