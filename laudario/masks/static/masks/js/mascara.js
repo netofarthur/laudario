@@ -497,11 +497,11 @@
         }
 
 
-        if(!variavelJaExiste) {
+
             var botao = document.getElementById("salva_mudancas");
             botao.setAttribute("onclick", "colocarNomesAmigaveisAlteracao()");
 
-        }
+
 
 
     }
