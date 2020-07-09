@@ -116,7 +116,7 @@ CREATE TABLE `auth_user` (
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$180000$sU9sqaSaQPgC$ukXJOxMu1nLR3d5n3SBFKmAWDmlCTFgGVx0BC5vwrpU=','2020-06-18 23:39:53.413044',1,'admin','','','admin@localhost',1,1,'2020-06-12 04:52:40.450342'),(4,'pbkdf2_sha256$180000$hRDEE4yrjr0B$j1vFcriRYSkOr5NJ9nxEBlgd0koKTWaqzU1bxB1VrhA=','2020-06-18 23:38:05.765025',0,'teste','','','teste@hotmail.com',0,1,'2020-06-18 21:46:31.020139');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$180000$sU9sqaSaQPgC$ukXJOxMu1nLR3d5n3SBFKmAWDmlCTFgGVx0BC5vwrpU=','2020-07-09 19:38:54.847840',1,'admin','','','admin@localhost',1,1,'2020-06-12 04:52:40.450342'),(6,'pbkdf2_sha256$180000$4qAfToUpAgxl$4qquLTjJ2knEcSM5N1jLOocNq+QTnZ4ifHBWVJs7YPU=','2020-07-09 19:40:46.049956',0,'arthur','','','netofarthur@gmail.com',0,1,'2020-07-09 19:14:34.503011');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +206,7 @@ CREATE TABLE `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +215,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2020-06-12 15:52:51.056722','1','Vascular',1,'[{\"added\": {}}]',7,1),(2,'2020-06-12 15:53:03.110575','1','Ultrassom',1,'[{\"added\": {}}]',8,1),(3,'2020-06-12 15:53:40.642837','1','Geral',1,'[{\"added\": {}}]',9,1),(4,'2020-06-12 15:54:17.706529','1','Não classificados',2,'[{\"changed\": {\"fields\": [\"Nome\"]}}]',9,1),(5,'2020-06-12 15:56:46.827408','1','US de Carótidas',1,'[{\"added\": {}}]',10,1),(6,'2020-06-12 15:59:09.233854','1','Carótidas',1,'[{\"added\": {}}]',11,1),(7,'2020-06-12 16:00:00.159886','2','Artérias vertebrais',1,'[{\"added\": {}}]',11,1),(8,'2020-06-12 16:03:43.784988','3','Medidas dos complexos medio-intimais',1,'[{\"added\": {}}]',11,1),(9,'2020-06-12 16:09:06.812219','4','Picos de velocidades sistólica e diastólica',1,'[{\"added\": {}}]',11,1),(10,'2020-06-12 16:12:41.270277','1','Placas Bulbos (sem repercussão hemodinâmica)',1,'[{\"added\": {}}]',13,1),(11,'2020-06-12 16:14:52.324615','2','Fluxo reverso (vertebral direita)',1,'[{\"added\": {}}]',13,1),(12,'2020-06-12 16:15:55.530818','3','Fluxo reverso (vertebral esquerda)',1,'[{\"added\": {}}]',13,1),(13,'2020-06-12 16:18:00.656187','4','Espessamento medio-intimal das carótidas',1,'[{\"added\": {}}]',13,1),(14,'2020-06-12 16:19:18.255328','1','Estenose de carótidas (SRU)',1,'[{\"added\": {}}]',12,1),(15,'2020-06-12 16:23:16.791733','4','Picos de velocidades sistólica e diastólica',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(16,'2020-06-12 16:23:38.938657','3','Medidas dos complexos medio-intimais',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(17,'2020-06-12 16:24:28.053277','4','Picos de velocidades sistólica e diastólica',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(18,'2020-06-12 16:25:00.324975','3','Medidas dos complexos medio-intimais',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(19,'2020-06-12 16:27:10.525737','4','Picos de velocidades sistólica e diastólica',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(20,'2020-06-12 16:59:20.510453','4','Picos de velocidades sistólica e diastólica',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(21,'2020-06-13 18:41:40.481201','1','Variavel object (1)',1,'[{\"added\": {}}]',14,1),(22,'2020-06-13 18:42:03.034327','2','Variavel object (2)',1,'[{\"added\": {}}]',14,1),(23,'2020-06-13 19:14:56.627655','2','Espessura intimal esquerda',2,'[{\"changed\": {\"fields\": [\"Nome amigavel\"]}}]',14,1),(24,'2020-06-13 19:15:09.300037','1','Espessura intimal direita',2,'[{\"changed\": {\"fields\": [\"Nome amigavel\"]}}]',14,1),(25,'2020-06-13 19:16:51.487876','4','Picos de velocidades sistólica e diastólica',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(26,'2020-06-13 19:18:03.719456','3','ACCD (sistólica)',1,'[{\"added\": {}}]',14,1),(27,'2020-06-13 19:18:32.809784','4','ACCD diastólica',1,'[{\"added\": {}}]',14,1),(28,'2020-06-13 19:18:51.768568','5','ACID (sistólica)',1,'[{\"added\": {}}]',14,1),(29,'2020-06-13 19:19:10.224816','6','ACID (diastólica)',1,'[{\"added\": {}}]',14,1),(30,'2020-06-13 19:19:29.032023','7','ACED (sistólica)',1,'[{\"added\": {}}]',14,1),(31,'2020-06-13 19:19:42.685856','8','ACED (diastólica)',1,'[{\"added\": {}}]',14,1),(32,'2020-06-13 19:19:53.837869','9','AVD (sistólica)',1,'[{\"added\": {}}]',14,1),(33,'2020-06-13 19:20:10.404957','10','AVD (diastólica)',1,'[{\"added\": {}}]',14,1),(34,'2020-06-13 19:20:23.828353','11','ACCE (sistólica)',1,'[{\"added\": {}}]',14,1),(35,'2020-06-13 19:20:34.390088','12','ACCE (diastólica)',1,'[{\"added\": {}}]',14,1),(36,'2020-06-13 19:20:46.549094','13','ACIE (sistólica)',1,'[{\"added\": {}}]',14,1),(37,'2020-06-13 19:20:58.861661','14','ACIE (diastólica)',1,'[{\"added\": {}}]',14,1),(38,'2020-06-13 19:21:13.180911','15','ACEE (sistólica)',1,'[{\"added\": {}}]',14,1),(39,'2020-06-13 19:21:23.836788','16','ACEE (diastólica)',1,'[{\"added\": {}}]',14,1),(40,'2020-06-13 19:21:39.833231','17','AVE (sistólica)',1,'[{\"added\": {}}]',14,1),(41,'2020-06-13 19:21:53.433813','18','AVE (diastólica)',1,'[{\"added\": {}}]',14,1),(42,'2020-06-13 19:27:30.109623','4','ACCD (diastólica)',2,'[{\"changed\": {\"fields\": [\"Nome amigavel\"]}}]',14,1),(43,'2020-06-13 19:29:01.596631','18','AVE diastólica',2,'[{\"changed\": {\"fields\": [\"Nome amigavel\"]}}]',14,1),(44,'2020-06-13 19:29:23.137526','17','AVE (sistólica)',2,'[]',14,1),(45,'2020-06-13 19:29:34.081531','18','AVE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Nome amigavel\"]}}]',14,1),(46,'2020-06-13 19:32:33.960292','11','ACCE (sistólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(47,'2020-06-13 19:42:18.914453','18','AVE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(48,'2020-06-13 19:42:38.167005','18','AVE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(49,'2020-06-13 19:43:01.523870','18','AVE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(50,'2020-06-13 19:43:21.243794','18','AVE (diastólica)',2,'[]',14,1),(51,'2020-06-13 19:45:32.441999','16','ACEE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(52,'2020-06-13 19:53:29.024738','18','AVE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(53,'2020-06-13 19:53:41.927976','16','ACEE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(54,'2020-06-13 19:54:45.822898','4','Picos de velocidades sistólica e diastólica',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(55,'2020-06-18 16:48:37.165311','2','Tomografia Computadorizada',1,'[{\"added\": {}}]',8,1),(56,'2020-06-18 16:51:02.327225','2','Tórax',1,'[{\"added\": {}}]',7,1),(57,'2020-06-18 19:46:38.712483','2','tejlasfkjlasçfj',3,'',10,1),(58,'2020-06-18 19:46:44.123533','3','fsfa',3,'',10,1),(59,'2020-06-18 19:46:47.430366','4','sf',3,'',10,1),(60,'2020-06-18 19:51:24.674963','5','Consolidação',1,'[{\"added\": {}}]',13,1),(61,'2020-06-18 21:32:55.564145','2','arthur',3,'',4,1),(62,'2020-06-18 21:32:55.588320','3','teste',3,'',4,1),(63,'2020-06-18 23:04:41.592692','1','US de Carótidas',2,'[{\"changed\": {\"fields\": [\"Usuario\"]}}]',10,1);
+INSERT INTO `django_admin_log` VALUES (1,'2020-06-12 15:52:51.056722','1','Vascular',1,'[{\"added\": {}}]',7,1),(2,'2020-06-12 15:53:03.110575','1','Ultrassom',1,'[{\"added\": {}}]',8,1),(3,'2020-06-12 15:53:40.642837','1','Geral',1,'[{\"added\": {}}]',9,1),(4,'2020-06-12 15:54:17.706529','1','Não classificados',2,'[{\"changed\": {\"fields\": [\"Nome\"]}}]',9,1),(5,'2020-06-12 15:56:46.827408','1','US de Carótidas',1,'[{\"added\": {}}]',10,1),(6,'2020-06-12 15:59:09.233854','1','Carótidas',1,'[{\"added\": {}}]',11,1),(7,'2020-06-12 16:00:00.159886','2','Artérias vertebrais',1,'[{\"added\": {}}]',11,1),(8,'2020-06-12 16:03:43.784988','3','Medidas dos complexos medio-intimais',1,'[{\"added\": {}}]',11,1),(9,'2020-06-12 16:09:06.812219','4','Picos de velocidades sistólica e diastólica',1,'[{\"added\": {}}]',11,1),(10,'2020-06-12 16:12:41.270277','1','Placas Bulbos (sem repercussão hemodinâmica)',1,'[{\"added\": {}}]',13,1),(11,'2020-06-12 16:14:52.324615','2','Fluxo reverso (vertebral direita)',1,'[{\"added\": {}}]',13,1),(12,'2020-06-12 16:15:55.530818','3','Fluxo reverso (vertebral esquerda)',1,'[{\"added\": {}}]',13,1),(13,'2020-06-12 16:18:00.656187','4','Espessamento medio-intimal das carótidas',1,'[{\"added\": {}}]',13,1),(14,'2020-06-12 16:19:18.255328','1','Estenose de carótidas (SRU)',1,'[{\"added\": {}}]',12,1),(15,'2020-06-12 16:23:16.791733','4','Picos de velocidades sistólica e diastólica',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(16,'2020-06-12 16:23:38.938657','3','Medidas dos complexos medio-intimais',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(17,'2020-06-12 16:24:28.053277','4','Picos de velocidades sistólica e diastólica',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(18,'2020-06-12 16:25:00.324975','3','Medidas dos complexos medio-intimais',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(19,'2020-06-12 16:27:10.525737','4','Picos de velocidades sistólica e diastólica',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(20,'2020-06-12 16:59:20.510453','4','Picos de velocidades sistólica e diastólica',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(21,'2020-06-13 18:41:40.481201','1','Variavel object (1)',1,'[{\"added\": {}}]',14,1),(22,'2020-06-13 18:42:03.034327','2','Variavel object (2)',1,'[{\"added\": {}}]',14,1),(23,'2020-06-13 19:14:56.627655','2','Espessura intimal esquerda',2,'[{\"changed\": {\"fields\": [\"Nome amigavel\"]}}]',14,1),(24,'2020-06-13 19:15:09.300037','1','Espessura intimal direita',2,'[{\"changed\": {\"fields\": [\"Nome amigavel\"]}}]',14,1),(25,'2020-06-13 19:16:51.487876','4','Picos de velocidades sistólica e diastólica',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(26,'2020-06-13 19:18:03.719456','3','ACCD (sistólica)',1,'[{\"added\": {}}]',14,1),(27,'2020-06-13 19:18:32.809784','4','ACCD diastólica',1,'[{\"added\": {}}]',14,1),(28,'2020-06-13 19:18:51.768568','5','ACID (sistólica)',1,'[{\"added\": {}}]',14,1),(29,'2020-06-13 19:19:10.224816','6','ACID (diastólica)',1,'[{\"added\": {}}]',14,1),(30,'2020-06-13 19:19:29.032023','7','ACED (sistólica)',1,'[{\"added\": {}}]',14,1),(31,'2020-06-13 19:19:42.685856','8','ACED (diastólica)',1,'[{\"added\": {}}]',14,1),(32,'2020-06-13 19:19:53.837869','9','AVD (sistólica)',1,'[{\"added\": {}}]',14,1),(33,'2020-06-13 19:20:10.404957','10','AVD (diastólica)',1,'[{\"added\": {}}]',14,1),(34,'2020-06-13 19:20:23.828353','11','ACCE (sistólica)',1,'[{\"added\": {}}]',14,1),(35,'2020-06-13 19:20:34.390088','12','ACCE (diastólica)',1,'[{\"added\": {}}]',14,1),(36,'2020-06-13 19:20:46.549094','13','ACIE (sistólica)',1,'[{\"added\": {}}]',14,1),(37,'2020-06-13 19:20:58.861661','14','ACIE (diastólica)',1,'[{\"added\": {}}]',14,1),(38,'2020-06-13 19:21:13.180911','15','ACEE (sistólica)',1,'[{\"added\": {}}]',14,1),(39,'2020-06-13 19:21:23.836788','16','ACEE (diastólica)',1,'[{\"added\": {}}]',14,1),(40,'2020-06-13 19:21:39.833231','17','AVE (sistólica)',1,'[{\"added\": {}}]',14,1),(41,'2020-06-13 19:21:53.433813','18','AVE (diastólica)',1,'[{\"added\": {}}]',14,1),(42,'2020-06-13 19:27:30.109623','4','ACCD (diastólica)',2,'[{\"changed\": {\"fields\": [\"Nome amigavel\"]}}]',14,1),(43,'2020-06-13 19:29:01.596631','18','AVE diastólica',2,'[{\"changed\": {\"fields\": [\"Nome amigavel\"]}}]',14,1),(44,'2020-06-13 19:29:23.137526','17','AVE (sistólica)',2,'[]',14,1),(45,'2020-06-13 19:29:34.081531','18','AVE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Nome amigavel\"]}}]',14,1),(46,'2020-06-13 19:32:33.960292','11','ACCE (sistólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(47,'2020-06-13 19:42:18.914453','18','AVE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(48,'2020-06-13 19:42:38.167005','18','AVE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(49,'2020-06-13 19:43:01.523870','18','AVE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(50,'2020-06-13 19:43:21.243794','18','AVE (diastólica)',2,'[]',14,1),(51,'2020-06-13 19:45:32.441999','16','ACEE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(52,'2020-06-13 19:53:29.024738','18','AVE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(53,'2020-06-13 19:53:41.927976','16','ACEE (diastólica)',2,'[{\"changed\": {\"fields\": [\"Unidade medida\"]}}]',14,1),(54,'2020-06-13 19:54:45.822898','4','Picos de velocidades sistólica e diastólica',2,'[{\"changed\": {\"fields\": [\"Relatorio\"]}}]',11,1),(55,'2020-06-18 16:48:37.165311','2','Tomografia Computadorizada',1,'[{\"added\": {}}]',8,1),(56,'2020-06-18 16:51:02.327225','2','Tórax',1,'[{\"added\": {}}]',7,1),(57,'2020-06-18 19:46:38.712483','2','tejlasfkjlasçfj',3,'',10,1),(58,'2020-06-18 19:46:44.123533','3','fsfa',3,'',10,1),(59,'2020-06-18 19:46:47.430366','4','sf',3,'',10,1),(60,'2020-06-18 19:51:24.674963','5','Consolidação',1,'[{\"added\": {}}]',13,1),(61,'2020-06-18 21:32:55.564145','2','arthur',3,'',4,1),(62,'2020-06-18 21:32:55.588320','3','teste',3,'',4,1),(63,'2020-06-18 23:04:41.592692','1','US de Carótidas',2,'[{\"changed\": {\"fields\": [\"Usuario\"]}}]',10,1),(64,'2020-07-09 19:08:44.866208','25','tesoura',3,'',14,1),(65,'2020-07-09 19:08:44.879918','24','pedra',3,'',14,1),(66,'2020-07-09 19:08:44.881299','23','pedra|tesoura',3,'',14,1),(67,'2020-07-09 19:08:44.882440','22','dir|esq',3,'',14,1),(68,'2020-07-09 19:08:44.883784','21','direita|esquerda',3,'',14,1),(69,'2020-07-09 19:08:44.884870','20','ACEEs * ACEEd',3,'',14,1),(70,'2020-07-09 19:08:44.885888','19','teste|testinho',3,'',14,1),(71,'2020-07-09 19:08:44.886946','18','AVEd',3,'',14,1),(72,'2020-07-09 19:08:44.888150','17','AVEs',3,'',14,1),(73,'2020-07-09 19:08:44.889609','16','ACEEd',3,'',14,1),(74,'2020-07-09 19:08:44.891186','15','ACEEs',3,'',14,1),(75,'2020-07-09 19:08:44.892215','14','ACIEd',3,'',14,1),(76,'2020-07-09 19:08:44.893210','13','ACIEs',3,'',14,1),(77,'2020-07-09 19:08:44.894481','12','ACCEd',3,'',14,1),(78,'2020-07-09 19:08:44.895438','11','ACCEs',3,'',14,1),(79,'2020-07-09 19:08:44.896415','10','AVDd',3,'',14,1),(80,'2020-07-09 19:08:44.897390','9','AVDs',3,'',14,1),(81,'2020-07-09 19:08:44.898399','8','ACEDd',3,'',14,1),(82,'2020-07-09 19:08:44.899592','7','ACEDs',3,'',14,1),(83,'2020-07-09 19:08:44.900588','6','ACIDd',3,'',14,1),(84,'2020-07-09 19:08:44.901584','5','ACIDs',3,'',14,1),(85,'2020-07-09 19:08:44.902594','4','ACCDd',3,'',14,1),(86,'2020-07-09 19:08:44.903605','3','ACCDs',3,'',14,1),(87,'2020-07-09 19:08:44.904697','2','intima_esquerda',3,'',14,1),(88,'2020-07-09 19:08:44.905633','1','intima_direita',3,'',14,1),(89,'2020-07-09 19:08:58.256119','6','Vertebrais US',3,'',10,1),(90,'2020-07-09 19:08:58.328613','5','TC de Tórax S/C',3,'',10,1),(91,'2020-07-09 19:08:58.330786','1','US de Carótidas',3,'',10,1),(92,'2020-07-09 19:09:35.434443','3','Abdome',1,'[{\"added\": {}}]',7,1),(93,'2020-07-09 19:10:16.339448','4','teste',3,'',4,1),(94,'2020-07-09 19:14:10.182657','5','arthur',3,'',4,1),(95,'2020-07-09 19:33:00.877563','7','TC de Abdome S/C',2,'[{\"changed\": {\"fields\": [\"Titulo\"]}}]',10,1),(96,'2020-07-09 19:40:34.549430','27','Esteatose hepática',2,'[{\"changed\": {\"fields\": [\"Descricao\", \"Relatorio\", \"Conclusao\"]}}]',13,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,7 +258,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,7 +267,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-06-12 04:51:53.957120'),(2,'auth','0001_initial','2020-06-12 04:51:54.834672'),(3,'admin','0001_initial','2020-06-12 04:51:57.043892'),(4,'admin','0002_logentry_remove_auto_add','2020-06-12 04:51:57.522934'),(5,'admin','0003_logentry_add_action_flag_choices','2020-06-12 04:51:57.534909'),(6,'contenttypes','0002_remove_content_type_name','2020-06-12 04:51:57.930253'),(7,'auth','0002_alter_permission_name_max_length','2020-06-12 04:51:58.172101'),(8,'auth','0003_alter_user_email_max_length','2020-06-12 04:51:58.283832'),(9,'auth','0004_alter_user_username_opts','2020-06-12 04:51:58.295584'),(10,'auth','0005_alter_user_last_login_null','2020-06-12 04:51:58.447588'),(11,'auth','0006_require_contenttypes_0002','2020-06-12 04:51:58.449780'),(12,'auth','0007_alter_validators_add_error_messages','2020-06-12 04:51:58.459677'),(13,'auth','0008_alter_user_username_max_length','2020-06-12 04:51:58.584540'),(14,'auth','0009_alter_user_last_name_max_length','2020-06-12 04:51:58.758349'),(15,'auth','0010_alter_group_name_max_length','2020-06-12 04:51:58.940114'),(16,'auth','0011_update_proxy_permissions','2020-06-12 04:51:58.951775'),(17,'masks','0001_initial','2020-06-12 04:51:59.848138'),(18,'sessions','0001_initial','2020-06-12 04:52:01.811426'),(19,'masks','0002_auto_20200612_1719','2020-06-12 17:19:28.835065'),(20,'masks','0003_nomedavariavel','2020-06-13 18:38:20.685995'),(21,'masks','0004_auto_20200613_1839','2020-06-13 18:39:52.836888'),(22,'masks','0005_auto_20200613_1840','2020-06-13 18:41:00.935049'),(23,'masks','0006_mascara_usuario','2020-06-18 23:04:01.843112');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-06-12 04:51:53.957120'),(2,'auth','0001_initial','2020-06-12 04:51:54.834672'),(3,'admin','0001_initial','2020-06-12 04:51:57.043892'),(4,'admin','0002_logentry_remove_auto_add','2020-06-12 04:51:57.522934'),(5,'admin','0003_logentry_add_action_flag_choices','2020-06-12 04:51:57.534909'),(6,'contenttypes','0002_remove_content_type_name','2020-06-12 04:51:57.930253'),(7,'auth','0002_alter_permission_name_max_length','2020-06-12 04:51:58.172101'),(8,'auth','0003_alter_user_email_max_length','2020-06-12 04:51:58.283832'),(9,'auth','0004_alter_user_username_opts','2020-06-12 04:51:58.295584'),(10,'auth','0005_alter_user_last_login_null','2020-06-12 04:51:58.447588'),(11,'auth','0006_require_contenttypes_0002','2020-06-12 04:51:58.449780'),(12,'auth','0007_alter_validators_add_error_messages','2020-06-12 04:51:58.459677'),(13,'auth','0008_alter_user_username_max_length','2020-06-12 04:51:58.584540'),(14,'auth','0009_alter_user_last_name_max_length','2020-06-12 04:51:58.758349'),(15,'auth','0010_alter_group_name_max_length','2020-06-12 04:51:58.940114'),(16,'auth','0011_update_proxy_permissions','2020-06-12 04:51:58.951775'),(17,'masks','0001_initial','2020-06-12 04:51:59.848138'),(18,'sessions','0001_initial','2020-06-12 04:52:01.811426'),(19,'masks','0002_auto_20200612_1719','2020-06-12 17:19:28.835065'),(20,'masks','0003_nomedavariavel','2020-06-13 18:38:20.685995'),(21,'masks','0004_auto_20200613_1839','2020-06-13 18:39:52.836888'),(22,'masks','0005_auto_20200613_1840','2020-06-13 18:41:00.935049'),(23,'masks','0006_mascara_usuario','2020-06-18 23:04:01.843112'),(24,'masks','0007_variavel_usuario','2020-07-09 01:06:01.324238');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,7 +293,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('ej1ea5kop8cqdnclnmwk2nlagh6l2zj9','ZTc4YmIwMTc2OGM4NWI2NzFjMzUyNjYwN2Y3M2MzZTU0MTNmYzg1Zjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJjMDU1M2I4MDBlYTU2MmI4YzNjN2I1MjMyNzZjMzRiNjVmMjI4ZjkwIn0=','2020-07-02 23:39:53.460165');
+INSERT INTO `django_session` VALUES ('ej1ea5kop8cqdnclnmwk2nlagh6l2zj9','ZTc4YmIwMTc2OGM4NWI2NzFjMzUyNjYwN2Y3M2MzZTU0MTNmYzg1Zjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJjMDU1M2I4MDBlYTU2MmI4YzNjN2I1MjMyNzZjMzRiNjVmMjI4ZjkwIn0=','2020-07-02 23:39:53.460165'),('xxclykzhmuy1fneil0uiedqm4mdaqr6g','M2MyYTcyNjJkMTNjODRjMDRjMTVmZDM3MTcyMGVhYWQzMjA2ZjVkMDp7Il9hdXRoX3VzZXJfaWQiOiI2IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJkZTRlNGExOThjMDFmNDE4MGM5YTFhYmVlZWNmOGI3NjkxOTc1YzZlIn0=','2020-07-23 19:40:46.051758');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,7 +308,7 @@ CREATE TABLE `masks_especialidade` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -317,7 +317,7 @@ CREATE TABLE `masks_especialidade` (
 
 LOCK TABLES `masks_especialidade` WRITE;
 /*!40000 ALTER TABLE `masks_especialidade` DISABLE KEYS */;
-INSERT INTO `masks_especialidade` VALUES (1,'Vascular'),(2,'Tórax');
+INSERT INTO `masks_especialidade` VALUES (1,'Vascular'),(2,'Tórax'),(3,'Abdome');
 /*!40000 ALTER TABLE `masks_especialidade` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -372,7 +372,7 @@ CREATE TABLE `masks_mascara` (
   CONSTRAINT `masks_mascara_especialidade_id_9c60390e_fk_masks_esp` FOREIGN KEY (`especialidade_id`) REFERENCES `masks_especialidade` (`id`),
   CONSTRAINT `masks_mascara_exame_id_a24888fb_fk_masks_exame_id` FOREIGN KEY (`exame_id`) REFERENCES `masks_exame` (`id`),
   CONSTRAINT `masks_mascara_usuario_id_a53b5f1f_fk_auth_user_id` FOREIGN KEY (`usuario_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -381,7 +381,7 @@ CREATE TABLE `masks_mascara` (
 
 LOCK TABLES `masks_mascara` WRITE;
 /*!40000 ALTER TABLE `masks_mascara` DISABLE KEYS */;
-INSERT INTO `masks_mascara` VALUES (1,'US de Carótidas','Ultrassom de Carótidas','Técnica','Realizado varredura das artérias carótidas e vertebrais com transdutor linear de alta frequência.','Relatório','Conclusão','Ultrassom arterial com Doppler das carótidas e vertebrais sem alterações significativas ao método.',1,1,4),(5,'TC de Tórax S/C','Tomografia computadorizada do Tórax','Técnica','Sem contraste.','Relatório','Opinião','Ultrassonografia do tórax sem contraste dentro dos limites da normalidade.',2,2,1),(6,'Vertebrais US','Us de vertebrais','Técnica','Vertebrais','Relatório','vert norm','vert norm',1,1,4);
+INSERT INTO `masks_mascara` VALUES (7,'TC de Abdome S/C','Tomografia Computadorizada do Abdome','Técnica','Realizados cortes tomográficos axiais do abdome, sem a administração do meio de contraste endovenoso.','Relatório','Conclusão','Tomografia computadorizada não contrastada do abdome dentro dos padrões da normalidade.',3,2,6);
 /*!40000 ALTER TABLE `masks_mascara` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -402,7 +402,7 @@ CREATE TABLE `masks_topicoanormal` (
   PRIMARY KEY (`id`),
   KEY `masks_topicoanormal_topico_normal_id_34f25f74_fk_masks_top` (`topico_normal_id`),
   CONSTRAINT `masks_topicoanormal_topico_normal_id_34f25f74_fk_masks_top` FOREIGN KEY (`topico_normal_id`) REFERENCES `masks_topiconormal` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -411,7 +411,7 @@ CREATE TABLE `masks_topicoanormal` (
 
 LOCK TABLES `masks_topicoanormal` WRITE;
 /*!40000 ALTER TABLE `masks_topicoanormal` DISABLE KEYS */;
-INSERT INTO `masks_topicoanormal` VALUES (1,'Placas Bulbos (sem repercussão hemodinâmica)','Placas Bulbos (sem repercussão hemodinâmica)','Placas ateromatosas nos bulbos carotídeos bilateralmente, sem determinar estenose significativa ao modo B.','Placas ateromatosas nos bulbos carotídeos, sem repercussão hemodinâmica significativa.',1),(2,'Fluxo reverso (vertebral direita)','Fluxo reverso na artéria vertebral direita.','Presença de fluxo retrógrado na artéria vertebral direita.','Fluxo retrógrada na artéria vertebral direita (síndrome do roubo de subclávia?).',2),(3,'Fluxo reverso (vertebral esquerda)','Fluxo reverso na artéria vertebral esquerda..','Presença de fluxo retrógrado na artéria vertebral esquerda..','Fluxo retrógrada na artéria vertebral esquerda (síndrome do roubo de subclávia?).',2),(4,'Espessamento medio-intimal das carótidas','Espessamento medio-intimal, sem placas.','Espessamento medio-intimal nas artérias carótidas comuns, sem evidências de placas ateromatosas.','Espessamento medio-intimal bilateral.',1),(5,'Consolidação','Consolidação lobar à direita.','Consolidação lobar à direita.','Consolidação lobar à direita, sugestivo de pneumonia de etiologia bacteriana.',7);
+INSERT INTO `masks_topicoanormal` VALUES (27,'Esteatose hepática','Esteatose hepática','Evidencia-se {I|II|III} redução difusa da atenuação do parênquima hepático.','Esteatose hepática {I|II|III}.',11);
 /*!40000 ALTER TABLE `masks_topicoanormal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,7 +439,6 @@ CREATE TABLE `masks_topicoanormalbuilder` (
 
 LOCK TABLES `masks_topicoanormalbuilder` WRITE;
 /*!40000 ALTER TABLE `masks_topicoanormalbuilder` DISABLE KEYS */;
-INSERT INTO `masks_topicoanormalbuilder` VALUES (1,'estenose_carotidas_sru.html','Estenose de carótidas (SRU)',1);
 /*!40000 ALTER TABLE `masks_topicoanormalbuilder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -458,7 +457,7 @@ CREATE TABLE `masks_topiconormal` (
   PRIMARY KEY (`id`),
   KEY `masks_topiconormal_mascara_id_80c9647b_fk_masks_mascara_id` (`mascara_id`),
   CONSTRAINT `masks_topiconormal_mascara_id_80c9647b_fk_masks_mascara_id` FOREIGN KEY (`mascara_id`) REFERENCES `masks_mascara` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -467,7 +466,7 @@ CREATE TABLE `masks_topiconormal` (
 
 LOCK TABLES `masks_topiconormal` WRITE;
 /*!40000 ALTER TABLE `masks_topiconormal` DISABLE KEYS */;
-INSERT INTO `masks_topiconormal` VALUES (1,'Carótidas','Aspecto ultrassonográfico normal das artérias carótidas comuns e suas bifurcações, tanto no modo B como no Doppler colorido.',1),(2,'Artérias vertebrais','Artérias vertebrais com fluxo cefálico preservado.',1),(3,'Medidas dos complexos medio-intimais','Espessuras dos complexos medio-intimais:\r\nACCD: {intima_direita} mm.\r\nACCE: {intima_esquerda} mm.',1),(4,'Picos de velocidades sistólica e diastólica','Picos de velocidades sistólica / diastólica (cm/s):\r\nACCD: {ACCDs} / {ACCDd} (cm/s).\r\nACID: {ACIDs} / {ACIDd} (cm/s).\r\nACED: {ACEDs} / {ACEDd} (cm/s).\r\nAVD: {AVDs} / {AVEd} (cm/s).\r\n\r\nACCE: {ACCEs} / {ACCEd} (cm/s).\r\nACIE: {ACIEs} / {ACIEd} (cm/s).\r\nACEE: {ACEEs} / {ACEEd} (cm/s).\r\nAVE: {ACEEs * ACEEd}.',1),(7,'Parênquima pulmonar','Parênquimas pulmonares com atenuações preservadas.',5),(8,'Pleuras','Ausência de derrame pleural.',5),(9,'Coração','Coração de dimensões aumentadas.',5),(10,'Artérias vertebrais','Vertebrais normais',6);
+INSERT INTO `masks_topiconormal` VALUES (11,'Fígado','Fígado de contornos e dimensões normais, com atenuação do parênquima preservada.',7),(12,'Baço','Baço com dimensões e atenuação normais.',7),(13,'Pâncreas','Pâncreas sem alterações ao método.',7),(14,'Adrenais','Adrenais de aspectos habituais.',7),(15,'Vesícula biliar','Vesícula biliar de aspecto tomográfico normal.',7),(16,'Vias biliares','Ausência de dilatação das vias biliares.',7),(17,'Rins','Rins sem alterações ao método.',7),(18,'Vias urinárias','Vias urinárias sem particularidades.',7),(19,'Bexiga','Bexiga de aspecto normal.',7),(20,'Linfonodos mesentéricos','Não se evidenciou linfonodomegalias.',7),(21,'Peritônio','Ausência de líquido livre na cavidade ou sinais de pneumoperitônio.',7);
 /*!40000 ALTER TABLE `masks_topiconormal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -483,8 +482,11 @@ CREATE TABLE `masks_variavel` (
   `nome_da_variavel` varchar(100) NOT NULL,
   `nome_amigavel` varchar(500) NOT NULL,
   `unidade_medida` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+  `usuario_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `masks_variavel_usuario_id_b8e19890_fk_auth_user_id` (`usuario_id`),
+  CONSTRAINT `masks_variavel_usuario_id_b8e19890_fk_auth_user_id` FOREIGN KEY (`usuario_id`) REFERENCES `auth_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -493,7 +495,7 @@ CREATE TABLE `masks_variavel` (
 
 LOCK TABLES `masks_variavel` WRITE;
 /*!40000 ALTER TABLE `masks_variavel` DISABLE KEYS */;
-INSERT INTO `masks_variavel` VALUES (1,'intima_direita','Espessura intimal direita','mm'),(2,'intima_esquerda','Espessura intimal esquerda','mm'),(3,'ACCDs','ACCD (sistólica)','cm/s'),(4,'ACCDd','ACCD (diastólica)','cm/s'),(5,'ACIDs','ACID (sistólica)','cm/s'),(6,'ACIDd','ACID (diastólica)','cm/s'),(7,'ACEDs','ACED (sistólica)','cm/s'),(8,'ACEDd','ACED (diastólica)','cm/s'),(9,'AVDs','AVD (sistólica)','cm/s'),(10,'AVDd','AVD (diastólica)','cm/s'),(11,'ACCEs','ACCE (sistólica)','cms'),(12,'ACCEd','ACCE (diastólica)','cm/s'),(13,'ACIEs','ACIE (sistólica)','cm/s'),(14,'ACIEd','ACIE (diastólica)','cm/s'),(15,'ACEEs','ACEE (sistólica)','cm/s'),(16,'ACEEd','ACEE (diastólica)','cm/s'),(17,'AVEs','AVE (sistólica)','cm/s'),(18,'AVEd','AVE (diastólica)','cm/s');
+INSERT INTO `masks_variavel` VALUES (26,'I|II|III','Grau de esteatose','',6),(27,'I','leve','',6),(28,'II','moderada','',6),(29,'III','acentuada','',6);
 /*!40000 ALTER TABLE `masks_variavel` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -506,4 +508,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-18 20:40:41
+-- Dump completed on 2020-07-09 16:49:20
