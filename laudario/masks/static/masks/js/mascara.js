@@ -45,6 +45,16 @@
     }
 
 
+    var todosBotoes = document.getElementsByClassName("botao_diagnostico");
+       for(botao of todosBotoes) {
+            if(botao.innerHTML == "Reverter") {
+                 botao.style.display = "block";
+
+
+            }
+   }
+
+
 
 }
 
@@ -223,8 +233,9 @@
        var todosBotoes = document.getElementsByClassName("botao_diagnostico");
        for(botao of todosBotoes) {
             if(botao.innerHTML == "Reverter") {
-               var diagnosticosDiv = document.getElementById("diagnosticos_div");
-               diagnosticosDiv.removeChild(botao);
+                 botao.style.display = "none";
+
+
             }
        }
 
