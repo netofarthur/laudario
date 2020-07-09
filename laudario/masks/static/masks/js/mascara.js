@@ -372,13 +372,17 @@
             var select = document.createElement("select");
 
 
+
+
+
+
             var opcoes = lista[i].split("|");
 
             if(opcoes.length > 1) {
                 for(z = 0; z < opcoes.length; z++) {
                     var opcao = document.createElement("option");
-                    opcao.innerHTML = opcoes[z];
-                    opcao.value = opcoes[z];
+                    opcao.innerHTML = obterNomeAmigavelVariavel(opcoes[z]);
+                    opcao.value = obterNomeAmigavelVariavel(opcoes[z]);
 
                     select.appendChild(opcao);
                 }
