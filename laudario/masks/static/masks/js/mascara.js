@@ -372,6 +372,19 @@
 
         var lista = obterListaVariaveis();
 
+        //Mostra modal somente se tiver variaveis no corpo da máscara para preencher
+        if(lista.length == 0) {
+            botaoPopular = document.getElementById("popular_variaveis");
+            botaoPopular.setAttribute("data-toggle", "");
+            botaoPopular.setAttribute("data-target", "");
+            alert("Não existem variáveis para preenhcer!");
+
+        } else {
+            botaoPopular = document.getElementById("popular_variaveis");
+            botaoPopular.setAttribute("data-toggle", "modal");
+            botaoPopular.setAttribute("data-target", "#ModalVariaveis");
+        }
+
 
         for(var i = 0; i < lista.length; i++) {
             var input = document.createElement("input");
