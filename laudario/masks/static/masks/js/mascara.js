@@ -385,7 +385,8 @@
             botaoPopular.setAttribute("data-target", "#ModalVariaveis");
         }
 
-
+        //Limpa modal de popular variáveis sempre quando ele é iniciado.
+        divVariaveis.innerHTML = "";
         for(var i = 0; i < lista.length; i++) {
             var input = document.createElement("input");
             input.setAttribute("type", "text");
