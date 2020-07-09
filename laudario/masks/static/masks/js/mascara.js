@@ -44,7 +44,12 @@
                     listaParagrafos[i].innerHTML = provisoria;
     }
 
+
+
 }
+
+
+
 
     //Altera o diagnótico Personalizado com auxílio de um Modal, que busca o tópico a ser alterado no name do botão clicado, enviado com auxílio de jquery num script em mascara.html
 
@@ -82,15 +87,19 @@
 
 
 
+
     function filtrarParagrafo (paragrafoAlteradoMascara, fraseAlteradaBanco) {
 
+        var paragrafoFinalComBr = paragrafoAlteradoMascara.replace(fraseAlteradaBanco, "");
 
-        paragrafoFinalComBrs = paragrafoAlteradoMascara.replace(fraseAlteradaBanco, "");
-        paragrafoFinalMenosUmBr = paragrafoFinalComBrs.replace("<br>", ""); //tira o <br> adicionado em cada alteração extra no tópico.
+        var pos = paragrafoFinalComBr.lastIndexOf("<br>");
+
+        var paragrafoFinalMenosUltimoBr = paragrafoFinalComBr.substring(0, pos);
 
 
-        return paragrafoFinalMenosUmBr;
+        return paragrafoFinalMenosUltimoBr;
     }
+
 
 
     // Função que reverte a alteração.
@@ -107,10 +116,6 @@
             }
         }
 
-
-
-
-
         var alteradosJSONObject = JSON.parse(alterados);
         var nome;
         var relatorioAlterado;
@@ -123,19 +128,10 @@
         }
 
 
-
-
-
-
-
-
         document.getElementById(id).innerHTML = nome;
 
 
         document.getElementById(name).innerHTML = filtrarParagrafo(document.getElementById(name).innerHTML, relatorioAlterado);
-
-
-
 
         document.getElementById("paragrafo_conclusao").innerHTML = filtrarParagrafo(document.getElementById("paragrafo_conclusao").innerHTML, conclusaoAlterada);
 
@@ -145,6 +141,7 @@
             document.getElementById(name).setAttribute("name", "topico");
 
             document.getElementById(name).innerHTML = relatorioNormal;
+
         }
 
         if(document.getElementById("paragrafo_conclusao").innerHTML == "") {
@@ -220,6 +217,16 @@
             }
         }
 
+
+
+
+       var todosBotoes = document.getElementsByClassName("botao_diagnostico");
+       for(botao of todosBotoes) {
+            if(botao.innerHTML == "Reverter") {
+               var diagnosticosDiv = document.getElementById("diagnosticos_div");
+               diagnosticosDiv.removeChild(botao);
+            }
+       }
 
        document.getElementById(id).innerHTML = "Reverter";
         document.getElementById(id).setAttribute("onclick", "reverterAlteração(this.name, this.id)");
@@ -464,6 +471,12 @@
             var listaVariaveisNominais = [];
 
 
+
+
+
+            if(result != null) {
+
+
             //separa as variáveis nominais e depois faz um concat com as outras. Agora as variáveis nominais são
             //separadas no banco com nomes amigáveis para poderem existir várias, teoricamente iguais (lateralidade, por exemplo)
             //em um mesmo laudo.
@@ -481,10 +494,6 @@
                     count++;
                 }
             }
-
-
-
-            if(result != null) {
 
 
 
