@@ -431,17 +431,11 @@
 
 
 
-
         if(document.getElementById("adicionar_no_atual").checked) {
             var topicoNormalParaAlterar = document.getElementById("exames").value;
 
 
-            var result = document.getElementById(topicoNormalParaAlterar).innerHTML.match(pattern);
 
-            if(result != null) {
-                document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-
-            }
 
             colocarElementosEmOrdem(topicoNormalParaAlterar);
 
@@ -460,14 +454,50 @@
             }
         }
 
+
+
+            var result = document.getElementById(topicoNormalParaAlterar).innerHTML.match(pattern);
+            var listaVariaveisNominais = [];
+
+
+            //separa as variáveis nominais e depois faz um concat com as outras. Agora as variáveis nominais são
+            //separadas no banco com nomes amigáveis para poderem existir várias, teoricamente iguais (lateralidade, por exemplo)
+            //em um mesmo laudo.
+            var count = 0;
+            for(variavel of result) {
+                var variaveisNominais = variavel.split("|")
+                for(variavelNominal of variaveisNominais) {
+                    if(count == 0) {
+                        variavelNominal = variavelNominal.substring(1, variavelNominal.length);
+                    }
+                    if(count == variaveisNominais.length - 1) {
+                        variavelNominal = variavelNominal.substring(0, variavelNominal.length-1);
+                    }
+                    listaVariaveisNominais[count] = variavelNominal;
+                    count++;
+                }
+            }
+
+
+
+            if(result != null) {
+
+
+
+                document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
+
+            }
+
+
+
+
         corpo = document.getElementById("corpo_alteracao");
 
 
-        var listaVars = obterListaVariaveis();
+        var listaVars = obterListaVariaveis().concat(listaVariaveisNominais);
 
 
         var variaveisJSONObject = JSON.parse(nomesAmigaveis);
-
 
 
 
