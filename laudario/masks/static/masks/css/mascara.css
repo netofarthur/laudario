@@ -58,3 +58,11 @@
     margin: 0 0 0 0;
 }
 
+#popular_variaveis {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 10px;
+    float: right;
+    margin-right: 10px;
+}
+

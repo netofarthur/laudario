@@ -65,9 +65,14 @@
 
 
             }
+
+
+
+
    }
 
 
+mostrarBotaoPopularSeNecessario();
 
 }
 
@@ -92,6 +97,8 @@
             document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_alterada").innerHTML;
 
         }
+        mostrarBotaoPopularSeNecessario();
+
     }
 
 
@@ -172,6 +179,9 @@
 
             document.getElementById("paragrafo_conclusao").innerHTML = conclusaoMascaraAtual;
         }
+
+        mostrarBotaoPopularSeNecessario();
+
 
     }
 
@@ -254,6 +264,9 @@
 
        document.getElementById(id).innerHTML = "Reverter";
         document.getElementById(id).setAttribute("onclick", "reverterAlteração(this.name, this.id)");
+
+
+    mostrarBotaoPopularSeNecessario();
 
 
     }
@@ -362,6 +375,9 @@
 
 
     }
+
+
+
 
 
     //Função coloca as variaveis a serem preenchidas pelo usuario em um Modal.
@@ -597,6 +613,25 @@
 
 
     }
+
+
+    function mostrarBotaoPopularSeNecessario() {
+        var lista = obterListaVariaveis();
+        var botao = document.getElementById("popular_variaveis");
+
+        if(lista.length == 0) {
+            botao.style.display = "none";
+
+        } else {
+            botao.style.display = "block";
+        }
+
+    }
+
+
+
+    window.onload = mostrarBotaoPopularSeNecessario;
+
 
 
 
