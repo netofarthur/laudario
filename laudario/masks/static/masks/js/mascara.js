@@ -605,16 +605,19 @@ mostrarBotaoPopularSeNecessario();
                 corpo.appendChild(inputHidden);
                 corpo.appendChild(label);
                 corpo.appendChild(input);
+                corpo.appendChild(inputMedida);
 
                  if(listaVariaveisNominais.includes(listaVars[i])) {
                         input.setAttribute("placeholder", "Descrição no laudo");
+                        inputMedida.style.display = "none"
 
                 } else if(listaVars[i].indexOf("|") > -1) {
                         input.setAttribute("placeholder", "Nome da variável");
+                        inputMedida.style.display = "none"
+
 
                 } else {
                         inputMedida.setAttribute("placeholder", "Unidade de medida");
-                        corpo.appendChild(inputMedida);
 
                         input.setAttribute("placeholder", "Nome da variável");
 
