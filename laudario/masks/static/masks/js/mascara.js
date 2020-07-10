@@ -71,6 +71,7 @@
 
    }
 
+$('#ModalVariaveis').modal('hide');
 
 mostrarBotaoPopularSeNecessario();
 
