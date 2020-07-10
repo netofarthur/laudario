@@ -538,15 +538,17 @@ mostrarBotaoPopularSeNecessario();
             var count = 0;
             for(variavel of result) {
                 var variaveisNominais = variavel.split("|")
-                for(variavelNominal of variaveisNominais) {
-                    if(count == 0) {
-                        variavelNominal = variavelNominal.substring(1, variavelNominal.length);
+                if(variaveisNominais.length > 1) {
+                    for(variavelNominal of variaveisNominais) {
+                        if(count == 0) {
+                            variavelNominal = variavelNominal.substring(1, variavelNominal.length);
+                        }
+                        if(count == variaveisNominais.length - 1) {
+                            variavelNominal = variavelNominal.substring(0, variavelNominal.length-1);
+                        }
+                        listaVariaveisNominais[count] = variavelNominal;
+                        count++;
                     }
-                    if(count == variaveisNominais.length - 1) {
-                        variavelNominal = variavelNominal.substring(0, variavelNominal.length-1);
-                    }
-                    listaVariaveisNominais[count] = variavelNominal;
-                    count++;
                 }
             }
 
@@ -563,6 +565,8 @@ mostrarBotaoPopularSeNecessario();
 
 
         var listaVars = obterListaVariaveis().concat(listaVariaveisNominais);
+
+
 
 
         var variaveisJSONObject = JSON.parse(nomesAmigaveis);
@@ -585,7 +589,9 @@ mostrarBotaoPopularSeNecessario();
 
                 var input = document.createElement("input");
                 input.setAttribute("name", "nome_amigavel_variavel")
-                input.setAttribute("placeholder", "Nome da variável");
+
+
+
 
                 var inputHidden = document.createElement("input");
                 inputHidden.setAttribute("type", "hidden");
@@ -599,7 +605,21 @@ mostrarBotaoPopularSeNecessario();
                 corpo.appendChild(inputHidden);
                 corpo.appendChild(label);
                 corpo.appendChild(input);
-                corpo.appendChild(inputMedida);
+
+                 if(listaVariaveisNominais.includes(listaVars[i])) {
+                        input.setAttribute("placeholder", "Descrição no laudo");
+
+                } else if(listaVars[i].indexOf("|") > -1) {
+                        input.setAttribute("placeholder", "Nome da variável");
+
+                } else {
+                        inputMedida.setAttribute("placeholder", "Unidade de medida");
+                        corpo.appendChild(inputMedida);
+
+                        input.setAttribute("placeholder", "Nome da variável");
+
+                }
+
             }
 
 
