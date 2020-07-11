@@ -86,7 +86,8 @@ function popularMascara(mascaraId) {
     let descricaoOrgao = document.createElement("textarea");
     descricaoOrgao.setAttribute("type", "text");
     descricaoOrgao.setAttribute("name", "relatorio_orgao");
-        descricaoOrgao.setAttribute("class", "text_area_orgao");
+        descricaoOrgao.setAttribute("id", "text_area_orgao");
+        descricaoOrgao.setAttribute("class", "paragrafo_mascara");
 
 
 

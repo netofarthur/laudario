@@ -594,7 +594,16 @@ mostrarBotaoPopularSeNecessario();
             var result = document.getElementById("relatorio_modal").value.match(pattern);
 
         } else {
-            var result = document.getElementById("text_area_orgao").value.match(pattern);
+            var result = [];
+            var resultados = document.getElementsByClassName("paragrafo_mascara");
+            for(resultado of resultados) {
+                var matches = resultado.value.match(pattern);
+                if(matches != null) {
+                    for(match of matches) {
+                        result.push(match);
+                    }
+                }
+            }
 
 
         }
@@ -616,12 +625,8 @@ mostrarBotaoPopularSeNecessario();
                 var variaveisNominais = variavel.split("|")
                 if(variaveisNominais.length > 1) {
                     for(variavelNominal of variaveisNominais) {
-                        if(count == 0) {
-                            variavelNominal = variavelNominal.substring(1, variavelNominal.length);
-                        }
-                        if(count == variaveisNominais.length - 1) {
-                            variavelNominal = variavelNominal.substring(0, variavelNominal.length-1);
-                        }
+                        variavelNominal = variavelNominal.replace("{", "");
+                        variavelNominal = variavelNominal.replace("}", "");
                         listaVariaveisNominais[count] = variavelNominal;
                         count++;
                     }
