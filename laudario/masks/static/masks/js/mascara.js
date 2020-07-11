@@ -320,9 +320,18 @@ mostrarBotaoPopularSeNecessario();
         var counter = 0;
         for(var i = 0; i < listaParagrafos.length; i++) {
 
+                    //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
+                    //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
+                    //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
+                    if(document.getElementById("adicionar_no_atual") != null) {
+                        var result = listaParagrafos[i].innerHTML.match(pattern);
+
+                    } else {
+                        var result = listaParagrafos[i].value.match(pattern);
+                    }
 
 
-                    var result = listaParagrafos[i].innerHTML.match(pattern);
+
 
                     if(result != null) {
                         for(var z = 0; z < result.length; z++) {
@@ -441,6 +450,7 @@ mostrarBotaoPopularSeNecessario();
             var opcoes = lista[i].split("|");
 
             if(opcoes.length > 1) {
+
                 for(z = 0; z < opcoes.length; z++) {
                     var opcao = document.createElement("option");
                     opcao.innerHTML = obterNomeAmigavelVariavel(opcoes[z]);
@@ -485,8 +495,18 @@ mostrarBotaoPopularSeNecessario();
 
 
     function colocarNomesAmigaveisAlteracao() {
-        formulario =  document.getElementById("formulario_alteracao");
-        formulario.setAttribute("action", "/mascaras/variaveis/adicionar");
+
+        //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
+        //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
+        //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
+        if(document.getElementById("adicionar_no_atual") != null) {
+            var formulario =  document.getElementById("formulario_alteracao");
+            formulario.setAttribute("action", "/mascaras/variaveis/adicionar");
+        } else {
+            var formulario =  document.getElementById("formulario_nova_mascara");
+            formulario.setAttribute("action", "/mascaras/variaveis/adicionar");
+        }
+
     }
 
 
@@ -496,33 +516,46 @@ mostrarBotaoPopularSeNecessario();
         var pattern = /\{([^}]+)\}/g;
 
 
-
-        if(document.getElementById("adicionar_no_atual").checked) {
-            var topicoNormalParaAlterar = document.getElementById("exames").value;
-
-
-
-
-            colocarElementosEmOrdem(topicoNormalParaAlterar);
+        //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
+        //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
+        //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
+        if(document.getElementById("adicionar_no_atual") != null) {
+            if(document.getElementById("adicionar_no_atual").checked) {
+                var topicoNormalParaAlterar = document.getElementById("exames").value;
 
 
-            if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
-                document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
-                document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
-                document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-                document.getElementById("conclusao_normal").setAttribute("name", "alterado");
-                document.getElementById("conclusao_normal").setAttribute("class", "paragrafo_mascara");
 
-            } else {
-                document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio_modal").value;
-                document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_modal").value;
 
+                colocarElementosEmOrdem(topicoNormalParaAlterar);
+
+
+                if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
+                    document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
+                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
+                    document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
+                    document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+                    document.getElementById("conclusao_normal").setAttribute("class", "paragrafo_mascara");
+
+                } else {
+                    document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio_modal").value;
+                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_modal").value;
+
+                }
             }
         }
 
 
-
+        //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
+        //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
+        //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
+        if(document.getElementById("adicionar_no_atual") != null) {
             var result = document.getElementById(topicoNormalParaAlterar).innerHTML.match(pattern);
+
+        } else {
+            var result = document.getElementById("text_area_orgao").value.match(pattern);
+
+        }
+
             var listaVariaveisNominais = [];
 
 
@@ -554,7 +587,6 @@ mostrarBotaoPopularSeNecessario();
 
 
 
-                document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
 
             }
 

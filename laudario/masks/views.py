@@ -62,8 +62,10 @@ def nova_mascara(request):
     mascaras = Mascara.objects.all()
 
     topicos_normais = json_serializer.serialize(TopicoNormal.objects.all())
+    variaveis = json_serializer.serialize(Variavel.objects.all())
 
-    context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson, 'topicos_normais': topicos_normais,}
+
+    context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson, 'topicos_normais': topicos_normais, 'variaveis': variaveis}
     return render(request, 'masks/nova_mascara.html', context)
 
 def adicionar_nova_mascara(request):
@@ -101,39 +103,16 @@ def adicionar_nova_mascara(request):
                           conclusao_header=conclusao_header, conclusao=conclusao)
     nova_mascara.save()
 
-    variaveisConclusao = obter_variaveis(conclusao)
-    for z in range(len(variaveisConclusao)):
-        variavel = Variavel(usuario=usuario, nome_da_variavel=variaveisConclusao[z])
-
-        if (variavel not in Variavel.objects.filter(usuario=usuario)):
-            variavel.save()
 
 
     for i in range(len(lista_orgaos)):
-
-        variaveis = obter_variaveis(lista_relatorios_orgaos[i])
-        for z in range(len(variaveis)):
-            variavel = Variavel(usuario=usuario, nome_da_variavel=variaveis[z])
-
-            if(variavel not in Variavel.objects.filter(usuario=usuario)):
-                variavel.save()
-
-
-
 
         topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i])
         topico_normal.save()
 
 
-    variaveisusuarioabertas = Variavel.objects.filter(usuario=usuario, nome_amigavel="", )
 
-    variaveisusuario = Variavel.objects.filter(usuario=usuario)
-    context = {'usuario': usuario, 'variaveisusuario': variaveisusuario, 'variaveisusuarioabertas': variaveisusuarioabertas}
-
-
-    return render(request, 'masks/variaveis_amigaveis.html', context)
-
-    #return HttpResponse("<html><body><p>Máscara adicionada" + lista_orgaos[0] + lista_relatorios_orgaos[0] + "</p></body></html>")
+    return HttpResponse(status=204)
 
 
 def adicionar_variaveis(request):
@@ -141,18 +120,14 @@ def adicionar_variaveis(request):
     lista_nomes_variaveis = request.POST.getlist('nome_da_variavel')
     lista_nomes_amigaveis = request.POST.getlist('nome_amigavel_variavel')
     lista_unidades_de_medidas = request.POST.getlist('unidade_de_medida')
-
+    mystr = ""
     for i in range(len(lista_nomes_variaveis)):
-        try:
-            variavel = Variavel.objects.get(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i])
-            variavel.nome_amigavel = lista_nomes_amigaveis[i]
-            variavel.unidade_medida = lista_unidades_de_medidas[i]
-        except Variavel.DoesNotExist:
-            variavel = Variavel(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i], nome_amigavel=lista_nomes_amigaveis[i], unidade_medida=lista_unidades_de_medidas[i])
-
+        variavel = Variavel(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i])
+        variavel.nome_amigavel = lista_nomes_amigaveis[i]
+        variavel.unidade_medida = lista_unidades_de_medidas[i]
         variavel.save()
 
-    return HttpResponse("<html><body><p>" + str(len(lista_nomes_variaveis)) + "</p></body></html>")
+    return HttpResponse("<html><body><p>" + "variaveis adicionadas" + "</p></body></html>")
 
 
 def obter_variaveis(frase):

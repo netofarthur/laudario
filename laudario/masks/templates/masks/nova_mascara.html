@@ -17,6 +17,7 @@
  </script>
 
 <script type="text/javascript" src="{% static 'masks/js/nova_mascara.js' %}"></script>
+<script type="text/javascript" src="{% static 'masks/js/mascara.js' %}"></script>
 
 <div id="mycontainer">
 
@@ -29,7 +30,7 @@
 <h1> NOVA MÁSCARA </h1>
 
 
-<form action="{% url 'adicionar_nova_mascara' %}" method="post">
+<form action="{% url 'adicionar_nova_mascara' %}" method="post" id="formulario_nova_mascara">
 {% csrf_token %}
 
 
@@ -85,7 +86,7 @@
 
 
 <br>
-<textarea class="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão"></textarea>
+<textarea class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão"></textarea>
 <br name="orgaobr">
     </div>
 
@@ -99,12 +100,26 @@
 
 
 <label for="conclusao">Descrição da conclusão: </label>
-<input type="text" id="conclusao" name="conclusao">
+<input type="text" id="conclusao" name="conclusao" class="paragrafo_mascara">
 <br>
 
-<input type="submit" value="Adicionar">
+<div id="corpo_alteracao">
+
+</div>
+
+
+<input type="submit" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
 
 </form>
+
+
+<!-- Tem o mesmo nome do id em topico_alterado html para aprofeitar funções
+e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
+
+
+
+
+
 
 </div>
 
