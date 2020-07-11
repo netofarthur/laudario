@@ -512,7 +512,42 @@ mostrarBotaoPopularSeNecessario();
 
     }
 
+    function obterListaVariaveisDaAlteracao() {
+        var listaVariaveis = [];
+        var listaParagrafos = document.getElementsByClassName("entrada_modal");
 
+
+        var pattern = /\{([^}]+)\}/g;
+
+
+        var counter = 0;
+        for(var i = 0; i < listaParagrafos.length; i++) {
+
+
+                        var result = listaParagrafos[i].value.match(pattern);
+
+
+
+
+
+                    if(result != null) {
+                        for(var z = 0; z < result.length; z++) {
+
+                            if(!listaVariaveis.includes(result[z].substring(1, result[z].length - 1))) {
+                                listaVariaveis[counter] = result[z].substring(1, result[z].length - 1);
+                                counter = counter + 1;
+                            }
+
+
+                        }
+
+
+                    }
+        }
+
+
+        return listaVariaveis;
+    }
 
 
     function adicionarAlteracoNaMascara() {
@@ -556,7 +591,7 @@ mostrarBotaoPopularSeNecessario();
         //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
         //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
         if(document.getElementById("adicionar_no_atual") != null) {
-            var result = document.getElementById(topicoNormalParaAlterar).innerHTML.match(pattern);
+            var result = document.getElementById("relatorio_modal").value.match(pattern);
 
         } else {
             var result = document.getElementById("text_area_orgao").value.match(pattern);
@@ -609,7 +644,16 @@ mostrarBotaoPopularSeNecessario();
         corpo = document.getElementById("corpo_alteracao");
 
 
-        var listaVars = obterListaVariaveis().concat(listaVariaveisNominais);
+        if(document.getElementById("adicionar_no_atual") != null) {
+            var listaVars = obterListaVariaveisDaAlteracao().concat(listaVariaveisNominais);
+
+        } else {
+            var listaVars = obterListaVariaveis().concat(listaVariaveisNominais);
+
+
+        }
+
+
 
 
 

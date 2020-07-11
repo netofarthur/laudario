@@ -88,6 +88,8 @@ function popularMascara(mascaraId) {
     descricaoOrgao.setAttribute("name", "relatorio_orgao");
         descricaoOrgao.setAttribute("class", "text_area_orgao");
 
+
+
     descricaoOrgao.setAttribute("placeholder", "Descrição normal do órgão");
 
 

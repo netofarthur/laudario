@@ -211,5 +211,6 @@ def adicionar_alteracao(request):
 
         topicoAnormal = TopicoAnormal(topico_normal=topicoNormal, nome=request.POST['nome_modal'], relatorio=request.POST['relatorio_modal'], conclusao=request.POST['conclusao_modal'])
         topicoAnormal.save()
+        context = {}
     return HttpResponse(status=204)
 
