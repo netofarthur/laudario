@@ -349,8 +349,13 @@
         })
 
 
+$("#myModalAlteracao").on("hidden.bs.modal", function(){
+    document.getElementById("nome_modal").value = "";
+    document.getElementById("relatorio_modal").value = "";
 
+    document.getElementById("conclusao_modal").value = "";
 
+});
 
 </script>
 

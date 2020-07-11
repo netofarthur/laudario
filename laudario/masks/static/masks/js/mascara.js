@@ -496,6 +496,7 @@ mostrarBotaoPopularSeNecessario();
 
     function colocarNomesAmigaveisAlteracao() {
 
+
         //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
         //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
         //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
@@ -506,11 +507,16 @@ mostrarBotaoPopularSeNecessario();
             var formulario =  document.getElementById("formulario_nova_mascara");
             formulario.setAttribute("action", "/mascaras/variaveis/adicionar");
         }
+            document.getElementById("salva_mudancas").setAttribute("onclick", "adicionarAlteracoNaMascara()");
+
 
     }
 
 
+
+
     function adicionarAlteracoNaMascara() {
+
 
 
         var pattern = /\{([^}]+)\}/g;
@@ -520,6 +526,7 @@ mostrarBotaoPopularSeNecessario();
         //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
         //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
         if(document.getElementById("adicionar_no_atual") != null) {
+
             if(document.getElementById("adicionar_no_atual").checked) {
                 var topicoNormalParaAlterar = document.getElementById("exames").value;
 
@@ -554,6 +561,7 @@ mostrarBotaoPopularSeNecessario();
         } else {
             var result = document.getElementById("text_area_orgao").value.match(pattern);
 
+
         }
 
             var listaVariaveisNominais = [];
@@ -586,6 +594,11 @@ mostrarBotaoPopularSeNecessario();
             }
 
 
+                var botao = document.getElementById("salva_mudancas");
+                botao.setAttribute("onclick", "colocarNomesAmigaveisAlteracao()");
+
+            } else {
+                  $('#myModalAlteracao').modal('hide');
 
 
             }
@@ -654,7 +667,7 @@ mostrarBotaoPopularSeNecessario();
                         input.setAttribute("placeholder", "Nome da variável");
 
                 }
-                 
+
 
             }
 
@@ -663,8 +676,9 @@ mostrarBotaoPopularSeNecessario();
 
 
 
-            var botao = document.getElementById("salva_mudancas");
-            botao.setAttribute("onclick", "colocarNomesAmigaveisAlteracao()");
+
+
+
 
 
 

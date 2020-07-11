@@ -127,7 +127,7 @@ def adicionar_variaveis(request):
         variavel.unidade_medida = lista_unidades_de_medidas[i]
         variavel.save()
 
-    return HttpResponse("<html><body><p>" + "variaveis adicionadas" + "</p></body></html>")
+    return HttpResponse(status=204)
 
 
 def obter_variaveis(frase):
