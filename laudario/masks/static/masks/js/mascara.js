@@ -627,8 +627,11 @@ mostrarBotaoPopularSeNecessario();
                     for(variavelNominal of variaveisNominais) {
                         variavelNominal = variavelNominal.replace("{", "");
                         variavelNominal = variavelNominal.replace("}", "");
-                        listaVariaveisNominais[count] = variavelNominal;
-                        count++;
+                        if(!listaVariaveisNominais.includes(variavelNominal)) {
+                            listaVariaveisNominais[count] = variavelNominal;
+                            count++;
+                        }
+
                     }
                 }
             }
