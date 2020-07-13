@@ -357,7 +357,23 @@ $("#myModalAlteracao").on("hidden.bs.modal", function(){
 
 });
 
+
+
+
+
+
+
 </script>
 
     {% endblock conteudo %}
+
+
+        <script>
+            var alterados = '{{ alterados|escapejs }}';
+            var nomesAmigaveis = '{{ variaveis|escapejs }}';
+            var mascarasJson = '{{ mascarasJson|escapejs }}';
+            var normais = '{{ normais|escapejs }}';
+            var conclusaoMascaraAtual = '{{ mascara.conclusao }}';
+
+        </script>
 

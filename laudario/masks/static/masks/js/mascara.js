@@ -8,9 +8,24 @@
     //Função que coloca as variáveis preenchidas pelo usuário no Modal nos campos <> do laudo.
     function alterarVariaveisModal() {
 
+
+
+
         var listaParagrafos = document.getElementsByClassName("paragrafo_mascara");
 
+
+          var pattern = /\{([^}]+)\}/g;
+
+
+
          for(var i = 0; i < listaParagrafos.length; i++) {
+
+                var resultado = listaParagrafos[i].innerHTML.match(pattern);
+                if(resultado != null) {
+                    listaParagrafos[i].setAttribute("name", "alterado");
+                    document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+
+                }
 
                     var provisoria = listaParagrafos[i].innerHTML;
 
@@ -42,6 +57,10 @@
 
                       }
                     listaParagrafos[i].innerHTML = provisoria;
+
+
+
+
     }
 
 
@@ -623,10 +642,6 @@ mostrarBotaoPopularSeNecessario();
             var listaVariaveisNominais = [];
 
 
-        if(result != null) {
-            document.getElementById(name).setAttribute("name", "alterado");
-
-        }
 
 
             if(result != null) {
