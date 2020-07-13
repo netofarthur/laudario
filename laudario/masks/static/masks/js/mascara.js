@@ -554,7 +554,20 @@ mostrarBotaoPopularSeNecessario();
 
 
 
+
+                var topicoNormalParaAlterar = document.getElementById("exames").value;
+
+
+
         var pattern = /\{([^}]+)\}/g;
+
+            var resultado = document.getElementById(topicoNormalParaAlterar).innerHTML.match(pattern);
+
+            if(resultado != null) {
+                    document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
+
+            }
+
 
 
         //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
@@ -563,7 +576,6 @@ mostrarBotaoPopularSeNecessario();
         if(document.getElementById("adicionar_no_atual") != null) {
 
             if(document.getElementById("adicionar_no_atual").checked) {
-                var topicoNormalParaAlterar = document.getElementById("exames").value;
 
 
 
@@ -611,7 +623,10 @@ mostrarBotaoPopularSeNecessario();
             var listaVariaveisNominais = [];
 
 
+        if(result != null) {
+            document.getElementById(name).setAttribute("name", "alterado");
 
+        }
 
 
             if(result != null) {
