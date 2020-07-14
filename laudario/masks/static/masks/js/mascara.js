@@ -561,6 +561,8 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById("salva_mudancas").setAttribute("onclick", "adicionarAlteracoNaMascara()");
 
         mostrarBotaoPopularSeNecessario();
+      $('#myModalAlteracao').modal('hide');
+
     }
 
     function obterListaVariaveisDaAlteracao() {

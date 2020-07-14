@@ -360,8 +360,10 @@ $("#myModalAlteracao").on("show.bs.modal", function(){
 
     document.getElementById("conclusao_modal").value = "";
     var corpo = document.getElementById("corpo_variaveis");
-    corpo.innerHTML = "";
-
+    var children = corpo.children;
+    for(child of children) {
+        child.style.display = "none";
+    }
 
 
 
