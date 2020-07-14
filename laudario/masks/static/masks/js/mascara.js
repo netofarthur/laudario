@@ -384,7 +384,22 @@ mostrarBotaoPopularSeNecessario();
 
 
         }
-        return unidadeMedida;
+         if(unidadeMedida == null) {
+            var nomesVariaveis = document.getElementsByName("nome_da_variavel");
+            var unidadesMedidas = document.getElementsByName("unidade_de_medida");
+
+            var localVariavel = 0;
+            for(var i = 0; i < nomesVariaveis.length; i++) {
+                if(nomesVariaveis[i].value == variavel) {
+                    localVariavel = i;
+                }
+
+            }
+            return unidadesMedidas[localVariavel].value;
+        } else {
+                return unidadeMedida;
+
+        }
     }
 
 
@@ -399,7 +414,22 @@ mostrarBotaoPopularSeNecessario();
 
 
         }
-        return nomeAmigavel;
+        if(nomeAmigavel == null) {
+            var nomesVariaveis = document.getElementsByName("nome_da_variavel");
+            var nomesAmigaveisVariaveis = document.getElementsByName("nome_amigavel_variavel");
+
+            var localVariavel = 0;
+            for(var i = 0; i < nomesVariaveis.length; i++) {
+                if(nomesVariaveis[i].value == variavel) {
+                    localVariavel = i;
+                }
+
+            }
+            return nomesAmigaveisVariaveis[localVariavel].value;
+        } else {
+                return nomeAmigavel;
+
+        }
 
 
 
@@ -411,6 +441,8 @@ mostrarBotaoPopularSeNecessario();
 
     //Função coloca as variaveis a serem preenchidas pelo usuario em um Modal.
     function popularVariaveis() {
+
+
 
 
         var divVariaveis = document.getElementById("template_name_variaveis");
