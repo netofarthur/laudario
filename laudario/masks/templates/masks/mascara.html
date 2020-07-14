@@ -312,6 +312,11 @@
 
                   </div>
 
+                  <div id="corpo_variaveis">
+
+
+                  </div>
+
               </div>
 
               <div class="modal-footer">
@@ -349,11 +354,16 @@
         })
 
 
-$("#myModalAlteracao").on("hidden.bs.modal", function(){
+$("#myModalAlteracao").on("show.bs.modal", function(){
     document.getElementById("nome_modal").value = "";
     document.getElementById("relatorio_modal").value = "";
 
     document.getElementById("conclusao_modal").value = "";
+    var corpo = document.getElementById("corpo_variaveis");
+    corpo.innerHTML = "";
+
+
+
 
 });
 

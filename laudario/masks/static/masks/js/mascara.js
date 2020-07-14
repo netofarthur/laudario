@@ -711,7 +711,7 @@ mostrarBotaoPopularSeNecessario();
 
 
 
-        corpo = document.getElementById("corpo_alteracao");
+        corpo = document.getElementById("corpo_variaveis");
 
 
         if(document.getElementById("adicionar_no_atual") != null) {
@@ -759,8 +759,11 @@ mostrarBotaoPopularSeNecessario();
 
 
                 var label = document.createElement("label");
+                label.setAttribute("name", "label_variavel");
                 label.innerHTML = listaVars[i];
-                corpo.appendChild(document.createElement("br"));
+                var br = document.createElement("br")
+                br.setAttribute("name", "label_br");
+                corpo.appendChild(br);
                 corpo.appendChild(inputHidden);
                 corpo.appendChild(label);
                 corpo.appendChild(input);
