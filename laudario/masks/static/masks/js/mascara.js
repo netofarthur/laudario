@@ -560,7 +560,7 @@ mostrarBotaoPopularSeNecessario();
         }
             document.getElementById("salva_mudancas").setAttribute("onclick", "adicionarAlteracoNaMascara()");
 
-
+        mostrarBotaoPopularSeNecessario();
     }
 
     function obterListaVariaveisDaAlteracao() {
@@ -807,12 +807,16 @@ mostrarBotaoPopularSeNecessario();
         var lista = obterListaVariaveis();
         var botao = document.getElementById("popular_variaveis");
 
-        if(lista.length == 0) {
-            botao.style.display = "none";
+        if(botao != null) {
+            if(lista.length == 0) {
+                botao.style.display = "none";
 
-        } else {
-            botao.style.display = "block";
+            } else {
+                botao.style.display = "block";
+            }
         }
+
+
 
     }
 
