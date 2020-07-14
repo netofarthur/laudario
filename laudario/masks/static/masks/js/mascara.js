@@ -714,15 +714,17 @@ mostrarBotaoPopularSeNecessario();
 
 
 
-        corpo = document.getElementById("corpo_variaveis");
 
 
         if(document.getElementById("adicionar_no_atual") != null) {
+            var corpo = document.getElementById("corpo_variaveis");
+
             var listaVars = obterListaVariaveisDaAlteracao().concat(listaVariaveisNominais);
 
         } else {
             var listaVars = obterListaVariaveis().concat(listaVariaveisNominais);
 
+            var corpo = document.getElementById("corpo_alteracao");
 
         }
 
