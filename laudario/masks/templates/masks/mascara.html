@@ -275,8 +275,10 @@
               <div class="modal-body">
                   <div id="corpo_alteracao">
 
+                    <div class="container-fluid">
 
-
+                            <div class="row">
+                        <div class="col-6">
                         <div class="form-group">
                           <label for="exames">Tópico a ser alterado </label>
                           <select class="form-control" name ="exames" id="exames">
@@ -310,12 +312,29 @@
                             <label for="adicionar_no_banco">Adicionar no meu banco de frases</label>
 
 
+                      </div>
+                     <div id="frases_comunidade" class="col-6">
+                             <input id = "procurarFrasesPublicas" type="search" placeholder="Procurar frases públicas"/>
+
+
+                              {% for topicoanormal in topicos_anormais %}
+                                {% if topicoanormal.topico_normal.mascara == mascara %}
+                                    <button type="button" class="botao_diagnostico" id="t{{ topicoanormal.pk }}" onclick="popularFraseAlterada(this.id)">{{ topicoanormal.nome }}</button>
+                                {% endif %}
+                            {% endfor %}
+                      </div>
+                            </div>
+                    </div>
+
                   </div>
 
                   <div id="corpo_variaveis">
 
 
+
                   </div>
+
+
 
               </div>
 

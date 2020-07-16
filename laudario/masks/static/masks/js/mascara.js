@@ -835,5 +835,21 @@ mostrarBotaoPopularSeNecessario();
 
 
 
+    function popularFraseAlterada(topicoId) {
+        var idSemT = topicoId.substring(1, topicoId.length);
+        var alteradosJSONObject = JSON.parse(alterados);
+        for(i = 0; i < alteradosJSONObject.length; i++) {
 
+            if(alteradosJSONObject[i].pk == idSemT) {
+                document.getElementById("nome_modal").value = alteradosJSONObject[i].fields.nome;
+                document.getElementById("relatorio_modal").value = alteradosJSONObject[i].fields.relatorio;
+                document.getElementById("conclusao_modal").value = alteradosJSONObject[i].fields.conclusao;
+
+
+            }
+
+        }
+
+
+    }
 
