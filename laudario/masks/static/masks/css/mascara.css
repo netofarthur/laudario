@@ -1,6 +1,6 @@
 #diagnosticos_div {
 
-    height: 100vh;
+    height: 90vh;
   overflow: auto;
   background-color: grey;
 
@@ -16,9 +16,13 @@
 
 
 
+.navbar {
+  min-height: 10vh;
+
+}
 
 #mascara_div {
-      height: 100vh;
+      height: 90vh;
   overflow: auto;
 }
 
