@@ -241,6 +241,8 @@ mostrarBotaoPopularSeNecessario();
 
         if(result != null) {
             document.getElementById(name).setAttribute("name", "alterado");
+            document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+
 
         }
 
