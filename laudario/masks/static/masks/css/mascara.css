@@ -13,7 +13,10 @@
 }
 
 
+#botaonovamascara {
+    width: 100%;
 
+}
 
 
 .navbar {
@@ -92,6 +95,14 @@
     margin-right: 20%;
         margin-left: 20%;
 
+}
+
+#containermascaras {
+    padding: 10px;
+}
+
+#botaonovamascara {
+    margin-top:10px;
 }
 
 

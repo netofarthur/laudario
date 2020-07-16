@@ -13,16 +13,21 @@
 
 <script type="text/javascript" src="{% static 'masks/js/mascaras.js' %}"></script>
 
-<div id="mycontainer">
+<div id="containermascaras">
 
 <div class="container-fluid">
 
 <div class="row">
 
+<div class="col-2">
+
+
+</div>
+
+
 <div class="col-8">
 
 <div class="form-group">
-  <label for="exames">Exame: </label>
   <select class="form-control" name ="exames" id="exames" onchange="tornarExamesInvisiveis()">
     <option value="todos">Todos</option>
 
@@ -81,19 +86,25 @@
 </div>
 
 
+  <form action="{% url 'nova_mascara' %}" method="post">
+    {% csrf_token %}
+      <input id = "botaonovamascara" type="submit" class="btn btn-primary" value="Criar Máscara"/>
+  </form>
+
+</div>
+
+
+
+
+<div class="col-2">
+
+
 </div>
 
 
 
 
 
-  <div class="col">
-  <form action="{% url 'nova_mascara' %}" method="post">
-    {% csrf_token %}
-      <input type="submit" class="btn btn-primary" value="Criar Máscara"/>
-  </form>
-
-  </div>
 
   </div>
 
