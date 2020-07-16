@@ -60,7 +60,7 @@
 
                 {% for mascara in mascaras %}
                 {% if mascara.especialidade == especialidade %}
-                <a href="{% url 'mostrar_mascara' id_mascara=mascara.pk %}" class="list-group-item list-group-item-action" name="{{ mascara.especialidade.pk}}">{{ mascara.nome }}</a>
+                <a href="{% url 'mostrar_mascara' id_mascara=mascara.pk %}" class="list-group-item list-group-item-action" name="{{ mascara.exame.pk }}">{{ mascara.nome }}</a>
                 {% endif %}
                 {% endfor %}
 
