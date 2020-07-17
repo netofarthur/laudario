@@ -490,7 +490,13 @@ mostrarBotaoPopularSeNecessario();
 
 
             labelInput.innerHTML = lista[i];
-            labelVisivel.innerHTML = obterNomeAmigavelVariavel(lista[i]) + " (" + obterUnidadeMedida(lista[i]) + ")";
+            if(obterUnidadeMedida(lista[i]) == "") {
+                labelVisivel.innerHTML = obterNomeAmigavelVariavel(lista[i]) + " " + obterUnidadeMedida(lista[i]) + "  ";
+
+            } else {
+                    labelVisivel.innerHTML = obterNomeAmigavelVariavel(lista[i]) + " (" + obterUnidadeMedida(lista[i]) + ")  ";
+
+            }
 
 
             divVariaveis.appendChild(labelVisivel);
