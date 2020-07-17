@@ -40,7 +40,7 @@
                                     provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", document.getElementById("var" + z).value);
 
                                 } else {
-                                    var mystr = "var " + document.getElementById("lab" + z).innerHTML + " = " + parseFloat(document.getElementById("var" + z).value.replace(",",".")) + ";";
+                                    var mystr = "var " + document.getElementById("lab" + z).innerHTML + " = " + parseFloat(document.getElementById("var" + z).value) + ";";
                                     eval(mystr);
 
                                     provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", document.getElementById("var" + z).value);
@@ -620,40 +620,6 @@ mostrarBotaoPopularSeNecessario();
 
 
 
-        //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
-        //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
-        //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
-        if(document.getElementById("adicionar_no_atual") != null) {
-             var resultado = document.getElementById(topicoNormalParaAlterar).innerHTML.match(pattern);
-
-            if(resultado != null) {
-                    document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-
-            }
-
-            if(document.getElementById("adicionar_no_atual").checked) {
-
-
-
-
-                colocarElementosEmOrdem(topicoNormalParaAlterar);
-
-
-                if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
-                    document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
-                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
-                    document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-                    document.getElementById("conclusao_normal").setAttribute("name", "alterado");
-                    document.getElementById("conclusao_normal").setAttribute("class", "paragrafo_mascara");
-
-                } else {
-                    document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio_modal").value;
-                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_modal").value;
-
-                }
-            }
-        }
-
 
         //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
         //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
@@ -737,20 +703,20 @@ mostrarBotaoPopularSeNecessario();
 
         var variaveisJSONObject = JSON.parse(nomesAmigaveis);
 
-
+        var variavelJaExiste = false;
 
         for(var i = 0; i < listaVars.length; i++) {
-            var variavelJaExiste = false;
+
             for(var z = 0; z < variaveisJSONObject.length; z++) {
-                if(listaVars[i] == variaveisJSONObject[z].fields.nome_da_variavel) {
+                if(listaVars[i] == variaveisJSONObject[z].fields.nome_da_variavel || listaVars[i].split("|").includes(variaveisJSONObject[z].fields.nome_da_variavel)) {
                     variavelJaExiste = true;
+
                 }
 
 
             }
 
-            if(!variavelJaExiste) {
-                 var inputMedida = document.createElement("input");
+              var inputMedida = document.createElement("input");
                 inputMedida.setAttribute("name", "unidade_de_medida");
 
                 var input = document.createElement("input");
@@ -762,19 +728,11 @@ mostrarBotaoPopularSeNecessario();
                 var inputHidden = document.createElement("input");
                 inputHidden.setAttribute("type", "hidden");
                 inputHidden.setAttribute("name", "nome_da_variavel");
-                inputHidden.setAttribute("value", listaVars[i]);
-
-
-                var label = document.createElement("label");
+                  var label = document.createElement("label");
                 label.setAttribute("name", "label_variavel");
-                label.innerHTML = listaVars[i];
-                var br = document.createElement("br")
+                    var br = document.createElement("br")
                 br.setAttribute("name", "label_br");
-                corpo.appendChild(br);
-                corpo.appendChild(inputHidden);
-                corpo.appendChild(label);
-                corpo.appendChild(input);
-                corpo.appendChild(inputMedida);
+
 
                  if(listaVariaveisNominais.includes(listaVars[i])) {
                         input.setAttribute("placeholder", "Descrição no laudo");
@@ -793,7 +751,59 @@ mostrarBotaoPopularSeNecessario();
                 }
 
 
+            if(!variavelJaExiste) {
+
+                inputHidden.setAttribute("value", listaVars[i]);
+
+
+
+                label.innerHTML = listaVars[i];
+
+
+
+
+
+            } else {
+                inputHidden.setAttribute("value", listaVars[i]);
+
+                if(listaVars[i].indexOf("|") > -1) {
+                    var construcao = "";
+                    var splitted = listaVars[i].split("|");
+                    for(var w = 0; w < splitted.length; w++) {
+                        if(w < splitted.length - 1) {
+                            construcao = construcao + splitted[w] + variaveisJSONObject.length + "|";
+                        } else {
+                            construcao = construcao + splitted[w] + variaveisJSONObject.length;
+                        }
+                    }
+                     inputHidden.setAttribute("value", construcao);
+
+                    label.innerHTML = construcao;
+
+            document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
+            document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
+
+
+                } else {
+                    label.innerHTML = listaVars[i] + variaveisJSONObject.length;
+                    inputHidden.setAttribute("value", listaVars[i] + variaveisJSONObject.length);
+                document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
+                document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
+
+
+                }
+
+
+
             }
+
+
+
+               corpo.appendChild(br);
+                corpo.appendChild(inputHidden);
+                corpo.appendChild(label);
+                corpo.appendChild(input);
+                corpo.appendChild(inputMedida);
 
 
         }
@@ -802,6 +812,40 @@ mostrarBotaoPopularSeNecessario();
 
 
 
+
+        //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
+        //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
+        //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
+        if(document.getElementById("adicionar_no_atual") != null) {
+             var resultado = document.getElementById(topicoNormalParaAlterar).innerHTML.match(pattern);
+
+            if(resultado != null) {
+                    document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
+
+            }
+
+            if(document.getElementById("adicionar_no_atual").checked) {
+
+
+
+
+                colocarElementosEmOrdem(topicoNormalParaAlterar);
+
+
+                if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
+                    document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
+                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
+                    document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
+                    document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+                    document.getElementById("conclusao_normal").setAttribute("class", "paragrafo_mascara");
+
+                } else {
+                    document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio_modal").value;
+                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_modal").value;
+
+                }
+            }
+        }
 
 
 
