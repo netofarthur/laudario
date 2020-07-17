@@ -780,15 +780,13 @@ mostrarBotaoPopularSeNecessario();
 
                     label.innerHTML = construcao;
 
-            document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
-            document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
 
 
                 } else {
                     label.innerHTML = listaVars[i] + variaveisJSONObject.length;
                     inputHidden.setAttribute("value", listaVars[i] + variaveisJSONObject.length);
-                document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
-                document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
+  document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
+            document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
 
 
                 }
