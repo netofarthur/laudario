@@ -787,9 +787,9 @@ mostrarBotaoPopularSeNecessario();
                     var splitted = listaVars[i].split("|");
                     for(var w = 0; w < splitted.length; w++) {
                         if(w < splitted.length - 1) {
-                            construcao = construcao + splitted[w] + variaveisJSONObject.length + "|";
+                            construcao = construcao + splitted[w] + getVariaveisUsuarioCount() + "|";
                         } else {
-                            construcao = construcao + splitted[w] + variaveisJSONObject.length;
+                            construcao = construcao + splitted[w] + getVariaveisUsuarioCount();
                         }
                     }
                      inputHidden.setAttribute("value", construcao);
@@ -799,9 +799,9 @@ mostrarBotaoPopularSeNecessario();
 
 
                 } else {
-                    label.innerHTML = listaVars[i] + variaveisJSONObject.length;
-                    inputHidden.setAttribute("value", listaVars[i] + variaveisJSONObject.length);
-  document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
+                    label.innerHTML = listaVars[i] + getVariaveisUsuarioCount();
+                    inputHidden.setAttribute("value", listaVars[i] + getVariaveisUsuarioCount());
+            document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
             document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
 
 
@@ -870,6 +870,16 @@ mostrarBotaoPopularSeNecessario();
 
 
     }
+
+
+
+
+    function getVariaveisUsuarioCount() {
+            var variaveisJSONObject = JSON.parse(nomesAmigaveis);
+            return variaveisJSONObject.length;
+    }
+
+
 
 
     function mostrarBotaoPopularSeNecessario() {

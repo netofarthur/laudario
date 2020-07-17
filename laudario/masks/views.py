@@ -41,7 +41,7 @@ def mostrar_mascara(request, id_mascara):
 
     json_serializer = serializers.get_serializer("json")()
     alterados = json_serializer.serialize(TopicoAnormal.objects.all())
-    variaveis = json_serializer.serialize(Variavel.objects.all())
+    variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
     normais = json_serializer.serialize(TopicoNormal.objects.all())
 
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
