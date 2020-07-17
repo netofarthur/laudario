@@ -346,6 +346,9 @@ mostrarBotaoPopularSeNecessario();
                     //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
                     if(document.getElementById("adicionar_no_atual") != null) {
                         var result = listaParagrafos[i].innerHTML.match(pattern);
+                        if(className == "entrada_modal") {
+                            var result = listaParagrafos[i].value.match(pattern);
+                        }
 
                     } else {
                         var result = listaParagrafos[i].value.match(pattern);
@@ -557,13 +560,6 @@ mostrarBotaoPopularSeNecessario();
             var formulario =  document.getElementById("formulario_alteracao");
             formulario.setAttribute("action", "/mascaras/variaveis/adicionar");
 
-            var entradasModal = document.getElementsByClassName("entrada_modal");
-
-            var paragrafosMascara = document.getElementsByClassName("paragrafo_mascara");
-
-
-
-
 
         } else {
             var formulario =  document.getElementById("formulario_nova_mascara");
@@ -756,6 +752,22 @@ mostrarBotaoPopularSeNecessario();
 
                 }
 
+            var variavelJaExisteNaMascara = false;
+
+
+                var variaveisModal = obterListaVariaveis("entrada_modal");
+
+
+            var variaveisMascara = obterListaVariaveis("paragrafo_mascara");
+
+
+
+            for(variavelModal of variaveisModal) {
+                if(variaveisMascara.includes(variavelModal)) {
+                    variavelJaExiste = true;
+                }
+            }
+
 
             if(!variavelJaExiste) {
 
@@ -764,8 +776,6 @@ mostrarBotaoPopularSeNecessario();
 
 
                 label.innerHTML = listaVars[i];
-
-
 
 
 
@@ -808,6 +818,10 @@ mostrarBotaoPopularSeNecessario();
                 corpo.appendChild(label);
                 corpo.appendChild(input);
                 corpo.appendChild(inputMedida);
+
+
+
+
 
 
         }
