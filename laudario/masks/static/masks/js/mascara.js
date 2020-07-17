@@ -330,9 +330,9 @@ mostrarBotaoPopularSeNecessario();
 
 
 
-    function obterListaVariaveis() {
+    function obterListaVariaveis(className) {
         var listaVariaveis = [];
-        var listaParagrafos = document.getElementsByClassName("paragrafo_mascara");
+        var listaParagrafos = document.getElementsByClassName(className);
 
 
         var pattern = /\{([^}]+)\}/g;
@@ -449,7 +449,7 @@ mostrarBotaoPopularSeNecessario();
 
         var divVariaveis = document.getElementById("template_name_variaveis");
 
-        var lista = obterListaVariaveis();
+        var lista = obterListaVariaveis("paragrafo_mascara");
 
         //Mostra modal somente se tiver variaveis no corpo da máscara para preencher
         if(lista.length == 0) {
@@ -556,6 +556,15 @@ mostrarBotaoPopularSeNecessario();
         if(document.getElementById("adicionar_no_atual") != null) {
             var formulario =  document.getElementById("formulario_alteracao");
             formulario.setAttribute("action", "/mascaras/variaveis/adicionar");
+
+            var entradasModal = document.getElementsByClassName("entrada_modal");
+
+            var paragrafosMascara = document.getElementsByClassName("paragrafo_mascara");
+
+
+
+
+
         } else {
             var formulario =  document.getElementById("formulario_nova_mascara");
             formulario.setAttribute("action", "/mascaras/variaveis/adicionar");
@@ -566,6 +575,9 @@ mostrarBotaoPopularSeNecessario();
       $('#myModalAlteracao').modal('hide');
 
     }
+
+
+
 
     function obterListaVariaveisDaAlteracao() {
         var listaVariaveis = [];
@@ -607,25 +619,19 @@ mostrarBotaoPopularSeNecessario();
 
     function adicionarAlteracoNaMascara() {
 
-
-
-
                 var topicoNormalParaAlterar = document.getElementById("exames").value;
 
 
 
         var pattern = /\{([^}]+)\}/g;
 
-
-
-
-
-
         //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
         //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
         //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
         if(document.getElementById("adicionar_no_atual") != null) {
             var result = document.getElementById("relatorio_modal").value.match(pattern);
+
+
 
         } else {
             var result = [];
@@ -690,7 +696,7 @@ mostrarBotaoPopularSeNecessario();
             var listaVars = obterListaVariaveisDaAlteracao().concat(listaVariaveisNominais);
 
         } else {
-            var listaVars = obterListaVariaveis().concat(listaVariaveisNominais);
+            var listaVars = obterListaVariaveis("paragrafo_mascara").concat(listaVariaveisNominais);
 
             var corpo = document.getElementById("corpo_alteracao");
 
@@ -853,7 +859,7 @@ mostrarBotaoPopularSeNecessario();
 
 
     function mostrarBotaoPopularSeNecessario() {
-        var lista = obterListaVariaveis();
+        var lista = obterListaVariaveis("paragrafo_mascara");
         var botao = document.getElementById("popular_variaveis");
 
         if(botao != null) {
