@@ -35,7 +35,6 @@ def mostrar_mascara(request, id_mascara):
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
 
 
-
     topicos_anormais = TopicoAnormal.objects.all()
     topicos_anormais_builders = TopicoAnormalBuilder.objects.all()
 
@@ -43,9 +42,13 @@ def mostrar_mascara(request, id_mascara):
     alterados = json_serializer.serialize(TopicoAnormal.objects.all())
     variaveis = json_serializer.serialize(Variavel.objects.all())
     normais = json_serializer.serialize(TopicoNormal.objects.all())
+    mascarasJson = json_serializer.serialize(Mascara.objects.all())
+
+    usuarios2 = json_serializer.serialize(User.objects.all())
 
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
-               'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais, }
+               'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
+               'usuarios2': usuarios2, 'mascarasJson': mascarasJson,}
     return render(request, 'masks/mascara.html', context)
 
 def nova_mascara(request):

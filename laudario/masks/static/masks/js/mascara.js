@@ -623,7 +623,11 @@ mostrarBotaoPopularSeNecessario();
 
                 var topicoNormalParaAlterar = document.getElementById("exames").value;
 
+   var variaveis = obterListaVariaveis("entrada_modal");
 
+   var todasVariaveis = [];
+
+   var stringVars = "";
 
         var pattern = /\{([^}]+)\}/g;
 
@@ -775,6 +779,11 @@ mostrarBotaoPopularSeNecessario();
             }
 
 
+
+
+
+
+
             if(!variavelJaExiste) {
 
                 inputHidden.setAttribute("value", listaVars[i]);
@@ -830,7 +839,92 @@ mostrarBotaoPopularSeNecessario();
 
 
 
+
+
+
+
+
+
         }
+
+
+
+
+
+                  var mascaras = JSON.parse(mascarasJson);
+                var usuarios = JSON.parse(usuarios2);
+                var topicosNormais = JSON.parse(normais);
+                var variaveisJSONObject = JSON.parse(nomesAmigaveis);
+
+
+                var mascaraSelecionada;
+
+                var usuarioSelecionado;
+
+                for(topico of topicosNormais) {
+                    for(mascara of mascaras) {
+                        if(topico.fields.mascara == mascara.pk) {
+                            mascaraSelecionada = mascara;
+                        }
+                    }
+
+                }
+                for(usuario1 of usuarios) {
+                        if(mascaraSelecionada.fields.usuario == usuario1.pk) {
+                            usuarioSelecionado = usuario1;
+                        }
+
+                }
+
+
+
+
+
+                for(myvar of variaveis) {
+                     var splitted = myvar.split("|");
+                     todasVariaveis.push(myvar);
+
+
+                     for(var p = 0; p < splitted.length; p++) {
+                        todasVariaveis.push(splitted[p]);
+
+                     }
+
+                }
+
+
+                var nomesAmigos = [];
+
+
+                for(vari of variaveisJSONObject) {
+
+
+                    if(todasVariaveis.includes(vari.fields.nome_da_variavel)) {
+                        nomesAmigos.push(vari.fields.nome_amigavel);
+                    }
+
+
+                }
+
+
+
+
+                nomesAmigaveisInputs = document.getElementsByName("nome_amigavel_variavel");
+
+                for (var z = 0; z < nomesAmigaveisInputs.length; z++) {
+
+                    nomesAmigaveisInputs[z].value = nomesAmigos[z];
+                    if(nomesAmigaveisInputs[z].value == "undefined") {
+                        nomesAmigaveisInputs[z].value = "";
+                    }
+                }
+
+
+
+
+
+
+
 
 
 
@@ -922,6 +1016,9 @@ mostrarBotaoPopularSeNecessario();
                 document.getElementById("nome_modal").value = alteradosJSONObject[i].fields.nome;
                 document.getElementById("relatorio_modal").value = alteradosJSONObject[i].fields.relatorio;
                 document.getElementById("conclusao_modal").value = alteradosJSONObject[i].fields.conclusao;
+
+
+
 
 
             }
