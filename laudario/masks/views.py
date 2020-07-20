@@ -126,7 +126,11 @@ def adicionar_variaveis(request):
     mystr = ""
     for i in range(len(lista_nomes_variaveis)):
         variavel = Variavel(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i])
-        variavel.nome_amigavel = lista_nomes_amigaveis[i]
+        if(lista_nomes_amigaveis[i] == ""):
+            variavel.nome_amigavel = ''.join([i for i in lista_nomes_variaveis[i] if not i.isdigit()])
+        else:
+            variavel.nome_amigavel = lista_nomes_amigaveis[i]
+
         variavel.unidade_medida = lista_unidades_de_medidas[i]
         variavel.save()
 
