@@ -861,30 +861,9 @@ mostrarBotaoPopularSeNecessario();
 
 
 
-                  var mascaras = JSON.parse(mascarasJson);
-                var usuarios = JSON.parse(usuarios2);
-                var topicosNormais = JSON.parse(normais);
+
                 var variaveisJSONObject = JSON.parse(nomesAmigaveis);
 
-
-                var mascaraSelecionada;
-
-                var usuarioSelecionado;
-
-                for(topico of topicosNormais) {
-                    for(mascara of mascaras) {
-                        if(topico.fields.mascara == mascara.pk) {
-                            mascaraSelecionada = mascara;
-                        }
-                    }
-
-                }
-                for(usuario1 of usuarios) {
-                        if(mascaraSelecionada.fields.usuario == usuario1.pk) {
-                            usuarioSelecionado = usuario1;
-                        }
-
-                }
 
 
 
@@ -908,10 +887,13 @@ mostrarBotaoPopularSeNecessario();
 
                 for(vari of variaveisJSONObject) {
 
-
-                    if(todasVariaveis.includes(vari.fields.nome_da_variavel)) {
-                        nomesAmigos.push(vari.fields.nome_amigavel);
+                    if(vari.fields.usuario == document.getElementById("usuario_id_alteracao").value) {
+                        if(todasVariaveis.includes(vari.fields.nome_da_variavel)) {
+                            nomesAmigos.push(vari.fields.nome_amigavel);
+                        }
                     }
+
+
 
 
                 }
@@ -1034,6 +1016,32 @@ mostrarBotaoPopularSeNecessario();
             }
 
         }
+
+            var mascaras = JSON.parse(mascarasJson);
+            var usuarios = JSON.parse(usuarios2);
+            var topicosNormais = JSON.parse(normais);
+            var mascaraSelecionada;
+
+            var usuarioSelecionado;
+
+            for(topico of topicosNormais) {
+                for(mascara of mascaras) {
+                    if(topico.fields.mascara == mascara.pk) {
+                        mascaraSelecionada = mascara;
+                    }
+                }
+
+            }
+            for(usuario1 of usuarios) {
+                    if(mascaraSelecionada.fields.usuario == usuario1.pk) {
+                        usuarioSelecionado = usuario1;
+                    }
+
+            }
+
+
+            document.getElementById("usuario_id_alteracao").value = usuarioSelecionado.pk;
+
 
 
     }
