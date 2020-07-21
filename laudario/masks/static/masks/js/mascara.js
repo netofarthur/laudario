@@ -883,6 +883,7 @@ mostrarBotaoPopularSeNecessario();
 
 
                 var nomesAmigos = [];
+                var unidadesMedidas = [];
 
 
                 for(vari of variaveisJSONObject) {
@@ -890,6 +891,7 @@ mostrarBotaoPopularSeNecessario();
                     if(vari.fields.usuario == document.getElementById("usuario_id_alteracao").value) {
                         if(todasVariaveis.includes(vari.fields.nome_da_variavel)) {
                             nomesAmigos.push(vari.fields.nome_amigavel);
+                            unidadesMedidas.push(vari.fields.unidade_medida);
                         }
                     }
 
@@ -902,12 +904,14 @@ mostrarBotaoPopularSeNecessario();
 
 
                 nomesAmigaveisInputs = document.getElementsByName("nome_amigavel_variavel");
+                unidadesMedidasInputs = document.getElementsByName("unidade_de_medida");
 
                 for (var z = 0; z < nomesAmigaveisInputs.length; z++) {
 
                     //somente adiciona se tiverem todas variáveis (usuário não pode alterar depois de clicar).
                     if(nomesAmigaveisInputs.length == nomesAmigos.length) {
                         nomesAmigaveisInputs[z].value = nomesAmigos[z];
+                        unidadesMedidasInputs[z].value = unidadesMedidas[z];
                         if(nomesAmigaveisInputs[z].value == "undefined") {
                             nomesAmigaveisInputs[z].value = "";
                         }
