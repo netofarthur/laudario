@@ -905,10 +905,15 @@ mostrarBotaoPopularSeNecessario();
 
                 for (var z = 0; z < nomesAmigaveisInputs.length; z++) {
 
-                    nomesAmigaveisInputs[z].value = nomesAmigos[z];
-                    if(nomesAmigaveisInputs[z].value == "undefined") {
-                        nomesAmigaveisInputs[z].value = "";
+                    //somente adiciona se tiverem todas variáveis (usuário não pode alterar depois de clicar).
+                    if(nomesAmigaveisInputs.length == nomesAmigos.length) {
+                        nomesAmigaveisInputs[z].value = nomesAmigos[z];
+                        if(nomesAmigaveisInputs[z].value == "undefined") {
+                            nomesAmigaveisInputs[z].value = "";
+                        }
                     }
+
+
                 }
 
 
