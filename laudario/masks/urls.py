@@ -15,5 +15,6 @@ urlpatterns = [
     path('mascaras/', views.mostrar_mascaras, name='mostrar_mascaras'),
     path('salvaralteracao/', views.adicionar_alteracao, name='adicionar_alteracao'),
     path('mascaras/variaveis/adicionar', views.adicionar_variaveis, name='adicionar_variaveis'),
+    path('fazernada', views.fazer_nada, name='fazer_nada'),
 
 ]

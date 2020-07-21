@@ -564,15 +564,15 @@ mostrarBotaoPopularSeNecessario();
         //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
         if(document.getElementById("adicionar_no_atual") != null) {
             var formulario =  document.getElementById("formulario_alteracao");
-            formulario.setAttribute("action", "/mascaras/variaveis/adicionar");
+            formulario.setAttribute("action", "/salvaralteracao/");
 
 
         } else {
             var formulario =  document.getElementById("formulario_nova_mascara");
-            formulario.setAttribute("action", "/mascaras/variaveis/adicionar");
+            formulario.setAttribute("action", "/mascaras/nova/adicionar");
         }
             document.getElementById("salva_mudancas").setAttribute("onclick", "adicionarAlteracoNaMascara()");
-
+            formulario.submit();
         mostrarBotaoPopularSeNecessario();
       $('#myModalAlteracao').modal('hide');
 
@@ -621,9 +621,11 @@ mostrarBotaoPopularSeNecessario();
 
     function adicionarAlteracoNaMascara() {
 
+
                 var topicoNormalParaAlterar = document.getElementById("exames").value;
 
    var variaveis = obterListaVariaveis("entrada_modal");
+
 
    var todasVariaveis = [];
 
@@ -698,15 +700,23 @@ mostrarBotaoPopularSeNecessario();
 
         if(document.getElementById("adicionar_no_atual") != null) {
             var corpo = document.getElementById("corpo_variaveis");
+            var formulario =  document.getElementById("formulario_alteracao");
 
             var listaVars = obterListaVariaveisDaAlteracao().concat(listaVariaveisNominais);
 
         } else {
             var listaVars = obterListaVariaveis("paragrafo_mascara").concat(listaVariaveisNominais);
+            var formulario =  document.getElementById("formulario_nova_mascara");
 
             var corpo = document.getElementById("corpo_alteracao");
 
         }
+
+        if(listaVars.length == 0) {
+                formulario.submit();
+
+        }
+
 
 
 

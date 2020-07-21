@@ -113,10 +113,24 @@ def adicionar_nova_mascara(request):
         topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i])
         topico_normal.save()
 
-
+    adicionar_variaveis(request)
 
     return HttpResponse(status=204)
 
+
+def adicionar_alteracao(request):
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+    if request.POST.get('adicionar_no_banco', False):
+
+        topicoNormal = TopicoNormal.objects.get(pk=request.POST['exames'])
+
+        topicoAnormal = TopicoAnormal(topico_normal=topicoNormal, nome=request.POST['nome_modal'], relatorio=request.POST['relatorio_modal'], conclusao=request.POST['conclusao_modal'])
+        topicoAnormal.save()
+        adicionar_variaveis(request)
+
+        return HttpResponse(status=204)
 
 def adicionar_variaveis(request):
     usuario = request.user
@@ -134,7 +148,6 @@ def adicionar_variaveis(request):
         variavel.unidade_medida = lista_unidades_de_medidas[i]
         variavel.save()
 
-    return HttpResponse(status=204)
 
 
 def obter_variaveis(frase):
@@ -208,16 +221,10 @@ def mostrar_mascaras(request):
     context = {'mascaras': mascaras, 'exames': exames, 'especialidades': especialidades}
     return render(request, 'masks/mascaras.html', context)
 
-def adicionar_alteracao(request):
-    if not request.user.is_authenticated:
-        return redirect(views.mostrar_index)
 
-    if request.POST.get('adicionar_no_banco', False):
 
-        topicoNormal = TopicoNormal.objects.get(pk=request.POST['exames'])
 
-        topicoAnormal = TopicoAnormal(topico_normal=topicoNormal, nome=request.POST['nome_modal'], relatorio=request.POST['relatorio_modal'], conclusao=request.POST['conclusao_modal'])
-        topicoAnormal.save()
-        context = {}
+def fazer_nada(request):
     return HttpResponse(status=204)
+
 
