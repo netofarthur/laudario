@@ -110,6 +110,12 @@
 
 }
 
+.botao_calculadora_nominal {
+     background: red;
+    position: relative;
+    width: 100%;
+}
+
 .botao_calculadora_duplo {
     background: red;
         width: 100%;
@@ -125,6 +131,12 @@
 }
 
 #teclado {
+    margin-right: 20%;
+        margin-left: 20%;
+
+}
+
+#teclado_nominal {
     margin-right: 20%;
         margin-left: 20%;
 

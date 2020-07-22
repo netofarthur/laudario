@@ -245,7 +245,7 @@
 
                   <div id="teclado_nominal">
 
-                      teste
+
 
                   </div>
 
@@ -395,8 +395,12 @@ $('#ModalVariaveis').on('shown.bs.modal', function (e) {
             if(variaveisDiv.firstChild.children[1].getAttribute("name") == "input") {
                 variaveisDiv.firstChild.children[1].focus();
                 variaveisDiv.firstChild.children[1].select();
+                 document.getElementById("teclado").style.display = "block";
+                document.getElementById("teclado_nominal").style.display = "none";
             } else {
                 variaveisDiv.firstChild.children[1].focus();
+                document.getElementById("teclado").style.display = "none";
+                document.getElementById("teclado_nominal").style.display = "block";
 
 
 

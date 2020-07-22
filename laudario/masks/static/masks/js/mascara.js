@@ -450,15 +450,43 @@ mostrarBotaoPopularSeNecessario();
             if(variaveisDiv.firstChild.children[1].getAttribute("name") == "input") {
                 variaveisDiv.firstChild.children[1].focus();
                 variaveisDiv.firstChild.children[1].select();
+                   document.getElementById("teclado").style.display = "block";
+                document.getElementById("teclado_nominal").style.display = "none";
 
             } else {
                 variaveisDiv.firstChild.children[1].focus();
+            document.getElementById("teclado").style.display = "none";
+            var tecladoNominal = document.getElementById("teclado_nominal");
+                tecladoNominal.style.display = "block";
+                var opcoes = document.getElementsByName("select")[0];
+                for (opcao of opcoes) {
+                    var botao = document.createElement("button");
+                    botao.innerHTML = opcao.value;
+                    botao.setAttribute("onclick", "selecionarVariavelNominal(this.innerHTML)");
+                    botao.setAttribute("class", "botao_calculadora_nominal");
+                    tecladoNominal.appendChild(botao);
+                }
+
+                var proximaVariavelBotao = document.createElement("button");
+                proximaVariavelBotao.setAttribute("class", "botao_calculadora_triplo");
+                proximaVariavelBotao.setAttribute("onclick", "mostrarProximaVariavel()");
+                proximaVariavelBotao.innerHTML = "Próxima variável";
+                tecladoNominal.appendChild(proximaVariavelBotao);
+
 
             }
         }
 
 
+
+
     }
+
+function selecionarVariavelNominal(textoSelecao) {
+            mostrarProximaVariavel();
+           var variaveisInativas = document.getElementById("variaveis_inativas");
+           variaveisInativas.firstChild.children[1].value = textoSelecao;
+}
 
 
     function insertAtCursor(myValue) {
