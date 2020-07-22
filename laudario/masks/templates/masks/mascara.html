@@ -151,35 +151,16 @@
                             <div class="row no-gutters">
 
                                 <div class="col-4">
-                                    <button name="botao_calculadora" class="botao_calculadora">1</button>
+                                    <button id="botao1" name="botao_calculadora" class="botao_calculadora">1</button>
                                 </div>
 
                                 <div class="col-4">
-                                    <button name="botao_calculadora" class="botao_calculadora">2</button>
-
-                                </div>
-
-                                <div class="col-4">
-                                    <button name="botao_calculadora" class="botao_calculadora">3</button>
-
-                                </div>
-
-                            </div>
-
-
-                          <div class="row no-gutters">
-
-                                <div class="col-4">
-                                    <button name="botao_calculadora" class="botao_calculadora">4</button>
-                                </div>
-
-                                <div class="col-4">
-                                    <button name="botao_calculadora" class="botao_calculadora">5</button>
+                                    <button id="botao2" name="botao_calculadora" class="botao_calculadora">2</button>
 
                                 </div>
 
                                 <div class="col-4">
-                                    <button name="botao_calculadora" class="botao_calculadora">6</button>
+                                    <button id="botao3" name="botao_calculadora" class="botao_calculadora">3</button>
 
                                 </div>
 
@@ -189,17 +170,36 @@
                           <div class="row no-gutters">
 
                                 <div class="col-4">
-                                    <button name="botao_calculadora" class="botao_calculadora">7</button>
+                                    <button id="botao4" name="botao_calculadora" class="botao_calculadora">4</button>
+                                </div>
+
+                                <div class="col-4">
+                                    <button id="botao5" name="botao_calculadora" class="botao_calculadora">5</button>
 
                                 </div>
 
                                 <div class="col-4">
-                                    <button name="botao_calculadora" class="botao_calculadora">8</button>
+                                    <button id="botao6" name="botao_calculadora" class="botao_calculadora">6</button>
+
+                                </div>
+
+                            </div>
+
+
+                          <div class="row no-gutters">
+
+                                <div class="col-4">
+                                    <button id="botao7" name="botao_calculadora" class="botao_calculadora">7</button>
 
                                 </div>
 
                                 <div class="col-4">
-                                    <button name="botao_calculadora" class="botao_calculadora">9</button>
+                                    <button id="botao8" name="botao_calculadora" class="botao_calculadora">8</button>
+
+                                </div>
+
+                                <div class="col-4">
+                                    <button id="botao9" name="botao_calculadora" class="botao_calculadora">9</button>
 
                                 </div>
 
@@ -209,12 +209,12 @@
                           <div class="row no-gutters">
 
                                 <div class="col-8">
-                                    <button name="botao_calculadora" class="botao_calculadora_duplo">0</button>
+                                    <button id="botao0" name="botao_calculadora" class="botao_calculadora_duplo">0</button>
 
                                 </div>
 
                                 <div class="col-4">
-                                    <button name="botao_calculadora" class="botao_calculadora">,</button>
+                                    <button id="botaovirgula" name="botao_calculadora" class="botao_calculadora">,</button>
 
                                 </div>
 
@@ -393,6 +393,15 @@ $("#myModalAlteracao").on("show.bs.modal", function(){
 
 
 });
+
+
+// Prevent capturing focus by the button na calculadora.
+$('button').on('mousedown',
+    /** @param {!jQuery.Event} event */
+    function(event) {
+        event.preventDefault();
+    }
+);
 
 </script>
 
