@@ -669,6 +669,7 @@ mostrarBotaoPopularSeNecessario();
             //em um mesmo laudo.
             var count = 0;
             for(variavel of result) {
+
                 var variaveisNominais = variavel.split("|")
                 if(variaveisNominais.length > 1) {
                     for(variavelNominal of variaveisNominais) {
@@ -826,8 +827,17 @@ mostrarBotaoPopularSeNecessario();
                 } else {
                     label.innerHTML = listaVars[i] + getVariaveisUsuarioCount();
                     inputHidden.setAttribute("value", listaVars[i] + getVariaveisUsuarioCount());
-            document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
-            document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
+                     if(document.getElementById("adicionar_no_atual") != null) {
+                        document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
+                        document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
+
+                     } else {
+                        var orgaos = document.getElementsByClassName("paragrafo_mascara");
+                        for(orgao of orgaos) {
+                            orgao.value = orgao.value.replace(listaVars[i], inputHidden.value);
+                        }
+                     }
+
 
 
                 }
@@ -1011,17 +1021,18 @@ mostrarBotaoPopularSeNecessario();
     function popularFraseAlterada(topicoId) {
         var idSemT = topicoId.substring(1, topicoId.length);
         var alteradosJSONObject = JSON.parse(alterados);
+
+        var topicoNormalId;
+
         for(i = 0; i < alteradosJSONObject.length; i++) {
+
+
 
             if(alteradosJSONObject[i].pk == idSemT) {
                 document.getElementById("nome_modal").value = alteradosJSONObject[i].fields.nome;
                 document.getElementById("relatorio_modal").value = alteradosJSONObject[i].fields.relatorio;
                 document.getElementById("conclusao_modal").value = alteradosJSONObject[i].fields.conclusao;
-
-
-
-
-
+                topicoNormalId = alteradosJSONObject[i].fields.topico_normal;
             }
 
         }
@@ -1030,26 +1041,31 @@ mostrarBotaoPopularSeNecessario();
             var usuarios = JSON.parse(usuarios2);
             var topicosNormais = JSON.parse(normais);
             var mascaraSelecionada;
+            var mascaraSelecionadaId;
+            var usuarioSelecionadoId;
 
-            var usuarioSelecionado;
 
             for(topico of topicosNormais) {
-                for(mascara of mascaras) {
-                    if(topico.fields.mascara == mascara.pk) {
-                        mascaraSelecionada = mascara;
-                    }
+                if(topico.pk == topicoNormalId) {
+                    mascaraSelecionadaId = topico.fields.mascara;
+
                 }
 
             }
-            for(usuario1 of usuarios) {
-                    if(mascaraSelecionada.fields.usuario == usuario1.pk) {
-                        usuarioSelecionado = usuario1;
-                    }
+
+
+             for(mascara of mascaras) {
+                if(mascara.pk == mascaraSelecionadaId) {
+                    usuarioSelecionadoId = mascara.fields.usuario;
+                }
 
             }
 
 
-            document.getElementById("usuario_id_alteracao").value = usuarioSelecionado.pk;
+
+
+
+            document.getElementById("usuario_id_alteracao").value = usuarioSelecionadoId;
 
 
 

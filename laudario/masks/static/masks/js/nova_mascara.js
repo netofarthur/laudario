@@ -1,6 +1,20 @@
 
 function popularMascara(mascaraId) {
 
+        var usuarioSelecionadoId;
+        var mascaras = JSON.parse(mascarasJson);
+
+
+        for(mascara of mascaras) {
+                if(mascara.pk == mascaraId) {
+                    usuarioSelecionadoId = mascara.fields.usuario;
+                }
+
+        }
+
+        document.getElementById("usuario_id_alteracao").value = usuarioSelecionadoId;
+
+
         var entradasNomesOrgaos = document.getElementsByName("orgao");
         var entradasRelatorios = document.getElementsByName("relatorio_orgao");
         var orgaoLabels = document.getElementsByName("orgaolabel");
@@ -66,6 +80,7 @@ function popularMascara(mascaraId) {
 
 
 }
+
 
   function adicionarEntradaOrgao() {
 
