@@ -457,7 +457,13 @@ mostrarBotaoPopularSeNecessario();
     }
 
 
-    function insertAtCursor(myField, myValue) {
+    function insertAtCursor(myValue) {
+        var variaveisDiv = document.getElementById("template_name_variaveis");
+
+
+
+        var myField = variaveisDiv.firstChild.children[1];
+
         //IE support
         if (document.selection) {
             myField.focus();
@@ -474,6 +480,8 @@ mostrarBotaoPopularSeNecessario();
         } else {
             myField.value += myValue;
         }
+        myField.focus();
+
     }
 
 
@@ -496,6 +504,10 @@ mostrarBotaoPopularSeNecessario();
     //Função coloca as variaveis a serem preenchidas pelo usuario em um Modal.
     function popularVariaveis() {
 
+        var botoes = document.getElementsByName("botao_calculadora");
+        for(botao of botoes) {
+            botao.setAttribute("onclick", "insertAtCursor(this.innerHTML)")
+        }
 
         var divVariaveis = document.getElementById("template_name_variaveis");
         var divVariaveisInativas = document.getElementById("variaveis_inativas");
