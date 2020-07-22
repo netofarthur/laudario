@@ -458,6 +458,11 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById("teclado").style.display = "none";
             var tecladoNominal = document.getElementById("teclado_nominal");
                 tecladoNominal.style.display = "block";
+
+               while(tecladoNominal.firstChild) {
+                tecladoNominal.removeChild(tecladoNominal.firstChild);
+               }
+
                 var opcoes = document.getElementsByName("select")[0];
                 for (opcao of opcoes) {
                     var botao = document.createElement("button");
@@ -485,7 +490,13 @@ mostrarBotaoPopularSeNecessario();
 function selecionarVariavelNominal(textoSelecao) {
             mostrarProximaVariavel();
            var variaveisInativas = document.getElementById("variaveis_inativas");
-           variaveisInativas.firstChild.children[1].value = textoSelecao;
+
+            var children = variaveisInativas.children;
+
+                children[children.length - 1].children[1].value = textoSelecao;
+
+
+
 }
 
 
