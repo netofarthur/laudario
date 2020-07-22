@@ -624,7 +624,7 @@ mostrarBotaoPopularSeNecessario();
 
                 var topicoNormalParaAlterar = document.getElementById("exames").value;
 
-   var variaveis = obterListaVariaveis("entrada_modal");
+
 
 
    var todasVariaveis = [];
@@ -637,11 +637,14 @@ mostrarBotaoPopularSeNecessario();
         //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
         //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
         if(document.getElementById("adicionar_no_atual") != null) {
+            var variaveis = obterListaVariaveis("entrada_modal");
             var result = document.getElementById("relatorio_modal").value.match(pattern);
 
 
 
         } else {
+            var variaveis = obterListaVariaveis("paragrafo_mascara");
+
             var result = [];
             var resultados = document.getElementsByClassName("paragrafo_mascara");
             for(resultado of resultados) {
@@ -857,26 +860,10 @@ mostrarBotaoPopularSeNecessario();
 
 
 
-
-
-
-
-
-
-
-
         }
 
 
-
-
-
-
                 var variaveisJSONObject = JSON.parse(nomesAmigaveis);
-
-
-
-
 
 
                 for(myvar of variaveis) {
@@ -894,7 +881,6 @@ mostrarBotaoPopularSeNecessario();
 
                 var nomesAmigos = [];
                 var unidadesMedidas = [];
-
 
                 for(vari of variaveisJSONObject) {
 
