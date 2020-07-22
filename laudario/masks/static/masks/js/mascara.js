@@ -487,6 +487,26 @@ mostrarBotaoPopularSeNecessario();
 
     }
 
+
+function adaptarCalculadoraMaisSave() {
+     var variaveisAtivas = document.getElementById("template_name_variaveis");
+
+            var botaoTriplo = document.getElementsByClassName("botao_calculadora_triplo")[0];
+
+            if(variaveisAtivas.firstChild == null) {
+                document.getElementById("save_changes_variaveis").style.display = "block";
+                botaoTriplo.style.display = "none";
+                document.getElementById("teclado").style.display = "block";
+                document.getElementById("teclado_nominal").style.display = "none";
+
+            } else {
+                document.getElementById("save_changes_variaveis").style.display = "none";
+                botaoTriplo.style.display = "block";
+
+
+            }
+}
+
 function selecionarVariavelNominal(textoSelecao) {
             mostrarProximaVariavel();
            var variaveisInativas = document.getElementById("variaveis_inativas");
@@ -530,6 +550,8 @@ function selecionarVariavelNominal(textoSelecao) {
 
 
     function mostrarProximaVariavel() {
+
+
            var variaveisDiv = document.getElementById("template_name_variaveis");
            var variaveisInativasDiv = document.getElementById("variaveis_inativas");
 
@@ -541,6 +563,8 @@ function selecionarVariavelNominal(textoSelecao) {
 
            }
            selecionarVariavel();
+                     adaptarCalculadoraMaisSave();
+
 
     }
 
