@@ -242,6 +242,13 @@
 
                   </div>
 
+
+                  <div id="teclado_nominal">
+
+                      teste
+
+                  </div>
+
                 <div id="variaveis_inativas">
 
 
@@ -376,7 +383,31 @@
               document.getElementById("save_changes").setAttribute("name", button.name);
 
               includeHTML();
-        })
+        });
+
+
+$('#ModalVariaveis').on('shown.bs.modal', function (e) {
+   var variaveisDiv = document.getElementById("template_name_variaveis");
+
+        if(variaveisDiv.firstChild != null) {
+
+
+            if(variaveisDiv.firstChild.children[1].getAttribute("name") == "input") {
+                variaveisDiv.firstChild.children[1].focus();
+                variaveisDiv.firstChild.children[1].select();
+            } else {
+                variaveisDiv.firstChild.children[1].focus();
+
+
+
+            }
+        }
+});
+
+
+
+
+
 
 
 $("#myModalAlteracao").on("show.bs.modal", function(){

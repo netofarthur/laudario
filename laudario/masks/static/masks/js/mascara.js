@@ -441,12 +441,16 @@ mostrarBotaoPopularSeNecessario();
     }
 
     function selecionarVariavel() {
+
        var variaveisDiv = document.getElementById("template_name_variaveis");
 
         if(variaveisDiv.firstChild != null) {
-            if(variaveisDiv.firstChild.children[1].tagName == "input") {
+
+
+            if(variaveisDiv.firstChild.children[1].getAttribute("name") == "input") {
                 variaveisDiv.firstChild.children[1].focus();
                 variaveisDiv.firstChild.children[1].select();
+
             } else {
                 variaveisDiv.firstChild.children[1].focus();
 
@@ -494,7 +498,7 @@ mostrarBotaoPopularSeNecessario();
                   variaveisInativasDiv.appendChild(variaveisDiv.firstChild);
            }
            if(variaveisDiv.firstChild != null) {
-                   variaveisDiv.firstChild.style.display = "block"
+                   variaveisDiv.firstChild.style.display = "block";
 
            }
            selecionarVariavel();
@@ -534,6 +538,7 @@ mostrarBotaoPopularSeNecessario();
         for(var i = 0; i < lista.length; i++) {
             var input = document.createElement("input");
             input.setAttribute("type", "text");
+            input.setAttribute("name", "input");
 
 
 
@@ -570,6 +575,7 @@ mostrarBotaoPopularSeNecessario();
 
 
             var select = document.createElement("select");
+            select.setAttribute("name", "select");
 
 
 
