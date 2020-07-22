@@ -461,6 +461,7 @@ mostrarBotaoPopularSeNecessario();
 
 
         var divVariaveis = document.getElementById("template_name_variaveis");
+        var divVariaveisInativas = document.getElementById("variaveis_inativas");
 
         var lista = obterListaVariaveis("paragrafo_mascara");
 
@@ -479,6 +480,7 @@ mostrarBotaoPopularSeNecessario();
 
         //Limpa modal de popular variáveis sempre quando ele é iniciado.
         divVariaveis.innerHTML = "";
+        divVariaveisInativas.innerHTML = "";
         for(var i = 0; i < lista.length; i++) {
             var input = document.createElement("input");
             input.setAttribute("type", "text");
