@@ -520,33 +520,59 @@ function selecionarVariavelNominal(textoSelecao) {
 }
 
 
-    function insertAtCursor(myValue) {
-
-        var variaveisDiv = document.getElementById("template_name_variaveis");
-
-
-
-        var myField = document.activeElement;
-
-        //IE support
-        if (document.selection) {
-            myField.focus();
-            sel = document.selection.createRange();
-            sel.text = myValue;
+function moveCaret(win, charCount) {
+    var sel, range;
+    if (win.getSelection) {
+        // IE9+ and other browsers
+        sel = win.getSelection();
+        if (sel.rangeCount > 0) {
+            var textNode = sel.focusNode;
+            var newOffset = sel.focusOffset + charCount;
+            sel.collapse(textNode, Math.min(textNode.length, newOffset));
         }
-        //MOZILLA and others
-        else if (myField.selectionStart || myField.selectionStart == '0') {
-            var startPos = myField.selectionStart;
-            var endPos = myField.selectionEnd;
-            myField.value = myField.value.substring(0, startPos)
-                + myValue
-                + myField.value.substring(endPos, myField.value.length);
-        } else {
-            myField.value += myValue;
-        }
-        myField.focus();
-
     }
+}
+
+
+function insertAtCursor(text) {
+  var txtarea = document.activeElement;
+  if (!txtarea) {
+    return;
+  }
+
+  var scrollPos = txtarea.scrollTop;
+  var strPos = 0;
+  var br = ((txtarea.selectionStart || txtarea.selectionStart == '0') ?
+    "ff" : (document.selection ? "ie" : false));
+  if (br == "ie") {
+    txtarea.focus();
+    var range = document.selection.createRange();
+    range.moveStart('character', -txtarea.value.length);
+    strPos = range.text.length;
+  } else if (br == "ff") {
+    strPos = txtarea.selectionStart;
+  }
+
+  var front = (txtarea.value).substring(0, strPos);
+  var back = (txtarea.value).substring(strPos, txtarea.value.length);
+  txtarea.value = front + text + back;
+  strPos = strPos + text.length;
+  if (br == "ie") {
+    txtarea.focus();
+    var ieRange = document.selection.createRange();
+    ieRange.moveStart('character', -txtarea.value.length);
+    ieRange.moveStart('character', strPos);
+    ieRange.moveEnd('character', 0);
+    ieRange.select();
+  } else if (br == "ff") {
+    txtarea.selectionStart = strPos;
+    txtarea.selectionEnd = strPos;
+    txtarea.focus();
+  }
+
+  txtarea.scrollTop = scrollPos;
+}
+
 
 
     function mostrarProximaVariavel() {
