@@ -441,13 +441,23 @@ mostrarBotaoPopularSeNecessario();
     }
 
 
+    function mostrarProximaVariavel() {
+           var variaveisDiv = document.getElementById("template_name_variaveis");
+           var variaveisInativasDiv = document.getElementById("variaveis_inativas");
 
+           if(variaveisDiv.firstChild.style.display == "block") {
+                  variaveisInativasDiv.appendChild(variaveisDiv.firstChild);
+           }
+           if(variaveisDiv.firstChild != null) {
+                   variaveisDiv.firstChild.style.display = "block"
+
+           }
+
+    }
 
 
     //Função coloca as variaveis a serem preenchidas pelo usuario em um Modal.
     function popularVariaveis() {
-
-
 
 
         var divVariaveis = document.getElementById("template_name_variaveis");
@@ -498,8 +508,13 @@ mostrarBotaoPopularSeNecessario();
 
             }
 
+            var divVariavel = document.createElement("div");
+            divVariavel.style.display = "none";
+                divVariaveis.appendChild(divVariavel);
 
-            divVariaveis.appendChild(labelVisivel);
+            divVariavel.appendChild(labelVisivel);
+
+
 
 
             var select = document.createElement("select");
@@ -521,16 +536,16 @@ mostrarBotaoPopularSeNecessario();
                     select.appendChild(opcao);
                 }
                 select.setAttribute("id", "var" + i);
-                divVariaveis.appendChild(select);
+                divVariavel.appendChild(select);
 
             } else {
                     input.setAttribute("id", "var" + i);
-                  divVariaveis.appendChild(input);
+                  divVariavel.appendChild(input);
 
             }
 
-              divVariaveis.appendChild(document.createElement("br"));
-              divVariaveis.appendChild(labelInput);
+              divVariavel.appendChild(document.createElement("br"));
+              divVariavel.appendChild(labelInput);
 
 
             //Se for expressão ou repetida, não mostrar.
@@ -542,7 +557,7 @@ mostrarBotaoPopularSeNecessario();
 
             } else {
 
-                divVariaveis.appendChild(document.createElement("br"));
+                divVariavel.appendChild(document.createElement("br"));
 
             }
 
@@ -551,7 +566,7 @@ mostrarBotaoPopularSeNecessario();
         }
 
 
-
+    mostrarProximaVariavel();
 
     }
 
@@ -890,9 +905,6 @@ mostrarBotaoPopularSeNecessario();
                             unidadesMedidas.push(vari.fields.unidade_medida);
                         }
                     }
-
-
-
 
                 }
 
