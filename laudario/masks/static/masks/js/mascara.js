@@ -737,6 +737,9 @@ function insertAtCursor(text) {
     function colocarNomesAmigaveisAlteracao() {
 
 
+
+
+
         //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
         //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
         //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
@@ -753,6 +756,9 @@ function insertAtCursor(text) {
             formulario.submit();
         mostrarBotaoPopularSeNecessario();
       $('#myModalAlteracao').modal('hide');
+
+
+
 
     }
 

@@ -233,13 +233,16 @@ def configuracoes(request):
 
 
 def editar_mascara(request, id_mascara):
+    json_serializer = serializers.get_serializer("json")()
+
+    variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
     especialidades = Especialidade.objects.all()
     topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara))
     mascara = Mascara.objects.get(pk=id_mascara)
     exames = Exame.objects.all()
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
     context = {'mascara': mascara, 'especialidades': especialidades, 'exames': exames, 'topicos_normais': topicos_normais,
-               'topicos_anormais': topicos_anormais,}
+               'topicos_anormais': topicos_anormais,'variaveis': variaveis}
     return render(request, 'masks/editar_mascara.html', context)
 
 
@@ -290,16 +293,20 @@ def salvar_edicao(request, id_mascara):
     for i in range(len(orgaosDaMascara)):
         if(str(orgaosDaMascara[i].pk) not in lista_ids_orgaos):
             orgaosDaMascara[i].delete()
-
-
-    return HttpResponse("<html><body><p>" + str(id_mascara) + "</p></body></html>")
-
+    adicionar_variaveis(request)
+    return HttpResponse(status=204)
 
 
 def editar_alteracao(request, id_alteracao, id_mascara):
+    json_serializer = serializers.get_serializer("json")()
+
+
+    variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
+
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
     topico_anormal = TopicoAnormal.objects.get(pk=id_alteracao)
-    context = {'id_alteracao': id_alteracao, 'topico_anormal': topico_anormal, 'topicos_normais': topicos_normais,}
+    context = {'id_alteracao': id_alteracao, 'topico_anormal': topico_anormal, 'topicos_normais': topicos_normais,
+               'variaveis': variaveis,}
     return render(request, 'masks/editar_alteracao.html', context)
 
 
