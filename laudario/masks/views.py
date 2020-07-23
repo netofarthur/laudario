@@ -232,3 +232,10 @@ def configuracoes(request):
     return render(request, 'masks/configuracoes.html', context)
 
 
+def editar_mascara(request, id_mascara):
+    especialidades = Especialidade.objects.all()
+    mascara = Mascara.objects.get(pk=id_mascara)
+    exames = Exame.objects.all()
+    topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
+    context = {'mascara': mascara, 'especialidades': especialidades, 'exames': exames, 'topicos_normais': topicos_normais}
+    return render(request, 'masks/editar_mascara.html', context)

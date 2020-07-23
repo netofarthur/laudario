@@ -1,0 +1,144 @@
+{% extends "masks/base.html" %}
+
+{% load static %}
+
+{% block css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+
+{% endblock css %}
+
+
+{% block conteudo %}
+
+ <script>
+    var mascarasJson = '{{ mascarasJson|escapejs }}';
+    var topicosNormais = '{{ topicos_normais|escapejs }}';
+ </script>
+
+<script type="text/javascript" src="{% static 'masks/js/nova_mascara.js' %}"></script>
+<script type="text/javascript" src="{% static 'masks/js/mascara.js' %}"></script>
+
+<div id="mycontainer">
+
+<div class="container-fluid">
+
+<div class="row">
+
+<div class="col-6">
+
+<h1> {{mascara.nome}} </h1>
+
+
+<form action="" method="post" id="salvar_edicao_mascara">
+{% csrf_token %}
+
+
+
+<div class="form-group">
+  <label for="exames">Exame: </label>
+  <select class="form-control" name ="exames" id="exames">
+    {% for exame in exames %}
+      <option value={{ exame.pk }}>{{exame.descricao}}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="especialidades">Especialidade: </label>
+  <select class="form-control" name ="especialidades" id="especialidades">
+    {% for especialidade in especialidades %}
+      <option value={{ especialidade.pk }}>{{especialidade.descricao}}</option>
+    {% endfor %}
+  </select>
+</div>
+
+
+
+<label for="nome_exame">Nome/descrição do exame: </label>
+<input type="text" id="nome_exame" name="nome_exame" value="{{ mascara.nome }}">
+<br>
+
+<label for="titulo_exame">Título do exame: </label>
+<input type="text" id="titulo_exame" name="titulo_exame" value="{{ mascara.titulo }}">
+<br>
+
+<label for="tecnica_header">Título da técnica: </label>
+<input type="text" id="tecnica_header" name="tecnica_header" value="{{ mascara.tecnica_header }}">
+<br>
+
+<label for="tecnica">Descrição da técnica: </label>
+<input type="text" id="tecnica" name="tecnica" value="{{ mascara.tecnica }}">
+<br>
+
+<label for="relatorio_header">Título do relatório: </label>
+<input type="text" id="relatorio_header" name="relatorio_header"  value="{{ mascara.relatorio_header }}">
+<br>
+
+<div id="lista_orgaos">
+
+{% for topico_normal in topicos_normais %}
+
+<div name="orgao_div">
+<label name="orgaolabel">Órgão: </label>
+<input type="text" name="orgao" value="{{ topico_normal.orgao }}">
+
+<button type="button" onclick="removerEntradaOrgao(this.id)" id="{{ forloop.counter0 }}">Remover</button>
+
+
+<br>
+
+<textarea class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão">{{ topico_normal.relatorio }}</textarea>
+<br name="orgaobr">
+    </div>
+{% endfor %}
+<a href="javascript:adicionarEntradaOrgao()" id="adicionar_entrada_orgao">Novo órgão</a>
+
+</div>
+
+<label for="conclusao_header">Título da conclusão: </label>
+<input type="text" id="conclusao_header" name="conclusao_header" value="{{ mascara.conclusao_header }}">
+<br>
+
+
+<label for="conclusao">Descrição da conclusão: </label>
+<input type="text" id="conclusao" name="conclusao" class="paragrafo_mascara" value="{{ mascara.conclusao }}">
+<br>
+
+<div id="corpo_alteracao">
+
+</div>
+
+
+<input type="button" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
+<input type="hidden" id="usuario_id_alteracao">
+
+</form>
+
+
+<!-- Tem o mesmo nome do id em topico_alterado html para aprofeitar funções
+e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
+
+
+
+
+
+
+</div>
+
+<div class="col-6">
+
+  {% for mascara in mascaras %}
+            <button type="button" class="botao_diagnostico" id="{{ mascara.pk }}" onclick="popularMascara(this.id)">{{ mascara.nome }}</button>
+
+  {% endfor %}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock conteudo %}

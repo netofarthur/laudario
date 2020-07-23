@@ -68,7 +68,7 @@
                 {% if mascara.especialidade == especialidade %}
                 <div class="container-fluid" style="margin: 2px; padding: 2px;">
                     <div class="row">
-                    <div class="col-5">
+                    <div class="col-6">
 
                         <a href="{% url 'mostrar_mascara' id_mascara=mascara.pk %}" name="{{ mascara.exame.pk }}">{{ mascara.nome }}</a>
                     </div>
@@ -76,17 +76,17 @@
                     <div class="col">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-4">
-                        <button class="botao_configuracao">Editar</button>
+                                <div class="col-6">
+                                   <form action="{% url 'editar_mascara' mascara.pk %}">
+                                    <input class="botao_configuracao" type="submit" value="Editar" />
+                                </form>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-6">
                         <button class="botao_configuracao">Excluir</button>
                                     </div>
 
-                                    <div class="col-4">
-                        <button class="botao_configuracao">Frases</button>
-                                    </div>
+
                          </div>
                             </div>
                     </div>
