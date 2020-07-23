@@ -224,7 +224,8 @@ def mostrar_mascaras(request):
 
 
 
-def fazer_nada(request):
-    return HttpResponse(status=204)
+def configuracoes(request):
+    context = {}
+    return render(request, 'masks/configuracoes.html', context)
 
 
