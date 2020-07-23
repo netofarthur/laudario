@@ -1235,14 +1235,17 @@ function insertAtCursor(text) {
 
     function CopyToClipboard() {
     var containerid = "mascara_div";
+
       if (document.selection) {
         var range = document.body.createTextRange();
         range.moveToElementText(document.getElementById(containerid));
         range.select().createTextRange();
         document.execCommand("copy");
       } else if (window.getSelection) {
+        selection = window.getSelection();
         var range = document.createRange();
         range.selectNode(document.getElementById(containerid));
+        selection.removeAllRanges();          // Remove all ranges from the selection.
         window.getSelection().addRange(range);
         document.execCommand("copy");
       }
