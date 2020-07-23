@@ -128,8 +128,36 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
 
 <div class="col-6">
 
-  {% for mascara in mascaras %}
-            <button type="button" class="botao_diagnostico" id="{{ mascara.pk }}" onclick="popularMascara(this.id)">{{ mascara.nome }}</button>
+  {% for topico_anormal in topicos_anormais %}
+                        <div class="container-fluid" style="margin: 2px; padding: 2px;">
+                    <div class="row">
+                    <div class="col-6">
+
+                        <a href="">{{ topico_anormal.nome }}</a>
+                    </div>
+
+                    <div class="col">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-6">
+                                   <form action="">
+                                    <input class="botao_configuracao" type="submit" value="Editar" />
+                                </form>
+                                </div>
+
+                                <div class="col-6">
+                        <button class="botao_configuracao">Excluir</button>
+                                    </div>
+
+
+                         </div>
+                            </div>
+                    </div>
+                        </div>
+                                            <hr>
+
+                </div>
+
 
   {% endfor %}
 
