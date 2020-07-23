@@ -102,32 +102,54 @@
 }
 
 .botao_calculadora {
-    background: red;
+color: white;
+
+
+      background-color: #0366d6;
     position: relative;
     width: 100%;
     height: 0;
     padding-bottom: 80%;
+                    font-size: 1.5rem;
+
 
 }
 
 .botao_calculadora_nominal {
-     background: red;
+color: white;
+
+      background-color: #0366d6;
+
+
     position: relative;
+            font-size: 1.5rem;
+            padding:10px;
+
     width: 100%;
 }
 
 .botao_calculadora_duplo {
-    background: red;
+color: white;
+
+      background-color: #0366d6;
+
         width: 100%;
     height: 0;
     padding-bottom: 40%;
+                font-size: 1.5rem;
+
 }
 
 .botao_calculadora_triplo {
-    background: blue;
+color: white;
+    background: gray;
         width: 100%;
     height: 0;
     padding-bottom: 20%;
+    padding-top:5%;
+
+                font-size: 1.5rem;
+
 }
 
 #teclado {
