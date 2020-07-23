@@ -490,6 +490,8 @@ mostrarBotaoPopularSeNecessario();
 
 function adaptarCalculadoraMaisSave() {
      var variaveisAtivas = document.getElementById("template_name_variaveis");
+          var variaveisInativas = document.getElementById("variaveis_inativas");
+
 
             var botaoTriplo = document.getElementsByClassName("botao_calculadora_triplo")[0];
 
@@ -502,6 +504,17 @@ function adaptarCalculadoraMaisSave() {
             } else {
                 document.getElementById("save_changes_variaveis").style.display = "none";
                 botaoTriplo.style.display = "block";
+
+
+            }
+
+            if(variaveisInativas.firstChild == null) {
+                document.getElementById("titulo_variaveis_adicionadas").style.display = "none";
+                document.getElementById("barra_horizontal").style.display = "none";
+
+            } else {
+                document.getElementById("titulo_variaveis_adicionadas").style.display = "block";
+                document.getElementById("barra_horizontal").style.display = "block";
 
 
             }
@@ -537,6 +550,10 @@ function moveCaret(win, charCount) {
 function insertAtCursor(text) {
   var txtarea = document.activeElement;
   if (!txtarea) {
+    return;
+  }
+
+  if(txtarea.getAttribute("name") == "select") {
     return;
   }
 
@@ -635,7 +652,7 @@ function insertAtCursor(text) {
             var labelInput = document.createElement("label");
              labelInput.setAttribute("id", "lab" + i);
              labelInput.setAttribute("name", "var");
-             labelInput.style.visibility = "hidden";
+             labelInput.style.display = "none";
 
             //Labels visíveis amigáveis.
              var labelVisivel = document.createElement("label");
@@ -691,7 +708,6 @@ function insertAtCursor(text) {
 
             }
 
-              divVariavel.appendChild(document.createElement("br"));
               divVariavel.appendChild(labelInput);
 
 

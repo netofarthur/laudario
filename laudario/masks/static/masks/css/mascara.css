@@ -133,7 +133,23 @@
 #teclado {
     margin-right: 20%;
         margin-left: 20%;
+        margin-top:10px;
 
+}
+
+.modal-body {
+    padding: 0px;
+}
+
+#template_name_variaveis {
+ margin-right: 23%;
+        margin-left: 23%;
+}
+
+#variaveis_inativas {
+ margin-top: 10px;
+ margin-right: 5%;
+        margin-left: 5%;
 }
 
 #teclado_nominal {
