@@ -30,7 +30,7 @@
 <h1> {{mascara.nome}} </h1>
 
 
-<form action="" method="post" id="salvar_edicao_mascara">
+<form action="{% url 'salvar_edicao' mascara.pk %}" method="post" id="salvar_edicao_mascara">
 {% csrf_token %}
 
 
@@ -39,7 +39,12 @@
   <label for="exames">Exame: </label>
   <select class="form-control" name ="exames" id="exames">
     {% for exame in exames %}
-      <option value={{ exame.pk }}>{{exame.descricao}}</option>
+      {% if exame == mascara.exame %}
+        <option selected="selected" value={{ exame.pk }}>{{exame.descricao}}</option>
+      {% else %}
+          <option value={{ exame.pk }}>{{exame.descricao}}</option>
+
+      {% endif %}
     {% endfor %}
   </select>
 </div>
@@ -48,7 +53,12 @@
   <label for="especialidades">Especialidade: </label>
   <select class="form-control" name ="especialidades" id="especialidades">
     {% for especialidade in especialidades %}
-      <option value={{ especialidade.pk }}>{{especialidade.descricao}}</option>
+    {% if especialidade == mascara.especialidade %}
+      <option selected="selected" value={{ especialidade.pk }}>{{especialidade.descricao}}</option>
+    {% else %}
+        <option value={{ especialidade.pk }}>{{especialidade.descricao}}</option>
+
+    {% endif %}
     {% endfor %}
   </select>
 </div>
@@ -80,6 +90,7 @@
 {% for topico_normal in topicos_normais %}
 
 <div name="orgao_div">
+<input type="hidden" value="{{ topico_normal.pk }}" name="id_orgao">
 <label name="orgaolabel">Órgão: </label>
 <input type="text" name="orgao" value="{{ topico_normal.orgao }}">
 
@@ -110,7 +121,7 @@
 </div>
 
 
-<input type="button" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
+<input type="submit" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
 <input type="hidden" id="usuario_id_alteracao">
 
 </form>

@@ -241,3 +241,55 @@ def editar_mascara(request, id_mascara):
     context = {'mascara': mascara, 'especialidades': especialidades, 'exames': exames, 'topicos_normais': topicos_normais,
                'topicos_anormais': topicos_anormais,}
     return render(request, 'masks/editar_mascara.html', context)
+
+
+def salvar_edicao(request, id_mascara):
+    mascara = Mascara.objects.get(pk=id_mascara)
+
+    exame_id = request.POST['exames']
+    exame = Exame.objects.get(pk=exame_id)
+    especialidade_id = request.POST['especialidades']
+    especialidade = Especialidade.objects.get(pk=especialidade_id)
+    mascara.nome = request.POST['nome_exame']
+    mascara.exame = exame
+    mascara.especialidade = especialidade
+    mascara.titulo = request.POST['titulo_exame']
+    mascara.tecnica_header = request.POST['tecnica_header']
+    mascara.tecnica = request.POST['tecnica']
+    mascara.relatorio_header = request.POST['relatorio_header']
+    mascara.conclusao_header = request.POST['conclusao_header']
+    mascara.conclusao = request.POST['conclusao']
+
+    orgaosDaMascara = TopicoNormal.objects.filter(mascara=id_mascara)
+
+    lista_nomes_orgaos = request.POST.getlist('orgao')
+
+    lista_relatorios_orgaos = request.POST.getlist('relatorio_orgao')
+
+    lista_ids_orgaos = request.POST.getlist('id_orgao')
+
+
+
+
+
+    for i in range(len(lista_relatorios_orgaos)):
+
+        if(i < len(orgaosDaMascara)):
+            orgao = TopicoNormal.objects.get(pk=lista_ids_orgaos[i])
+            orgao.orgao = lista_nomes_orgaos[i]
+            orgao.relatorio = lista_relatorios_orgaos[i]
+            orgao.save()
+        else:
+            orgao = TopicoNormal(orgao=lista_nomes_orgaos[i], relatorio=lista_relatorios_orgaos[i], mascara=mascara)
+            orgao.save()
+
+
+    mascara.save()
+
+    #remove tópico do usuário que estiver sido removido da página. Ainda faltar deixar aviso do risco.
+    for i in range(len(orgaosDaMascara)):
+        if(str(orgaosDaMascara[i].pk) not in lista_ids_orgaos):
+            orgaosDaMascara[i].delete()
+
+
+    return HttpResponse("<html><body><p>" + str(id_mascara) + "</p></body></html>")

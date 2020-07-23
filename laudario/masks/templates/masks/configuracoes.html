@@ -77,7 +77,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-6">
-                                   <form action="{% url 'editar_mascara' mascara.pk %}">
+                                   <form method="get" action="{% url 'editar_mascara' id_mascara=mascara.pk %}">
                                     <input class="botao_configuracao" type="submit" value="Editar" />
                                 </form>
                                 </div>
