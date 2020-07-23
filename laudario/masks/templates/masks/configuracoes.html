@@ -1,10 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>teste</h1>
-</body>
-</html>
+{% extends "masks/base.html" %}
+
+{% block css %}
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+
+{% endblock css %}
+
+
+{% block conteudo %}
+
+<script type="text/javascript" src="{% static 'masks/js/mascaras.js' %}"></script>
+
+<div id="containermascaras">
+
+<div class="container-fluid">
+
+<div class="row">
+
+
+
+
+<div class="col-8">
+     <form action="{% url 'nova_mascara' %}" method="post">
+    {% csrf_token %}
+      <input id = "botaonovamascara" type="submit" class="btn btn-primary" value="Criar Máscara"/>
+  </form>
+
+<div class="form-group">
+  <select class="form-control" name ="exames" id="exames" onchange="tornarExamesInvisiveis()">
+    <option value="todos">Todos</option>
+
+    {% for exame in exames %}
+      <option value={{ exame.pk }}>{{exame.descricao}}</option>
+    {% endfor %}
+  </select>
+</div>
+
+
+
+
+
+<div class="list-group">
+
+
+  <div id="accordion">
+
+ {% for especialidade in especialidades %}
+    <div class="card">
+      <div class="card-header" id={{ especialidade.pk }}>
+        <h5 class="mb-0">
+
+
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ especialidade.pk }}" aria-expanded="true" aria-controls="collapse{{ especialidade.pk }}">
+                {{ especialidade.descricao }}
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapse{{ especialidade.pk }}" class="collapse show" aria-labelledby={{ especialidade.pk }} data-parent="#accordion">
+            <div class="card-body">
+
+              <div class="list-group" style="border-collapse: collapse">
+
+                {% for mascara in mascaras %}
+                {% if mascara.especialidade == especialidade %}
+                <div class="container-fluid" style="margin: 2px; padding: 2px;">
+                    <div class="row">
+                    <div class="col-5">
+
+                        <a href="{% url 'mostrar_mascara' id_mascara=mascara.pk %}" name="{{ mascara.exame.pk }}">{{ mascara.nome }}</a>
+                    </div>
+
+                    <div class="col">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-4">
+                        <button class="botao_configuracao">Editar</button>
+                                </div>
+
+                                <div class="col-4">
+                        <button class="botao_configuracao">Excluir</button>
+                                    </div>
+
+                                    <div class="col-4">
+                        <button class="botao_configuracao">Frases</button>
+                                    </div>
+                         </div>
+                            </div>
+                    </div>
+                        </div>
+                                            <hr>
+
+                </div>
+
+                {% endif %}
+                {% endfor %}
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+  </div>
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+<div class="col-4">
+
+    teste
+
+</div>
+
+
+
+
+
+
+  </div>
+
+  </div>
+
+
+
+
+</div>
+
+
+
+{% endblock conteudo %}
+

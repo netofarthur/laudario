@@ -225,7 +225,10 @@ def mostrar_mascaras(request):
 
 
 def configuracoes(request):
-    context = {}
+    especialidades = Especialidade.objects.all()
+    mascaras = Mascara.objects.filter(usuario=request.user)
+    exames = Exame.objects.all()
+    context = {'especialidades': especialidades, 'mascaras': mascaras, 'exames': exames}
     return render(request, 'masks/configuracoes.html', context)
 
 
