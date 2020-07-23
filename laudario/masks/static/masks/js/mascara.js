@@ -553,7 +553,7 @@ function insertAtCursor(text) {
     return;
   }
 
-  if(txtarea.getAttribute("name") == "select") {
+  if(txtarea.getAttribute("name") != "input") {
     return;
   }
 
