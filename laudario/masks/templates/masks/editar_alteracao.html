@@ -30,8 +30,8 @@
 
 
 <div class="form-group">
-  <label for="exames">Tópicos: </label>
-  <select class="form-control" name ="exames" id="exames">
+  <label for="topicos">Tópicos: </label>
+  <select class="form-control" name ="topicos" id="topicos">
     {% for topico_normal in topicos_normais %}
       {% if topico_normal == topico_anormal.topico_normal %}
         <option selected="selected" value={{ topico_normal.pk }}>{{topico_normal.orgao}}</option>
@@ -57,10 +57,10 @@
 <input type="text" id="conclusao_alteracao" name="conclusao_alteracao" value="{{ topico_anormal.conclusao }}">
 <br>
 
+<input name="topico_id" type="hidden" id="topico_id" value="{{ topico_anormal.pk }}">
 
 
-
-<input type="submit" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
+<input type="submit" value="Salvar Alteração" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
 <input type="hidden" id="usuario_id_alteracao">
 
 </form>
