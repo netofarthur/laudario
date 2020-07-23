@@ -151,7 +151,7 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-6">
-                                   <form action="">
+                                   <form method="get" action="{% url 'editar_alteracao' id_alteracao=topico_anormal.pk id_mascara=mascara.pk %}">
                                     <input class="botao_configuracao" type="submit" value="Editar" />
                                 </form>
                                 </div>
@@ -180,4 +180,13 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
 
 </div>
 
+
+
+
+
 {% endblock conteudo %}
+
+
+
+
+

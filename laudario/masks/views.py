@@ -293,3 +293,15 @@ def salvar_edicao(request, id_mascara):
 
 
     return HttpResponse("<html><body><p>" + str(id_mascara) + "</p></body></html>")
+
+
+
+def editar_alteracao(request, id_alteracao, id_mascara):
+    topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
+    topico_anormal = TopicoAnormal.objects.get(pk=id_alteracao)
+    context = {'id_alteracao': id_alteracao, 'topico_anormal': topico_anormal, 'topicos_normais': topicos_normais,}
+    return render(request, 'masks/editar_alteracao.html', context)
+
+
+def salvar_alteracao(request):
+    return HttpResponse("<html><body><p></p></body></html>")

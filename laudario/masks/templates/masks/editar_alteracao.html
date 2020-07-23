@@ -1,0 +1,74 @@
+{% extends "masks/base.html" %}
+
+{% load static %}
+
+{% block css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+
+{% endblock css %}
+
+
+{% block conteudo %}
+
+ <script>
+    var mascarasJson = '{{ mascarasJson|escapejs }}';
+    var topicosNormais = '{{ topicos_normais|escapejs }}';
+ </script>
+
+<script type="text/javascript" src="{% static 'masks/js/nova_mascara.js' %}"></script>
+<script type="text/javascript" src="{% static 'masks/js/mascara.js' %}"></script>
+
+
+
+<h1> Editar Alteração </h1>
+
+
+<form action="{% url 'salvar_alteracao' %}" method="post" id="salvar_edicao_alteracao">
+{% csrf_token %}
+
+
+
+<div class="form-group">
+  <label for="exames">Tópicos: </label>
+  <select class="form-control" name ="exames" id="exames">
+    {% for topico_normal in topicos_normais %}
+      {% if topico_normal == topico_anormal.topico_normal %}
+        <option selected="selected" value={{ topico_normal.pk }}>{{topico_normal.orgao}}</option>
+      {% else %}
+          <option value={{ topico_normal.pk }}>{{topico_normal.orgao}}</option>
+
+      {% endif %}
+    {% endfor %}
+  </select>
+</div>
+
+
+
+<label for="nome_alteracao">Nome da alteração: </label>
+<input type="text" id="nome_alteracao" name="nome_alteracao" value="{{ topico_anormal.nome }}">
+<br>
+
+<label for="descricao_alteracao">Descrição da alteração: </label>
+<input type="text" id="descricao_alteracao" name="descricao_alteracao" value="{{ topico_anormal.relatorio }}">
+<br>
+
+<label for="conclusao_alteracao">Conclusão da alteração: </label>
+<input type="text" id="conclusao_alteracao" name="conclusao_alteracao" value="{{ topico_anormal.conclusao }}">
+<br>
+
+
+
+
+<input type="submit" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
+<input type="hidden" id="usuario_id_alteracao">
+
+</form>
+
+
+{% endblock conteudo %}
+
+
+
+
+

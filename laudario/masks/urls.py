@@ -18,7 +18,7 @@ urlpatterns = [
     path('configuracoes', views.configuracoes, name='configuracoes'),
     path('configuracoes/editarmascara/<int:id_mascara>/', views.editar_mascara, name='editar_mascara'),
     path('configuracoes/editarmascara/<int:id_mascara>/salvar', views.salvar_edicao, name='salvar_edicao'),
-
-
+    path('configuracoes/editaralteracao/<int:id_mascara>/<int:id_alteracao>/', views.editar_alteracao, name='editar_alteracao'),
+    path('salvaralteracao', views.salvar_alteracao, name='salvar_alteracao'),
 
 ]
