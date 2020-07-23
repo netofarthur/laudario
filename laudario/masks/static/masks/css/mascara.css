@@ -104,7 +104,7 @@
 .botao_calculadora {
 color: white;
 
-
+border-radius: 5px;
       background-color: #0366d6;
     position: relative;
     width: 100%;
@@ -117,6 +117,7 @@ color: white;
 
 .botao_calculadora_nominal {
 color: white;
+border-radius: 5px;
 
       background-color: #0366d6;
 
@@ -130,6 +131,7 @@ color: white;
 
 .botao_calculadora_duplo {
 color: white;
+border-radius: 5px;
 
       background-color: #0366d6;
 
@@ -141,6 +143,8 @@ color: white;
 }
 
 .botao_calculadora_triplo {
+border-radius: 5px;
+
 color: white;
     background: gray;
         width: 100%;
@@ -178,6 +182,9 @@ color: white;
     margin-right: 20%;
         margin-left: 20%;
                 margin-top:10px;
+                padding: 10px;
+                border-radius: 10px;
+                background-color: grey;
 
 
 }
