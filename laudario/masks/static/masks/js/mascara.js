@@ -966,7 +966,7 @@ function insertAtCursor(text) {
 
                 }
 
-            var variavelJaExisteNaMascara = false;
+            var variavelExisteNaMascara = false;
 
 
                 var variaveisModal = obterListaVariaveis("entrada_modal");
@@ -984,7 +984,24 @@ function insertAtCursor(text) {
 
 
 
+        if(document.getElementById("flag_edicao") != null) {
+            for(v of variaveisMascara) {
+                if(listaVars.includes(v)) {
+                    variavelJaExiste = false;
+                    variavelExisteNaMascara = true;
+                        document.getElementById("salva_mudancas").setAttribute("type", "submit");
 
+                }
+            }
+            for(v of variaveisModal) {
+                if(listaVars.includes(v)) {
+                        variavelExisteNaMascara = true;
+                    variavelJaExiste = false;
+                        document.getElementById("salva_mudancas").setAttribute("type", "submit");
+
+                }
+            }
+        }
 
 
 
@@ -1041,13 +1058,17 @@ function insertAtCursor(text) {
 
 
 
+
                corpo.appendChild(br);
                 corpo.appendChild(inputHidden);
                 corpo.appendChild(label);
                 corpo.appendChild(input);
                 corpo.appendChild(inputMedida);
 
-
+            if(variavelJaExiste == false && variavelExisteNaMascara == true) {
+                input.setAttribute("value", obterNomeAmigavelVariavel(label.innerHTML));
+                inputMedida.setAttribute("value", obterUnidadeMedida(label.innerHTML));
+            }
 
 
         }
