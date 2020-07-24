@@ -30,7 +30,7 @@
 <h1> {{mascara.nome}} </h1>
 
 
-<form action="{% url 'salvar_edicao' mascara.pk %}" method="post" id="salvar_edicao_mascara">
+<form action="{% url 'salvar_edicao' mascara.pk %}" method="post" id="formulario_nova_mascara">
 {% csrf_token %}
 
 
@@ -152,7 +152,7 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-6">
-                                   <form id="formulario_nova_mascara" method="get" action="{% url 'editar_alteracao' id_alteracao=topico_anormal.pk id_mascara=mascara.pk %}">
+                                   <form id="formulario_botao" method="get" action="{% url 'editar_alteracao' id_alteracao=topico_anormal.pk id_mascara=mascara.pk %}">
                                     <input class="botao_configuracao" type="submit" value="Editar" />
                                 </form>
                                 </div>
