@@ -24,14 +24,14 @@
 <h1> Editar Alteração </h1>
 
 
-<form action="{% url 'salvar_alteracao' %}" method="post" id="salvar_edicao_alteracao">
+<form action="{% url 'salvar_alteracao' %}" method="post" id="formulario_alteracao">
 {% csrf_token %}
 
 
 
 <div class="form-group">
-  <label for="topicos">Tópicos: </label>
-  <select class="form-control" name ="topicos" id="topicos">
+  <label for="exames">Tópicos: </label>
+  <select class="form-control" name ="exames" id="exames">
     {% for topico_normal in topicos_normais %}
       {% if topico_normal == topico_anormal.topico_normal %}
         <option selected="selected" value={{ topico_normal.pk }}>{{topico_normal.orgao}}</option>
@@ -45,23 +45,42 @@
 
 
 
-<label for="nome_alteracao">Nome da alteração: </label>
-<input type="text" id="nome_alteracao" name="nome_alteracao" value="{{ topico_anormal.nome }}">
+<label for="nome_modal">Nome da alteração: </label>
+<input class="entrada_modal" type="text" id="nome_modal" name="nome_modal" value="{{ topico_anormal.nome }}">
 <br>
 
-<label for="descricao_alteracao">Descrição da alteração: </label>
-<input type="text" id="descricao_alteracao" name="descricao_alteracao" value="{{ topico_anormal.relatorio }}">
+<label for="relatorio_modal">Descrição da alteração: </label>
+<input class="entrada_modal" type="text" id="relatorio_modal" name="relatorio_modal" value="{{ topico_anormal.relatorio }}">
 <br>
 
-<label for="conclusao_alteracao">Conclusão da alteração: </label>
-<input type="text" id="conclusao_alteracao" name="conclusao_alteracao" value="{{ topico_anormal.conclusao }}">
+<label for="conclusao_modal">Conclusão da alteração: </label>
+<input class="entrada_modal" type="text" id="conclusao_modal" name="conclusao_modal" value="{{ topico_anormal.conclusao }}">
 <br>
 
 <input name="topico_id" type="hidden" id="topico_id" value="{{ topico_anormal.pk }}">
 
 
-<input type="submit" value="Salvar Alteração" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
+
+
+<input type="checkbox" id="adicionar_no_atual" name="adicionar_no_atual" checked/>
+<label for="adicionar_no_atual">Adicionar na máscara atual</label>
+<br>
+
+
+
+<input type="checkbox" id="adicionar_no_banco" name="adicionar_no_banco" checked/>
+<label for="adicionar_no_banco">Adicionar no meu banco de frases</label>
+
 <input type="hidden" id="usuario_id_alteracao">
+
+     <div id="corpo_variaveis">
+
+
+
+                  </div>
+    <input type="submit" value="Salvar Alteração" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
+
+
 
 </form>
 

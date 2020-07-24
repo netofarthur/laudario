@@ -1112,7 +1112,7 @@ function insertAtCursor(text) {
         //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
         //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
         //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
-        if(document.getElementById("adicionar_no_atual") != null) {
+        if(document.getElementById("adicionar_no_atual") != null && document.getElementById(topicoNormalParaAlterar) != null) {
              var resultado = document.getElementById(topicoNormalParaAlterar).innerHTML.match(pattern);
 
             if(resultado != null) {

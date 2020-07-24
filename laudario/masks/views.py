@@ -313,10 +313,12 @@ def editar_alteracao(request, id_alteracao, id_mascara):
 def salvar_alteracao(request):
     topicoId = request.POST['topico_id']
     topicoAnormal = TopicoAnormal.objects.get(pk=topicoId)
-    topicoNormal = TopicoNormal.objects.get(pk=request.POST['topicos'])
+    topicoNormal = TopicoNormal.objects.get(pk=request.POST['exames'])
     topicoAnormal.topico_normal = topicoNormal
-    topicoAnormal.nome = request.POST['nome_alteracao']
-    topicoAnormal.relatorio = request.POST['descricao_alteracao']
-    topicoAnormal.conclusao = request.POST['conclusao_alteracao']
+    topicoAnormal.nome = request.POST['nome_modal']
+    topicoAnormal.relatorio = request.POST['relatorio_modal']
+    topicoAnormal.conclusao = request.POST['conclusao_modal']
     topicoAnormal.save();
-    return HttpResponse("<html><body><p></p></body></html>")
+    adicionar_variaveis(request)
+
+    return HttpResponse(status=204)
