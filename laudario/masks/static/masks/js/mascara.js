@@ -745,12 +745,18 @@ function insertAtCursor(text) {
         //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
         if(document.getElementById("adicionar_no_atual") != null) {
             var formulario =  document.getElementById("formulario_alteracao");
-            formulario.setAttribute("action", "/salvaralteracao/");
+            if(document.getElementById("flag_edicao") == null) {
+                        formulario.setAttribute("action", "/salvaralteracao/");
+
+            }
 
 
         } else {
             var formulario =  document.getElementById("formulario_nova_mascara");
-            formulario.setAttribute("action", "/mascaras/nova/adicionar");
+            if(document.getElementById("flag_edicao") == null) {
+                        formulario.setAttribute("action", "/mascaras/nova/adicionar");
+
+            }
         }
             document.getElementById("salva_mudancas").setAttribute("onclick", "adicionarAlteracoNaMascara()");
             formulario.submit();
