@@ -124,6 +124,8 @@
 <input type="button" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
 <input type="hidden" id="usuario_id_alteracao">
     <input type="hidden" id="flag_edicao">
+        <input type="hidden" id="variaveis_originais_edicao">
+
 
 
 </form>
@@ -182,6 +184,12 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
 
 </div>
 
+<script>
+$(document).ready(function(){
+    document.getElementById("variaveis_originais_edicao").setAttribute("value", obterVariaveisOriginaisDaEdicao().toString());
+
+});
+</script>
 
 
 

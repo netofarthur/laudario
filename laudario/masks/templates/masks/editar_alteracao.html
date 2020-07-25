@@ -74,6 +74,7 @@
 <input type="hidden" id="usuario_id_alteracao">
     <input type="hidden" id="flag_edicao">
 
+        <input type="hidden" id="variaveis_originais_edicao">
 
      <div id="corpo_variaveis">
 
@@ -85,6 +86,13 @@
 
 
 </form>
+
+<script>
+$(document).ready(function(){
+    document.getElementById("variaveis_originais_edicao").setAttribute("value", obterVariaveisOriginaisDaEdicao().toString());
+
+});
+</script>
 
 
 {% endblock conteudo %}

@@ -1287,6 +1287,85 @@ function insertAtCursor(text) {
 
 
 
+ function obterVariaveisOriginaisDaEdicao() {
+         var stringVars = "";
+
+        var pattern = /\{([^}]+)\}/g;
+
+        //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
+        //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
+        //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
+        if(document.getElementById("adicionar_no_atual") != null) {
+            var variaveis = obterListaVariaveis("entrada_modal");
+            var result = document.getElementById("relatorio_modal").value.match(pattern);
+
+
+
+        } else {
+            var variaveis = obterListaVariaveis("paragrafo_mascara");
+
+            var result = [];
+            var resultados = document.getElementsByClassName("paragrafo_mascara");
+            for(resultado of resultados) {
+                var matches = resultado.value.match(pattern);
+                if(matches != null) {
+                    for(match of matches) {
+                        result.push(match);
+                    }
+                }
+            }
+
+
+        }
+
+            var listaVariaveisNominais = [];
+
+
+
+
+            if(result != null) {
+
+
+            //separa as variáveis nominais e depois faz um concat com as outras. Agora as variáveis nominais são
+            //separadas no banco com nomes amigáveis para poderem existir várias, teoricamente iguais (lateralidade, por exemplo)
+            //em um mesmo laudo.
+            var listaVariaveisNominais = [];
+
+            var count = 0;
+            for(variavel of result) {
+
+                var variaveisNominais = variavel.split("|")
+                if(variaveisNominais.length > 1) {
+                    for(variavelNominal of variaveisNominais) {
+                        variavelNominal = variavelNominal.replace("{", "");
+                        variavelNominal = variavelNominal.replace("}", "");
+                        if(!listaVariaveisNominais.includes(variavelNominal)) {
+                            listaVariaveisNominais[count] = variavelNominal;
+                            count++;
+                        }
+
+                    }
+                }
+            }
+
+        }
+         if(document.getElementById("adicionar_no_atual") != null) {
+
+
+            var listaVars = obterListaVariaveisDaAlteracao();
+
+        } else {
+            var listaVars = obterListaVariaveis("paragrafo_mascara");
+
+        }
+
+
+        return listaVars;
+
+
+    }
+
+
 
 
 
