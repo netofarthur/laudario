@@ -983,25 +983,29 @@ function insertAtCursor(text) {
             }
 
 
-
         if(document.getElementById("flag_edicao") != null) {
-            for(v of variaveisMascara) {
-                if(listaVars.includes(v)) {
+
+               var variaveisInvisiveis = document.getElementById("variaveis_originais_edicao").value.split(",");
+
+
+                if(variaveisMascara.toString() === variaveisInvisiveis.toString()) {
                     variavelJaExiste = false;
                     variavelExisteNaMascara = true;
                         document.getElementById("salva_mudancas").setAttribute("type", "submit");
-
                 }
-            }
-            for(v of variaveisModal) {
-                if(listaVars.includes(v)) {
-                        variavelExisteNaMascara = true;
+
+
+
+                if(variaveisModal.toString() === variaveisInvisiveis.toString()) {
                     variavelJaExiste = false;
+                    variavelExisteNaMascara = true;
                         document.getElementById("salva_mudancas").setAttribute("type", "submit");
-
                 }
-            }
+
+
+
         }
+
 
 
 
