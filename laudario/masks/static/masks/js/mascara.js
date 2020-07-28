@@ -758,11 +758,23 @@ function insertAtCursor(text) {
 
             }
         }
-            document.getElementById("salva_mudancas").setAttribute("onclick", "adicionarAlteracoNaMascara()");
+
             formulario.submit();
+
         mostrarBotaoPopularSeNecessario();
+
       $('#myModalAlteracao').modal('hide');
 
+      if(document.getElementById("coluna_esquerda") != null) {
+      ancora = document.createElement("a");
+        ancora.setAttribute("href", "http://127.0.0.1:8000/mascaras");
+        ancora.innerHTML = "Voltar";
+        paragrafo = document.createElement("p");
+        paragrafo.innerHTML = "Máscara adicionada com sucesso!"
+       document.getElementById("coluna_esquerda").appendChild(ancora);
+          document.getElementById("coluna_esquerda").appendChild(paragrafo);
+
+      }
 
 
 
@@ -1174,7 +1186,20 @@ function insertAtCursor(text) {
             }
         }
 
+        if(document.getElementById("coluna_esquerda") != null) {
 
+        if(document.getElementsByName("nome_amigavel_variavel").length == 0) {
+            ancora = document.createElement("a");
+        ancora.setAttribute("href", "http://127.0.0.1:8000/mascaras");
+        ancora.innerHTML = "Voltar";
+        paragrafo = document.createElement("p");
+        paragrafo.innerHTML = "Máscara adicionada com sucesso!"
+       document.getElementById("coluna_esquerda").appendChild(ancora);
+          document.getElementById("coluna_esquerda").appendChild(paragrafo);
+
+        }
+
+    }
 
 
 
