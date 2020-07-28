@@ -70,9 +70,8 @@
 
  <fieldset class="fieldset_nova_mascara">
     <legend class="legend_nova_mascara">Técnica</legend>
-<input placeholder="Título da ténica" class="input_curto" type="text" id="tecnica_header" name="tecnica_header">
-
-     <br>
+<input style="margin-bottom:5px;" placeholder="Título da ténica" class="input_curto" type="text" id="tecnica_header" name="tecnica_header">
+    <br>
 
     <textarea rows="2" class="input_curto" placeholder="Descrição da técnica" type="text" id="tecnica" name="tecnica"></textarea>
  </fieldset>
@@ -81,8 +80,9 @@
 
  <fieldset class="fieldset_nova_mascara">
     <legend class="legend_nova_mascara">Relatório</legend>
-<input placeholder="Título do relatório" class="input_curto" type="text" id="relatorio_header" name="relatorio_header">
+<input style="margin-bottom:10px;" placeholder="Título do relatório" class="input_curto" type="text" id="relatorio_header" name="relatorio_header">
      <br>
+
 
 <div id="lista_orgaos">
 
@@ -90,9 +90,9 @@
 <div name="orgao_div">
 <div style="display: flex">
 <label name="orgaolabel">Órgão: </label>
-<input style="flex: 2" type="text" name="orgao">
+<input style="flex: 2; margin-bottom: 5px;" type="text" name="orgao">
 
-<button type="button" onclick="removerEntradaOrgao(this.id)" id="0">Remover</button>
+<button style="margin-bottom:5px;" type="button" onclick="removerEntradaOrgao(this.id)" id="0">Remover</button>
 </div>
 
 <textarea rows="3" class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão"></textarea>
@@ -107,7 +107,7 @@
 
     <fieldset class="fieldset_nova_mascara">
     <legend class="legend_nova_mascara">Conclusão</legend>
-    <input class="input_curto" placeholder="Título da conclusão" type="text" id="conclusao_header" name="conclusao_header">
+    <input style="margin-bottom:5px;" class="input_curto" placeholder="Título da conclusão" type="text" id="conclusao_header" name="conclusao_header">
 <br>
 
 
@@ -119,9 +119,12 @@
 
 </div>
 
-<br>
+<div style="text-align: center;">
 <input type="button" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
 <input type="hidden" id="usuario_id_alteracao">
+    </div>
+    <br>
+    <br>
 
 </form>
 

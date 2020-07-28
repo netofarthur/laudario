@@ -95,10 +95,12 @@ function popularMascara(mascaraId) {
     let listaOrgaos = document.getElementById("lista_orgaos");
     let label = document.createElement("label");
     label.setAttribute("for", "orgao");
-    label.setAttribute("name", "orgaolabel")
+    label.setAttribute("name", "orgaolabel");
     label.innerHTML = "Órgão: ";
 
     let orgao = document.createElement("input");
+            orgao.style.marginBottom = "5px";
+
     orgao.setAttribute("type", "text");
     orgao.setAttribute("name", "orgao");
     orgao.style.flex = "2";
@@ -133,6 +135,7 @@ function popularMascara(mascaraId) {
     remover.setAttribute("type", "button");
     remover.setAttribute("onclick", "removerEntradaOrgao(this.id)");
      remover.setAttribute("id", listaOrgaos.children.length);
+        remover.style.marginBottom = "5px";
         remover.innerHTML = "Remover";
 
     if(listaOrgaos.contains(anchor)) {
