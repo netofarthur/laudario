@@ -27,7 +27,7 @@
 
 <div id="coluna_esquerda" class="col-6">
 
-<h1> NOVA MÁSCARA </h1>
+<h2 style="text-align: center;"> Nova Máscara </h2>
 
 
 <form action="{% url 'adicionar_nova_mascara' %}" method="post" id="formulario_nova_mascara">
@@ -56,36 +56,39 @@
 
 
 <label for="nome_exame">Nome/descrição do exame: </label>
-<input type="text" id="nome_exame" name="nome_exame">
+<input class="input_curto" type="text" id="nome_exame" name="nome_exame">
 <br>
+    <br>
 
 <label for="titulo_exame">Título do exame: </label>
-<input type="text" id="titulo_exame" name="titulo_exame">
+<input class="input_curto" type="text" id="titulo_exame" name="titulo_exame">
+<br>
+    <br>
+
+<label for="tecnica_header">Técnica: </label>
+<input placeholder="Título da ténica" class="input_curto" type="text" id="tecnica_header" name="tecnica_header">
 <br>
 
-<label for="tecnica_header">Título da técnica: </label>
-<input type="text" id="tecnica_header" name="tecnica_header">
+<input class="input_curto" placeholder="Descrição da técnica" type="text" id="tecnica" name="tecnica">
 <br>
+    <br>
 
-<label for="tecnica">Descrição da técnica: </label>
-<input type="text" id="tecnica" name="tecnica">
+<label for="relatorio_header">Relatório: </label>
+<input placeholder="Título do relatório" class="input_curto" type="text" id="relatorio_header" name="relatorio_header">
 <br>
-
-<label for="relatorio_header">Título do relatório: </label>
-<input type="text" id="relatorio_header" name="relatorio_header">
-<br>
+    <br>
 
 <div id="lista_orgaos">
 
 
 <div name="orgao_div">
+<div style="display: flex">
 <label name="orgaolabel">Órgão: </label>
-<input type="text" name="orgao">
+<input style="flex: 2" type="text" name="orgao">
 
 <button type="button" onclick="removerEntradaOrgao(this.id)" id="0">Remover</button>
+</div>
 
-
-<br>
 <textarea class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão"></textarea>
 <br name="orgaobr">
     </div>
@@ -94,20 +97,19 @@
 
 </div>
 
-<label for="conclusao_header">Título da conclusão: </label>
-<input type="text" id="conclusao_header" name="conclusao_header">
+<label for="conclusao_header">Conclusão: </label>
+<input class="input_curto" placeholder="Título da conclusão" type="text" id="conclusao_header" name="conclusao_header">
 <br>
 
 
-<label for="conclusao">Descrição da conclusão: </label>
-<input type="text" id="conclusao" name="conclusao" class="paragrafo_mascara">
+<input class="input_curto" placeholder="Descrição da conclusão" type="text" id="conclusao" name="conclusao" class="paragrafo_mascara">
 <br>
 
 <div id="corpo_alteracao">
 
 </div>
 
-
+<br>
 <input type="button" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
 <input type="hidden" id="usuario_id_alteracao">
 
