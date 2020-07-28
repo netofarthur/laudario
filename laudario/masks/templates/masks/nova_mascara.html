@@ -36,7 +36,7 @@
 
 
 <div class="form-group">
-  <label for="exames">Exame: </label>
+  <label style="font-size: 1.2rem;" for="exames">Exame: </label>
   <select class="form-control" name ="exames" id="exames">
     {% for exame in exames %}
       <option value={{ exame.pk }}>{{exame.descricao}}</option>
@@ -45,7 +45,7 @@
 </div>
 
 <div class="form-group">
-  <label for="especialidades">Especialidade: </label>
+  <label style="font-size: 1.2rem;" for="especialidades">Especialidade: </label>
   <select class="form-control" name ="especialidades" id="especialidades">
     {% for especialidade in especialidades %}
       <option value={{ especialidade.pk }}>{{especialidade.descricao}}</option>
@@ -55,28 +55,34 @@
 
 
 
-<label for="nome_exame">Nome/descrição do exame: </label>
+<label style="font-size: 1.2rem;" for="nome_exame">Nome/descrição do exame: </label>
 <input class="input_curto" type="text" id="nome_exame" name="nome_exame">
 <br>
     <br>
 
-<label for="titulo_exame">Título do exame: </label>
-<input class="input_curto" type="text" id="titulo_exame" name="titulo_exame">
-<br>
+
+<fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara">Título</legend>
+        <input placeholder="Título do exame no laudo" class="input_curto" type="text" id="titulo_exame" name="titulo_exame">
+</fieldset>
     <br>
 
-<label for="tecnica_header">Técnica: </label>
+
+ <fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara">Técnica</legend>
 <input placeholder="Título da ténica" class="input_curto" type="text" id="tecnica_header" name="tecnica_header">
-<br>
 
-<input class="input_curto" placeholder="Descrição da técnica" type="text" id="tecnica" name="tecnica">
-<br>
-    <br>
+     <br>
 
-<label for="relatorio_header">Relatório: </label>
+    <textarea rows="2" class="input_curto" placeholder="Descrição da técnica" type="text" id="tecnica" name="tecnica"></textarea>
+ </fieldset>
+     <br>
+
+
+ <fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara">Relatório</legend>
 <input placeholder="Título do relatório" class="input_curto" type="text" id="relatorio_header" name="relatorio_header">
-<br>
-    <br>
+     <br>
 
 <div id="lista_orgaos">
 
@@ -89,21 +95,25 @@
 <button type="button" onclick="removerEntradaOrgao(this.id)" id="0">Remover</button>
 </div>
 
-<textarea class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão"></textarea>
+<textarea rows="3" class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão"></textarea>
 <br name="orgaobr">
     </div>
 
 <a href="javascript:adicionarEntradaOrgao()" id="adicionar_entrada_orgao">Novo órgão</a>
 
 </div>
+ </fieldset>
+<br>
 
-<label for="conclusao_header">Conclusão: </label>
-<input class="input_curto" placeholder="Título da conclusão" type="text" id="conclusao_header" name="conclusao_header">
+    <fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara">Conclusão</legend>
+    <input class="input_curto" placeholder="Título da conclusão" type="text" id="conclusao_header" name="conclusao_header">
 <br>
 
 
-<input class="input_curto" placeholder="Descrição da conclusão" type="text" id="conclusao" name="conclusao" class="paragrafo_mascara">
-<br>
+<textarea rows="2" class="input_curto" placeholder="Descrição da conclusão" type="text" id="conclusao" name="conclusao" class="paragrafo_mascara"></textarea>
+     </fieldset>
+         <br>
 
 <div id="corpo_alteracao">
 

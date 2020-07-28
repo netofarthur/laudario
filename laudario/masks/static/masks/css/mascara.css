@@ -210,5 +210,18 @@ color: white;
 
 }
 
+.fieldset_nova_mascara {
+    margin:0;
+    padding:5px;
+    border:solid;
+    border-width: 1px;
+}
+
+.legend_nova_mascara {
+    width:auto;
+    font-size: 1.2rem;
+    font-color: gray;
+}
+
 
 
