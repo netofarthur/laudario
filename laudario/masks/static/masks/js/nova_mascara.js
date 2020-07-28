@@ -33,6 +33,8 @@ function popularMascara(mascaraId) {
             listaOrgaos.removeChild(listaOrgaos.firstChild);
         }
 
+        var exame;
+        var especialidade;
         var nome;
         var titulo;
         var tecnicaHeader;
@@ -41,8 +43,11 @@ function popularMascara(mascaraId) {
         var conclusaoHeader;
         var conclusao;
 
+
         for(i = 0; i < mascarasJSONObject.length; i++) {
             if(mascarasJSONObject[i].pk == mascaraId) {
+                exame = mascarasJSONObject[i].fields.exame;
+                especialidade = mascarasJSONObject[i].fields.especialidade;
                 nome = mascarasJSONObject[i].fields.nome;
                 titulo = mascarasJSONObject[i].fields.titulo;
                 tecnicaHeader = mascarasJSONObject[i].fields.tecnica_header;
@@ -68,6 +73,9 @@ function popularMascara(mascaraId) {
 
             }
         }
+
+        document.getElementById("exames").value = exame;
+        document.getElementById("especialidades").value = especialidade;
 
         document.getElementById("nome_exame").value = nome;
         document.getElementById("titulo_exame").value = titulo;

@@ -1289,7 +1289,7 @@ function insertAtCursor(text) {
 
 
             document.getElementById("usuario_id_alteracao").value = usuarioSelecionadoId;
-
+            document.getElementById("exames").value = topicoNormalId;
 
 
     }
