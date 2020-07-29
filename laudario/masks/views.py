@@ -135,12 +135,22 @@ def adicionar_alteracao(request):
 
     if request.POST.get('adicionar_no_banco', False) == 'on':
 
-        topicoNormal = TopicoNormal.objects.get(pk=request.POST['exames'])
+        try:
+            topicoNormal = TopicoNormal.objects.get(pk=request.POST.get('exames', None))
+        except TopicoNormal.DoesNotExist:
+            topicoNormal = None
 
-        topicoAnormal = TopicoAnormal(topico_normal=topicoNormal, nome=request.POST['nome_modal'], relatorio=request.POST['relatorio_modal'], conclusao=request.POST['conclusao_modal'],
-                                      publica=publica)
-        topicoAnormal.save()
-        adicionar_variaveis(request)
+
+        if(topicoNormal != None):
+            topicoAnormal = TopicoAnormal(topico_normal=topicoNormal, nome=request.POST['nome_modal'],
+                                          relatorio=request.POST['relatorio_modal'],
+                                          conclusao=request.POST['conclusao_modal'],
+                                          publica=publica)
+            topicoAnormal.save()
+            adicionar_variaveis(request)
+
+
+
 
     return HttpResponse(status=204)
 

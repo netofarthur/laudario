@@ -295,7 +295,7 @@
                             <div class="row">
                         <div class="col-6">
                         <div class="form-group">
-                          <label for="exames">Tópico a ser alterado </label>
+                          <label id="label_topicos" for="exames">Tópico a ser alterado </label>
                           <select class="form-control" name ="exames" id="exames">
                             {% for topico_normal in topicos_normais %}
                               <option value={{ topico_normal.pk }}>{{topico_normal.orgao}}</option>

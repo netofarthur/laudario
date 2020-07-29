@@ -62,14 +62,11 @@
 
 
 
-<input type="checkbox" id="adicionar_no_atual" name="adicionar_no_atual" checked/>
-<label for="adicionar_no_atual">Adicionar na máscara atual</label>
-<br>
+<input type="hidden" id="adicionar_no_atual" name="adicionar_no_atual" checked/>
 
 
 
-<input type="checkbox" id="adicionar_no_banco" name="adicionar_no_banco" checked/>
-<label for="adicionar_no_banco">Adicionar no meu banco de frases</label>
+<input type="hidden" id="adicionar_no_banco" name="adicionar_no_banco" checked/>
 
             {% if topico_anormal.publica == True %}
         <input type="checkbox" id="frase_publica" name="frase_publica" checked/>

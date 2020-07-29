@@ -830,6 +830,14 @@ function insertAtCursor(text) {
 
     function adicionarAlteracoNaMascara() {
 
+        if(document.getElementById("exames").value == "") {
+            alert("Selecione um tópico a ser alterado pela frase");
+            document.getElementById("label_topicos").style.color = "red";
+            return;
+        }
+
+
+
 
                 var topicoNormalParaAlterar = document.getElementById("exames").value;
 
