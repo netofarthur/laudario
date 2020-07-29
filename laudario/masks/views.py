@@ -60,9 +60,9 @@ def nova_mascara(request):
 
     json_serializer = serializers.get_serializer("json")()
 
-    mascarasJson = json_serializer.serialize(Mascara.objects.all())
+    mascarasJson = json_serializer.serialize(Mascara.objects.filter(publica=True))
 
-    mascaras = Mascara.objects.all()
+    mascaras = Mascara.objects.filter(publica=True)
 
     topicos_normais = json_serializer.serialize(TopicoNormal.objects.all())
     variaveis = json_serializer.serialize(Variavel.objects.all())
@@ -91,10 +91,14 @@ def adicionar_nova_mascara(request):
     conclusao_header = request.POST['conclusao_header']
     conclusao = request.POST['conclusao']
 
+    pub = request.POST.get('mascara_publica', False)
+
+    if (pub == 'on'):
+        publica = True;
+    else:
+        publica = False;
 
     st = request.POST['titulo_exame']
-
-
 
 
 
@@ -103,7 +107,7 @@ def adicionar_nova_mascara(request):
 
     nova_mascara = Mascara(usuario=usuario, especialidade=especialidadeInstance, exame=exameInstance, nome=nome_exame, titulo=titulo_exame,
                            tecnica_header=tecnica_header, tecnica=tecnica, relatorio_header=relatorio_header,
-                          conclusao_header=conclusao_header, conclusao=conclusao)
+                          conclusao_header=conclusao_header, conclusao=conclusao, publica=publica,)
     nova_mascara.save()
 
 
@@ -262,6 +266,16 @@ def salvar_edicao(request, id_mascara):
     mascara.relatorio_header = request.POST['relatorio_header']
     mascara.conclusao_header = request.POST['conclusao_header']
     mascara.conclusao = request.POST['conclusao']
+
+    pub = request.POST.get('mascara_publica', False)
+
+    if(pub == 'on'):
+        publica = True
+    else:
+        publica = False
+
+    mascara.publica = publica
+
 
     orgaosDaMascara = TopicoNormal.objects.filter(mascara=id_mascara)
 

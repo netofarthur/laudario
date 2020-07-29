@@ -28,6 +28,9 @@ class Mascara(models.Model):
     relatorio_header = models.CharField(max_length=500)
     conclusao_header = models.CharField(max_length=50)
     conclusao = models.CharField(max_length=100)
+    publica = models.BooleanField(default=True)
+    popularidade = models.IntegerField(default=0)
+    frequencia = models.IntegerField(default=0)
     def __str__(self):
         return self.nome
 
@@ -46,6 +49,10 @@ class TopicoAnormal(models.Model):
     descricao = models.CharField(max_length=500)
     relatorio = models.CharField(max_length=500)
     conclusao = models.CharField(max_length=500, blank=True, null=True)
+    publica = models.BooleanField(default=True)
+    popularidade = models.IntegerField(default=0)
+    frequencia = models.IntegerField(default=0)
+
     def __str__(self):
         return self.nome
 

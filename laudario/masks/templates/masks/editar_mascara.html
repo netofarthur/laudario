@@ -131,6 +131,18 @@
 
 </div>
 
+    {% if mascara.publica == True %}
+        <input type="checkbox" id="mascara_publica" name="mascara_publica" checked/>
+        <label for="mascara_publica">Máscara pública</label>
+
+    {% else %}
+        <input type="checkbox" id="mascara_publica" name="mascara_publica"/>
+        <label for="mascara_publica">Máscara pública</label>
+    {% endif %}
+     <br>
+    <br>
+
+
 <div style="text-align: center;">
 <input type="button" value="Salvar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
 <input type="hidden" id="usuario_id_alteracao">
