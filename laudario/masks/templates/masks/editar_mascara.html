@@ -36,85 +36,84 @@
 
 
 <div class="form-group">
-  <label for="exames">Exame: </label>
+  <label style="font-size: 1.2rem;" for="exames">Exame: </label>
   <select class="form-control" name ="exames" id="exames">
     {% for exame in exames %}
-      {% if exame == mascara.exame %}
-        <option selected="selected" value={{ exame.pk }}>{{exame.descricao}}</option>
-      {% else %}
-          <option value={{ exame.pk }}>{{exame.descricao}}</option>
-
-      {% endif %}
+      <option value={{ exame.pk }}>{{exame.descricao}}</option>
     {% endfor %}
   </select>
 </div>
 
 <div class="form-group">
-  <label for="especialidades">Especialidade: </label>
+  <label style="font-size: 1.2rem;" for="especialidades">Especialidade: </label>
   <select class="form-control" name ="especialidades" id="especialidades">
     {% for especialidade in especialidades %}
-    {% if especialidade == mascara.especialidade %}
-      <option selected="selected" value={{ especialidade.pk }}>{{especialidade.descricao}}</option>
-    {% else %}
-        <option value={{ especialidade.pk }}>{{especialidade.descricao}}</option>
-
-    {% endif %}
+      <option value={{ especialidade.pk }}>{{especialidade.descricao}}</option>
     {% endfor %}
   </select>
 </div>
 
 
 
-<label for="nome_exame">Nome/descrição do exame: </label>
-<input type="text" id="nome_exame" name="nome_exame" value="{{ mascara.nome }}">
+<label style="font-size: 1.2rem;" for="nome_exame">Nome/descrição do exame: </label>
+<input class="input_curto" type="text" id="nome_exame" name="nome_exame">
 <br>
+    <br>
 
-<label for="titulo_exame">Título do exame: </label>
-<input type="text" id="titulo_exame" name="titulo_exame" value="{{ mascara.titulo }}">
-<br>
 
-<label for="tecnica_header">Título da técnica: </label>
-<input type="text" id="tecnica_header" name="tecnica_header" value="{{ mascara.tecnica_header }}">
-<br>
+<fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara">Título</legend>
+        <input placeholder="Título do exame no laudo" class="input_curto" type="text" id="titulo_exame" name="titulo_exame">
+</fieldset>
+    <br>
 
-<label for="tecnica">Descrição da técnica: </label>
-<input type="text" id="tecnica" name="tecnica" value="{{ mascara.tecnica }}">
-<br>
 
-<label for="relatorio_header">Título do relatório: </label>
-<input type="text" id="relatorio_header" name="relatorio_header"  value="{{ mascara.relatorio_header }}">
-<br>
+ <fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara">Técnica</legend>
+<input style="margin-bottom:5px;" placeholder="Título da ténica" class="input_curto" type="text" id="tecnica_header" name="tecnica_header">
+    <br>
+
+    <textarea rows="2" class="input_curto" placeholder="Descrição da técnica" type="text" id="tecnica" name="tecnica"></textarea>
+ </fieldset>
+     <br>
+
+
+ <fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara">Relatório</legend>
+<input style="margin-bottom:10px;" placeholder="Título do relatório" class="input_curto" type="text" id="relatorio_header" name="relatorio_header">
+     <br>
+
 
 <div id="lista_orgaos">
 
-{% for topico_normal in topicos_normais %}
 
 <div name="orgao_div">
-<input type="hidden" value="{{ topico_normal.pk }}" name="id_orgao">
+<div style="display: flex">
 <label name="orgaolabel">Órgão: </label>
-<input type="text" name="orgao" value="{{ topico_normal.orgao }}">
+<input style="flex: 2; margin-bottom: 5px;" type="text" name="orgao">
 
-<button type="button" onclick="removerEntradaOrgao(this.id)" id="{{ forloop.counter0 }}">Remover</button>
+<button style="margin-bottom:5px;" type="button" onclick="removerEntradaOrgao(this.id)" id="0">Remover</button>
+</div>
 
-
-<br>
-
-<textarea class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão">{{ topico_normal.relatorio }}</textarea>
+<textarea rows="3" class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão"></textarea>
 <br name="orgaobr">
     </div>
-{% endfor %}
+
 <a href="javascript:adicionarEntradaOrgao()" id="adicionar_entrada_orgao">Novo órgão</a>
 
 </div>
+ </fieldset>
+<br>
 
-<label for="conclusao_header">Título da conclusão: </label>
-<input type="text" id="conclusao_header" name="conclusao_header" value="{{ mascara.conclusao_header }}">
+    <fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara">Conclusão</legend>
+    <input style="margin-bottom:5px;" class="input_curto" placeholder="Título da conclusão" type="text" id="conclusao_header" name="conclusao_header">
 <br>
 
 
-<label for="conclusao">Descrição da conclusão: </label>
-<input type="text" id="conclusao" name="conclusao" class="paragrafo_mascara" value="{{ mascara.conclusao }}">
-<br>
+<textarea rows="2" class="input_curto" placeholder="Descrição da conclusão" type="text" id="conclusao" name="conclusao" class="paragrafo_mascara"></textarea>
+     </fieldset>
+         <br>
 
 <div id="corpo_alteracao">
 
