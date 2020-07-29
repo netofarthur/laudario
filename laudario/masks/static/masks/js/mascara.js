@@ -767,7 +767,7 @@ function insertAtCursor(text) {
 
       if(document.getElementById("coluna_esquerda") != null) {
       ancora = document.createElement("a");
-        ancora.setAttribute("href", "http://127.0.0.1:8000/mascaras");
+        ancora.setAttribute("href", "http://127.0.0.1:8000/configuracoes");
         ancora.innerHTML = "Voltar";
         paragrafo = document.createElement("p");
         paragrafo.innerHTML = "Máscara adicionada com sucesso!"
@@ -777,6 +777,13 @@ function insertAtCursor(text) {
       }
 
 
+
+    //desabilita inputs. posso colocar em função separada.
+    var inputs = document.getElementsByName("nome_amigavel_variavel");
+    for(input of inputs) {
+        input.readOnly = true;
+    }
+    document.getElementById("salva_mudancas").disabled = true;
 
     }
 
@@ -1144,14 +1151,6 @@ function insertAtCursor(text) {
 
 
 
-
-
-
-
-
-
-
-
         //verifica se está em adicionar tópico alterado, se não estiver, está em nova máscara,
         //possibilitando que uma única função seja utilizada. Foi meio gambiarra, mas melhor que
         //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
@@ -1190,17 +1189,38 @@ function insertAtCursor(text) {
 
         if(document.getElementsByName("nome_amigavel_variavel").length == 0) {
             ancora = document.createElement("a");
-        ancora.setAttribute("href", "http://127.0.0.1:8000/mascaras");
+        ancora.setAttribute("href", "http://127.0.0.1:8000/configuracoes");
         ancora.innerHTML = "Voltar";
         paragrafo = document.createElement("p");
         paragrafo.innerHTML = "Máscara adicionada com sucesso!"
        document.getElementById("coluna_esquerda").appendChild(ancora);
           document.getElementById("coluna_esquerda").appendChild(paragrafo);
+              document.getElementById("salva_mudancas").disabled = true;
+
 
         }
 
     }
 
+    //desabilita inputs. posso colocar em função separada.
+    var inputs = document.getElementsByClassName("input_curto");
+    for(input of inputs) {
+        input.readOnly = true;
+    }
+
+    var inputs2 = document.getElementsByClassName("paragrafo_mascara");
+    for(input of inputs2) {
+        input.readOnly = true;
+    }
+
+    var inputs3 = document.getElementsByName("orgao");
+    for(input of inputs3) {
+        input.readOnly = true;
+    }
+    var inputs4 = document.getElementsByName("botao_remover");
+    for(input of inputs4) {
+        input.disabled = true;
+    }
 
 
     }
