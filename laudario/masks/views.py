@@ -311,7 +311,7 @@ def salvar_edicao(request, id_mascara):
 
 
     for i in range(len(lista_relatorios_orgaos)):
-
+        orgaosDaMascara = TopicoNormal.objects.filter(mascara=id_mascara)
         if(i < len(orgaosDaMascara)):
             orgao = TopicoNormal.objects.get(pk=lista_ids_orgaos[i])
 

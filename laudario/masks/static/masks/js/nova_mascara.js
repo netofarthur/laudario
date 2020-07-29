@@ -163,8 +163,9 @@ function popularMascara(mascaraId) {
 
 function removerEntradaOrgao(id) {
     let listaOrgaos = document.getElementById("lista_orgaos");
-
     listaOrgaos.removeChild(document.getElementById(id).parentNode.parentNode);
+
+
 
 
 

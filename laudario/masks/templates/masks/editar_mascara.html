@@ -113,7 +113,7 @@
     {% else %}
     <div style="display: none;" name="orgao_div">
     <div style="display: flex">
-<input type="hidden" value="{{ topico_normal.pk }}" name="id_orgao">
+<input type="hidden" value="{{ topico_normal.pk }}" name="id_orgao" id="h{{ topico_normal.pk }}">
 <label name="orgaolabel">Órgão: </label>
 <input style="flex: 2; margin-bottom: 5px;" type="text" name="orgao" value="{{ topico_normal.orgao }}">
 
