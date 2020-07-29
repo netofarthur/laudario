@@ -150,7 +150,7 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
 <div class="col-6">
 
   {% for mascara in mascaras %}
-            <button type="button" class="botao_diagnostico" id="{{ mascara.pk }}" onclick="popularMascara(this.id)">{{ mascara.nome }}</button>
+            <button type="button" class="botao_diagnostico" id="{{ mascara.pk }}" onclick="popularMascara(this.id)">"{{ mascara.nome }} ({{ mascara.usuario.username }})"</button>
 
   {% endfor %}
 
