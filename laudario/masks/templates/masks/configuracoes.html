@@ -28,15 +28,7 @@
       <input id = "botaonovamascara" type="submit" class="btn btn-primary" value="Criar Máscara"/>
   </form>
 
-<div class="form-group">
-  <select class="form-control" name ="exames" id="exames" onchange="tornarExamesInvisiveis()">
-    <option value="todos">Todos</option>
 
-    {% for exame in exames %}
-      <option value={{ exame.pk }}>{{exame.descricao}}</option>
-    {% endfor %}
-  </select>
-</div>
 
 
 
