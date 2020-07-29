@@ -1222,6 +1222,11 @@ function insertAtCursor(text) {
         input.disabled = true;
     }
 
+        var inputs5 = document.getElementsByClassName("entrada_modal");
+    for(input of inputs5) {
+        input.readOnly = true;
+    }
+
 
     }
 
