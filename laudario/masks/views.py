@@ -126,15 +126,23 @@ def adicionar_alteracao(request):
     if not request.user.is_authenticated:
         return redirect(views.mostrar_index)
 
-    if request.POST.get('adicionar_no_banco', False):
+    pub = request.POST.get('frase_publica', False)
+
+    if (pub == 'on'):
+        publica = True;
+    else:
+        publica = False;
+
+    if request.POST.get('adicionar_no_banco', False) == 'on':
 
         topicoNormal = TopicoNormal.objects.get(pk=request.POST['exames'])
 
-        topicoAnormal = TopicoAnormal(topico_normal=topicoNormal, nome=request.POST['nome_modal'], relatorio=request.POST['relatorio_modal'], conclusao=request.POST['conclusao_modal'])
+        topicoAnormal = TopicoAnormal(topico_normal=topicoNormal, nome=request.POST['nome_modal'], relatorio=request.POST['relatorio_modal'], conclusao=request.POST['conclusao_modal'],
+                                      publica=publica)
         topicoAnormal.save()
         adicionar_variaveis(request)
 
-        return HttpResponse(status=204)
+    return HttpResponse(status=204)
 
 def adicionar_variaveis(request):
     usuario = request.user
@@ -332,6 +340,16 @@ def salvar_alteracao(request):
     topicoAnormal.nome = request.POST['nome_modal']
     topicoAnormal.relatorio = request.POST['relatorio_modal']
     topicoAnormal.conclusao = request.POST['conclusao_modal']
+
+    pub = request.POST.get('frase_publica', False)
+
+    if (pub == 'on'):
+        publica = True;
+    else:
+        publica = False;
+
+    topicoAnormal.publica = publica
+
     topicoAnormal.save();
     adicionar_variaveis(request)
 

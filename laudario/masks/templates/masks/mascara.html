@@ -326,6 +326,9 @@
                             <input type="checkbox" id="adicionar_no_banco" name="adicionar_no_banco" checked/>
                             <label for="adicionar_no_banco">Adicionar no meu banco de frases</label>
 
+                            <input type="checkbox" id="frase_publica" name="frase_publica" checked/>
+                            <label for="frase_publica">Frase pública</label>
+
                             <input type="hidden" id="usuario_id_alteracao">
 
 
@@ -335,7 +338,7 @@
 
 
                               {% for topicoanormal in topicos_anormais %}
-                                {% if topicoanormal.topico_normal.mascara == mascara %}
+                                {% if topicoanormal.topico_normal.mascara.especialidade == mascara.especialidade and topicoanormal.topico_normal.mascara.exame == mascara.exame and topicoanormal.publica == True %}
                                     <button type="button" class="botao_diagnostico" id="t{{ topicoanormal.pk }}" onclick="popularFraseAlterada(this.id)">{{ topicoanormal.nome }}</button>
                                 {% endif %}
                             {% endfor %}

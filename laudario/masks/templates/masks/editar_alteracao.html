@@ -71,6 +71,16 @@
 <input type="checkbox" id="adicionar_no_banco" name="adicionar_no_banco" checked/>
 <label for="adicionar_no_banco">Adicionar no meu banco de frases</label>
 
+            {% if topico_anormal.publica == True %}
+        <input type="checkbox" id="frase_publica" name="frase_publica" checked/>
+        <label for="frase_publica">Frase pública</label>
+
+    {% else %}
+        <input type="checkbox" id="frase_publica" name="frase_publica"/>
+        <label for="frase_publica">Frase pública</label>
+    {% endif %}
+
+
 <input type="hidden" id="usuario_id_alteracao">
     <input type="hidden" id="flag_edicao">
 
