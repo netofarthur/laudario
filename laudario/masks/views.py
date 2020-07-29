@@ -117,11 +117,6 @@ def adicionar_nova_mascara(request):
         topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i])
         topico_normal.save()
 
-    topico_normal_nenhum_orgao = TopicoNormal(mascara=nova_mascara, orgao="Nenhum órgão", relatorio="")
-    topico_normal_nenhum_orgao.save()
-
-
-
     adicionar_variaveis(request)
 
     return HttpResponse(status=204)
