@@ -306,17 +306,16 @@ def salvar_edicao(request, id_mascara):
 
     lista_ids_orgaos = request.POST.getlist('id_orgao')
 
+    vezesClicadoRemover = request.POST['clicou_remover']
+
 
 
 
 
     for i in range(len(lista_relatorios_orgaos)):
-        orgaosDaMascara = TopicoNormal.objects.filter(mascara=id_mascara)
-        if(i < len(orgaosDaMascara)):
+
+        if(i < len(orgaosDaMascara) - int(vezesClicadoRemover)):
             orgao = TopicoNormal.objects.get(pk=lista_ids_orgaos[i])
-
-
-
             orgao.orgao = lista_nomes_orgaos[i]
             orgao.relatorio = lista_relatorios_orgaos[i]
             orgao.save()
@@ -324,12 +323,7 @@ def salvar_edicao(request, id_mascara):
             orgao = TopicoNormal(orgao=lista_nomes_orgaos[i], relatorio=lista_relatorios_orgaos[i], mascara=mascara)
             orgao.save()
 
-        if (orgao.orgao == "Nenhum órgão"):
-            orgao.delete()
 
-
-    orgao = TopicoNormal(orgao="Nenhum órgão", relatorio="", mascara=mascara)
-    orgao.save()
     mascara.save()
 
     #remove tópico do usuário que estiver sido removido da página. Ainda faltar deixar aviso do risco.
