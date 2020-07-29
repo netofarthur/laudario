@@ -94,7 +94,7 @@
 <div id="lista_orgaos">
 
 {% for topico_normal in topicos_normais %}
-{% if topico_normal.orgao != "Nenhum órgão" and topico_normal.relatorio != "Nenhum órgão adicionado" %}
+{% if topico_normal.orgao != "Nenhum órgão"%}
 
 <div name="orgao_div">
     <div style="display: flex">
@@ -109,6 +109,22 @@
 <textarea rows="3" class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão">{{ topico_normal.relatorio }}</textarea>
 <br name="orgaobr">
     </div>
+
+    {% else %}
+    <div style="display: none;" name="orgao_div">
+    <div style="display: flex">
+<input type="hidden" value="{{ topico_normal.pk }}" name="id_orgao">
+<label name="orgaolabel">Órgão: </label>
+<input style="flex: 2; margin-bottom: 5px;" type="text" name="orgao" value="{{ topico_normal.orgao }}">
+
+<button name="botao_remover" style="margin-bottom:5px;" type="button" onclick="removerEntradaOrgao(this.id)" id="{{ forloop.counter0 }}">Remover</button>
+    </div>
+
+
+<textarea rows="3" class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão">{{ topico_normal.relatorio }}</textarea>
+<br name="orgaobr">
+    </div>
+
     {% endif %}
 {% endfor %}
 <a href="javascript:adicionarEntradaOrgao()" id="adicionar_entrada_orgao">Novo órgão</a>
