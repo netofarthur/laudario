@@ -68,6 +68,10 @@ function popularMascara(mascaraId) {
                     }
                     entradasNomesOrgaos[counter].setAttribute("value", topicosNormaisObject[i].fields.orgao);
                     entradasRelatorios[counter].innerHTML = topicosNormaisObject[i].fields.relatorio;
+
+                     if(entradasNomesOrgaos[counter].getAttribute("value") == "Nenhum órgão") {
+                        document.getElementById("lista_orgaos").removeChild(entradasNomesOrgaos[counter].parentNode.parentNode);
+                    }
                     counter++;
 
 
@@ -157,6 +161,9 @@ function popularMascara(mascaraId) {
     orgaoDivFlex.appendChild(remover);
     orgaoDiv.appendChild(descricaoOrgao);
     listaOrgaos.appendChild(anchor);
+
+
+
 
   }
 
