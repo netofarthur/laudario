@@ -165,11 +165,13 @@ def adicionar_alteracao(request):
 
     fraseId = request.POST['frase_aproveitada']
 
-    fraseUtilizada = TopicoAnormal.objects.get(pk=int(fraseId))
+    if(fraseId != ""):
 
-    fraseUtilizada.popularidade += 1
+        fraseUtilizada = TopicoAnormal.objects.get(pk=int(fraseId))
 
-    fraseUtilizada.save()
+        fraseUtilizada.popularidade += 1
+
+        fraseUtilizada.save()
 
 
     return HttpResponse(status=204)
