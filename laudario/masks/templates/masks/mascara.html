@@ -87,7 +87,11 @@
         {% endif %}
     {% endfor %}
 
+    <form id="formulario_upvote" action="{% url 'upvote_frase' %}" method="post">
+        {% csrf_token %}
 
+        <input type="hidden" name="frase_clicada" id="frase_clicada">
+    </form>
 </div>
 
 </div>

@@ -165,7 +165,7 @@ def adicionar_alteracao(request):
 
     fraseId = request.POST['frase_aproveitada']
 
-    fraseUtilizada = TopicoAnormal.objects.get(pk=fraseId)
+    fraseUtilizada = TopicoAnormal.objects.get(pk=int(fraseId))
 
     fraseUtilizada.popularidade += 1
 
@@ -385,4 +385,12 @@ def salvar_alteracao(request):
     topicoAnormal.save();
     adicionar_variaveis(request)
 
+    return HttpResponse(status=204)
+
+
+def upvote_frase(request):
+    fraseId = request.POST['frase_clicada']
+    topicoAnormal = TopicoAnormal.objects.get(pk=int(fraseId))
+    topicoAnormal.frequencia += 1
+    topicoAnormal.save()
     return HttpResponse(status=204)

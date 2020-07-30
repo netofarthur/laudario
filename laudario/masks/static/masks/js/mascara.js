@@ -220,7 +220,7 @@ mostrarBotaoPopularSeNecessario();
             }
         }
 
-
+        document.getElementById("frase_clicada").value = idSemB;
 
     colocarElementosEmOrdem(name);
 
@@ -289,6 +289,8 @@ mostrarBotaoPopularSeNecessario();
 
 
     mostrarBotaoPopularSeNecessario();
+
+    document.getElementById("formulario_upvote").submit();
 
 
     }
