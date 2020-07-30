@@ -127,7 +127,7 @@ def adicionar_nova_mascara(request):
 
     mascaraUtilizada.popularidade += 1
 
-    mascaraUtilizada.save();
+    mascaraUtilizada.save()
 
     adicionar_variaveis(request)
 
@@ -163,7 +163,13 @@ def adicionar_alteracao(request):
             topicoAnormal.save()
             adicionar_variaveis(request)
 
+    fraseId = request.POST['frase_aproveitada']
 
+    fraseUtilizada = TopicoAnormal.objects.get(pk=fraseId)
+
+    fraseUtilizada.popularidade += 1
+
+    fraseUtilizada.save()
 
 
     return HttpResponse(status=204)

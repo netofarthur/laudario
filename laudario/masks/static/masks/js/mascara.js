@@ -1277,6 +1277,8 @@ function insertAtCursor(text) {
 
 
     function popularFraseAlterada(topicoId) {
+
+
         var idSemT = topicoId.substring(1, topicoId.length);
         var alteradosJSONObject = JSON.parse(alterados);
 
@@ -1325,7 +1327,7 @@ function insertAtCursor(text) {
 
             document.getElementById("usuario_id_alteracao").value = usuarioSelecionadoId;
             document.getElementById("exames").value = topicoNormalId;
-
+            document.getElementById("frase_aproveitada").value = idSemT;
 
     }
 
