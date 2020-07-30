@@ -13,7 +13,7 @@ function popularMascara(mascaraId) {
         }
 
         document.getElementById("usuario_id_alteracao").value = usuarioSelecionadoId;
-
+        document.getElementById("mascara_aproveitada").value = mascaraId;
 
         var entradasNomesOrgaos = document.getElementsByName("orgao");
         var entradasRelatorios = document.getElementsByName("relatorio_orgao");

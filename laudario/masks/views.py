@@ -102,6 +102,8 @@ def adicionar_nova_mascara(request):
 
 
 
+
+
     especialidadeInstance = Especialidade.objects.get(pk=especialidade_id)
     exameInstance = Exame.objects.get(pk=exame_id)
 
@@ -119,9 +121,17 @@ def adicionar_nova_mascara(request):
         topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i])
         topico_normal.save()
 
+    mascaraId = request.POST['mascara_aproveitada']
 
+    mascaraUtilizada = Mascara.objects.get(pk=mascaraId)
+
+    mascaraUtilizada.popularidade += 1
+
+    mascaraUtilizada.save();
 
     adicionar_variaveis(request)
+
+
 
     return HttpResponse(status=204)
 
