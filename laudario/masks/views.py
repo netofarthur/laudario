@@ -123,11 +123,13 @@ def adicionar_nova_mascara(request):
 
     mascaraId = request.POST['mascara_aproveitada']
 
-    mascaraUtilizada = Mascara.objects.get(pk=mascaraId)
+    if(mascaraId != ""):
 
-    mascaraUtilizada.popularidade += 1
+        mascaraUtilizada = Mascara.objects.get(pk=mascaraId)
 
-    mascaraUtilizada.save()
+        mascaraUtilizada.popularidade += 1
+
+        mascaraUtilizada.save()
 
     adicionar_variaveis(request)
 
