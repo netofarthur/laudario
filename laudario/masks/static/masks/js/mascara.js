@@ -23,7 +23,6 @@
                 var resultado = listaParagrafos[i].innerHTML.match(pattern);
                 if(resultado != null) {
                     listaParagrafos[i].setAttribute("name", "alterado");
-                    document.getElementById("conclusao_normal").setAttribute("name", "alterado");
 
                 }
 
@@ -230,13 +229,7 @@ mostrarBotaoPopularSeNecessario();
 
         var listaParagrafosConclusao = document.getElementById("conclusao_normal").children;
 
-        for (var i = 0; i < listaParagrafosConclusao.length; i++) {
-            var result2 = listaParagrafosConclusao[i].innerHTML.match(pattern);
-            if(result2 != null) {
-                document.getElementById("conclusao_normal").setAttribute("name", "alterado");
 
-            }
-        }
 
 
         if(result != null) {
