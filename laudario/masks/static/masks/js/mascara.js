@@ -449,6 +449,7 @@ mostrarBotaoPopularSeNecessario();
 
             } else {
                 variaveisDiv.firstChild.children[1].focus();
+                variaveisDiv.firstChild.children[1].style.display = "none";
             document.getElementById("teclado").style.display = "none";
             var tecladoNominal = document.getElementById("teclado_nominal");
                 tecladoNominal.style.display = "block";
@@ -470,6 +471,8 @@ mostrarBotaoPopularSeNecessario();
                 proximaVariavelBotao.setAttribute("class", "botao_calculadora_triplo");
                 proximaVariavelBotao.setAttribute("onclick", "mostrarProximaVariavel()");
                 proximaVariavelBotao.innerHTML = "Próxima variável";
+                proximaVariavelBotao.setAttribute("id", "proxima_variavel");
+                proximaVariavelBotao.style.display = "none";
                 tecladoNominal.appendChild(proximaVariavelBotao);
 
 
@@ -502,25 +505,21 @@ function adaptarCalculadoraMaisSave() {
 
             }
 
-            if(variaveisInativas.firstChild == null) {
-                document.getElementById("titulo_variaveis_adicionadas").style.display = "none";
-                document.getElementById("barra_horizontal").style.display = "none";
 
-            } else {
-                document.getElementById("titulo_variaveis_adicionadas").style.display = "block";
-                document.getElementById("barra_horizontal").style.display = "block";
-
-
-            }
 }
 
 function selecionarVariavelNominal(textoSelecao) {
             mostrarProximaVariavel();
            var variaveisInativas = document.getElementById("variaveis_inativas");
+     var variaveisAtivas = document.getElementById("template_name_variaveis");
 
             var children = variaveisInativas.children;
 
                 children[children.length - 1].children[1].value = textoSelecao;
+
+            if(variaveisAtivas.firstChild == null) {
+                alterarVariaveisModal();
+            }
 
 
 
@@ -594,13 +593,19 @@ function insertAtCursor(text) {
 
            if(variaveisDiv.firstChild.style.display == "block") {
                   variaveisInativasDiv.appendChild(variaveisDiv.firstChild);
+
            }
            if(variaveisDiv.firstChild != null) {
                    variaveisDiv.firstChild.style.display = "block";
 
+           } else {
+             if(variaveisInativasDiv.lastChild.children[1].getAttribute("name") == "input") {
+                alterarVariaveisModal();
+             }
            }
            selecionarVariavel();
                      adaptarCalculadoraMaisSave();
+
 
 
     }
