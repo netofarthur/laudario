@@ -199,7 +199,6 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById("paragrafo_conclusao").innerHTML = conclusaoMascaraAtual;
         }
 
-        mostrarBotaoPopularSeNecessario();
 
 
     }
@@ -1256,9 +1255,11 @@ function insertAtCursor(text) {
 
             } else {
                 botao.style.display = "block";
+        botao.click();
+
+
             }
         }
-
 
 
     }
