@@ -43,12 +43,13 @@ def mostrar_mascara(request, id_mascara):
     variaveis = json_serializer.serialize(Variavel.objects.all())
     normais = json_serializer.serialize(TopicoNormal.objects.all())
     mascarasJson = json_serializer.serialize(Mascara.objects.all())
+    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
 
     usuarios2 = json_serializer.serialize(User.objects.all())
 
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
                'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
-               'usuarios2': usuarios2, 'mascarasJson': mascarasJson,}
+               'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario}
     return render(request, 'masks/mascara.html', context)
 
 def nova_mascara(request):
@@ -66,9 +67,10 @@ def nova_mascara(request):
 
     topicos_normais = json_serializer.serialize(TopicoNormal.objects.all())
     variaveis = json_serializer.serialize(Variavel.objects.all())
+    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
 
-
-    context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson, 'topicos_normais': topicos_normais, 'variaveis': variaveis}
+    context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson, 'topicos_normais': topicos_normais, 'variaveis': variaveis,
+               'variaveisusuario': variaveisusuario}
     return render(request, 'masks/nova_mascara.html', context)
 
 def adicionar_nova_mascara(request):

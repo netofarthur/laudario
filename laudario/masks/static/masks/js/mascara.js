@@ -941,7 +941,7 @@ function insertAtCursor(text) {
 
 
 
-        var variaveisJSONObject = JSON.parse(nomesAmigaveis);
+        var variaveisJSONObject = JSON.parse(nomesAmigaveisUsuario);
 
         var variavelJaExiste = false;
 
