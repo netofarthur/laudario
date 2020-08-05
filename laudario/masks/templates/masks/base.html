@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
 
 
         <!-- Depois tem que colocar isso nos seus htmls certos.-->
@@ -34,6 +35,8 @@
 
 
     <nav class="navbar navbar-expand-sm">
+        <a href="#" class="navbar-left"><img id="logo_navbar" src="{% static 'masks/images/icone.png' %}"></a>
+
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,9 +54,9 @@
                         <a class="nav-link" href="#">Sobre</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
+                <form id="form_username">
                     <span id="username">{{ user.username }}</span>
-                    <a href="{% url 'logout_usuario' %}">Log out</a>
+                    <a href="{% url 'logout_usuario' %}">Logout</a>
 
                 </form>
             </div>
