@@ -1,20 +1,25 @@
 <html>
 <head>
+ {% load static %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'masks/css/index.css' %}">
 </head>
 <body>
 
-<form action="{% url 'login_usuario' %}" method="post">
+<form id="form_login" action="{% url 'login_usuario' %}" method="post">
 {% csrf_token %}
 
 <input type="text" placeholder="Usuário" name="usuario">
 <input type="password" placeholder="Senha" name="senha">
 <input type="submit" value="Entrar">
+    <br>
+    <br>
 <a href="{% url 'cadastro' %}">Não possui cadastro?</a>
-<a href="{% url 'logout_usuario' %}">Log out</a>
+<a href="{% url 'logout_usuario' %}">Esqueceu sua senha?</a>
 
 
 </form>
+
 
 </body>
 </html>
