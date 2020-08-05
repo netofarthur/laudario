@@ -1434,6 +1434,26 @@ function insertAtCursor(text) {
 
 
 
+function procurarFrases(id) {
+  // Declare variables
+  var input, filter, li, i, txtValue;
+  input = document.getElementById(id);
+  filter = input.value.toUpperCase();
+  li = document.getElementsByClassName('botao_diagnostico');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    txtValue = li[i].innerHTML;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "block";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+
+
 
 
 
