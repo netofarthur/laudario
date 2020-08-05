@@ -199,6 +199,7 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById("paragrafo_conclusao").innerHTML = conclusaoMascaraAtual;
         }
 
+                mostrarBotaoPopularSeNecessario();
 
 
     }
@@ -1253,7 +1254,6 @@ function insertAtCursor(text) {
     function mostrarBotaoPopularSeNecessario() {
         var lista = obterListaVariaveis("paragrafo_mascara");
         var botao = document.getElementById("popular_variaveis");
-
         if(botao != null) {
             if(lista.length == 0) {
                 botao.style.display = "none";

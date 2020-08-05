@@ -34,9 +34,9 @@ def mostrar_mascara(request, id_mascara):
 
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
 
-    topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('-frequencia')
+    topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('-frequencia', 'nome')
 
-    todos_topicos_anormais = TopicoAnormal.objects.all().order_by('-popularidade')
+    todos_topicos_anormais = TopicoAnormal.objects.all().order_by('-popularidade', 'nome')
     topicos_anormais_builders = TopicoAnormalBuilder.objects.all()
 
     json_serializer = serializers.get_serializer("json")()
