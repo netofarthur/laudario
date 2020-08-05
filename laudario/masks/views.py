@@ -232,7 +232,8 @@ def login_usuario(request):
     usr = authenticate(request, username=usuario, password=senha)
     if usr is not None:
         login(request, usr)
-        return HttpResponse("<html><body><p>Login efetuado</p></body></html>")
+        return redirect(views.mostrar_mascaras)
+
     else:
         return HttpResponse("<html><body><p>Usuário ou senha inválidos</p></body></html>")
 
@@ -256,8 +257,7 @@ def cadastrar(request):
 
 def logout_usuario(request):
     logout(request)
-    return HttpResponse("<html><body><p>Loggeg out</p></body></html>")
-
+    return redirect(views.mostrar_mascaras)
 
 
 def mostrar_mascaras(request):
