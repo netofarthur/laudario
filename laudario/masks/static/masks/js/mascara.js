@@ -1064,20 +1064,44 @@ function insertAtCursor(text) {
                      inputHidden.setAttribute("value", construcao);
 
                     label.innerHTML = construcao;
+                    if(document.getElementById("adicionar_no_atual") != null) {
+                        if(document.getElementById("relatorio_modal").value.indexOf("{" + listaVars[i] + "}") > -1) {
+                            document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
 
+                        }
+                        if(document.getElementById("conclusao_modal").value.indexOf("{" + listaVars[i] + "}") > -1) {
+                            document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
 
+                        }
+                    } else {
+                    var orgaos = document.getElementsByClassName("paragrafo_mascara");
+                        for(orgao of orgaos) {
+                            if(orgao.value.indexOf("{" + listaVars[i] + "}") > -1) {
+                                orgao.value = orgao.value.replace(listaVars[i], inputHidden.value);
+
+                            }
+                        }
+                    }
 
                 } else {
                     label.innerHTML = listaVars[i] + getVariaveisUsuarioCount();
                     inputHidden.setAttribute("value", listaVars[i] + getVariaveisUsuarioCount());
                      if(document.getElementById("adicionar_no_atual") != null) {
-                        document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
-                        document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
+                         if(document.getElementById("relatorio_modal").value.indexOf("{" + listaVars[i] + "}") > -1) {
+                            document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
 
+                        }
+                        if(document.getElementById("conclusao_modal").value.indexOf("{" + listaVars[i] + "}") > -1) {
+                            document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
+
+                        }
                      } else {
                         var orgaos = document.getElementsByClassName("paragrafo_mascara");
                         for(orgao of orgaos) {
-                            orgao.value = orgao.value.replace(listaVars[i], inputHidden.value);
+                            if(orgao.value.indexOf("{" + listaVars[i] + "}") > -1) {
+                                orgao.value = orgao.value.replace(listaVars[i], inputHidden.value);
+
+                            }
                         }
                      }
 
