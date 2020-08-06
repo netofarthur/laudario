@@ -1309,6 +1309,9 @@ function insertAtCursor(text) {
             }
         }
 
+        if(document.getElementById("procurarFrases") != null) {
+            document.getElementById("procurarFrases").focus();
+        }
 
     }
 
