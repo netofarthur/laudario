@@ -286,11 +286,13 @@ color: white;
   #username {
     margin: 0px;
      padding: 5px;
+
   }
 
   #form_username {
     margin: 0px;
      padding: 5px;
+     color: gray;
 
 }
 
@@ -303,8 +305,14 @@ color: white;
     color: white;
 }
 
+.btn-link {
+    color: #0366d6;
+}
 
+#link_mascara {
+        color: #495057;
 
+}
 
 
 
