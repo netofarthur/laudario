@@ -426,6 +426,11 @@ $('#ModalVariaveis').on('shown.bs.modal', function (e) {
 
 
 $("#myModalAlteracao").on("show.bs.modal", function(){
+
+        if(document.getElementById("procurarFrases") != null) {
+                    document.getElementById("procurarFrases").value = "";
+                    procurarFrases("procurarFrases");
+    }
     document.getElementById("nome_modal").value = "";
     document.getElementById("relatorio_modal").value = "";
 

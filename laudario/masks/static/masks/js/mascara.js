@@ -210,6 +210,11 @@ mostrarBotaoPopularSeNecessario();
 
  // Altera o diagnóstico Padrão diretamente, sem abrir outras janelas. Tive que usar serialização com JSON objects.
     function alterarDiagnosticoDireto(name, id) {
+     if(document.getElementById("procurarFrases") != null) {
+                    document.getElementById("procurarFrases").value = "";
+                    procurarFrases("procurarFrases");
+                }
+
         if(document.getElementById("procurarFrases") != null) {
                     document.getElementById("procurarFrases").value = "";
                     procurarFrases("procurarFrases");
@@ -1316,7 +1321,10 @@ function insertAtCursor(text) {
 
 
     function popularFraseAlterada(topicoId) {
-
+           if(document.getElementById("procurarFrasesPublicas") != null) {
+                    document.getElementById("procurarFrasesPublicas").value = "";
+                    procurarFrases("procurarFrasesPublicas");
+    }
 
         var idSemT = topicoId.substring(1, topicoId.length);
         var alteradosJSONObject = JSON.parse(alterados);
