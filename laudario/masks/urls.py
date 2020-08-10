@@ -21,6 +21,6 @@ urlpatterns = [
     path('configuracoes/editaralteracao/<int:id_mascara>/<int:id_alteracao>/', views.editar_alteracao, name='editar_alteracao'),
     path('alteracao/salvaralteracao', views.salvar_alteracao, name='salvar_alteracao'),
     path('upvote/', views.upvote_frase, name='upvote_frase'),
-
+    path('users/validate/<str:uid>/<str:token>', views.activate, name='activate'),
 
 ]

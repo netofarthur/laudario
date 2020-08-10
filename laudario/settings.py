@@ -127,16 +127,24 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-#Settings for email verification
+#Settings for email verification no teste
 EMAIL_ACTIVE_FIELD = 'is_active'
 EMAIL_SERVER = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_ADDRESS = 'doctortestisdev@gmail.com'
 EMAIL_PASSWORD = os.environ.get('SENHA_EMAIL')
 EMAIL_MAIL_SUBJECT = 'Confirm your email'
-EMAIL_MAIL_HTML = 'masks/mail_body.html'
+EMAIL_MAIL_HTML = 'masks/maid_body.html'
 EMAIL_MAIL_PLAIN = 'masks/mail_body.txt'
 EMAIL_PAGE_TEMPLATE = 'masks/confirm_template.html'
 EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
 
+#Settings for email verification na produção
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'localhost'
+#EMAIL_PORT = 25
+#EMAIL_HOST_USER = ''
+#EMAIL_HOST_PASSWORD = ''
+#EMAIL_USE_TLS = False
+#DEFAULT_FROM_EMAIL = 'Whatever <whatever@example.com'
 

@@ -7,6 +7,17 @@ from django_email_verification import sendConfirm
 from django.http import HttpResponse
 import re
 
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_decode
+from django.contrib.auth import get_user_model
+from django.contrib.auth.tokens import default_token_generator
+
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+
+
 from . import views
 
 
@@ -248,11 +259,60 @@ def cadastrar(request):
     email = request.POST['email']
     senha = request.POST['senha']
 
+
+
     user = User.objects.create_user(usuario, email, senha)
+
+    #Ambiente de teste
     sendConfirm(user)
+
+
+
+
     user.save()
 
-    return HttpResponse("<html><body><p>" + usuario + " criado!</p></body></html>")
+    token = default_token_generator.make_token(user)
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+
+    # Produção somente
+    #some_params = "/users/validate/' + uid + '/' + token + '"
+    #msg_plain = render_to_string('masks/email.txt', {'some_params': some_params})
+    #msg_html = render_to_string('masks/email.html', {'some_params': some_params})
+
+    #send_mail(
+    #    'Teste',
+    #    msg_plain,
+    #    'arthur@masqs.com.br',
+    #    ['netofarthur@gmail.com'],
+    #    html_message=msg_html,
+    #
+    #    fail_silently=False,
+    #)
+
+
+    return HttpResponse('<html><body><a href="/users/validate/' + uid + '/' + token + '">clique aqui</a></body></html>')
+
+
+def activate(request, uid, token):
+
+    if uid is not None and token is not None:
+
+        uidid = urlsafe_base64_decode(uid)
+        try:
+
+            user_model = get_user_model()
+            user = user_model.objects.get(pk=uidid)
+
+            if default_token_generator.check_token(user, token) and user.is_active == 0:
+                user.is_active = 1
+                user.save()
+                return HttpResponse('<html><body><p>ativou' + user.username + '</p></body></html>')
+        except:
+            pass
+
+    return HttpResponse('<html><body><p>nao ativou</p></body></html>')
+
+
 
 
 def logout_usuario(request):
