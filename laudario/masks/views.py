@@ -259,6 +259,7 @@ def cadastrar(request):
 
     user = User.objects.create_user(usuario, email, senha)
 
+    user.is_active = 0
 
     user.save()
 
