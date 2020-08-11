@@ -26,41 +26,54 @@
     <div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog" aria-labelledby="modalCadastroTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalCadastroTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <div class="modal-body">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
-              </div>
-              <div class="modal-body" style="text-align: left;">
+                  <h5 id="novo_cadastro_title">Novo Cadastro</h5>
+                  <div id="cadastro_div">
                   <form action="{% url 'cadastrar' %}" method="post">
                     {% csrf_token %}
+                        <div id="usuario_div">
                         <label for="usuario">Usuário: </label>
-                        <input type="text" name="usuario" id="usuario">
-                        <br>
+                        <input type="text" name="usuario" id="usuario" class="cadastro_input">
+                            </div>
+
+                        <div id="primeiro_nome_div">
                         <label for="primeiro_nome">Primeiro Nome: </label>
-                        <input type="text" name="primeiro_nome" id="primeiro_nome">
-                        <br>
+                        <input type="text" name="primeiro_nome" id="primeiro_nome" class="cadastro_input">
+                        </div>
+
+                      <div id="sobrenome_div">
                         <label for="sobrenome">Sobrenome: </label>
 
-                        <input type="text" placeholder="Segundo nome" name="segundo_nome" id="sobrenome">
-                        <br>
+                        <input type="text" name="segundo_nome" id="sobrenome" class="cadastro_input">
+                        </div>
+
+                      <div id="email_div">
                         <label for="email">Email: </label>
 
-                        <input type="email" placeholder="Email" name="email" id="email">
-                        <br>
+                        <input type="email" name="email" id="email" class="cadastro_input">
+                        </div>
+
+
+                      <div id="senha_div">
                         <label for="senha">Senha: </label>
-                        <input type="password" name="senha" id="senha">
-                        <br>
-                        <input type="submit" value="Cadastrar">
+                        <input type="password" name="senha" id="senha" class="cadastro_input">
+                        </div>
 
+                         <div id="repetir_senha_div">
+                        <label for="repetir_senha">Repetir Senha: </label>
+                        <input type="password" name="senha" id="repetir_senha" class="cadastro_input">
+                        </div>
+
+                      <div id="botao_cadastro_div">
+                        <input type="submit" value="Cadastrar" id="botao_cadastrar">
+                        </div>
                     </form>
+                </div>
+              </div>
 
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id = "save_changes" type="button" class="btn btn-primary" >Save changes</button>
-              </div>
             </div>
         </div>
 

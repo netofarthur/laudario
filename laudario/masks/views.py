@@ -245,9 +245,7 @@ def login_usuario(request):
         return HttpResponse("<html><body><p>Usuário ou senha inválidos</p></body></html>")
 
 
-def cadastro(request):
-    context = {}
-    return render(request, 'masks/cadastro.html/', context)
+
 
 
 def cadastrar(request):

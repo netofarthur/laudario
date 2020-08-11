@@ -22,3 +22,42 @@ body {
     margin-top: 1.5rem;
 
 }
+
+#cadastro_div {
+text-align: left;
+ margin-right: 23%;
+        margin-left: 23%;
+
+
+ }
+
+label {
+    margin-bottom: .2rem;
+}
+
+.cadastro_input {
+    width: 100%;
+    margin-bottom: .8rem;
+}
+
+#botao_cadastro_div {
+    text-align: center;
+}
+
+.modal-header {
+    text-align: center;
+}
+
+#novo_cadastro_title {
+    color: #0366d6;
+    margin-bottom: .9rem;
+}
+
+#botao_cadastrar {
+      background-color: #0366d6;
+      color: white;
+      border-radius: 7px;
+      margin-top: .7rem;
+
+
+}

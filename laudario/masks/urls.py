@@ -9,7 +9,6 @@ urlpatterns = [
     path('mascaras/nova/adicionar', views.adicionar_nova_mascara, name='adicionar_nova_mascara'),
     path('', views.mostrar_index, name='mostrar_index'),
     path('login', views.login_usuario, name='login_usuario'),
-    path('cadastro', views.cadastro, name='cadastro'),
     path('cadastrar', views.cadastrar, name='cadastrar'),
     path('logout', views.logout_usuario, name='logout_usuario'),
     path('mascaras/', views.mostrar_mascaras, name='mostrar_mascaras'),
