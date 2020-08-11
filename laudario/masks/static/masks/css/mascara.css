@@ -213,8 +213,9 @@ color: white;
 }
 
 .botao_configuracao {
-    border-radius: 10px;
-      background-color: #ededed;
+      border-radius: .5rem;
+      background-color: #0366d6;
+      color: white;
 }
 
 .input_curto {
