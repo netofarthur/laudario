@@ -3,15 +3,11 @@ from django.core import serializers
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django_email_verification import sendConfirm
 from django.http import HttpResponse
 import re
-
-from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode
-from django.contrib.auth import get_user_model
 from django.contrib.auth.tokens import default_token_generator
 
 from django.core.mail import send_mail
@@ -263,11 +259,6 @@ def cadastrar(request):
 
     user = User.objects.create_user(usuario, email, senha)
 
-    #Ambiente de teste
-    sendConfirm(user)
-
-
-
 
     user.save()
 
@@ -299,11 +290,8 @@ def activate(request, uid, token):
 
         uidid = urlsafe_base64_decode(uid)
         try:
-
-            user_model = get_user_model()
-            user = user_model.objects.get(pk=uidid)
-
-            if default_token_generator.check_token(user, token) and user.is_active == 0:
+            user = User.objects.get(pk=uidid)
+            if default_token_generator.check_token(user, token):
                 user.is_active = 1
                 user.save()
                 return HttpResponse('<html><body><p>ativou' + user.username + '</p></body></html>')
