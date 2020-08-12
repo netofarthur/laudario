@@ -129,7 +129,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+
 STATIC_URL = '/static/'
+
+#PRODUÇÃO
+#Run collectstatic para passar tudo de STATIC_URL na pasta do app
+#para STATI_ROOT no servidor.
+#STATIC_ROOT = '/var/www/'
 
 
 
