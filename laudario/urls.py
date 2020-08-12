@@ -23,3 +23,4 @@ urlpatterns = [
     path('', include('laudario.masks.urls')),
     path('email/', include(mail_urls)),
 ]
+

@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#PRODUÇÃO
+#ALLOWED_HOSTS = ['masqs.com.br', 'www.masqs.com.br']
+
+
+
 
 # Application definition
 
@@ -38,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'laudario.masks',
-    'django_email_verification',
 
 ]
 
@@ -81,6 +85,7 @@ DATABASES = {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'laudario',
 	'USER': 'laudariousr',
+     ##NÃO DEIXAR PASSWORD PÚBLICO AQUI NA PRODUÇÃO, COLOCAR EM UMA VARIÁVEL DE AMBIENTE.
 	'PASSWORD': 'piabinha123',
 	'HOST': 'localhost',
 
@@ -129,7 +134,7 @@ STATIC_URL = '/static/'
 
 
 
-#Settings for email verification na produção
+#Settings for email verification na produção (usuário tem que clicar em link enviado no email para ativar.
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_HOST = 'localhost'
 #EMAIL_PORT = 25
