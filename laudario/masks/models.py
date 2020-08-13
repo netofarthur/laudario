@@ -79,7 +79,9 @@ class Variavel(models.Model):
 
 
 
-
+class Profile(models.Model):
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    is_premium = models.BooleanField(default=False)
 
 
 

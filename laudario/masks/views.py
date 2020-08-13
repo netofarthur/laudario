@@ -19,7 +19,7 @@ from . import views
 
 
 
-from .models import Mascara, TopicoNormal, TopicoAnormal, TopicoAnormalBuilder, Variavel, Especialidade, Exame
+from .models import Mascara, TopicoNormal, TopicoAnormal, TopicoAnormalBuilder, Variavel, Especialidade, Exame, Profile
 
 
 # Create your views here.
@@ -45,6 +45,7 @@ def mostrar_mascara(request, id_mascara):
 
     todos_topicos_anormais = TopicoAnormal.objects.all().order_by('-popularidade', 'nome')
     topicos_anormais_builders = TopicoAnormalBuilder.objects.all()
+    profiles = Profile.objects.all()
 
     json_serializer = serializers.get_serializer("json")()
     alterados = json_serializer.serialize(TopicoAnormal.objects.all())
@@ -57,7 +58,8 @@ def mostrar_mascara(request, id_mascara):
 
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
                'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
-               'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario, 'todos_topicos_anormais': todos_topicos_anormais,}
+               'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario, 'todos_topicos_anormais': todos_topicos_anormais,
+               'profiles': profiles,}
     return render(request, 'masks/mascara.html', context)
 
 def nova_mascara(request):
@@ -72,13 +74,13 @@ def nova_mascara(request):
     mascarasJson = json_serializer.serialize(Mascara.objects.filter(publica=True))
 
     mascaras = Mascara.objects.filter(publica=True)
-
+    profiles = Profile.objects.all()
     topicos_normais = json_serializer.serialize(TopicoNormal.objects.all())
     variaveis = json_serializer.serialize(Variavel.objects.all())
     variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
 
     context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson, 'topicos_normais': topicos_normais, 'variaveis': variaveis,
-               'variaveisusuario': variaveisusuario}
+               'variaveisusuario': variaveisusuario, 'profiles': profiles,}
     return render(request, 'masks/nova_mascara.html', context)
 
 def adicionar_nova_mascara(request):
@@ -340,7 +342,8 @@ def cadastrar(request):
         user.first_name = primeiro_nome
         user.last_name = sobrenome
         user.save()
-
+        profile = Profile(usuario=user, is_premium=False)
+        profile.save()
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
@@ -400,14 +403,15 @@ def editar_mascara(request, id_mascara):
 
     variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
     variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
-
+    profiles = Profile.objects.all()
     especialidades = Especialidade.objects.all()
     topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara))
     mascara = Mascara.objects.get(pk=id_mascara)
     exames = Exame.objects.all()
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
     context = {'mascara': mascara, 'especialidades': especialidades, 'exames': exames, 'topicos_normais': topicos_normais,
-               'topicos_anormais': topicos_anormais,'variaveis': variaveis, 'variaveisusuario': variaveisusuario,}
+               'topicos_anormais': topicos_anormais,'variaveis': variaveis, 'variaveisusuario': variaveisusuario,
+               'profiles': profiles}
     return render(request, 'masks/editar_mascara.html', context)
 
 
@@ -480,11 +484,11 @@ def editar_alteracao(request, id_alteracao, id_mascara):
 
     variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
     variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
-
+    profiles = Profile.objects.all()
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
     topico_anormal = TopicoAnormal.objects.get(pk=id_alteracao)
     context = {'id_alteracao': id_alteracao, 'topico_anormal': topico_anormal, 'topicos_normais': topicos_normais,
-               'variaveis': variaveis, 'variaveisusuario': variaveisusuario,}
+               'variaveis': variaveis, 'variaveisusuario': variaveisusuario, 'profiles': profiles,}
     return render(request, 'masks/editar_alteracao.html', context)
 
 

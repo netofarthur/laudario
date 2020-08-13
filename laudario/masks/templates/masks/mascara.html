@@ -329,8 +329,17 @@
                             <input type="checkbox" id="adicionar_no_banco" name="adicionar_no_banco" checked/>
                             <label for="adicionar_no_banco">Adicionar no meu banco de frases</label>
 
-                            <input type="checkbox" id="frase_publica" name="frase_publica" checked/>
-                            <label for="frase_publica">Frase pública</label>
+                            {% for profile in profiles %}
+                                {% if profile.usuario == request.user and profile.is_premium %}
+                                    <input type="checkbox" id="frase_publica" name="frase_publica" checked/>
+                                    <label for="frase_publica">Frase pública</label>
+                                {% else %}
+                                    <input style="display: none;" type="checkbox" id="frase_publica" name="frase_publica" checked/>
+                                    <label style="display: none;" for="frase_publica">Frase pública</label>
+                                {% endif %}
+                            {% endfor %}
+
+
 
                             <input type="hidden" id="usuario_id_alteracao">
                             <input type="hidden" id="frase_aproveitada" name="frase_aproveitada">

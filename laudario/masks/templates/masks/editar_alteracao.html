@@ -68,6 +68,9 @@
 
 <input type="hidden" id="adicionar_no_banco" name="adicionar_no_banco" checked/>
 
+
+     {% for profile in profiles %}
+        {% if profile.usuario == request.user and profile.is_premium %}
             {% if topico_anormal.publica == True %}
         <input type="checkbox" id="frase_publica" name="frase_publica" checked/>
         <label for="frase_publica">Frase pública</label>
@@ -76,6 +79,20 @@
         <input type="checkbox" id="frase_publica" name="frase_publica"/>
         <label for="frase_publica">Frase pública</label>
     {% endif %}
+        {% else %}
+            {% if topico_anormal.publica == True %}
+        <input style="display: none;" type="checkbox" id="frase_publica" name="frase_publica" checked/>
+        <label style="display: none;" for="frase_publica">Frase pública</label>
+
+    {% else %}
+        <input style="display: none;" type="checkbox" id="frase_publica" name="frase_publica"/>
+        <label style="display: none;" for="frase_publica">Frase pública</label>
+    {% endif %}
+        {% endif %}
+    {% endfor %}
+
+
+
 
 
 <input type="hidden" id="usuario_id_alteracao">

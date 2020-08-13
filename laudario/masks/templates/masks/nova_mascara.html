@@ -122,9 +122,16 @@
 <div id="corpo_alteracao">
 
 </div>
+{% for profile in profiles %}
+    {% if profile.usuario == request.user and profile.is_premium %}
+       <input type="checkbox" id="mascara_publica" name="mascara_publica" checked/>
+        <label for="mascara_publica">Máscara pública</label>
+    {% else %}
+        <input style="display: none;" type="checkbox" id="mascara_publica" name="mascara_publica" checked/>
+        <label style="display: none;" for="mascara_publica">Máscara pública</label>
+    {% endif %}
+{% endfor %}
 
-<input type="checkbox" id="mascara_publica" name="mascara_publica" checked/>
-<label for="mascara_publica">Máscara pública</label>
 <br>
     <br>
 <div style="text-align: center;">
