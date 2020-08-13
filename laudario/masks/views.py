@@ -250,19 +250,60 @@ def login_usuario(request):
 
 def cadastrar(request):
     usuario = request.POST['usuario']
+    primeiro_nome = request.POST['primeiro_nome']
+    sobrenome = request.POST['segundo_nome']
     email = request.POST['email']
     senha = request.POST['senha']
+    senha_repetida = request.POST['repetir_senha']
 
 
 
-    user = User.objects.create_user(usuario, email, senha)
+    users = User.objects.all()
 
-    user.is_active = 0
+    user_names = []
+    user_emails = []
 
-    user.save()
+    for user in users:
+        user_names.append(user.username.lower())
+        user_emails.append(user.email)
 
-    token = default_token_generator.make_token(user)
-    uid = urlsafe_base64_encode(force_bytes(user.pk))
+    passou_filtro = True
+    mensagem_erro = ''
+
+    if(len(usuario) < 3):
+        passou_filtro = False
+        mensagem_erro = 'Nome do usuário deve conter mais de 3 letras'
+    if(len(usuario) > 15):
+        passou_filtro = False
+        mensagem_erro = 'Nome do usuário deve conter menos de 15 letras'
+    if (len(primeiro_nome) > 30):
+        passou_filtro = False
+        mensagem_erro = 'Primeiro nome deve conter menos de 30 letras'
+    if (len(sobrenome) > 30):
+        passou_filtro = False
+        mensagem_erro = 'Sobrenome deve conter menos de 30 letras'
+    if(not usuario.isalnum()):
+        passou_filtro = False
+        mensagem_erro = 'Somente caracteres alfanumériocs são permitidos para o usuário'
+    if " " in usuario:
+        passou_filtro = False
+        mensagem_erro = 'Não é permitido espaço no nome do usuário'
+    if usuario.lower() in user_names:
+        passou_filtro = False
+        mensagem_erro = 'Usuário já existe. Escolha outro nome de usuário'
+    if email in user_emails:
+        passou_filtro = False
+        mensagem_erro = 'Já existe um usuário cadastrado com esse email. Caso tenha esquecido sua senha clique em "Voltar" e depois em "Esqueceu sua senha?"'
+    if(len(senha) < 6):
+        passou_filtro = False
+        mensagem_erro = 'A senha deve conter pelo menos 6 caracteres'
+    if(senha_repetida != senha):
+        passou_filtro = False
+        mensagem_erro = 'As senhas digitadas não são iguais'
+    if(email == ''):
+        passou_filtro = False
+        mensagem_erro = 'Campo de email em branco'
+
 
     # Produção somente
     #some_params = "/users/validate/' + uid + '/' + token + '"
@@ -279,8 +320,20 @@ def cadastrar(request):
     #    fail_silently=False,
     #)
 
+    if(passou_filtro):
+        user = User.objects.create_user(usuario, email, senha)
+        user.is_active = 0
+        user.first_name = primeiro_nome
+        user.last_name = sobrenome
+        user.save()
 
-    return HttpResponse('<html><body><a href="/users/validate/' + uid + '/' + token + '">clique aqui</a></body></html>')
+        token = default_token_generator.make_token(user)
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+
+        return HttpResponse('<html><body><a href="/users/validate/' + uid + '/' + token + '">clique aqui</a></body></html>')
+    else:
+        return HttpResponse('<html><body><h2>' + mensagem_erro + '<h2></body></html><br><a href="javascript:history.back()">Voltar</a>')
+
 
 
 def activate(request, uid, token):
