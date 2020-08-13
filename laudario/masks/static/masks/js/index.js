@@ -38,6 +38,12 @@ function clicouCadastrar() {
         divMensagem = document.getElementById("email_div");
     }
 
+    if(!email.value.includes("@")) {
+         passouFiltros = false;
+        mensagem = "Email inválido";
+        divMensagem = document.getElementById("email_div");
+    }
+
     if(sobrenome.value.length > 30) {
         passouFiltros = false;
         mensagem = "Sobrenome deve conter menos de 30 letras";

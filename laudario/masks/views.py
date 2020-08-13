@@ -306,6 +306,10 @@ def cadastrar(request):
     if(email == ''):
         passou_filtro = False
         mensagem_erro = 'Campo de email em branco'
+    if('@' not in email):
+        passou_filtro = False
+        mensagem_erro = 'Email inválido'
+
 
 
     # Produção somente
