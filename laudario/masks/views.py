@@ -363,11 +363,11 @@ def activate(request, uid, token):
             if default_token_generator.check_token(user, token):
                 user.is_active = 1
                 user.save()
-                return HttpResponse('<html><body><h2>Parabéns, ' + user.first_name + '! Sua conta foi verificada.<br>Faço o login em <a href="http://masqs.com.br">masqs.com.br</a></h2></body></html>')
+                return HttpResponse('<html><body><h2 style="color: #0366d6;">Parabéns, <span style="color: black;">' + user.first_name + '</span>! Sua conta foi verificada.<br><br>Seu nome de usuário é: <span style="color: black;">' + user.username + '</span>. Faça o login em <a href="http://masqs.com.br">masqs.com.br</a></h2></body></html>')
         except:
             pass
 
-    return HttpResponse('<html><body><h2>Conta não verificada.</h2></body></html>')
+    return HttpResponse('<html><body><h2 style="color: #0366d6;">Houve um erro ao verificar sua conta. O link pode ter expirado.<br><br><a href="http://masqs.com.br/sobre/">Ajuda</a></h2></body></html>')
 
 
 
