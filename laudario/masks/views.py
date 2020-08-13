@@ -229,8 +229,11 @@ def mostrar_mascara_builder(request, template_name):
     return render(request, 'masks/diagnosticos/' + template_name, context)
 
 def mostrar_index(request):
+    json_serializer = serializers.get_serializer("json")()
+    usuarios = json_serializer.serialize(User.objects.all())
 
-    context = {}
+    context = {'usuarios': usuarios}
+
     return render(request, 'masks/index.html/', context)
 
 def login_usuario(request):

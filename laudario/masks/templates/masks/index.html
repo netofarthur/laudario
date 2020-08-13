@@ -6,7 +6,11 @@
 <link rel="stylesheet" type="text/css" href="{% static 'masks/css/index.css' %}">
 
 <script type="text/javascript" src="{% static 'masks/js/index.js' %}"></script>
+ <!-- Depois tem que colocar isso nos seus htmls certos.-->
+        <script>
+            var usuarios = '{{ usuarios|escapejs }}';
 
+        </script>
 
 </head>
 <body>
@@ -35,7 +39,7 @@
                 </button>
                   <h5 id="novo_cadastro_title">Novo Cadastro</h5>
                   <div id="cadastro_div">
-                  <form action="{% url 'cadastrar' %}" method="post">
+                  <form id="formulario_cadastro" action="{% url 'cadastrar' %}" method="post">
                     {% csrf_token %}
                         <div id="usuario_div">
                         <label for="usuario">Usuário: </label>
@@ -71,7 +75,7 @@
                         </div>
 
                       <div id="botao_cadastro_div">
-                        <input type="submit" value="Cadastrar" id="botao_cadastrar">
+                        <input type="button" value="Cadastrar" id="botao_cadastrar" onclick="clicouCadastrar()">
                         </div>
                     </form>
                 </div>
