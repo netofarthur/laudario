@@ -268,7 +268,8 @@ def cadastrar(request):
 
     for user in users:
         user_names.append(user.username.lower())
-        user_emails.append(user.email)
+        if(user.is_active == 1):
+            user_emails.append(user.email)
 
     passou_filtro = True
     mensagem_erro = ''

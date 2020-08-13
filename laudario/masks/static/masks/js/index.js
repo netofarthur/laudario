@@ -95,7 +95,7 @@ function clicouCadastrar() {
         divMensagem = document.getElementById("usuario_div");
       }
 
-      if(usuariosJson[i].fields.email == email.value) {
+      if(usuariosJson[i].fields.email == email.value && usuariosJson[i].fields.is_active == 1) {
         passouFiltros = false;
         mensagem = "Já existe uma conta cadastrada com esse email";
         divMensagem = document.getElementById("email_div");
