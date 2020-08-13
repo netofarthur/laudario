@@ -363,11 +363,11 @@ def activate(request, uid, token):
             if default_token_generator.check_token(user, token):
                 user.is_active = 1
                 user.save()
-                return HttpResponse('<html><body><p>ativou' + user.username + '</p></body></html>')
+                return HttpResponse('<html><body><h2>Parabéns, ' + user.first_name + '! Sua conta foi verificada.<br>Faço o login em <a href="http://masqs.com.br">masqs.com.br</a></h2></body></html>')
         except:
             pass
 
-    return HttpResponse('<html><body><p>nao ativou</p></body></html>')
+    return HttpResponse('<html><body><h2>Conta não verificada.</h2></body></html>')
 
 
 
