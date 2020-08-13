@@ -232,9 +232,15 @@ def mostrar_index(request):
     json_serializer = serializers.get_serializer("json")()
     usuarios = json_serializer.serialize(User.objects.all())
 
+
+
     context = {'usuarios': usuarios}
 
-    return render(request, 'masks/index.html/', context)
+    if request.user.is_authenticated:
+        return redirect(views.mostrar_mascaras)
+    else:
+
+        return render(request, 'masks/index.html/', context)
 
 def login_usuario(request):
     usuario = request.POST['usuario']
