@@ -397,7 +397,14 @@ def mostrar_mascaras(request):
 
 
 def configuracoes(request):
-    especialidades = Especialidade.objects.all()
+    todasespecialidades = Especialidade.objects.all()
+    especialidades_com_mascara = []
+    for especialidade in todasespecialidades:
+        mascarasEspecialidade = Mascara.objects.filter(usuario=request.user, especialidade=especialidade)
+        if len(mascarasEspecialidade) > 0:
+            especialidades_com_mascara.append(especialidade)
+    exames = Exame.objects.all()
+    especialidades = especialidades_com_mascara
     mascaras = Mascara.objects.filter(usuario=request.user)
     exames = Exame.objects.all()
     context = {'especialidades': especialidades, 'mascaras': mascaras, 'exames': exames}

@@ -51,13 +51,14 @@
             </h5>
           </div>
 
-          <div id="collapse{{ especialidade.pk }}" class="collapse show" aria-labelledby={{ especialidade.pk }} data-parent="#accordion">
-            <div class="card-body">
+          <div id="collapse{{ especialidade.pk }}" class="collapse" aria-labelledby={{ especialidade.pk }} data-parent="#accordion">
 
-              <div class="list-group" style="border-collapse: collapse">
 
                 {% for mascara in mascaras %}
                 {% if mascara.especialidade == especialidade %}
+              <div class="card-body">
+
+              <div class="list-group" style="border-collapse: collapse">
                 <div class="container-fluid" style="margin: 2px; padding: 2px;">
                     <div class="row">
                     <div class="col-6">
@@ -86,14 +87,14 @@
                                             <hr>
 
                 </div>
+            </div>
 
+            </div>
                 {% endif %}
                 {% endfor %}
 
 
-              </div>
 
-            </div>
           </div>
         </div>
         {% endfor %}
