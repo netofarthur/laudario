@@ -7,13 +7,13 @@ function tornarExamesInvisiveis() {
   for(i = 0; i < todasMascaras.length; i++) {
 
       if(document.getElementById("exames").value == "todos") {
-          todasMascaras[i].style.display = "block";
+          todasMascaras[i].parentNode.parentNode.style.display = "block";
 
       } else {
         if(todasMascaras[i].getAttribute("name") != especialidadeSelecionada) {
-            todasMascaras[i].style.display = "none";
+            todasMascaras[i].parentNode.parentNode.style.display = "none";
          } else {
-            todasMascaras[i].style.display = "block";
+            todasMascaras[i].parentNode.parentNode.style.display = "block";
 
          }
       }
