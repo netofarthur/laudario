@@ -207,6 +207,7 @@ color: white;
 
 #containermascaras {
     padding: 10px;
+    min-height: 100vh;
 }
 
 #botaonovamascara {
@@ -303,6 +304,7 @@ color: white;
 }
 
 #myfooter {
+
     text-align: center;
     background-color: #0366d6;
     padding: 5px;
