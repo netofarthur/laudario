@@ -220,6 +220,7 @@ color: white;
       border-radius: .5rem;
       background-color: #0366d6;
       color: white;
+
 }
 
 .input_curto {
@@ -324,6 +325,20 @@ color: white;
 .card-body {
     padding: 0;
 }
+
+.link_mascara {
+    padding: 2rem;
+}
+
+#container-fluid-div {
+      border-bottom:solid;
+    border-width: 1px;
+    border-color: gray;
+
+}
+
+
+
 
 
 
