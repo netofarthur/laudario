@@ -382,8 +382,14 @@ def mostrar_mascaras(request):
     if not request.user.is_authenticated:
         return redirect(views.mostrar_index)
     mascaras = Mascara.objects.filter(usuario=request.user)
-    especialidades = Especialidade.objects.all()
+    todasespecialidades = Especialidade.objects.all()
+    especialidades_com_mascara = []
+    for especialidade in todasespecialidades:
+        mascarasEspecialidade = Mascara.objects.filter(usuario=request.user, especialidade=especialidade)
+        if len(mascarasEspecialidade) > 0:
+            especialidades_com_mascara.append(especialidade)
     exames = Exame.objects.all()
+    especialidades = especialidades_com_mascara
     context = {'mascaras': mascaras, 'exames': exames, 'especialidades': especialidades}
     return render(request, 'masks/mascaras.html', context)
 
