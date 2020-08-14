@@ -160,7 +160,7 @@
             <input type="checkbox" id="mascara_publica" name="mascara_publica"/>
             <label for="mascara_publica">Máscara pública</label>
         {% endif %}
-    {% else %}
+    {% elif profile.usuario == request.user %}
         {% if mascara.publica == True %}
         <input style="display: none;" type="checkbox" id="mascara_publica" name="mascara_publica" checked/>
         <label style="display: none;" for="mascara_publica">Máscara pública</label>

@@ -79,7 +79,7 @@
         <input type="checkbox" id="frase_publica" name="frase_publica"/>
         <label for="frase_publica">Frase pública</label>
     {% endif %}
-        {% else %}
+        {% elif profile.usuario == request.user %}
             {% if topico_anormal.publica == True %}
         <input style="display: none;" type="checkbox" id="frase_publica" name="frase_publica" checked/>
         <label style="display: none;" for="frase_publica">Frase pública</label>

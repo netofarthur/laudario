@@ -333,7 +333,7 @@
                                 {% if profile.usuario == request.user and profile.is_premium %}
                                     <input type="checkbox" id="frase_publica" name="frase_publica" checked/>
                                     <label for="frase_publica">Frase pública</label>
-                                {% else %}
+                                {% elif profile.usuario == request.user %}
                                     <input style="display: none;" type="checkbox" id="frase_publica" name="frase_publica" checked/>
                                     <label style="display: none;" for="frase_publica">Frase pública</label>
                                 {% endif %}
