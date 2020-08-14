@@ -8,11 +8,17 @@ function tornarExamesInvisiveis() {
 
       if(document.getElementById("exames").value == "todos") {
           todasMascaras[i].parentNode.parentNode.style.display = "block";
+            todasMascaras[i].parentNode.parentNode.parentNode.parentNode.style.display = "block";
+
 
       } else {
         if(todasMascaras[i].getAttribute("name") != especialidadeSelecionada) {
             todasMascaras[i].parentNode.parentNode.style.display = "none";
+                        todasMascaras[i].parentNode.parentNode.parentNode.parentNode.style.display = "none";
+
          } else {
+                     todasMascaras[i].parentNode.parentNode.parentNode.parentNode.style.display = "block";
+
             todasMascaras[i].parentNode.parentNode.style.display = "block";
 
          }
