@@ -46,8 +46,10 @@
 
 <div id="topicos_div">
 {% for topico in topicos_normais %}
+    {% autoescape off %}
     <p class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</p>
-{% endfor %}
+    {% endautoescape %}
+    {% endfor %}
 </div>
 
 
