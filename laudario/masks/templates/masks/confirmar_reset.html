@@ -1,0 +1,20 @@
+{% extends "masks/base.html" %}
+
+{% block css %}
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+
+{% endblock css %}
+
+
+{% block conteudo %}
+<h3>Digite sua nova senha</h3>
+<form action="{% url 'confirmar_reset' %}" method="post">
+    {% csrf_token %}
+
+<input type="senha" placeholder="Senha" id="senha" name="senha">
+<button type="submit">Resetar senha</button>
+</form>
+{% endblock conteudo %}

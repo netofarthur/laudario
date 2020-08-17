@@ -535,3 +535,60 @@ def upvote_frase(request):
     topicoAnormal.frequencia += 1
     topicoAnormal.save()
     return HttpResponse(status=204)
+
+def resetar_password(request):
+    context = {}
+    return render(request, 'masks/resetarpwd.html', context)
+
+
+
+def link_reset(request):
+    email = request.POST['email']
+
+    # Produção somente
+    # some_params = "/users/resetpwd/' + uid + '/' + token + '"
+    # msg_plain = render_to_string('masks/emailreset.txt', {'some_params': some_params})
+    # msg_html = render_to_string('masks/emailreset.html', {'some_params': some_params})
+
+    # send_mail(
+    #    'Teste',
+    #    msg_plain,
+    #    'arthur@masqs.com.br',
+    #    ['netofarthur@gmail.com'],
+    #    html_message=msg_html,
+    #
+    #    fail_silently=False,
+    # )
+
+    user = User.objects.get(email=email)
+
+    token = default_token_generator.make_token(user)
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+
+    return HttpResponse(
+        '<html><body><a href="/users/resetpwd/' + uid + '/' + token + '">clique aqui</a></body></html>')
+
+def resetar_password_confirm(request, uid, token):
+    if uid is not None and token is not None:
+
+        uidid = urlsafe_base64_decode(uid)
+        user = User.objects.get(pk=uidid)
+        request.user = user
+
+        if default_token_generator.check_token(user, token):
+            context = {'user': user}
+            login(request, user)
+
+            return render(request, 'masks/confirmar_reset.html', context)
+
+
+        else:
+            return HttpResponse(
+                '<html><body><h2 style="color: #0366d6; padding: 3rem;">Link expirado</h2></body></html>')
+
+
+def confirmar_reset(request):
+    senha = request.POST['senha']
+    request.user.set_password(senha)
+    request.user.save()
+    return HttpResponse('<html><body><h2 style="color: #0366d6; padding: 3rem;">Senha alterada<br><br><a href="http://masqs.com.br/sobre/">Ajuda</a></h2></body></html>')

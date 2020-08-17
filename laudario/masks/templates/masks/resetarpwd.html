@@ -1,0 +1,20 @@
+{% extends "masks/base.html" %}
+
+{% block css %}
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+
+{% endblock css %}
+
+
+{% block conteudo %}
+<h3>Digite seu email:</h3>
+<form action="{% url 'link_reset' %}" method="post">
+    {% csrf_token %}
+
+<input type="email" placeholder="Endereço de email" id="email" name="email">
+<button type="submit">Resetar senha</button>
+</form>
+{% endblock conteudo %}

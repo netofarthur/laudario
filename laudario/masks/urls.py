@@ -21,5 +21,9 @@ urlpatterns = [
     path('alteracao/salvaralteracao', views.salvar_alteracao, name='salvar_alteracao'),
     path('upvote/', views.upvote_frase, name='upvote_frase'),
     path('users/validate/<str:uid>/<str:token>', views.activate, name='activate'),
+    path('resetarpwd/', views.resetar_password, name='resetar_password'),
+    path('linkreset/', views.link_reset, name='link_reset'),
+    path('users/resetpwd/<str:uid>/<str:token>', views.resetar_password_confirm, name='resetar_password_confirm'),
+    path('confirmarreset/', views.confirmar_reset, name='confirmar_reset'),
 
 ]

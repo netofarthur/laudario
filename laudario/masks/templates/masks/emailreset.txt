@@ -1,0 +1,3 @@
+Você solicitou alteração de senha.
+Please click the following link to confirm your account
+{{ some_params }}
