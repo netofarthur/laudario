@@ -157,5 +157,4 @@ TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/js/tinymce/tinymce.min.js")
 
 TINYMCE_DEFAULT_CONFIG = {
     'theme': "simple",
-    'relative_urls': False
-}
+    'relative_urls': False}

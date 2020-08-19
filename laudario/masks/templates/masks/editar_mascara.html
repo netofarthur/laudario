@@ -139,7 +139,16 @@
 
     <script>
         tinymce.init({
-        selector: '#text_area_orgao' + {{ forloop.counter }}
+        selector: '#text_area_orgao' + {{ forloop.counter }},
+        plugins: "table",
+          menubar: false,
+        toolbar: "bold italic underline forecolor table",
+          fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+            branding: false,
+              elementpath: false
+
+
+
       });
 </script>
 

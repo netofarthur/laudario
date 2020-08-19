@@ -170,7 +170,14 @@ function popularMascara(mascaraId) {
     orgaoDivFlex.appendChild(remover);
     orgaoDiv.appendChild(descricaoOrgao);
            tinymce.init({
-        selector: '#' + descricaoOrgao.getAttribute("id")
+        selector: '#' + descricaoOrgao.getAttribute("id"),
+        plugins: "table",
+          menubar: false,
+        toolbar: "bold italic underline forecolor table",
+          fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+            branding: false,
+              elementpath: false
+
       });
     listaOrgaos.appendChild(anchor);
 
