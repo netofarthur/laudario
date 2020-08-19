@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'laudario.masks',
+    'tinymce',
 
 ]
 
@@ -149,3 +150,12 @@ STATIC_URL = '/static/'
 #EMAIL_USE_TLS = False
 #DEFAULT_FROM_EMAIL = 'Whatever <whatever@example.com'
 
+TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/js/tinymce/tinymce.min.js")
+
+#Produção
+#TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "tinymce/js/tinymce")
+
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': "simple",
+    'relative_urls': False
+}

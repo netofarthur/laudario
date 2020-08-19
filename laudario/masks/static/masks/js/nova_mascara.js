@@ -122,7 +122,14 @@ function popularMascara(mascaraId) {
     descricaoOrgao.setAttribute("rows", "3");
     descricaoOrgao.setAttribute("type", "text");
     descricaoOrgao.setAttribute("name", "relatorio_orgao");
-        descricaoOrgao.setAttribute("id", "text_area_orgao");
+
+
+        descricaoOrgao.setAttribute("id", "text_area_orgao" + listaOrgaos.children.length);
+
+
+
+
+
         descricaoOrgao.setAttribute("class", "paragrafo_mascara");
 
 
@@ -162,6 +169,9 @@ function popularMascara(mascaraId) {
     orgaoDivFlex.appendChild(orgao);
     orgaoDivFlex.appendChild(remover);
     orgaoDiv.appendChild(descricaoOrgao);
+           tinymce.init({
+        selector: '#' + descricaoOrgao.getAttribute("id")
+      });
     listaOrgaos.appendChild(anchor);
 
 

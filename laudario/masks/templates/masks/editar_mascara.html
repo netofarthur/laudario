@@ -11,6 +11,10 @@
 
 {% block conteudo %}
 
+
+
+
+
  <script>
     var mascarasJson = '{{ mascarasJson|escapejs }}';
     var topicosNormais = '{{ topicos_normais|escapejs }}';
@@ -18,6 +22,11 @@
 
 <script type="text/javascript" src="{% static 'masks/js/nova_mascara.js' %}"></script>
 <script type="text/javascript" src="{% static 'masks/js/mascara.js' %}"></script>
+
+
+<script type="text/javascript" src="{% static 'masks/tinymce/js/tinymce/tinymce.min.js' %}"></script>
+
+
 
 <div id="mycontainer">
 
@@ -106,7 +115,8 @@
     </div>
 
 
-<textarea rows="3" class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão">{{ topico_normal.relatorio }}</textarea>
+
+<textarea rows="3" class="paragrafo_mascara" id="text_area_orgao{{ forloop.counter }}" name="relatorio_orgao" placeholder="Descrição normal do órgão">{{ topico_normal.relatorio }}</textarea>
 <br name="orgaobr">
     </div>
 
@@ -121,11 +131,18 @@
     </div>
 
 
-<textarea rows="3" class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do órgão">{{ topico_normal.relatorio }}</textarea>
+<textarea rows="3" class="paragrafo_mascara" id="text_area_orgao{{ forloop.counter }}" name="relatorio_orgao" placeholder="Descrição normal do órgão">{{ topico_normal.relatorio }}</textarea>
 <br name="orgaobr">
     </div>
 
     {% endif %}
+
+    <script>
+        tinymce.init({
+        selector: '#text_area_orgao' + {{ forloop.counter }}
+      });
+</script>
+
 {% endfor %}
 <a href="javascript:adicionarEntradaOrgao()" id="adicionar_entrada_orgao">Novo órgão</a>
 
@@ -250,10 +267,9 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
 <script>
 $(document).ready(function(){
     document.getElementById("variaveis_originais_edicao").setAttribute("value", obterVariaveisOriginaisDaEdicao().toString());
-
+    alert("foi");
 });
 </script>
-
 
 
 
