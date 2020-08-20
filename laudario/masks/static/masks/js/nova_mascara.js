@@ -181,9 +181,6 @@ function popularMascara(mascaraId) {
       });
     listaOrgaos.appendChild(anchor);
 
-
-
-
   }
 
 

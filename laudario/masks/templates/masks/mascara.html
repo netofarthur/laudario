@@ -29,7 +29,9 @@
 
 <h1 class="paragrafo_mascara" name="titulo"> {{ mascara.titulo }} </h1>
 <h2 name="titulo"> {{ mascara.tecnica_header }} </h2>
+{% autoescape off %}
 <p class="paragrafo_mascara"> {{mascara.tecnica }} </p>
+{% endautoescape %}
 
 
 
@@ -54,8 +56,12 @@
 
 
 
+
+
 <h2> {{ mascara.conclusao_header }} </h2>
+    {% autoescape off %}
     <div id="conclusao_normal" name="conclusao"> <p class="paragrafo_mascara" id="paragrafo_conclusao">{{ mascara.conclusao }}</p> </div>
+    {% endautoescape %}
 
 
 </div>
