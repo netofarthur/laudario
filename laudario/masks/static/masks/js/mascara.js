@@ -110,7 +110,7 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio").innerHTML;
             document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_alterada").innerHTML;
             document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-            document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+            document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
         } else {
             document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio").innerHTML;
             document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_alterada").innerHTML;
@@ -194,9 +194,9 @@ mostrarBotaoPopularSeNecessario();
         }
 
         if(document.getElementById("paragrafo_conclusao").innerHTML == "") {
-            document.getElementById("conclusao_normal").setAttribute("name", "conclusao");
+            document.getElementById("paragrafo_conclusao").setAttribute("name", "conclusao");
 
-            document.getElementById("paragrafo_conclusao").innerHTML = conclusaoMascaraAtual;
+            document.getElementById("paragrafo_conclusao").innerHTML = htmlDecode(conclusaoMascaraAtual);
         }
 
                 mostrarBotaoPopularSeNecessario();
@@ -246,14 +246,14 @@ mostrarBotaoPopularSeNecessario();
         var pattern = /\{([^}]+)\}/g;
         var result = document.getElementById(name).innerHTML.match(pattern);
 
-        var listaParagrafosConclusao = document.getElementById("conclusao_normal").children;
+        var listaParagrafosConclusao = document.getElementById("paragrafo_conclusao").children;
 
 
 
 
         if(result != null) {
             document.getElementById(name).setAttribute("name", "alterado");
-            document.getElementById("conclusao_normal").setAttribute("name", "alterado");
+            document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
 
 
         }
@@ -267,9 +267,9 @@ mostrarBotaoPopularSeNecessario();
            document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
         }
 
-        if(document.getElementById("conclusao_normal").getAttribute("name") != "alterado") {
-            document.getElementById("conclusao_normal").setAttribute("name", "alterado");
-            document.getElementById("conclusao_normal").setAttribute("class", "paragrafo_mascara");
+        if(document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado") {
+            document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
+            document.getElementById("paragrafo_conclusao").setAttribute("class", "paragrafo_mascara");
 
             if(conclusao != null && conclusao != "") {
                  document.getElementById("paragrafo_conclusao").innerHTML = conclusao;
@@ -1227,8 +1227,8 @@ function insertAtCursor(text) {
                     document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
                     document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
                     document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-                    document.getElementById("conclusao_normal").setAttribute("name", "alterado");
-                    document.getElementById("conclusao_normal").setAttribute("class", "paragrafo_mascara");
+                    document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
+                    document.getElementById("paragrafo_conclusao").setAttribute("class", "paragrafo_mascara");
 
                 } else {
                     document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio_modal").value;
@@ -1295,6 +1295,7 @@ function insertAtCursor(text) {
 
 
     function mostrarBotaoPopularSeNecessario() {
+
         var lista = obterListaVariaveis("paragrafo_mascara");
         var botao = document.getElementById("popular_variaveis");
         if(botao != null) {
@@ -1315,6 +1316,10 @@ function insertAtCursor(text) {
 
     }
 
+function htmlDecode(input) {
+  var doc = new DOMParser().parseFromString(input, "text/html");
+  return doc.documentElement.textContent;
+}
 
 
     window.onload = mostrarBotaoPopularSeNecessario;
