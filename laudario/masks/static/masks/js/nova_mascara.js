@@ -71,7 +71,10 @@ function popularMascara(mascaraId) {
                      if(topicosNormaisObject[i].fields.orgao == "Nenhum órgão") {
                     } else {
                         entradasNomesOrgaos[counter].setAttribute("value", topicosNormaisObject[i].fields.orgao);
+
+                    //tem que pegar os tinymce e popular cada um com set, como feito na técnica e conclusão
                     entradasRelatorios[counter].innerHTML = topicosNormaisObject[i].fields.relatorio;
+
                     counter++;
                     }
 
@@ -82,15 +85,13 @@ function popularMascara(mascaraId) {
 
         document.getElementById("exames").value = exame;
         document.getElementById("especialidades").value = especialidade;
-
         document.getElementById("nome_exame").value = nome;
         document.getElementById("titulo_exame").value = titulo;
         document.getElementById("tecnica_header").value = tecnicaHeader;
-        document.getElementById("tecnica").value = tecnica;
+        tinymce.get("tecnica").setContent("<p>" + tecnica + "</p>");
         document.getElementById("relatorio_header").value = relatorioHeader;
-        document.getElementById("conclusao").value = conclusao;
         document.getElementById("conclusao_header").value = conclusaoHeader;
-        document.getElementById("conclusao").value = conclusao;
+        tinymce.get("conclusao").setContent("<p>" + conclusao + "</p>");
 
 
 }
