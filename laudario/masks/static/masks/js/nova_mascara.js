@@ -73,7 +73,9 @@ function popularMascara(mascaraId) {
                         entradasNomesOrgaos[counter].setAttribute("value", topicosNormaisObject[i].fields.orgao);
 
                     //tem que pegar os tinymce e popular cada um com set, como feito na técnica e conclusão
-                    entradasRelatorios[counter].innerHTML = topicosNormaisObject[i].fields.relatorio;
+
+                     tinymce.get("text_area_orgao" + (counter + 1)).setContent("<p>" + topicosNormaisObject[i].fields.relatorio + "</p>");
+
 
                     counter++;
                     }
@@ -125,7 +127,13 @@ function popularMascara(mascaraId) {
     descricaoOrgao.setAttribute("name", "relatorio_orgao");
 
 
-        descricaoOrgao.setAttribute("id", "text_area_orgao" + listaOrgaos.children.length);
+        if (listaOrgaos.children.length == 0) {
+            descricaoOrgao.setAttribute("id", "text_area_orgao" + (listaOrgaos.children.length + 1));
+
+        } else {
+            descricaoOrgao.setAttribute("id", "text_area_orgao" + listaOrgaos.children.length);
+
+        }
 
 
 
@@ -172,6 +180,9 @@ function popularMascara(mascaraId) {
     orgaoDiv.appendChild(descricaoOrgao);
            tinymce.init({
         selector: '#' + descricaoOrgao.getAttribute("id"),
+        body_id : '#' + descricaoOrgao.getAttribute("id"),
+
+
         plugins: "table",
           menubar: false,
         toolbar: "bold italic underline forecolor table",
