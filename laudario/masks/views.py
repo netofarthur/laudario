@@ -9,6 +9,9 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
+from django.core.exceptions import ObjectDoesNotExist
+
+
 
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -560,13 +563,18 @@ def link_reset(request):
     #    fail_silently=False,
     # )
 
-    user = User.objects.get(email=email)
+    try:
 
-    token = default_token_generator.make_token(user)
-    uid = urlsafe_base64_encode(force_bytes(user.pk))
+        user = User.objects.get(email=email)
 
-    return HttpResponse(
-        '<html><body><a href="/users/resetpwd/' + uid + '/' + token + '">clique aqui</a></body></html>')
+        token = default_token_generator.make_token(user)
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        return HttpResponse('<html><body><a href="/users/resetpwd/' + uid + '/' + token + '">clique aqui</a></body></html>')
+
+    except ObjectDoesNotExist:
+        mensagem_erro = "Email não cadastrado em nosso sistema."
+        return HttpResponse('<html><body style="text-align: center;"><br><h1>' + mensagem_erro + '<h1></body></html><br><a href="javascript:history.back()">Voltar</a>')
+
 
 def resetar_password_confirm(request, uid, token):
     if uid is not None and token is not None:

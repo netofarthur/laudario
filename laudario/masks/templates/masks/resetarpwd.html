@@ -10,11 +10,26 @@
 
 
 {% block conteudo %}
-<h3>Digite seu email:</h3>
-<form action="{% url 'link_reset' %}" method="post">
+<br>
+<br>
+<br>
+<h3 style="text-align: center;">Digite seu endereço de email:</h3>
+<br>
+<form action="{% url 'link_reset' %}" method="post" style="text-align: center;">
     {% csrf_token %}
 
-<input type="email" placeholder="Endereço de email" id="email" name="email">
+<input style="width: 15rem;" type="email" placeholder="Endereço de email" id="email" name="email">
 <button type="submit">Resetar senha</button>
+
 </form>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 {% endblock conteudo %}
