@@ -155,6 +155,7 @@ function popularMascara(mascaraId) {
 
     let remover = document.createElement("button");
     remover.setAttribute("type", "button");
+    remover.setAttribute("name", "botao_remover");
     remover.setAttribute("onclick", "removerEntradaOrgao(this.id)");
      remover.setAttribute("id", listaOrgaos.children.length);
         remover.style.marginBottom = "5px";
