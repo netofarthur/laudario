@@ -861,8 +861,7 @@ function insertAtCursor(text) {
 
     function adicionarAlteracoNaMascara() {
 
-        tinymce.remove();
-        desabilitarEntradasConfiguracaoMascara();
+
 
 
 
@@ -896,6 +895,8 @@ function insertAtCursor(text) {
 
 
         } else {
+        tinymce.remove();
+        desabilitarEntradasConfiguracaoMascara();
             var variaveis = obterListaVariaveis("paragrafo_mascara");
 
             var result = [];
