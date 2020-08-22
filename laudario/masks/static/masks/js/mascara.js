@@ -849,6 +849,7 @@ function insertAtCursor(text) {
 
     function adicionarAlteracoNaMascara() {
 
+        tinymce.remove();
 
 
         if(document.getElementById("exames").value == "") {
