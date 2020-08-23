@@ -6,6 +6,48 @@ function limparMensagensErro() {
     }
 }
 
+function clicouAlterarSenha() {
+ limparMensagensErro();
+
+
+    var senha = document.getElementById("senha");
+    var senhaRepetida = document.getElementById("repetir_senha");
+
+    var passouFiltros = true;
+    var mensagem = "";
+    var divMensagem;
+
+     if(senha.value != senhaRepetida.value) {
+        passouFiltros = false;
+        mensagem = "As senhas digitadas são diferentes";
+        divMensagem = document.getElementById("senha_div");
+    }
+
+    if(senha.value.length < 6) {
+        passouFiltros = false;
+        mensagem = "A senha deve ter mais de 6 caracteres";
+        divMensagem = document.getElementById("senha_div");
+    }
+
+
+    if(passouFiltros) {
+        document.getElementById("confirmar_reset").submit();
+
+    } else {
+
+        var paragrafo = document.createElement("p");
+        paragrafo.innerHTML = mensagem;
+        paragrafo.setAttribute("class", "mensagem_erro");
+        paragrafo.style.color = "red";
+
+            divMensagem.appendChild(paragrafo);
+
+
+    }
+
+
+}
+
 function clicouCadastrar() {
 
     limparMensagensErro();

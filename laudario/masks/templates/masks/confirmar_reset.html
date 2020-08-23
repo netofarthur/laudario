@@ -5,16 +5,36 @@
     {% load static %}
 
     <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+    <script type="text/javascript" src="{% static 'masks/js/index.js' %}"></script>
 
 {% endblock css %}
 
 
 {% block conteudo %}
-<h3>Digite sua nova senha</h3>
-<form action="{% url 'confirmar_reset' %}" method="post">
+<br>
+<br>
+<br>
+<h3 style="text-align: center;">Digite sua nova senha</h3>
+<br>
+<form id="confirmar_reset" action="{% url 'confirmar_reset' %}" method="post" style="text-align: center;">
     {% csrf_token %}
-
-<input type="senha" placeholder="Senha" id="senha" name="senha">
-<button type="submit">Resetar senha</button>
+<div id="senha_div">
+<input type="password" placeholder="Senha" id="senha" name="senha">
+    <br>
+    <br>
+    <input type="password" placeholder="Repetir senha" id="repetir_senha" name="senha">
+    <br>
+    <br>
+</div>
+<button type="button" onclick="clicouAlterarSenha()">Resetar senha</button>
 </form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 {% endblock conteudo %}
