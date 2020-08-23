@@ -9,12 +9,28 @@
 
 
 {% block conteudo %}
-
+    <br>
+    <br>
+    <br>
+    <br>
 <script>
     document.getElementById("barra_navegacao").style.display = "none";
+
         document.getElementById("form_username").style.display = "none";
 
 
 </script>
+<div style="text-align: center;">
+<h1>{{ mensagem_erro }}</h1>
+<br>
+    <br>
+<br>
+<a style="font-size: 2rem;" href="{{request.META.HTTP_REFERER}}">Voltar</a>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 {% endblock conteudo %}

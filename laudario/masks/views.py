@@ -256,7 +256,9 @@ def login_usuario(request):
         return redirect(views.mostrar_mascaras)
 
     else:
-        return HttpResponse("<html><body><p>Usuário ou senha inválidos</p></body></html>")
+        mensagem_erro = "Usuário ou senha inválidos"
+        context = {'mensagem_erro': mensagem_erro,}
+        return render(request, 'masks/erro.html', context)
 
 
 
