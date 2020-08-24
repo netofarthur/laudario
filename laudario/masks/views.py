@@ -368,11 +368,17 @@ def activate(request, uid, token):
             if default_token_generator.check_token(user, token):
                 user.is_active = 1
                 user.save()
-                return HttpResponse('<html><body><h2 style="color: #0366d6; padding: 3rem;">Parabéns, <span style="color: black;">' + user.first_name + '</span>! Sua conta foi verificada.<br><br>Seu nome de usuário é: <span style="color: black;">' + user.username + '</span>. Faça o login em <a href="http://masqs.com.br">masqs.com.br</a></h2></body></html>')
+                mensagem_confirmacao = '<h2 style="color: #0366d6; padding: 3rem;">Parabéns, <span style="color: black;">' + user.first_name + '</span>! Sua conta foi verificada. Seu nome de usuário é: <span style="color: black;">' + user.username + '</span></h2>'
+
+                context = {'mensagem_confirmacao': mensagem_confirmacao, }
+                return render(request, 'masks/aviso.html', context)
+
         except:
             pass
+    mensagem_erro = '<h2 style="color: #0366d6; padding: 3rem;">Houve um erro ao verificar sua conta. O link pode ter expirado.<br><br><a href="http://masqs.com.br/sobre/">Ajuda</a></h2>'
+    context = {'mensagem_erro': mensagem_erro, }
+    return render(request, 'masks/erro.html', context)
 
-    return HttpResponse('<html><body><h2 style="color: #0366d6; padding: 3rem;">Houve um erro ao verificar sua conta. O link pode ter expirado.<br><br><a href="http://masqs.com.br/sobre/">Ajuda</a></h2></body></html>')
 
 
 
@@ -575,7 +581,9 @@ def link_reset(request):
 
     except ObjectDoesNotExist:
         mensagem_erro = "Email não cadastrado em nosso sistema."
-        return HttpResponse('<html><body style="text-align: center;"><br><h1>' + mensagem_erro + '<h1></body></html><br><a href="javascript:history.back()">Voltar</a>')
+        context = {'mensagem_erro': mensagem_erro, }
+        return render(request, 'masks/erro.html', context)
+
 
 
 def resetar_password_confirm(request, uid, token):

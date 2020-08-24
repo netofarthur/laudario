@@ -26,12 +26,13 @@
 
 
 
-
 </script>
 <div style="text-align: center;">
+    {% autoescape off %}
+
 <h1>{{ mensagem_erro }}</h1>
-<br>
-    <br>
+    {% endautoescape %}
+
 <br>
 <a style="font-size: 2rem; color: #0366d6;" href="{% url 'mostrar_index' %}">Voltar</a>
     </div>
