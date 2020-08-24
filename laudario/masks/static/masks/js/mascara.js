@@ -14,17 +14,12 @@
         var listaParagrafos = document.getElementsByClassName("paragrafo_mascara");
 
 
-          var pattern = /\{([^}]+)\}/g;
 
 
 
          for(var i = 0; i < listaParagrafos.length; i++) {
 
-                var resultado = listaParagrafos[i].innerHTML.match(pattern);
-                if(resultado != null) {
-                    listaParagrafos[i].setAttribute("name", "alterado");
 
-                }
 
                     var provisoria = listaParagrafos[i].innerHTML;
 
