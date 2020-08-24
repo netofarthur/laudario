@@ -375,7 +375,7 @@ def activate(request, uid, token):
 
         except:
             pass
-    mensagem_erro = '<h2 style="color: #0366d6; padding: 3rem;">Houve um erro ao verificar sua conta. O link pode ter expirado.<br><br><a href="http://masqs.com.br/sobre/">Ajuda</a></h2>'
+    mensagem_erro = '<h2 style="color: #0366d6; padding: 3rem;">Houve um erro ao verificar sua conta. O link pode ter expirado.</h2>'
     context = {'mensagem_erro': mensagem_erro, }
     return render(request, 'masks/erro.html', context)
 
