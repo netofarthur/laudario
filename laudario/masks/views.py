@@ -601,4 +601,6 @@ def confirmar_reset(request):
     senha = request.POST['senha']
     request.user.set_password(senha)
     request.user.save()
-    return HttpResponse('<html><body><h2 style="color: #0366d6; padding: 3rem;">Senha alterada<br><br><a href="http://masqs.com.br/sobre/">Ajuda</a></h2></body></html>')
+    mensagem_confirmacao = "Senha alterada com sucesso!"
+    context = {'mensagem_confirmacao': mensagem_confirmacao, }
+    return render(request, 'masks/aviso.html', context)

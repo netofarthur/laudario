@@ -24,6 +24,6 @@ urlpatterns = [
     path('resetarpwd/', views.resetar_password, name='resetar_password'),
     path('linkreset/', views.link_reset, name='link_reset'),
     path('users/resetpwd/<str:uid>/<str:token>', views.resetar_password_confirm, name='resetar_password_confirm'),
-    path('confirmarreset/', views.confirmar_reset, name='confirmar_reset'),
+    path('confirmarreset/<str:uid>', views.confirmar_reset, name='confirmar_reset'),
 
 ]

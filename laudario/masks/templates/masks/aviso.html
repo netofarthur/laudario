@@ -29,11 +29,11 @@
 
 </script>
 <div style="text-align: center;">
-<h1>{{ mensagem_erro }}</h1>
+<h1>{{ mensagem_confirmacao }}</h1>
 <br>
     <br>
 <br>
-<a style="font-size: 2rem; color: #0366d6;" href="{{request.META.HTTP_REFERER}}">Voltar</a>
+<a style="font-size: 2rem; color: #0366d6;" href="{% url 'mostrar_index' %}">Fazer login</a>
     </div>
 <br>
 <br>
