@@ -586,21 +586,33 @@ def resetar_password_confirm(request, uid, token):
         request.user = user
 
         if default_token_generator.check_token(user, token):
-            context = {'user': user}
-            login(request, user)
+            context = {'uid': uid, 'token': token}
 
             return render(request, 'masks/confirmar_reset.html', context)
 
 
         else:
-            return HttpResponse(
-                '<html><body><h2 style="color: #0366d6; padding: 3rem;">Link expirado</h2></body></html>')
+            mensagem_erro = "Link expirado!"
+            context = {'mensagem_erro': mensagem_erro, }
+            return render(request, 'masks/erro.html', context)
 
+def confirmar_reset(request, uid, token):
+    if uid is not None and token is not None:
+        senha = request.POST['senha']
+        uidid = urlsafe_base64_decode(uid)
+        user = User.objects.get(pk=uidid)
+        request.user = user
+        if default_token_generator.check_token(user, token):
 
-def confirmar_reset(request):
-    senha = request.POST['senha']
-    request.user.set_password(senha)
-    request.user.save()
-    mensagem_confirmacao = "Senha alterada com sucesso!"
-    context = {'mensagem_confirmacao': mensagem_confirmacao, }
-    return render(request, 'masks/aviso.html', context)
+            login(request, user)
+
+            request.user.set_password(senha)
+            request.user.save()
+            logout
+            mensagem_confirmacao = "Senha alterada com sucesso!"
+            context = {'mensagem_confirmacao': mensagem_confirmacao, }
+            return render(request, 'masks/aviso.html', context)
+        else:
+            mensagem_erro = "Link expirado!"
+            context = {'mensagem_erro': mensagem_erro, }
+            return render(request, 'masks/erro.html', context)

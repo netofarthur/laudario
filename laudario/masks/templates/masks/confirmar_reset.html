@@ -23,7 +23,7 @@
 <br>
 <h3 style="text-align: center;">Digite sua nova senha</h3>
 <br>
-<form id="confirmar_reset" action="{% url 'confirmar_reset' %}" method="post" style="text-align: center;">
+<form id="confirmar_reset" action="{% url 'confirmar_reset' uid=uid token=token%}" method="post" style="text-align: center;">
     {% csrf_token %}
 <div id="senha_div">
 <input type="password" placeholder="Senha" id="senha" name="senha">
