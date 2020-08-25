@@ -1308,7 +1308,7 @@ function insertAtCursor(text) {
     function mostrarBotaoPopularSeNecessario() {
 
     if(document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)) != null) {
-            document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)).style.color = "#ff8717";
+            document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)).style.color = "#c96100";
 
     }
 

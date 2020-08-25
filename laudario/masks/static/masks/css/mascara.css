@@ -3,6 +3,12 @@
 
 .btn-primary {
       background-color: #000000;
+      color: #ffffff;
+}
+
+.btn-primary:hover {
+      background-color: #000000;
+      color: #ffffff;
 }
 
 #diagnosticos_div {
@@ -37,6 +43,7 @@
 
 #botaonovamascara {
       background-color: #000000;
+      color: #ffffff;
 
 }
 
@@ -79,8 +86,8 @@
 #botaoAdicionarAlteracao {
 
 
-      background-color: #000000;
-      color: #ff8717;
+      background-color: #c96100;
+      color: #000000;
       margin-bottom: 5px;
 
 
@@ -91,14 +98,14 @@
 
 
 #navbarSupportedContent a:hover {
-    color: #ff8717;
+    color: #c96100;
     text-decoration: none;
 
 }
 
 
 #navbarSupportedContent a {
-    color: white;
+    color: #ffffff;
     font-size: 1.5rem;
     margin-top: 80px;
     padding-top: 20px;
@@ -123,10 +130,10 @@
 }
 
 .botao_calculadora {
-color: #ff8717;
-
-border-radius: 5px;
-      background-color: #000000;
+color: #000000;
+margin: .1rem;
+border-radius: 1rem;
+      background-color: #c96100;
     position: relative;
     width: 100%;
     height: 0;
@@ -137,10 +144,10 @@ border-radius: 5px;
 }
 
 .botao_calculadora_nominal {
-color: #ff8717;
-border-radius: 5px;
-
-      background-color: #000000;
+color: #000000;
+border-radius: 1rem;
+    margin: .1rem;
+      background-color: #c96100;
 
 
     position: relative;
@@ -151,10 +158,10 @@ border-radius: 5px;
 }
 
 .botao_calculadora_duplo {
-color: #ff8717;
-border-radius: 5px;
-
-      background-color: #000000;
+color: #000000;
+border-radius: 1rem;
+    margin: .1rem;
+      background-color: #c96100;
 
         width: 100%;
     height: 0;
@@ -164,10 +171,11 @@ border-radius: 5px;
 }
 
 .botao_calculadora_triplo {
-border-radius: 5px;
+border-radius: 1rem;
+margin: .1rem;
 
-color: #ff8717;
-    background: gray;
+color: #000000;
+    background: #898989;
         width: 100%;
     height: 0;
     padding-bottom: 20%;
@@ -204,8 +212,8 @@ color: #ff8717;
         margin-left: 20%;
                 margin-top:10px;
                 padding: 10px;
-                border-radius: 10px;
-                background-color: gray
+                border-radius: .5rem;
+                background-color: #000000;
 
 
 }
@@ -231,6 +239,16 @@ color: #ff8717;
 .input_curto {
     width: 100%
 
+
+}
+
+#link_topico_anormal {
+    color: #000000;
+}
+
+#link_topico_anormal:hover {
+    color: #000000;
+    text-decoration: none;
 
 }
 
@@ -311,11 +329,10 @@ color: #ff8717;
 
 #myfooter {
 
-
     text-align: center;
     background-color: #000000;
     padding: 5px;
-    color: white;
+    color: #ffffff;
     height: 2rem;
 }
 
@@ -323,16 +340,23 @@ color: #ff8717;
     color: #0366d6;
 }
 
-#link_mascara {
-        color: #495057;
+
+
+.link_mascara:hover {
+        color: #000000;
+        text-decoration: none;
 
 }
+
+
 
 .card-body {
     padding: 0;
 }
 
 .link_mascara {
+        color: #000000;
+
     padding: 2rem;
 }
 
@@ -343,8 +367,25 @@ color: #ff8717;
 
 }
 
+.card-header {
+    background-color: #000000;
+
+}
+
+.btn-link {
+    color: #ffffff;
+}
+
+.btn-link:hover {
+    color: #c96100;
+    text-decoration: none;
+}
 
 
+.btn-link:focus {
+    text-decoration: none;
+
+}
 
 
 
