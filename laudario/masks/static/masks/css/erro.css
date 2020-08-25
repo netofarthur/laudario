@@ -4,3 +4,15 @@
     width: 100%;
     color: #ffffff;
 }
+
+#link_voltar {
+    font-size: 2rem;
+     color: #c96100;
+}
+
+button {
+background-color: #000000;
+      color: #ffffff;
+      border-radius: .5rem;
+      margin-top: .7rem;
+}

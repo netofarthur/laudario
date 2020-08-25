@@ -66,15 +66,16 @@ label {
 }
 
 #novo_cadastro_title {
-    color: #0366d6;
+    color: #c96100;
     margin-bottom: .9rem;
 }
 
 #botao_cadastrar {
-      background-color: #0366d6;
-      color: white;
+      background-color: #000000;
+      color: #ffffff;
       border-radius: .5rem;
       margin-top: .7rem;
+
 
 
 }
