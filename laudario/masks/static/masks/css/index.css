@@ -7,11 +7,19 @@ body {
 
 }
 
+a:hover {
+ color: #ffffff;
+}
+
 a {
 font-size: 1.2rem;
-color: #ffb55b;
+color: #ffffff;
 
 margin: 5px;
+}
+
+#botao_entrar {
+    background-color: #898989;
 }
 
 body {
