@@ -112,6 +112,7 @@
 
         </div>
         {% for mascara in ultimas_mascaras %}
+
         <a class="link_mascara_box" href="{% url 'mostrar_mascara' id_mascara=mascara.pk %}" name="{{ mascara.exame.pk }}">{{ mascara.nome }}</a><br>
 
         {% endfor %}
