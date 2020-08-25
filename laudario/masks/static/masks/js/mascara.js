@@ -1307,6 +1307,8 @@ function insertAtCursor(text) {
 
     function mostrarBotaoPopularSeNecessario() {
 
+    document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)).style.color = "#ff8717";
+
         var lista = obterListaVariaveis("paragrafo_mascara");
         var botao = document.getElementById("popular_variaveis");
         if(botao != null) {

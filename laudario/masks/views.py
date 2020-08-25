@@ -624,3 +624,8 @@ def confirmar_reset(request, uid, token):
             mensagem_erro = "Link expirado!"
             context = {'mensagem_erro': mensagem_erro, }
             return render(request, 'masks/erro.html', context)
+
+
+def sobre(request):
+    context = {}
+    return render(request, 'masks/sobre.html', context)

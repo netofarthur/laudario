@@ -11,7 +11,7 @@ urlpatterns = [
     path('login', views.login_usuario, name='login_usuario'),
     path('cadastrar', views.cadastrar, name='cadastrar'),
     path('logout', views.logout_usuario, name='logout_usuario'),
-    path('mascaras/', views.mostrar_mascaras, name='mostrar_mascaras'),
+    path('mascaras', views.mostrar_mascaras, name='mostrar_mascaras'),
     path('salvaralteracao/', views.adicionar_alteracao, name='adicionar_alteracao'),
     path('mascaras/variaveis/adicionar', views.adicionar_variaveis, name='adicionar_variaveis'),
     path('configuracoes', views.configuracoes, name='configuracoes'),
@@ -25,5 +25,6 @@ urlpatterns = [
     path('linkreset/', views.link_reset, name='link_reset'),
     path('users/resetpwd/<str:uid>/<str:token>', views.resetar_password_confirm, name='resetar_password_confirm'),
     path('confirmarreset/<str:uid>/<str:token>', views.confirmar_reset, name='confirmar_reset'),
+    path('sobre', views.sobre, name='sobre'),
 
 ]

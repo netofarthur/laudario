@@ -18,8 +18,8 @@
 <form id="form_login" action="{% url 'login_usuario' %}" method="post">
 {% csrf_token %}
 
-<input type="text" placeholder="Usuário" name="usuario">
-<input type="password" placeholder="Senha" name="senha">
+<input id=usuario_login type="text" placeholder="Usuário" name="usuario"><br><br>
+<input id=senha_login type="password" placeholder="Senha" name="senha"><br><br>
 <input type="submit" value="Entrar">
     <br>
     <br>

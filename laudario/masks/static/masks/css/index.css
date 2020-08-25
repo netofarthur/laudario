@@ -19,7 +19,7 @@ body {
 }
 
 #form_login {
-    margin-top: 1.5rem;
+    margin-top: 40vh;
 
 }
 
@@ -33,6 +33,15 @@ text-align: left;
 
 label {
     margin-bottom: .2rem;
+}
+
+#usuario_login {
+    background-color: #dedede;
+}
+
+#senha_login {
+    background-color: #dedede;
+
 }
 
 .cadastro_input {
