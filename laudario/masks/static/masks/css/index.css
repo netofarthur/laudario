@@ -18,9 +18,20 @@ color: #ffffff;
 margin: 5px;
 }
 
+#botao_entrar:hover {
+    background-color: #000000;
+    color: #c96100;
+    border-radius: .7rem;
+
+
+}
+
 #botao_entrar {
-    background-color: #b8b8b8;
-border-radius: .8rem;
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: .7rem;
+
+
 }
 
 body {
