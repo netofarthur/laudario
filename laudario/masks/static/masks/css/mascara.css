@@ -384,6 +384,8 @@ color: #000000;
 
 .btn-link:focus {
     text-decoration: none;
+        color: #c96100;
+
 
 }
 
