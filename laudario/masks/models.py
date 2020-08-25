@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
+
 
 
 class Exame(models.Model):
@@ -31,6 +33,7 @@ class Mascara(models.Model):
     publica = models.BooleanField(default=True)
     popularidade = models.IntegerField(default=0)
     frequencia = models.IntegerField(default=0)
+    ultima_vez_usado = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return self.nome
 

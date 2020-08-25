@@ -396,6 +396,27 @@ color: #000000;
 
 }
 
+.header_box_mascaras {
+    width: 100%;
+    background-color: #c96100;
+     color: #000000;
+     text-align: center;
+}
+
+.box_mascaras {
+border:solid;
+    border-width: 1px;
+}
+
+.link_mascara_box {
+        color: #000000;
+        margin-left: .2rem;
+        margin-right: .2rem;
+        
+
+
+}
+
 
 
 

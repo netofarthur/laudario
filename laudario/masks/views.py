@@ -10,6 +10,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils import timezone
 
 
 
@@ -58,6 +59,10 @@ def mostrar_mascara(request, id_mascara):
     variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
 
     usuarios2 = json_serializer.serialize(User.objects.all())
+
+    mascara.frequencia += 1
+    mascara.ultima_vez_usado = timezone.now()
+    mascara.save()
 
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
                'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
@@ -393,6 +398,8 @@ def mostrar_mascaras(request):
     if not request.user.is_authenticated:
         return redirect(views.mostrar_index)
     mascaras = Mascara.objects.filter(usuario=request.user)
+    mascaras_populares = Mascara.objects.filter(usuario=request.user).order_by('-frequencia', 'nome')[:10]
+    ultimas_mascaras = Mascara.objects.filter(usuario=request.user).order_by('-ultima_vez_usado', 'nome')[:10]
     todasespecialidades = Especialidade.objects.all()
     especialidades_com_mascara = []
     for especialidade in todasespecialidades:
@@ -401,7 +408,8 @@ def mostrar_mascaras(request):
             especialidades_com_mascara.append(especialidade)
     exames = Exame.objects.all()
     especialidades = especialidades_com_mascara
-    context = {'mascaras': mascaras, 'exames': exames, 'especialidades': especialidades}
+    context = {'mascaras': mascaras, 'exames': exames, 'especialidades': especialidades, 'ultimas_mascaras': ultimas_mascaras,
+               'mascaras_populares': mascaras_populares}
     return render(request, 'masks/mascaras.html', context)
 
 
