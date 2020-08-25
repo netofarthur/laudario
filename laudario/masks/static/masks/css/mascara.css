@@ -126,7 +126,14 @@
     top: 10px;
     float: right;
     margin-right: 10px;
+    background-color: #c96100;
+      color: #000000;
 
+}
+
+#popular_variaveis:focus {
+    background-color: #c96100;
+      color: #000000;
 }
 
 .botao_calculadora {

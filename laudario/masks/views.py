@@ -368,14 +368,14 @@ def activate(request, uid, token):
             if default_token_generator.check_token(user, token):
                 user.is_active = 1
                 user.save()
-                mensagem_confirmacao = '<h2 style="color: #0366d6; padding: 3rem;">Parabéns, <span style="color: black;">' + user.first_name + '</span>! Sua conta foi verificada. Seu nome de usuário é: <span style="color: black;">' + user.username + '</span></h2>'
+                mensagem_confirmacao = '<h2 style="color: #c96100; padding: 3rem;">Parabéns, <span style="color: black;">' + user.first_name + '</span>! Sua conta foi verificada. Seu nome de usuário é: <span style="color: black;">' + user.username + '</span></h2>'
 
                 context = {'mensagem_confirmacao': mensagem_confirmacao, }
                 return render(request, 'masks/aviso.html', context)
 
         except:
             pass
-    mensagem_erro = '<h2 style="color: #0366d6; padding: 3rem;">Houve um erro ao verificar sua conta. O link pode ter expirado.</h2>'
+    mensagem_erro = '<h2 style="color: #c96100; padding: 3rem;">Houve um erro ao verificar sua conta. O link pode ter expirado.</h2>'
     context = {'mensagem_erro': mensagem_erro, }
     return render(request, 'masks/erro.html', context)
 
