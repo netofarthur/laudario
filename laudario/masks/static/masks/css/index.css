@@ -19,7 +19,8 @@ margin: 5px;
 }
 
 #botao_entrar {
-    background-color: #898989;
+    background-color: #b8b8b8;
+border-radius: .8rem;
 }
 
 body {
