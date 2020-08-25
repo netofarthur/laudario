@@ -412,9 +412,13 @@ border:solid;
         color: #000000;
         margin-left: .2rem;
         margin-right: .2rem;
-        
 
 
+
+}
+
+.link_mascara_box:hover {
+    color: #c96100;
 }
 
 
