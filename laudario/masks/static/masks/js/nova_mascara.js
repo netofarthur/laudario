@@ -105,7 +105,7 @@ function popularMascara(mascaraId) {
     let label = document.createElement("label");
     label.setAttribute("for", "orgao");
     label.setAttribute("name", "orgaolabel");
-    label.innerHTML = "Órgão: ";
+    label.innerHTML = "Tópico: ";
 
     let orgao = document.createElement("input");
             orgao.style.marginBottom = "5px";
@@ -143,7 +143,7 @@ function popularMascara(mascaraId) {
 
 
 
-    descricaoOrgao.setAttribute("placeholder", "Descrição normal do órgão");
+    descricaoOrgao.setAttribute("placeholder", "Descrição normal do tópico");
 
 
     let br = document.createElement("br");
@@ -169,7 +169,7 @@ function popularMascara(mascaraId) {
         anchor = document.createElement("a");
         anchor.setAttribute("href", "javascript:adicionarEntradaOrgao()");
         anchor.setAttribute("id", "adicionar_entrada_orgao");
-        anchor.innerHTML = "Novo órgão";
+        anchor.innerHTML = "Novo tópico";
 
     }
     listaOrgaos.appendChild(orgaoDiv);
