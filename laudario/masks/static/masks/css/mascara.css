@@ -397,26 +397,32 @@ color: #ffffff;
 
 .btn-link {
     color: #ffffff;
+
 }
 
 .btn-link:hover {
     color: #ffffff;
     text-decoration: none;
+    outline: none;
 }
 
 
 .btn-link:focus {
     text-decoration: none;
         color: #ffffff;
+        outline: none;
+   box-shadow: none;
 
 
 }
 
 .header_box_mascaras {
     width: 100%;
-    background-color: #c96100;
-     color: #ffffff;
+    background-color: #000000;
+     color: #c96100;
      text-align: center;
+     font-weight: bold;
+     padding: .3rem;
 }
 
 .box_mascaras {
