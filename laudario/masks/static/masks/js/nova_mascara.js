@@ -127,16 +127,12 @@ function popularMascara(mascaraId) {
     descricaoOrgao.setAttribute("name", "relatorio_orgao");
 
 
-        if (listaOrgaos.children.length == 0) {
-            descricaoOrgao.setAttribute("id", "text_area_orgao" + (listaOrgaos.children.length + 1));
-
-        } else {
-            descricaoOrgao.setAttribute("id", "text_area_orgao" + listaOrgaos.children.length);
-
-        }
+            descricaoOrgao.setAttribute("id", "text_area_orgao" + (listaOrgaos.children.length + parseInt(document.getElementById("clicou_remover").value)));
 
 
 
+
+        alert(descricaoOrgao.getAttribute("id"));
 
 
         descricaoOrgao.setAttribute("class", "paragrafo_mascara");
@@ -179,9 +175,15 @@ function popularMascara(mascaraId) {
     orgaoDivFlex.appendChild(orgao);
     orgaoDivFlex.appendChild(remover);
     orgaoDiv.appendChild(descricaoOrgao);
+
+
+
+    alert('#' + descricaoOrgao.getAttribute("id"));
+
+
+
            tinymce.init({
         selector: '#' + descricaoOrgao.getAttribute("id"),
-        body_id : '#' + descricaoOrgao.getAttribute("id"),
 
 
         plugins: "table",
@@ -201,7 +203,7 @@ function removerEntradaOrgao(id) {
     let listaOrgaos = document.getElementById("lista_orgaos");
     listaOrgaos.removeChild(document.getElementById(id).parentNode.parentNode);
     document.getElementById("clicou_remover").value = parseInt(document.getElementById("clicou_remover").value) + 1;
-
+    tinymce.remove(id);
 
 
 
