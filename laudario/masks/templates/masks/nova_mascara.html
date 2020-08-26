@@ -70,7 +70,7 @@
 
 <div id="coluna_esquerda" class="col-6">
 
-<h2 style="text-align: center;"> Nova Máscara </h2>
+<h2 style="text-align: center; color: #c96100; margin-top: .3rem; margin-bottom: .2rem;"> Nova Máscara </h2>
 
 
 <form action="{% url 'adicionar_nova_mascara' %}" method="post" id="formulario_nova_mascara">
@@ -79,7 +79,7 @@
 
 
 <div class="form-group">
-  <label style="font-size: 1.2rem;" for="exames">Exame: </label>
+  <label class="label_laranja" style="font-size: 1.2rem;" for="exames">Exame: </label>
   <select class="form-control" name ="exames" id="exames">
     {% for exame in exames %}
       <option value={{ exame.pk }}>{{exame.descricao}}</option>
@@ -88,7 +88,7 @@
 </div>
 
 <div class="form-group">
-  <label style="font-size: 1.2rem;" for="especialidades">Especialidade: </label>
+  <label class="label_laranja" style="font-size: 1.2rem;" for="especialidades">Especialidade: </label>
   <select class="form-control" name ="especialidades" id="especialidades">
     {% for especialidade in especialidades %}
       <option value={{ especialidade.pk }}>{{especialidade.descricao}}</option>
@@ -98,21 +98,21 @@
 
 
 
-<label style="font-size: 1.2rem;" for="nome_exame">Nome/descrição do exame: </label>
+<label class="label_laranja" style="font-size: 1.2rem;" for="nome_exame">Nome/descrição do exame: </label>
 <input class="input_curto" type="text" id="nome_exame" name="nome_exame">
 <br>
     <br>
 
 
 <fieldset class="fieldset_nova_mascara">
-    <legend class="legend_nova_mascara">Título</legend>
+    <legend class="legend_nova_mascara label_laranja">Título</legend>
         <input class="paragrafo_mascara" placeholder="Título do exame no laudo" type="text" id="titulo_exame" name="titulo_exame">
 </fieldset>
     <br>
 
 
  <fieldset class="fieldset_nova_mascara">
-    <legend class="legend_nova_mascara">Técnica</legend>
+    <legend class="legend_nova_mascara label_laranja">Técnica</legend>
 <input style="margin-bottom:5px;" placeholder="Título da ténica" class="input_curto" type="text" id="tecnica_header" name="tecnica_header">
 
      <br>
@@ -123,7 +123,7 @@
 
 
  <fieldset class="fieldset_nova_mascara">
-    <legend class="legend_nova_mascara">Relatório</legend>
+    <legend class="legend_nova_mascara label_laranja">Relatório</legend>
 <input style="margin-bottom:10px;" placeholder="Título do relatório" class="input_curto" type="text" id="relatorio_header" name="relatorio_header">
 
      <br>
@@ -152,7 +152,7 @@
 <br>
 
     <fieldset class="fieldset_nova_mascara">
-    <legend class="legend_nova_mascara">Conclusão</legend>
+    <legend class="legend_nova_mascara label_laranja">Conclusão</legend>
     <input style="margin-bottom:5px;" class="input_curto" placeholder="Título da conclusão" type="text" id="conclusao_header" name="conclusao_header">
 
         <br>
@@ -178,7 +178,7 @@
 <br>
     <br>
 <div style="text-align: center;">
-<input type="button" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
+<input class="btn btn-primary" type="button" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
 <input type="hidden" id="usuario_id_alteracao">
 <input type="hidden" id="mascara_aproveitada" name="mascara_aproveitada">
                 <input type="hidden" id="clicou_remover" name="clicou_remover" value="0">

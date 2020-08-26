@@ -324,7 +324,7 @@
                         {% csrf_token %}
 
               <div class="modal-header">
-                <h5 class="modal-title" id="myModalAlteracaoTitle">Modal title</h5>
+                <h5 style="color: #c96100;" class="modal-title" id="myModalAlteracaoTitle">Adicionar Nova Alteração</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -337,24 +337,28 @@
                             <div class="row">
                         <div class="col-6">
                         <div class="form-group">
-                          <label id="label_topicos" for="exames">Tópico a ser alterado </label>
+                            <div style="margin-bottom: 1rem; margin-top: 1rem;">
+                          <label class="label_laranja" id="label_topicos" for="exames">Tópico a ser alterado </label>
                           <select class="form-control" name ="exames" id="exames">
                             {% for topico_normal in topicos_normais %}
                               <option value={{ topico_normal.pk }}>{{topico_normal.orgao}}</option>
                             {% endfor %}
 
                           </select>
-                            <label for="nome_modal">Nome: </label>
-                             <input type="text" id="nome_modal" name="nome_modal"/>
-                            <br>
+                                </div>
 
-                            <label for="relatorio_modal">Relatório: </label>
+                            <div style="margin-bottom: 1.5rem;">
+                            <label class="label_laranja" for="nome_modal">Nome: </label>
+                             <input type="text" id="nome_modal" name="nome_modal"/>
+                           </div>
+
+                            <label class="label_laranja" for="relatorio_modal">Relatório: </label>
 
 
                               <input type="text" id="relatorio_modal" name="relatorio_modal" class="entrada_modal"/>
                             <br>
 
-                                <label for="conclusao_modal">Conclusão: </label>
+                                <label class="label_laranja" for="conclusao_modal">Conclusão: </label>
                               <input type="text" id="conclusao_modal" name="conclusao_modal" class="entrada_modal"/>
                         </div>
 
@@ -371,8 +375,7 @@
 
                             <input type="checkbox" id="adicionar_no_banco" name="adicionar_no_banco" checked/>
                             <label for="adicionar_no_banco">Adicionar no meu banco de frases</label>
-
-
+                            <br>
 
 
                             {% for profile in profiles %}
@@ -418,8 +421,8 @@
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <input type="button" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                <input type="button" class="btn btn-secondary" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
               </div>
              </form>
 
