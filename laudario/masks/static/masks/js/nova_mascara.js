@@ -120,6 +120,11 @@ function popularMascara(mascaraId) {
     let orgaoDiv = document.createElement("div");
     orgaoDiv.setAttribute("name", "orgao_div");
 
+    let topicoIdHidden = document.createElement("input");
+    topicoIdHidden.setAttribute("name", "id_orgao");
+    topicoIdHidden.setAttribute("type", "hidden");
+    topicoIdHidden.setAttribute("value", "vazio");
+
     let orgaoDivFlex = document.createElement("div");
     orgaoDivFlex.style.display = "flex";
 
@@ -178,6 +183,7 @@ function popularMascara(mascaraId) {
     }
     listaOrgaos.appendChild(orgaoDiv);
         orgaoDiv.appendChild(orgaoDivFlex);
+    orgaoDivFlex.appendChild(topicoIdHidden);
 
    orgaoDivFlex.appendChild(label);
     orgaoDivFlex.appendChild(orgao);
