@@ -117,13 +117,25 @@
 
 <div class="col-4">
 
+
+    <form id="formulario_configuracoes" action="{% url 'salvar_configuracoes' %}" method="post">
+        {% csrf_token %}
+
         <div class="box_mascaras" id="aparencia">
 
         <div class="header_box_mascaras">
         Aparência da máscara
 
         </div>
-        teste
+
+    <div class="form-group">
+  <select class="form-control" name ="fonte" id="fonte">
+    <option value="Times New Roman, Times, serif">Times New Roman, Times, serif</option>
+    <option value="Arial, Helvetica, sans-serif">Arial, Helvetica, sans-serif</option>
+
+
+  </select>
+    </div>
 
 
     </div>
@@ -138,6 +150,10 @@
         teste
 
     </div>
+
+        <input type="submit" value="Salvar">
+
+    </form>
 
 </div>
 

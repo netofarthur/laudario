@@ -646,3 +646,12 @@ def confirmar_reset(request, uid, token):
 def sobre(request):
     context = {}
     return render(request, 'masks/sobre.html', context)
+
+
+def salvar_configuracoes(request):
+    context = {}
+    profile = Profile.objects.get(usuario=request.user)
+    fonte = request.POST['fonte']
+    profile.fonte = fonte
+    profile.save()
+    return render(request, 'masks/sobre.html', context)
