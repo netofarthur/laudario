@@ -85,6 +85,8 @@ class Variavel(models.Model):
 class Profile(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     is_premium = models.BooleanField(default=False)
+    fonte = models.CharField(max_length=100, default='Arial, Helvetica, sans-serif')
+    cor_topicos = models.CharField(max_length=20, default='#000000')
 
 
 

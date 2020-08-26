@@ -37,6 +37,13 @@
 
                           });
 
+
+
+
+
+
+
+
                             </script>
 
 <div id="mycontainer">
@@ -78,7 +85,7 @@
 <div id="topicos_div">
 {% for topico in topicos_normais %}
     {% autoescape off %}
-    <div class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</div>
+    <div style="color: {{ profile.cor_topicos }}; font-family: {{ profile.fonte }};" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</div>
     {% endautoescape %}
     {% endfor %}
 </div>

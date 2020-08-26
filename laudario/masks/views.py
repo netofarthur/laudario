@@ -64,10 +64,14 @@ def mostrar_mascara(request, id_mascara):
     mascara.ultima_vez_usado = timezone.now()
     mascara.save()
 
+
+    profile = Profile.objects.get(usuario=request.user)
+
+
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
                'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
                'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario, 'todos_topicos_anormais': todos_topicos_anormais,
-               'profiles': profiles,}
+               'profiles': profiles, 'profile': profile,}
     return render(request, 'masks/mascara.html', context)
 
 def nova_mascara(request):

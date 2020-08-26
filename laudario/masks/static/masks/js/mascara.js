@@ -1305,7 +1305,20 @@ function insertAtCursor(text) {
 
 
 
+function aplicarConfiguracoesUsuario() {
+        document.getElementById("mascara_div").style.fontFamily = "Times New Roman, Times, serif";
+        document.getElementById("mascara_div").style.color = "red";
+    }
+
+
+
+
     function mostrarBotaoPopularSeNecessario() {
+
+
+
+
+
 
     if(document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)) != null) {
             document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)).style.color = "#c96100";
@@ -1530,6 +1543,12 @@ function procurarFrases(id) {
 
 
 
-
+function css(selector, property, value) {
+    for (var i=0; i<document.styleSheets.length;i++) {//Loop through all styles
+        //Try add rule
+        try { document.styleSheets[i].insertRule(selector+ ' {'+property+':'+value+'}', document.styleSheets[i].cssRules.length);
+        } catch(err) {try { document.styleSheets[i].addRule(selector, property+':'+value);} catch(err) {}}//IE
+    }
+}
 
 
