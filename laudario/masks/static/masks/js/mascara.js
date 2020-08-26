@@ -1361,8 +1361,14 @@ function htmlDecode(input) {
 
             if(alteradosJSONObject[i].pk == idSemT) {
                 document.getElementById("nome_modal").value = alteradosJSONObject[i].fields.nome;
-                document.getElementById("relatorio_modal").value = alteradosJSONObject[i].fields.relatorio;
-                document.getElementById("conclusao_modal").value = alteradosJSONObject[i].fields.conclusao;
+
+                tinymce.get("relatorio_modal").setContent("<p>" + alteradosJSONObject[i].fields.relatorio + "</p>");
+
+
+                tinymce.get("conclusao_modal").setContent("<p>" + alteradosJSONObject[i].fields.conclusao + "</p>");
+
+
+
                 topicoNormalId = alteradosJSONObject[i].fields.topico_normal;
             }
 
