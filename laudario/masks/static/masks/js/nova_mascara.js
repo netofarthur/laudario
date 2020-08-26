@@ -74,7 +74,7 @@ function popularMascara(mascaraId) {
 
                     //tem que pegar os tinymce e popular cada um com set, como feito na técnica e conclusão
 
-                     tinymce.get("text_area_orgao" + (counter + 1)).setContent("<p>" + topicosNormaisObject[i].fields.relatorio + "</p>");
+                     tinymce.get("text_area_orgao" + (counter)).setContent("<p>" + topicosNormaisObject[i].fields.relatorio + "</p>");
 
 
                     counter++;
@@ -126,8 +126,14 @@ function popularMascara(mascaraId) {
     descricaoOrgao.setAttribute("type", "text");
     descricaoOrgao.setAttribute("name", "relatorio_orgao");
 
+           if(listaOrgaos.children.length == 0) {
+                       descricaoOrgao.setAttribute("id", "text_area_orgao" + (listaOrgaos.children.length + parseInt(document.getElementById("clicou_remover").value)));
 
-            descricaoOrgao.setAttribute("id", "text_area_orgao" + (listaOrgaos.children.length + parseInt(document.getElementById("clicou_remover").value)));
+           } else {
+                                  descricaoOrgao.setAttribute("id", "text_area_orgao" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+
+           }
+
 
 
 
@@ -203,7 +209,6 @@ function removerEntradaOrgao(id) {
     let listaOrgaos = document.getElementById("lista_orgaos");
     listaOrgaos.removeChild(document.getElementById(id).parentNode.parentNode);
     document.getElementById("clicou_remover").value = parseInt(document.getElementById("clicou_remover").value) + 1;
-    tinymce.remove(id);
 
 
 
