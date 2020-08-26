@@ -872,6 +872,7 @@ function insertAtCursor(text) {
                 var topicoNormalParaAlterar = document.getElementById("exames").value;
 
 
+            tinymce.remove();
 
 
    var todasVariaveis = [];
@@ -890,7 +891,6 @@ function insertAtCursor(text) {
 
 
         } else {
-        tinymce.remove();
         desabilitarEntradasConfiguracaoMascara();
             var variaveis = obterListaVariaveis("paragrafo_mascara");
 
