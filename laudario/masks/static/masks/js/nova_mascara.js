@@ -78,7 +78,6 @@ function popularMascara(mascaraId) {
                     //tem que pegar os tinymce e popular cada um com set, como feito na técnica e conclusão
 
                      tinymce.get("text_area_orgao" + (counter2)).setContent("<p>" + topicosNormaisObject[i].fields.relatorio + "</p>");
-                    alert("text_area_orgao" + (counter));
                     counter2++;
                     counter++;
                     }
