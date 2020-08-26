@@ -421,6 +421,11 @@ border:solid;
     color: #c96100;
 }
 
+.modal-dialog {
+    max-width: 80%;
+
+}
+
 
 
 

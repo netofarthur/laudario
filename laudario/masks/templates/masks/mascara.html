@@ -285,6 +285,9 @@
 
 
 
+
+
+
     <!-- Modal de Adicionar Alteração-->
     <div class="modal fade" id="myModalAlteracao" tabindex="-1" role="dialog" aria-labelledby="myModalAlteracaoTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -328,21 +331,11 @@
                         </div>
 
 
-                            <input type="checkbox" id="adicionar_no_atual" name="adicionar_no_atual" checked/>
-                            <label for="adicionar_no_atual">Adicionar na máscara atual</label>
-                            <br>
 
-
-
-                            <input type="checkbox" id="adicionar_no_banco" name="adicionar_no_banco" checked/>
-                            <label for="adicionar_no_banco">Adicionar no meu banco de frases</label>
-
-
-                            <script>
+                                       <script>
 
                           tinymce.init({
                             selector: '#relatorio_modal',
-                            plugins: "table",
                               menubar: false,
                             toolbar: "bold italic underline forecolor table",
                               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
@@ -355,7 +348,6 @@
 
                               tinymce.init({
                             selector: '#conclusao_modal',
-                            plugins: "table",
                               menubar: false,
                             toolbar: "bold italic underline forecolor table",
                               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
@@ -366,6 +358,18 @@
                           });
 
                             </script>
+
+
+                            <input type="checkbox" id="adicionar_no_atual" name="adicionar_no_atual" checked/>
+                            <label for="adicionar_no_atual">Adicionar na máscara atual</label>
+                            <br>
+
+
+
+                            <input type="checkbox" id="adicionar_no_banco" name="adicionar_no_banco" checked/>
+                            <label for="adicionar_no_banco">Adicionar no meu banco de frases</label>
+
+
 
 
                             {% for profile in profiles %}
@@ -415,6 +419,13 @@
                 <input type="button" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
               </div>
              </form>
+
+
+
+
+
+
+
             </div>
 
 
