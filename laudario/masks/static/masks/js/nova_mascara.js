@@ -1,6 +1,6 @@
 
 function popularMascara(mascaraId) {
-
+        removerTopicos();
         var usuarioSelecionadoId;
         var mascaras = JSON.parse(mascarasJson);
 
@@ -60,6 +60,9 @@ function popularMascara(mascaraId) {
             }
         }
         let counter = 0;
+
+        let counter2 = parseInt(document.getElementById("clicou_remover").value);
+
         for(i = 0; i < topicosNormaisObject.length; i++) {
             if(topicosNormaisObject[i].fields.mascara == mascaraId) {
                     if(entradasNomesOrgaos[counter] == null) {
@@ -74,9 +77,9 @@ function popularMascara(mascaraId) {
 
                     //tem que pegar os tinymce e popular cada um com set, como feito na técnica e conclusão
 
-                     tinymce.get("text_area_orgao" + (counter)).setContent("<p>" + topicosNormaisObject[i].fields.relatorio + "</p>");
-
-
+                     tinymce.get("text_area_orgao" + (counter2)).setContent("<p>" + topicosNormaisObject[i].fields.relatorio + "</p>");
+                    alert("text_area_orgao" + (counter));
+                    counter2++;
                     counter++;
                     }
 
@@ -102,6 +105,7 @@ function popularMascara(mascaraId) {
   function adicionarEntradaOrgao() {
 
     let listaOrgaos = document.getElementById("lista_orgaos");
+    let listaNomesOrgaos = document.getElementsByName("orgao");
     let label = document.createElement("label");
     label.setAttribute("for", "orgao");
     label.setAttribute("name", "orgaolabel");
@@ -138,7 +142,6 @@ function popularMascara(mascaraId) {
 
 
 
-        alert(descricaoOrgao.getAttribute("id"));
 
 
         descricaoOrgao.setAttribute("class", "paragrafo_mascara");
@@ -159,7 +162,7 @@ function popularMascara(mascaraId) {
     remover.setAttribute("type", "button");
     remover.setAttribute("name", "botao_remover");
     remover.setAttribute("onclick", "removerEntradaOrgao(this.id)");
-     remover.setAttribute("id", listaOrgaos.children.length);
+     remover.setAttribute("id", listaNomesOrgaos.length);
         remover.style.marginBottom = "5px";
         remover.innerHTML = "Remover";
 
@@ -184,7 +187,6 @@ function popularMascara(mascaraId) {
 
 
 
-    alert('#' + descricaoOrgao.getAttribute("id"));
 
 
 
@@ -211,6 +213,16 @@ function removerEntradaOrgao(id) {
     document.getElementById("clicou_remover").value = parseInt(document.getElementById("clicou_remover").value) + 1;
 
 
+
+}
+
+
+function removerTopicos() {
+        let listaOrgaos = document.getElementById("lista_orgaos");
+        let counter = listaOrgaos.children.length;
+        for(var i = 0; i < counter - 1; i++) {
+            removerEntradaOrgao(i);
+        }
 
 }
 
