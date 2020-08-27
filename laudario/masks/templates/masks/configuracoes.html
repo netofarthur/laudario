@@ -124,12 +124,14 @@
         <div style="padding: .3rem;" class="box_mascaras" id="aparencia">
 
         <div style="margin-bottom: .3rem;" class="header_box_mascaras">
-        Aparência da máscara
+        Aparência das máscaras
 
         </div>
     <label>Fonte da máscara</label>
     <div class="form-group">
   <select class="form-control" name ="fonte" id="fonte">
+      <option value="{{ profile.fonte }}">{{ profile.fonte }}</option>
+
     <option value="Times New Roman, Times, serif">Times New Roman, Times, serif</option>
     <option value="Arial, Helvetica, sans-serif">Arial, Helvetica, sans-serif</option>
 
@@ -137,18 +139,22 @@
     </div>
 
 
-                 <label>Cor da fonte da máscara</label>
+                 <label>Cor da fonte nas máscaras</label>
             <input type="color" id="cor_mascara" name="cor_mascara"
-           value="#000000">
+           value="{{ profile.cor_mascara }}">
 
 
-                <label>Tamanho da fonte da máscara</label>
+                <label>Tamanho da fonte nas máscaras</label>
     <div class="form-group">
   <select class="form-control" name ="tamanho_fonte" id="tamanho_fonte">
-    <option value=".2em">4px</option>
-    <option value=".5em">8px</option>
-  <option value="1em">16px</option>
-    <option value="2em">32px</option>
+  <option value="{{ profile.tamanho_fonte }}">{{ profile.tamanho_fonte }}</option>
+
+  <option value="16px">16px</option>
+    <option value="20px">20px</option>
+
+  <option value="24px">24px</option>
+      <option value="28px">28px</option>
+    <option value="32px">32px</option>
 
 
   </select>
@@ -158,6 +164,13 @@
     <label>Alinhamento do título</label>
     <div class="form-group">
   <select class="form-control" name ="alinhamento_titulo" id="alinhamento_titulo">
+
+        {% if profile.alinhamento_titulo == "left" %}
+    <option value="left">À esquerda</option>
+      {% else %}
+    <option value="center">Centralizado</option>
+    {% endif %}
+
     <option value="left">À esquerda</option>
     <option value="center">Centralizado</option>
 
@@ -169,12 +182,13 @@
       <label>Tamanho da fonte do título</label>
     <div class="form-group">
   <select class="form-control" name ="tamanho_titulo" id="tamanho_titulo">
-    <option value=".2em">4px</option>
-    <option value=".5em">8px</option>
-  <option value="1em">16px</option>
-    <option value="2em">32px</option>
+         <option value="{{ profile.tamanho_titulo }}">{{ profile.tamanho_titulo }}</option>
 
-
+   <option value="24px">24px</option>
+      <option value="28px">28px</option>
+    <option value="32px">32px</option>
+<option value="48px">48px</option>
+<option value="64px">64px</option>
 
   </select>
     </div>
@@ -182,7 +196,7 @@
 
             <label>Cor do título</label>
             <input type="color" id="cor_titulo" name="cor_titulo"
-           value="#000000">
+           value="{{ profile.cor_titulo }}">
             <br>
 
 
@@ -190,6 +204,13 @@
              <label>Alinhamento dos tópicos</label>
     <div class="form-group">
   <select class="form-control" name ="alinhamento_topicos" id="alinhamento_topicos">
+
+        {% if profile.alinhamento_topicos == "left" %}
+    <option value="left">À esquerda</option>
+      {% else %}
+    <option value="center">Centralizado</option>
+    {% endif %}
+
     <option value="left">À esquerda</option>
     <option value="center">Centralizado</option>
        </select>
@@ -199,10 +220,13 @@
             <label>Tamanho da fonte dos tópicos</label>
     <div class="form-group">
   <select class="form-control" name ="tamanho_topicos" id="tamanho_topicos">
-    <option value=".2em">4px</option>
-    <option value=".5em">8px</option>
-  <option value="1em">16px</option>
-    <option value="2em">32px</option>
+       <option value="{{ profile.tamanho_topicos }}">{{ profile.tamanho_topicos }}</option>
+
+   <option value="24px">24px</option>
+      <option value="28px">28px</option>
+    <option value="32px">32px</option>
+<option value="48px">48px</option>
+<option value="64px">64px</option>
 
   </select>
     </div>
@@ -210,10 +234,13 @@
 
       <label>Cor da fonte dos tópicos</label>
             <input type="color" id="cor_topicos" name="cor_topicos"
-           value="#000000">
+           value="{{ profile.cor_topicos }}">
+<br>
 
-
-
+            <div style="text-align: center;">
+                <br>
+        <input class="btn btn-primary" type="submit" value="Salvar">
+</div>
 
     </div>
 
@@ -221,14 +248,13 @@
 
     <div class="box_mascaras" id="funcionalidade">
         <div class="header_box_mascaras">
-            Funcionalidade da máscara
+            Segurança
 
         </div>
-        teste
+        <a href="#">Alterar senha</a>
 
     </div>
 
-        <input type="submit" value="Salvar">
 
     </form>
 
