@@ -30,3 +30,72 @@ function tornarExamesInvisiveis() {
 }
 
 
+function apagar() {
+
+
+     var opcoes = document.getElementById("fonte").options;
+     var opcaoSelecionada = opcoes[0].innerHTML;
+     for(var i = 1; i < opcoes.length; i++) {
+        if(opcoes[i].innerHTML == opcaoSelecionada) {
+                        opcoes.remove(i);
+        }
+     }
+
+
+       var opcoes = document.getElementById("tamanho_fonte").options;
+     var opcaoSelecionada = opcoes[0].innerHTML;
+     for(var i = 1; i < opcoes.length; i++) {
+        if(opcoes[i].innerHTML == opcaoSelecionada) {
+                        opcoes.remove(i);
+        }
+     }
+
+
+            var opcoes = document.getElementById("alinhamento_titulo").options;
+     var opcaoSelecionada = opcoes[0].innerHTML;
+     for(var i = 1; i < opcoes.length; i++) {
+        if(opcoes[i].innerHTML == opcaoSelecionada) {
+                        opcoes.remove(i);
+        }
+     }
+
+
+
+     var opcoes = document.getElementById("tamanho_titulo").options;
+     var opcaoSelecionada = opcoes[0].innerHTML;
+     for(var i = 1; i < opcoes.length; i++) {
+        if(opcoes[i].innerHTML == opcaoSelecionada) {
+                        opcoes.remove(i);
+        }
+     }
+
+
+
+          var opcoes = document.getElementById("alinhamento_topicos").options;
+     var opcaoSelecionada = opcoes[0].innerHTML;
+     for(var i = 1; i < opcoes.length; i++) {
+        if(opcoes[i].innerHTML == opcaoSelecionada) {
+                        opcoes.remove(i);
+        }
+     }
+
+
+          var opcoes = document.getElementById("tamanho_topicos").options;
+     var opcaoSelecionada = opcoes[0].innerHTML;
+     for(var i = 1; i < opcoes.length; i++) {
+        if(opcoes[i].innerHTML == opcaoSelecionada) {
+                        opcoes.remove(i);
+        }
+     }
+
+
+
+
+
+}
+
+
+window.onload = apagar;
+
+
+
