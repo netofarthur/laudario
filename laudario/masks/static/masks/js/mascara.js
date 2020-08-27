@@ -46,7 +46,7 @@
 
                             } else {
 
-                                provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", eval(document.getElementById("lab" + z).innerHTML.replace(",",".")).toFixed(2));
+                                provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", eval(document.getElementById("lab" + z).innerHTML.replace(",",".")).toFixed(2).replace(".",","));
                             }
 
                       }
@@ -1179,13 +1179,16 @@ function insertAtCursor(text) {
 
 
 
-
+        var teste = listaVars[i].split(/[*/+-]+/g);
+            if(teste.length == 1) {
                corpo.appendChild(br);
                 corpo.appendChild(inputHidden);
+
                 corpo.appendChild(label);
+
                 corpo.appendChild(input);
                 corpo.appendChild(inputMedida);
-
+            }
             if(variavelJaExiste == false && variavelExisteNaMascara == true) {
                 input.setAttribute("value", obterNomeAmigavelVariavel(label.innerHTML));
                 inputMedida.setAttribute("value", obterUnidadeMedida(label.innerHTML));
