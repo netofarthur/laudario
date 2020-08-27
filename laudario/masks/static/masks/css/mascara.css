@@ -444,8 +444,13 @@ border:solid;
     color: #c96100;
 }
 
-.modal-dialog {
+#modal_alteracoes {
     max-width: 80%;
+
+}
+
+#modal_variaveis {
+    max-width: 50%;
 
 }
 

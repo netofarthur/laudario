@@ -179,7 +179,7 @@
 
     <!-- Modal de Variáveis do Usuário-->
     <div class="modal fade" id="ModalVariaveis" tabindex="-1" role="dialog" aria-labelledby="tituloModalVariaveis" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div id="modal_variaveis" class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                <div id="template_name_variaveis"></div>
@@ -200,16 +200,16 @@
                             <div class="row no-gutters">
 
                                 <div class="col-4">
-                                    <button id="botao1" name="botao_calculadora" class="botao_calculadora">1</button>
+                                    <button id="botao7" name="botao_calculadora" class="botao_calculadora">7</button>
                                 </div>
 
                                 <div class="col-4">
-                                    <button id="botao2" name="botao_calculadora" class="botao_calculadora">2</button>
+                                    <button id="botao8" name="botao_calculadora" class="botao_calculadora">8</button>
 
                                 </div>
 
                                 <div class="col-4">
-                                    <button id="botao3" name="botao_calculadora" class="botao_calculadora">3</button>
+                                    <button id="botao9" name="botao_calculadora" class="botao_calculadora">9</button>
 
                                 </div>
 
@@ -238,17 +238,17 @@
                           <div class="row no-gutters">
 
                                 <div class="col-4">
-                                    <button id="botao7" name="botao_calculadora" class="botao_calculadora">7</button>
+                                    <button id="botao1" name="botao_calculadora" class="botao_calculadora">1</button>
 
                                 </div>
 
                                 <div class="col-4">
-                                    <button id="botao8" name="botao_calculadora" class="botao_calculadora">8</button>
+                                    <button id="botao2" name="botao_calculadora" class="botao_calculadora">2</button>
 
                                 </div>
 
                                 <div class="col-4">
-                                    <button id="botao9" name="botao_calculadora" class="botao_calculadora">9</button>
+                                    <button id="botao3" name="botao_calculadora" class="botao_calculadora">3</button>
 
                                 </div>
 
@@ -325,7 +325,7 @@
 
     <!-- Modal de Adicionar Alteração-->
     <div class="modal fade" id="myModalAlteracao" tabindex="-1" role="dialog" aria-labelledby="myModalAlteracaoTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div id="modal_alteracoes" class="modal-dialog" role="document">
             <div class="modal-content">
                  <form action="{% url 'adicionar_alteracao' %}" method="post" id="formulario_alteracao">
                         {% csrf_token %}
