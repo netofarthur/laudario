@@ -32,6 +32,7 @@ function tornarExamesInvisiveis() {
 
 function apagar() {
 
+    if(document.getElementById("fonte") != null) {
 
      var opcoes = document.getElementById("fonte").options;
      var opcaoSelecionada = opcoes[0].innerHTML;
@@ -88,7 +89,7 @@ function apagar() {
         }
      }
 
-
+}
 
 
 
