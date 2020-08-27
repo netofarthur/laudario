@@ -86,9 +86,14 @@ class Profile(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     is_premium = models.BooleanField(default=False)
     fonte = models.CharField(max_length=100, default='Arial, Helvetica, sans-serif')
+    tamanho_fonte = models.CharField(max_length=20, default='1em')
     cor_topicos = models.CharField(max_length=20, default='#000000')
-
-
+    cor_mascara = models.CharField(max_length=20, default='#000000')
+    cor_titulo = models.CharField(max_length=20, default='#000000')
+    alinhamento_titulo = models.CharField(max_length=20, default='center')
+    alinhamento_topicos = models.CharField(max_length=20, default='left')
+    tamanho_titulo = models.CharField(max_length=20, default='2em')
+    tamanho_topicos = models.CharField(max_length=20, default='1.7em')
 
 
 

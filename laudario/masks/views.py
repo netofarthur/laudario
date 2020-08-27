@@ -652,6 +652,22 @@ def salvar_configuracoes(request):
     context = {}
     profile = Profile.objects.get(usuario=request.user)
     fonte = request.POST['fonte']
+    tamanho_fonte = request.POST['tamanho_fonte']
+    cor_topicos = request.POST['cor_topicos']
+    cor_titulo = request.POST['cor_titulo']
+    alinhamento_titulo = request.POST['alinhamento_titulo']
+    cor_mascara = request.POST['cor_mascara']
+    alinhamento_topicos = request.POST['alinhamento_topicos']
+    tamanho_topicos = request.POST['tamanho_topicos']
+    tamanho_titulo = request.POST['tamanho_titulo']
+    profile.tamanho_fonte = tamanho_fonte
     profile.fonte = fonte
+    profile.cor_topicos = cor_topicos
+    profile.cor_titulo = cor_titulo
+    profile.alinhamento_titulo = alinhamento_titulo
+    profile.cor_mascara = cor_mascara
+    profile.alinhamento_topicos = alinhamento_topicos
+    profile.tamanho_titulo = tamanho_titulo
+    profile.tamanho_topicos = tamanho_topicos
     profile.save()
     return render(request, 'masks/sobre.html', context)

@@ -121,21 +121,98 @@
     <form id="formulario_configuracoes" action="{% url 'salvar_configuracoes' %}" method="post">
         {% csrf_token %}
 
-        <div class="box_mascaras" id="aparencia">
+        <div style="padding: .3rem;" class="box_mascaras" id="aparencia">
 
-        <div class="header_box_mascaras">
+        <div style="margin-bottom: .3rem;" class="header_box_mascaras">
         Aparência da máscara
 
         </div>
-
+    <label>Fonte da máscara</label>
     <div class="form-group">
   <select class="form-control" name ="fonte" id="fonte">
     <option value="Times New Roman, Times, serif">Times New Roman, Times, serif</option>
     <option value="Arial, Helvetica, sans-serif">Arial, Helvetica, sans-serif</option>
 
+  </select>
+    </div>
+
+
+                 <label>Cor da fonte da máscara</label>
+            <input type="color" id="cor_mascara" name="cor_mascara"
+           value="#000000">
+
+
+                <label>Tamanho da fonte da máscara</label>
+    <div class="form-group">
+  <select class="form-control" name ="tamanho_fonte" id="tamanho_fonte">
+    <option value=".2em">4px</option>
+    <option value=".5em">8px</option>
+  <option value="1em">16px</option>
+    <option value="2em">32px</option>
+
 
   </select>
     </div>
+
+
+    <label>Alinhamento do título</label>
+    <div class="form-group">
+  <select class="form-control" name ="alinhamento_titulo" id="alinhamento_titulo">
+    <option value="left">À esquerda</option>
+    <option value="center">Centralizado</option>
+
+       </select>
+    </div>
+
+
+
+      <label>Tamanho da fonte do título</label>
+    <div class="form-group">
+  <select class="form-control" name ="tamanho_titulo" id="tamanho_titulo">
+    <option value=".2em">4px</option>
+    <option value=".5em">8px</option>
+  <option value="1em">16px</option>
+    <option value="2em">32px</option>
+
+
+
+  </select>
+    </div>
+
+
+            <label>Cor do título</label>
+            <input type="color" id="cor_titulo" name="cor_titulo"
+           value="#000000">
+            <br>
+
+
+
+             <label>Alinhamento dos tópicos</label>
+    <div class="form-group">
+  <select class="form-control" name ="alinhamento_topicos" id="alinhamento_topicos">
+    <option value="left">À esquerda</option>
+    <option value="center">Centralizado</option>
+       </select>
+    </div>
+
+
+            <label>Tamanho da fonte dos tópicos</label>
+    <div class="form-group">
+  <select class="form-control" name ="tamanho_topicos" id="tamanho_topicos">
+    <option value=".2em">4px</option>
+    <option value=".5em">8px</option>
+  <option value="1em">16px</option>
+    <option value="2em">32px</option>
+
+  </select>
+    </div>
+
+
+      <label>Cor da fonte dos tópicos</label>
+            <input type="color" id="cor_topicos" name="cor_topicos"
+           value="#000000">
+
+
 
 
     </div>
