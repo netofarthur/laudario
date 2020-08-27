@@ -604,6 +604,8 @@ function insertAtCursor(text) {
 
 
            var variaveisDiv = document.getElementById("template_name_variaveis");
+           variaveisDiv.style.fontWeight = "bold";
+           variaveisDiv.style.fontSize = "1.2rem";
            var variaveisInativasDiv = document.getElementById("variaveis_inativas");
 
            if(variaveisDiv.firstChild.style.display == "block") {
@@ -612,6 +614,7 @@ function insertAtCursor(text) {
            }
            if(variaveisDiv.firstChild != null) {
                    variaveisDiv.firstChild.style.display = "block";
+
 
            } else {
              if(variaveisInativasDiv.lastChild.children[1].getAttribute("name") == "input") {
