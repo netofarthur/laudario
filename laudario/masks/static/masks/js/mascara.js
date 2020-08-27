@@ -532,7 +532,7 @@ function selecionarVariavelNominal(textoSelecao) {
 
                 children[children.length - 1].children[1].value = textoSelecao;
 
-            if(variaveisAtivas.firstChild == null) {
+            if(variaveisAtivas.firstChild == null || variaveisAtivas.firstChild.firstChild.style.display == "none") {
                 alterarVariaveisModal();
             }
 
@@ -618,6 +618,17 @@ function insertAtCursor(text) {
                 alterarVariaveisModal();
              }
            }
+
+           if(variaveisDiv.firstChild != null) {
+               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
+                               document.getElementById("proxima_variavel").click();
+
+               }
+           }
+
+
+
+
            selecionarVariavel();
                      adaptarCalculadoraMaisSave();
 
@@ -1114,8 +1125,31 @@ function insertAtCursor(text) {
                     }
 
                 } else {
-                    label.innerHTML = listaVars[i] + getVariaveisUsuarioCount();
-                    inputHidden.setAttribute("value", listaVars[i] + getVariaveisUsuarioCount());
+
+
+
+                    var constructor = listaVars[i];
+                    var splits = listaVars[i].split(/[*/+-]+/g);
+                    if(splits.length > 1) {
+                        for(var z = 0; z < splits.length; z++) {
+                                if(isNaN(parseFloat(splits[z].trim()))) {
+                                    constructor = constructor.replace(splits[z].trim(), splits[z].trim() + getVariaveisUsuarioCount());
+                                }
+                        }
+
+
+
+
+                        label.innerHTML = constructor;
+                        inputHidden.setAttribute("value", constructor);
+
+                    } else {
+                        label.innerHTML = listaVars[i] + getVariaveisUsuarioCount();
+                        inputHidden.setAttribute("value", listaVars[i] + getVariaveisUsuarioCount());
+                    }
+
+
+
                      if(document.getElementById("adicionar_no_atual") != null) {
                          if(document.getElementById("relatorio_modal").value.indexOf("{" + listaVars[i] + "}") > -1) {
                             document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
