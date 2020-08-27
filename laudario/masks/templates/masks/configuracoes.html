@@ -121,14 +121,14 @@
     <form id="formulario_configuracoes" action="{% url 'salvar_configuracoes' %}" method="post">
         {% csrf_token %}
 
-        <div class="box_mascaras" id="aparencia">
+        <div style="margin-top: .5rem;" class="box_mascaras" id="aparencia">
 
         <div style="margin-bottom: .3rem;" class="header_box_mascaras">
         Aparência das máscaras
 
         </div>
 
-            <div style="padding: .3rem;">
+            <div style="padding: .5rem;">
     <label>Fonte da máscara</label>
     <div class="form-group">
   <select class="form-control" name ="fonte" id="fonte">
