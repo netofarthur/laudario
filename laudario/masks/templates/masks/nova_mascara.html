@@ -5,6 +5,7 @@
 {% block css %}
 
     <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/nova_mascara.css' %}">
 
 {% endblock css %}
 
@@ -200,7 +201,7 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
 
 </div>
 
-<div class="col-6">
+<div id="coluna_mascaras" class="col-6">
 
   {% for mascara in mascaras %}
     {% if mascara.usuario != request.user %}

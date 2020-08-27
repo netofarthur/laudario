@@ -861,6 +861,10 @@ function insertAtCursor(text) {
             botao.style.display = "none";
         }
         document.getElementById("salva_mudancas").value = "Concluir";
+        document.getElementById("coluna_mascaras").parentNode.removeChild(document.getElementById("coluna_mascaras"));
+        document.getElementById("coluna_esquerda").classList.remove('col-6');
+        document.getElementById("coluna_esquerda").classList.add('col-12');
+
 
     }
 
@@ -1015,6 +1019,10 @@ function insertAtCursor(text) {
                 inputHidden.setAttribute("type", "hidden");
                 inputHidden.setAttribute("name", "nome_da_variavel");
                   var label = document.createElement("label");
+                  label.style.fontWeight = "bold";
+                label.style.color = "#c96100";
+
+
                 label.setAttribute("name", "label_variavel");
                     var br = document.createElement("br")
                 br.setAttribute("name", "label_br");
@@ -1022,17 +1030,25 @@ function insertAtCursor(text) {
 
                  if(listaVariaveisNominais.includes(listaVars[i])) {
                         input.setAttribute("placeholder", "Descrição no laudo");
+                        input.setAttribute("size", 40)
+                          label.style.color = "#000000";
+
                         inputMedida.style.display = "none"
 
                 } else if(listaVars[i].indexOf("|") > -1) {
-                        input.setAttribute("placeholder", "Nome da variável");
+                        input.setAttribute("placeholder", "Nome amigável da variável");
+                        input.setAttribute("size", 40)
                         inputMedida.style.display = "none"
 
 
                 } else {
                         inputMedida.setAttribute("placeholder", "Unidade de medida");
+                        inputMedida.setAttribute("size", 18);
+                        inputMedida.style.marginLeft = ".2rem";
 
-                        input.setAttribute("placeholder", "Nome da variável");
+                        input.setAttribute("size", 40)
+
+                        input.setAttribute("placeholder", "Nome amigável da variável");
 
                 }
 
@@ -1179,8 +1195,8 @@ function insertAtCursor(text) {
 
 
 
-        var teste = listaVars[i].split(/[*/+-]+/g);
-            if(teste.length == 1) {
+
+
                corpo.appendChild(br);
                 corpo.appendChild(inputHidden);
 
@@ -1188,7 +1204,7 @@ function insertAtCursor(text) {
 
                 corpo.appendChild(input);
                 corpo.appendChild(inputMedida);
-            }
+
             if(variavelJaExiste == false && variavelExisteNaMascara == true) {
                 input.setAttribute("value", obterNomeAmigavelVariavel(label.innerHTML));
                 inputMedida.setAttribute("value", obterUnidadeMedida(label.innerHTML));
