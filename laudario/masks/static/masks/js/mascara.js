@@ -676,6 +676,8 @@ function insertAtCursor(text) {
             var input = document.createElement("input");
             input.setAttribute("type", "text");
             input.setAttribute("name", "input");
+            input.style.width = "50%";
+
 
 
 
@@ -689,6 +691,8 @@ function insertAtCursor(text) {
              var labelVisivel = document.createElement("label");
               labelVisivel.setAttribute("for", "var" + i);
                 labelVisivel.innerHTML = "teset";
+                 labelVisivel.style.width = "100%";
+
 
 
 

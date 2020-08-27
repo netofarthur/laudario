@@ -221,8 +221,10 @@ color: #c96100;
 }
 
 #template_name_variaveis {
- margin-right: 23%;
-        margin-left: 23%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+
 }
 
 #variaveis_inativas {
@@ -450,7 +452,7 @@ border:solid;
 }
 
 #modal_variaveis {
-    max-width: 50%;
+    max-width: 40%;
 
 }
 
