@@ -29,7 +29,7 @@ function tornarExamesInvisiveis() {
 
 }
 
-
+//apaga tópicos duplicados.
 function apagar() {
 
     if(document.getElementById("fonte") != null) {
@@ -88,6 +88,30 @@ function apagar() {
                         opcoes.remove(i);
         }
      }
+
+
+         var opcoes = document.getElementById("espacamento_topicos").options;
+     var opcaoSelecionada = opcoes[0].innerHTML;
+     for(var i = 1; i < opcoes.length; i++) {
+        if(opcoes[i].innerHTML == opcaoSelecionada) {
+                        opcoes.remove(i);
+        }
+     }
+
+
+          var opcoes = document.getElementById("altura_linha").options;
+     var opcaoSelecionada = opcoes[0].innerHTML;
+     for(var i = 1; i < opcoes.length; i++) {
+        if(opcoes[i].innerHTML == opcaoSelecionada) {
+                        opcoes.remove(i);
+        }
+     }
+
+
+
+
+
+
 
 }
 

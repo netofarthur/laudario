@@ -96,6 +96,8 @@ class Profile(models.Model):
     alinhamento_topicos = models.CharField(max_length=20, default='left')
     tamanho_titulo = models.CharField(max_length=20, default='32px')
     tamanho_topicos = models.CharField(max_length=20, default='28px')
+    espacamento_topicos = models.CharField(max_length=20, default='0px')
+    altura_linha = models.CharField(max_length=20, default='100%')
 
 
 

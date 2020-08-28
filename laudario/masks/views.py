@@ -666,6 +666,9 @@ def salvar_configuracoes(request):
     alinhamento_topicos = request.POST['alinhamento_topicos']
     tamanho_topicos = request.POST['tamanho_topicos']
     tamanho_titulo = request.POST['tamanho_titulo']
+    espacamento_topicos = request.POST['espacamento_topicos']
+    altura_linha = request.POST['altura_linha']
+
     profile.tamanho_fonte = tamanho_fonte
     profile.fonte = fonte
     profile.cor_topicos = cor_topicos
@@ -675,5 +678,7 @@ def salvar_configuracoes(request):
     profile.alinhamento_topicos = alinhamento_topicos
     profile.tamanho_titulo = tamanho_titulo
     profile.tamanho_topicos = tamanho_topicos
+    profile.espacamento_topicos = espacamento_topicos
+    profile.altura_linha = altura_linha
     profile.save()
     return HttpResponse(status=204)

@@ -77,9 +77,44 @@
       <option value="28px">28px</option>
     <option value="32px">32px</option>
 
+  </select>
+    </div>
+
+
+        <label>Espaçamento entre as linhas</label>
+    <div class="form-group">
+  <select class="form-control" name ="altura_linha" id="altura_linha">
+  <option value="{{ profile.altura_linha }}">{{ profile.altura_linha }}</option>
+  <option value="100%">100%</option>
+
+  <option value="120%">120%</option>
+    <option value="150%">150%</option>
+      <option value="170%">170%</option>
+
+  <option value="200%">200%</option>
+        <option value="250%">250%</option>
 
   </select>
     </div>
+
+
+
+
+    <label>Espaçamento entre os tópicos</label>
+    <div class="form-group">
+  <select class="form-control" name ="espacamento_topicos" id="espacamento_topicos">
+  <option value="{{ profile.espacamento_topicos }}">{{ profile.espacamento_topicos }}</option>
+
+  <option value="0px">0px</option>
+    <option value="3px">3px</option>
+
+  <option value="5px">5px</option>
+      <option value="10px">10px</option>
+    <option value="15px">15px</option>
+          <option value="20px">20px</option>
+  </select>
+    </div>
+
 
 
     <label>Alinhamento do título</label>
