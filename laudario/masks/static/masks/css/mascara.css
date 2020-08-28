@@ -248,6 +248,7 @@ color: #c96100;
 #containermascaras {
     padding: 10px;
     min-height: 100vh;
+    padding-top: 1rem;
 }
 
 #botaonovamascara {
