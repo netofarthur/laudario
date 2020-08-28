@@ -249,12 +249,7 @@ mostrarBotaoPopularSeNecessario();
 
 
 
-        if(result != null) {
-            document.getElementById(name).setAttribute("name", "alterado");
-            document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
 
-
-        }
 
 
         if(document.getElementById(name).getAttribute("name") != "alterado") {
