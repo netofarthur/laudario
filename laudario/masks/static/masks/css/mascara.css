@@ -68,6 +68,7 @@
       height: 90vh;
   overflow: auto;
   padding-bottom: 170px;
+  margin-top: 1rem;
 }
 
 
@@ -372,6 +373,10 @@ color: #c96100;
         color: #000000;
         text-decoration: none;
 
+}
+
+#mycontainer {
+    margin-top: .5rem;
 }
 
 
