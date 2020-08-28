@@ -198,7 +198,7 @@ function popularMascara(mascaraId) {
            tinymce.init({
         selector: '#' + descricaoOrgao.getAttribute("id"),
 
-
+    forced_root_block : false,
         plugins: "table",
           menubar: false,
         toolbar: "bold italic underline forecolor table",
