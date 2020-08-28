@@ -97,7 +97,13 @@
 <h2 style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}"> {{ mascara.conclusao_header }} </h2>
     {% autoescape off %}
     <div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}" class="paragrafo_mascara" id="paragrafo_conclusao" name="conclusao"> {{mascara.conclusao}} </div>
+    <div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}"> {{mascara.info_adicional}} </div>
+
     {% endautoescape %}
+
+
+
+
 
 </div>
 

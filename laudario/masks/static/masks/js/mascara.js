@@ -866,7 +866,12 @@ function insertAtCursor(text) {
             botao.style.display = "none";
         }
         document.getElementById("salva_mudancas").value = "Concluir";
-        document.getElementById("coluna_mascaras").parentNode.removeChild(document.getElementById("coluna_mascaras"));
+
+        if(document.getElementById("coluna_mascaras") != null) {
+            document.getElementById("coluna_mascaras").parentNode.removeChild(document.getElementById("coluna_mascaras"));
+
+        }
+
         document.getElementById("coluna_esquerda").classList.remove('col-6');
         document.getElementById("coluna_esquerda").classList.add('col-12');
 

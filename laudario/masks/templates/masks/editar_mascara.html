@@ -45,7 +45,7 @@
 
 
 <div class="form-group">
-  <label style="font-size: 1.2rem;" for="exames">Exame: </label>
+  <label style="font-size: 1.2rem;" for="exames" class="label_laranja">Exame: </label>
   <select class="form-control" name ="exames" id="exames">
     {% for exame in exames %}
       {% if exame == mascara.exame %}
@@ -59,7 +59,7 @@
 </div>
 
 <div class="form-group">
-  <label style="font-size: 1.2rem;" for="especialidades">Especialidade: </label>
+  <label style="font-size: 1.2rem;" for="especialidades" class="label_laranja">Especialidade: </label>
   <select class="form-control" name ="especialidades" id="especialidades">
     {% for especialidade in especialidades %}
     {% if especialidade == mascara.especialidade %}
@@ -74,18 +74,18 @@
 
 
 
-<label style="font-size: 1.2rem;" for="nome_exame">Nome/descrição do exame: </label>
+<label style="font-size: 1.2rem;" for="nome_exame" class="label_laranja">Nome/descrição do exame: </label>
 <input class="input_curto"  type="text" id="nome_exame" name="nome_exame" value="{{ mascara.nome }}">
 <br>
 <br>
 <fieldset class="fieldset_nova_mascara">
-    <legend class="legend_nova_mascara">Título</legend>
+    <legend class="legend_nova_mascara label_laranja">Título</legend>
         <input placeholder="Título do exame no laudo" class="input_curto" type="text" id="titulo_exame" name="titulo_exame" value="{{ mascara.titulo }}">
 </fieldset>
 <br>
 
  <fieldset class="fieldset_nova_mascara">
-    <legend class="legend_nova_mascara">Técnica</legend>
+    <legend class="legend_nova_mascara label_laranja">Técnica</legend>
 <input style="margin-bottom:5px;" placeholder="Título da ténica" class="input_curto" type="text" id="tecnica_header" name="tecnica_header" value="{{ mascara.tecnica_header }}">
 
      <br>
@@ -95,7 +95,7 @@
 <br>
 
 <fieldset class="fieldset_nova_mascara">
-    <legend class="legend_nova_mascara">Relatório</legend>
+    <legend class="legend_nova_mascara label_laranja">Relatório</legend>
 <input style="margin-bottom:10px;" placeholder="Título do relatório" class="input_curto" type="text" id="relatorio_header" name="relatorio_header" value="{{ mascara.relatorio_header }}">
 
     <br>
@@ -161,6 +161,21 @@
 
     <script>
 
+
+                          tinymce.init({
+        selector: '#info_adicional',
+        plugins: "table",
+          menubar: false,
+        toolbar: "bold italic underline forecolor table",
+          fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+            branding: false,
+              elementpath: false
+
+
+      });
+
+
+
                           tinymce.init({
         selector: '#tecnica',
         plugins: "table",
@@ -195,7 +210,7 @@
     <br>
 
   <fieldset class="fieldset_nova_mascara">
-    <legend class="legend_nova_mascara">Conclusão</legend>
+    <legend class="legend_nova_mascara label_laranja">Conclusão</legend>
     <input style="margin-bottom:5px;" class="input_curto" placeholder="Título da conclusão" type="text" id="conclusao_header" name="conclusao_header" value="{{ mascara.conclusao_header }}">
 
     <br>
@@ -204,6 +219,13 @@
 <textarea rows="2" class="input_curto" placeholder="Descrição da conclusão" type="text" id="conclusao" name="conclusao" class="paragrafo_mascara">{{ mascara.conclusao }}</textarea>
      </fieldset>
       <br>
+
+            <fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara label_laranja">Informações adicionais</legend>
+<textarea rows="4" class="input_curto" placeholder="Observações, referências, etc." type="text" id="info_adicional" name="info_adicional">{{ mascara.info_adicional }}</textarea>
+
+        </fieldset>
+    <br>
 
 <div id="corpo_alteracao">
 

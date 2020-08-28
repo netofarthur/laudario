@@ -34,6 +34,8 @@ class Mascara(models.Model):
     popularidade = models.IntegerField(default=0)
     frequencia = models.IntegerField(default=0)
     ultima_vez_usado = models.DateTimeField(default=timezone.now)
+    info_adicional = models.TextField(max_length=1000)
+
     def __str__(self):
         return self.nome
 
@@ -41,7 +43,7 @@ class Mascara(models.Model):
 class TopicoNormal(models.Model):
     mascara = models.ForeignKey(Mascara, on_delete=models.CASCADE)
     orgao = models.CharField(max_length=50)
-    relatorio = models.TextField(max_length=500)
+    relatorio = models.TextField(max_length=1000)
     def __str__(self):
         return self.orgao 
 
@@ -50,7 +52,7 @@ class TopicoAnormal(models.Model):
     topico_normal = models.ForeignKey(TopicoNormal, on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
     descricao = models.CharField(max_length=500)
-    relatorio = models.CharField(max_length=500)
+    relatorio = models.CharField(max_length=1000)
     conclusao = models.CharField(max_length=500, blank=True, null=True)
     publica = models.BooleanField(default=True)
     popularidade = models.IntegerField(default=0)

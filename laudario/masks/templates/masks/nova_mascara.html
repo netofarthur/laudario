@@ -23,6 +23,20 @@
 <script type="text/javascript" src="{% static 'masks/tinymce/js/tinymce/tinymce.min.js' %}"></script>
 
 <script>
+
+                 tinymce.init({
+        selector: '#info_adicional',
+        plugins: "table",
+          menubar: false,
+        toolbar: "bold italic underline forecolor table",
+          fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+            branding: false,
+              elementpath: false
+
+
+      });
+
+
       tinymce.init({
         selector: '#text_area_orgao',
         plugins: "table",
@@ -163,6 +177,12 @@
      </fieldset>
          <br>
 
+
+        <fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara label_laranja">Informações adicionais</legend>
+<textarea rows="4" class="input_curto" placeholder="Observações, referências, etc." type="text" id="info_adicional" name="info_adicional"></textarea>
+
+        </fieldset>
 <div id="corpo_alteracao">
 
 </div>

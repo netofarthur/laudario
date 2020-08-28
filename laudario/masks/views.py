@@ -108,6 +108,7 @@ def adicionar_nova_mascara(request):
     tecnica_header = request.POST['tecnica_header']
     tecnica = request.POST['tecnica']
     relatorio_header = request.POST['relatorio_header']
+    info_adicional = request.POST['info_adicional']
 
     lista_orgaos = request.POST.getlist('orgao')
     lista_relatorios_orgaos = request.POST.getlist('relatorio_orgao')
@@ -133,7 +134,7 @@ def adicionar_nova_mascara(request):
 
     nova_mascara = Mascara(usuario=usuario, especialidade=especialidadeInstance, exame=exameInstance, nome=nome_exame, titulo=titulo_exame,
                            tecnica_header=tecnica_header, tecnica=tecnica, relatorio_header=relatorio_header,
-                          conclusao_header=conclusao_header, conclusao=conclusao, publica=publica,)
+                          conclusao_header=conclusao_header, conclusao=conclusao, publica=publica, info_adicional=info_adicional)
     nova_mascara.save()
 
 
@@ -471,6 +472,7 @@ def salvar_edicao(request, id_mascara):
     mascara.relatorio_header = request.POST['relatorio_header']
     mascara.conclusao_header = request.POST['conclusao_header']
     mascara.conclusao = request.POST['conclusao']
+    mascara.info_adicional = request.POST['info_adicional']
 
     pub = request.POST.get('mascara_publica', False)
 
