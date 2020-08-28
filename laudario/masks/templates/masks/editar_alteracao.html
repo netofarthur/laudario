@@ -18,10 +18,44 @@
 
 <script type="text/javascript" src="{% static 'masks/js/nova_mascara.js' %}"></script>
 <script type="text/javascript" src="{% static 'masks/js/mascara.js' %}"></script>
+<script type="text/javascript" src="{% static 'masks/tinymce/js/tinymce/tinymce.min.js' %}"></script>
 
-<div id="coluna_esquerda">
 
-<h1> Editar Alteração </h1>
+<script>
+
+                tinymce.init({
+        selector: '#relatorio_modal',
+        plugins: "table",
+          menubar: false,
+        toolbar: "bold italic underline forecolor table",
+          fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+            branding: false,
+              elementpath: false
+
+
+      });
+
+
+      tinymce.init({
+        selector: '#conclusao_modal',
+        plugins: "table",
+          menubar: false,
+        toolbar: "bold italic underline forecolor table",
+          fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+            branding: false,
+              elementpath: false
+
+
+      });
+
+
+</script>
+
+
+
+<div id="coluna_esquerda" style="padding: 1rem;">
+
+<h1 style="color: #c96100;"> Editar Alteração </h1>
 
 
 <form action="{% url 'salvar_alteracao' %}" method="post" id="formulario_alteracao">
@@ -30,7 +64,7 @@
 
 
 <div class="form-group">
-  <label for="exames">Tópicos: </label>
+  <label for="exames">Tópico: </label>
   <select class="form-control" name ="exames" id="exames">
     {% for topico_normal in topicos_normais %}
       {% if topico_normal == topico_anormal.topico_normal %}
@@ -48,6 +82,7 @@
 <label for="nome_modal">Nome da alteração: </label>
 <input class="entrada_modal" type="text" id="nome_modal" name="nome_modal" value="{{ topico_anormal.nome }}">
 <br>
+    <br>
 
 <label for="relatorio_modal">Descrição da alteração: </label>
 <input class="entrada_modal" type="text" id="relatorio_modal" name="relatorio_modal" value="{{ topico_anormal.relatorio }}">
