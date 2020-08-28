@@ -674,4 +674,4 @@ def salvar_configuracoes(request):
     profile.tamanho_titulo = tamanho_titulo
     profile.tamanho_topicos = tamanho_topicos
     profile.save()
-    return render(request, 'masks/sobre.html', context)
+    return HttpResponse(status=204)

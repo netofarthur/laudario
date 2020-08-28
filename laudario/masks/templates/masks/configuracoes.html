@@ -160,7 +160,7 @@
 
             <div style="text-align: center;">
                 <br>
-        <input class="btn btn-primary" type="submit" value="Salvar">
+        <input class="btn btn-primary" type="submit" value="Salvar" data-toggle="modal" data-target="#modalAlerta">
 </div>
 
                 </div>
@@ -286,11 +286,39 @@
   </div>
 
 
+    <!-- Modal alerta-->
+    <div class="modal fade" id="modalAlerta" tabindex="-1" role="dialog" aria-labelledby="modalAlertaTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalAlertaTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div style="padding: 3rem;">
+
+                      <h3>Alterações salvas com sucesso!</h3>
+
+                  </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+              </div>
+            </div>
+        </div>
 
 
 </div>
 
 
 
+
+
+
+
 {% endblock conteudo %}
+
 
