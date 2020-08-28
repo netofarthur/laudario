@@ -6,10 +6,22 @@
         <link rel="stylesheet" type="text/css" href="{% static 'masks/css/erro.css' %}">
 
 
+
 {% endblock css %}
 
 
 {% block conteudo %}
+<script>
+
+        if(document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)) != null) {
+            document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)).style.color = "#c96100";
+
+    }
+
+
+</script>
+
+
     <h1>Sobre</h1>
 
 

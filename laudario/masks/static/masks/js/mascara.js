@@ -1383,11 +1383,6 @@ function aplicarConfiguracoesUsuario() {
 
 
 
-    if(document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)) != null) {
-            document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)).style.color = "#c96100";
-
-    }
-
         var lista = obterListaVariaveis("paragrafo_mascara");
         var botao = document.getElementById("popular_variaveis");
         if(botao != null) {
