@@ -31,7 +31,7 @@
                                //É variável, else, é expressão
                             if(document.getElementById("lab" + z).innerHTML.split(/[*/+-]+/g).length == 1) {
                                 if(document.getElementById("lab" + z).innerHTML.split(/[|]+/g).length > 1) {
-                                    provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", document.getElementById("var" + z).value.replace(",","."));
+                                    provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", document.getElementById("var" + z).value);
 
                                 } else {
 
@@ -40,7 +40,7 @@
 
                                     eval(mystr);
 
-                                    provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", document.getElementById("var" + z).value.replace(",","."));
+                                    provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", document.getElementById("var" + z).value);
 
                                 }
 
@@ -53,7 +53,7 @@
                             }
 
                       }
-                    listaParagrafos[i].innerHTML = provisoria.replace(".",",");
+                    listaParagrafos[i].innerHTML = provisoria;
 
 
 
