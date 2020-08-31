@@ -89,7 +89,12 @@
 <div id="topicos_div">
 {% for topico in topicos_normais %}
     {% autoescape off %}
+    {% if topico.relatorio == "" %}
+    <div style="display: none; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</div>
+    {% else %}
     <div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</div>
+
+    {% endif %}
     {% endautoescape %}
     {% endfor %}
 </div>
@@ -537,4 +542,7 @@ $('button').on('mousedown',
 </script>
 
     {% endblock conteudo %}
+
+
+
 
