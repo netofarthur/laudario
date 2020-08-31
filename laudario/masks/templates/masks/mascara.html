@@ -70,7 +70,7 @@
 <h1 style="color: {{ profile.cor_titulo }}; text-align: {{ profile.alinhamento_titulo }}; font-size: {{profile.tamanho_titulo }}" class="paragrafo_mascara" name="titulo"> {{ mascara.titulo }} </h1>
 <h2 style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}"> {{ mascara.tecnica_header }} </h2>
 {% autoescape off %}
-<div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara"> {{mascara.tecnica }} </div>
+<div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" class="paragrafo_mascara"> {{mascara.tecnica }} </div>
 {% endautoescape %}
 
 
@@ -89,7 +89,7 @@
 <div id="topicos_div">
 {% for topico in topicos_normais %}
     {% autoescape off %}
-    <div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</div>
+    <div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</div>
     {% endautoescape %}
     {% endfor %}
 </div>
