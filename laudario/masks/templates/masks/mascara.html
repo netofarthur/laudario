@@ -90,9 +90,9 @@
 {% for topico in topicos_normais %}
     {% autoescape off %}
     {% if topico.relatorio == "" %}
-    <div style="display: none; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</div>
+    <div style="display: none; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio }}</div>
     {% else %}
-    <div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio|linebreaksbr }}</div>
+    <div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio }}</div>
 
     {% endif %}
     {% endautoescape %}
