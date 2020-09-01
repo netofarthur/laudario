@@ -1375,10 +1375,32 @@ function aplicarConfiguracoesUsuario() {
 
 
 
+    function styleTinyMceTables() {
+        var tables = document.getElementsByTagName("table");
+        var trs = document.getElementsByTagName("tr");
+        var tds = document.getElementsByTagName("td");
+        var tecnica = document.getElementById("tecnica");
+        var spans = document.getElementsByTagName("span");
+
+        for(table of tables) {
+            table.setAttribute("data-mce-style", table.getAttribute("style"));
+        }
+        for(tr of trs) {
+            tr.setAttribute("data-mce-style", tr.getAttribute("style"));
+        }
+        for(span of spans) {
+            span.setAttribute("data-mce-style", span.getAttribute("style"));
+
+        }
+        for(td of tds) {
+            td.setAttribute("data-mce-style", td.getAttribute("style") + "; font-size: " + tecnica.style.fontSize + "; font-family: " + tecnica.style.fontFamily);
+        }
+    }
+
 
     function mostrarBotaoPopularSeNecessario() {
 
-
+    styleTinyMceTables();
 
 
 
