@@ -67,15 +67,15 @@
     <button style="display: none;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalVariaveis" id=popular_variaveis onclick="popularVariaveis()">Popular Variáveis</button>
 
 
-<h1 style="color: {{ profile.cor_titulo }}; text-align: {{ profile.alinhamento_titulo }}; font-size: {{profile.tamanho_titulo }}" class="paragrafo_mascara" name="titulo"> {{ mascara.titulo }} </h1>
-<h2 style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}"> {{ mascara.tecnica_header }} </h2>
+<h1 data-mce-style="color: {{ profile.cor_titulo }}; text-align: {{ profile.alinhamento_titulo }}; font-size: {{profile.tamanho_titulo }}" style="color: {{ profile.cor_titulo }}; text-align: {{ profile.alinhamento_titulo }}; font-size: {{profile.tamanho_titulo }}" class="paragrafo_mascara" name="titulo"> {{ mascara.titulo }} </h1>
+<h2 data-mce-style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}"  style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}"> {{ mascara.tecnica_header }} </h2>
 {% autoescape off %}
-<div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" class="paragrafo_mascara"> {{mascara.tecnica }} </div>
+<div data-mce-style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" class="paragrafo_mascara"> {{mascara.tecnica }} </div>
 {% endautoescape %}
 
 
 
-<h2  style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}"> {{ mascara.relatorio_header }} </h2>
+<h2 data-mce-style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}" style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}"> {{ mascara.relatorio_header }} </h2>
 
 
 
@@ -90,9 +90,9 @@
 {% for topico in topicos_normais %}
     {% autoescape off %}
     {% if topico.relatorio == "" %}
-    <div style="display: none; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio }}</div>
+    <div data-mce-style="display: none; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" style="display: none; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio }}</div>
     {% else %}
-    <div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio }}</div>
+    <div data-mce-style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk}}" > {{ topico.relatorio }}</div>
 
     {% endif %}
     {% endautoescape %}
@@ -103,10 +103,10 @@
 
 
 
-<h2 style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}"> {{ mascara.conclusao_header }} </h2>
+<h2 data-mce-style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}" style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}"> {{ mascara.conclusao_header }} </h2>
     {% autoescape off %}
-    <div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" id="paragrafo_conclusao" name="conclusao"> {{mascara.conclusao}} </div>
-    <div style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}"> {{mascara.info_adicional}} </div>
+    <div data-mce-style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}" style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" id="paragrafo_conclusao" name="conclusao"> {{mascara.conclusao}} </div>
+    <div data-mce-style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}" style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}"> {{mascara.info_adicional}} </div>
 
     {% endautoescape %}
 
