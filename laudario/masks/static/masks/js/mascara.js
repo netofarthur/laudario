@@ -61,31 +61,7 @@
     }
 
 
-    var todosBotoes = document.getElementsByClassName("botao_diagnostico");
-       for(botao of todosBotoes) {
-            if(botao.innerHTML == "Reverter") {
 
-                var alteradosJSONObject = JSON.parse(alterados);
-                var nome;
-
-                for(i = 0; i < alteradosJSONObject.length; i++) {
-                    if(alteradosJSONObject[i].pk == botao.getAttribute("id").substring(1, botao.getAttribute("id").length)) {
-                        nome = alteradosJSONObject[i].fields.nome;
-                    }
-                }
-
-                botao.setAttribute("onclick", "alterarDiagnosticoDireto(this.name, this.id)");
-
-                botao.innerHTML = nome;
-                 botao.style.display = "block";
-
-
-            }
-
-
-
-
-   }
 
 $('#ModalVariaveis').modal('hide');
 
@@ -1309,7 +1285,7 @@ function insertAtCursor(text) {
                     document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
                     document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
                     document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-                    if(conclusao != "") {
+                    if(document.getElementById("paragrafo_conclusao").innerHTML != "") {
                         document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
 
                     }
