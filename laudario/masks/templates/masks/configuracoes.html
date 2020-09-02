@@ -201,20 +201,29 @@
                 </div>
 
     </div>
+    </form>
 
-    <br>
 
     <div class="box_mascaras" id="funcionalidade">
         <div class="header_box_mascaras">
             Segurança
 
         </div>
-        <a href="#">Alterar senha</a>
+
+
+        <form action="{% url 'link_reset' %}" method="post" style="text-align: center;">
+    {% csrf_token %}
+        <input type="hidden" name="email" id="email" value="{{ request.user.email }}"/>
+
+<button class="btn btn-secondary" style="margin: 1rem;" type="submit">Alterar senha</button>
+
+</form>
+
 
     </div>
 
 
-    </form>
+
 
 </div>
 

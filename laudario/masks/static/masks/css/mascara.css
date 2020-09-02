@@ -447,6 +447,7 @@ color: #c96100;
 .box_mascaras {
 border:solid;
     border-width: 1px;
+    margin: 1rem;
 }
 
 .link_mascara_box {
