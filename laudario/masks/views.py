@@ -695,6 +695,12 @@ def salvar_configuracoes(request):
 
 
 def excluir_mascara(request, id_mascara):
-    mascara = Mascara.objects.get(pk=id_mascara).delete()
+    Mascara.objects.get(pk=id_mascara).delete()
 
     return HttpResponse(status=204)
+
+def excluir_alteracao(request, id_alteracao):
+    TopicoAnormal.objects.get(pk=id_alteracao).delete()
+
+    return HttpResponse(status=204)
+

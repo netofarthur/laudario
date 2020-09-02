@@ -308,9 +308,11 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
                                 </form>
                                 </div>
 
-                                <div class="col-6">
-                        <button class="botao_configuracao">Excluir</button>
-                                    </div>
+                            <div class="col-6">
+                                   <form method="get" action="{% url 'excluir_alteracao' id_alteracao=topico_anormal.pk %}">
+                                    <input id="{{ mascara.pk }}" class="botao_configuracao" type="submit" value="Excluir" onclick="clicouExcluir(this.id)"/>
+                                </form>
+                                </div>
 
 
                          </div>
