@@ -36,7 +36,13 @@
 
 
 <br>
-<a id="link_voltar" href="{% url 'mostrar_index' %}">Fazer login</a>
+    {% if apagar_login %}
+    <a id="link_inicio" href="{% url 'mostrar_index' %}">Minhas máscaras</a>
+
+    {% else %}
+    <a id="link_voltar" href="{% url 'mostrar_index' %}">Fazer login</a>
+
+    {% endif %}
     </div>
 <br>
 <br>

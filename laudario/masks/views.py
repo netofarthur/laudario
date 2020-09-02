@@ -158,9 +158,12 @@ def adicionar_nova_mascara(request):
 
     adicionar_variaveis(request)
 
+    mensagem = 'Máscara adicionada com sucesso. <a href="/mascaras/' + str(nova_mascara.pk) + '">Clique aqui</a> para acessá-la.'
+
+    context = {'mensagem_confirmacao': mensagem, 'apagar_login': True}
+    return render(request, 'masks/aviso.html', context)
 
 
-    return HttpResponse(status=204)
 
 
 def adicionar_alteracao(request):
