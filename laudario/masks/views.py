@@ -704,3 +704,8 @@ def excluir_alteracao(request, id_alteracao):
 
     return HttpResponse(status=204)
 
+def descricao(request):
+    context = {}
+    return render(request, 'masks/descricao.html', context)
+
+

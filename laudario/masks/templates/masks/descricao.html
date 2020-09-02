@@ -11,15 +11,7 @@
 
 
 {% block conteudo %}
-<script>
 
-        if(document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)) != null) {
-            document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)).style.color = "#c96100";
-
-    }
-
-
-</script>
 
 <div class="container-fluid">
 
@@ -36,43 +28,29 @@
 <div class="col-10">
 
     <div id="info">
-            <h1>Propósito</h1>
+            <h1 id="proposito">Propósito</h1>
             <p>Facilitar a confecção e reduzir o tempo de produção do laudo médico radiológico, reconhecendo que existem padrões e
             frases recorrentes no trabalho diário do radiologista, representados pelas <span>máscaras, alterações e variáveis</span>
-                no aplicativo. <a href="{% url 'descricao' %}#proposito">Saiba mais</a></p>
-            <h1>Máscaras</h1>
+                no aplicativo.</p>
+            <h1 id="mascara">Máscaras</h1>
             <p>A máscara é onde tudo começa e representa o laudo padrão
             normal. São totalmente personalizáveis e possuem os tópicos normais
-            do laudo, os quais serão modificados pelas alterações. <a href="{% url 'descricao' %}#mascara">Saiba mais</a></p>
-            <h1>Alterações</h1>
+            do laudo, os quais serão modificados pelas alterações.</p>
+            <h1 id="alteracoes">Alterações</h1>
             <p>As alterações são frases padrões criadas pelo usuário. Cada alteração
             modifica um tópico normal da máscara e altera a conclusão, quando desejado. As alterações
                 representam as frases mais utilizadas pelo radiologista no seu dia a dia e os diagnósticos mais comuns
-            na sua rotina de trabalho. <a href="{% url 'descricao' %}#alteracoes">Saiba mais</a></p>
-             <h1>Variáveis</h1>
+            na sua rotina de trabalho.</p>
+             <h1 id="variaveis">Variáveis</h1>
             <p>As variáveis dão versatilidade ao aplicativo, evitam a duplicidade de máscaras
             e alterações, bem como facilitam a entrada de valores numéricos e realização de
-            operações matemáticas (cálculo de volume, por exemplo). <a href="{% url 'descricao' %}#variaveis">Saiba mais</a></p>
-            <h1>Comunidade</h1>
+            operações matemáticas (cálculo de volume, por exemplo).</p>
+            <h1 id="comunidade">Comunidade</h1>
         <p>As <span>máscaras, alterações e variáveis</span> são compartilhadas entre os usuários do
             aplicativo, fortalecendo o espírito comunitário e a disseminação do
-            conhecimento. <a href="{% url 'descricao' %}#comunidade">Saiba mais</a></p>
+            conhecimento.</p>
 
     </div>
-
-    <div style="text-align: center;" id="contato">
-
-    <img id="contato_image" src="{% static 'masks/images/email.png' %}">
-        <br>
-        <a href="mailto:contato@masqs.com.br">contato@masqs.com.br</a>
-        <br>
-        <br>
-        <a href="#">Termos de uso</a>
-        <br>
-        <br>
-    </div>
-
-
 
 </div>
 
