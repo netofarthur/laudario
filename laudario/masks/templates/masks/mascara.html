@@ -512,6 +512,10 @@ $('#ModalVariaveis').on('shown.bs.modal', function (e) {
 
 $("#myModalAlteracao").on("show.bs.modal", function(){
 
+
+
+
+
         if(document.getElementById("procurarFrases") != null) {
                     document.getElementById("procurarFrases").value = "";
                     procurarFrases("procurarFrases");
@@ -520,11 +524,46 @@ $("#myModalAlteracao").on("show.bs.modal", function(){
     document.getElementById("relatorio_modal").value = "";
 
     document.getElementById("conclusao_modal").value = "";
+
+    document.getElementById("relatorio_modal").readOnly = false;
+
+    document.getElementById("conclusao_modal").readOnly = false;
+
+
     var corpo = document.getElementById("corpo_variaveis");
     var children = corpo.children;
     for(child of children) {
         child.style.display = "none";
     }
+
+
+             tinymce.init({
+                            selector: '#relatorio_modal',
+                              menubar: false,
+                                      plugins: "table",
+                                forced_root_block : false,
+                            toolbar: "bold italic underline forecolor table",
+                              fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+                                branding: false,
+                                  elementpath: false
+
+
+                          });
+
+
+                              tinymce.init({
+                            selector: '#conclusao_modal',
+                              menubar: false,
+                                      plugins: "table",
+                        forced_root_block : false,
+                            toolbar: "bold italic underline forecolor table",
+                              fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+                                branding: false,
+                                  elementpath: false
+
+
+                          });
+
 
 
 

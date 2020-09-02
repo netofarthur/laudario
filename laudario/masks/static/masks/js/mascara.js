@@ -110,8 +110,8 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
             document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
         } else {
-            document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + document.getElementById("relatorio").innerHTML;
-            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + document.getElementById("conclusao_alterada").innerHTML;
+            document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio").innerHTML;
+            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_alterada").innerHTML;
 
         }
         mostrarBotaoPopularSeNecessario();
@@ -257,7 +257,7 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById(name).setAttribute("name", "alterado");
             document.getElementById(name).setAttribute("class", "paragrafo_mascara");
         } else {
-           document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + relatorio;
+           document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
         }
 
         if(document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado") {
@@ -271,7 +271,7 @@ mostrarBotaoPopularSeNecessario();
 
         } else {
             if(conclusao != null && conclusao != "") {
-                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + conclusao;
+                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + conclusao;
 
 
             }
@@ -1307,8 +1307,8 @@ function insertAtCursor(text) {
                     document.getElementById("paragrafo_conclusao").setAttribute("class", "paragrafo_mascara");
 
                 } else {
-                    document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + document.getElementById("relatorio_modal").value;
-                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + document.getElementById("conclusao_modal").value;
+                    document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio_modal").value;
+                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_modal").value;
 
                 }
             }
@@ -1406,7 +1406,13 @@ function aplicarConfiguracoesUsuario() {
     styleTinyMceTables();
 
 
+    var paragrafos = document.getElementsByClassName("paragrafo_mascara");
 
+    for(paragrafo of paragrafos) {
+        if(paragrafo.innerHTML != "") {
+            paragrafo.style.display = "block";
+        }
+    }
 
         var lista = obterListaVariaveis("paragrafo_mascara");
         var botao = document.getElementById("popular_variaveis");
