@@ -27,5 +27,6 @@ urlpatterns = [
     path('confirmarreset/<str:uid>/<str:token>', views.confirmar_reset, name='confirmar_reset'),
     path('sobre', views.sobre, name='sobre'),
     path('salvarconfiguracoes', views.salvar_configuracoes, name='salvar_configuracoes'),
+    path('configuracoes/excluirmascara/<int:id_mascara>/', views.excluir_mascara, name='excluir_mascara'),
 
 ]

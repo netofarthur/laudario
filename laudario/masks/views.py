@@ -692,3 +692,9 @@ def salvar_configuracoes(request):
     profile.altura_linha = altura_linha
     profile.save()
     return HttpResponse(status=204)
+
+
+def excluir_mascara(request, id_mascara):
+    mascara = Mascara.objects.get(pk=id_mascara).delete()
+
+    return HttpResponse(status=204)

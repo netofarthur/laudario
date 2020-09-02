@@ -276,8 +276,10 @@
                                 </div>
 
                                 <div class="col-6">
-                        <button class="botao_configuracao">Excluir</button>
-                                    </div>
+                                   <form method="get" action="{% url 'excluir_mascara' id_mascara=mascara.pk %}">
+                                    <input id="{{ mascara.pk }}" class="botao_configuracao" type="submit" value="Excluir" onclick="clicouExcluir(this.id)"/>
+                                </form>
+                                </div>
 
 
                          </div>
