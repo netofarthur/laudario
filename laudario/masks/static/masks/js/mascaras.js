@@ -121,7 +121,7 @@ function apagar() {
 
 
 function clicouExcluir(id) {
-    document.getElementById(id).parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.display = "none";
+    document.getElementById(id).parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.display = "none";
 }
 
 
