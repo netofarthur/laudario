@@ -162,6 +162,8 @@ mostrarBotaoPopularSeNecessario();
         document.getElementById("paragrafo_conclusao").innerHTML = filtrarParagrafo(document.getElementById("paragrafo_conclusao").innerHTML, conclusaoAlterada);
 
         document.getElementById(id).setAttribute("onclick", "alterarDiagnosticoDireto(this.name, this.id)");
+               document.getElementById(id).style.color = "#c96100";
+
 
         if(document.getElementById(name).innerHTML == "") {
             document.getElementById(name).setAttribute("name", "topico");
@@ -185,11 +187,29 @@ mostrarBotaoPopularSeNecessario();
 
 
 
+
+
  // Altera o diagnóstico Padrão diretamente, sem abrir outras janelas. Tive que usar serialização com JSON objects.
     function alterarDiagnosticoDireto(name, id) {
+
+
+      if(document.getElementById("procurarFrases").value != "") {
+       var botao = document.getElementById(id);
+        var divDiagnosticos = document.getElementById("diagnosticos_div");
+        divDiagnosticos.removeChild(botao);
+        divDiagnosticos.insertBefore(botao, divDiagnosticos.children[1]);
+        divDiagnosticos.scrollTop = 0;
+
+        }
+
      if(document.getElementById("procurarFrases") != null) {
+
+
+
                     document.getElementById("procurarFrases").value = "";
                     procurarFrases("procurarFrases");
+
+
                 }
 
         if(document.getElementById("procurarFrases") != null) {
@@ -202,6 +222,10 @@ mostrarBotaoPopularSeNecessario();
 
 
                 }
+
+
+
+
 
 
         var idSemB = id.substring(1, id.length);
@@ -272,6 +296,12 @@ mostrarBotaoPopularSeNecessario();
        }
 
        document.getElementById(id).innerHTML = "Reverter";
+       document.getElementById(id).style.color = "red";
+
+
+
+
+
         document.getElementById(id).setAttribute("onclick", "reverterAlteração(this.name, this.id)");
 
 
