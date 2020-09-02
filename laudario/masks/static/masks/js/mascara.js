@@ -1642,6 +1642,10 @@ function procurarFrases(id) {
     } else {
       li[i].style.display = "none";
     }
+    if(li[i].innerHTML == "Reverter") {
+      li[i].style.display = "none";
+
+    }
   }
 }
 
