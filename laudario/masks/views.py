@@ -525,7 +525,12 @@ def salvar_edicao(request, id_mascara):
         if(str(orgaosDaMascara[i].pk) not in lista_ids_orgaos):
             orgaosDaMascara[i].delete()
     adicionar_variaveis(request)
-    return HttpResponse(status=204)
+
+    mensagem = 'Máscara alterada com sucesso. <a href="/mascaras/' + str(
+        mascara.pk) + '">Clique aqui</a> para acessá-la.'
+
+    context = {'mensagem_confirmacao': mensagem, 'apagar_login': True}
+    return render(request, 'masks/aviso.html', context)
 
 
 def editar_alteracao(request, id_alteracao, id_mascara):
@@ -562,6 +567,8 @@ def salvar_alteracao(request):
 
     topicoAnormal.save();
     adicionar_variaveis(request)
+
+
 
     return HttpResponse(status=204)
 
