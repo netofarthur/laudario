@@ -108,7 +108,10 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio").innerHTML;
             document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_alterada").innerHTML;
             document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-            document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
+            if(conclusao != "") {
+                document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
+
+            }
         } else {
             document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById(topicoNormalParaAlterar).innerHTML + "<br>" + document.getElementById("relatorio").innerHTML;
             document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_alterada").innerHTML;
@@ -261,7 +264,10 @@ mostrarBotaoPopularSeNecessario();
         }
 
         if(document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado") {
-            document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
+            if(conclusao != "") {
+                document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
+
+            }
             document.getElementById("paragrafo_conclusao").setAttribute("class", "paragrafo_mascara");
 
             if(conclusao != null && conclusao != "") {
@@ -1303,7 +1309,10 @@ function insertAtCursor(text) {
                     document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
                     document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
                     document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-                    document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
+                    if(conclusao != "") {
+                        document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
+
+                    }
                     document.getElementById("paragrafo_conclusao").setAttribute("class", "paragrafo_mascara");
 
                 } else {
