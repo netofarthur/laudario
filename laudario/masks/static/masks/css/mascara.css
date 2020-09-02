@@ -270,6 +270,15 @@ color: #c96100;
 
 }
 
+#link_voltar {
+    color: #c96100;
+}
+
+#link_voltar:hover {
+    color: #c96100;
+
+}
+
 #link_topico_anormal {
     color: #000000;
 }

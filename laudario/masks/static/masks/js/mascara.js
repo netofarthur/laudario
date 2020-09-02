@@ -800,7 +800,9 @@ function insertAtCursor(text) {
         ancora.setAttribute("href", "http://127.0.0.1:8000/configuracoes");
         ancora.innerHTML = "Voltar";
         paragrafo = document.createElement("p");
-        paragrafo.innerHTML = "Máscara adicionada com sucesso!"
+                ancora.setAttribute("id", "link_voltar");
+
+        paragrafo.innerHTML = "Alterações salvas com sucesso!"
        document.getElementById("coluna_esquerda").appendChild(ancora);
           document.getElementById("coluna_esquerda").appendChild(paragrafo);
 
@@ -1319,7 +1321,8 @@ function insertAtCursor(text) {
         ancora.setAttribute("href", "http://127.0.0.1:8000/configuracoes");
         ancora.innerHTML = "Voltar";
         paragrafo = document.createElement("p");
-        paragrafo.innerHTML = "Máscara adicionada com sucesso!"
+        ancora.setAttribute("id", "link_voltar");
+        paragrafo.innerHTML = "Alterações salvas com sucesso!"
        document.getElementById("coluna_esquerda").appendChild(ancora);
           document.getElementById("coluna_esquerda").appendChild(paragrafo);
               document.getElementById("salva_mudancas").disabled = true;
