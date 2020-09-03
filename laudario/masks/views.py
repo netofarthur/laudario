@@ -355,7 +355,6 @@ def cadastrar(request):
         # Produção somente
         # link = "https://masqs.com.br/users/validate/' + uid + '/' + token + '"
         # nomeusuario = user.first_name
-
         # msg_plain = render_to_string('masks/email.txt', {'link': link, 'nomeusuario': nomeusuario})
         # msg_html = render_to_string('masks/email.html', {'link': link, 'nomeusuario': nomeusuario})
 
@@ -368,6 +367,9 @@ def cadastrar(request):
         #
         #    fail_silently=False,
         # )
+        #mensagem_confirmacao = 'Parabéns, <span style="color: #c96100">' + user.first_name + '</span>, seu cadastro foi criado!<br><br>Para poder acessar sua conta, antes é necessário clicar no link de confirmação enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spans</span>.'
+        #context = {'mensagem_confirmacao': mensagem_confirmacao, }
+        #return render(request, 'masks/aviso.html', context)
 
 
         return HttpResponse('<html><body><a href="/users/validate/' + uid + '/' + token + '">clique aqui</a></body></html>')
@@ -618,9 +620,10 @@ def link_reset(request):
         #
         #    fail_silently=False,
         # )
-
-
-
+        #logout(request)
+        #mensagem_confirmacao = 'Um link foi enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spans</span>.'
+        #context = {'mensagem_confirmacao': mensagem_confirmacao, }
+        #return render(request, 'masks/aviso.html', context)
 
         return HttpResponse('<html><body><a href="/users/resetpwd/' + uid + '/' + token + '">clique aqui</a></body></html>')
 
@@ -661,7 +664,7 @@ def confirmar_reset(request, uid, token):
 
             request.user.set_password(senha)
             request.user.save()
-            logout
+            logout(request)
             mensagem_confirmacao = "Senha alterada com sucesso!"
             context = {'mensagem_confirmacao': mensagem_confirmacao, }
             return render(request, 'masks/aviso.html', context)
