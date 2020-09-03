@@ -339,20 +339,7 @@ def cadastrar(request):
 
 
 
-    # Produção somente
-    #some_params = "/users/validate/' + uid + '/' + token + '"
-    #msg_plain = render_to_string('masks/email.txt', {'some_params': some_params})
-    #msg_html = render_to_string('masks/email.html', {'some_params': some_params})
 
-    #send_mail(
-    #    'Teste',
-    #    msg_plain,
-    #    'Contato Masqs <contato@masqs.com.br>',
-    #    ['netofarthur@gmail.com'],
-    #    html_message=msg_html,
-    #
-    #    fail_silently=False,
-    #)
 
     if(passou_filtro):
         user = User.objects.create_user(usuario, email, senha)
@@ -364,6 +351,24 @@ def cadastrar(request):
         profile.save()
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
+
+        # Produção somente
+        # link = "https://masqs.com.br/users/validate/' + uid + '/' + token + '"
+        # nomeusuario = user.first_name
+
+        # msg_plain = render_to_string('masks/email.txt', {'link': link, 'nomeusuario': nomeusuario})
+        # msg_html = render_to_string('masks/email.html', {'link': link, 'nomeusuario': nomeusuario})
+
+        # send_mail(
+        #    'Verificação de cadastro',
+        #    msg_plain,
+        #    'Contato Masqs <contato@masqs.com.br>',
+        #    [user.email],
+        #    html_message=msg_html,
+        #
+        #    fail_silently=False,
+        # )
+
 
         return HttpResponse('<html><body><a href="/users/validate/' + uid + '/' + token + '">clique aqui</a></body></html>')
     else:
@@ -589,20 +594,6 @@ def resetar_password(request):
 def link_reset(request):
     email = request.POST['email']
 
-    # Produção somente
-    # some_params = "/users/resetpwd/' + uid + '/' + token + '"
-    # msg_plain = render_to_string('masks/emailreset.txt', {'some_params': some_params})
-    # msg_html = render_to_string('masks/emailreset.html', {'some_params': some_params})
-
-    # send_mail(
-    #    'Teste',
-    #    msg_plain,
-    #    'Contato Masqs <contato@masqs.com.br>',
-    #    ['netofarthur@gmail.com'],
-    #    html_message=msg_html,
-    #
-    #    fail_silently=False,
-    # )
 
     try:
 
@@ -610,6 +601,27 @@ def link_reset(request):
 
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
+
+        # Produção somente
+        # link = "https://masqs.com.br/users/validate/' + uid + '/' + token + '"
+        # nomeusuario = user.first_name
+
+        # msg_plain = render_to_string('masks/emailreset.txt', {'link': link, 'nomeusuario': nomeusuario})
+        # msg_html = render_to_string('masks/emailreset.html', {'link': link, 'nomeusuario': nomeusuario})
+
+        # send_mail(
+        #    'Alterar senha',
+        #    msg_plain,
+        #    'Contato Masqs <contato@masqs.com.br>',
+        #    [user.email],
+        #    html_message=msg_html,
+        #
+        #    fail_silently=False,
+        # )
+
+
+
+
         return HttpResponse('<html><body><a href="/users/resetpwd/' + uid + '/' + token + '">clique aqui</a></body></html>')
 
     except ObjectDoesNotExist:
