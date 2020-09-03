@@ -347,7 +347,7 @@ def cadastrar(request):
     #send_mail(
     #    'Teste',
     #    msg_plain,
-    #    'contato@masqs.com.br',
+    #    'Contato Masqs <contato@masqs.com.br>',
     #    ['netofarthur@gmail.com'],
     #    html_message=msg_html,
     #
@@ -597,7 +597,7 @@ def link_reset(request):
     # send_mail(
     #    'Teste',
     #    msg_plain,
-    #    'contato@masqs.com.br',
+    #    'Contato Masqs <contato@masqs.com.br>',
     #    ['netofarthur@gmail.com'],
     #    html_message=msg_html,
     #
