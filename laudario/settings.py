@@ -145,10 +145,10 @@ STATIC_URL = '/static/'
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_HOST = 'localhost'
 #EMAIL_PORT = 25
-#EMAIL_HOST_USER = ''
+#EMAIL_HOST_USER = 'Masqs'
 #EMAIL_HOST_PASSWORD = ''
-#EMAIL_USE_TLS = False
-#DEFAULT_FROM_EMAIL = 'Whatever <whatever@example.com'
+#EMAIL_USE_TLS = True
+#DEFAULT_FROM_EMAIL = 'Masqs <contato@masqs.com.br'
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/js/tinymce/tinymce.min.js")
 
