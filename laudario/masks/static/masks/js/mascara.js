@@ -159,7 +159,10 @@ mostrarBotaoPopularSeNecessario();
 
         document.getElementById(name).innerHTML = filtrarParagrafo(document.getElementById(name).innerHTML, relatorioAlterado);
 
-        document.getElementById("paragrafo_conclusao").innerHTML = filtrarParagrafo(document.getElementById("paragrafo_conclusao").innerHTML, conclusaoAlterada);
+        if(conclusaoAlterada != "") {
+            document.getElementById("paragrafo_conclusao").innerHTML = filtrarParagrafo(document.getElementById("paragrafo_conclusao").innerHTML, conclusaoAlterada);
+        }
+
 
         document.getElementById(id).setAttribute("onclick", "alterarDiagnosticoDireto(this.name, this.id)");
                document.getElementById(id).style.color = "#c96100";
