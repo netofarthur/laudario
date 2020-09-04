@@ -352,12 +352,11 @@ def cadastrar(request):
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
-        # Produção somente
+        # PRODUÇÃO SOMENTE
         # link = "https://masqs.com.br/users/validate/' + uid + '/' + token + '"
         # nomeusuario = user.first_name
         # msg_plain = render_to_string('masks/email.txt', {'link': link, 'nomeusuario': nomeusuario})
         # msg_html = render_to_string('masks/email.html', {'link': link, 'nomeusuario': nomeusuario})
-
         # send_mail(
         #    'Verificação de cadastro',
         #    msg_plain,
@@ -372,7 +371,9 @@ def cadastrar(request):
         #return render(request, 'masks/aviso.html', context)
 
 
+        #TESTE APENAS. APAGAR NA PRODUÇÃO!!!!!
         return HttpResponse('<html><body><a href="/users/validate/' + uid + '/' + token + '">clique aqui</a></body></html>')
+
     else:
         return HttpResponse('<html><body><h2>' + mensagem_erro + '<h2></body></html><br><a href="javascript:history.back()">Voltar</a>')
 
@@ -604,7 +605,7 @@ def link_reset(request):
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
-        # Produção somente
+        # PRODUÇÃO SOMENTE
         # link = "https://masqs.com.br/users/validate/' + uid + '/' + token + '"
         # nomeusuario = user.first_name
 
@@ -625,7 +626,10 @@ def link_reset(request):
         #context = {'mensagem_confirmacao': mensagem_confirmacao, }
         #return render(request, 'masks/aviso.html', context)
 
+
+        #TESTE APENAS. APAGAR NA PRODUÇÃO!!!!!
         return HttpResponse('<html><body><a href="/users/resetpwd/' + uid + '/' + token + '">clique aqui</a></body></html>')
+
 
     except ObjectDoesNotExist:
         mensagem_erro = "Email não cadastrado em nosso sistema."
