@@ -188,6 +188,21 @@
     </div>
 
 
+    <label>Margem entre os tópicos</label>
+    <div class="form-group">
+  <select class="form-control" name ="margem_cabecalho" id="margem_cabecalho">
+       <option value="{{ profile.margem_cabecalho }}">{{ profile.margem_cabecalho }}</option>
+
+   <option value="24px">24px</option>
+      <option value="28px">28px</option>
+    <option value="32px">32px</option>
+<option value="48px">48px</option>
+<option value="64px">64px</option>
+
+  </select>
+    </div>
+
+
       <label>Cor da fonte dos tópicos</label>
             <input type="color" id="cor_topicos" name="cor_topicos"
            value="{{ profile.cor_topicos }}">

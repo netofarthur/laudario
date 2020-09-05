@@ -98,6 +98,7 @@ class Profile(models.Model):
     tamanho_topicos = models.CharField(max_length=20, default='28px')
     espacamento_topicos = models.CharField(max_length=20, default='0px')
     altura_linha = models.CharField(max_length=20, default='100%')
+    margem_cabecalho = models.CharField(max_length=20, default='20px')
 
 
 

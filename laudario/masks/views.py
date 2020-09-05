@@ -697,6 +697,7 @@ def salvar_configuracoes(request):
     tamanho_titulo = request.POST['tamanho_titulo']
     espacamento_topicos = request.POST['espacamento_topicos']
     altura_linha = request.POST['altura_linha']
+    margem_cabecalho = request.POST['margem_cabecalho']
 
     profile.tamanho_fonte = tamanho_fonte
     profile.fonte = fonte
@@ -709,6 +710,7 @@ def salvar_configuracoes(request):
     profile.tamanho_topicos = tamanho_topicos
     profile.espacamento_topicos = espacamento_topicos
     profile.altura_linha = altura_linha
+    profile.margem_cabecalho = margem_cabecalho
     profile.save()
     return HttpResponse(status=204)
 
