@@ -231,3 +231,37 @@ function removerTopicos() {
 
 }
 
+
+function filtrarMascaras() {
+      let especialidadeSelecionada = document.getElementById("especialidades").value;
+      let exameSelecionado = document.getElementById("exames").value;
+  let todasMascaras = document.getElementsByClassName("botao_diagnostico");
+
+     var mascarasJSONObject = JSON.parse(mascarasJson);
+
+
+
+        let mascarasSelecionadasIds = [];
+
+        for(i = 0; i < mascarasJSONObject.length; i++) {
+            if(mascarasJSONObject[i].fields.especialidade == especialidadeSelecionada && mascarasJSONObject[i].fields.exame == exameSelecionado) {
+                mascarasSelecionadasIds.push((mascarasJSONObject[i].pk).toString());
+            }
+        }
+
+
+        for(i = 0; i < todasMascaras.length; i++) {
+
+            if(mascarasSelecionadasIds.includes(todasMascaras[i].getAttribute("id"))) {
+
+                todasMascaras[i].style.display = "block";
+
+             } else {
+                todasMascaras[i].style.display = "none";
+
+
+             }
+
+        }
+
+}

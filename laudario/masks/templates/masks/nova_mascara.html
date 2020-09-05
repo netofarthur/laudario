@@ -99,7 +99,7 @@
 
 <div class="form-group">
   <label class="label_laranja" style="font-size: 1.2rem;" for="exames">Exame: </label>
-  <select class="form-control" name ="exames" id="exames">
+  <select onchange="filtrarMascaras()" class="form-control" name ="exames" id="exames">
     {% for exame in exames %}
       <option value={{ exame.pk }}>{{exame.descricao}}</option>
     {% endfor %}
@@ -108,7 +108,7 @@
 
 <div class="form-group">
   <label class="label_laranja" style="font-size: 1.2rem;" for="especialidades">Especialidade: </label>
-  <select class="form-control" name ="especialidades" id="especialidades">
+  <select onchange="filtrarMascaras()" class="form-control" name ="especialidades" id="especialidades">
     {% for especialidade in especialidades %}
       <option value={{ especialidade.pk }}>{{especialidade.descricao}}</option>
     {% endfor %}
