@@ -47,6 +47,10 @@
         </div>
 
             <div style="padding: .5rem;">
+
+    <fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara label_laranja">Aparência Geral</legend>
+
     <label>Fonte da máscara</label>
     <div class="form-group">
   <select class="form-control" name ="fonte" id="fonte">
@@ -72,28 +76,38 @@
   </select>
     </div>
 
-
+<hr>
                  <label>Cor da fonte nas máscaras</label>
-            <input type="color" id="cor_mascara" name="cor_mascara"
+            <input style="margin: .1rem;" type="color" id="cor_mascara" name="cor_mascara"
            value="{{ profile.cor_mascara }}">
 
-
+<hr>
                 <label>Tamanho da fonte nas máscaras</label>
     <div class="form-group">
   <select class="form-control" name ="tamanho_fonte" id="tamanho_fonte">
   <option value="{{ profile.tamanho_fonte }}">{{ profile.tamanho_fonte }}</option>
 
+    <option value="10px">10px</option>
+      <option value="12px">12px</option>
+    <option value="14px">14px</option>
   <option value="16px">16px</option>
+    <option value="18px">18px</option>
     <option value="20px">20px</option>
-
+  <option value="22px">22px</option>
   <option value="24px">24px</option>
+        <option value="26px">26px</option>
       <option value="28px">28px</option>
+            <option value="30px">30px</option>
     <option value="32px">32px</option>
+          <option value="34px">34px</option>
+                <option value="36px">36px</option>
+
+
 
   </select>
     </div>
 
-
+<hr>
         <label>Espaçamento entre as linhas</label>
     <div class="form-group">
   <select class="form-control" name ="altura_linha" id="altura_linha">
@@ -106,11 +120,13 @@
 
   <option value="200%">200%</option>
         <option value="250%">250%</option>
+              <option value="300%">300%</option>
+
 
   </select>
     </div>
 
-
+<hr>
 
 
     <label>Espaçamento entre os tópicos</label>
@@ -125,10 +141,18 @@
       <option value="10px">10px</option>
     <option value="15px">15px</option>
           <option value="20px">20px</option>
+                <option value="25px">25px</option>
+          <option value="30px">30px</option>
+                <option value="35px">35px</option>
+
+
   </select>
     </div>
 
+    </fieldset>
 
+      <fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara label_laranja">Título</legend>
 
     <label>Alinhamento do título</label>
     <div class="form-group">
@@ -146,7 +170,7 @@
        </select>
     </div>
 
-
+<hr>
 
       <label>Tamanho da fonte do título</label>
     <div class="form-group">
@@ -156,21 +180,33 @@
    <option value="24px">24px</option>
       <option value="28px">28px</option>
     <option value="32px">32px</option>
+          <option value="36px">36px</option>
+          <option value="40px">40px</option>
+
+<option value="44px">44px</option>
 <option value="48px">48px</option>
-<option value="64px">64px</option>
+      <option value="52px">52px</option>
+            <option value="56px">56px</option>
+
+
 
   </select>
     </div>
 
 
+          <hr>
             <label>Cor do título</label>
-            <input type="color" id="cor_titulo" name="cor_titulo"
+            <input style="margin-bottom: .7rem;" type="color" id="cor_titulo" name="cor_titulo"
            value="{{ profile.cor_titulo }}">
             <br>
 
+      </fieldset>
 
 
-             <label>Alinhamento dos tópicos</label>
+                  <fieldset class="fieldset_nova_mascara">
+    <legend class="legend_nova_mascara label_laranja">Cabeçalhos</legend>
+
+             <label>Alinhamento dos cabeçalhos</label>
     <div class="form-group">
   <select class="form-control" name ="alinhamento_topicos" id="alinhamento_topicos">
 
@@ -184,47 +220,59 @@
     <option value="center">Centralizado</option>
        </select>
     </div>
+<hr>
 
-
-            <label>Tamanho da fonte dos tópicos</label>
+            <label>Tamanho da fonte dos cabeçalhos</label>
     <div class="form-group">
   <select class="form-control" name ="tamanho_topicos" id="tamanho_topicos">
        <option value="{{ profile.tamanho_topicos }}">{{ profile.tamanho_topicos }}</option>
 
-   <option value="24px">24px</option>
+
+          <option value="20px">20px</option>
+    <option value="24px">24px</option>
       <option value="28px">28px</option>
     <option value="32px">32px</option>
+          <option value="36px">36px</option>
+          <option value="40px">40px</option>
+<option value="44px">44px</option>
 <option value="48px">48px</option>
-<option value="64px">64px</option>
 
   </select>
     </div>
 
-
-    <label>Margem entre os tópicos</label>
+<hr>
+    <label>Margem superior dos cabeçalhos</label>
     <div class="form-group">
   <select class="form-control" name ="margem_cabecalho" id="margem_cabecalho">
        <option value="{{ profile.margem_cabecalho }}">{{ profile.margem_cabecalho }}</option>
-
+   <option value="0px">0px</option>
+   <option value="6px">6px</option>
+   <option value="12px">12px</option>
+   <option value="18px">18px</option>
    <option value="24px">24px</option>
-      <option value="28px">28px</option>
-    <option value="32px">32px</option>
-<option value="48px">48px</option>
-<option value="64px">64px</option>
+    <option value="30px">30px</option>
+<option value="36px">36px</option>
+<option value="42px">42px</option>
+      <option value="48px">48px</option>
+    <option value="54px">54px</option>
+
+
 
   </select>
     </div>
+<hr>
 
-
-      <label>Cor da fonte dos tópicos</label>
-            <input type="color" id="cor_topicos" name="cor_topicos"
+      <label>Cor da fonte dos cabeçalhos</label>
+            <input style="margin-bottom: .7rem;" type="color" id="cor_topicos" name="cor_topicos"
            value="{{ profile.cor_topicos }}">
-<br>
+
+                  </fieldset>
 
             <div style="text-align: center;">
                 <br>
-        <input class="btn btn-primary" type="submit" value="Salvar" data-toggle="modal" data-target="#modalAlerta">
-</div>
+        <input style="margin-bottom: .7rem;" class="btn btn-primary" type="submit" value="Salvar" data-toggle="modal" data-target="#modalAlerta">
+
+            </div>
 
                 </div>
 
@@ -371,9 +419,9 @@
                 </button>
               </div>
               <div class="modal-body">
-                  <div style="padding: 3rem;">
+                  <div style="text-align: center; padding-top: 3rem; padding-bottom:2.5rem; padding-left: 3rem; padding-right: 3rem;">
 
-                      <h3>Alterações salvas com sucesso!</h3>
+                      <h3>Configurações salvas com sucesso!</h3>
 
                   </div>
 
