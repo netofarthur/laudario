@@ -29,18 +29,27 @@ function tornarExamesInvisiveis() {
 
 }
 
-//apaga tópicos duplicados.
+function colocaNomesAmigaveisFontes() {
+     var opcoes = document.getElementById("fonte").options;
+     for(opcao of opcoes) {
+
+     }
+
+}
+
+//apaga tópicos duplicados
 function apagar() {
 
     if(document.getElementById("fonte") != null) {
 
      var opcoes = document.getElementById("fonte").options;
-     var opcaoSelecionada = opcoes[0].innerHTML;
+     var opcaoSelecionada = opcoes[0].value;
      for(var i = 1; i < opcoes.length; i++) {
-        if(opcoes[i].innerHTML == opcaoSelecionada) {
+        if(opcoes[i].value == opcaoSelecionada) {
                         opcoes.remove(i);
         }
      }
+     opcoes[0].innerHTML = opcoes[0].value.split(",")[0];
 
 
        var opcoes = document.getElementById("tamanho_fonte").options;
