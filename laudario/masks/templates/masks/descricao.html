@@ -36,25 +36,65 @@
                 poderão alterar os seus tópicos normais e, quando desejado, a conclusão. As idiossincrasias de cada laudo e
             alterações muito específicas, que provavelmente jamais voltarão a se repetir,
                 devem ser adicionadas posteriormente, após copiar e colar o
-            laudo na área de trabalho do usuário. Se houver uma remota possibilidade da alteração vir a se repetir no futuro,
-            o radiologista deverá ponderar cadastrar uma alteração para ela dentro do
-            aplicativo, pois temos um mecanismo de classificação
+            laudo na área de trabalho do radiologista. Possuimos um mecanismo de classificação
                 das alterações baseado na frequência com que são utilizadas e um mecanismo de busca a partir das iniciais da
-            alteração, de tal forma que um número muito grande de alterações cadastradas não
-            traz prejuízo para encontrá-las rapidamente.</p>
+            alteração.</p>
             <h1 id="mascara">Máscaras</h1>
-            <p>A máscara é onde tudo começa e representa o laudo padrão
-            normal. São totalmente personalizáveis e possuem os tópicos normais
-            do laudo, os quais serão modificados pelas alterações.</p>
+            <p>As máscaras são criadas pelo usuário com suas
+            frases personalizadas, bastando escolher o tipo do exame e a
+            especialidade. As máscaras representam o laudo normal e são
+            modificadas pelas alterações. As variáveis (leia
+                mais embaixo sobre elas) devem ser utilizadas
+            para evitar a duplicação de máscaras. Por exemplo, para não
+            ter que criar uma máscara para o joelho direito e outra máscara
+            para o joelho esquerdo, e alterações
+                separadas e duplicadas para cada uma,
+                pode-se criar uma única máscara com uma
+            variável para joelho direito e outra para joelho esquerdo, evitando-se
+            assim também a duplicação de alterações.</p>
             <h1 id="alteracoes">Alterações</h1>
-            <p>As alterações são frases padrões criadas pelo usuário. Cada alteração
-            modifica um tópico normal da máscara e altera a conclusão, quando desejado. As alterações
-                representam as frases mais utilizadas pelo radiologista no seu dia a dia e os diagnósticos mais comuns
-            na sua rotina de trabalho.</p>
+            <p>As alterações representam os diagnósticos radiológicos, e também
+            se utilizam da versatilidade das variáveis. Cada alteração altera
+            um tópico da máscara padrão normal e a conclusão, quando desejado.
+            Caso o usuário deseje uma alteração sem conclusão, basta deixar a
+            conclusão em branco.</p>
              <h1 id="variaveis">Variáveis</h1>
-            <p>As variáveis dão versatilidade ao aplicativo, evitam a duplicidade de máscaras
-            e alterações, bem como facilitam a entrada de valores numéricos e realização de
-            operações matemáticas (cálculo de volume, por exemplo).</p>
+            <p>As variáveis também são criadas pelo usuário. Existem dois tipos
+            de variáveis: quantitativa e qualitativa. As variáveis quantitativas
+                são representadas por valores numéricos resultantes de uma
+                medida radiológica ou expressão matemática (cálculo de volume,
+                por exemplo). Alguns exemplos de variáveis quantitativas
+                são o calibre de um apêndice
+                aumentado e o volume de um útero normal.
+                As variáveis qualitativas representam um atributo ou qualidade e
+                possuem valores possíveis pré-determinados pelo usuário. Alguns
+                exemplos de variáveis quantitativas são a lateralidade (direita ou
+                esquerda) e o grau de esteatose hepática (leve, moderada ou acentuada).
+
+            </p>
+        <p>Para criar variáveis quantitativas nas máscaras normais e nas alterações,
+        o usuário deve colocá-las entre colchetes como em {var_1}, por exemplo. As
+            variáveis qualitativas permitem operações matemáticas simples com elas,
+            como multiplicação, divisão, adição e subtração, devendo-se utilizar
+            os símbolos de + para adição, - para subtração, * para multiplicação e / para divisão.
+            As variáveis
+        qualitativas devem ser separadas por uma barra vertical (|), dentro
+        dos colchetes como em {var_1|var_2|var_3}, por exemplo. As
+        variáveis não devem conter espaços, como em {var 1}, devendo-se utilizar o símbolo de underline (_)
+        para separar palavras dentro de uma mesma variável.</p>
+        <p>Alguns exemplos válidos:<br>
+        Em uma máscara normal: Útero em {avf|rvf}, medindo {long} x {trans} x {ap}, com
+        volume de {long * trans * ap * 0,52} cm³. Observe que o símbolo para multiplicação é o
+            asterisco (*) e não o "x" e o símbolo para divisão é a barra invertida (/).<br>
+        Em uma alteração: Esteatose hepática {leve|moderara|acentuada}.</p>
+        <p>Sempre que o usuário adiciona variáveis quantitativas ou qualitativas na máscara ou alteração,
+        antes de sálva-los, o sistema solicita um preenchimento com nomes amigáveis,
+        para facilitar o trabalho posterior do radiologista ao preenchê-las no momento da
+        confecção do laudo propriamente dito.</p>
+        <p>Não podem existir variáveis duplicadas para um mesmo usuário. Sempre que o sistema
+        identifica a presença de variáveis duplicadas ele adiciona um número ao final da mesma ({leve123|moderada123|acentuada123}, por exemplo),
+            de forma automática, evitando conflitos na hora de confeccinar o laudo.</p>
+        <p></p>
             <h1 id="comunidade">Comunidade</h1>
         <p>As <span>máscaras, alterações e variáveis</span> são compartilhadas entre os usuários do
             aplicativo, fortalecendo o espírito comunitário e a disseminação do
