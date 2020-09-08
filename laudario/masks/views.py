@@ -733,3 +733,8 @@ def descricao(request):
 def termos(request):
     context = {}
     return render(request, 'masks/termos.html', context)
+
+def quemsomos(request):
+    context = {}
+    return render(request, 'masks/quemsomos.html', context)
+

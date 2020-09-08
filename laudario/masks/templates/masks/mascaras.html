@@ -50,7 +50,7 @@
 </div>
 {% else %}
 <br>
-<h2>Seja bem vindo(a), {{ request.user.first_name }}. Você ainda não possui máscaras. </h2>
+<h3>Seja bem vindo(a), {{ request.user.first_name }}. Ao utilizar nosso aplicativo você concorda com nossos <a style="color: #c96100" href="{% url 'termos' %}">termos de uso</a>.</h3>
 <br>
     <h3><a style="color: #c96100" href="{% url 'nova_mascara' %}">Clique aqui</a> para adicionar sua primeira máscara. </h3>
     <br>

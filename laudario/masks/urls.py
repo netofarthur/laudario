@@ -31,5 +31,6 @@ urlpatterns = [
     path('configuracoes/excluiralteracao/<int:id_alteracao>/', views.excluir_alteracao, name='excluir_alteracao'),
     path('sobre/descricao', views.descricao, name='descricao'),
     path('eula', views.termos, name='termos'),
+    path('quemsomos', views.quemsomos, name='quemsomos'),
 
 ]

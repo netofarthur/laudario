@@ -395,6 +395,7 @@ mostrarBotaoPopularSeNecessario();
         }
 
 
+
         return listaVariaveis;
 
     }
