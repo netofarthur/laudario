@@ -30,5 +30,6 @@ urlpatterns = [
     path('configuracoes/excluirmascara/<int:id_mascara>/', views.excluir_mascara, name='excluir_mascara'),
     path('configuracoes/excluiralteracao/<int:id_alteracao>/', views.excluir_alteracao, name='excluir_alteracao'),
     path('sobre/descricao', views.descricao, name='descricao'),
+    path('eula', views.termos, name='termos'),
 
 ]
