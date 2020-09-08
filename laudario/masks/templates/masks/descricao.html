@@ -41,8 +41,8 @@
             alteração.</p>
             <h1 id="mascara">Máscaras</h1>
             <p>As máscaras são criadas pelo usuário com suas
-            frases personalizadas, bastando escolher o tipo do exame e a
-            especialidade. As máscaras representam o laudo normal e são
+            frases personalizadas, bastando escolher o tipo do exame (tomografia, ultrassonografia, etc) e a
+            especialidade (neurologia, ginecologia, etc) desejada. As máscaras representam o laudo normal e são
             modificadas pelas alterações. As variáveis (leia
                 mais embaixo sobre elas) devem ser utilizadas
             para evitar a duplicação de máscaras. Por exemplo, para não
@@ -60,25 +60,25 @@
             conclusão em branco.</p>
              <h1 id="variaveis">Variáveis</h1>
             <p>As variáveis também são criadas pelo usuário. Existem dois tipos
-            de variáveis: quantitativa e qualitativa. As variáveis quantitativas
+                de variáveis possíveis no aplicativo: <span style="text-decoration: underline;">quantitativa</span> e <span style="text-decoration: underline;">qualitativa</span>. As variáveis quantitativas
                 são representadas por valores numéricos resultantes de uma
                 medida radiológica ou expressão matemática (cálculo de volume,
-                por exemplo). Alguns exemplos de variáveis quantitativas
+                por exemplo). Alguns exemplos de variáveis <span style="text-decoration: underline;">quantitativas</span>
                 são o calibre de um apêndice
                 aumentado e o volume de um útero normal.
                 As variáveis qualitativas representam um atributo ou qualidade e
                 possuem valores possíveis pré-determinados pelo usuário. Alguns
-                exemplos de variáveis quantitativas são a lateralidade (direita ou
+                exemplos de variáveis <span style="text-decoration: underline;">qualitativas</span> são a lateralidade (direita ou
                 esquerda) e o grau de esteatose hepática (leve, moderada ou acentuada).
 
             </p>
-        <p>Para criar variáveis quantitativas nas máscaras normais e nas alterações,
+        <p>Para criar variáveis <span style="text-decoration: underline;">quantitativas</span> nas máscaras normais e nas alterações,
         o usuário deve colocá-las entre colchetes como em {var_1}, por exemplo. As
             variáveis quantitativas permitem operações matemáticas simples,
             como multiplicação, divisão, adição e subtração, devendo-se utilizar
             os símbolos de + para adição, - para subtração, * para multiplicação e / para divisão.
             As variáveis
-        qualitativas devem ser separadas por uma barra vertical (|) dentro
+        <span style="text-decoration: underline;">qualitativas</span> devem ser separadas por uma barra vertical (|) dentro
         dos colchetes como em {var_1|var_2|var_3}, por exemplo. As
         variáveis não devem conter espaços, como em {var 1}, devendo-se utilizar o símbolo de underline (_)
         para separar palavras dentro de uma mesma variável.</p>
@@ -86,13 +86,11 @@
         Em uma máscara normal: Útero em {avf|rvf}, medindo {long} x {trans} x {ap} cm, com
         volume de {long * trans * ap * 0,52} cm³. Observe que o símbolo para multiplicação é o
             asterisco (*) e não o "x" e o símbolo para divisão é a barra invertida (/).<br>
-        Em uma alteração: Esteatose hepática {leve|moderara|acentuada}.</p>
+        Em uma alteração: Esteatose hepática {leve|moderada|acentuada}.</p>
         <p>Sempre que o usuário adiciona variáveis quantitativas ou qualitativas na máscara ou alteração,
         antes de sálva-los, o sistema solicita um preenchimento com nomes amigáveis,
         para facilitar o trabalho posterior do radiologista ao preenchê-las no momento da
-        confecção do laudo propriamente dito. Não podem existir variáveis duplicadas para um mesmo usuário. Sempre que o sistema
-        identifica a presença de variáveis duplicadas ele adiciona um número ao final da mesma ({leve123|moderada123|acentuada123}, por exemplo),
-            de forma automática, evitando conflitos</p>
+        confecção do laudo propriamente dito. O sistema não permite a existência de variáveis duplicadas para um mesmo usuário, e adiciona de forma automática um número único ao final das mesmas sempre que isto ocorrer (como em {leve123|moderada123|acentuada123}, por exemplo), evitando conflitos.</p>
 
             <h1 id="comunidade">Comunidade</h1>
             <p>O aplicativo possui forte espírito comunitário, uma vez que as máscaras, alterações e
@@ -112,6 +110,12 @@
         <a href="{% url 'termos' %}">Termos de uso</a>
         <br>
         <br>
+                    <div style="text-align: center">
+    <a href="javascript:history.back()">Voltar</a>
+        <br>
+        <br>
+
+    </div>
     </div>
 
     </div>
