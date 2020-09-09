@@ -908,6 +908,84 @@ function insertAtCursor(text) {
 
     }
 
+function recolocarTinys() {
+
+                 tinymce.init({
+        selector: '#info_adicional',
+    forced_root_block : false,
+        plugins: "table",
+          menubar: false,
+        toolbar: "bold italic underline forecolor table",
+          fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+            branding: false,
+              elementpath: false
+
+
+      });
+
+
+      tinymce.init({
+        selector: '#text_area_orgao',
+    forced_root_block : false,
+        plugins: "table",
+          menubar: false,
+        toolbar: "bold italic underline forecolor table",
+          fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+            branding: false,
+              elementpath: false
+
+
+      });
+
+
+      var orgaos = document.getElementsByName("relatorio_orgao");
+
+      for(var i = 1; i < orgaos.length; i++) {
+        tinymce.init({
+        selector: '#text_area_orgao' + i,
+        forced_root_block : false,
+            plugins: "table",
+              menubar: false,
+            toolbar: "bold italic underline forecolor table",
+              fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+                branding: false,
+                  elementpath: false
+
+
+          });
+      }
+
+
+            tinymce.init({
+            body_id : "tecnica",
+    forced_root_block : false,
+        selector: '#tecnica',
+        plugins: "table",
+          menubar: false,
+        toolbar: "bold italic underline forecolor table",
+          fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+            branding: false,
+              elementpath: false
+
+
+      });
+
+
+      tinymce.init({
+        selector: '#conclusao',
+    forced_root_block : false,
+        body_id : "conclusao",
+        plugins: "table",
+          menubar: false,
+        toolbar: "bold italic underline forecolor table",
+          fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+            branding: false,
+              elementpath: false
+
+
+      });
+}
+
 
     function adicionarAlteracoNaMascara() {
 
@@ -953,6 +1031,8 @@ function insertAtCursor(text) {
         for(variavel of variaveis) {
             if(variavel.indexOf(' ') >= 0) {
                 alert("Variáveis não podem conter espaços. Corrija antes de prosseguir.");
+                recolocarTinys();
+                document.getElementById("salva_mudancas").blur();
 
                 return;
             }
