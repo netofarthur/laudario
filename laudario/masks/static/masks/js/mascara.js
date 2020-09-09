@@ -940,6 +940,26 @@ function insertAtCursor(text) {
             tinymce.remove();
 
 
+
+         if(document.getElementById("adicionar_no_atual") != null) {
+            var variaveis = obterListaVariaveis("entrada_modal");
+
+        } else {
+            var variaveis = obterListaVariaveis("paragrafo_mascara");
+
+
+        }
+
+        for(variavel of variaveis) {
+            if(variavel.indexOf(' ') >= 0) {
+                alert("Variáveis não podem conter espaços. Corrija antes de prosseguir.");
+
+                return;
+            }
+        }
+
+
+
    var todasVariaveis = [];
 
    var stringVars = "";
