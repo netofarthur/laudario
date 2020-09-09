@@ -67,11 +67,11 @@ def mostrar_mascara(request, id_mascara):
 
     profile = Profile.objects.get(usuario=request.user)
 
-
+    titulo = "Masqs - " + mascara.nome;
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
                'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
                'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario, 'todos_topicos_anormais': todos_topicos_anormais,
-               'profiles': profiles, 'profile': profile,}
+               'profiles': profiles, 'profile': profile, 'titulo': titulo}
     return render(request, 'masks/mascara.html', context)
 
 def nova_mascara(request):
@@ -90,9 +90,9 @@ def nova_mascara(request):
     topicos_normais = json_serializer.serialize(TopicoNormal.objects.all())
     variaveis = json_serializer.serialize(Variavel.objects.all())
     variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
-
+    titulo = "Masqs - Nova Máscara"
     context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson, 'topicos_normais': topicos_normais, 'variaveis': variaveis,
-               'variaveisusuario': variaveisusuario, 'profiles': profiles,}
+               'variaveisusuario': variaveisusuario, 'profiles': profiles, 'titulo': titulo}
     return render(request, 'masks/nova_mascara.html', context)
 
 def adicionar_nova_mascara(request):
@@ -157,10 +157,10 @@ def adicionar_nova_mascara(request):
         mascaraUtilizada.save()
 
     adicionar_variaveis(request)
-
+    titulo = "Masqs - Máscara Adicionada"
     mensagem = 'Máscara adicionada com sucesso. <a href="/mascaras/' + str(nova_mascara.pk) + '">Clique aqui</a> para acessá-la.'
 
-    context = {'mensagem_confirmacao': mensagem, 'apagar_login': True}
+    context = {'mensagem_confirmacao': mensagem, 'apagar_login': True, 'titulo': titulo}
     return render(request, 'masks/aviso.html', context)
 
 
@@ -235,6 +235,7 @@ def mostrar_modal_diagnostico(request, id_diagnostico):
     if not request.user.is_authenticated:
         return redirect(views.mostrar_index)
     diagnostico = TopicoAnormal.objects.get(pk=id_diagnostico)
+    titulo = "Masqs - Tópico Alterado"
     context = {'diagnostico': diagnostico}
     return render(request, 'masks/topico_alterado.html', context)
 
