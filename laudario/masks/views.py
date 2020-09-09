@@ -251,8 +251,8 @@ def mostrar_index(request):
     usuarios = json_serializer.serialize(User.objects.all())
 
 
-
-    context = {'usuarios': usuarios}
+    titulo = "Masqs"
+    context = {'usuarios': usuarios, 'titulo': titulo}
 
     if request.user.is_authenticated:
         return redirect(views.mostrar_mascaras)
