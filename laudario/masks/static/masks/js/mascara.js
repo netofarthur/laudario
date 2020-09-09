@@ -263,7 +263,7 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById(name).setAttribute("name", "alterado");
             document.getElementById(name).setAttribute("class", "paragrafo_mascara");
         } else {
-           document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
+           document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + relatorio;
         }
 
         if(document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado") {
@@ -280,7 +280,7 @@ mostrarBotaoPopularSeNecessario();
 
         } else {
             if(conclusao != null && conclusao != "") {
-                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + conclusao;
+                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + conclusao;
 
 
             }
