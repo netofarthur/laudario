@@ -235,7 +235,6 @@ def mostrar_modal_diagnostico(request, id_diagnostico):
     if not request.user.is_authenticated:
         return redirect(views.mostrar_index)
     diagnostico = TopicoAnormal.objects.get(pk=id_diagnostico)
-    titulo = "Masqs - Tópico Alterado"
     context = {'diagnostico': diagnostico}
     return render(request, 'masks/topico_alterado.html', context)
 
@@ -271,7 +270,8 @@ def login_usuario(request):
 
     else:
         mensagem_erro = "Usuário ou senha inválidos"
-        context = {'mensagem_erro': mensagem_erro,}
+        titulo = "Masqs - Erro"
+        context = {'mensagem_erro': mensagem_erro, 'titulo': titulo}
         return render(request, 'masks/erro.html', context)
 
 
@@ -367,8 +367,9 @@ def cadastrar(request):
         #
         #    fail_silently=False,
         # )
+        #titulo = "Masqs - Confirmação"
         #mensagem_confirmacao = 'Parabéns, <span style="color: #c96100">' + user.first_name + '</span>, seu cadastro foi criado!<br><br>Para poder acessar sua conta, antes é necessário clicar no link de confirmação enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spans</span>.'
-        #context = {'mensagem_confirmacao': mensagem_confirmacao, }
+        #context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo,}
         #return render(request, 'masks/aviso.html', context)
 
 
@@ -391,14 +392,15 @@ def activate(request, uid, token):
                 user.is_active = 1
                 user.save()
                 mensagem_confirmacao = '<h2 style="color: #c96100; padding: 3rem;">Parabéns, <span style="color: black;">' + user.first_name + '</span>! Sua conta foi verificada. Seu nome de usuário é: <span style="color: black;">' + user.username + '</span></h2>'
-
-                context = {'mensagem_confirmacao': mensagem_confirmacao, }
+                titulo = "Masqs - Confirmação"
+                context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo}
                 return render(request, 'masks/aviso.html', context)
 
         except:
             pass
     mensagem_erro = '<h2 style="color: #c96100; padding: 3rem;">Houve um erro ao verificar sua conta. O link pode ter expirado.</h2>'
-    context = {'mensagem_erro': mensagem_erro, }
+    titulo = "Masqs - Erro"
+    context = {'mensagem_erro': mensagem_erro, 'titulo': titulo}
     return render(request, 'masks/erro.html', context)
 
 
@@ -425,8 +427,9 @@ def mostrar_mascaras(request):
             especialidades_com_mascara.append(especialidade)
     exames = Exame.objects.all()
     especialidades = especialidades_com_mascara
+    titulo = "Masqs - Máscaras"
     context = {'mascaras': mascaras, 'exames': exames, 'especialidades': especialidades, 'ultimas_mascaras': ultimas_mascaras,
-               'mascaras_populares': mascaras_populares}
+               'mascaras_populares': mascaras_populares, 'titulo': titulo}
     return render(request, 'masks/mascaras.html', context)
 
 
@@ -445,9 +448,9 @@ def configuracoes(request):
     exames = Exame.objects.all()
 
     profile = Profile.objects.get(usuario=request.user)
-
+    titulo = "Masqs - Configurações"
     context = {'especialidades': especialidades, 'mascaras': mascaras, 'exames': exames,
-               'profile': profile}
+               'profile': profile, 'titulo': titulo}
     return render(request, 'masks/configuracoes.html', context)
 
 
@@ -462,9 +465,10 @@ def editar_mascara(request, id_mascara):
     mascara = Mascara.objects.get(pk=id_mascara)
     exames = Exame.objects.all()
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
+    titulo = "Masqs - Editar Máscara"
     context = {'mascara': mascara, 'especialidades': especialidades, 'exames': exames, 'topicos_normais': topicos_normais,
                'topicos_anormais': topicos_anormais,'variaveis': variaveis, 'variaveisusuario': variaveisusuario,
-               'profiles': profiles}
+               'profiles': profiles, 'titulo': titulo}
     return render(request, 'masks/editar_mascara.html', context)
 
 
@@ -537,8 +541,8 @@ def salvar_edicao(request, id_mascara):
 
     mensagem = 'Máscara alterada com sucesso. <a href="/mascaras/' + str(
         mascara.pk) + '">Clique aqui</a> para acessá-la.'
-
-    context = {'mensagem_confirmacao': mensagem, 'apagar_login': True}
+    titulo = "Masqs - Confirmação"
+    context = {'mensagem_confirmacao': mensagem, 'apagar_login': True, 'titulo': titulo}
     return render(request, 'masks/aviso.html', context)
 
 
@@ -551,8 +555,9 @@ def editar_alteracao(request, id_alteracao, id_mascara):
     profiles = Profile.objects.all()
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
     topico_anormal = TopicoAnormal.objects.get(pk=id_alteracao)
+    titulo = "Masqs - Editar Alteração"
     context = {'id_alteracao': id_alteracao, 'topico_anormal': topico_anormal, 'topicos_normais': topicos_normais,
-               'variaveis': variaveis, 'variaveisusuario': variaveisusuario, 'profiles': profiles,}
+               'variaveis': variaveis, 'variaveisusuario': variaveisusuario, 'profiles': profiles, 'titulo': titulo}
     return render(request, 'masks/editar_alteracao.html', context)
 
 
@@ -590,7 +595,8 @@ def upvote_frase(request):
     return HttpResponse(status=204)
 
 def resetar_password(request):
-    context = {}
+    titulo = "Masqs - Redefinir Senha"
+    context = {'titulo': titulo}
     return render(request, 'masks/resetarpwd.html', context)
 
 
@@ -624,7 +630,8 @@ def link_reset(request):
         # )
         #logout(request)
         #mensagem_confirmacao = 'Um link foi enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spans</span>.'
-        #context = {'mensagem_confirmacao': mensagem_confirmacao, }
+        #titulo = "Masqs - Confirmação"
+        #context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo}
         #return render(request, 'masks/aviso.html', context)
 
 
@@ -634,7 +641,8 @@ def link_reset(request):
 
     except ObjectDoesNotExist:
         mensagem_erro = "Email não cadastrado em nosso sistema."
-        context = {'mensagem_erro': mensagem_erro, }
+        titulo = "Masqs - Erro"
+        context = {'mensagem_erro': mensagem_erro, 'titulo': titulo}
         return render(request, 'masks/erro.html', context)
 
 
@@ -647,14 +655,16 @@ def resetar_password_confirm(request, uid, token):
         request.user = user
 
         if default_token_generator.check_token(user, token):
-            context = {'uid': uid, 'token': token}
+            titulo = "Masqs - Redefinir Senha"
+            context = {'uid': uid, 'token': token, 'titulo': titulo}
 
             return render(request, 'masks/confirmar_reset.html', context)
 
 
         else:
             mensagem_erro = "Link expirado!"
-            context = {'mensagem_erro': mensagem_erro, }
+            titulo = "Masqs - Erro"
+            context = {'mensagem_erro': mensagem_erro, 'titulo': titulo}
             return render(request, 'masks/erro.html', context)
 
 def confirmar_reset(request, uid, token):
@@ -671,16 +681,19 @@ def confirmar_reset(request, uid, token):
             request.user.save()
             logout(request)
             mensagem_confirmacao = "Senha alterada com sucesso!"
-            context = {'mensagem_confirmacao': mensagem_confirmacao, }
+            titulo = "Masqs - Confirmação"
+            context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo}
             return render(request, 'masks/aviso.html', context)
         else:
             mensagem_erro = "Link expirado!"
-            context = {'mensagem_erro': mensagem_erro, }
+            titulo = "Masqs - Erro"
+            context = {'mensagem_erro': mensagem_erro, 'titulo': titulo}
             return render(request, 'masks/erro.html', context)
 
 
 def sobre(request):
-    context = {}
+    titulo = "Masqs - Sobre"
+    context = {'titulo': titulo}
     return render(request, 'masks/sobre.html', context)
 
 
@@ -727,15 +740,18 @@ def excluir_alteracao(request, id_alteracao):
     return HttpResponse(status=204)
 
 def descricao(request):
-    context = {}
+    titulo = "Masqs - Descrição"
+    context = {'titulo': titulo}
     return render(request, 'masks/descricao.html', context)
 
 
 def termos(request):
-    context = {}
+    titulo = "Masqs - Termos de Uso"
+    context = {'titulo', titulo}
     return render(request, 'masks/termos.html', context)
 
 def quemsomos(request):
-    context = {}
+    titulo = "Masqs - Quem Somos"
+    context = {'titulo': titulo}
     return render(request, 'masks/quemsomos.html', context)
 
