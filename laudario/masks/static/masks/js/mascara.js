@@ -813,7 +813,7 @@ function insertAtCursor(text) {
 
       if(document.getElementById("coluna_esquerda") != null) {
       ancora = document.createElement("a");
-        ancora.setAttribute("href", "http://127.0.0.1:8000/configuracoes");
+        ancora.setAttribute("href", "javascript:history.back()");
         ancora.innerHTML = "Voltar";
         paragrafo = document.createElement("p");
                 ancora.setAttribute("id", "link_voltar");
@@ -1337,7 +1337,7 @@ function insertAtCursor(text) {
 
         if(document.getElementsByName("nome_amigavel_variavel").length == 0) {
             ancora = document.createElement("a");
-        ancora.setAttribute("href", "http://127.0.0.1:8000/configuracoes");
+        ancora.setAttribute("href", "javascript:history.back()");
         ancora.innerHTML = "Voltar";
         paragrafo = document.createElement("p");
         ancora.setAttribute("id", "link_voltar");
