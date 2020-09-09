@@ -263,7 +263,7 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById(name).setAttribute("name", "alterado");
             document.getElementById(name).setAttribute("class", "paragrafo_mascara");
         } else {
-           document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + relatorio;
+           document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
         }
 
         if(document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado") {
@@ -280,7 +280,7 @@ mostrarBotaoPopularSeNecessario();
 
         } else {
             if(conclusao != null && conclusao != "") {
-                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + conclusao;
+                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + conclusao;
 
 
             }
@@ -1607,10 +1607,10 @@ function htmlDecode(input) {
             if(alteradosJSONObject[i].pk == idSemT) {
                 document.getElementById("nome_modal").value = alteradosJSONObject[i].fields.nome;
 
-                tinymce.get("relatorio_modal").setContent("<p>" + alteradosJSONObject[i].fields.relatorio + "</p>");
+                tinymce.get("relatorio_modal").setContent(alteradosJSONObject[i].fields.relatorio);
 
 
-                tinymce.get("conclusao_modal").setContent("<p>" + alteradosJSONObject[i].fields.conclusao + "</p>");
+                tinymce.get("conclusao_modal").setContent(alteradosJSONObject[i].fields.conclusao);
 
 
 

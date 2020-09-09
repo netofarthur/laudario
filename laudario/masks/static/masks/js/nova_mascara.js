@@ -77,7 +77,7 @@ function popularMascara(mascaraId) {
 
                     //tem que pegar os tinymce e popular cada um com set, como feito na técnica e conclusão
 
-                     tinymce.get("text_area_orgao" + (counter2)).setContent("<p>" + topicosNormaisObject[i].fields.relatorio + "</p>");
+                     tinymce.get("text_area_orgao" + (counter2)).setContent(topicosNormaisObject[i].fields.relatorio);
                     counter2++;
                     counter++;
                     }
@@ -92,10 +92,10 @@ function popularMascara(mascaraId) {
         document.getElementById("nome_exame").value = nome;
         document.getElementById("titulo_exame").value = titulo;
         document.getElementById("tecnica_header").value = tecnicaHeader;
-        tinymce.get("tecnica").setContent("<p>" + tecnica + "</p>");
+        tinymce.get("tecnica").setContent(tecnica);
         document.getElementById("relatorio_header").value = relatorioHeader;
         document.getElementById("conclusao_header").value = conclusaoHeader;
-        tinymce.get("conclusao").setContent("<p>" + conclusao + "</p>");
+        tinymce.get("conclusao").setContent(conclusao);
 
 
 }
