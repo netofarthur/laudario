@@ -747,7 +747,7 @@ def descricao(request):
 
 def termos(request):
     titulo = "Masqs - Termos de Uso"
-    context = {'titulo', titulo}
+    context = {'titulo': titulo,}
     return render(request, 'masks/termos.html', context)
 
 def quemsomos(request):
