@@ -900,7 +900,17 @@ function insertAtCursor(text) {
     function adicionarAlteracoNaMascara() {
 
 
+        if(document.getElementById("nome_exame") != null && document.getElementById("nome_exame").value == "") {
+            alert("É necessário colocar um nome para o exame");
+            document.getElementById("salva_mudancas").blur();
+            return;
+        }
 
+        if(document.getElementById("nome_modal") != null && document.getElementById("nome_modal").value == "") {
+            alert("É necessário colocar um nome para o exame");
+            document.getElementById("salva_mudancas").blur();
+            return;
+        }
 
 
         if(document.getElementById("exames").value == "") {
@@ -1441,7 +1451,7 @@ function aplicarConfiguracoesUsuario() {
 
             } else {
                 botao.style.display = "block";
-        botao.click();
+                botao.click();
 
 
             }
@@ -1452,6 +1462,8 @@ function aplicarConfiguracoesUsuario() {
         }
 
     }
+
+
 
 function htmlDecode(input) {
   var doc = new DOMParser().parseFromString(input, "text/html");
