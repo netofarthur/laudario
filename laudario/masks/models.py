@@ -5,14 +5,14 @@ from django.utils import timezone
 
 
 class Exame(models.Model):
-    descricao = models.CharField(max_length=50)
-    initials = models.CharField(max_length=3)
+    descricao = models.CharField(max_length=100)
+    initials = models.CharField(max_length=5)
 
     def __str__(self):
         return self.descricao
 
 class Especialidade(models.Model):
-    descricao = models.CharField(max_length=50)
+    descricao = models.CharField(max_length=100)
     def __str__(self):
         return self.descricao
 
@@ -27,14 +27,14 @@ class Mascara(models.Model):
     titulo = models.CharField(max_length=50)
     tecnica_header = models.CharField(max_length=50)
     tecnica = models.CharField(max_length=500)
-    relatorio_header = models.CharField(max_length=500)
+    relatorio_header = models.CharField(max_length=50)
     conclusao_header = models.CharField(max_length=50)
-    conclusao = models.CharField(max_length=100)
+    conclusao = models.CharField(max_length=2000)
     publica = models.BooleanField(default=True)
     popularidade = models.IntegerField(default=0)
     frequencia = models.IntegerField(default=0)
     ultima_vez_usado = models.DateTimeField(default=timezone.now)
-    info_adicional = models.TextField(max_length=1000)
+    info_adicional = models.TextField(max_length=2000)
 
     def __str__(self):
         return self.nome
@@ -43,7 +43,7 @@ class Mascara(models.Model):
 class TopicoNormal(models.Model):
     mascara = models.ForeignKey(Mascara, on_delete=models.CASCADE)
     orgao = models.CharField(max_length=50)
-    relatorio = models.TextField(max_length=1000)
+    relatorio = models.TextField(max_length=2000)
     def __str__(self):
         return self.orgao 
 
@@ -52,8 +52,8 @@ class TopicoAnormal(models.Model):
     topico_normal = models.ForeignKey(TopicoNormal, on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
     descricao = models.CharField(max_length=500)
-    relatorio = models.CharField(max_length=1000)
-    conclusao = models.CharField(max_length=500, blank=True, null=True)
+    relatorio = models.CharField(max_length=2000)
+    conclusao = models.CharField(max_length=2000, blank=True, null=True)
     publica = models.BooleanField(default=True)
     popularidade = models.IntegerField(default=0)
     frequencia = models.IntegerField(default=0)
@@ -71,8 +71,8 @@ class TopicoAnormalBuilder(models.Model):
 class Variavel(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     nome_da_variavel = models.CharField(max_length=100)
-    nome_amigavel = models.CharField(max_length=500)
-    unidade_medida = models.CharField(max_length=10)
+    nome_amigavel = models.CharField(max_length=100)
+    unidade_medida = models.CharField(max_length=50)
     def __str__(self):
         return self.nome_da_variavel
     def __eq__(self, other):
