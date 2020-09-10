@@ -532,6 +532,7 @@ $("#myModalAlteracao").on("show.bs.modal", function(){
 
     document.getElementById("salva_mudancas").disabled = false;
 
+    document.getElementById("salva_mudancas").setAttribute("onclick", "adicionarAlteracoNaMascara()");
 
 
     var corpo = document.getElementById("corpo_variaveis");
