@@ -207,6 +207,13 @@ def adicionar_alteracao(request):
     return HttpResponse(status=204)
 
 def adicionar_variaveis(request):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+
+
+
     usuario = request.user
     lista_nomes_variaveis = request.POST.getlist('nome_da_variavel')
     lista_nomes_amigaveis = request.POST.getlist('nome_amigavel_variavel')
@@ -436,6 +443,12 @@ def mostrar_mascaras(request):
 
 
 def configuracoes(request):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+
+
     todasespecialidades = Especialidade.objects.all()
     especialidades_com_mascara = []
     for especialidade in todasespecialidades:
@@ -455,6 +468,17 @@ def configuracoes(request):
 
 
 def editar_mascara(request, id_mascara):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+    mascara = Mascara.objects.get(pk=id_mascara)
+
+    # Verifica se o usuário tem permissão para ver essa máscara
+    if request.user != mascara.usuario:
+        return redirect(views.mostrar_index)
+
+
     json_serializer = serializers.get_serializer("json")()
 
     variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
@@ -473,6 +497,16 @@ def editar_mascara(request, id_mascara):
 
 
 def salvar_edicao(request, id_mascara):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+    mascara = Mascara.objects.get(pk=id_mascara)
+
+    # Verifica se o usuário tem permissão para ver essa máscara
+    if request.user != mascara.usuario:
+        return redirect(views.mostrar_index)
+
     mascara = Mascara.objects.get(pk=id_mascara)
 
     exame_id = request.POST['exames']
@@ -547,6 +581,16 @@ def salvar_edicao(request, id_mascara):
 
 
 def editar_alteracao(request, id_alteracao, id_mascara):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+    mascara = Mascara.objects.get(pk=id_mascara)
+
+    # Verifica se o usuário tem permissão para ver essa máscara
+    if request.user != mascara.usuario:
+        return redirect(views.mostrar_index)
+
     json_serializer = serializers.get_serializer("json")()
 
 
@@ -562,6 +606,11 @@ def editar_alteracao(request, id_alteracao, id_mascara):
 
 
 def salvar_alteracao(request):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+
     topicoId = request.POST['topico_id']
     topicoAnormal = TopicoAnormal.objects.get(pk=topicoId)
     topicoNormal = TopicoNormal.objects.get(pk=request.POST['exames'])
@@ -588,6 +637,12 @@ def salvar_alteracao(request):
 
 
 def upvote_frase(request):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+
+
     fraseId = request.POST['frase_clicada']
     topicoAnormal = TopicoAnormal.objects.get(pk=int(fraseId))
     topicoAnormal.frequencia += 1
@@ -692,12 +747,24 @@ def confirmar_reset(request, uid, token):
 
 
 def sobre(request):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+
+
     titulo = "Masqs - Sobre"
     context = {'titulo': titulo}
     return render(request, 'masks/sobre.html', context)
 
 
 def salvar_configuracoes(request):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+
+
     context = {}
     profile = Profile.objects.get(usuario=request.user)
     fonte = request.POST['fonte']
@@ -730,22 +797,57 @@ def salvar_configuracoes(request):
 
 
 def excluir_mascara(request, id_mascara):
+
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+    mascara = Mascara.objects.get(pk=id_mascara)
+
+    # Verifica se o usuário tem permissão para ver essa máscara
+    if request.user != mascara.usuario:
+        return redirect(views.mostrar_index)
+
     Mascara.objects.get(pk=id_mascara).delete()
 
     return HttpResponse(status=204)
 
 def excluir_alteracao(request, id_alteracao):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+    topicoAnormal = TopicoAnormal.objects.get(pk=id_alteracao)
+
+    #Verifica se a máscara é realmente do usuário.
+    if(topicoAnormal.topico_normal.mascara.usuario != request.user):
+        return redirect(views.mostrar_index)
+
+
+
     TopicoAnormal.objects.get(pk=id_alteracao).delete()
 
     return HttpResponse(status=204)
 
 def descricao(request):
+
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+
     titulo = "Masqs - Descrição"
     context = {'titulo': titulo}
     return render(request, 'masks/descricao.html', context)
 
 
 def termos(request):
+
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+
     titulo = "Masqs - Termos de Uso"
     context = {'titulo': titulo,}
     return render(request, 'masks/termos.html', context)
