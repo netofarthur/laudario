@@ -1227,7 +1227,6 @@ function recolocarTinys() {
                 if(variaveisMascara.toString() === variaveisInvisiveis.toString()) {
                     variavelJaExiste = false;
                     variavelExisteNaMascara = true;
-                        document.getElementById("salva_mudancas").setAttribute("type", "submit");
                 }
 
 
@@ -1235,7 +1234,6 @@ function recolocarTinys() {
                 if(variaveisModal.toString() === variaveisInvisiveis.toString()) {
                     variavelJaExiste = false;
                     variavelExisteNaMascara = true;
-                        document.getElementById("salva_mudancas").setAttribute("type", "submit");
                 }
 
 
@@ -1424,10 +1422,7 @@ function recolocarTinys() {
         if(document.getElementById("adicionar_no_atual") != null && document.getElementById(topicoNormalParaAlterar) != null) {
              var resultado = document.getElementById(topicoNormalParaAlterar).innerHTML.match(pattern);
 
-            if(resultado != null) {
-                    document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
 
-            }
 
             if(document.getElementById("adicionar_no_atual").checked) {
 
