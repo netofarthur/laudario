@@ -912,7 +912,7 @@ function recolocarTinys() {
 
                  tinymce.init({
         selector: '#info_adicional',
-    forced_root_block : false,
+    forced_root_block: false,
         plugins: "table",
           menubar: false,
         toolbar: "bold italic underline forecolor table",
@@ -926,7 +926,7 @@ function recolocarTinys() {
 
       tinymce.init({
         selector: '#text_area_orgao',
-    forced_root_block : false,
+    forced_root_block: false,
         plugins: "table",
           menubar: false,
         toolbar: "bold italic underline forecolor table",
@@ -943,7 +943,7 @@ function recolocarTinys() {
       for(var i = 1; i < orgaos.length; i++) {
         tinymce.init({
         selector: '#text_area_orgao' + i,
-        forced_root_block : false,
+        forced_root_block: false,
             plugins: "table",
               menubar: false,
             toolbar: "bold italic underline forecolor table",
@@ -958,7 +958,7 @@ function recolocarTinys() {
 
             tinymce.init({
             body_id : "tecnica",
-    forced_root_block : false,
+    forced_root_block: false,
         selector: '#tecnica',
         plugins: "table",
           menubar: false,
@@ -973,7 +973,7 @@ function recolocarTinys() {
 
       tinymce.init({
         selector: '#conclusao',
-    forced_root_block : false,
+    forced_root_block: false,
         body_id : "conclusao",
         plugins: "table",
           menubar: false,
