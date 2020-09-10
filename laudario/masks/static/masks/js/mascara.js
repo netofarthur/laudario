@@ -1783,7 +1783,5 @@ function css(selector, property, value) {
 }
 
 
-function clicouExcluir(id) {
-    document.getElementById(id).parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.display = "none";
-}
+
 

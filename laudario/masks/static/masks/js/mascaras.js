@@ -136,7 +136,11 @@ function apagar() {
 
 
 function clicouExcluir(id) {
-    document.getElementById(id).parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.display = "none";
+    if(confirm("Deseja realmente excluir a máscara? Todas as alterações relacionadas a ela também serão excluídas.")) {
+            document.getElementById(id).parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.display = "none";
+            document.getElementById(id).setAttribute("type", "submit");
+    }
+
 }
 
 
