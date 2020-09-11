@@ -480,4 +480,11 @@ border:solid;
     color: #c96100;
 }
 
+#frases_comunidade {
+height: auto;
+  overflow: auto;
+  margin-top: 10px;
+
+}
+
 

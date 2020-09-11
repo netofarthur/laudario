@@ -2,3 +2,9 @@ label {
     margin: .3rem;
     margin-top: 1rem;
 }
+
+#coluna_mascaras {
+height: auto;
+  overflow: auto;
+  margin-top: 10px;
+}
