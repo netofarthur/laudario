@@ -911,7 +911,10 @@ function insertAtCursor(text) {
 function recolocarTinys() {
 
                  tinymce.init({
+
         selector: '#info_adicional',
+            language: 'pt_BR',
+
     forced_root_block: false,
         plugins: "table",
           menubar: false,
@@ -926,6 +929,8 @@ function recolocarTinys() {
 
       tinymce.init({
         selector: '#text_area_orgao',
+            language: 'pt_BR',
+
     forced_root_block: false,
         plugins: "table",
           menubar: false,
@@ -944,6 +949,8 @@ function recolocarTinys() {
         tinymce.init({
         selector: '#text_area_orgao' + i,
         forced_root_block: false,
+            language: 'pt_BR',
+
             plugins: "table",
               menubar: false,
             toolbar: "bold italic underline forecolor table",
@@ -961,6 +968,8 @@ function recolocarTinys() {
     forced_root_block: false,
         selector: '#tecnica',
         plugins: "table",
+            language: 'pt_BR',
+
           menubar: false,
         toolbar: "bold italic underline forecolor table",
           fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
@@ -976,6 +985,8 @@ function recolocarTinys() {
     forced_root_block: false,
         body_id : "conclusao",
         plugins: "table",
+            language: 'pt_BR',
+
           menubar: false,
         toolbar: "bold italic underline forecolor table",
           fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
