@@ -1,6 +1,6 @@
-function setCookie(cname, cvalue, exdays) {
+function setCookie(cname, cvalue, exhours) {
   var d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  d.setTime(d.getTime() + (exhours*60*60*1000));
   var expires = "expires="+ d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
@@ -24,14 +24,14 @@ function getCookie(cname) {
 function clicouAba(button) {
 
     if(button.getAttribute("aria-expanded") == "true") {
-         setCookie('aba', button.getAttribute("data-target").substring(1, button.getAttribute("data-target").length));
+         setCookie('aba', button.getAttribute("data-target").substring(1, button.getAttribute("data-target").length), 12);
     }
 
 }
 
 function tornarExamesInvisiveis() {
 
-    setCookie('exame', document.getElementById("exames").value, 1);
+    setCookie('exame', document.getElementById("exames").value, 12);
 
   let especialidadeSelecionada = document.getElementById("exames").value;
   let todasMascaras = document.getElementsByClassName("list-group-item list-group-item-action");
