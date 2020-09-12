@@ -1,5 +1,37 @@
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function clicouAba(button) {
+
+    if(button.getAttribute("aria-expanded") == "true") {
+         setCookie('aba', button.getAttribute("data-target").substring(1, button.getAttribute("data-target").length));
+    }
+
+}
 
 function tornarExamesInvisiveis() {
+
+    setCookie('exame', document.getElementById("exames").value, 1);
 
   let especialidadeSelecionada = document.getElementById("exames").value;
   let todasMascaras = document.getElementsByClassName("list-group-item list-group-item-action");
@@ -39,6 +71,17 @@ function colocaNomesAmigaveisFontes() {
 
 //apaga tópicos duplicados
 function apagar() {
+
+        if(document.getElementById("exames") != null) {
+            if(document.getElementById(getCookie('aba')) != null) {
+                document.getElementById(getCookie('aba')).setAttribute("class", "collapse show");
+
+            }
+            if(getCookie('exame') != null) {
+                document.getElementById("exames").value = getCookie('exame');
+                tornarExamesInvisiveis();
+            }
+        }
 
     if(document.getElementById("fonte") != null) {
 
