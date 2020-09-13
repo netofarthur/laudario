@@ -40,7 +40,7 @@ with open('/Users/arthur/vars/chave') as t:
 DEBUG = True
 
 #PRODUÇÃO
-DEBUG = False
+#DEBUG = False
 
 ALLOWED_HOSTS = []
 
