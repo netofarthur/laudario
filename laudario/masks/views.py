@@ -360,20 +360,20 @@ def cadastrar(request):
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
-        # PRODUÇÃO SOMENTE
-        # link = "https://masqs.com.br/users/validate/' + uid + '/' + token + '"
-        # nomeusuario = user.first_name
-        # msg_plain = render_to_string('masks/email.txt', {'link': link, 'nomeusuario': nomeusuario})
-        # msg_html = render_to_string('masks/email.html', {'link': link, 'nomeusuario': nomeusuario})
-        # send_mail(
-        #    'Verificação de cadastro',
-        #    msg_plain,
-        #    'Contato Masqs <contato@masqs.com.br>',
-        #    [user.email],
-        #    html_message=msg_html,
+        #PRODUÇÃO SOMENTE
+        #link = 'https://masqs.com.br/users/validate/' + uid + '/' + token
+        #nomeusuario = user.first_name
+        #msg_plain = render_to_string('masks/email.txt', {'link': link, 'nomeusuario': nomeusuario})
+        #msg_html = render_to_string('masks/email.html', {'link': link, 'nomeusuario': nomeusuario})
+        #send_mail(
+        #   'Verificação de cadastro',
+        #   msg_plain,
+        #   'Contato Masqs <contato@masqs.com.br>',
+        #   [user.email],
+        #   html_message=msg_html,
         #
-        #    fail_silently=False,
-        # )
+        #   fail_silently=False,
+        #)
         #titulo = "Masqs - Confirmação"
         #mensagem_confirmacao = 'Parabéns, <span style="color: #c96100">' + user.first_name + '</span>, seu cadastro foi criado!<br><br>Para poder acessar sua conta, antes é necessário clicar no link de confirmação enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spans</span>.'
         #context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo,}
@@ -667,22 +667,22 @@ def link_reset(request):
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
-        # PRODUÇÃO SOMENTE
-        # link = "https://masqs.com.br/users/validate/' + uid + '/' + token + '"
-        # nomeusuario = user.first_name
+        #PRODUÇÃO SOMENTE
+        #link = 'https://masqs.com.br/users/validate/' + uid + '/' + token
+        #nomeusuario = user.first_name
 
-        # msg_plain = render_to_string('masks/emailreset.txt', {'link': link, 'nomeusuario': nomeusuario})
-        # msg_html = render_to_string('masks/emailreset.html', {'link': link, 'nomeusuario': nomeusuario})
+        #msg_plain = render_to_string('masks/emailreset.txt', {'link': link, 'nomeusuario': nomeusuario})
+        #msg_html = render_to_string('masks/emailreset.html', {'link': link, 'nomeusuario': nomeusuario})
 
-        # send_mail(
-        #    'Alterar senha',
-        #    msg_plain,
-        #    'Contato Masqs <contato@masqs.com.br>',
-        #    [user.email],
-        #    html_message=msg_html,
+        #send_mail(
+        #   'Alterar senha',
+        #   msg_plain,
+        #   'Contato Masqs <contato@masqs.com.br>',
+        #   [user.email],
+        #   html_message=msg_html,
         #
-        #    fail_silently=False,
-        # )
+        #   fail_silently=False,
+        #)
         #logout(request)
         #mensagem_confirmacao = 'Um link foi enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spans</span>.'
         #titulo = "Masqs - Confirmação"
