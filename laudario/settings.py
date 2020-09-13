@@ -40,6 +40,7 @@ DEBUG = True
 #PRODUÇÃO
 #DEBUG = False
 
+#TESTE APENAS
 ALLOWED_HOSTS = []
 
 #PRODUÇÃO
