@@ -34,8 +34,6 @@ with open('/Users/arthur/vars/chave') as t:
     SECRET_KEY = t.read().strip()
 
 
-
-
 # TESTE APENAS!
 DEBUG = True
 
