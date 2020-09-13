@@ -36,13 +36,16 @@ with open('/Users/arthur/vars/chave') as t:
 
 
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# TESTE APENAS!
 DEBUG = True
+
+#PRODUÇÃO
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
 #PRODUÇÃO
-#ALLOWED_HOSTS = ['masqs.com.br', 'www.masqs.com.br']
+#ALLOWED_HOSTS = ['masqs.com.br', 'www.masqs.com.br', '191.252.58.203:80',]
 
 
 
@@ -187,3 +190,8 @@ TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/js/tinymce/tinymce.min.js")
 TINYMCE_DEFAULT_CONFIG = {
     'theme': "simple",
     'relative_urls': False}
+
+
+#PRODUÇÃO APENAS
+#CSRF_COOKIE_SECURE = True
+#SESSION_COOKIE_SECURE = True
