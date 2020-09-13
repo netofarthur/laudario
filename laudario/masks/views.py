@@ -67,7 +67,7 @@ def mostrar_mascara(request, id_mascara):
 
     profile = Profile.objects.get(usuario=request.user)
 
-    titulo = "Masqs - " + mascara.nome;
+    titulo = "Masqs - " + mascara.nome
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
                'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
                'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario, 'todos_topicos_anormais': todos_topicos_anormais,
@@ -119,9 +119,9 @@ def adicionar_nova_mascara(request):
     pub = request.POST.get('mascara_publica', False)
 
     if (pub == 'on'):
-        publica = True;
+        publica = True
     else:
-        publica = False;
+        publica = False
 
     st = request.POST['titulo_exame']
 
@@ -173,9 +173,9 @@ def adicionar_alteracao(request):
     pub = request.POST.get('frase_publica', False)
 
     if (pub == 'on'):
-        publica = True;
+        publica = True
     else:
-        publica = False;
+        publica = False
 
     if request.POST.get('adicionar_no_banco', False) == 'on':
 
@@ -622,13 +622,13 @@ def salvar_alteracao(request):
     pub = request.POST.get('frase_publica', False)
 
     if (pub == 'on'):
-        publica = True;
+        publica = True
     else:
-        publica = False;
+        publica = False
 
     topicoAnormal.publica = publica
 
-    topicoAnormal.save();
+    topicoAnormal.save()
     adicionar_variaveis(request)
 
 
