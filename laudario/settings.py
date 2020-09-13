@@ -96,7 +96,7 @@ DATABASES = {
      #PASSWORD PRODUÇÃO
      #'PASSWORD': os.environ['SENHA'],
 
-        
+
 	'HOST': 'localhost',
 
     }
