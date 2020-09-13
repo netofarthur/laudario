@@ -77,7 +77,7 @@ function apagar() {
                 document.getElementById(getCookie('aba')).setAttribute("class", "collapse show");
 
             }
-            if(getCookie('exame') != null) {
+            if(getCookie('exame') != null && getCookie('exame') != "") {
                 document.getElementById("exames").value = getCookie('exame');
                 tornarExamesInvisiveis();
             }
