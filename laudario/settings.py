@@ -21,8 +21,14 @@ SESSION_COOKIE_AGE = 60 * 60 * 12
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'xgrcf3&7)5oi82y*ou)+f8c_q4xo!j8qc&(u8m2sw9t!(a=p6v'
+#Chave para TESTE
+#SECRET_KEY = 'xgrcf3&7)5oi82y*ou)+f8c_q4xo!j8qc&(u8m2sw9t!(a=p6v'
+
+
+SECRET_KEY = os.environ.get('CHAVE')
+
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -83,18 +89,24 @@ WSGI_APPLICATION = 'laudario.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+#PRODUÇÃO
+#with open('/home/arthur/vars/senha') as f:
+#    SENHA = f.read().strip()
+
+#TESTE
+with open('/Users/arthur/vars/senha') as f:
+    SENHA = f.read().strip()
+
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'laudario',
 	'USER': 'laudariousr',
 
-     #PASSWORD PARA TESTE
      #PODE USER 'piabinha123', se quiser, como valor de PASSWORD de teste
-	'PASSWORD': os.environ.get('SENHA'),
+	'PASSWORD': SENHA,
 
-     #PASSWORD PRODUÇÃO
-     #'PASSWORD': os.environ['SENHA'],
+
 
 
 	'HOST': 'localhost',
