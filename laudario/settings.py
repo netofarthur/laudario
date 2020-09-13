@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from pathlib import Path
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -86,8 +88,15 @@ DATABASES = {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'laudario',
 	'USER': 'laudariousr',
-     ##NÃO DEIXAR PASSWORD PÚBLICO AQUI NA PRODUÇÃO, COLOCAR EM UMA VARIÁVEL DE AMBIENTE.
-	'PASSWORD': 'piabinha123',
+
+     #PASSWORD PARA TESTE
+     #PODE USER 'piabinha123', se quiser, como valor de PASSWORD de teste
+	'PASSWORD': os.environ.get('SENHA'),
+
+     #PASSWORD PRODUÇÃO
+     #'PASSWORD': os.environ['SENHA'],
+
+        
 	'HOST': 'localhost',
 
     }
