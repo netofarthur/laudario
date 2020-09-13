@@ -668,7 +668,7 @@ def link_reset(request):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
         #PRODUÇÃO SOMENTE
-        #link = 'https://masqs.com.br/users/validate/' + uid + '/' + token
+        #link = 'https://masqs.com.br/users/resetpwd/' + uid + '/' + token
         #nomeusuario = user.first_name
 
         #msg_plain = render_to_string('masks/emailreset.txt', {'link': link, 'nomeusuario': nomeusuario})
