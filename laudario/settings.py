@@ -21,11 +21,17 @@ SESSION_COOKIE_AGE = 60 * 60 * 12
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
+
+
+#PRODUÇÃO
+#with open('/home/arthur/vars/chave') as t:
+#    SECRET_KEY = t.read().strip()
+
+#TESTE
 #Chave para TESTE
 #SECRET_KEY = 'xgrcf3&7)5oi82y*ou)+f8c_q4xo!j8qc&(u8m2sw9t!(a=p6v'
-
-
-SECRET_KEY = os.environ.get('CHAVE')
+with open('/Users/arthur/vars/chave') as t:
+    SECRET_KEY = t.read().strip()
 
 
 
