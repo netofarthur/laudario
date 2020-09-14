@@ -479,14 +479,7 @@ mostrarBotaoPopularSeNecessario();
                 document.getElementById("teclado_nominal").style.display = "none";
 
 
-                 // Execute a function when the user releases a key on the keyboard
-                variaveisDiv.firstChild.children[1].addEventListener("keyup", function(event) {
-                  // Number 13 is the "Enter" key on the keyboard
-                  if (event.keyCode === 13) {
-                    // Trigger the button element with a click
-                    mostrarProximaVariavel();
-                     }
-                });
+               
 
             } else {
                 variaveisDiv.firstChild.children[1].focus();
