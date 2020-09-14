@@ -375,7 +375,7 @@ def cadastrar(request):
         #   fail_silently=False,
         #)
         #titulo = "Masqs - Confirmação"
-        #mensagem_confirmacao = 'Parabéns, <span style="color: #c96100">' + user.first_name + '</span>, seu cadastro foi criado!<br><br>Para poder acessar sua conta, antes é necessário clicar no link de confirmação enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spans</span>.'
+        #mensagem_confirmacao = 'Parabéns, <span style="color: #c96100">' + user.first_name + '</span>, seu cadastro foi criado!<br><br>Para poder acessar sua conta, antes é necessário clicar no link de confirmação enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spams</span>.'
         #context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo,}
         #return render(request, 'masks/aviso.html', context)
 
@@ -684,7 +684,7 @@ def link_reset(request):
         #   fail_silently=False,
         #)
         #logout(request)
-        #mensagem_confirmacao = 'Um link foi enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spans</span>.'
+        #mensagem_confirmacao = 'Um link foi enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spams</span>.'
         #titulo = "Masqs - Confirmação"
         #context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo}
         #return render(request, 'masks/aviso.html', context)

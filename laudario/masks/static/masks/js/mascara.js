@@ -479,7 +479,7 @@ mostrarBotaoPopularSeNecessario();
                 document.getElementById("teclado_nominal").style.display = "none";
 
 
-               
+
 
             } else {
                 variaveisDiv.firstChild.children[1].focus();
@@ -640,8 +640,28 @@ function insertAtCursor(text) {
                 alterarVariaveisModal();
              }
            }
-
+            //gambiarra para passar variáveis que são expressões sem apertar ok
            if(variaveisDiv.firstChild != null) {
+               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
+                               document.getElementById("proxima_variavel").click();
+
+               }
+               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
+                               document.getElementById("proxima_variavel").click();
+
+               }
+               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
+                               document.getElementById("proxima_variavel").click();
+
+               }
+               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
+                               document.getElementById("proxima_variavel").click();
+
+               }
+               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
+                               document.getElementById("proxima_variavel").click();
+
+               }
                if(variaveisDiv.firstChild.firstChild.style.display == "none") {
                                document.getElementById("proxima_variavel").click();
 
