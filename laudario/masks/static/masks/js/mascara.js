@@ -1464,7 +1464,7 @@ function recolocarTinys() {
                     }
 
                     document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-
+                    
                     document.getElementById("paragrafo_conclusao").setAttribute("class", "paragrafo_mascara");
 
                 } else {

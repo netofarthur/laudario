@@ -485,7 +485,7 @@ def editar_mascara(request, id_mascara):
     variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
     profiles = Profile.objects.all()
     especialidades = Especialidade.objects.all()
-    topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara))
+    topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('nome')
     mascara = Mascara.objects.get(pk=id_mascara)
     exames = Exame.objects.all()
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
