@@ -1458,12 +1458,13 @@ function recolocarTinys() {
 
                 if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
                     document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
-                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
-                    document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-                    if(document.getElementById("paragrafo_conclusao").innerHTML != "") {
-                        document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
-
+                    if(document.getElementById("conclusao_modal").value != "") {
+                            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
+                            document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
                     }
+
+                    document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
+
                     document.getElementById("paragrafo_conclusao").setAttribute("class", "paragrafo_mascara");
 
                 } else {
