@@ -116,14 +116,15 @@ mostrarBotaoPopularSeNecessario();
 
     function filtrarParagrafo (paragrafoAlteradoMascara, fraseAlteradaBanco) {
 
-        var paragrafoFinalComBr = paragrafoAlteradoMascara.replace(fraseAlteradaBanco, "");
-
-        var pos = paragrafoFinalComBr.lastIndexOf("<br>");
-
-        var paragrafoFinalMenosUltimoBr = paragrafoFinalComBr.substring(0, pos);
+        fraseAlteradaCorrigidoBr = fraseAlteradaBanco.replace(/<br \/>/g, '<br>');
 
 
-        return paragrafoFinalMenosUltimoBr;
+        var paragrafoFinal = paragrafoAlteradoMascara.replace(fraseAlteradaCorrigidoBr, "");
+
+
+
+
+        return paragrafoFinal;
     }
 
 
@@ -1464,7 +1465,7 @@ function recolocarTinys() {
                     }
 
                     document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
-                    
+
                     document.getElementById("paragrafo_conclusao").setAttribute("class", "paragrafo_mascara");
 
                 } else {
