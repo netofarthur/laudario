@@ -1076,8 +1076,16 @@ function recolocarTinys() {
         //duplicar funções. Talvez posso melhorar isso com um id mais descritivo
         if(document.getElementById("adicionar_no_atual") != null) {
             var variaveis = obterListaVariaveis("entrada_modal");
-            var result = document.getElementById("relatorio_modal").value.match(pattern);
-
+            var result = [];
+            var resultados = document.getElementsByClassName("entrada_modal");
+            for(resultado of resultados) {
+                var matches = resultado.value.match(pattern);
+                if(matches != null) {
+                    for(match of matches) {
+                        result.push(match);
+                    }
+                }
+            }
 
 
         } else {
