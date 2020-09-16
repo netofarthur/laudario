@@ -647,27 +647,40 @@ function insertAtCursor(text) {
                                document.getElementById("proxima_variavel").click();
 
                }
-               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
-                               document.getElementById("proxima_variavel").click();
+           }
 
-               }
-               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
-                               document.getElementById("proxima_variavel").click();
 
-               }
-               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
-                               document.getElementById("proxima_variavel").click();
-
-               }
-               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
-                               document.getElementById("proxima_variavel").click();
-
-               }
+            if(variaveisDiv.firstChild != null) {
                if(variaveisDiv.firstChild.firstChild.style.display == "none") {
                                document.getElementById("proxima_variavel").click();
 
                }
            }
+            if(variaveisDiv.firstChild != null) {
+               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
+                               document.getElementById("proxima_variavel").click();
+
+               }
+           }
+            if(variaveisDiv.firstChild != null) {
+               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
+                               document.getElementById("proxima_variavel").click();
+
+               }
+           }
+            if(variaveisDiv.firstChild != null) {
+               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
+                               document.getElementById("proxima_variavel").click();
+
+               }
+           }
+            if(variaveisDiv.firstChild != null) {
+               if(variaveisDiv.firstChild.firstChild.style.display == "none") {
+                               document.getElementById("proxima_variavel").click();
+
+               }
+           }
+
 
 
 
