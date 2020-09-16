@@ -51,6 +51,7 @@
 
                                 provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", eval(document.getElementById("lab" + z).innerHTML.replace(",",".")).toFixed(2).replace(".",","));
                             }
+                            provisoria = provisoria.replace("Ignorar", "");
 
                       }
                     listaParagrafos[i].innerHTML = provisoria;
@@ -461,7 +462,12 @@ mostrarBotaoPopularSeNecessario();
             }
             return nomesAmigaveisVariaveis[localVariavel].value;
         } else {
+                if(nomeAmigavel == "Ignorar") {
+                return "";
+                } else {
                 return nomeAmigavel;
+                }
+
 
         }
 
@@ -501,7 +507,13 @@ mostrarBotaoPopularSeNecessario();
                 var opcoes = document.getElementsByName("select")[0];
                 for (opcao of opcoes) {
                     var botao = document.createElement("button");
-                    botao.innerHTML = opcao.value;
+                    if(opcao.value == "") {
+                        botao.innerHTML = "Ignorar";
+
+                    } else {
+                        botao.innerHTML = opcao.value;
+
+                    }
                     botao.setAttribute("onclick", "selecionarVariavelNominal(this.innerHTML)");
                     botao.setAttribute("class", "botao_calculadora_nominal");
                     tecladoNominal.appendChild(botao);
@@ -826,7 +838,14 @@ function insertAtCursor(text) {
 
     function colocarNomesAmigaveisAlteracao() {
 
+    var inputs2 = document.getElementsByName("nome_amigavel_variavel");
+        for(input2 of inputs2) {
+            if(input2.value.indexOf(">") >= 0 || input2.value.indexOf("<") >= 0) {
+                alert("Nomes de variáveis não podem conter o sinal de maior (>) ou menor (<). Corrija antes de prosseguir.");
 
+                return;
+            }
+      }
 
 
 
@@ -1120,7 +1139,7 @@ function recolocarTinys() {
                 return;
             }
 
-             var pattern = /^[a-z0-9|]+$/i;
+             var pattern = /^[a-z0-9_|]+$/i;
             if(variavel.match(pattern) == null) {
                 alert("Variáveis não podem conter acentuação ou símbolos, apenas letras e números. Corrija antes de prosseguir.");
                 recolocarTinys();

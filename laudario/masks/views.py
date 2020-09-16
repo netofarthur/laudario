@@ -222,7 +222,7 @@ def adicionar_variaveis(request):
     for i in range(len(lista_nomes_variaveis)):
         variavel = Variavel(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i])
         if(lista_nomes_amigaveis[i] == ""):
-            variavel.nome_amigavel = ''.join([i for i in lista_nomes_variaveis[i] if not i.isdigit()])
+            variavel.nome_amigavel = 'Ignorar'
         else:
             variavel.nome_amigavel = lista_nomes_amigaveis[i]
 
