@@ -163,9 +163,13 @@ mostrarBotaoPopularSeNecessario();
 
 
         document.getElementById(name).innerHTML = document.getElementById(name).innerHTML.replace(document.getElementById("ultima_alteracao_relatorio").innerHTML, "");
+        var pos = document.getElementById(name).innerHTML.lastIndexOf("<br>");
+        document.getElementById(name).innerHTML = document.getElementById(name).innerHTML.substring(0, pos);
 
         if(conclusaoAlterada != "") {
             document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML.replace(document.getElementById("ultima_alteracao_conclusao").innerHTML, "");
+            var pos = document.getElementById("paragrafo_conclusao").innerHTML.lastIndexOf("<br>");
+            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML.substring(0, pos);
         }
 
 
