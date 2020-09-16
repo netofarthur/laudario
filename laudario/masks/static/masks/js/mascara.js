@@ -93,6 +93,9 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_alterada").innerHTML;
 
         }
+
+
+
         mostrarBotaoPopularSeNecessario();
 
     }
@@ -158,10 +161,10 @@ mostrarBotaoPopularSeNecessario();
         document.getElementById(id).innerHTML = nome;
 
 
-        document.getElementById(name).innerHTML = filtrarParagrafo(document.getElementById(name).innerHTML, relatorioAlterado);
+        document.getElementById(name).innerHTML = document.getElementById(name).innerHTML.replace(document.getElementById("ultima_alteracao_relatorio").innerHTML, "");
 
         if(conclusaoAlterada != "") {
-            document.getElementById("paragrafo_conclusao").innerHTML = filtrarParagrafo(document.getElementById("paragrafo_conclusao").innerHTML, conclusaoAlterada);
+            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML.replace(document.getElementById("ultima_alteracao_conclusao").innerHTML, "");
         }
 
 
@@ -287,6 +290,8 @@ mostrarBotaoPopularSeNecessario();
             }
         }
 
+                document.getElementById("ultima_alteracao_relatorio").innerHTML = relatorio;
+                document.getElementById("ultima_alteracao_conclusao").innerHTML = conclusao;
 
 
 
@@ -1115,7 +1120,7 @@ function recolocarTinys() {
                 return;
             }
 
-             var pattern = /^[a-z0-9]+$/i;
+             var pattern = /^[a-z0-9|]+$/i;
             if(variavel.match(pattern) == null) {
                 alert("Variáveis não podem conter acentuação ou símbolos, apenas letras e números. Corrija antes de prosseguir.");
                 recolocarTinys();
@@ -1173,8 +1178,7 @@ function recolocarTinys() {
 
 
 
-
-            if(result != null) {
+            if(result.length != 0) {
 
 
             //separa as variáveis nominais e depois faz um concat com as outras. Agora as variáveis nominais são
@@ -1544,6 +1548,9 @@ function recolocarTinys() {
                     document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_modal").value;
 
                 }
+
+
+
             }
         }
 
@@ -1635,6 +1642,8 @@ function aplicarConfiguracoesUsuario() {
 
 
     function mostrarBotaoPopularSeNecessario() {
+
+
 
     styleTinyMceTables();
 
