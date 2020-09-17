@@ -1143,7 +1143,7 @@ function recolocarTinys() {
                 return;
             }
 
-             var pattern = /^[a-z0-9_|]+$/i;
+             var pattern = /^[a-z0-9_|*-+\/,.]+$/i;
             if(variavel.match(pattern) == null) {
                 alert("Variáveis não podem conter acentuação ou símbolos, apenas letras e números. Corrija antes de prosseguir.");
                 recolocarTinys();
@@ -1535,6 +1535,9 @@ function recolocarTinys() {
                         unidadesMedidasInputs[z].value = unidadesMedidas[z];
                         if(nomesAmigaveisInputs[z].value == "undefined") {
                             nomesAmigaveisInputs[z].value = "";
+                        }
+                        if(unidadesMedidasInputs[z].value == "undefined") {
+                            unidadesMedidasInputs[z].value = "";
                         }
 
 
