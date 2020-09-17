@@ -1508,8 +1508,15 @@ function recolocarTinys() {
 
                     if(vari.fields.usuario == document.getElementById("usuario_id_alteracao").value) {
                         if(todasVariaveis.includes(vari.fields.nome_da_variavel)) {
+                            if(vari.fields.nome_amigavel == "Ignorar") {
+                            nomesAmigos.push("");
+
+                            } else {
                             nomesAmigos.push(vari.fields.nome_amigavel);
                             unidadesMedidas.push(vari.fields.unidade_medida);
+
+                            }
+
                         }
                     }
 
@@ -1523,7 +1530,7 @@ function recolocarTinys() {
 
                 for (var z = 0; z < nomesAmigaveisInputs.length; z++) {
 
-                    
+
                         nomesAmigaveisInputs[z].value = nomesAmigos[z];
                         unidadesMedidasInputs[z].value = unidadesMedidas[z];
                         if(nomesAmigaveisInputs[z].value == "undefined") {
