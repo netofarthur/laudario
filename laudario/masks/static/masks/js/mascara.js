@@ -1517,7 +1517,11 @@ function recolocarTinys() {
 
                             }
 
+                        } else {
+                             nomesAmigos.push("");
+                            unidadesMedidas.push("");
                         }
+
                     }
 
                 }
