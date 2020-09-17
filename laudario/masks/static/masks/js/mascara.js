@@ -1523,14 +1523,13 @@ function recolocarTinys() {
 
                 for (var z = 0; z < nomesAmigaveisInputs.length; z++) {
 
-                    //somente adiciona se tiverem todas variáveis (usuário não pode alterar depois de clicar).
-                    if(nomesAmigaveisInputs.length == nomesAmigos.length) {
+                    
                         nomesAmigaveisInputs[z].value = nomesAmigos[z];
                         unidadesMedidasInputs[z].value = unidadesMedidas[z];
                         if(nomesAmigaveisInputs[z].value == "undefined") {
                             nomesAmigaveisInputs[z].value = "";
                         }
-                    }
+
 
 
                 }

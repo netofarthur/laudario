@@ -29,9 +29,9 @@ SESSION_COOKIE_AGE = 60 * 60 * 12
 
 #TESTE
 #Chave para TESTE
-#SECRET_KEY = 'xgrcf3&7)5oi82y*ou)+f8c_q4xo!j8qc&(u8m2sw9t!(a=p6v'
-with open('/Users/arthur/vars/chave') as t:
-    SECRET_KEY = t.read().strip()
+SECRET_KEY = 'xgrcf3&7)5oi82y*ou)+f8c_q4xo!j8qc&(u8m2sw9t!(a=p6v'
+#with open('/Users/arthur/vars/chave') as t:
+    #SECRET_KEY = t.read().strip()
 
 
 # TESTE APENAS!
@@ -102,8 +102,8 @@ WSGI_APPLICATION = 'laudario.wsgi.application'
 #    SENHA = f.read().strip()
 
 #TESTE
-with open('/Users/arthur/vars/senha') as f:
-    SENHA = f.read().strip()
+#with open('/Users/arthur/vars/senha') as f:
+    #SENHA = f.read().strip()
 
 DATABASES = {
     'default': {
@@ -112,7 +112,7 @@ DATABASES = {
 	'USER': 'laudariousr',
 
      #PODE USER 'piabinha123', se quiser, como valor de PASSWORD de teste
-	'PASSWORD': SENHA,
+	'PASSWORD': 'piabinha123',
 
 
 
