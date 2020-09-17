@@ -669,7 +669,7 @@ def link_reset(request):
 
         #PRODUÇÃO SOMENTE
         #link = 'https://masqs.com.br/users/resetpwd/' + uid + '/' + token
-        #nomeusuario = user.first_name
+        #nomeusuario = user.username
 
         #msg_plain = render_to_string('masks/emailreset.txt', {'link': link, 'nomeusuario': nomeusuario})
         #msg_html = render_to_string('masks/emailreset.html', {'link': link, 'nomeusuario': nomeusuario})
