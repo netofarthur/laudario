@@ -50,6 +50,8 @@ function popularMascara(mascaraId) {
                 especialidade = mascarasJSONObject[i].fields.especialidade;
                 nome = mascarasJSONObject[i].fields.nome;
                 titulo = mascarasJSONObject[i].fields.titulo;
+                indicacoesHeader = mascarasJSONObject[i].fields.indicacoes_header;
+                indicacoes = mascarasJSONObject[i].fields.indicacoes;
                 tecnicaHeader = mascarasJSONObject[i].fields.tecnica_header;
                 tecnica = mascarasJSONObject[i].fields.tecnica;
                 relatorioHeader = mascarasJSONObject[i].fields.relatorio_header;
@@ -91,6 +93,8 @@ function popularMascara(mascaraId) {
         document.getElementById("especialidades").value = especialidade;
         document.getElementById("nome_exame").value = nome;
         document.getElementById("titulo_exame").value = titulo;
+        document.getElementById("indicacoes_header").value = indicacoesHeader;
+        document.getElementById("indicacoes").value = indicacoes;
         document.getElementById("tecnica_header").value = tecnicaHeader;
         tinymce.get("tecnica").setContent(tecnica);
         document.getElementById("relatorio_header").value = relatorioHeader;
