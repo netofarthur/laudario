@@ -23,16 +23,30 @@ SESSION_COOKIE_AGE = 60 * 60 * 12
 
 
 
-with open('/home/arthur/vars/chave') as t:
-    SECRET_KEY = t.read().strip()
+#PRODUÇÃO
+#with open('/home/arthur/vars/chave') as t:
+#    SECRET_KEY = t.read().strip()
+#with open('/home/arthur/vars/chave') as t:
+#    SECRET_KEY = t.read().strip()
+
+#TESTE
+#Chave para TESTE
+SECRET_KEY = 'xgrcf3&7)5oi82y*ou)+f8c_q4xo!j8qc&(u8m2sw9t!(a=p6v'
+#with open('/Users/arthur/vars/chave') as t:
+    #SECRET_KEY = t.read().strip()
+
+# TESTE APENAS!
+DEBUG = True
+
+#PRODUCAO
+#DEBUG = False
 
 
+#TESTE APENAS
+ALLOWED_HOSTS = []
 
-
-DEBUG = False
-
-
-ALLOWED_HOSTS = ['masqs.com.br', 'www.masqs.com.br', '191.252.58.203:80',]
+#PRODUCAO
+#ALLOWED_HOSTS = ['masqs.com.br', 'www.masqs.com.br', '191.252.58.203:80',]
 
 
 
@@ -85,8 +99,10 @@ WSGI_APPLICATION = 'laudario.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-with open('/home/arthur/vars/senha') as f:
-    SENHA = f.read().strip()
+
+#PRODUCAO
+#with open('/home/arthur/vars/senha') as f:
+#    SENHA = f.read().strip()
 
 
 DATABASES = {
@@ -95,7 +111,11 @@ DATABASES = {
     'NAME': 'laudario',
 	'USER': 'laudariousr',
 
-	'PASSWORD': SENHA, 
+    #TESTE
+	'PASSWORD': 'piabinha123',
+
+    #PRODUCAO
+    #'PASSWORD': SENHA,
 
 
 
@@ -147,28 +167,34 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/var/www/'
+#PRODUÇÃO
+#Run collectstatic para passar tudo de STATIC_URL na pasta do app
+#para STATI_ROOT no servidor.
+#STATIC_ROOT = '/var/www/'
 
 
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 25
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'Masqs <contato@masqs.com.br>'
+#PRODUCAO
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'localhost'
+#EMAIL_PORT = 25
+#EMAIL_HOST_USER = ''
+#EMAIL_HOST_PASSWORD = ''
+#EMAIL_USE_TLS = True
+#DEFAULT_FROM_EMAIL = 'Masqs <contato@masqs.com.br>'
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/js/tinymce/tinymce.min.js")
 
 
-TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "tinymce/js/tinymce")
+#Produção
+#TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "tinymce/js/tinymce")
 
 TINYMCE_DEFAULT_CONFIG = {
     'theme': "simple",
     'relative_urls': False}
 
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+#PRODUÇÃO APENAS
+#CSRF_COOKIE_SECURE = True
+#SESSION_COOKIE_SECURE = True
