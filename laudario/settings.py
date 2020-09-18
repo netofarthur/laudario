@@ -23,28 +23,16 @@ SESSION_COOKIE_AGE = 60 * 60 * 12
 
 
 
-#PRODUÇÃO
-#with open('/home/arthur/vars/chave') as t:
-#    SECRET_KEY = t.read().strip()
-
-#TESTE
-#Chave para TESTE
-SECRET_KEY = 'xgrcf3&7)5oi82y*ou)+f8c_q4xo!j8qc&(u8m2sw9t!(a=p6v'
-#with open('/Users/arthur/vars/chave') as t:
-    #SECRET_KEY = t.read().strip()
+with open('/home/arthur/vars/chave') as t:
+    SECRET_KEY = t.read().strip()
 
 
-# TESTE APENAS!
-DEBUG = True
 
-#PRODUÇÃO
-#DEBUG = False
 
-#TESTE APENAS
-ALLOWED_HOSTS = []
+DEBUG = False
 
-#PRODUÇÃO
-#ALLOWED_HOSTS = ['masqs.com.br', 'www.masqs.com.br', '191.252.58.203:80',]
+
+ALLOWED_HOSTS = ['masqs.com.br', 'www.masqs.com.br', '191.252.58.203:80',]
 
 
 
@@ -97,13 +85,9 @@ WSGI_APPLICATION = 'laudario.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-#PRODUÇÃO
-#with open('/home/arthur/vars/senha') as f:
-#    SENHA = f.read().strip()
+with open('/home/arthur/vars/senha') as f:
+    SENHA = f.read().strip()
 
-#TESTE
-#with open('/Users/arthur/vars/senha') as f:
-    #SENHA = f.read().strip()
 
 DATABASES = {
     'default': {
@@ -111,8 +95,7 @@ DATABASES = {
     'NAME': 'laudario',
 	'USER': 'laudariousr',
 
-     #PODE USER 'piabinha123', se quiser, como valor de PASSWORD de teste
-	'PASSWORD': 'piabinha123',
+	'PASSWORD': SENHA, 
 
 
 
@@ -164,33 +147,28 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#PRODUÇÃO
-#Run collectstatic para passar tudo de STATIC_URL na pasta do app
-#para STATI_ROOT no servidor.
-#STATIC_ROOT = '/var/www/'
+STATIC_ROOT = '/var/www/'
 
 
 
 
-#Settings for email verification na produção (usuário tem que clicar em link enviado no email para ativar.
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_HOST = 'localhost'
-#EMAIL_PORT = 25
-#EMAIL_HOST_USER = ''
-#EMAIL_HOST_PASSWORD = ''
-#EMAIL_USE_TLS = True
-#DEFAULT_FROM_EMAIL = 'Masqs <contato@masqs.com.br>'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Masqs <contato@masqs.com.br>'
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "tinymce/js/tinymce/tinymce.min.js")
 
-#Produção
-#TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "tinymce/js/tinymce")
+
+TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "tinymce/js/tinymce")
 
 TINYMCE_DEFAULT_CONFIG = {
     'theme': "simple",
     'relative_urls': False}
 
 
-#PRODUÇÃO APENAS
-#CSRF_COOKIE_SECURE = True
-#SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True

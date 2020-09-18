@@ -20,11 +20,12 @@ class Especialidade(models.Model):
 # Normal masks (templates)
 class Mascara(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-
     especialidade = models.ForeignKey(Especialidade, on_delete=models.CASCADE)
     exame = models.ForeignKey(Exame, on_delete=models.CASCADE)
     nome = models.CharField(max_length=50)
     titulo = models.CharField(max_length=50)
+    indicacoes_header = models.CharField(max_length=100)
+    indicacoes = models.TextField(max_length=5000)
     tecnica_header = models.CharField(max_length=50)
     tecnica = models.CharField(max_length=500)
     relatorio_header = models.CharField(max_length=50)
@@ -71,7 +72,7 @@ class TopicoAnormalBuilder(models.Model):
 class Variavel(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     nome_da_variavel = models.CharField(max_length=100)
-    nome_amigavel = models.CharField(max_length=100)
+    nome_amigavel = models.CharField(max_length=200)
     unidade_medida = models.CharField(max_length=50)
     def __str__(self):
         return self.nome_da_variavel

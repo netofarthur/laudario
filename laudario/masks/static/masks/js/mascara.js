@@ -1706,6 +1706,8 @@ function aplicarConfiguracoesUsuario() {
             document.getElementById("procurarFrases").focus();
         }
 
+
+
     }
 
 
@@ -1716,7 +1718,8 @@ function htmlDecode(input) {
 }
 
 
-    window.onload = mostrarBotaoPopularSeNecessario;
+
+    window.onload = colocarIndicacaoClinica;
 
 
 
@@ -1923,5 +1926,42 @@ function css(selector, property, value) {
 
 function clicouExcluir(id) {
     document.getElementById(id).parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.display = "none";
+}
+
+function colocarIndicacaoClinica() {
+
+   if(document.getElementById("indicacoes") != null && document.getElementById("copiar_laudo") != null) {
+    var indicacoes = document.getElementById("indicacoes").innerHTML.split(",");
+    var indicacoesDiv = document.getElementById("indicacoes");
+    var select = document.createElement("select");
+    select.setAttribute("id", "lista_indicacoes");
+    select.setAttribute("onchange", "setarIndicacao()");
+    for(indicacao of indicacoes) {
+        var option = document.createElement("option");
+        option.innerHTML = indicacao;
+        select.appendChild(option);
+    }
+    indicacoesDiv.innerHTML = "";
+
+        indicacoesDiv.appendChild(select);
+
+    }
+
+    mostrarBotaoPopularSeNecessario();
+
+
+}
+
+function setarIndicacao() {
+    var indicacoesDiv = document.getElementById("indicacoes");
+
+    var select = document.getElementById("lista_indicacoes");
+    var selecao = select.options[select.selectedIndex].innerHTML;
+
+        indicacoesDiv.innerHTML = "";
+        indicacoesDiv.innerHTML = selecao;
+
+
+
 }
 

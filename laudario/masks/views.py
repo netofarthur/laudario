@@ -105,6 +105,8 @@ def adicionar_nova_mascara(request):
     especialidade_id = request.POST['especialidades']
     nome_exame = request.POST['nome_exame']
     titulo_exame = request.POST['titulo_exame']
+    indicacoes_header = request.POST['indicacoes_header']
+    indicacoes = request.POST['indicacoes']
     tecnica_header = request.POST['tecnica_header']
     tecnica = request.POST['tecnica']
     relatorio_header = request.POST['relatorio_header']
@@ -133,6 +135,7 @@ def adicionar_nova_mascara(request):
     exameInstance = Exame.objects.get(pk=exame_id)
 
     nova_mascara = Mascara(usuario=usuario, especialidade=especialidadeInstance, exame=exameInstance, nome=nome_exame, titulo=titulo_exame,
+                           indicacoes_header=indicacoes_header, indicacoes=indicacoes,
                            tecnica_header=tecnica_header, tecnica=tecnica, relatorio_header=relatorio_header,
                           conclusao_header=conclusao_header, conclusao=conclusao, publica=publica, info_adicional=info_adicional)
     nova_mascara.save()
@@ -360,28 +363,25 @@ def cadastrar(request):
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
-        #PRODUÇÃO SOMENTE
-        #link = 'https://masqs.com.br/users/validate/' + uid + '/' + token
-        #nomeusuario = user.first_name
-        #msg_plain = render_to_string('masks/email.txt', {'link': link, 'nomeusuario': nomeusuario})
-        #msg_html = render_to_string('masks/email.html', {'link': link, 'nomeusuario': nomeusuario})
-        #send_mail(
-        #   'Verificação de cadastro',
-        #   msg_plain,
-        #   'Contato Masqs <contato@masqs.com.br>',
-        #   [user.email],
-        #   html_message=msg_html,
-        #
-        #   fail_silently=False,
-        #)
-        #titulo = "Masqs - Confirmação"
-        #mensagem_confirmacao = 'Parabéns, <span style="color: #c96100">' + user.first_name + '</span>, seu cadastro foi criado!<br><br>Para poder acessar sua conta, antes é necessário clicar no link de confirmação enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spams</span>.'
-        #context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo,}
-        #return render(request, 'masks/aviso.html', context)
+        link = 'https://masqs.com.br/users/validate/' + uid + '/' + token
+        nomeusuario = user.first_name
+        msg_plain = render_to_string('masks/email.txt', {'link': link, 'nomeusuario': nomeusuario})
+        msg_html = render_to_string('masks/email.html', {'link': link, 'nomeusuario': nomeusuario})
+        send_mail(
+           'Verificação de cadastro',
+           msg_plain,
+           'Contato Masqs <contato@masqs.com.br>',
+           [user.email],
+           html_message=msg_html,
+        
+           fail_silently=False,
+        )
+        titulo = "Masqs - Confirmação"
+        mensagem_confirmacao = 'Parabéns, <span style="color: #c96100">' + user.first_name + '</span>, seu cadastro foi criado!<br><br>Para poder acessar sua conta, antes é necessário clicar no link de confirmação enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spams</span>.'
+        context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo,}
+        return render(request, 'masks/aviso.html', context)
 
 
-        #TESTE APENAS. APAGAR NA PRODUÇÃO!!!!!
-        return HttpResponse('<html><body><a href="/users/validate/' + uid + '/' + token + '">clique aqui</a></body></html>')
 
     else:
         return HttpResponse('<html><body><h2>' + mensagem_erro + '<h2></body></html><br><a href="javascript:history.back()">Voltar</a>')
@@ -517,6 +517,8 @@ def salvar_edicao(request, id_mascara):
     mascara.exame = exame
     mascara.especialidade = especialidade
     mascara.titulo = request.POST['titulo_exame']
+    mascara.indicacoes_header = request.POST['indicacoes_header']
+    mascara.indicacoes = request.POST['indicacoes']
     mascara.tecnica_header = request.POST['tecnica_header']
     mascara.tecnica = request.POST['tecnica']
     mascara.relatorio_header = request.POST['relatorio_header']
@@ -667,31 +669,28 @@ def link_reset(request):
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
-        #PRODUÇÃO SOMENTE
-        #link = 'https://masqs.com.br/users/resetpwd/' + uid + '/' + token
-        #nomeusuario = user.username
+        link = 'https://masqs.com.br/users/resetpwd/' + uid + '/' + token
+        nomeusuario = user.username
 
-        #msg_plain = render_to_string('masks/emailreset.txt', {'link': link, 'nomeusuario': nomeusuario})
-        #msg_html = render_to_string('masks/emailreset.html', {'link': link, 'nomeusuario': nomeusuario})
+        msg_plain = render_to_string('masks/emailreset.txt', {'link': link, 'nomeusuario': nomeusuario})
+        msg_html = render_to_string('masks/emailreset.html', {'link': link, 'nomeusuario': nomeusuario})
 
-        #send_mail(
-        #   'Alterar senha',
-        #   msg_plain,
-        #   'Contato Masqs <contato@masqs.com.br>',
-        #   [user.email],
-        #   html_message=msg_html,
-        #
-        #   fail_silently=False,
-        #)
-        #logout(request)
-        #mensagem_confirmacao = 'Um link foi enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spams</span>.'
-        #titulo = "Masqs - Confirmação"
-        #context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo}
-        #return render(request, 'masks/aviso.html', context)
+        send_mail(
+           'Alterar senha',
+           msg_plain,
+           'Contato Masqs <contato@masqs.com.br>',
+           [user.email],
+           html_message=msg_html,
+        
+           fail_silently=False,
+        )
+        logout(request)
+        mensagem_confirmacao = 'Um link foi enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spams</span>.'
+        titulo = "Masqs - Confirmação"
+        context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo}
+        return render(request, 'masks/aviso.html', context)
 
 
-        #TESTE APENAS. APAGAR NA PRODUÇÃO!!!!!
-        return HttpResponse('<html><body><a href="/users/resetpwd/' + uid + '/' + token + '">clique aqui</a></body></html>')
 
 
     except ObjectDoesNotExist:
