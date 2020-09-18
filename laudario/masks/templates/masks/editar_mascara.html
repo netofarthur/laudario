@@ -106,7 +106,7 @@
 
      <br>
 
-    <textarea rows="2" class="input_curto" placeholder="Descrição da técnica" type="text" id="tecnica" name="tecnica">{{ mascara.tecnica }}</textarea>
+    <textarea class="paragrafo_mascara" rows="2" class="input_curto" placeholder="Descrição da técnica" type="text" id="tecnica" name="tecnica">{{ mascara.tecnica }}</textarea>
  </fieldset>
 <br>
 
@@ -243,7 +243,7 @@
     <br>
 
 
-<textarea rows="2" class="input_curto" placeholder="Descrição da conclusão" type="text" id="conclusao" name="conclusao" class="paragrafo_mascara">{{ mascara.conclusao }}</textarea>
+<textarea class="paragrafo_mascara" rows="2" class="input_curto" placeholder="Descrição da conclusão" type="text" id="conclusao" name="conclusao">{{ mascara.conclusao }}</textarea>
      </fieldset>
       <br>
 
@@ -290,7 +290,7 @@
 
 <div style="text-align: center;">
 <input class="btn btn-secondary" type="button" value="Salvar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
-<input type="hidden" id="usuario_id_alteracao">
+<input type="hidden" id="usuario_id_alteracao" value="{{ request.user.pk }}">
     <input type="hidden" id="flag_edicao">
         <input type="hidden" id="variaveis_originais_edicao">
             <input type="hidden" id="clicou_remover" name="clicou_remover" value="0">
