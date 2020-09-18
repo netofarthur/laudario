@@ -1819,7 +1819,6 @@ function htmlDecode(input) {
     anchor.style.marginLeft = "45%";
     anchor.style.fontSize = "1.5rem";
     if(document.getElementById("link_voltar") == null) {
-        document.getElementById("mycontainer").appendChild(anchor);
 
     }
 
@@ -2017,6 +2016,7 @@ anchor.innerHTML = "Sair";
 anchor.style.marginLeft = "45%";
 anchor.style.fontSize = "1.5rem";
 document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);
+
 
 
 
