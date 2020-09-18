@@ -776,6 +776,7 @@ def salvar_configuracoes(request):
     cor_topicos = request.POST['cor_topicos']
     cor_titulo = request.POST['cor_titulo']
     alinhamento_titulo = request.POST['alinhamento_titulo']
+    capitalizacao = request.POST['capitalizacao']
     cor_mascara = request.POST['cor_mascara']
     alinhamento_topicos = request.POST['alinhamento_topicos']
     tamanho_topicos = request.POST['tamanho_topicos']
@@ -789,6 +790,7 @@ def salvar_configuracoes(request):
     profile.cor_topicos = cor_topicos
     profile.cor_titulo = cor_titulo
     profile.alinhamento_titulo = alinhamento_titulo
+    profile.capitalizacao = capitalizacao
     profile.cor_mascara = cor_mascara
     profile.alinhamento_topicos = alinhamento_topicos
     profile.tamanho_titulo = tamanho_titulo

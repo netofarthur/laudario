@@ -200,6 +200,26 @@
            value="{{ profile.cor_titulo }}">
             <br>
 
+<hr>
+
+      <label>Capitalização do Título</label>
+    <div class="form-group">
+  <select class="form-control" name ="capitalizacao" id="capitalizacao">
+         <option value="{{ profile.capitalizacao }}">{{ profile.capitalizacao }}</option>
+
+   <option value="none">Não forçar capitalização</option>
+   <option value="capitalize">Primeiras letras das palavras</option>
+      <option value="uppercase">Todas as letras do título</option>
+
+
+
+
+  </select>
+    </div>
+
+
+
+
       </fieldset>
 
 

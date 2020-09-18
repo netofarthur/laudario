@@ -168,7 +168,25 @@ function apagar() {
         }
      }
 
+         var opcoes = document.getElementById("capitalizacao").options;
 
+
+        if(opcoes[0].value == "capitalize") {
+            opcoes[0].innerHTML = "Primeiras letras das palavras";
+        } else if (opcoes[0].value == "uppercase") {
+            opcoes[0].innerHTML = "Todas as letras do título";
+        } else {
+            opcoes[0].innerHTML = "Não forçar capitalização";
+
+        }
+        var opcaoSelecionada = opcoes[0].innerHTML;
+for(var i = 1; i < opcoes.length; i++) {
+
+
+        if(opcoes[i].innerHTML == opcaoSelecionada) {
+                        opcoes.remove(i);
+        }
+     }
 
 
 }
