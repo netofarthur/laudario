@@ -1990,7 +1990,7 @@ function editarLaudo() {
 
                               menubar: false,
                                       plugins: "table",
-                                forced_root_block: false,
+                                force_p_newlines: true,
                             toolbar: "bold italic underline forecolor table",
                               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
                                 branding: false,
@@ -2002,6 +2002,7 @@ function editarLaudo() {
                          document.getElementById("copiar_laudo").setAttribute("onclick", "copiarTiny()");
                         document.getElementById("editar_laudo").parentNode.removeChild(document.getElementById("editar_laudo"));
                         document.getElementById("diagnosticos_div").parentNode.parentNode.removeChild(document.getElementById("diagnosticos_div").parentNode);
+
 }
 
 function copiarTiny() {
