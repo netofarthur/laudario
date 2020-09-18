@@ -1918,7 +1918,7 @@ function procurarFrases(id) {
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
     txtValue = li[i].innerHTML;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1) {
       li[i].style.display = "block";
     } else {
       li[i].style.display = "none";
