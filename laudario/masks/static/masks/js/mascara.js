@@ -1096,6 +1096,8 @@ function recolocarTinys() {
     function adicionarAlteracoNaMascara() {
 
 
+
+
         if(document.getElementById("nome_exame") != null && document.getElementById("nome_exame").value == "") {
             alert("É necessário colocar um nome para o exame");
             document.getElementById("salva_mudancas").blur();
@@ -1629,6 +1631,21 @@ function recolocarTinys() {
         input.readOnly = true;
     }
 
+
+    var pars = document.getElementsByClassName("paragrafo_mascara");
+    for(par of pars) {
+         par.style.visibility = "visible";
+        par.style.maxHeight = "400px";
+        par.rows = 3;
+
+        par.style.width = "100%";
+    }
+
+        document.getElementById("info_adicional").style.visibility = "visible";
+document.getElementById("info_adicional").style.maxHeight = "400px";
+        document.getElementById("info_adicional").rows = 3;
+
+        document.getElementById("info_adicional").style.width = "100%";
 
     }
 
