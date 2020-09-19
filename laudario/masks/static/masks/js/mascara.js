@@ -1814,13 +1814,15 @@ anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Sair";
-anchor.style.marginLeft = "30%";
+anchor.style.marginLeft = "45%";
 anchor.style.fontSize = "1.5rem";
 document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);
+
 
 document.getElementById("copiar_laudo").style.display = "none";
 document.getElementById("editar_laudo").style.display = "none";
 document.getElementById("popular_variaveis").style.display = "none";
+                        document.getElementById("diagnosticos_div").parentNode.parentNode.removeChild(document.getElementById("diagnosticos_div").parentNode);
 
 
 
@@ -2043,7 +2045,7 @@ var conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML;
     document.getElementById("mascara_div").innerHTML = conteudoTiny;
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
-var anchor = document.createElement("a");
+var anchor = document.getElementById("link_voltar");
 anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
