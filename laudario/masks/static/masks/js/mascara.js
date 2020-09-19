@@ -1820,9 +1820,18 @@ document.getElementById("mycontainer").insertBefore(anchor, document.getElementB
 
 
 document.getElementById("copiar_laudo").style.display = "none";
+if(document.getElementById("editar_laudo") != null) {
 document.getElementById("editar_laudo").style.display = "none";
+
+}
+if(document.getElementById("popular_variaveis") != null) {
 document.getElementById("popular_variaveis").style.display = "none";
+
+}
+if(document.getElementById("diagnosticos_div") != null) {
                         document.getElementById("diagnosticos_div").parentNode.parentNode.removeChild(document.getElementById("diagnosticos_div").parentNode);
+
+}
 
 
 
