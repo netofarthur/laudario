@@ -2006,7 +2006,9 @@ function editarLaudo() {
 }
 
 function copiarTiny() {
+var conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML;
     tinymce.remove();
+    document.getElementById("mascara_div").innerHTML = conteudoTiny;
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.createElement("a");
