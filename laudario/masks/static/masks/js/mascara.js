@@ -141,10 +141,11 @@ mostrarBotaoPopularSeNecessario();
     // Se conclusão vazia, apresentar o laudo de conclusão normal da máscara.
     function reverterAlteração(name, id) {
 
- if(id.charAt(0) == "b") {
+    if(id.charAt(0) == "b") {
         document.getElementById("p" + id.substring(1, id.length)).style.visibility = "visible";
 
     }
+
 
         var idSemB = id.substring(1, id.length);
         var normaisJSONObject = JSON.parse(normais);
@@ -332,6 +333,8 @@ mostrarBotaoPopularSeNecessario();
 
        document.getElementById("b" + id.substring(1, id.length)).style.color = "red";
     } else {
+   document.getElementById(id).setAttribute("onclick", "reverterAlteração(this.name, this.id)");
+
     document.getElementById(id).innerHTML = "Reverter";
 
        document.getElementById(id).style.color = "red";
