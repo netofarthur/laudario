@@ -104,6 +104,8 @@ mostrarBotaoPopularSeNecessario();
 
     //Função para colocar os tópicos diagnóstico na ordem em que as alterações forem adicionadas.
     function colocarElementosEmOrdem(name) {
+
+
         var lista = document.getElementById("topicos_div").children;
         var topicoDiv = document.getElementById("topicos_div");
         for(z = 0; z < lista.length; z++) {
@@ -114,6 +116,8 @@ mostrarBotaoPopularSeNecessario();
             }
         }
     }
+
+
 
 
 
@@ -136,6 +140,12 @@ mostrarBotaoPopularSeNecessario();
     // Função que reverte a alteração.
     // Se conclusão vazia, apresentar o laudo de conclusão normal da máscara.
     function reverterAlteração(name, id) {
+
+ if(id.charAt(0) == "b") {
+        document.getElementById("p" + id.substring(1, id.length)).style.visibility = "visible";
+
+    }
+
         var idSemB = id.substring(1, id.length);
         var normaisJSONObject = JSON.parse(normais);
         var relatorioNormal;
@@ -253,7 +263,12 @@ mostrarBotaoPopularSeNecessario();
 
         document.getElementById("frase_clicada").value = idSemB;
 
+    if(id.charAt(0) == "p") {
     colocarElementosEmOrdem(name);
+
+    } else {
+    }
+
 
 
         var pattern = /\{([^}]+)\}/g;
@@ -309,14 +324,25 @@ mostrarBotaoPopularSeNecessario();
             }
        }
 
-       document.getElementById(id).innerHTML = "Reverter";
+ if(id.charAt(0) == "p") {
+        document.getElementById(id).style.visibility = "hidden";
+        document.getElementById("b" + id.substring(1, id.length)).innerHTML = "Reverter";
+               document.getElementById("b" + id.substring(1, id.length)).setAttribute("onclick", "reverterAlteração(this.name, this.id)");
+
+
+       document.getElementById("b" + id.substring(1, id.length)).style.color = "red";
+    } else {
+    document.getElementById(id).innerHTML = "Reverter";
+
        document.getElementById(id).style.color = "red";
+    }
 
 
 
 
 
-        document.getElementById(id).setAttribute("onclick", "reverterAlteração(this.name, this.id)");
+
+
 
 
     mostrarBotaoPopularSeNecessario();
@@ -1560,10 +1586,13 @@ function recolocarTinys() {
 
             if(document.getElementById("adicionar_no_atual").checked) {
 
+ if(id.charAt(0) == "p") {
+        colocarElementosEmOrdem(name);
+    } else {
+
+    }
 
 
-
-                colocarElementosEmOrdem(topicoNormalParaAlterar);
 
 
                 if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {

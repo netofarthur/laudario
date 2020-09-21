@@ -89,14 +89,16 @@
 }
 
 .botao_diagnostico {
-
-
+    margin-top: .2rem;
+    margin-bottom: .2rem;
+    height: auto;
     color: #c96100;
     width: 100%;
     background-color: #ffffff;
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
+    border-bottom: 0px;
 
 
 
