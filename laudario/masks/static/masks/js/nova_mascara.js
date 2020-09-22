@@ -68,7 +68,7 @@ function popularMascara(mascaraId) {
         for(i = 0; i < topicosNormaisObject.length; i++) {
             if(topicosNormaisObject[i].fields.mascara == mascaraId) {
                     if(entradasNomesOrgaos[counter] == null) {
-                            adicionarEntradaOrgao();
+                            adicionarEntradaOrgao("adicionar_entrada_orgao" + entradasNomesOrgaos.length + 1);
 
                     }
 
@@ -105,8 +105,8 @@ function popularMascara(mascaraId) {
 }
 
 
-  function adicionarEntradaOrgao() {
-
+  function adicionarEntradaOrgao(id) {
+    alert(id);
     let listaOrgaos = document.getElementById("lista_orgaos");
     let listaNomesOrgaos = document.getElementsByName("orgao");
     let label = document.createElement("label");
@@ -164,7 +164,7 @@ function popularMascara(mascaraId) {
 
 
 
-    let anchor = document.getElementById("adicionar_entrada_orgao");
+    let anchor = document.createElement("button");
 
     let remover = document.createElement("button");
     remover.setAttribute("type", "button");
@@ -174,17 +174,16 @@ function popularMascara(mascaraId) {
         remover.style.marginBottom = "5px";
         remover.innerHTML = "Remover";
 
-    if(listaOrgaos.contains(anchor)) {
 
-        listaOrgaos.removeChild(anchor);
+        anchor.setAttribute("onclick", "adicionarEntradaOrgao(this.id)");
+            anchor.setAttribute("type", "button");
 
-    } else {
-        anchor = document.createElement("a");
-        anchor.setAttribute("href", "javascript:adicionarEntradaOrgao()");
-        anchor.setAttribute("id", "adicionar_entrada_orgao");
+        var numero = listaNomesOrgaos.length + 1;
+
+        anchor.setAttribute("id", "adicionar_entrada_orgao" + numero);
         anchor.innerHTML = "Novo tópico";
 
-    }
+
     listaOrgaos.appendChild(orgaoDiv);
         orgaoDiv.appendChild(orgaoDivFlex);
     orgaoDivFlex.appendChild(topicoIdHidden);
