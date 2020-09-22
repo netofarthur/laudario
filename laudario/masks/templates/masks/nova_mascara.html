@@ -180,14 +180,13 @@
 <label name="orgaolabel">Tópico: </label>
 <input style="flex: 2; margin-bottom: 5px;" type="text" name="orgao">
 
-<button name="botao_remover" style="margin-bottom:5px;" type="button" onclick="removerEntradaOrgao(this.id)" id="0">Remover</button>
+<button name="botao_remover" class="botao_remover" type="button" onclick="removerEntradaOrgao(this.id)" id="0">Remover</button>
 </div>
 
 <textarea rows="3" class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do tópico"></textarea>
-<br name="orgaobr">
-    </div>
+<button class="botao_novo_topico" type="button" onclick="adicionarEntradaOrgao(this.id)" id="adicionar_entrada_orgao1">Novo tópico</button>
 
-<button type="button" onclick="adicionarEntradaOrgao(this.id)" id="adicionar_entrada_orgao1">Novo tópico</button>
+    </div>
 
 </div>
 

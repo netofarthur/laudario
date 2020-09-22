@@ -8,3 +8,18 @@ height: auto;
   overflow: auto;
   margin-top: 10px;
 }
+
+.botao_remover {
+    border-radius: .5rem;
+      background-color: #000000;
+      color: white;
+      margin-bottom:5px
+}
+
+.botao_novo_topico {
+    border-radius: .5rem;
+      color: white;
+      margin-bottom:5px;
+      background-color: #c96100;
+      margin: .5rem;
+}

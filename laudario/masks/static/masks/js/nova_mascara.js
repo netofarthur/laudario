@@ -106,7 +106,6 @@ function popularMascara(mascaraId) {
 
 
   function adicionarEntradaOrgao(id) {
-    alert(id);
     let listaOrgaos = document.getElementById("lista_orgaos");
     let listaNomesOrgaos = document.getElementsByName("orgao");
     let label = document.createElement("label");
@@ -169,6 +168,7 @@ function popularMascara(mascaraId) {
     let remover = document.createElement("button");
     remover.setAttribute("type", "button");
     remover.setAttribute("name", "botao_remover");
+    remover.setAttribute("class", "botao_remover");
     remover.setAttribute("onclick", "removerEntradaOrgao(this.id)");
      remover.setAttribute("id", listaNomesOrgaos.length);
         remover.style.marginBottom = "5px";
@@ -177,6 +177,7 @@ function popularMascara(mascaraId) {
 
         anchor.setAttribute("onclick", "adicionarEntradaOrgao(this.id)");
             anchor.setAttribute("type", "button");
+            anchor.setAttribute("class", "botao_novo_topico");
 
         var numero = listaNomesOrgaos.length + 1;
 
@@ -210,6 +211,7 @@ function popularMascara(mascaraId) {
 
       });
     listaOrgaos.appendChild(anchor);
+
 
   }
 

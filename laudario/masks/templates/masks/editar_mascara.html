@@ -127,17 +127,17 @@
 <label name="orgaolabel">Tópico: </label>
 <input style="flex: 2; margin-bottom: 5px;" type="text" name="orgao" value="{{ topico_normal.orgao }}">
 
-<button name="botao_remover" style="margin-bottom:5px;" type="button" onclick="removerEntradaOrgao(this.id)" id="{{ forloop.counter0 }}">Remover</button>
+<button class="botao_remover" name="botao_remover" style="margin-bottom:5px;" type="button" onclick="removerEntradaOrgao(this.id)" id="{{ forloop.counter0 }}">Remover</button>
     </div>
 
 
 
 <textarea style="visibility: hidden; max-height: 0;" rows="3" class="paragrafo_mascara" id="text_area_orgao{{ forloop.counter }}" name="relatorio_orgao" placeholder="Descrição normal do tópico">{{ topico_normal.relatorio }}</textarea>
-<br name="orgaobr">
+
 
     </div>
-<button type="button" onclick="adicionarEntradaOrgao(this.id)" id="adicionar_entrada_orgao{{ forloop.counter }}">Novo tópico</button>
-
+<button class="botao_novo_topico" type="button" onclick="adicionarEntradaOrgao(this.id)" id="adicionar_entrada_orgao{{ forloop.counter }}">Novo tópico</button>
+<br name="orgaobr">
     {% else %}
     <div style="display: none;" name="orgao_div">
     <div style="display: flex">
@@ -145,7 +145,7 @@
 <label name="orgaolabel">Tópico: </label>
 <input style="flex: 2; margin-bottom: 5px;" type="text" name="orgao" value="{{ topico_normal.orgao }}">
 
-<button name="botao_remover" style="margin-bottom:5px;" type="button" onclick="removerEntradaOrgao(this.id)" id="{{ forloop.counter0 }}">Remover</button>
+<button  name="botao_remover" style="margin-bottom:5px;" type="button" onclick="removerEntradaOrgao(this.id)" id="{{ forloop.counter0 }}">Remover</button>
     </div>
 
 
