@@ -183,8 +183,7 @@ function popularMascara(mascaraId) {
         anchor.setAttribute("id", "adicionar_entrada_orgao" + numero);
         anchor.innerHTML = "Novo tópico";
 
-
-    listaOrgaos.appendChild(orgaoDiv);
+    document.getElementById(id).parentNode.insertBefore(orgaoDiv, document.getElementById(id).nextSibling);
         orgaoDiv.appendChild(orgaoDivFlex);
     orgaoDivFlex.appendChild(topicoIdHidden);
 
@@ -217,7 +216,10 @@ function popularMascara(mascaraId) {
 
 function removerEntradaOrgao(id) {
     let listaOrgaos = document.getElementById("lista_orgaos");
+        listaOrgaos.removeChild(document.getElementById(id).parentNode.parentNode.nextSibling.nextSibling);
+
     listaOrgaos.removeChild(document.getElementById(id).parentNode.parentNode);
+
     document.getElementById("clicou_remover").value = parseInt(document.getElementById("clicou_remover").value) + 1;
 
 

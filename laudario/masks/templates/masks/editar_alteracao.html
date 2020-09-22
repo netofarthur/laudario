@@ -159,6 +159,18 @@
 $(document).ready(function(){
     document.getElementById("variaveis_originais_edicao").setAttribute("value", obterVariaveisOriginaisDaEdicao().toString());
 
+        var opcoes = document.getElementById("exames").options;
+
+     var opcaoSelecionada = opcoes[0].innerHTML;
+     for(var i = 0; i < opcoes.length; i++) {
+             if(opcoes[i].innerHTML == "Nenhum órgão") {
+                        opcoes[i].style.display = "none";
+
+
+        }
+     }
+
+
 });
 </script>
 

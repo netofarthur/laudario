@@ -974,7 +974,6 @@ function insertAtCursor(text) {
 
     function desabilitarEntradasConfiguracaoMascara() {
         document.getElementsByClassName("paragrafo_mascara").disabled = true;
-        document.getElementById("adicionar_entrada_orgao").style.display = "none";
         var botoes = document.getElementsByName("botao_remover");
         for(botao of botoes) {
             botao.style.display = "none";

@@ -43,7 +43,7 @@ def mostrar_mascara(request, id_mascara):
         return redirect(views.mostrar_index)
 
 
-    topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
+    topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara).order_by('ordem')
 
     topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('-frequencia', 'nome')
 
@@ -146,7 +146,7 @@ def adicionar_nova_mascara(request):
 
     for i in range(len(lista_orgaos)):
 
-        topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i])
+        topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i], ordem=i)
         topico_normal.save()
 
     topico_normal_nenhum_orgao.save()
@@ -505,7 +505,7 @@ def editar_mascara(request, id_mascara):
     topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('nome')
     mascara = Mascara.objects.get(pk=id_mascara)
     exames = Exame.objects.all()
-    topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
+    topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara).order_by('ordem')
     titulo = "Masqs - Editar Máscara"
     context = {'mascara': mascara, 'especialidades': especialidades, 'exames': exames, 'topicos_normais': topicos_normais,
                'topicos_anormais': topicos_anormais,'variaveis': variaveis, 'variaveisusuario': variaveisusuario,
