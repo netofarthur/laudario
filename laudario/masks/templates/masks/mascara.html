@@ -443,6 +443,8 @@
 
 
                             <input type="hidden" id="usuario_id_alteracao">
+                            <input type="hidden" id="usuario_orgao_alteracao" name="usuario_orgao_alteracao">
+
                             <input type="hidden" id="frase_aproveitada" name="frase_aproveitada">
 
 
@@ -550,7 +552,25 @@ $('#ModalVariaveis').on('shown.bs.modal', function (e) {
 $("#myModalAlteracao").on("show.bs.modal", function(){
 
 
+        var opcoes = document.getElementById("exames").options;
 
+     var opcaoSelecionada = opcoes[0].innerHTML;
+     for(var i = 0; i < opcoes.length; i++) {
+             if(opcoes[i].innerHTML == "Nenhum órgão") {
+                        opcoes[i].style.display = "none";
+
+
+        }
+     }
+
+     for(var i = 0; i < opcoes.length; i++) {
+             if(opcoes[i].innerHTML == "Nenhum órgão") {
+                        opcoes[i].style.display = "block";
+                        break;
+
+
+        }
+     }
 
 
         if(document.getElementById("procurarFrases") != null) {

@@ -142,12 +142,14 @@ def adicionar_nova_mascara(request):
 
 
     topico_normal_nenhum_orgao = TopicoNormal(mascara=nova_mascara, orgao="Nenhum órgão", relatorio="")
-    topico_normal_nenhum_orgao.save()
+
 
     for i in range(len(lista_orgaos)):
 
         topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i])
         topico_normal.save()
+
+    topico_normal_nenhum_orgao.save()
 
     mascaraId = request.POST['mascara_aproveitada']
 
@@ -189,7 +191,17 @@ def adicionar_alteracao(request):
 
 
         if(topicoNormal != None):
-            topicoAnormal = TopicoAnormal(topico_normal=topicoNormal, nome=request.POST['nome_modal'],
+
+            if(topicoNormal.orgao == 'Nenhum órgão'):
+                orgaoSelecionado = request.POST['usuario_orgao_alteracao']
+                topicoNormalNovo = TopicoNormal(mascara=topicoNormal.mascara, orgao="Nenhum órgão", relatorio="")
+                topicoNormalNovo.save()
+                topicoAnormal = TopicoAnormal(topico_normal=topicoNormalNovo, nome=request.POST['nome_modal'],
+                                              relatorio=request.POST['relatorio_modal'],
+                                              conclusao=request.POST['conclusao_modal'],
+                                              publica=publica)
+            else:
+                topicoAnormal = TopicoAnormal(topico_normal=topicoNormal, nome=request.POST['nome_modal'],
                                           relatorio=request.POST['relatorio_modal'],
                                           conclusao=request.POST['conclusao_modal'],
                                           publica=publica)

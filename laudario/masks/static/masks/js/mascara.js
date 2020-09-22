@@ -319,7 +319,7 @@ mostrarBotaoPopularSeNecessario();
        var todosBotoes = document.getElementsByClassName("botao_diagnostico");
        for(botao of todosBotoes) {
             if(botao.innerHTML == "Reverter") {
-                 botao.style.display = "none";
+                 botao.parentNode.parentNode.parentNode.style.display = "none";
 
 
             }
@@ -1589,11 +1589,7 @@ function recolocarTinys() {
 
             if(document.getElementById("adicionar_no_atual").checked) {
 
- if(id.charAt(0) == "p") {
-        colocarElementosEmOrdem(name);
-    } else {
 
-    }
 
 
 
@@ -1673,11 +1669,7 @@ function recolocarTinys() {
         par.style.width = "100%";
     }
 
-        document.getElementById("info_adicional").style.visibility = "visible";
-document.getElementById("info_adicional").style.maxHeight = "400px";
-        document.getElementById("info_adicional").rows = 3;
 
-        document.getElementById("info_adicional").style.width = "100%";
 
     }
 
@@ -1810,12 +1802,13 @@ function htmlDecode(input) {
             var mascaraSelecionada;
             var mascaraSelecionadaId;
             var usuarioSelecionadoId;
+            var orgaoSelecionadoUsuario;
 
 
             for(topico of topicosNormais) {
                 if(topico.pk == topicoNormalId) {
                     mascaraSelecionadaId = topico.fields.mascara;
-
+                    orgaoSelecionadoUsuario = topico.fields.orgao;
                 }
 
             }
@@ -1835,6 +1828,8 @@ function htmlDecode(input) {
             document.getElementById("usuario_id_alteracao").value = usuarioSelecionadoId;
             document.getElementById("exames").value = topicoNormalId;
             document.getElementById("frase_aproveitada").value = idSemT;
+            document.getElementById("usuario_orgao_alteracao").value = orgaoSelecionadoUsuario;
+
 
     }
 
