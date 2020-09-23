@@ -197,7 +197,6 @@ function popularMascara(mascaraId) {
     orgaoDiv.appendChild(anchor);
 
 
-alert('#' + descricaoOrgao.getAttribute("id"));
 
            tinymce.init({
 
