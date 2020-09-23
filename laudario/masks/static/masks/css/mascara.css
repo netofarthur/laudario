@@ -90,6 +90,7 @@
 .botao_diagnostico {
     margin-top: .2rem;
     margin-bottom: .2rem;
+    margin-left: .4rem;
     height: auto;
     text-align: left;
     color: #c96100;
@@ -454,17 +455,26 @@ color: #c96100;
      color: #ffffff;
      text-align: center;
      padding: .3rem;
+
 }
 
 .box_mascaras {
 border:solid;
     border-width: 1px;
+    margin-bottom: 1rem;
+
+
+
 }
 
 .link_mascara_box {
         color: #000000;
-        margin-left: .2rem;
-        margin-right: .2rem;
+
+        font-size: 1.2rem;
+        line-height: 180%;
+
+
+
 
 
 

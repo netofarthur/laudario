@@ -123,27 +123,29 @@
         Últimas utilizadas
 
         </div>
+        <div style="padding: .5rem;">
         {% for mascara in ultimas_mascaras %}
 
         <a class="link_mascara_box" href="{% url 'mostrar_mascara' id_mascara=mascara.pk %}" name="{{ mascara.exame.pk }}">{{ mascara.nome }}</a><br>
 
         {% endfor %}
-
+        </div>
 
     </div>
 
-    <br>
+    
 
     <div class="box_mascaras" id="mais_utilizadas_div">
         <div class="header_box_mascaras">
             Mais utilizadas
 
         </div>
+        <div style="padding: .5rem;">
         {% for mascara in mascaras_populares %}
         <a class="link_mascara_box" href="{% url 'mostrar_mascara' id_mascara=mascara.pk %}" name="{{ mascara.exame.pk }}">{{ mascara.nome }}</a><br>
 
         {% endfor %}
-
+        </div>
     </div>
 
 </div>
