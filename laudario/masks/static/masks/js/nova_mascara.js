@@ -137,11 +137,11 @@ function popularMascara(mascaraId) {
     descricaoOrgao.setAttribute("type", "text");
     descricaoOrgao.setAttribute("name", "relatorio_orgao");
 
-           if(listaOrgaos.children.length == 0) {
-                       descricaoOrgao.setAttribute("id", "text_area_orgao" + (listaOrgaos.children.length + parseInt(document.getElementById("clicou_remover").value)));
+           if(listaNomesOrgaos.length == 0) {
+                       descricaoOrgao.setAttribute("id", "text_area_orgao" + (listaNomesOrgaos.length + parseInt(document.getElementById("clicou_remover").value)));
 
            } else {
-                                  descricaoOrgao.setAttribute("id", "text_area_orgao" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+                                  descricaoOrgao.setAttribute("id", "text_area_orgao" + (listaNomesOrgaos.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
 
            }
 
@@ -195,10 +195,10 @@ function popularMascara(mascaraId) {
 
 
 
-
-
+alert('#' + descricaoOrgao.getAttribute("id"));
 
            tinymce.init({
+
         selector: '#' + descricaoOrgao.getAttribute("id"),
     language: 'pt_BR',
     forced_root_block: false,
@@ -210,7 +210,9 @@ function popularMascara(mascaraId) {
               elementpath: false
 
       });
-    listaOrgaos.appendChild(anchor);
+
+    orgaoDiv.appendChild(anchor);
+
 
 
   }
