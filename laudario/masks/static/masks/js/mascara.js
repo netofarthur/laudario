@@ -35,7 +35,7 @@
 
                                 } else {
 
-                                    var mystr = "var " + document.getElementById("lab" + z).innerHTML + " = " + parseFloat(document.getElementById("var" + z).value.replace(",",".")) + ";";
+                                    var mystr = "var " + document.getElementById("lab" + z).innerHTML + " = " + parseFloat(document.getElementById("var" + z).value.replaceAll(",",".")) + ";";
 
 
                                     eval(mystr);
@@ -49,7 +49,7 @@
 
                             } else {
 
-                                provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", eval(document.getElementById("lab" + z).innerHTML.replace(",",".")).toFixed(2).replace(".",","));
+                                provisoria = provisoria.replace("{" + document.getElementById("lab" + z).innerHTML + "}", eval(document.getElementById("lab" + z).innerHTML.replaceAll(",",".")).toFixed(2).replaceAll(".",","));
                             }
                             provisoria = provisoria.replace("Ignorar", "");
 
