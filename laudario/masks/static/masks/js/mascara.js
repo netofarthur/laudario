@@ -2075,6 +2075,17 @@ function setarIndicacao() {
 function editarLaudo() {
 document.getElementById("popular_variaveis").style.display = "none";
 
+document.getElementById("copiar_laudo").style.display = "inline-block";
+document.getElementById("copiar_html").style.display = "inline-block";
+document.getElementById("copiar_texto").style.display = "inline-block";
+document.getElementById("copiar_laudo").style.width = "30%";
+document.getElementById("copiar_html").style.width = "30%";
+document.getElementById("copiar_texto").style.width = "30%";
+document.getElementById("copiar_laudo").style.marginBottom = "1rem";
+document.getElementById("copiar_html").style.marginBottom = "1rem";
+document.getElementById("copiar_texto").style.marginBottom = "1rem";
+
+
                      tinymce.init({
                             selector: '#mascara_div',
                                 language: 'pt_BR',
@@ -2089,7 +2100,6 @@ document.getElementById("popular_variaveis").style.display = "none";
 
 
                           });
-                        document.getElementById("copiar_laudo").style.marginBottom = "1rem";
                          document.getElementById("copiar_laudo").setAttribute("onclick", "copiarTiny()");
                         document.getElementById("editar_laudo").parentNode.removeChild(document.getElementById("editar_laudo"));
                         document.getElementById("diagnosticos_div").parentNode.parentNode.removeChild(document.getElementById("diagnosticos_div").parentNode);
@@ -2113,6 +2123,28 @@ document.getElementById("mycontainer").insertBefore(anchor, document.getElementB
 
 
 
+
+}
+
+function copiarTinySemEstilo() {
+  tinymce.remove();
+    CopyToClipboard();
+document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
+var anchor = document.getElementById("link_voltar");
+anchor.setAttribute("href", "/mascaras");
+anchor.setAttribute("id", "link_voltar");
+
+anchor.innerHTML = "Sair";
+anchor.style.marginLeft = "45%";
+anchor.style.fontSize = "1.5rem";
+document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);
+
+
+
+
+}
+
+function copiarTextoSomente() {
 
 }
 
