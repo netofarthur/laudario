@@ -44,7 +44,7 @@ def mostrar_mascara(request, id_mascara):
 
 
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara).order_by('ordem')
-    topicos_anormais_mais_usados = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('-frequencia', 'nome')[:10]
+    topicos_anormais_mais_usados = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('-frequencia', 'nome')[:9]
 
     topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('nome','-frequencia')
 

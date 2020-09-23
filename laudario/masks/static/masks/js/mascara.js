@@ -1834,7 +1834,7 @@ function htmlDecode(input) {
 
 
     function CopyToClipboard() {
-
+document.getElementById("mais_utilizadas").style.display = "none";
     var anchor = document.createElement("a");
 anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
@@ -2076,6 +2076,7 @@ function setarIndicacao() {
 
 function editarLaudo() {
 document.getElementById("popular_variaveis").style.display = "none";
+document.getElementById("mais_utilizadas").style.display = "none";
 
 document.getElementById("copiar_laudo").style.display = "inline-block";
 document.getElementById("copiar_html").style.display = "inline-block";
@@ -2111,6 +2112,7 @@ document.getElementById("copiar_texto").style.marginBottom = "1rem";
 }
 
 function copiarTiny() {
+
 removerBotoes();
 var conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML;
     tinymce.remove();
