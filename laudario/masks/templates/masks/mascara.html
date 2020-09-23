@@ -159,7 +159,7 @@
                 <div style="margin: auto;" class="col-3">
                         <input name="{{ topicoanormal.topico_normal.pk }}" class="botao_prioridade" type="image" src="{% static 'masks/images/prioridade.png' %}" id="p{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">
                 </div>
-                <div class="col">
+                <div class="col" style="text-align: left;">
 
                     <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="botao_diagnostico" id="b{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">{{ topicoanormal.nome }}</button>
            </div>
