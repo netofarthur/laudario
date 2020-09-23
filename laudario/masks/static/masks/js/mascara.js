@@ -1187,6 +1187,15 @@ function recolocarTinys() {
                 return;
             }
 
+             var pattern = /_/g;
+            if(variavel.match(pattern).length > 1) {
+                alert("Variáveis não podem conter mais de um símbolo de underline. Corrija antes de prosseguir.");
+                recolocarTinys();
+                document.getElementById("salva_mudancas").blur();
+
+                return;
+            }
+
         }
 
 
