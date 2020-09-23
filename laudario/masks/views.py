@@ -572,12 +572,13 @@ def salvar_edicao(request, id_mascara):
 
         if(i < len(orgaosDaMascara) - int(vezesClicadoRemover)):
             if(lista_ids_orgaos[i] == "vazio"):
-                orgao = TopicoNormal(orgao=lista_nomes_orgaos[i], relatorio=lista_relatorios_orgaos[i], mascara=mascara)
+                orgao = TopicoNormal(orgao=lista_nomes_orgaos[i], relatorio=lista_relatorios_orgaos[i], mascara=mascara, ordem=i)
                 orgao.save()
             else:
                 orgao = TopicoNormal.objects.get(pk=lista_ids_orgaos[i])
                 orgao.orgao = lista_nomes_orgaos[i]
                 orgao.relatorio = lista_relatorios_orgaos[i]
+                orgao.ordem = i
                 orgao.save()
 
         else:
