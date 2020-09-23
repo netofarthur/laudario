@@ -218,11 +218,13 @@ mostrarBotaoPopularSeNecessario();
 
       if(document.getElementById("procurarFrases").value != "") {
        var botao = document.getElementById(id);
+
         var divDiagnosticos = document.getElementById("diagnosticos_div");
+        if(botao.parentNode.getAttribute("id") != "box_mais_utilizadas") {
         divDiagnosticos.removeChild(botao.parentNode.parentNode.parentNode);
         divDiagnosticos.insertBefore(botao.parentNode.parentNode.parentNode, divDiagnosticos.children[1]);
         divDiagnosticos.scrollTop = 0;
-
+        }
         }
 
      if(document.getElementById("procurarFrases") != null) {

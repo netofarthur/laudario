@@ -141,7 +141,7 @@
         {% if forloop.first %}<div class="row">{% endif %}
     <div class="col-4" style="border:1px solid black; text-align: center; padding: .5rem; background-color: white;">
             <div>
-                <div>
+                <div id="box_mais_utilizadas">
 
                   <input style="text-align: center;" name="{{ topicoanormal.topico_normal.pk }}" class="botao_prioridade" type="image" src="{% static 'masks/images/prioridade.png' %}" id="p{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">
 
