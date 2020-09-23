@@ -2037,6 +2037,8 @@ function clicouExcluir(id) {
 
 function colocarIndicacaoClinica() {
 
+
+
    if(document.getElementById("indicacoes") != null && document.getElementById("copiar_laudo") != null) {
     var indicacoes = document.getElementById("indicacoes").innerHTML.split(",");
     var indicacoesDiv = document.getElementById("indicacoes");
@@ -2104,9 +2106,12 @@ document.getElementById("copiar_texto").style.marginBottom = "1rem";
                         document.getElementById("editar_laudo").parentNode.removeChild(document.getElementById("editar_laudo"));
                         document.getElementById("diagnosticos_div").parentNode.parentNode.removeChild(document.getElementById("diagnosticos_div").parentNode);
 
+
+
 }
 
 function copiarTiny() {
+removerBotoes();
 var conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML;
     tinymce.remove();
     document.getElementById("mascara_div").innerHTML = conteudoTiny;
@@ -2127,6 +2132,7 @@ document.getElementById("mycontainer").insertBefore(anchor, document.getElementB
 }
 
 function copiarTinySemEstilo() {
+removerBotoes();
   tinymce.remove();
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
@@ -2146,8 +2152,33 @@ document.getElementById("mycontainer").insertBefore(anchor, document.getElementB
 
 function copiarTextoSomente() {
 
+removerBotoes();
+conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML.replace(/<[^>]*>/g, '\n');;
+    tinymce.remove();
+    document.getElementById("mascara_div").innerHTML = conteudoTiny.replace(/^\s*$(?:\r\n?|\n)/gm, "");
+document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/\n/g, "<br>");
+        CopyToClipboard();
+
+    document.getElementById("mascara_div").style.whiteSpace = "pre-wrap";
+document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
+var anchor = document.getElementById("link_voltar");
+anchor.setAttribute("href", "/mascaras");
+anchor.setAttribute("id", "link_voltar");
+
+anchor.innerHTML = "Sair";
+anchor.style.marginLeft = "45%";
+anchor.style.fontSize = "1.5rem";
+document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);
+
 }
 
 
 
 
+function removerBotoes() {
+    document.getElementById("copiar_laudo").style.display = "none";
+        document.getElementById("copiar_html").style.display = "none";
+    document.getElementById("copiar_texto").style.display = "none";
+
+
+}
