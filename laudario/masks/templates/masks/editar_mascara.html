@@ -133,11 +133,10 @@
 
 
 <textarea style="visibility: hidden; max-height: 0;" rows="3" class="paragrafo_mascara" id="text_area_orgao{{ forloop.counter }}" name="relatorio_orgao" placeholder="Descrição normal do tópico">{{ topico_normal.relatorio }}</textarea>
+<button class="botao_novo_topico" type="button" onclick="adicionarEntradaOrgao(this.id)" id="adicionar_entrada_orgao{{ forloop.counter }}">Novo tópico</button>
 
 
     </div>
-<button class="botao_novo_topico" type="button" onclick="adicionarEntradaOrgao(this.id)" id="adicionar_entrada_orgao{{ forloop.counter }}">Novo tópico</button>
-<br name="orgaobr">
     {% else %}
     <div style="display: none;" name="orgao_div">
     <div style="display: flex">
