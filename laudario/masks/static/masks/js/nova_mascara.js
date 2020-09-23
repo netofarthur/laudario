@@ -184,7 +184,7 @@ function popularMascara(mascaraId) {
         anchor.setAttribute("id", "adicionar_entrada_orgao" + numero);
         anchor.innerHTML = "Novo tópico";
 
-    document.getElementById(id).parentNode.insertBefore(orgaoDiv, document.getElementById(id).nextSibling);
+    document.getElementById(id).parentNode.parentNode.insertBefore(orgaoDiv, document.getElementById(id).parentNode.nextSibling);
         orgaoDiv.appendChild(orgaoDivFlex);
     orgaoDivFlex.appendChild(topicoIdHidden);
 
@@ -193,6 +193,7 @@ function popularMascara(mascaraId) {
     orgaoDivFlex.appendChild(remover);
     orgaoDiv.appendChild(descricaoOrgao);
 
+    orgaoDiv.appendChild(anchor);
 
 
 alert('#' + descricaoOrgao.getAttribute("id"));
@@ -211,7 +212,6 @@ alert('#' + descricaoOrgao.getAttribute("id"));
 
       });
 
-    orgaoDiv.appendChild(anchor);
 
 
 
