@@ -294,9 +294,8 @@ color: #c96100;
 
 }
 
-.paragrafo_mascara:first-letter {
+.paragrafo_mascara {
         width: 100%;
-        text-transform: capitalize;
 
 
 }
