@@ -91,11 +91,11 @@
     <br>
 
 <label for="relatorio_modal">Descrição da alteração: </label>
-<input class="entrada_modal" type="text" id="relatorio_modal" name="relatorio_modal" value="{{ topico_anormal.relatorio }}">
+    <textarea style="width: 100%; rows:4;" class="entrada_modal" type="text" id="relatorio_modal" name="relatorio_modal">{{ topico_anormal.relatorio }}</textarea>
 <br>
 
 <label for="conclusao_modal">Conclusão da alteração: </label>
-<input class="entrada_modal" type="text" id="conclusao_modal" name="conclusao_modal" value="{{ topico_anormal.conclusao }}">
+    <textarea style="width: 100%; rows:4;" class="entrada_modal" type="text" id="conclusao_modal" name="conclusao_modal">{{ topico_anormal.conclusao }}</textarea>
 <br>
 
 <input name="topico_id" type="hidden" id="topico_id" value="{{ topico_anormal.pk }}">

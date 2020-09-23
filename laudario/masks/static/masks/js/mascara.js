@@ -1123,9 +1123,11 @@ function recolocarTinys() {
 
     function adicionarAlteracoNaMascara() {
 
-
-
-
+        if(document.getElementById("coluna_mascaras") != null && document.getElementById("coluna_esquerda") != null) {
+            document.getElementById("coluna_mascaras").parentNode.removeChild(document.getElementById("coluna_mascaras"));
+            document.getElementById("coluna_esquerda").setAttribute("class", "col-12");
+            document.getElementById("coluna_esquerda").style.padding = "2rem";
+        }
         if(document.getElementById("nome_exame") != null && document.getElementById("nome_exame").value == "") {
             alert("É necessário colocar um nome para o exame");
             document.getElementById("salva_mudancas").blur();
@@ -1152,6 +1154,9 @@ function recolocarTinys() {
 
 
             tinymce.remove();
+
+
+
 
 
 
@@ -1311,15 +1316,18 @@ function recolocarTinys() {
 
               var inputMedida = document.createElement("input");
                 inputMedida.setAttribute("name", "unidade_de_medida");
-
+                inputMedida.style.marginBottom = "1rem";
                 var input = document.createElement("input");
                 input.setAttribute("name", "nome_amigavel_variavel")
+                input.style.marginBottom = "1rem";
 
 
 
 
                 var inputHidden = document.createElement("input");
                 inputHidden.setAttribute("type", "hidden");
+                inputHidden.style.maxHeight = 0;
+
                 inputHidden.setAttribute("name", "nome_da_variavel");
                   var label = document.createElement("label");
                   label.style.fontWeight = "bold";
@@ -1501,6 +1509,7 @@ function recolocarTinys() {
                corpo.appendChild(br);
                 corpo.appendChild(inputHidden);
 
+
                 corpo.appendChild(label);
 
                 corpo.appendChild(input);
@@ -1658,9 +1667,14 @@ function recolocarTinys() {
         input.readOnly = true;
     }
 
+        var inputs6 = document.getElementsByClassName("botao_novo_topico");
+    for(input of inputs6) {
+        input.disabled = true;
+    }
 
     var pars = document.getElementsByClassName("paragrafo_mascara");
     for(par of pars) {
+
          par.style.visibility = "visible";
         par.style.maxHeight = "400px";
         par.rows = 3;
