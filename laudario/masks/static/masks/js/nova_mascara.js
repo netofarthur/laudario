@@ -220,9 +220,8 @@ alert('#' + descricaoOrgao.getAttribute("id"));
 
 function removerEntradaOrgao(id) {
     let listaOrgaos = document.getElementById("lista_orgaos");
-        listaOrgaos.removeChild(document.getElementById(id).parentNode.parentNode.nextSibling.nextSibling);
 
-    listaOrgaos.removeChild(document.getElementById(id).parentNode.parentNode);
+  document.getElementById(id).parentNode.parentNode.style.display = "none";
 
     document.getElementById("clicou_remover").value = parseInt(document.getElementById("clicou_remover").value) + 1;
 
