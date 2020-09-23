@@ -44,8 +44,9 @@ def mostrar_mascara(request, id_mascara):
 
 
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara).order_by('ordem')
+    topicos_anormais_mais_usados = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('-frequencia', 'nome')[:10]
 
-    topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('-frequencia', 'nome')
+    topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('nome','-frequencia')
 
     todos_topicos_anormais = TopicoAnormal.objects.all().order_by('-popularidade', 'nome')
     topicos_anormais_builders = TopicoAnormalBuilder.objects.all()
@@ -71,7 +72,7 @@ def mostrar_mascara(request, id_mascara):
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
                'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
                'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario, 'todos_topicos_anormais': todos_topicos_anormais,
-               'profiles': profiles, 'profile': profile, 'titulo': titulo}
+               'profiles': profiles, 'profile': profile, 'titulo': titulo, 'topicos_anormais_mais_usados': topicos_anormais_mais_usados}
     return render(request, 'masks/mascara.html', context)
 
 def nova_mascara(request):

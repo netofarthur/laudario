@@ -219,8 +219,8 @@ mostrarBotaoPopularSeNecessario();
       if(document.getElementById("procurarFrases").value != "") {
        var botao = document.getElementById(id);
         var divDiagnosticos = document.getElementById("diagnosticos_div");
-        divDiagnosticos.removeChild(botao);
-        divDiagnosticos.insertBefore(botao, divDiagnosticos.children[1]);
+        divDiagnosticos.removeChild(botao.parentNode.parentNode.parentNode);
+        divDiagnosticos.insertBefore(botao.parentNode.parentNode.parentNode, divDiagnosticos.children[1]);
         divDiagnosticos.scrollTop = 0;
 
         }
@@ -1839,7 +1839,7 @@ function htmlDecode(input) {
 anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
-anchor.innerHTML = "Sair";
+anchor.innerHTML = "Nova máscara";
 anchor.style.marginLeft = "45%";
 anchor.style.fontSize = "1.5rem";
 document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);
@@ -1883,7 +1883,7 @@ if(document.getElementById("diagnosticos_div") != null) {
     anchor.setAttribute("href", "/mascaras");
     anchor.setAttribute("id", "link_voltar");
 
-    anchor.innerHTML = "Sair";
+    anchor.innerHTML = "Nova máscara";
     anchor.style.marginLeft = "45%";
     anchor.style.fontSize = "1.5rem";
     if(document.getElementById("link_voltar") == null) {
@@ -2121,7 +2121,7 @@ var anchor = document.getElementById("link_voltar");
 anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
-anchor.innerHTML = "Sair";
+anchor.innerHTML = "Nova máscara";
 anchor.style.marginLeft = "45%";
 anchor.style.fontSize = "1.5rem";
 document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);
@@ -2140,7 +2140,7 @@ var anchor = document.getElementById("link_voltar");
 anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
-anchor.innerHTML = "Sair";
+anchor.innerHTML = "Nova máscara";
 anchor.style.marginLeft = "45%";
 anchor.style.fontSize = "1.5rem";
 document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);
@@ -2165,7 +2165,7 @@ var anchor = document.getElementById("link_voltar");
 anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
-anchor.innerHTML = "Sair";
+anchor.innerHTML = "Nova máscara";
 anchor.style.marginLeft = "45%";
 anchor.style.fontSize = "1.5rem";
 document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);

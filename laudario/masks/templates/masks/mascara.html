@@ -152,6 +152,24 @@
     <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
     No primeiro loop são setados os ids dos topicos normais nos bancos de dados e no segundo loop o nome dos arquivos
     html em templates/diagnosticos que também são colocados no banco de dados na entrada template_name em TopicoAnormalBuilders-->
+        {% for topicoanormal in topicos_anormais_mais_usados %}
+        {% if topicoanormal.topico_normal.mascara == mascara %}
+        <div class="container-fluid">
+            <div class="row" style="border-top:1px solid black;">
+                <div style="margin: auto;" class="col-3">
+                        <input name="{{ topicoanormal.topico_normal.pk }}" class="botao_prioridade" type="image" src="{% static 'masks/images/prioridade.png' %}" id="p{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">
+                </div>
+                <div class="col" style="text-align: left;">
+
+                    <button name="{{ topicoanormal.topico_normal.pk }}" type="button" class="botao_diagnostico" id="b{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">{{ topicoanormal.nome }}</button>
+           </div>
+            </div>
+       </div>
+        {% endif %}
+    {% endfor %}
+
+
+
     {% for topicoanormal in topicos_anormais %}
         {% if topicoanormal.topico_normal.mascara == mascara %}
         <div class="container-fluid">
