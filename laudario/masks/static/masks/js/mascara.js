@@ -1856,7 +1856,9 @@ function htmlDecode(input) {
 
     function CopyToClipboard() {
 
-
+document.getElementById("ModalVariaveis").style.display = "none";
+document.getElementById("myModalAlteracao").style.display = "none";
+document.getElementById("myModal").style.display = "none";
 
     if(document.getElementById("mais_utilizadas") != null) {
 document.getElementById("mais_utilizadas").style.display = "none";
