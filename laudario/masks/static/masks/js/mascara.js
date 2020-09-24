@@ -2142,10 +2142,11 @@ document.getElementById("copiar_texto").style.marginBottom = "1rem";
 function copiarTiny() {
 
 removerBotoes();
-    limparTagsHtmlParcial();
+
 
 var conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML;
     tinymce.remove();
+    limparTagsHtmlParcial();
     document.getElementById("mascara_div").innerHTML = conteudoTiny;
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
@@ -2230,7 +2231,14 @@ function limparTagsHtmlTotal() {
         h2.removeAttribute("style");
     }
     for(div of divs) {
-        div.removeAttribute("class");
+        if(div.getAttribute("class") == "paragrafo_mascara") {
+            div.removeAttribute("class");
+        }
+        if(div.innerHTML == "") {
+            div.parentNode.removeChild(div);
+
+        }
+
         div.removeAttribute("style");
 
     }
@@ -2249,7 +2257,15 @@ function limparTagsHtmlParcial() {
         h2.removeAttribute("class");
     }
     for(div of divs) {
-        div.removeAttribute("class");
+        if(div.getAttribute("class") == "paragrafo_mascara") {
+            div.removeAttribute("class");
+
+        if(div.innerHTML == "") {
+            div.parentNode.removeChild(div);
+
+        }
+
+        }
 
     }
 
