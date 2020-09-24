@@ -2143,10 +2143,9 @@ function copiarTiny() {
 
 removerBotoes();
 
-
 var conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML;
-    tinymce.remove();
-    limparTagsHtmlParcial();
+tinymce.remove();
+
     document.getElementById("mascara_div").innerHTML = conteudoTiny;
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
@@ -2166,7 +2165,7 @@ document.getElementById("mycontainer").insertBefore(anchor, document.getElementB
 
 function copiarTinySemEstilo() {
 removerBotoes();
-  tinymce.remove();
+tinymce.remove();
   limparTagsHtmlTotal();
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
@@ -2187,22 +2186,8 @@ document.getElementById("mycontainer").insertBefore(anchor, document.getElementB
 function copiarTextoSomente() {
 
 removerBotoes();
-conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML.replace(/<[^>]*>/g, '\n');;
-    tinymce.remove();
-    document.getElementById("mascara_div").innerHTML = conteudoTiny.replace(/^\s*$(?:\r\n?|\n)/gm, "");
-document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/\n/g, "<br>");
-        CopyToClipboard();
-
-    document.getElementById("mascara_div").style.whiteSpace = "pre-wrap";
-document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
-var anchor = document.getElementById("link_voltar");
-anchor.setAttribute("href", "/mascaras");
-anchor.setAttribute("id", "link_voltar");
-
-anchor.innerHTML = "Nova máscara";
-anchor.style.marginLeft = "45%";
-anchor.style.fontSize = "1.5rem";
-document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);
+conteudoTiny = tinymce.get("mascara_div").getContent();
+copyFormatted(conteudoTiny);
 
 }
 
@@ -2225,17 +2210,32 @@ function limparTagsHtmlTotal() {
     for(h1 of h1s) {
         h1.removeAttribute("class");
         h1.removeAttribute("style");
+        h1.removeAttribute("id");
     }
     for(h2 of h2s) {
         h2.removeAttribute("class");
         h2.removeAttribute("style");
+        h2.removeAttribute("id");
     }
+
+       while (document.getElementById("topicos_div").firstChild) {
+    document.getElementById("topicos_div").parentNode.insertBefore(document.getElementById("topicos_div").firstChild,
+                                            document.getElementById("topicos_div"));
+}
+
+document.getElementById("topicos_div").parentNode.removeChild(document.getElementById("topicos_div"));
+
+
+
+
     for(p of ps) {
         p.removeAttribute("class");
         p.removeAttribute("style");
+        p.removeAttribute("id");
         if(p.innerHTML == "") {
             p.parentNode.removeChild(p);
         }
+
     }
 
 
@@ -2249,15 +2249,69 @@ function limparTagsHtmlParcial() {
 
     for(h1 of h1s) {
         h1.removeAttribute("class");
+        h1.removeAttribute("id");
     }
     for(h2 of h2s) {
         h2.removeAttribute("class");
+        h2.removeAttribute("id");
     }
     for(p of ps) {
         p.removeAttribute("class");
+        p.removeAttribute("id");
         if(p.innerHTML == "") {
             p.parentNode.removeChild(p);
         }
     }
 
+
+
+}
+
+
+
+function copyFormatted (html) {
+  // Create container for the HTML
+  // [1]
+  var container = document.createElement('div')
+  container.innerHTML = html
+
+  // Hide element
+  // [2]
+  container.style.position = 'fixed'
+  container.style.pointerEvents = 'none'
+  container.style.opacity = 0
+
+  // Detect all style sheets of the page
+  var activeSheets = Array.prototype.slice.call(document.styleSheets)
+    .filter(function (sheet) {
+      return !sheet.disabled
+    })
+
+  // Mount the container to the DOM to make `contentWindow` available
+  // [3]
+  document.body.appendChild(container)
+
+  // Copy to clipboard
+  // [4]
+  window.getSelection().removeAllRanges()
+
+  var range = document.createRange()
+  range.selectNode(container)
+  window.getSelection().addRange(range)
+
+  // [5.1]
+  document.execCommand('copy')
+
+  // [5.2]
+  for (var i = 0; i < activeSheets.length; i++) activeSheets[i].disabled = true
+
+  // [5.3]
+  document.execCommand('copy')
+
+  // [5.4]
+  for (var i = 0; i < activeSheets.length; i++) activeSheets[i].disabled = false
+
+  // Remove the container
+  // [6]
+  document.body.removeChild(container)
 }
