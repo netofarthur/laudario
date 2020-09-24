@@ -335,7 +335,7 @@ mostrarBotaoPopularSeNecessario();
 
        document.getElementById("b" + id.substring(1, id.length)).style.color = "red";
 
-   
+
 
     } else {
    document.getElementById(id).setAttribute("onclick", "reverterAlteração(this.name, this.id)");
@@ -1855,7 +1855,12 @@ function htmlDecode(input) {
 
 
     function CopyToClipboard() {
+
+
+
+    if(document.getElementById("mais_utilizadas") != null) {
 document.getElementById("mais_utilizadas").style.display = "none";
+}
     var anchor = document.createElement("a");
 anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
@@ -1880,7 +1885,7 @@ if(document.getElementById("diagnosticos_div") != null) {
 
 }
 
-
+limparTagsHtmlParcial();
 
 
     var containerid = "mascara_div";
@@ -2135,6 +2140,8 @@ document.getElementById("copiar_texto").style.marginBottom = "1rem";
 function copiarTiny() {
 
 removerBotoes();
+    limparTagsHtmlParcial();
+
 var conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML;
     tinymce.remove();
     document.getElementById("mascara_div").innerHTML = conteudoTiny;
@@ -2157,6 +2164,7 @@ document.getElementById("mycontainer").insertBefore(anchor, document.getElementB
 function copiarTinySemEstilo() {
 removerBotoes();
   tinymce.remove();
+  limparTagsHtmlTotal();
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
@@ -2203,5 +2211,44 @@ function removerBotoes() {
         document.getElementById("copiar_html").style.display = "none";
     document.getElementById("copiar_texto").style.display = "none";
 
+
+}
+
+function limparTagsHtmlTotal() {
+    var h1s = document.getElementsByTagName("h1");
+    var h2s = document.getElementsByTagName("h2");
+    var divs = document.getElementsByTagName("div");
+
+    for(h1 of h1s) {
+        h1.removeAttribute("class");
+        h1.removeAttribute("style");
+    }
+    for(h2 of h2s) {
+        h2.removeAttribute("class");
+        h2.removeAttribute("style");
+    }
+    for(div of divs) {
+        div.removeAttribute("class");
+        div.removeAttribute("style");
+
+    }
+
+}
+
+function limparTagsHtmlParcial() {
+    var h1s = document.getElementsByTagName("h1");
+    var h2s = document.getElementsByTagName("h2");
+    var divs = document.getElementsByTagName("div");
+
+    for(h1 of h1s) {
+        h1.removeAttribute("class");
+    }
+    for(h2 of h2s) {
+        h2.removeAttribute("class");
+    }
+    for(div of divs) {
+        div.removeAttribute("class");
+
+    }
 
 }
