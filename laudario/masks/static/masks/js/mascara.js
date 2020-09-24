@@ -2220,7 +2220,7 @@ function removerBotoes() {
 function limparTagsHtmlTotal() {
     var h1s = document.getElementsByTagName("h1");
     var h2s = document.getElementsByTagName("h2");
-    var divs = document.getElementsByTagName("div");
+    var ps = document.getElementsByTagName("p");
 
     for(h1 of h1s) {
         h1.removeAttribute("class");
@@ -2230,25 +2230,22 @@ function limparTagsHtmlTotal() {
         h2.removeAttribute("class");
         h2.removeAttribute("style");
     }
-    for(div of divs) {
-        if(div.getAttribute("class") == "paragrafo_mascara") {
-            div.removeAttribute("class");
+    for(p of ps) {
+        p.removeAttribute("class");
+        p.removeAttribute("style");
+        if(p.innerHTML == "") {
+            p.parentNode.removeChild(p);
         }
-        if(div.innerHTML == "") {
-            div.parentNode.removeChild(div);
-
-        }
-
-        div.removeAttribute("style");
-
     }
+
+
 
 }
 
 function limparTagsHtmlParcial() {
     var h1s = document.getElementsByTagName("h1");
     var h2s = document.getElementsByTagName("h2");
-    var divs = document.getElementsByTagName("div");
+    var ps = document.getElementsByTagName("p");
 
     for(h1 of h1s) {
         h1.removeAttribute("class");
@@ -2256,17 +2253,11 @@ function limparTagsHtmlParcial() {
     for(h2 of h2s) {
         h2.removeAttribute("class");
     }
-    for(div of divs) {
-        if(div.getAttribute("class") == "paragrafo_mascara") {
-            div.removeAttribute("class");
-
-        if(div.innerHTML == "") {
-            div.parentNode.removeChild(div);
-
+    for(p of ps) {
+        p.removeAttribute("class");
+        if(p.innerHTML == "") {
+            p.parentNode.removeChild(p);
         }
-
-        }
-
     }
 
 }
