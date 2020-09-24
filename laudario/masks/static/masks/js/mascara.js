@@ -141,8 +141,11 @@ mostrarBotaoPopularSeNecessario();
     // Se conclusão vazia, apresentar o laudo de conclusão normal da máscara.
     function reverterAlteração(name, id) {
 
-    if(id.charAt(0) == "b" || id.charAt(0) == "n") {
+    if(id.charAt(0) == "b") {
         document.getElementById("p" + id.substring(1, id.length)).style.visibility = "visible";
+
+    } else if (id.charAt(0) == "n") {
+                document.getElementById("m" + id.substring(1, id.length)).style.visibility = "visible";
 
     }
 
@@ -318,6 +321,7 @@ mostrarBotaoPopularSeNecessario();
 
 
 
+
        var todosBotoes = document.getElementsByClassName("botao_diagnostico");
        for(botao of todosBotoes) {
             if(botao.innerHTML == "Reverter") {
@@ -326,6 +330,17 @@ mostrarBotaoPopularSeNecessario();
 
             }
        }
+
+      var todosBotoes2 = document.getElementsByClassName("botao_diagnostico_mais");
+       for(botao of todosBotoes2) {
+            if(botao.innerHTML == "Reverter") {
+                 botao.parentNode.parentNode.parentNode.style.display = "none";
+
+
+            }
+       }
+
+
 
  if(id.charAt(0) == "p") {
         document.getElementById(id).style.visibility = "hidden";
@@ -338,11 +353,15 @@ mostrarBotaoPopularSeNecessario();
 
 
     } else {
-   document.getElementById(id).setAttribute("onclick", "reverterAlteração(this.name, this.id)");
+    if(id.charAt(0) == "m") {
+            document.getElementById(id).style.visibility = "hidden";
 
-    document.getElementById(id).innerHTML = "Reverter";
+    }
+   document.getElementById(id).parentNode.children[1].setAttribute("onclick", "reverterAlteração(this.name, this.id)");
 
-       document.getElementById(id).style.color = "red";
+    document.getElementById(id).parentNode.children[1].innerHTML = "Reverter";
+
+       document.getElementById(id).parentNode.children[1].style.color = "red";
     }
 
 
