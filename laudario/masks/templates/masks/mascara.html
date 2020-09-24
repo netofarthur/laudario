@@ -65,7 +65,7 @@
 <div class="col" style="padding: 0px; padding-left: 15px;">
 
 <div style="text-align: center; margin-top:7px">
-        <button id="copiar_laudo" style="width:40%; padding: .5rem;" class="btn btn-primary" onclick="CopyToClipboard()">Copiar Tudo</button>
+        <button id="copiar_laudo" style="width:40%; padding: .5rem;" class="btn btn-primary" onclick="CopyToClipboard()">Copiar Laudo</button>
             <button id="editar_laudo" style="width:40%; padding: .5rem; margin-left: 1rem;" class="btn btn-primary" onclick="editarLaudo()">Editar Laudo</button>
             <button id="copiar_html" style="width:40%; padding: .5rem; display: none; margin-left: 1rem;" class="btn btn-primary" onclick="copiarTinySemEstilo()">Copiar HTML</button>
             <button id="copiar_texto" style="width:40%; padding: .5rem; display: none; margin-left: 1rem;" class="btn btn-primary" onclick="copiarTextoSomente()">Copiar Texto</button>
@@ -75,11 +75,11 @@
     <button style="display: none;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalVariaveis" id=popular_variaveis onclick="popularVariaveis()">Preencher Variáveis</button>
 
 
-<h1 data-mce-style="color: {{ profile.cor_titulo }}; text-align: {{ profile.alinhamento_titulo }}; font-size: {{profile.tamanho_titulo }}" style="text-transform: {{ profile.capitalizacao }}; color: {{ profile.cor_titulo }}; text-align: {{ profile.alinhamento_titulo }}; font-size: {{profile.tamanho_titulo }}" class="paragrafo_mascara" name="titulo"> {{ mascara.titulo }} </h1>
+<p data-mce-style="color: {{ profile.cor_titulo }}; text-align: {{ profile.alinhamento_titulo }}; font-size: {{profile.tamanho_titulo }}; font-weight: bold;" style="text-transform: {{ profile.capitalizacao }}; color: {{ profile.cor_titulo }}; text-align: {{ profile.alinhamento_titulo }}; font-size: {{profile.tamanho_titulo }}; font-weight: bold;" class="paragrafo_mascara" name="titulo"> {{ mascara.titulo }} </p>
 
 {% if mascara.indicacoes != "" %}
 
-<h2 id=indicacoes_header" data-mce-style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}"  style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}"> {{ mascara.indicacoes_header }} </h2>
+<p id=indicacoes_header" data-mce-style="font-weight: bold; margin-bottom: 0px; color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}"  style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 0px; font-weight: bold;"> {{ mascara.indicacoes_header }} </p>
 {% autoescape off %}
 <p id="indicacoes" data-mce-style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}"><span style="display: none;">Selecione, </span>{{mascara.indicacoes }}</p>
 {% endautoescape %}
@@ -87,14 +87,14 @@
  {% endif %}
 
 
-<h2 data-mce-style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}"  style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}"> {{ mascara.tecnica_header }} </h2>
+<p data-mce-style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 0px; font-weight: bold;" style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 0px; font-weight: bold;"> {{ mascara.tecnica_header }} </p>
 {% autoescape off %}
 <p id="tecnica" data-mce-style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" class="paragrafo_mascara"> {{mascara.tecnica }} </p>
 {% endautoescape %}
 
 
 
-<h2 data-mce-style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}" style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}"> {{ mascara.relatorio_header }} </h2>
+<p data-mce-style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 0px; font-weight: bold;" style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 0px; font-weight: bold;"> {{ mascara.relatorio_header }} </p>
 
 
 
@@ -122,10 +122,10 @@
 
 
 
-<h2 data-mce-style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}" style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}"> {{ mascara.conclusao_header }} </h2>
+<p data-mce-style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 0px; font-weight: bold;" style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 0px; font-weight: bold;"> {{ mascara.conclusao_header }} </p>
     {% autoescape off %}
     <p data-mce-style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}" style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" id="paragrafo_conclusao" name="conclusao"> {{mascara.conclusao}} </p>
-    <p data-mce-style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}" style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}"> {{mascara.info_adicional}} </p>
+    <p data-mce-style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: 0px;" style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: 0px;"> {{mascara.info_adicional}} </p>
 
     {% endautoescape %}
 
