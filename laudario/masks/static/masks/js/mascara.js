@@ -2186,10 +2186,12 @@ document.getElementById("mycontainer").insertBefore(anchor, document.getElementB
 
 function copiarTinySemEstilo() {
 removerBotoes();
-var conteudoTiny = tinymce.get("mascara_div").getContent();
+
+var conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML;
 tinymce.remove();
 
     document.getElementById("mascara_div").innerHTML = conteudoTiny;
+    limparTagsHtmlTotal();
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
@@ -2239,6 +2241,41 @@ function removerBotoes() {
 
 
 }
+
+
+
+function limparTagsHtmlTotal() {
+
+
+    if(document.getElementById("topicos_div") != null) {
+
+       while (document.getElementById("topicos_div").firstChild) {
+    document.getElementById("topicos_div").parentNode.insertBefore(document.getElementById("topicos_div").firstChild,
+                                            document.getElementById("topicos_div"));
+}
+
+document.getElementById("topicos_div").parentNode.removeChild(document.getElementById("topicos_div"));
+}
+
+    var ps = document.getElementsByTagName("p");
+
+
+    for(p of ps) {
+        p.removeAttribute("class");
+        p.removeAttribute("id");
+        p.removeAttribute("data-mce-style");
+        p.removeAttribute("style");
+
+
+
+    }
+
+    $("p:empty").remove()
+
+
+}
+
+
 
 
 function limparTagsHtmlParcial() {
