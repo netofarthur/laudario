@@ -69,6 +69,7 @@
       height: 100vh;
   overflow: auto;
   margin-top: 1rem;
+  padding-bottom: 20vh;
 
 }
 
@@ -546,5 +547,13 @@ height: auto;
       margin: .5rem;
 }
 
+#mais_utilizadas {
+    height: 20vh;
+    overflow: auto;
+    position: fixed;
+    bottom: 3.5rem;
+    left: 3.5rem;
+      width: 55%;
 
+}
 
