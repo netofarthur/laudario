@@ -2221,6 +2221,8 @@ conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML.replace(/<[^>]*>/g
     tinymce.remove();
     document.getElementById("mascara_div").innerHTML = conteudoTiny.replace(/^\s*$(?:\r\n?|\n)/gm, "");
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/\n/g, "<br>");
+document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace("Preencher Variáveis<br>", "");
+
         CopyToClipboard();
 
     document.getElementById("mascara_div").style.whiteSpace = "pre-wrap";
