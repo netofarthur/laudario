@@ -355,13 +355,19 @@ mostrarBotaoPopularSeNecessario();
     } else {
     if(id.charAt(0) == "m") {
             document.getElementById(id).style.visibility = "hidden";
-
-    }
-   document.getElementById(id).parentNode.children[1].setAttribute("onclick", "reverterAlteração(this.name, this.id)");
+document.getElementById(id).parentNode.children[1].setAttribute("onclick", "reverterAlteração(this.name, this.id)");
 
     document.getElementById(id).parentNode.children[1].innerHTML = "Reverter";
 
        document.getElementById(id).parentNode.children[1].style.color = "red";
+    } else {
+    document.getElementById(id).setAttribute("onclick", "reverterAlteração(this.name, this.id)");
+
+    document.getElementById(id).innerHTML = "Reverter";
+
+       document.getElementById(id).style.color = "red";
+    }
+
     }
 
 
