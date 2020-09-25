@@ -134,14 +134,14 @@
 
 
 </div>
-    <div id="mais_utilizadas" class="container-fluid" style="border:1px solid black; background-color: black; margin-top: 2rem;">
+    <div id="mais_utilizadas" class="container-fluid" style="border:1px solid black; background-color: black;">
 <div style="background-color: black; color: white; text-align: center; width: 100%; margin: 0px;">Mais utilizadas</div>
  {% for topicoanormal in topicos_anormais_mais_usados %}
         {% if topicoanormal.topico_normal.mascara == mascara %}
         {% if forloop.first %}<div class="row">{% endif %}
     <div class="col-4" style="border:1px solid black; text-align: center; padding: .5rem; background-color: white;">
             <div>
-                <div id="box_mais_utilizadas">
+                <div id="box_mais_utilizadas" style="word-wrap: break-word;">
 
                   <input style="text-align: center;" name="{{ topicoanormal.topico_normal.pk }}" class="botao_prioridade" type="image" src="{% static 'masks/images/prioridade.png' %}" id="m{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">
 
