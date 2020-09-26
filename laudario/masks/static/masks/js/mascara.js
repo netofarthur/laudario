@@ -292,9 +292,11 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById(name).innerHTML = relatorio;
             document.getElementById(name).setAttribute("name", "alterado");
             document.getElementById(name).setAttribute("class", "paragrafo_mascara");
+
         } else {
            document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
         }
+
 
         if(document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado") {
             if(conclusao != "") {
@@ -2307,10 +2309,11 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
     for(p of ps) {
         p.removeAttribute("class");
         p.removeAttribute("id");
-        if(p.innerHTML == "") {
-            p.parentNode.removeChild(p);
+        if(p.innerHTML == " ") {
+            p.style.display = "none";
         }
     }
+    $("p:empty").remove()
 
 
 
