@@ -66,10 +66,10 @@
 }
 
 #mascara_div {
-      height: 80vh;
+      height: 90vh;
   overflow: auto;
   margin-top: 1rem;
-  padding-bottom: 20vh;
+  margin-bottom: 1rem;
 
 }
 
@@ -272,7 +272,7 @@ color: #c96100;
 }
 
 #containermascaras {
-    min-height: 80vh;
+    min-height: 90vh;
     padding-top: 1rem;
 }
 
@@ -559,13 +559,14 @@ height: auto;
 }
 
 #mais_utilizadas {
-    height: 20vh;
-    overflow: auto;
-    position: fixed;
-    bottom: 2px;
-    left: 2px;
 
-      width: 65%;
+
 
 }
 
+.botao_prioridade {
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+
+}

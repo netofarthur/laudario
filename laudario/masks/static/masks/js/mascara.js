@@ -2093,7 +2093,6 @@ function clicouExcluir(id) {
 function colocarIndicacaoClinica() {
 
     document.getElementById("mycontainer").scrollIntoView();
-        document.getElementById("myfooter").style.display = "none";
 
 
    if(document.getElementById("indicacoes") != null && document.getElementById("copiar_laudo") != null) {
