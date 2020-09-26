@@ -30,10 +30,10 @@
 
 #diagnosticos_div {
 
-    height: 100vh;
+    height: 90vh;
   overflow: auto;
   background-color: white;
-  margin-top: 10px;
+  margin-top: 20px;
 
 
 }
@@ -66,7 +66,7 @@
 }
 
 #mascara_div {
-      height: 100vh;
+      height: 80vh;
   overflow: auto;
   margin-top: 1rem;
   padding-bottom: 20vh;
@@ -272,7 +272,7 @@ color: #c96100;
 }
 
 #containermascaras {
-    min-height: 100vh;
+    min-height: 80vh;
     padding-top: 1rem;
 }
 
@@ -402,6 +402,17 @@ color: #c96100;
     color: #ffffff;
     padding: .5rem;
     height: 2.5rem;
+}
+
+#myfooter2 {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    background-color: #000000;
+    color: #ffffff;
+    padding: .5rem;
+    height: 2.5rem;
+    width: 66%;
 }
 
 .btn-link {
@@ -551,9 +562,10 @@ height: auto;
     height: 20vh;
     overflow: auto;
     position: fixed;
-    bottom: 1rem;
-    left: 1rem;
-      width: 63%;
+    bottom: 2px;
+    left: 2px;
+
+      width: 65%;
 
 }
 
