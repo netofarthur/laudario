@@ -68,7 +68,7 @@ function popularMascara(mascaraId) {
         for(i = 0; i < topicosNormaisObject.length; i++) {
             if(topicosNormaisObject[i].fields.mascara == mascaraId) {
                     if(entradasNomesOrgaos[counter] == null) {
-                            adicionarEntradaOrgao("adicionar_entrada_orgao" + entradasNomesOrgaos.length + 1);
+                            adicionarEntradaOrgao("adicionar_entrada_orgao" + parseInt(entradasNomesOrgaos.length + 1));
 
                     }
 
@@ -184,7 +184,7 @@ function popularMascara(mascaraId) {
 
         anchor.setAttribute("id", "adicionar_entrada_orgao" + numero);
         anchor.innerHTML = "Novo tópico";
-
+        alert(id);
     document.getElementById(id).parentNode.parentNode.insertBefore(orgaoDiv, document.getElementById(id).parentNode.nextSibling);
         orgaoDiv.appendChild(orgaoDivFlex);
     orgaoDivFlex.appendChild(topicoIdHidden);
