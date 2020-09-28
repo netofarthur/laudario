@@ -2092,8 +2092,6 @@ function clicouExcluir(id) {
 
 function colocarIndicacaoClinica() {
 
-    document.getElementById("mycontainer").scrollIntoView();
-
 
    if(document.getElementById("indicacoes") != null && document.getElementById("copiar_laudo") != null) {
     var indicacoes = document.getElementById("indicacoes").innerHTML.split(",");
@@ -2269,7 +2267,15 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
 }
 
     var ps = document.getElementsByTagName("p");
-
+    var divs = document.getElementsByTagName("div");
+    for(div of divs) {
+        if(div.getAttribute("class") == "paragrafo_mascara") {
+            div.removeAttribute("class");
+        div.removeAttribute("id");
+        div.removeAttribute("data-mce-style");
+        div.removeAttribute("style");
+        }
+    }
 
     for(p of ps) {
         p.removeAttribute("class");
@@ -2302,8 +2308,14 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
 }
 
     var ps = document.getElementsByTagName("p");
+    var divs = document.getElementsByTagName("div");
+    for(div of divs) {
+        if(div.getAttribute("class") == "paragrafo_mascara") {
+            div.removeAttribute("class");
+        div.removeAttribute("id");
 
-
+        }
+    }
 
     for(p of ps) {
         p.removeAttribute("class");
