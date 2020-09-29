@@ -46,20 +46,45 @@ function tornarExamesInvisiveis() {
       } else {
         if(todasMascaras[i].getAttribute("name") != especialidadeSelecionada) {
             todasMascaras[i].parentNode.parentNode.style.display = "none";
-                        todasMascaras[i].parentNode.parentNode.parentNode.parentNode.style.display = "none";
+                        if(getChildrenCount(todasMascaras[i].parentNode.parentNode.parentNode.children) > 0) {
+                             todasMascaras[i].parentNode.parentNode.parentNode.parentNode.style.display = "block";
+
+                        } else {
+                            todasMascaras[i].parentNode.parentNode.parentNode.parentNode.style.display = "none";
+
+                        }
 
          } else {
-                     todasMascaras[i].parentNode.parentNode.parentNode.parentNode.style.display = "block";
 
             todasMascaras[i].parentNode.parentNode.style.display = "block";
+            if(getChildrenCount(todasMascaras[i].parentNode.parentNode.parentNode.children) > 0) {
+                             todasMascaras[i].parentNode.parentNode.parentNode.parentNode.style.display = "block";
+
+                        } else {
+                            todasMascaras[i].parentNode.parentNode.parentNode.parentNode.style.display = "none";
+
+                        }
 
          }
       }
 
-
   }
 
+
+
 }
+
+
+function getChildrenCount(children) {
+    counter = 0;
+    for(child of children) {
+        if(child.style.display != "none") {
+            counter++;
+        }
+    }
+    return counter;
+}
+
 
 function colocaNomesAmigaveisFontes() {
      var opcoes = document.getElementById("fonte").options;
