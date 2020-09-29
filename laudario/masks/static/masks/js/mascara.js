@@ -2313,6 +2313,7 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
     }
 
     $("p:empty").remove()
+    $("div:empty").remove()
 
 
 }
@@ -2338,6 +2339,9 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
         if(div.getAttribute("class") == "paragrafo_mascara") {
             div.removeAttribute("class");
         div.removeAttribute("id");
+        if(div.innerHTML == " ") {
+            div.style.display = "none";
+        }
 
         }
     }
@@ -2350,6 +2354,7 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
         }
     }
     $("p:empty").remove()
+    $("div:empty").remove()
 
 
 
