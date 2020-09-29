@@ -484,8 +484,8 @@
 
 
                               {% for topicoanormal in todos_topicos_anormais %}
-                                {% if topicoanormal.topico_normal.mascara.especialidade == mascara.especialidade and topicoanormal.topico_normal.mascara.exame == mascara.exame and topicoanormal.publica == True and topicoanormal.topico_normal.mascara.usuario != request.user %}
-                                    <button type="button" class="botao_diagnostico" id="t{{ topicoanormal.pk }}" onclick="popularFraseAlterada(this.id)">{{ topicoanormal.nome }} ({{ topicoanormal.topico_normal.mascara.usuario.username }})</button>
+                                {% if topicoanormal.topico_normal.mascara.especialidade == mascara.especialidade and topicoanormal.topico_normal.mascara.exame == mascara.exame and topicoanormal.publica == True %}
+                         <button type="button" class="botao_diagnostico" id="t{{ topicoanormal.pk }}" onclick="popularFraseAlterada(this.id)">{{ topicoanormal.nome }} <span style="color: black">({{ topicoanormal.topico_normal.mascara.usuario.username }})</span></button>
                                 {% endif %}
                             {% endfor %}
                       </div>
