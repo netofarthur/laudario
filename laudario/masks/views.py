@@ -582,7 +582,7 @@ def salvar_edicao(request, id_mascara):
                 orgao.save()
 
         else:
-            orgao = TopicoNormal(orgao=lista_nomes_orgaos[i], relatorio=lista_relatorios_orgaos[i], mascara=mascara)
+            orgao = TopicoNormal(orgao=lista_nomes_orgaos[i], relatorio=lista_relatorios_orgaos[i], mascara=mascara, ordem=i)
             orgao.save()
 
 

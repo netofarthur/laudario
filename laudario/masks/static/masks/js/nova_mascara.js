@@ -172,7 +172,7 @@ function popularMascara(mascaraId) {
     remover.setAttribute("name", "botao_remover");
     remover.setAttribute("class", "botao_remover");
     remover.setAttribute("onclick", "removerEntradaOrgao(this.id)");
-     remover.setAttribute("id", listaNomesOrgaos.length);
+     remover.setAttribute("id", listaNomesOrgaos.length + parseInt(document.getElementById("clicou_remover").value));
         remover.style.marginBottom = "5px";
         remover.innerHTML = "Remover";
 
@@ -181,7 +181,7 @@ function popularMascara(mascaraId) {
             anchor.setAttribute("type", "button");
             anchor.setAttribute("class", "botao_novo_topico");
 
-        var numero = listaNomesOrgaos.length + 1;
+        var numero = listaNomesOrgaos.length + parseInt(document.getElementById("clicou_remover").value) + 1;
 
         anchor.setAttribute("id", "adicionar_entrada_orgao" + numero);
         anchor.innerHTML = "Novo tópico";
@@ -221,7 +221,7 @@ function popularMascara(mascaraId) {
 function removerEntradaOrgao(id) {
     let listaOrgaos = document.getElementById("lista_orgaos");
 
-  document.getElementById(id).parentNode.parentNode.style.display = "none";
+  document.getElementById(id).parentNode.parentNode.parentNode.removeChild(document.getElementById(id).parentNode.parentNode);
 
     document.getElementById("clicou_remover").value = parseInt(document.getElementById("clicou_remover").value) + 1;
 
