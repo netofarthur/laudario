@@ -120,6 +120,7 @@ function popularMascara(mascaraId) {
     orgao.setAttribute("type", "text");
     orgao.setAttribute("name", "orgao");
     orgao.style.flex = "2";
+    orgao.style.width = "100%";
 
     let orgaoDiv = document.createElement("div");
     orgaoDiv.setAttribute("name", "orgao_div");
@@ -290,6 +291,7 @@ function filtrarMascaras() {
     orgao.setAttribute("type", "text");
     orgao.setAttribute("name", "orgao");
     orgao.style.flex = "2";
+    orgao.style.width = "100%";
 
     let orgaoDiv = document.createElement("div");
     orgaoDiv.setAttribute("name", "orgao_div");
