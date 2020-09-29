@@ -2149,7 +2149,9 @@ document.getElementById("copiar_texto").style.marginBottom = "1rem";
 
                               menubar: false,
                                       plugins: "table",
-                                force_p_newlines: true,
+                                force_br_newlines : true,
+  force_p_newlines : false,
+  forced_root_block : '', // Needed for 3.x
                             toolbar: "bold italic underline forecolor table",
                               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
                                 branding: false,
