@@ -2142,6 +2142,29 @@ document.getElementById("copiar_laudo").style.marginBottom = "1rem";
 document.getElementById("copiar_html").style.marginBottom = "1rem";
 document.getElementById("copiar_texto").style.marginBottom = "1rem";
 
+if(document.getElementById("tecnica") != null) {
+document.getElementById("tecnica").style.marginTop = "0px";
+
+}
+if(document.getElementById("topicos_div") != null) {
+document.getElementById("topicos_div").style.marginTop = "0px";
+
+}
+if(document.getElementById("paragrafo_conclusao") != null) {
+document.getElementById("paragrafo_conclusao").style.marginTop = "0px";
+
+}
+
+if(document.getElementById("indicacoes") != null) {
+document.getElementById("indicacoes").style.marginTop = "0px";
+
+}
+if(document.getElementById("titulo") != null) {
+document.getElementById("titulo").style.margin = ".5rem";
+
+}
+
+
 
                      tinymce.init({
                             selector: '#mascara_div',
