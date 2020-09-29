@@ -68,7 +68,7 @@ function popularMascara(mascaraId) {
         for(i = 0; i < topicosNormaisObject.length; i++) {
             if(topicosNormaisObject[i].fields.mascara == mascaraId) {
                     if(entradasNomesOrgaos[counter] == null) {
-                            adicionarEntradaOrgao("adicionar_entrada_orgao" + parseInt(entradasNomesOrgaos.length + 1));
+                            adicionarEntradaOrgaoAntigo();
 
                     }
 
@@ -184,7 +184,6 @@ function popularMascara(mascaraId) {
 
         anchor.setAttribute("id", "adicionar_entrada_orgao" + numero);
         anchor.innerHTML = "Novo tópico";
-        alert(id);
     document.getElementById(id).parentNode.parentNode.insertBefore(orgaoDiv, document.getElementById(id).parentNode.nextSibling);
         orgaoDiv.appendChild(orgaoDivFlex);
     orgaoDivFlex.appendChild(topicoIdHidden);
@@ -273,3 +272,129 @@ function filtrarMascaras() {
         }
 
 }
+
+
+
+  function adicionarEntradaOrgaoAntigo() {
+
+    let listaOrgaos = document.getElementById("lista_orgaos");
+    let listaNomesOrgaos = document.getElementsByName("orgao");
+    let label = document.createElement("label");
+    label.setAttribute("for", "orgao");
+    label.setAttribute("name", "orgaolabel");
+    label.innerHTML = "Tópico: ";
+
+    let orgao = document.createElement("input");
+            orgao.style.marginBottom = "5px";
+
+    orgao.setAttribute("type", "text");
+    orgao.setAttribute("name", "orgao");
+    orgao.style.flex = "2";
+
+    let orgaoDiv = document.createElement("div");
+    orgaoDiv.setAttribute("name", "orgao_div");
+
+    let topicoIdHidden = document.createElement("input");
+    topicoIdHidden.setAttribute("name", "id_orgao");
+    topicoIdHidden.setAttribute("type", "hidden");
+    topicoIdHidden.setAttribute("value", "vazio");
+
+    let orgaoDivFlex = document.createElement("div");
+    orgaoDivFlex.style.display = "flex";
+
+
+    let descricaoOrgao = document.createElement("textarea");
+    descricaoOrgao.setAttribute("rows", "3");
+    descricaoOrgao.setAttribute("type", "text");
+    descricaoOrgao.setAttribute("name", "relatorio_orgao");
+
+           if(listaOrgaos.children.length == 0) {
+                       descricaoOrgao.setAttribute("id", "text_area_orgao" + (listaOrgaos.children.length + parseInt(document.getElementById("clicou_remover").value)));
+
+           } else {
+                                  descricaoOrgao.setAttribute("id", "text_area_orgao" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+
+           }
+
+
+
+
+
+
+
+        descricaoOrgao.setAttribute("class", "paragrafo_mascara");
+
+
+
+    descricaoOrgao.setAttribute("placeholder", "Descrição normal do tópico");
+
+
+    let br = document.createElement("br");
+    br.setAttribute("name", "orgaobr");
+
+
+
+    let anchor = document.getElementById("adicionar_entrada_orgao");
+
+
+    let butao = document.createElement("button");
+ butao.setAttribute("onclick", "adicionarEntradaOrgao(this.id)");
+            butao.setAttribute("type", "button");
+            butao.setAttribute("class", "botao_novo_topico");
+            butao.innerHTML = "Novo tópico";
+            butao.setAttribute("id", "adicionar_entrada_orgao" + parseInt(listaNomesOrgaos.length + 1));
+
+    let remover = document.createElement("button");
+    remover.setAttribute("type", "button");
+    remover.setAttribute("name", "botao_remover");
+        remover.setAttribute("class", "botao_remover");
+
+    remover.setAttribute("onclick", "removerEntradaOrgao(this.id)");
+     remover.setAttribute("id", listaNomesOrgaos.length);
+        remover.style.marginBottom = "5px";
+        remover.innerHTML = "Remover";
+
+
+
+    if(listaOrgaos.contains(anchor)) {
+
+
+    } else {
+        anchor = document.createElement("a");
+        anchor.setAttribute("href", "javascript:adicionarEntradaOrgaoAntigo()");
+        anchor.setAttribute("id", "adicionar_entrada_orgao");
+        anchor.innerHTML = "Novo tópico";
+
+    }
+    listaOrgaos.appendChild(orgaoDiv);
+        orgaoDiv.appendChild(orgaoDivFlex);
+    orgaoDivFlex.appendChild(topicoIdHidden);
+
+   orgaoDivFlex.appendChild(label);
+    orgaoDivFlex.appendChild(orgao);
+    orgaoDivFlex.appendChild(remover);
+    orgaoDiv.appendChild(descricaoOrgao);
+    orgaoDiv.appendChild(butao);
+
+
+
+
+
+
+
+           tinymce.init({
+        selector: '#' + descricaoOrgao.getAttribute("id"),
+    language: 'pt_BR',
+    forced_root_block: false,
+        plugins: "table",
+          menubar: false,
+        toolbar: "bold italic underline forecolor table",
+          fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+            branding: false,
+              elementpath: false
+
+      });
+    listaOrgaos.appendChild(anchor);
+    anchor.style.display = "none";
+
+  }
