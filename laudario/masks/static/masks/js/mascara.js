@@ -2051,7 +2051,7 @@ function procurarFrases(id) {
     } else {
       li[i].style.display = "none";
     }
-
+    
   }
 }
 
