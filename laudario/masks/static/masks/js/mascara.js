@@ -510,6 +510,7 @@ document.getElementById(id).parentNode.children[1].setAttribute("onclick", "reve
         for(var i = 0; i < variaveisJSONObject.length; i++) {
             if(variavel == variaveisJSONObject[i].fields.nome_da_variavel) {
                 nomeAmigavel = variaveisJSONObject[i].fields.nome_amigavel;
+
             }
 
 
@@ -1550,6 +1551,7 @@ function recolocarTinys() {
                 corpo.appendChild(inputMedida);
 
             if(variavelJaExiste == false && variavelExisteNaMascara == true) {
+                input.style.whiteSpace = "pre";
                 input.setAttribute("value", obterNomeAmigavelVariavel(label.innerHTML));
                 inputMedida.setAttribute("value", obterUnidadeMedida(label.innerHTML));
             }
