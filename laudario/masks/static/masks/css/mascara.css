@@ -92,7 +92,8 @@
 .botao_diagnostico {
     margin-top: .2rem;
     margin-bottom: .2rem;
-    margin-left: .4rem;
+    margin-left: 0;
+    padding-left: 0;
     height: auto;
     text-align: left;
     color: #c96100;
@@ -111,7 +112,6 @@
 .botao_diagnostico_mais {
     margin-top: .2rem;
     margin-bottom: .2rem;
-    margin-left: .4rem;
     height: auto;
     text-align: left;
     color: #c96100;
@@ -568,8 +568,8 @@ height: auto;
 }
 
 .botao_prioridade {
-    width: 25px;
-    height: 25px;
-    margin-top: 5px;
+    width: 4rem;
+    height: auto;
+    margin-top: .5rem;
 
 }
