@@ -207,8 +207,8 @@
 
     </form>
 
-    <div style="visibility: hidden; max-height: 0;" id="ultima_alteracao_relatorio"></div>
-    <p style="visibility: hidden; max-height: 0;" id="ultima_alteracao_conclusao"></p>
+    <div style="display: none;" id="ultima_alteracao_relatorio"></div>
+    <p style="display: none;" id="ultima_alteracao_conclusao"></p>
 
 </div>
 
@@ -612,6 +612,12 @@ $("#myModalAlteracao").on("show.bs.modal", function(){
     document.getElementById("relatorio_modal").value = "";
 
     document.getElementById("conclusao_modal").value = "";
+
+        document.getElementById("ultima_alteracao_relatorio").style.display = "none";
+    document.getElementById("ultima_alteracao_conclusao").style.display = "none";
+
+
+
 
     document.getElementById("relatorio_modal").readOnly = false;
 
