@@ -582,6 +582,7 @@ $('#ModalVariaveis').on('shown.bs.modal', function (e) {
 $("#myModalAlteracao").on("show.bs.modal", function(){
 
 
+
         var opcoes = document.getElementById("exames").options;
 
      var opcaoSelecionada = opcoes[0].innerHTML;
@@ -622,10 +623,7 @@ $("#myModalAlteracao").on("show.bs.modal", function(){
 
 
     var corpo = document.getElementById("corpo_variaveis");
-    var children = corpo.children;
-    for(child of children) {
-        child.style.display = "none";
-    }
+    corpo.innerHTML = "";
 
 
              tinymce.init({
