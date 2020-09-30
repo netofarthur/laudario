@@ -254,7 +254,7 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
 <div id="coluna_mascaras" class="col-6" style="height: 90vh; overflow: auto;">
 
   {% for mascara in mascaras %}
-    
+
     <button type="button" class="botao_diagnostico" id="{{ mascara.pk }}" onclick="popularMascara(this.id)">{{ mascara.nome }} <span style="color: #000000;">({{ mascara.usuario.username }})</span></button>
 
   {% endfor %}
