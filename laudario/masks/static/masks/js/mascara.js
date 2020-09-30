@@ -1355,7 +1355,7 @@ function recolocarTinys() {
                 var input = document.createElement("input");
                 input.setAttribute("name", "nome_amigavel_variavel")
                 input.style.marginBottom = "1rem";
-
+                input.style.whiteSpace = "pre";
 
 
 
@@ -1551,7 +1551,7 @@ function recolocarTinys() {
                 corpo.appendChild(inputMedida);
 
             if(variavelJaExiste == false && variavelExisteNaMascara == true) {
-                input.style.whiteSpace = "pre";
+
                 input.setAttribute("value", obterNomeAmigavelVariavel(label.innerHTML));
                 inputMedida.setAttribute("value", obterUnidadeMedida(label.innerHTML));
             }
