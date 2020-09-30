@@ -1878,7 +1878,7 @@ function htmlDecode(input) {
 
 
             document.getElementById("usuario_id_alteracao").value = usuarioSelecionadoId;
-            document.getElementById("exames").value = topicoNormalId;
+            document.getElementById("exames").value = "";
             document.getElementById("frase_aproveitada").value = idSemT;
             document.getElementById("usuario_orgao_alteracao").value = orgaoSelecionadoUsuario;
 
