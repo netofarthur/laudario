@@ -176,7 +176,7 @@ mostrarBotaoPopularSeNecessario();
         document.getElementById(id).innerHTML = nome;
 
 
-        document.getElementById(name).innerHTML = document.getElementById(name).innerHTML.replace(document.getElementById("ultima_alteracao_relatorio").innerHTML, "");
+        document.getElementById("topicos_div").innerHTML = document.getElementById("ultima_alteracao_relatorio").innerHTML;
         var pos = document.getElementById(name).innerHTML.lastIndexOf("<br>");
         document.getElementById(name).innerHTML = document.getElementById(name).innerHTML.substring(0, pos);
 
@@ -269,6 +269,10 @@ mostrarBotaoPopularSeNecessario();
 
         document.getElementById("frase_clicada").value = idSemB;
 
+
+       document.getElementById("ultima_alteracao_relatorio").innerHTML = document.getElementById("topicos_div").innerHTML;
+                document.getElementById("ultima_alteracao_conclusao").innerHTML = conclusao;
+
     if(id.charAt(0) == "p" || id.charAt(0) == "m") {
     colocarElementosEmOrdem(name);
 
@@ -318,8 +322,7 @@ mostrarBotaoPopularSeNecessario();
             }
         }
 
-                document.getElementById("ultima_alteracao_relatorio").innerHTML = relatorio;
-                document.getElementById("ultima_alteracao_conclusao").innerHTML = conclusao;
+
 
 
 

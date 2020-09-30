@@ -195,7 +195,7 @@ def adicionar_alteracao(request):
 
             if(topicoNormal.orgao == 'Nenhum órgão'):
                 orgaoSelecionado = request.POST['usuario_orgao_alteracao']
-                topicoNormalNovo = TopicoNormal(mascara=topicoNormal.mascara, orgao="Nenhum órgão", relatorio="")
+                topicoNormalNovo = TopicoNormal(mascara=topicoNormal.mascara, orgao="Nenhum órgão", relatorio="", ordem=100000)
                 topicoNormalNovo.save()
                 topicoAnormal = TopicoAnormal(topico_normal=topicoNormalNovo, nome=request.POST['nome_modal'],
                                               relatorio=request.POST['relatorio_modal'],
