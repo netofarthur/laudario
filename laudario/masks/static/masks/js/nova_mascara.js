@@ -67,7 +67,7 @@ function popularMascara(mascaraId) {
 
         for(i = 0; i < topicosNormaisObject.length; i++) {
             if(topicosNormaisObject[i].fields.mascara == mascaraId) {
-                    if(entradasNomesOrgaos[counter] == null) {
+                    if(entradasNomesOrgaos[counter] == null && topicosNormaisObject[i].fields.orgao != "Nenhum órgão") {
                             adicionarEntradaOrgaoAntigo();
 
                     }

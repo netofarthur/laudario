@@ -142,7 +142,7 @@ def adicionar_nova_mascara(request):
     nova_mascara.save()
 
 
-    topico_normal_nenhum_orgao = TopicoNormal(mascara=nova_mascara, orgao="Nenhum órgão", relatorio="")
+    topico_normal_nenhum_orgao = TopicoNormal(mascara=nova_mascara, orgao="Nenhum órgão", relatorio="", ordem=-1)
 
 
     for i in range(len(lista_orgaos)):
