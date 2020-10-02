@@ -268,10 +268,15 @@ color: #c96100;
                 padding: 10px;
                 border-radius: .5rem;
                 background-color: #000000;
-                height: auto;
+                height: 60vh;
                 overflow: auto;
 
 
+
+}
+
+#body_teclado {
+    max-height: 70vh;
 }
 
 #containermascaras {
