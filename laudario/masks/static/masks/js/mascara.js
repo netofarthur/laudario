@@ -1102,7 +1102,7 @@ function recolocarTinys() {
 
       var orgaos = document.getElementsByName("relatorio_orgao");
 
-      for(var i = 1; i < orgaos.length; i++) {
+      for(var i = 0; i < orgaos.length; i++) {
         tinymce.init({
         selector: '#text_area_orgao' + i,
         forced_root_block: false,
