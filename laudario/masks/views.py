@@ -475,7 +475,7 @@ def configuracoes(request):
             especialidades_com_mascara.append(especialidade)
     exames = Exame.objects.all()
     especialidades = especialidades_com_mascara
-    mascaras = Mascara.objects.filter(usuario=request.user)
+    mascaras = Mascara.objects.filter(usuario=request.user).order_by('nome')
     exames = Exame.objects.all()
 
     profile = Profile.objects.get(usuario=request.user)
