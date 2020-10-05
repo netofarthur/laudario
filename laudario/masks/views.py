@@ -441,7 +441,7 @@ def mostrar_mascaras(request):
     # Verifica se o usuário está logado
     if not request.user.is_authenticated:
         return redirect(views.mostrar_index)
-    mascaras = Mascara.objects.filter(usuario=request.user)
+    mascaras = Mascara.objects.filter(usuario=request.user).order_by('nome')
     mascaras_populares = Mascara.objects.filter(usuario=request.user).order_by('-frequencia', 'nome')[:10]
     ultimas_mascaras = Mascara.objects.filter(usuario=request.user).order_by('-ultima_vez_usado', 'nome')[:10]
     todasespecialidades = Especialidade.objects.all()
