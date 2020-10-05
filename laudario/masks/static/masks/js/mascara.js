@@ -2279,9 +2279,57 @@ function removerBotoes() {
 }
 
 
+function trocarCabecalhos() {
+    var ps = document.getElementsByTagName("p");
+    for(p of ps) {
+
+        if(p.getAttribute("id") == "titulo") {
+            var h2 = document.createElement("h2");
+            h2.innerHTML = p.innerHTML.toUpperCase();
+            p.parentNode.replaceChild(h2, p);
+        }
+        for(p of ps) {
+
+         if(p.getAttribute("id") == "indicacoes_header") {
+            var h2 = document.createElement("h3");
+            h2.innerHTML = p.innerHTML;
+            p.parentNode.replaceChild(h2, p);
+        }
+        }
+
+        for(p of ps) {
+        if(p.getAttribute("id") == "tecnica_header") {
+            var h2 = document.createElement("h3");
+            h2.innerHTML = p.innerHTML;
+            p.parentNode.replaceChild(h2, p);
+        }
+        }
+
+        for(p of ps) {
+        if(p.getAttribute("id") == "relatorio_header") {
+            var h2 = document.createElement("h3");
+            h2.innerHTML = p.innerHTML;
+            p.parentNode.replaceChild(h2, p);
+        }
+        }
+
+        for(p of ps) {
+        if(p.getAttribute("id") == "conclusao_header") {
+            var h2 = document.createElement("h3");
+            h2.innerHTML = p.innerHTML;
+            p.parentNode.replaceChild(h2, p);
+        }
+}
+
+
+
+    }
+}
+
+
 
 function limparTagsHtmlTotal() {
-
+trocarCabecalhos();
 
     if(document.getElementById("topicos_div") != null) {
 
@@ -2292,6 +2340,41 @@ function limparTagsHtmlTotal() {
 
 document.getElementById("topicos_div").parentNode.removeChild(document.getElementById("topicos_div"));
 }
+
+    var tables = document.getElementsByTagName("table");
+    var tbodys = document.getElementsByTagName("tbody");
+    var trs = document.getElementsByTagName("tr");
+    var tds = document.getElementsByTagName("td");
+
+    for(table of tables) {
+        table.removeAttribute("class");
+        table.removeAttribute("id");
+        table.removeAttribute("data-mce-style");
+        table.removeAttribute("style");
+    }
+        for(tbody of tbodys) {
+        tbody.removeAttribute("class");
+        tbody.removeAttribute("id");
+        tbody.removeAttribute("data-mce-style");
+        tbody.removeAttribute("style");
+    }
+
+            for(tr of trs) {
+        tr.removeAttribute("class");
+        tr.removeAttribute("id");
+        tr.removeAttribute("data-mce-style");
+        tr.removeAttribute("style");
+    }
+                for(td of tds) {
+        td.removeAttribute("class");
+        td.removeAttribute("id");
+        td.removeAttribute("data-mce-style");
+        td.removeAttribute("style");
+    }
+
+
+
+
 
     var ps = document.getElementsByTagName("p");
     var divs = document.getElementsByTagName("div");
