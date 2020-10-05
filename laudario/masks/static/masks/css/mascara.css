@@ -269,7 +269,7 @@ color: #c96100;
                 border-radius: .5rem;
                 background-color: #000000;
                 max-height: 60vh;
-                overflow: auto;
+                overflow-y: auto;
 
 
 
