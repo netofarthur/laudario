@@ -230,19 +230,11 @@ mostrarBotaoPopularSeNecessario();
         }
         }
 
-     if(document.getElementById("procurarFrases") != null) {
 
-
-
-                    document.getElementById("procurarFrases").value = "";
-                    procurarFrases("procurarFrases");
-
-
-                }
 
         if(document.getElementById("procurarFrases") != null) {
                     document.getElementById("procurarFrases").value = "";
-                    procurarFrases("procurarFrases");
+                    procurarFrasesMascara("procurarFrases");
                 } else if(document.getElementById("procurarFrasesPublicas") != null) {
                     document.getElementById("procurarFrasesPublicas").value = "";
                     procurarFrases("procurarFrasesPublicas");
@@ -387,6 +379,8 @@ document.getElementById(id).parentNode.children[1].setAttribute("onclick", "reve
     mostrarBotaoPopularSeNecessario();
 
     document.getElementById("formulario_upvote").submit();
+
+
 
 
     }
@@ -2136,7 +2130,9 @@ function setarIndicacao() {
 
 
 
-
+if(document.getElementById("procurarFrases") != null) {
+            document.getElementById("procurarFrases").focus();
+        }
 
 
 }
