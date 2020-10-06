@@ -302,7 +302,7 @@ mostrarBotaoPopularSeNecessario();
         }
 
 
-        if(document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado") {
+        if(document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado" && relatorio != "") {
             if(conclusao != "") {
                 document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
 
