@@ -2122,8 +2122,19 @@ function setarIndicacao() {
     var select = document.getElementById("lista_indicacoes");
     var selecao = select.options[select.selectedIndex].innerHTML;
 
-        indicacoesDiv.innerHTML = "";
+    if(selecao.trim() == "Não mostrar") {
+        document.getElementById("indicacoes_header").parentNode.removeChild(document.getElementById("indicacoes_header"));
+        select.parentNode.style.display = "none";
+    } else if(selecao.trim() == "Deixar em branco") {
+        indicacoesDiv.innerHTML = "<br>";
+    } else {
+    indicacoesDiv.innerHTML = "";
         indicacoesDiv.innerHTML = selecao;
+
+    }
+
+
+
 
 
 
