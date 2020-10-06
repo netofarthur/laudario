@@ -2286,6 +2286,7 @@ function trocarCabecalhos() {
         if(p.getAttribute("id") == "titulo") {
             var h2 = document.createElement("h2");
             h2.innerHTML = p.innerHTML.toUpperCase();
+
             p.parentNode.replaceChild(h2, p);
         }
         for(p of ps) {
@@ -2293,6 +2294,8 @@ function trocarCabecalhos() {
          if(p.getAttribute("id") == "indicacoes_header") {
             var h2 = document.createElement("h3");
             h2.innerHTML = p.innerHTML;
+                        h2.style.marginTop = "1rem";
+
             p.parentNode.replaceChild(h2, p);
         }
         }
@@ -2301,6 +2304,8 @@ function trocarCabecalhos() {
         if(p.getAttribute("id") == "tecnica_header") {
             var h2 = document.createElement("h3");
             h2.innerHTML = p.innerHTML;
+                        h2.style.marginTop = "1rem";
+
             p.parentNode.replaceChild(h2, p);
         }
         }
@@ -2309,6 +2314,8 @@ function trocarCabecalhos() {
         if(p.getAttribute("id") == "relatorio_header") {
             var h2 = document.createElement("h3");
             h2.innerHTML = p.innerHTML;
+                        h2.style.marginTop = "1rem";
+
             p.parentNode.replaceChild(h2, p);
         }
         }
@@ -2317,6 +2324,8 @@ function trocarCabecalhos() {
         if(p.getAttribute("id") == "conclusao_header") {
             var h2 = document.createElement("h3");
             h2.innerHTML = p.innerHTML;
+            h2.style.marginTop = "1rem";
+
             p.parentNode.replaceChild(h2, p);
         }
 }
