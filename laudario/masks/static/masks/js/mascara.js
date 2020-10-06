@@ -1900,9 +1900,8 @@ anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Nova máscara";
-anchor.style.marginLeft = "45%";
 anchor.style.fontSize = "1.5rem";
-document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);
+document.getElementById("botoes_div").appendChild(anchor);
 
 
 document.getElementById("copiar_laudo").style.display = "none";
@@ -2209,9 +2208,8 @@ anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Nova máscara";
-anchor.style.marginLeft = "45%";
 anchor.style.fontSize = "1.5rem";
-document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);
+document.getElementById("botoes_div").appendChild(anchor);
 
 
 
@@ -2233,9 +2231,8 @@ anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Nova máscara";
-anchor.style.marginLeft = "45%";
 anchor.style.fontSize = "1.5rem";
-document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);
+document.getElementById("botoes_div").appendChild(anchor);
 
 
 
@@ -2260,9 +2257,8 @@ anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Nova máscara";
-anchor.style.marginLeft = "45%";
 anchor.style.fontSize = "1.5rem";
-document.getElementById("mycontainer").insertBefore(anchor, document.getElementById("mycontainer").firstChild);
+document.getElementById("botoes_div").appendChild(anchor);
 
 
 }
