@@ -317,6 +317,7 @@ mostrarBotaoPopularSeNecessario();
         } else {
             if(conclusao != null && conclusao != "") {
                     document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + conclusao;
+                                    document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
 
 
             }
