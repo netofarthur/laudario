@@ -473,7 +473,7 @@ document.getElementById(id).parentNode.children[1].setAttribute("onclick", "reve
 
     //ainda falta filtrar por usuário
     function obterUnidadeMedida(variavel) {
-        var variaveisJSONObject = JSON.parse(nomesAmigaveis);
+        var variaveisJSONObject = JSON.parse(nomesAmigaveisUsuario);
         var unidadeMedida;
         for(var i = 0; i < variaveisJSONObject.length; i++) {
             if(variavel == variaveisJSONObject[i].fields.nome_da_variavel) {
@@ -503,7 +503,7 @@ document.getElementById(id).parentNode.children[1].setAttribute("onclick", "reve
 
     //ainda falta filtrar por usuário
     function obterNomeAmigavelVariavel(variavel) {
-        var variaveisJSONObject = JSON.parse(nomesAmigaveis);
+        var variaveisJSONObject = JSON.parse(nomesAmigaveisUsuario);
         var nomeAmigavel;
         for(var i = 0; i < variaveisJSONObject.length; i++) {
             if(variavel == variaveisJSONObject[i].fields.nome_da_variavel) {
@@ -1724,7 +1724,7 @@ function recolocarTinys() {
 
 
     function getVariaveisUsuarioCount() {
-            var variaveisJSONObject = JSON.parse(nomesAmigaveis);
+            var variaveisJSONObject = JSON.parse(nomesAmigaveisUsuario);
             return variaveisJSONObject.length;
     }
 
