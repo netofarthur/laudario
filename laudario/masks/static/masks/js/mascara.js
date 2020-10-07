@@ -2183,8 +2183,7 @@ document.getElementById("titulo").style.margin = ".5rem";
 
                               menubar: false,
                                       plugins: "table",
-                                force_br_newlines : true,
-  force_p_newlines : false,
+  force_p_newlines : true,
   forced_root_block : '', // Needed for 3.x
                             toolbar: "bold italic underline forecolor table",
                               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
