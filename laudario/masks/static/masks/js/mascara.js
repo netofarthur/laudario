@@ -1882,6 +1882,7 @@ function htmlDecode(input) {
 
 
     function CopyToClipboard() {
+    
 
 document.getElementById("ModalVariaveis").style.display = "none";
 document.getElementById("myModalAlteracao").style.display = "none";
@@ -2119,7 +2120,7 @@ function setarIndicacao() {
 
     if(selecao.trim() == "Não mostrar") {
         document.getElementById("indicacoes_header").parentNode.removeChild(document.getElementById("indicacoes_header"));
-        select.parentNode.style.display = "none";
+        select.parentNode.parentNode.removeChild(select.parentNode);
     } else if(selecao.trim() == "Deixar em branco") {
         indicacoesDiv.innerHTML = "<br>";
     } else {
