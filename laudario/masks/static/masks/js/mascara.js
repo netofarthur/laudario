@@ -1209,7 +1209,7 @@ function recolocarTinys() {
                 return;
             }
 
-             var pattern = /^[a-z0-9_|*-+\/,.]+$/i;
+             var pattern = /^[a-z0-9_|*-+\/,.()]+$/i;
             if(variavel.match(pattern) == null) {
                 alert("Variáveis não podem conter acentuação ou símbolos, apenas letras e números. Corrija antes de prosseguir.");
                 recolocarTinys();
