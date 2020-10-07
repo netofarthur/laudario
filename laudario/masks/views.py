@@ -240,6 +240,11 @@ def adicionar_variaveis(request):
             variavel = Variavel.objects.get(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i])
         except Variavel.DoesNotExist:
             variavel = Variavel(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i])
+        except Variavel.MultipleObjectsReturned:
+            variaveis = Variavel.objects.filter(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i])
+            for myvar in variaveis:
+                myvar.delete()
+            variavel = Variavel(usuario=usuario, nome_da_variavel=lista_nomes_variaveis[i])
         if(lista_nomes_amigaveis[i] == ""):
             variavel.nome_amigavel = 'Ignorar'
         else:
@@ -379,24 +384,28 @@ def cadastrar(request):
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
-        link = 'https://masqs.com.br/users/validate/' + uid + '/' + token
-        nomeusuario = user.first_name
-        msg_plain = render_to_string('masks/email.txt', {'link': link, 'nomeusuario': nomeusuario})
-        msg_html = render_to_string('masks/email.html', {'link': link, 'nomeusuario': nomeusuario})
-        send_mail(
-          'Verificação de cadastro',
-          msg_plain,
-          'Contato Masqs <contato@masqs.com.br>',
-          [user.email],
-          html_message=msg_html,
+        # PRODUÇÃO SOMENTE
+        # link = 'https://masqs.com.br/users/validate/' + uid + '/' + token
+        # nomeusuario = user.first_name
+        # msg_plain = render_to_string('masks/email.txt', {'link': link, 'nomeusuario': nomeusuario})
+        # msg_html = render_to_string('masks/email.html', {'link': link, 'nomeusuario': nomeusuario})
+        # send_mail(
+        #   'Verificação de cadastro',
+        #   msg_plain,
+        #   'Contato Masqs <contato@masqs.com.br>',
+        #   [user.email],
+        #   html_message=msg_html,
+        #
+        #   fail_silently=False,
+        # )
+        # titulo = "Masqs - Confirmação"
+        # mensagem_confirmacao = 'Parabéns, <span style="color: #c96100">' + user.first_name + '</span>, seu cadastro foi criado!<br><br>Para poder acessar sua conta, antes é necessário clicar no link de confirmação enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spams</span>.'
+        # context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo,}
+        # return render(request, 'masks/aviso.html', context)
 
-          fail_silently=False,
-        )
-        titulo = "Masqs - Confirmação"
-        mensagem_confirmacao = 'Parabéns, <span style="color: #c96100">' + user.first_name + '</span>, seu cadastro foi criado!<br><br>Para poder acessar sua conta, antes é necessário clicar no link de confirmação enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spams</span>.'
-        context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo,}
-        return render(request, 'masks/aviso.html', context)
-
+        # TESTE APENAS. APAGAR NA PRODUÇÃO!!!!!
+        return HttpResponse(
+            '<html><body><a href="/users/validate/' + uid + '/' + token + '">clique aqui</a></body></html>')
 
 
 
@@ -696,27 +705,30 @@ def link_reset(request):
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
+        #PRODUCAO SOMENTE
+        #link = 'https://masqs.com.br/users/resetpwd/' + uid + '/' + token
+        #nomeusuario = user.username
 
-        link = 'https://masqs.com.br/users/resetpwd/' + uid + '/' + token
-        nomeusuario = user.username
+        #msg_plain = render_to_string('masks/emailreset.txt', {'link': link, 'nomeusuario': nomeusuario})
+        #msg_html = render_to_string('masks/emailreset.html', {'link': link, 'nomeusuario': nomeusuario})
 
-        msg_plain = render_to_string('masks/emailreset.txt', {'link': link, 'nomeusuario': nomeusuario})
-        msg_html = render_to_string('masks/emailreset.html', {'link': link, 'nomeusuario': nomeusuario})
-
-        send_mail(
-           'Alterar senha',
-           msg_plain,
-           'Contato Masqs <contato@masqs.com.br>',
-           [user.email],
-           html_message=msg_html,
+        #send_mail(
+           #'Alterar senha',
+           #msg_plain,
+           #'Contato Masqs <contato@masqs.com.br>',
+           #[user.email],
+           #html_message=msg_html,
         
-           fail_silently=False,
-        )
-        logout(request)
-        mensagem_confirmacao = 'Um link foi enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spams</span>.'
-        titulo = "Masqs - Confirmação"
-        context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo}
-        return render(request, 'masks/aviso.html', context)
+           #fail_silently=False,
+        #)
+        #logout(request)
+        #mensagem_confirmacao = 'Um link foi enviado para o email <span style="color: #c96100">' + user.email + '</span>.<br><br>Certifique-se de que o email enviado não foi para a sua <span style="color: #c96100">lixeira</span> ou <span style="color: #c96100">caixa de spams</span>.'
+        #titulo = "Masqs - Confirmação"
+        #context = {'mensagem_confirmacao': mensagem_confirmacao, 'titulo': titulo}
+        #return render(request, 'masks/aviso.html', context)
+
+        #TESTE APENAS
+        return HttpResponse('<html><body><a href="/users/resetpwd/' + uid + '/' + token + '">clique aqui</a></body></html>')
 
 
     except ObjectDoesNotExist:
