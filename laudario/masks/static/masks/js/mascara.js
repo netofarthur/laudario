@@ -1491,7 +1491,8 @@ function recolocarTinys() {
                     if(splits.length > 1) {
                         for(var z = 0; z < splits.length; z++) {
                                 if(isNaN(parseFloat(splits[z].trim()))) {
-                                    constructor = constructor.replace(splits[z].trim(), splits[z].trim() + getVariaveisUsuarioCount());
+
+                                    constructor = constructor.replace(splits[z].trim().replaceAll("(", "").replaceAll(")", ""), splits[z].trim().replaceAll("(", "").replaceAll(")", "") + getVariaveisUsuarioCount());
                                 }
                         }
 
