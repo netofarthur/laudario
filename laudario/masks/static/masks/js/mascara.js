@@ -2312,6 +2312,29 @@ function removerBotoes() {
 
 
 function trocarCabecalhos() {
+    var divs = document.getElementsByTagName("div");
+    for(div of divs) {
+        if(div.getAttribute("class") == "paragrafo_mascara") {
+
+        var mypar= document.createElement("p");
+        mypar.innerHTML = div.innerHTML;
+        div.parentNode.insertBefore(mypar, div.nextSibling);
+        div.setAttribute("class", "aserremovido");
+
+
+        }
+    }
+
+    var ele= document.getElementsByClassName("aserremovido");
+len = ele.length;
+parentNode = ele[0].parentNode;
+for(var i=0; i<len; i++)
+{
+  parentNode.removeChild(ele[0]);
+}
+
+
+
     var ps = document.getElementsByTagName("p");
     for(p of ps) {
 
