@@ -1577,6 +1577,7 @@ function recolocarTinys() {
 
                 var nomesAmigos = [];
                 var unidadesMedidas = [];
+                var variaveisUsuarioAproveitado = [];
 
                 for(vari of variaveisJSONObject) {
 
@@ -1588,6 +1589,7 @@ function recolocarTinys() {
                             } else {
                             nomesAmigos.push(vari.fields.nome_amigavel);
                             unidadesMedidas.push(vari.fields.unidade_medida);
+                            variaveisUsuarioAproveitado.push(vari.fields.nome_da_variavel);
 
                             }
 
@@ -1610,7 +1612,6 @@ function recolocarTinys() {
 
 
 
-
                 nomesAmigaveisInputs = document.getElementsByName("nome_amigavel_variavel");
                 unidadesMedidasInputs = document.getElementsByName("unidade_de_medida");
                 var labels = document.getElementsByName("label_variavel");
@@ -1619,7 +1620,7 @@ function recolocarTinys() {
 
                 for (var z = 0; z < nomesAmigaveisInputs.length; z++) {
 
-                        if(variaveisUsuario.includes(labels[z].innerHTML.replaceAll(getVariaveisUsuarioCount().toString(), ""))) {
+                        if(variaveisUsuario.includes(labels[z].innerHTML.replaceAll(getVariaveisUsuarioCount().toString(), "")) || variaveisUsuarioAproveitado.includes(labels[z].innerHTML) || variaveisUsuarioAproveitado.includes(labels[z].innerHTML) || variaveisUsuarioAproveitado.includes(labels[z].innerHTML.replaceAll(getVariaveisUsuarioCount().toString(), ""))) {
                             nomesAmigaveisInputs[z].value = nomesAmigos[contador];
                         unidadesMedidasInputs[z].value = unidadesMedidas[contador];
                         contador++;
