@@ -1619,7 +1619,7 @@ function recolocarTinys() {
 
                 for (var z = 0; z < nomesAmigaveisInputs.length; z++) {
 
-                        if(variaveisUsuario.includes(labels[z].innerHTML.replace(getVariaveisUsuarioCount().toString(), ""))) {
+                        if(variaveisUsuario.includes(labels[z].innerHTML.replaceAll(getVariaveisUsuarioCount().toString(), ""))) {
                             nomesAmigaveisInputs[z].value = nomesAmigos[contador];
                         unidadesMedidasInputs[z].value = unidadesMedidas[contador];
                         contador++;
