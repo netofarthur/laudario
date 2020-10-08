@@ -1585,6 +1585,7 @@ function recolocarTinys() {
                         if(todasVariaveis.includes(vari.fields.nome_da_variavel)) {
                             if(vari.fields.nome_amigavel == "Ignorar") {
                             nomesAmigos.push("");
+                            variaveisUsuarioAproveitado.push("");
 
                             } else {
                             nomesAmigos.push(vari.fields.nome_amigavel);
@@ -1630,12 +1631,6 @@ function recolocarTinys() {
                         }
 
 
-                        if(nomesAmigaveisInputs[z].value == "undefined") {
-                            nomesAmigaveisInputs[z].value = "";
-                        }
-                        if(unidadesMedidasInputs[z].value == "undefined") {
-                            unidadesMedidasInputs[z].value = "";
-                        }
 
 
 
