@@ -312,11 +312,11 @@ color: #c96100;
 }
 
 #link_topico_anormal {
-    color: #000000;
+    color: #c96100;
 }
 
 #link_topico_anormal:hover {
-    color: #000000;
+    color: #c96100;
     text-decoration: none;
 
 }

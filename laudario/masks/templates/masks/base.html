@@ -63,11 +63,15 @@
                     <li class="nav-item active">
                         <a id="mascaras" class="nav-link" href="{% url 'mostrar_mascaras' %}">Máscaras <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a id="configuracoes" class="nav-link" href="{% url 'configuracoes' %}">Configurações</a>
+                     <li class="nav-item">
+                        <a id="editar" class="nav-link" href="{% url 'configuracoes' %}">Editar</a>
                     </li>
                      <li class="nav-item">
-                        <a id="sobre" class="nav-link" href="{% url 'sobre' %}">Sobre</a>
+                        <a id="nova" class="nav-link" href="{% url 'nova_mascara' %}">Nova</a>
+                    </li>
+
+                     <li class="nav-item">
+                        <a id="ajuda" class="nav-link" href="{% url 'sobre' %}">Ajuda</a>
                     </li>
                 </ul>
                 <form id="form_username">

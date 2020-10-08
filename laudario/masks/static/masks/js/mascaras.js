@@ -97,7 +97,9 @@ function colocaNomesAmigaveisFontes() {
 //apaga tópicos duplicados
 function apagar() {
 
-        if(document.getElementById("exames") != null) {
+
+
+
             if(document.getElementById(getCookie('aba')) != null) {
                 document.getElementById(getCookie('aba')).setAttribute("class", "collapse show");
 
@@ -106,7 +108,7 @@ function apagar() {
                 document.getElementById("exames").value = getCookie('exame');
                 tornarExamesInvisiveis();
             }
-        }
+
 
     if(document.getElementById("fonte") != null) {
 
@@ -215,7 +217,6 @@ for(var i = 1; i < opcoes.length; i++) {
 
 
 }
-
 
 
 }

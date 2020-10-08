@@ -33,7 +33,115 @@
 
 
 
-<div class="col-4">
+
+
+<div class="col-2"></div>
+
+
+
+<div class="col-8" style="margin-top: 1rem; margin-bottom: 1rem;">
+
+
+
+
+
+
+
+<div class="list-group">
+
+
+  <div id="accordion">
+
+ {% for especialidade in especialidades %}
+    <div class="card">
+      <div class="card-header" id={{ especialidade.pk }}>
+        <h5 class="mb-0">
+
+
+              <button onclick="clicouAba(this)" class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ especialidade.pk }}" aria-expanded="true" aria-controls="collapse{{ especialidade.pk }}">
+                {{ especialidade.descricao }}
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapse{{ especialidade.pk }}" class="collapse" aria-labelledby={{ especialidade.pk }} data-parent="#accordion">
+
+
+                {% for mascara in mascaras %}
+                {% if mascara.especialidade == especialidade %}
+              <div class="card-body">
+
+              <div class="list-group" style="border-collapse: collapse; margin: .5rem;">
+                <div id="container-fluid-div" class="container-fluid" style="margin: 2px; padding: 2px;">
+                    <div class="row">
+                    <div class="col-6">
+
+                        <a class="link_mascara" href="{% url 'mostrar_mascara' id_mascara=mascara.pk %}" name="{{ mascara.exame.pk }}">{{ mascara.nome }}</a>
+                    </div>
+
+                    <div class="col" style="margin-bottom: .5rem;">
+                        <div class="container-fluid" >
+                            <div class="row">
+                                <div class="col-6">
+                                   <form method="get" action="{% url 'editar_mascara' id_mascara=mascara.pk %}">
+                                    <input class="botao_configuracao" type="submit" value="Editar" />
+                                </form>
+                                </div>
+
+                                <div class="col-6">
+                                   <form method="get" action="{% url 'excluir_mascara' id_mascara=mascara.pk %}">
+                                    <input id="{{ mascara.pk }}" class="botao_configuracao" type="button" value="Excluir" onclick="clicouExcluir(this.id)"/>
+                                </form>
+                                </div>
+
+
+                         </div>
+                            </div>
+                    </div>
+
+                        </div>
+
+                </div>
+            </div>
+
+            </div>
+                {% endif %}
+                {% endfor %}
+
+
+
+          </div>
+        </div>
+        {% endfor %}
+
+  </div>
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+<div class="col-2"></div>
+
+
+
+  </div>
+
+
+
+    <div class="row">
+
+        <div class="col-2"></div>
+
+
+        <div class="col-8">
 
 
     <form id="formulario_configuracoes" action="{% url 'salvar_configuracoes' %}" method="post">
@@ -326,106 +434,10 @@
 </div>
 
 
+        <div class="col-2"></div>
 
 
-
-<div class="col-8" style="padding: 0px; padding-right: 15px;">
-     <form action="{% url 'nova_mascara' %}" method="post">
-    {% csrf_token %}
-      <input id = "botaonovamascara" type="submit" class="btn btn-primary" value="Criar Máscara"/>
-  </form>
-
-
-
-
-
-
-
-<div class="list-group">
-
-
-  <div id="accordion">
-
- {% for especialidade in especialidades %}
-    <div class="card">
-      <div class="card-header" id={{ especialidade.pk }}>
-        <h5 class="mb-0">
-
-
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ especialidade.pk }}" aria-expanded="true" aria-controls="collapse{{ especialidade.pk }}">
-                {{ especialidade.descricao }}
-              </button>
-            </h5>
-          </div>
-
-          <div id="collapse{{ especialidade.pk }}" class="collapse" aria-labelledby={{ especialidade.pk }} data-parent="#accordion">
-
-
-                {% for mascara in mascaras %}
-                {% if mascara.especialidade == especialidade %}
-              <div class="card-body">
-
-              <div class="list-group" style="border-collapse: collapse; margin: .5rem;">
-                <div id="container-fluid-div" class="container-fluid" style="margin: 2px; padding: 2px;">
-                    <div class="row">
-                    <div class="col-6">
-
-                        <a class="link_mascara" href="{% url 'mostrar_mascara' id_mascara=mascara.pk %}" name="{{ mascara.exame.pk }}">{{ mascara.nome }}</a>
-                    </div>
-
-                    <div class="col" style="margin-bottom: .5rem;">
-                        <div class="container-fluid" >
-                            <div class="row">
-                                <div class="col-6">
-                                   <form method="get" action="{% url 'editar_mascara' id_mascara=mascara.pk %}">
-                                    <input class="botao_configuracao" type="submit" value="Editar" />
-                                </form>
-                                </div>
-
-                                <div class="col-6">
-                                   <form method="get" action="{% url 'excluir_mascara' id_mascara=mascara.pk %}">
-                                    <input id="{{ mascara.pk }}" class="botao_configuracao" type="button" value="Excluir" onclick="clicouExcluir(this.id)"/>
-                                </form>
-                                </div>
-
-
-                         </div>
-                            </div>
-                    </div>
-
-                        </div>
-
-                </div>
-            </div>
-
-            </div>
-                {% endif %}
-                {% endfor %}
-
-
-
-          </div>
-        </div>
-        {% endfor %}
-
-  </div>
-
-
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-
-
-  </div>
+    </div>
 
   </div>
 

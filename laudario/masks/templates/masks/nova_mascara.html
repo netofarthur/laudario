@@ -17,6 +17,16 @@
     var topicosNormais = '{{ topicos_normais|escapejs }}';
  </script>
 
+<script>
+
+        if(document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)) != null) {
+            document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)).style.color = "#c96100";
+
+    }
+
+
+</script>
+
 <script type="text/javascript" src="{% static 'masks/js/nova_mascara.js' %}"></script>
 <script type="text/javascript" src="{% static 'masks/js/mascara.js' %}"></script>
 
