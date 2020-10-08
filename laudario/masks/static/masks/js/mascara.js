@@ -1591,25 +1591,44 @@ function recolocarTinys() {
 
                             }
 
-                        } else {
-                            nomesAmigos.push("");
-                            unidadesMedidas.push("");
                         }
                     }
+
+                }
+
+                        var variaJSONObject = JSON.parse(nomesAmigaveisUsuario);
+
+
+                var variaveisUsuario = []
+            for(var z = 0; z < variaJSONObject.length; z++) {
+                variaveisUsuario.push(variaJSONObject[z].fields.nome_da_variavel);
 
                 }
 
 
 
 
+
+
+
                 nomesAmigaveisInputs = document.getElementsByName("nome_amigavel_variavel");
                 unidadesMedidasInputs = document.getElementsByName("unidade_de_medida");
+                var labels = document.getElementsByName("label_variavel");
+
+                var contador = 0;
 
                 for (var z = 0; z < nomesAmigaveisInputs.length; z++) {
 
+                        if(variaveisUsuario.includes(labels[z].innerHTML.replace(getVariaveisUsuarioCount().toString(), ""))) {
+                            nomesAmigaveisInputs[z].value = nomesAmigos[contador];
+                        unidadesMedidasInputs[z].value = unidadesMedidas[contador];
+                        contador++;
+                        } else {
+                        nomesAmigaveisInputs[z].value = "";
+                        unidadesMedidasInputs[z].value = "";
+                        }
 
-                        nomesAmigaveisInputs[z].value = nomesAmigos[z];
-                        unidadesMedidasInputs[z].value = unidadesMedidas[z];
+
                         if(nomesAmigaveisInputs[z].value == "undefined") {
                             nomesAmigaveisInputs[z].value = "";
                         }
