@@ -1597,6 +1597,9 @@ function recolocarTinys() {
                 }
 
 
+                
+
+
 
 
                 nomesAmigaveisInputs = document.getElementsByName("nome_amigavel_variavel");
