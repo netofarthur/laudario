@@ -1355,6 +1355,7 @@ function recolocarTinys() {
                 input.style.marginBottom = "1rem";
                 input.style.whiteSpace = "pre";
 
+                input.setAttribute("id", listaVars[i]);
 
 
                 var inputHidden = document.createElement("input");
@@ -1577,22 +1578,34 @@ function recolocarTinys() {
 
                 var nomesAmigos = [];
                 var unidadesMedidas = [];
+                var variaveisUsuarioAproveitado = [];
 
                 for(vari of variaveisJSONObject) {
 
                     if(vari.fields.usuario == document.getElementById("usuario_id_alteracao").value) {
                         if(todasVariaveis.includes(vari.fields.nome_da_variavel)) {
-                            if(vari.fields.nome_amigavel == "Ignorar") {
-                            nomesAmigos.push("");
 
-                            } else {
+
+
                             nomesAmigos.push(vari.fields.nome_amigavel);
                             unidadesMedidas.push(vari.fields.unidade_medida);
+                            variaveisUsuarioAproveitado.push(vari.fields.nome_da_variavel);
 
-                            }
+
+
 
                         }
                     }
+
+                }
+
+
+                var variaJSONObject = JSON.parse(nomesAmigaveisUsuario);
+
+
+                var variaveisUsuario = []
+            for(var z = 0; z < variaJSONObject.length; z++) {
+                variaveisUsuario.push(variaJSONObject[z].fields.nome_da_variavel);
 
                 }
 
@@ -1601,13 +1614,27 @@ function recolocarTinys() {
 
                 nomesAmigaveisInputs = document.getElementsByName("nome_amigavel_variavel");
                 unidadesMedidasInputs = document.getElementsByName("unidade_de_medida");
+                var labels = document.getElementsByName("label_variavel");
+
+                var contador = 0;
+
 
                 for (var z = 0; z < nomesAmigaveisInputs.length; z++) {
 
+                        if(variaveisUsuario.includes(nomesAmigaveisInputs[z].getAttribute("id")) || variaveisUsuarioAproveitado.includes(nomesAmigaveisInputs[z].getAttribute("id"))) {
+                            nomesAmigaveisInputs[z].value = nomesAmigos[contador];
+                            unidadesMedidasInputs[z].value = unidadesMedidas[contador];
+                            contador++;
+                        } else {
+                        nomesAmigaveisInputs[z].value = "";
+                        unidadesMedidasInputs[z].value = "";
+                        }
 
-                        nomesAmigaveisInputs[z].value = nomesAmigos[z];
-                        unidadesMedidasInputs[z].value = unidadesMedidas[z];
-                        if(nomesAmigaveisInputs[z].value == "undefined") {
+
+
+
+
+                        if(nomesAmigaveisInputs[z].value == "undefined" || nomesAmigaveisInputs[z].value == "Ignorar") {
                             nomesAmigaveisInputs[z].value = "";
                         }
                         if(unidadesMedidasInputs[z].value == "undefined") {
