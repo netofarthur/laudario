@@ -1575,6 +1575,9 @@ function recolocarTinys() {
                 }
 
 
+
+
+
                 var nomesAmigos = [];
                 var unidadesMedidas = [];
                 var variaveisUsuarioAproveitado = [];
