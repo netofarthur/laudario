@@ -1575,12 +1575,8 @@ function recolocarTinys() {
                 }
 
 
-
-
-
                 var nomesAmigos = [];
                 var unidadesMedidas = [];
-                var variaveisUsuarioAproveitado = [];
 
                 for(vari of variaveisJSONObject) {
 
@@ -1588,12 +1584,10 @@ function recolocarTinys() {
                         if(todasVariaveis.includes(vari.fields.nome_da_variavel)) {
                             if(vari.fields.nome_amigavel == "Ignorar") {
                             nomesAmigos.push("");
-                            variaveisUsuarioAproveitado.push("");
 
                             } else {
                             nomesAmigos.push(vari.fields.nome_amigavel);
                             unidadesMedidas.push(vari.fields.unidade_medida);
-                            variaveisUsuarioAproveitado.push(vari.fields.nome_da_variavel);
 
                             }
 
@@ -1602,41 +1596,23 @@ function recolocarTinys() {
 
                 }
 
-                        var variaJSONObject = JSON.parse(nomesAmigaveisUsuario);
-
-
-                var variaveisUsuario = []
-            for(var z = 0; z < variaJSONObject.length; z++) {
-                variaveisUsuario.push(variaJSONObject[z].fields.nome_da_variavel);
-
-                }
-
-
-
-
-                
-
 
 
 
                 nomesAmigaveisInputs = document.getElementsByName("nome_amigavel_variavel");
                 unidadesMedidasInputs = document.getElementsByName("unidade_de_medida");
-                var labels = document.getElementsByName("label_variavel");
-
-                var contador = 0;
 
                 for (var z = 0; z < nomesAmigaveisInputs.length; z++) {
 
-                        if(variaveisUsuario.includes(labels[z].innerHTML.replaceAll(getVariaveisUsuarioCount().toString(), "")) || variaveisUsuarioAproveitado.includes(labels[z].innerHTML) || variaveisUsuarioAproveitado.includes(labels[z].innerHTML) || variaveisUsuarioAproveitado.includes(labels[z].innerHTML.replaceAll(getVariaveisUsuarioCount().toString(), ""))) {
-                            nomesAmigaveisInputs[z].value = nomesAmigos[contador];
-                        unidadesMedidasInputs[z].value = unidadesMedidas[contador];
-                        contador++;
-                        } else {
-                        nomesAmigaveisInputs[z].value = "";
-                        unidadesMedidasInputs[z].value = "";
+
+                        nomesAmigaveisInputs[z].value = nomesAmigos[z];
+                        unidadesMedidasInputs[z].value = unidadesMedidas[z];
+                        if(nomesAmigaveisInputs[z].value == "undefined") {
+                            nomesAmigaveisInputs[z].value = "";
                         }
-
-
+                        if(unidadesMedidasInputs[z].value == "undefined") {
+                            unidadesMedidasInputs[z].value = "";
+                        }
 
 
 
@@ -1907,7 +1883,7 @@ function htmlDecode(input) {
 
 
     function CopyToClipboard() {
-    
+
 
 document.getElementById("ModalVariaveis").style.display = "none";
 document.getElementById("myModalAlteracao").style.display = "none";
@@ -2071,7 +2047,7 @@ function procurarFrases(id) {
     } else {
       li[i].style.display = "none";
     }
-    
+
   }
 }
 
