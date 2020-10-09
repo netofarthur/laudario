@@ -2260,7 +2260,7 @@ tinymce.remove();
 
     document.getElementById("mascara_div").innerHTML = conteudoTiny;
     limparTagsHtmlTotal();
-    document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "");
+    document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "<br>");
 
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
