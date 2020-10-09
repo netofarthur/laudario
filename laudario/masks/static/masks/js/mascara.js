@@ -1920,7 +1920,7 @@ document.getElementById("myModal").style.display = "none";
 document.getElementById("mais_utilizadas").style.display = "none";
 }
     var anchor = document.createElement("a");
-anchor.setAttribute("href", "/mascaras");
+anchor.setAttribute("href", "/laudar");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Novo exame";
@@ -1963,7 +1963,7 @@ limparTagsHtmlParcial();
 
 
       var anchor = document.createElement("a");
-    anchor.setAttribute("href", "/mascaras");
+    anchor.setAttribute("href", "/laudar");
     anchor.setAttribute("id", "link_voltar");
 
     anchor.innerHTML = "Novo exame";
@@ -2240,7 +2240,7 @@ tinymce.remove();
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
-anchor.setAttribute("href", "/mascaras");
+anchor.setAttribute("href", "/laudar");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Novo exame";
@@ -2265,7 +2265,7 @@ tinymce.remove();
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
-anchor.setAttribute("href", "/mascaras");
+anchor.setAttribute("href", "/laudar");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Novo exame";
@@ -2296,7 +2296,7 @@ document.getElementById("mascara_div").innerHTML = document.getElementById("masc
     document.getElementById("mascara_div").style.whiteSpace = "pre-wrap";
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
-anchor.setAttribute("href", "/mascaras");
+anchor.setAttribute("href", "/laudar");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Novo exame";
