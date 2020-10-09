@@ -73,6 +73,8 @@ class TopicoAnormalBuilder(models.Model):
 
 class Variavel(models.Model):
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    ordem = models.IntegerField(default=0)
+
     nome_da_variavel = models.CharField(max_length=1000)
     nome_amigavel = models.CharField(max_length=500)
     unidade_medida = models.CharField(max_length=50)

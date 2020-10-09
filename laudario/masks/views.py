@@ -54,10 +54,10 @@ def mostrar_mascara(request, id_mascara):
 
     json_serializer = serializers.get_serializer("json")()
     alterados = json_serializer.serialize(TopicoAnormal.objects.all())
-    variaveis = json_serializer.serialize(Variavel.objects.all())
+    variaveis = json_serializer.serialize(Variavel.objects.all().order_by('ordem'))
     normais = json_serializer.serialize(TopicoNormal.objects.all())
     mascarasJson = json_serializer.serialize(Mascara.objects.all())
-    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
+    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
 
     usuarios2 = json_serializer.serialize(User.objects.all())
 
@@ -89,8 +89,8 @@ def nova_mascara(request):
     mascaras = Mascara.objects.filter(publica=True)
     profiles = Profile.objects.all()
     topicos_normais = json_serializer.serialize(TopicoNormal.objects.all())
-    variaveis = json_serializer.serialize(Variavel.objects.all())
-    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
+    variaveis = json_serializer.serialize(Variavel.objects.all().order_by('ordem'))
+    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
     titulo = "Masqs - Nova Máscara"
     context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson, 'topicos_normais': topicos_normais, 'variaveis': variaveis,
                'variaveisusuario': variaveisusuario, 'profiles': profiles, 'titulo': titulo}
@@ -251,6 +251,7 @@ def adicionar_variaveis(request):
             variavel.nome_amigavel = lista_nomes_amigaveis[i]
 
         variavel.unidade_medida = lista_unidades_de_medidas[i]
+        variavel.ordem = i
         variavel.save()
 
 
@@ -507,8 +508,8 @@ def editar_mascara(request, id_mascara):
 
     json_serializer = serializers.get_serializer("json")()
 
-    variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
-    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
+    variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
+    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
     profiles = Profile.objects.all()
     especialidades = Especialidade.objects.all()
     topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('nome')
@@ -632,8 +633,8 @@ def editar_alteracao(request, id_alteracao, id_mascara):
     json_serializer = serializers.get_serializer("json")()
 
 
-    variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
-    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user))
+    variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
+    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
     profiles = Profile.objects.all()
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
     topico_anormal = TopicoAnormal.objects.get(pk=id_alteracao)
