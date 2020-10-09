@@ -105,9 +105,9 @@
 
 <div class="row">
 
-<div id="coluna_esquerda" class="col-6" style="height: 90vh; overflow: auto;">
+<div id="coluna_esquerda" class="col-7" style="height: 90vh; overflow: auto;">
 
-<h2 style="text-align: center; color: #c96100; margin-top: .3rem; margin-bottom: .2rem;"> Nova Máscara </h2>
+<h4 style="text-align: center;  margin-top: .3rem; margin-bottom: .2rem;"> Nova Máscara </h4>
 
 
 <form action="{% url 'adicionar_nova_mascara' %}" method="post" id="formulario_nova_mascara">
@@ -261,7 +261,8 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
 </div>
 
 
-<div id="coluna_mascaras" class="col-6" style="height: 90vh; overflow: auto;">
+<div id="coluna_mascaras" class="col-5" style="height: 90vh; overflow: auto;">
+    <h4 style="text-align: center; margin-top: .1rem; margin-bottom: 1rem;">Máscaras públicas</h4>
 
   {% for mascara in mascaras %}
 
