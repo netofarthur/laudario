@@ -2260,6 +2260,8 @@ tinymce.remove();
 
     document.getElementById("mascara_div").innerHTML = conteudoTiny;
     limparTagsHtmlTotal();
+    document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "");
+
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
@@ -2276,12 +2278,17 @@ document.getElementById("botoes_div").appendChild(anchor);
 }
 
 function copiarTextoSomente() {
-
 removerBotoes();
-conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML.replace(/<[^>]*>/g, '\n');;
-    tinymce.remove();
-    document.getElementById("mascara_div").innerHTML = conteudoTiny.replace(/^\s*$(?:\r\n?|\n)/gm, "");
+
+
+tinymce.remove();
+    limparTagsHtmlTotal();
+    document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/<[^>]*>/g, '');;
+
+    document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/^\s*$(?:\r\n?|\n)/gm, "");
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/\n/g, "<br>");
+document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "<br>");
+
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace("Preencher Variáveis<br>", "");
 
         CopyToClipboard();
@@ -2312,6 +2319,10 @@ function removerBotoes() {
 
 
 function trocarCabecalhos() {
+
+
+
+
     var divs = document.getElementsByTagName("div");
     for(div of divs) {
         if(div.getAttribute("class") == "paragrafo_mascara") {
@@ -2388,6 +2399,16 @@ for(var i=0; i<len; i++)
 
 
     }
+
+
+    var h3s = document.getElementsByTagName("H3");
+    for(h3 of h3s) {
+        var par = document.createElement("p");
+        par.innerHTML = "espacoembranco";
+        h3.parentNode.insertBefore(par, h3);
+    }
+
+
 }
 
 
