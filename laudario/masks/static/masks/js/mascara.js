@@ -1923,7 +1923,7 @@ document.getElementById("mais_utilizadas").style.display = "none";
 anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
-anchor.innerHTML = "Nova máscara";
+anchor.innerHTML = "Novo exame";
 anchor.style.fontSize = "1.5rem";
 document.getElementById("botoes_div").appendChild(anchor);
 
@@ -1966,7 +1966,7 @@ limparTagsHtmlParcial();
     anchor.setAttribute("href", "/mascaras");
     anchor.setAttribute("id", "link_voltar");
 
-    anchor.innerHTML = "Nova máscara";
+    anchor.innerHTML = "Novo exame";
     anchor.style.marginLeft = "45%";
     anchor.style.fontSize = "1.5rem";
     if(document.getElementById("link_voltar") == null) {
@@ -2243,7 +2243,7 @@ var anchor = document.getElementById("link_voltar");
 anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
-anchor.innerHTML = "Nova máscara";
+anchor.innerHTML = "Novo exame";
 anchor.style.fontSize = "1.5rem";
 document.getElementById("botoes_div").appendChild(anchor);
 
@@ -2268,7 +2268,7 @@ var anchor = document.getElementById("link_voltar");
 anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
-anchor.innerHTML = "Nova máscara";
+anchor.innerHTML = "Novo exame";
 anchor.style.fontSize = "1.5rem";
 document.getElementById("botoes_div").appendChild(anchor);
 
@@ -2299,7 +2299,7 @@ var anchor = document.getElementById("link_voltar");
 anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
 
-anchor.innerHTML = "Nova máscara";
+anchor.innerHTML = "Novo exame";
 anchor.style.fontSize = "1.5rem";
 document.getElementById("botoes_div").appendChild(anchor);
 
