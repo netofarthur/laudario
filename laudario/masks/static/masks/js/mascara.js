@@ -1335,11 +1335,11 @@ function recolocarTinys() {
         var variaveisJSONObject = JSON.parse(nomesAmigaveisUsuario);
 
         var variavelJaExiste = false;
-
+        alert(listaVars);
         for(var i = 0; i < listaVars.length; i++) {
 
             for(var z = 0; z < variaveisJSONObject.length; z++) {
-                if(listaVars[i] == variaveisJSONObject[z].fields.nome_da_variavel || listaVars[i].split("|").includes(variaveisJSONObject[z].fields.nome_da_variavel)) {
+                if(listaVars.includes(variaveisJSONObject[z].fields.nome_da_variavel)) {
                     variavelJaExiste = true;
 
                 }
@@ -1465,19 +1465,21 @@ function recolocarTinys() {
 
                     label.innerHTML = construcao;
                     if(document.getElementById("adicionar_no_atual") != null) {
+
                         if(document.getElementById("relatorio_modal").value.indexOf("{" + listaVars[i] + "}") > -1) {
-                            document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
+                            document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace("{" + listaVars[i] + "}", "{" + inputHidden.value + "}");
 
                         }
                         if(document.getElementById("conclusao_modal").value.indexOf("{" + listaVars[i] + "}") > -1) {
-                            document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
+                            document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace("{" + listaVars[i] + "}", "{" + inputHidden.value + "}");
 
                         }
                     } else {
+
                     var orgaos = document.getElementsByClassName("paragrafo_mascara");
                         for(orgao of orgaos) {
                             if(orgao.value.indexOf("{" + listaVars[i] + "}") > -1) {
-                                orgao.value = orgao.value.replace(listaVars[i], inputHidden.value);
+                                orgao.value = orgao.value.replace("{" + listaVars[i] + "}", "{" + inputHidden.value + "}");
 
                             }
                         }
@@ -1512,18 +1514,18 @@ function recolocarTinys() {
 
                      if(document.getElementById("adicionar_no_atual") != null) {
                          if(document.getElementById("relatorio_modal").value.indexOf("{" + listaVars[i] + "}") > -1) {
-                            document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace(listaVars[i], inputHidden.value);
+                            document.getElementById("relatorio_modal").value = document.getElementById("relatorio_modal").value.replace("{" + listaVars[i] + "}", "{" + inputHidden.value + "}");
 
                         }
                         if(document.getElementById("conclusao_modal").value.indexOf("{" + listaVars[i] + "}") > -1) {
-                            document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace(listaVars[i], inputHidden.value);
+                            document.getElementById("conclusao_modal").value = document.getElementById("conclusao_modal").value.replace("{" + listaVars[i] + "}", "{" + inputHidden.value + "}");
 
                         }
                      } else {
                         var orgaos = document.getElementsByClassName("paragrafo_mascara");
                         for(orgao of orgaos) {
                             if(orgao.value.indexOf("{" + listaVars[i] + "}") > -1) {
-                                orgao.value = orgao.value.replace(listaVars[i], inputHidden.value);
+                                orgao.value = orgao.value.replace("{" + listaVars[i] + "}", "{" + inputHidden.value + "}");
 
                             }
                         }
