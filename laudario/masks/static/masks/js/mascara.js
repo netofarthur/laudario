@@ -1335,7 +1335,6 @@ function recolocarTinys() {
         var variaveisJSONObject = JSON.parse(nomesAmigaveisUsuario);
 
         var variavelJaExiste = false;
-        alert(listaVars);
         for(var i = 0; i < listaVars.length; i++) {
 
             for(var z = 0; z < variaveisJSONObject.length; z++) {
