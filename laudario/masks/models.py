@@ -30,7 +30,7 @@ class Mascara(models.Model):
     tecnica = models.CharField(max_length=1000)
     relatorio_header = models.CharField(max_length=50)
     conclusao_header = models.CharField(max_length=50)
-    conclusao = models.CharField(max_length=2000)
+    conclusao = models.CharField(max_length=3000)
     publica = models.BooleanField(default=True)
     popularidade = models.IntegerField(default=0)
     frequencia = models.IntegerField(default=0)
