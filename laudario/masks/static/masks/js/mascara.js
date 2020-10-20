@@ -2210,10 +2210,10 @@ document.getElementById("titulo").style.margin = ".5rem";
                                 language: 'pt_BR',
 
                               menubar: false,
-                                      plugins: "table",
+                                      plugins: "table code",
   force_p_newlines : true,
   forced_root_block : '', // Needed for 3.x
-                            toolbar: "bold italic underline forecolor table",
+                            toolbar: "bold italic underline forecolor table code",
                               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
                                 branding: false,
                                   elementpath: false
