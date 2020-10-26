@@ -2168,7 +2168,7 @@ if(document.getElementById("procurarFrases") != null) {
 }
 
 function editarLaudo() {
-document.getElementById("popular_variaveis").style.display = "none";
+document.getElementById("popular_variaveis").remove();
 document.getElementById("mais_utilizadas").style.display = "none";
 document.getElementById("copiar_laudo").innerHTML = "Copiar Tudo";
 document.getElementById("copiar_laudo").style.display = "inline-block";
