@@ -2492,10 +2492,11 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
 
 function limparDivsVazios() {
         var divs = document.getElementsByTagName("div");
-    for(div of divs) {
-        if(div.getAttribute("class") == "paragrafo_mascara" && div.innerHTML == " ") {
-            div.style.display = "none";
-            div.setAttribute("data-mce-style", div.getAttribute("style"));
+        var counter = divs.length;
+
+    for(var i = divs.length -1; i >= 0; i--) {
+        if(divs[i].getAttribute("class") == "paragrafo_mascara" && divs[i].innerHTML == " ") {
+            divs[i].remove();
 
 
         }
