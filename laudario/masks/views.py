@@ -453,7 +453,7 @@ def mostrar_mascaras(request):
     mascaras = Mascara.objects.filter(usuario=request.user).order_by('nome')
     mascaras_populares = Mascara.objects.filter(usuario=request.user).order_by('-frequencia', 'nome')[:10]
     ultimas_mascaras = Mascara.objects.filter(usuario=request.user).order_by('-ultima_vez_usado', 'nome')[:10]
-    todasespecialidades = Especialidade.objects.all()
+    todasespecialidades = Especialidade.objects.all().order_by('descricao')
     especialidades_com_mascara = []
     for especialidade in todasespecialidades:
         mascarasEspecialidade = Mascara.objects.filter(usuario=request.user, especialidade=especialidade)
@@ -476,7 +476,7 @@ def configuracoes(request):
 
 
 
-    todasespecialidades = Especialidade.objects.all()
+    todasespecialidades = Especialidade.objects.all().order_by('descricao')
     especialidades_com_mascara = []
     for especialidade in todasespecialidades:
         mascarasEspecialidade = Mascara.objects.filter(usuario=request.user, especialidade=especialidade)
