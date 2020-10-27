@@ -1843,10 +1843,7 @@ function htmlDecode(input) {
 
 
     function popularFraseAlterada(topicoId) {
-           if(document.getElementById("procurarFrasesPublicas") != null) {
-                    document.getElementById("procurarFrasesPublicas").value = "";
-                    procurarFrases("procurarFrasesPublicas");
-    }
+
 
         var idSemT = topicoId.substring(1, topicoId.length);
         var alteradosJSONObject = JSON.parse(alterados);
@@ -2061,6 +2058,8 @@ limparTagsHtmlParcial();
 
 
 function procurarFrases(id) {
+
+
   // Declare variables
   var input, filter, li, i, txtValue;
   input = document.getElementById(id);
@@ -2069,6 +2068,7 @@ function procurarFrases(id) {
 
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
+  if(li[i].getAttribute("name") == "botao_alteracao") {
     txtValue = li[i].innerHTML;
     if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1) {
       li[i].style.display = "block";
@@ -2076,6 +2076,7 @@ function procurarFrases(id) {
       li[i].style.display = "none";
     }
 
+  }
   }
 }
 
