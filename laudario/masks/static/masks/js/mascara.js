@@ -2169,6 +2169,7 @@ if(document.getElementById("procurarFrases") != null) {
 
 function editarLaudo() {
 document.getElementById("popular_variaveis").remove();
+limparDivsVazios();
 document.getElementById("mais_utilizadas").style.display = "none";
 document.getElementById("copiar_laudo").innerHTML = "Copiar Tudo";
 document.getElementById("copiar_laudo").style.display = "inline-block";
@@ -2489,7 +2490,18 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
 
 }
 
+function limparDivsVazios() {
+        var divs = document.getElementsByTagName("div");
+    for(div of divs) {
+        if(div.getAttribute("class") == "paragrafo_mascara" && div.innerHTML == " ") {
+            div.style.display = "none";
+            div.setAttribute("data-mce-style", div.getAttribute("style"));
 
+
+        }
+    }
+
+}
 
 
 function limparTagsHtmlParcial() {
