@@ -20,8 +20,14 @@
 
     <script>
         var alterados = '{{ alterados|escapejs }}';
+        var alteradosPopulares = '{{ alteradosPopulares|escapejs }}';
+        var alteradosUsuario = '{{ alteradosUsuario|escapejs }}';
         var mascarasJson = '{{ mascarasJson|escapejs }}';
+        var mascarasJsonPopulares = '{{ mascarasJsonPopulares|escapejs }}';
+        var mascarasJsonUsuario = '{{ mascarasJsonUsuario|escapejs }}';
+
             var normais = '{{ normais|escapejs }}';
+
     </script>
 
 </head>
@@ -32,10 +38,12 @@
 
 <div class="col-4">
 
+    <input type="hidden" id="especialidadeHidden">
+    <input type="hidden" id="exameHidden">
 
-    <input type="radio" id="frasesRadio" value="frases" name="modo" checked>
+    <input type="radio" id="frasesRadio" value="frases" name="modo" checked onclick="clicouBotaoRadio()">
     <label style="margin-right:30px" for="frasesRadio">Frases</label>
-    <input type="radio" id="mascarasRadio" value="mascaras" name="modo">
+    <input type="radio" id="mascarasRadio" value="mascaras" name="modo" onclick="clicouBotaoRadio()">
     <label for="mascarasRadio">Máscaras</label>
 
 <div class="list-group">
@@ -85,11 +93,12 @@
 
 <div class="col">
 
-    <input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico">
-    <label for="alfabeticoRadio" style="margin-right:30px">Ordem Alfabética</label>
-     <input type="radio" id="popularRadio" name="submodo" value="popular">
+
+    <input type="radio" id="popularRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()">
     <label for="popularRadio" style="margin-right:30px">Mais Populares</label>
-     <input type="radio" id="minhasRadio" name="submodo" value="minhas">
+    <input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico" onclick="clicouBotaoRadio()">
+    <label for="alfabeticoRadio" style="margin-right:30px">Ordem Alfabética</label>
+     <input type="radio" id="minhasRadio" name="submodo" value="minhas" onclick="clicouBotaoRadio()">
     <label for="minhasRadio">Autoria Própria</label>
 
 <div id="direitadiv">

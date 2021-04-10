@@ -1,12 +1,20 @@
+function clicouBotaoRadio() {
+    var especialidadeid = document.getElementById("especialidadeHidden").value;
+    var exameid = document.getElementById("exameHidden").value;
+    clicouAba(especialidadeid, exameid);
+}
+
+
 function clicouAba(especialidadeid, exameid) {
 
 
+        document.getElementById("especialidadeHidden").value = especialidadeid;
+        document.getElementById("exameHidden").value = exameid;
 
 
 
-
-        var alteradosJSONObject = JSON.parse(alterados);
-        var mascarasJsonObject = JSON.parse(mascarasJson);
+        var alteradosJSONObject;
+        var mascarasJsonObject;
         var normaisObject = JSON.parse(normais);
         var nome;
         var relatorioAlterado;
@@ -14,6 +22,22 @@ function clicouAba(especialidadeid, exameid) {
 
         var mascarasValidas = [];
         var topicosNormaisValidos = [];
+
+
+        if(document.getElementById("alfabeticoRadio").checked) {
+              mascarasJsonObject = JSON.parse(mascarasJson);
+              alteradosJSONObject = JSON.parse(alterados);
+
+        } else if(document.getElementById("popularRadio").checked) {
+              mascarasJsonObject = JSON.parse(mascarasJsonPopulares);
+              alteradosJSONObject = JSON.parse(alteradosPopulares);
+
+        } else {
+              mascarasJsonObject = JSON.parse(mascarasJsonUsuario);
+              alteradosJSONObject = JSON.parse(alteradosUsuario);
+
+        }
+
 
 
 
