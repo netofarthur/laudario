@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        {% load static %}
+
+        <!-- Required meta tags for bootstrap-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="{% static 'masks/js/comunidade.js' %}"></script>
+
+    <script>
+        var alterados = '{{ alterados|escapejs }}';
+        var mascarasJson = '{{ mascarasJson|escapejs }}';
+            var normais = '{{ normais|escapejs }}';
+    </script>
+
+</head>
+<body>
+<div class="container-fluid">
+
+<div class="row">
+
+<div class="col-4">
+
+
+    <input type="radio" id="frasesRadio" value="frases" name="modo" checked>
+    <label style="margin-right:30px" for="frasesRadio">Frases</label>
+    <input type="radio" id="mascarasRadio" value="mascaras" name="modo">
+    <label for="mascarasRadio">Máscaras</label>
+
+<div class="list-group">
+
+
+  <div id="accordion">
+
+ {% for exame in exames %}
+    <div class="card">
+      <div class="card-header" id={{ exame.pk }}>
+        <h5 class="mb-0">
+
+
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ exame.pk }}" aria-expanded="true" aria-controls="collapse{{ exame.pk }}">
+                {{ exame.descricao }}
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapse{{ exame.pk }}" class="collapse" aria-labelledby={{ exame.pk }} data-parent="#accordion">
+
+
+                {% for especialidade in especialidades %}
+
+              <div class="list-group">
+                  <button onclick="clicouAba(this.name, this.value)" class="btn btn-link" value="{{ exame.pk }}" name="{{ especialidade.pk }}">{{ especialidade.descricao }}</button>
+
+                </div>
+
+
+                {% endfor %}
+
+
+
+          </div>
+        </div>
+        {% endfor %}
+
+  </div>
+
+
+
+
+
+</div>
+</div>
+
+<div class="col">
+
+    <input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico">
+    <label for="alfabeticoRadio" style="margin-right:30px">Ordem Alfabética</label>
+     <input type="radio" id="popularRadio" name="submodo" value="popular">
+    <label for="popularRadio" style="margin-right:30px">Mais Populares</label>
+     <input type="radio" id="minhasRadio" name="submodo" value="minhas">
+    <label for="minhasRadio">Autoria Própria</label>
+
+<div id="direitadiv">
+    teste
+</div>
+</div>
+
+</div>
+
+
+
+</div>
+</body>
+</html>

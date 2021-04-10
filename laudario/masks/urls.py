@@ -32,5 +32,6 @@ urlpatterns = [
     path('sobre/descricao', views.descricao, name='descricao'),
     path('eula', views.termos, name='termos'),
     path('quemsomos', views.quemsomos, name='quemsomos'),
+    path('comunidade', views.comunidade, name='comunidade'),
 
 ]

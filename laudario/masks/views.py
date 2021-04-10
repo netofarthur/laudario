@@ -895,3 +895,15 @@ def quemsomos(request):
     context = {'titulo': titulo}
     return render(request, 'masks/quemsomos.html', context)
 
+def comunidade(request):
+    exames = Exame.objects.all()
+    especialidades = Especialidade.objects.all()
+    json_serializer = serializers.get_serializer("json")()
+
+    alterados = json_serializer.serialize(TopicoAnormal.objects.all())
+    normais = json_serializer.serialize(TopicoNormal.objects.all())
+    mascarasJson = json_serializer.serialize(Mascara.objects.all())
+
+    titulo = "Masqs - Comunidade"
+    context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados, 'normais': normais, 'mascarasJson': mascarasJson}
+    return render(request, 'masks/comunidade.html', context)
