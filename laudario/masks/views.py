@@ -34,13 +34,13 @@ def mostrar_mascara(request, id_mascara):
     if not request.user.is_authenticated:
         return redirect(views.mostrar_index)
 
-
+    usuarioPermitido = True
 
     mascara = Mascara.objects.get(pk=id_mascara)
 
     # Verifica se o usuário tem permissão para ver essa máscara
     if request.user != mascara.usuario:
-        return redirect(views.mostrar_index)
+        usuarioPermitido = False
 
 
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara).order_by('ordem')
@@ -72,7 +72,7 @@ def mostrar_mascara(request, id_mascara):
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
                'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
                'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario, 'todos_topicos_anormais': todos_topicos_anormais,
-               'profiles': profiles, 'profile': profile, 'titulo': titulo, 'topicos_anormais_mais_usados': topicos_anormais_mais_usados}
+               'profiles': profiles, 'profile': profile, 'titulo': titulo, 'topicos_anormais_mais_usados': topicos_anormais_mais_usados, 'usuarioPermitido': usuarioPermitido}
     return render(request, 'masks/mascara.html', context)
 
 def nova_mascara(request):

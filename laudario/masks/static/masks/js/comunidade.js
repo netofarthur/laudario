@@ -175,6 +175,12 @@ function clicouAba(especialidadeid, exameid) {
                   document.getElementById("direitadiv").appendChild(paragrafoConclusao);
 
 
+                  var linkMascara = document.createElement("a");
+                  linkMascara.innerHTML = "Usar";
+                  linkMascara.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
+                   document.getElementById("direitadiv").appendChild(linkMascara);
+
+
                   var divisoria = document.createElement("hr")
                   document.getElementById("direitadiv").appendChild(divisoria);
 
