@@ -2551,3 +2551,42 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
 
 }
 
+function copiarRelatorio() {
+
+
+   var containerid = document.getElementsByClassName("paragrafo_mascara")[0];
+
+      if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select().createTextRange();
+        document.execCommand("copy");
+      } else if (window.getSelection) {
+        selection = window.getSelection();
+        var range = document.createRange();
+        range.selectNode(containerid);
+        selection.removeAllRanges();          // Remove all ranges from the selection.
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+      }
+
+}
+
+function copiarConclusao() {
+   var containerid = "paragrafo_conclusao";
+
+      if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select().createTextRange();
+        document.execCommand("copy");
+      } else if (window.getSelection) {
+        selection = window.getSelection();
+        var range = document.createRange();
+        range.selectNode(document.getElementById(containerid));
+        selection.removeAllRanges();          // Remove all ranges from the selection.
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+      }
+
+}
