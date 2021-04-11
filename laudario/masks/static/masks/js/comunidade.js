@@ -112,7 +112,7 @@ function clicouAba(especialidadeid, exameid) {
 
                     var paragrafoNome = document.createElement("p");
 
-
+                    paragrafoNome.setAttribute("class", "nome_entrada");
 
                     var paragrafoTecnicaHeader = document.createElement("p");
 
@@ -232,6 +232,7 @@ function clicouAba(especialidadeid, exameid) {
                         paragrafoUsuarioAlt.style.fontWeight = "bold";
 
                         var paragrafonome = document.createElement("p");
+                    paragrafonome.setAttribute("class", "nome_entrada");
 
 
                 paragrafo.innerHTML = relatorioAlterado;
@@ -286,4 +287,28 @@ function clicouAba(especialidadeid, exameid) {
 
 
 }
+
+
+function procurarEntradas(id) {
+  // Declare variables
+  var input, filter, li, i, txtValue;
+  input = document.getElementById(id);
+  filter = input.value.toUpperCase();
+  li = document.getElementsByClassName('nome_entrada');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    txtValue = li[i].innerHTML;
+    if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1) {
+      li[i].parentNode.style.display = "block";
+    } else {
+      li[i].parentNode.style.display = "none";
+    }
+
+  }
+}
+
+
+
+
 
