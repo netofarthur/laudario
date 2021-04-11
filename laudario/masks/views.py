@@ -910,10 +910,12 @@ def comunidade(request):
     normais = json_serializer.serialize(TopicoNormal.objects.all())
     mascarasJson = json_serializer.serialize(Mascara.objects.all()) #alfabético
 
+    usuarios2 = json_serializer.serialize(User.objects.all())
+    profiles = json_serializer.serialize(Profile.objects.all())
 
 
     titulo = "Masqs - Comunidade"
     context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados, 'normais': normais, 'mascarasJson': mascarasJson,
                'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario, 'mascarasJsonPopulares': mascarasJsonPopulares,
-               'mascarasJsonUsuario': mascarasJsonUsuario}
+               'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles}
     return render(request, 'masks/comunidade.html', context)
