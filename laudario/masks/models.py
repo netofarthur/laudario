@@ -36,6 +36,9 @@ class Mascara(models.Model):
     frequencia = models.IntegerField(default=0)
     ultima_vez_usado = models.DateTimeField(default=timezone.now)
     info_adicional = models.TextField(max_length=2000)
+    data_criada = models.DateTimeField(default=timezone.now)
+
+
 
     def __str__(self):
         return self.nome
@@ -60,6 +63,8 @@ class TopicoAnormal(models.Model):
     publica = models.BooleanField(default=True)
     popularidade = models.IntegerField(default=0)
     frequencia = models.IntegerField(default=0)
+    data_criada = models.DateTimeField(default=timezone.now)
+
 
     def __str__(self):
         return self.nome

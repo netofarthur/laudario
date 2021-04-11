@@ -189,7 +189,7 @@ def adicionar_nova_mascara(request):
     nova_mascara = Mascara(usuario=usuario, especialidade=especialidadeInstance, exame=exameInstance, nome=nome_exame, titulo=titulo_exame,
                            indicacoes_header=indicacoes_header, indicacoes=indicacoes,
                            tecnica_header=tecnica_header, tecnica=tecnica, relatorio_header=relatorio_header,
-                          conclusao_header=conclusao_header, conclusao=conclusao, publica=publica, info_adicional=info_adicional)
+                          conclusao_header=conclusao_header, conclusao=conclusao, publica=publica, info_adicional=info_adicional, data_criada=timezone.now())
     nova_mascara.save()
 
 
@@ -253,12 +253,12 @@ def adicionar_alteracao(request):
                 topicoAnormal = TopicoAnormal(topico_normal=topicoNormalNovo, nome=request.POST['nome_modal'],
                                               relatorio=request.POST['relatorio_modal'],
                                               conclusao=request.POST['conclusao_modal'],
-                                              publica=publica)
+                                              publica=publica, data_criada=timezone.now())
             else:
                 topicoAnormal = TopicoAnormal(topico_normal=topicoNormal, nome=request.POST['nome_modal'],
                                           relatorio=request.POST['relatorio_modal'],
                                           conclusao=request.POST['conclusao_modal'],
-                                          publica=publica)
+                                          publica=publica, data_criada=timezone.now())
             topicoAnormal.save()
             adicionar_variaveis(request)
 

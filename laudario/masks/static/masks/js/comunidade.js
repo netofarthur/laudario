@@ -112,6 +112,13 @@ function clicouAba(especialidadeid, exameid) {
 
                     var paragrafoNome = document.createElement("p");
 
+                    var criadaEm = document.createElement("p");
+
+                    var criadaEmFormatada = mascarasJsonObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/");
+
+
+                    criadaEm.innerHTML = criadaEmFormatada;
+
                     paragrafoNome.setAttribute("class", "nome_entrada");
 
                     var paragrafoTecnicaHeader = document.createElement("p");
@@ -147,6 +154,7 @@ function clicouAba(especialidadeid, exameid) {
 
                     var paragrafoUsuario = document.createElement("p");
                     paragrafoUsuario.style.fontWeight = "bold";
+                  divEntrada.appendChild(criadaEm);
 
                     paragrafoUsuario.innerHTML = usuarioResponsavel;
                     divEntrada.appendChild(paragrafoNome);
@@ -234,6 +242,13 @@ function clicouAba(especialidadeid, exameid) {
                         var paragrafonome = document.createElement("p");
                     paragrafonome.setAttribute("class", "nome_entrada");
 
+                      var criadaEm = document.createElement("p");
+
+                    var criadaEmFormatada = alteradosJSONObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/");
+
+
+                    criadaEm.innerHTML = criadaEmFormatada;
+
 
                 paragrafo.innerHTML = relatorioAlterado;
                  paragrafoConclusao.innerHTML = conclusaoAlterada;
@@ -242,6 +257,7 @@ function clicouAba(especialidadeid, exameid) {
 
                       var divEntrada = document.createElement("div");
 
+                      divEntrada.appendChild(criadaEm);
 
                       divEntrada.appendChild(paragrafonome);
 
