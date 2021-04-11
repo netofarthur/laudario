@@ -1800,7 +1800,7 @@ function aplicarConfiguracoesUsuario() {
     var paragrafos = document.getElementsByClassName("paragrafo_mascara");
 
     for(paragrafo of paragrafos) {
-        if(paragrafo.innerHTML != "" && paragrafo.style.display != "none") {
+        if(paragrafo.innerHTML != "") {
             paragrafo.style.display = "block";
         }
     }
