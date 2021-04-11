@@ -176,6 +176,8 @@ def adicionar_alteracao(request):
     if not request.user.is_authenticated:
         return redirect(views.mostrar_index)
 
+
+
     pub = request.POST.get('frase_publica', False)
 
     if (pub == 'on'):

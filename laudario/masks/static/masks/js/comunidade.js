@@ -221,20 +221,29 @@ function clicouAba(especialidadeid, exameid) {
                         relatorioAlterado = alteradosJSONObject[i].fields.relatorio;
                         conclusaoAlterada = alteradosJSONObject[i].fields.conclusao;
 
-                        paragrafo = document.createElement("p");
-                        paragrafoConclusao = document.createElement("p");
-                        paragrafoUsuarioAlt = document.createElement("p");
+                        var paragrafo = document.createElement("p");
+                        var paragrafoConclusao = document.createElement("p");
+                        var paragrafoUsuarioAlt = document.createElement("p");
                         paragrafoUsuarioAlt.style.fontWeight = "bold";
+
+                        var paragrafonome = document.createElement("p");
 
 
                 paragrafo.innerHTML = relatorioAlterado;
                  paragrafoConclusao.innerHTML = conclusaoAlterada;
                   paragrafoUsuarioAlt.innerHTML = usuarioResponsavel;
+                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome;
+                      document.getElementById("direitadiv").appendChild(paragrafonome);
+
                     document.getElementById("direitadiv").appendChild(paragrafoUsuarioAlt);
 
                   document.getElementById("direitadiv").appendChild(paragrafo);
                 document.getElementById("direitadiv").appendChild(paragrafoConclusao);
 
+                var linkAlteracao = document.createElement("a");
+                  linkAlteracao.innerHTML = "Usar";
+                  linkAlteracao.setAttribute("href", "../mascaras");
+                   document.getElementById("direitadiv").appendChild(linkAlteracao);
 
                   var divisoria = document.createElement("hr")
                   document.getElementById("direitadiv").appendChild(divisoria);
