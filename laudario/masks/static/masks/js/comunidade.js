@@ -133,6 +133,8 @@ function clicouAba(especialidadeid, exameid) {
 
                 var paragrafoConclusao = document.createElement("p");
 
+                var divEntrada = document.createElement("div");
+
 
                 paragrafoTecnicaHeader.innerHTML = mascarasJsonObject[i].fields.tecnica_header;
                 paragrafoTecnica.innerHTML = mascarasJsonObject[i].fields.tecnica;
@@ -147,16 +149,19 @@ function clicouAba(especialidadeid, exameid) {
                     paragrafoUsuario.style.fontWeight = "bold";
 
                     paragrafoUsuario.innerHTML = usuarioResponsavel;
-                    document.getElementById("direitadiv").appendChild(paragrafoNome);
-                    document.getElementById("direitadiv").appendChild(paragrafoUsuario);
-                  document.getElementById("direitadiv").appendChild(paragrafo);
-                  document.getElementById("direitadiv").appendChild(paragrafoTecnicaHeader);
-                  document.getElementById("direitadiv").appendChild(paragrafoTecnica);
-                  document.getElementById("direitadiv").appendChild(paragrafoRelatorioHeader);
+                    divEntrada.appendChild(paragrafoNome);
+                    divEntrada.appendChild(paragrafoUsuario);
+                  divEntrada.appendChild(paragrafo);
+                  divEntrada.appendChild(paragrafoTecnicaHeader);
+                  divEntrada.appendChild(paragrafoTecnica);
+                  divEntrada.appendChild(paragrafoRelatorioHeader);
+
+                    document.getElementById("direitadiv").appendChild(divEntrada);
+
 
 
                 var divGeral = document.createElement("div");
-                  document.getElementById("direitadiv").appendChild(divGeral);
+                  divEntrada.appendChild(divGeral);
 
 
 
@@ -171,18 +176,18 @@ function clicouAba(especialidadeid, exameid) {
                         }
                     }
 
-                  document.getElementById("direitadiv").appendChild(paragrafoConclusaoHeader);
-                  document.getElementById("direitadiv").appendChild(paragrafoConclusao);
+                  divEntrada.appendChild(paragrafoConclusaoHeader);
+                  divEntrada.appendChild(paragrafoConclusao);
 
 
                   var linkMascara = document.createElement("a");
                   linkMascara.innerHTML = "Usar";
                   linkMascara.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
-                   document.getElementById("direitadiv").appendChild(linkMascara);
+                   divEntrada.appendChild(linkMascara);
 
 
                   var divisoria = document.createElement("hr")
-                  document.getElementById("direitadiv").appendChild(divisoria);
+                  divEntrada.appendChild(divisoria);
 
                 }
             }
@@ -233,12 +238,20 @@ function clicouAba(especialidadeid, exameid) {
                  paragrafoConclusao.innerHTML = conclusaoAlterada;
                   paragrafoUsuarioAlt.innerHTML = usuarioResponsavel;
                   paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome;
-                      document.getElementById("direitadiv").appendChild(paragrafonome);
 
-                    document.getElementById("direitadiv").appendChild(paragrafoUsuarioAlt);
+                      var divEntrada = document.createElement("div");
 
-                  document.getElementById("direitadiv").appendChild(paragrafo);
-                document.getElementById("direitadiv").appendChild(paragrafoConclusao);
+
+                      divEntrada.appendChild(paragrafonome);
+
+                    divEntrada.appendChild(paragrafoUsuarioAlt);
+
+                  divEntrada.appendChild(paragrafo);
+                divEntrada.appendChild(paragrafoConclusao);
+
+
+                                document.getElementById("direitadiv").appendChild(divEntrada);
+
 
                 var linkAlteracao = document.createElement("a");
                   linkAlteracao.innerHTML = "Usar";
@@ -257,10 +270,10 @@ function clicouAba(especialidadeid, exameid) {
 
                     linkAlteracao.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
-                   document.getElementById("direitadiv").appendChild(linkAlteracao);
+                   divEntrada.appendChild(linkAlteracao);
 
                   var divisoria = document.createElement("hr")
-                  document.getElementById("direitadiv").appendChild(divisoria);
+                  divEntrada.appendChild(divisoria);
 
 
                             }

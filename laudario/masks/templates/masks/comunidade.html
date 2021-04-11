@@ -102,7 +102,8 @@
     <input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico" onclick="clicouBotaoRadio()">
     <label for="alfabeticoRadio" style="margin-right:30px">Ordem Alfabética</label>
      <input type="radio" id="minhasRadio" name="submodo" value="minhas" onclick="clicouBotaoRadio()">
-    <label for="minhasRadio">Autoria Própria</label>
+    <label for="minhasRadio">Autoria Própria</label><br>
+    <input autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeyup="procurarFrasesMascara(this.id)" onsearch="procurarFrasesMascara(this.id)"/><button>Procurar</button>
 
 <div id="direitadiv">
     teste
