@@ -4,6 +4,8 @@ from . import views
 
 urlpatterns = [
     path('mascaras/<int:id_mascara>/', views.mostrar_mascara, name='mostrar_mascara'),
+    path('mascaras/alteracao/<int:id_mascara>/<int:id_topico>/<int:id_alteracao>', views.mostrar_mascara_adaptada, name='mostrar_mascara_adaptada'),
+
     path('mascaras/diagnosticos/<str:template_name>/', views.mostrar_mascara_builder, name='mostrar_mascara_buider'),
     path('mascaras/nova', views.nova_mascara, name='nova_mascara'),
     path('mascaras/nova/adicionar', views.adicionar_nova_mascara, name='adicionar_nova_mascara'),

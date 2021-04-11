@@ -242,7 +242,21 @@ function clicouAba(especialidadeid, exameid) {
 
                 var linkAlteracao = document.createElement("a");
                   linkAlteracao.innerHTML = "Usar";
-                  linkAlteracao.setAttribute("href", "../mascaras");
+
+                  var topicoParaAlterar = alteradosJSONObject[i].fields.topico_normal;
+
+                  var alteracaoId = alteradosJSONObject[i].pk;
+                  var mascaraId;
+
+            for(b=0; b < normaisObject.length; b++) {
+                if(normaisObject[b].pk == topicoParaAlterar) {
+                    mascaraId = normaisObject[b].fields.mascara;
+                }
+            }
+
+
+                    linkAlteracao.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
+
                    document.getElementById("direitadiv").appendChild(linkAlteracao);
 
                   var divisoria = document.createElement("hr")

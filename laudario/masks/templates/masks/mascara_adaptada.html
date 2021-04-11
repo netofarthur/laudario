@@ -1,0 +1,687 @@
+{% extends "masks/base.html" %}
+
+   {% block css %}
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+    <script type="text/javascript" src="{% static 'masks/tinymce/js/tinymce/tinymce.min.js' %}"></script>
+
+    {% endblock css %}
+
+{% block conteudo %}
+
+
+                      <script>
+
+
+                          tinymce.init({
+                            selector: '#relatorio_modal',
+                                language: 'pt_BR',
+
+                              menubar: false,
+                                      plugins: "table",
+                                forced_root_block: false,
+                            toolbar: "bold italic underline forecolor table",
+                              fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+                                branding: false,
+                                  elementpath: false
+
+
+                          });
+
+
+                              tinymce.init({
+                            selector: '#conclusao_modal',
+                                language: 'pt_BR',
+
+                              menubar: false,
+                                      plugins: "table",
+                        forced_root_block: false,
+                            toolbar: "bold italic underline forecolor table",
+                              fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+                                branding: false,
+                                  elementpath: false
+
+
+                          });
+
+
+
+
+
+
+
+
+                            </script>
+
+<div id="mycontainer">
+
+<div class="container-fluid">
+
+<div class="row">
+
+
+
+<div class="col" style="padding: 0px; padding-left: 1rem;">
+
+<div id="botoes_div" style="text-align: center; margin-top:7px">
+        <button id="copiar_laudo" style="width:40%; padding: .5rem;" class="btn btn-primary" onclick="CopyToClipboard()">Copiar Relatório</button>
+            <button id="editar_laudo" style="width:40%; padding: .5rem; margin-left: 1rem;" class="btn btn-primary" onclick="editarLaudo()">Copiar Conclusão</button>
+
+           </div>
+<div id="mascara_div">
+    <button style="display: none;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalVariaveis" id=popular_variaveis onclick="popularVariaveis()">Preencher Variáveis</button>
+
+
+
+
+
+
+
+
+
+
+<p id="relatorio_header" data-mce-style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 2px; font-weight: bold;" style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 2px; font-weight: bold;"> {{ mascara.relatorio_header }} </p>
+
+
+
+
+
+
+
+
+
+
+<div id="topicos_div">
+{% for topico in topicos_normais %}
+    {% autoescape off %}
+
+    {% if forloop.counter == 1 %}
+    <div data-mce-style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: 0; line-height: {{ profile.altura_linha }}" style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: 0; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk }}" > {{ topico.relatorio }}</div>
+    {% else %}
+    <div data-mce-style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk }}" > {{ topico.relatorio }}</div>
+
+    {% endif %}
+    {% endautoescape %}
+    {% endfor %}
+</div>
+
+
+
+
+
+<p id="conclusao_header" data-mce-style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 2px; font-weight: bold;" style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 2px; font-weight: bold;"> {{ mascara.conclusao_header }} </p>
+    {% autoescape off %}
+    <p data-mce-style="margin-bottom: 0; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}" style="margin-bottom: 0; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" id="paragrafo_conclusao" name="conclusao"> {{mascara.conclusao}} </p>
+
+    {% endautoescape %}
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="col-4" style="display: none;>
+
+
+<div id=diagnosticos_div class="sticky-top">
+        <div class="sticky-top">
+            {% if usuarioPermitido %}
+    <button id="botaoAdicionarAlteracao" type="button" data-toggle="modal" data-target="#myModalAlteracao">Adicionar Alteração</button>
+        {% endif %}
+
+            <input autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeyup="procurarFrasesMascara(this.id)" onsearch="procurarFrasesMascara(this.id)"/>
+    </div>
+
+    <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
+    No primeiro loop são setados os ids dos topicos normais nos bancos de dados e no segundo loop o nome dos arquivos
+    html em templates/diagnosticos que também são colocados no banco de dados na entrada template_name em TopicoAnormalBuilders-->
+
+
+
+
+    {% for topicoanormal in topicos_anormais %}
+        {% if topicoanormal.topico_normal.mascara == mascara %}
+        <div class="container-fluid">
+            <div class="row" style="border-top:1px solid black;">
+                <div style="padding: 0; text-align: center;" class="col-3" >
+                        <input name="{{ topicoanormal.topico_normal.pk }}" class="botao_prioridade" type="image" src="{% static 'masks/images/prioridade.png' %}" onMouseOver="this.src='{% static 'masks/images/prioridade2.png' %}'" onMouseOut="this.src='{% static 'masks/images/prioridade.png' %}'" id="p{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">
+                </div>
+                <div class="col" style="padding-left: 0;">
+
+                    <button style="text-align: left;" name="{{ topicoanormal.topico_normal.pk }}" type="button" class="botao_diagnostico" id="b{{ topicoanormal.pk }}" onclick="alterarDiagnosticoDireto(this.name, this.id)">{{ topicoanormal.nome }}</button>
+           </div>
+            </div>
+       </div>
+
+        {% endif %}
+    {% endfor %}
+
+
+    {% for topicoanormalbuilder in topicos_anormais_builders %}
+        {% if topicoanormalbuilder.topico_normal.mascara == mascara %}
+            <button name="{{ topicoanormalbuilder.topico_normal.pk }}" type="button" class="botao_diagnostico" data-toggle="modal" data-target="#myModal" id={{ topicoanormalbuilder.template_name }}>{{ topicoanormalbuilder.nome }}</button>
+        {% endif %}
+    {% endfor %}
+
+    <form id="formulario_upvote" action="{% url 'upvote_frase' %}" method="post">
+        {% csrf_token %}
+
+        <input type="hidden" name="frase_clicada" id="frase_clicada">
+
+    </form>
+
+    <div style="display: none;" id="ultima_alteracao_relatorio"></div>
+    <p style="display: none;" id="ultima_alteracao_conclusao"></p>
+
+</div>
+
+</div>
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+    </body>
+
+    </div>
+
+    <!-- Modal de Diagnósticos Personalizados-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div id="template_name"></div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id = "save_changes" type="button" class="btn btn-primary" onclick="alterarDiagnosticoModal()">Save changes</button>
+              </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <!-- Modal de Variáveis do Usuário-->
+    <div class="modal fade" id="ModalVariaveis" tabindex="-1" role="dialog" aria-labelledby="tituloModalVariaveis" aria-hidden="true">
+        <div id="modal_variaveis" class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+               <div id="template_name_variaveis"></div>
+
+              </div>
+              <div id="body_teclado" class="modal-body">
+
+
+
+
+
+                  <div id="teclado">
+
+                      <div class="container-fluid" style="background-color: #000000; padding: 10px; border-radius: 10px;">
+
+                            <div class="row no-gutters">
+
+                                <div class="col-4">
+                                    <button id="botao7" name="botao_calculadora" class="botao_calculadora">7</button>
+                                </div>
+
+                                <div class="col-4">
+                                    <button id="botao8" name="botao_calculadora" class="botao_calculadora">8</button>
+
+                                </div>
+
+                                <div class="col-4">
+                                    <button id="botao9" name="botao_calculadora" class="botao_calculadora">9</button>
+
+                                </div>
+
+                            </div>
+
+
+                          <div class="row no-gutters">
+
+                                <div class="col-4">
+                                    <button id="botao4" name="botao_calculadora" class="botao_calculadora">4</button>
+                                </div>
+
+                                <div class="col-4">
+                                    <button id="botao5" name="botao_calculadora" class="botao_calculadora">5</button>
+
+                                </div>
+
+                                <div class="col-4">
+                                    <button id="botao6" name="botao_calculadora" class="botao_calculadora">6</button>
+
+                                </div>
+
+                            </div>
+
+
+                          <div class="row no-gutters">
+
+                                <div class="col-4">
+                                    <button id="botao1" name="botao_calculadora" class="botao_calculadora">1</button>
+
+                                </div>
+
+                                <div class="col-4">
+                                    <button id="botao2" name="botao_calculadora" class="botao_calculadora">2</button>
+
+                                </div>
+
+                                <div class="col-4">
+                                    <button id="botao3" name="botao_calculadora" class="botao_calculadora">3</button>
+
+                                </div>
+
+                          </div>
+
+
+                          <div class="row no-gutters">
+
+                                <div class="col-8">
+                                    <button id="botao0" name="botao_calculadora" class="botao_calculadora_duplo">0</button>
+
+                                </div>
+
+                                <div class="col-4">
+                                    <button id="botaovirgula" name="botao_calculadora" class="botao_calculadora">,</button>
+
+                                </div>
+
+
+
+                          </div>
+
+
+                           <div class="row no-gutters">
+
+                                <div class="col-12">
+                                    <button id="proxima_variavel" class="botao_calculadora_triplo" onclick="mostrarProximaVariavel()">OK</button>
+
+                                </div>
+
+
+
+
+
+                          </div>
+
+
+                      </div>
+
+
+                  </div>
+
+
+                  <div id="teclado_nominal">
+
+
+
+                  </div>
+
+
+                <div id="variaveis_inativas" style="display: none;">
+
+
+                  </div>
+
+
+              </div>
+              <div class="modal-footer" style="margin-top: .7rem;">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                <button id = "save_changes_variaveis" type="button" class="btn btn-primary" onclick="alterarVariaveisModal()">Adicionar Variáveis</button>
+              </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Modal de Adicionar Alteração-->
+    <div class="modal fade" id="myModalAlteracao" tabindex="-1" role="dialog" aria-labelledby="myModalAlteracaoTitle" aria-hidden="true">
+        <div id="modal_alteracoes" class="modal-dialog" role="document">
+            <div class="modal-content">
+                 <form action="{% url 'adicionar_alteracao' %}" method="post" id="formulario_alteracao">
+                        {% csrf_token %}
+
+              <div class="modal-header">
+                <h5 style="color: #c96100;" class="modal-title" id="myModalAlteracaoTitle">Adicionar Nova Alteração</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div id="corpo_alteracao">
+
+                    <div class="container-fluid">
+
+                            <div class="row">
+                        <div class="col-6" style="height: 90vh; overflow: auto;">
+                        <div class="form-group">
+                            <div style="margin-bottom: 1rem; margin-top: 1rem;">
+                          <label class="label_laranja" id="label_topicos" for="exames">Tópico a ser alterado </label>
+                          <select class="form-control" name ="exames" id="exames">
+                            {% for topico_normal in topicos_normais %}
+                              <option value={{ topico_normal.pk }}>{{topico_normal.orgao}}</option>
+                            {% endfor %}
+
+                          </select>
+                                </div>
+
+                            <div style="margin-bottom: 1.5rem;">
+                            <label class="label_laranja" for="nome_modal">Nome: </label>
+                             <input type="text" id="nome_modal" name="nome_modal"/>
+                           </div>
+
+                            <label class="label_laranja" for="relatorio_modal">Relatório: </label>
+
+
+                            <textarea style="width: 100%; rows:4;" type="text" id="relatorio_modal" name="relatorio_modal" class="entrada_modal"></textarea>
+                            <br>
+
+                                <label class="label_laranja" for="conclusao_modal">Conclusão: </label>
+                            <textarea style="width: 100%; rows:4;" type="text" id="conclusao_modal" name="conclusao_modal" class="entrada_modal"></textarea>
+                        </div>
+
+
+
+
+
+
+                            <input type="checkbox" id="adicionar_no_atual" name="adicionar_no_atual" checked/>
+                            <label for="adicionar_no_atual">Adicionar na máscara atual</label>
+                            <br>
+
+
+
+                            <input type="checkbox" id="adicionar_no_banco" name="adicionar_no_banco" checked/>
+                            <label for="adicionar_no_banco">Adicionar no meu banco de frases</label>
+                            <br>
+
+
+                            {% for profile in profiles %}
+                                {% if profile.usuario == request.user and profile.is_premium %}
+                                    <input type="checkbox" id="frase_publica" name="frase_publica" checked/>
+                                    <label for="frase_publica">Frase pública</label>
+                                {% elif profile.usuario == request.user %}
+                                    <input style="display: none;" type="checkbox" id="frase_publica" name="frase_publica" checked/>
+                                    <label style="display: none;" for="frase_publica">Frase pública</label>
+                                {% endif %}
+                            {% endfor %}
+
+
+
+                            <input type="hidden" id="usuario_id_alteracao">
+                            <input type="hidden" id="usuario_orgao_alteracao" name="usuario_orgao_alteracao">
+
+                            <input type="hidden" id="frase_aproveitada" name="frase_aproveitada">
+
+
+                      </div>
+                     <div id="frases_comunidade" class="col-6" style="height: 90vh; overflow: auto;">
+                             <input autocomplete="off" id="procurarFrasesPublicas" type="search" placeholder="Procurar frases públicas" onkeyup="procurarFrases(this.id)" onsearch="procurarFrases(this.id)"/>
+
+
+                              {% for topicoanormal in todos_topicos_anormais %}
+                                {% if topicoanormal.topico_normal.mascara.especialidade == mascara.especialidade and topicoanormal.topico_normal.mascara.exame == mascara.exame and topicoanormal.publica == True %}
+                         <button type="button" name="botao_alteracao" class="botao_diagnostico" id="t{{ topicoanormal.pk }}" onclick="popularFraseAlterada(this.id)">{{ topicoanormal.nome }} <span style="color: black">({{ topicoanormal.topico_normal.mascara.usuario.username }})</span></button>
+                                {% endif %}
+                            {% endfor %}
+                      </div>
+                            </div>
+                    </div>
+
+                  </div>
+
+                  <div id="corpo_variaveis"style="margin: 1rem;">
+
+
+
+                  </div>
+
+
+
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                <input type="button" class="btn btn-secondary" value="Adicionar" id="salva_mudancas" onclick="adicionarAlteracoNaMascara()">
+              </div>
+             </form>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+<!-- Script para mapear os botões/diagnósticos e abrir o template para preencher o modal adequadamente. Os templates
+    deverão ficar na pasta diagnósticos e um template_name deve existir para cada TopicoAlterado.-->
+    <!-- setAttribute name coloca o id do topico normal a ser alterado no name do botão savechanges,
+     para poder alterar o tópico correto depois.-->
+
+
+<script>
+
+ $('#myModal').on('show.bs.modal', function (e) {
+
+              var button = e.relatedTarget;
+              document.getElementById("template_name").setAttribute("w3-include-html", "../diagnosticos/" + button.id);
+              document.getElementById("save_changes").setAttribute("name", button.name);
+
+              includeHTML();
+        });
+
+
+$('#ModalVariaveis').on('shown.bs.modal', function (e) {
+   var variaveisDiv = document.getElementById("template_name_variaveis");
+
+        if(variaveisDiv.firstChild != null) {
+
+
+            if(variaveisDiv.firstChild.children[1].getAttribute("name") == "input") {
+                variaveisDiv.firstChild.children[1].focus();
+                variaveisDiv.firstChild.children[1].select();
+                 document.getElementById("teclado").style.display = "block";
+                document.getElementById("teclado_nominal").style.display = "none";
+            } else {
+                variaveisDiv.firstChild.children[1].focus();
+                document.getElementById("teclado").style.display = "none";
+                document.getElementById("teclado_nominal").style.display = "block";
+
+
+
+            }
+        }
+
+});
+
+
+
+
+
+
+
+$("#myModalAlteracao").on("shown.bs.modal", function(){
+
+
+   if(document.getElementById("procurarFrases") != null) {
+                    document.getElementById("procurarFrases").value = "";
+                    procurarFrasesMascara("procurarFrases");
+    }
+    $('#procurarFrasesPublicas').focus();
+
+
+        var opcoes = document.getElementById("exames").options;
+
+     var opcaoSelecionada = opcoes[0].innerHTML;
+     for(var i = 0; i < opcoes.length; i++) {
+             if(opcoes[i].innerHTML == "Nenhum órgão") {
+                        opcoes[i].style.display = "none";
+
+
+        }
+     }
+
+     for(var i = 0; i < opcoes.length; i++) {
+             if(opcoes[i].innerHTML == "Nenhum órgão") {
+                        opcoes[i].style.display = "block";
+                        break;
+
+
+        }
+     }
+
+
+        if(document.getElementById("procurarFrases") != null) {
+                    document.getElementById("procurarFrases").value = "";
+                    procurarFrasesMascara("procurarFrases");
+    }
+    document.getElementById("nome_modal").value = "";
+    document.getElementById("relatorio_modal").value = "";
+
+    document.getElementById("conclusao_modal").value = "";
+
+        document.getElementById("ultima_alteracao_relatorio").style.display = "none";
+    document.getElementById("ultima_alteracao_conclusao").style.display = "none";
+
+
+
+
+    document.getElementById("relatorio_modal").readOnly = false;
+
+    document.getElementById("conclusao_modal").readOnly = false;
+
+    document.getElementById("salva_mudancas").disabled = false;
+
+    document.getElementById("salva_mudancas").setAttribute("onclick", "adicionarAlteracoNaMascara()");
+
+
+    var corpo = document.getElementById("corpo_variaveis");
+    corpo.innerHTML = "";
+
+
+             tinymce.init({
+                            selector: '#relatorio_modal',
+                                language: 'pt_BR',
+
+                              menubar: false,
+                                      plugins: "table",
+                                forced_root_block: false,
+                            toolbar: "bold italic underline forecolor table",
+                              fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+                                branding: false,
+                                  elementpath: false
+
+
+                          });
+
+
+                              tinymce.init({
+                            selector: '#conclusao_modal',
+                                language: 'pt_BR',
+
+                              menubar: false,
+                                      plugins: "table",
+                        forced_root_block: false,
+                            toolbar: "bold italic underline forecolor table",
+                              fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
+                                branding: false,
+                                  elementpath: false
+
+
+                          });
+
+
+
+
+});
+
+
+// Prevent capturing focus by the button na calculadora.
+$('button').on('mousedown',
+    /** @param {!jQuery.Event} event */
+    function(event) {
+        event.preventDefault();
+    }
+);
+
+</script>
+
+<script>
+
+    var splits = window.location.href.split("/").reverse();
+
+       var topicosDiv = document.getElementById("topicos_div");
+
+    var children = topicosDiv.children;
+
+    for(i=0; i < children.length; i++) {
+        if(children[i].getAttribute("id") === splits[1]) {
+
+        } else {
+            children[i].style.display = "none";
+            children[i].innerHTML = "";
+
+
+        }
+    }
+
+    document.getElementById("b" + splits[0]).click();
+
+
+</script>
+
+    {% endblock conteudo %}
+
+
+
+
