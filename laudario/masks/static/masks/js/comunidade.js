@@ -160,13 +160,21 @@ function clicouAba(especialidadeid, exameid) {
                     paragrafo.setAttribute("style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
 
                     var paragrafoNome = document.createElement("a");
-                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.7rem; font-weight: bold; text-decoration: none")
+                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none")
                   paragrafoNome.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
 
 
+                    var frase;
+
+                    if(mascarasJsonObject[i].fields.popularidade == 1) {
+                        frase = "usuário"
+                    } else {
+                        frase = "usuários"
+                    }
+
                     var criadaEm = document.createElement("p");
 
-                    var criadaEmFormatada = "Criada em " + mascarasJsonObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ usuarioResponsavel + "</span>";
+                    var criadaEmFormatada = "Criada em " + mascarasJsonObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ usuarioResponsavel + "</span><span style='font-size: .9rem;'> (" + mascarasJsonObject[i].fields.popularidade + " " + frase + ")</span>";
 
 
                     criadaEm.innerHTML = criadaEmFormatada;
@@ -318,12 +326,19 @@ function clicouAba(especialidadeid, exameid) {
                            var paragrafonome = document.createElement("a");
                            paragrafonome.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
-                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.7rem; font-weight: bold; text-decoration: none")
+                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none")
+
+
+                     if(alteradosJSONObject[i].fields.popularidade == 1) {
+                        frase = "usuário"
+                    } else {
+                        frase = "usuários"
+                    }
 
 
                     var criadaEm = document.createElement("p");
 
-                    var criadaEmFormatada = "Criada em " + alteradosJSONObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ devolverUsuarioAlteracao(alteracaoId); + "</span>";
+                    var criadaEmFormatada = "Criada em " + alteradosJSONObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ devolverUsuarioAlteracao(alteracaoId) + "</span><span style='font-size: .9rem;'> (" + alteradosJSONObject[i].fields.popularidade + " " + frase + ")</span>";
 
 
                     criadaEm.innerHTML = criadaEmFormatada;

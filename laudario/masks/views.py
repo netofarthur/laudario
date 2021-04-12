@@ -954,10 +954,10 @@ def comunidade(request):
     json_serializer = serializers.get_serializer("json")()
 
     alterados = json_serializer.serialize(TopicoAnormal.objects.all().order_by('nome')) #alfabético
-    alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('popularidade'))
+    alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade'))
     alteradosUsuario = json_serializer.serialize(TopicoAnormal.objects.filter(topico_normal__mascara__usuario=request.user).order_by('nome'))
 
-    mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.all().order_by('popularidade'))
+    mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade'))
     mascarasJsonUsuario = json_serializer.serialize(Mascara.objects.filter(usuario=request.user).order_by('nome'))
 
     normais = json_serializer.serialize(TopicoNormal.objects.all())
