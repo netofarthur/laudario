@@ -96,12 +96,8 @@
 {% for topico in topicos_normais %}
     {% autoescape off %}
 
-    {% if forloop.counter == 1 %}
-    <div data-mce-style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: 0; line-height: {{ profile.altura_linha }}" style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: 0; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk }}" > {{ topico.relatorio }}</div>
-    {% else %}
-    <div data-mce-style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk }}" > {{ topico.relatorio }}</div>
+    <div class="paragrafo_mascara" name="topico" id="{{ topico.pk }}" > {{ topico.relatorio }}</div>
 
-    {% endif %}
     {% endautoescape %}
     {% endfor %}
 </div>
@@ -112,7 +108,7 @@
 
     <p style="margin-top: 3rem; color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none">Conclusão</p>
     {% autoescape off %}
-    <p data-mce-style="margin-bottom: 0; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}" style="margin-bottom: 0; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" id="paragrafo_conclusao" name="conclusao"> {{mascara.conclusao}} </p>
+    <p class="paragrafo_mascara" id="paragrafo_conclusao" name="conclusao"> {{mascara.conclusao}} </p>
 
     {% endautoescape %}
 
