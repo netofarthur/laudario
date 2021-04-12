@@ -2554,7 +2554,7 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
 function copiarRelatorio() {
 
 
-   var containerid = document.getElementsByClassName("paragrafo_mascara")[0];
+   var containerid = document.getElementsByName("alterado")[0];
 
       if (document.selection) {
         var range = document.body.createTextRange();

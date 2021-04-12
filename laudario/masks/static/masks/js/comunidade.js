@@ -240,7 +240,7 @@ function clicouAba(especialidadeid, exameid) {
 
 
                   var linkMascara = document.createElement("a");
-                  linkMascara.innerHTML = "Usar";
+                  linkMascara.innerHTML = "&lt;Usar Máscara&gt;";
                   linkMascara.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
                       linkMascara.setAttribute("style", "color: #c96100;")
 
@@ -288,45 +288,9 @@ function clicouAba(especialidadeid, exameid) {
                             if(topicosNormaisValidos.includes(alteradosJSONObject[i].fields.topico_normal)) {
                         var alteracaoId = alteradosJSONObject[i].pk;
                         nome = alteradosJSONObject[i].fields.nome;
-                        relatorioAlterado = alteradosJSONObject[i].fields.relatorio;
-                        conclusaoAlterada = alteradosJSONObject[i].fields.conclusao;
+                        relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + alteradosJSONObject[i].fields.relatorio;
+                        conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + alteradosJSONObject[i].fields.conclusao;
 
-
-
-                        var paragrafo = document.createElement("p");
-                        var paragrafoConclusao = document.createElement("p");
-                        var paragrafoUsuarioAlt = document.createElement("p");
-                        paragrafoUsuarioAlt.style.fontWeight = "bold";
-
-                        var paragrafonome = document.createElement("p");
-                    paragrafonome.setAttribute("class", "nome_entrada");
-
-                      var criadaEm = document.createElement("p");
-
-                    var criadaEmFormatada = alteradosJSONObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/");
-
-
-                    criadaEm.innerHTML = criadaEmFormatada;
-
-
-                paragrafo.innerHTML = relatorioAlterado;
-                 paragrafoConclusao.innerHTML = conclusaoAlterada;
-                  paragrafoUsuarioAlt.innerHTML = devolverUsuarioAlteracao(alteracaoId);
-                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome;
-
-                      var divEntrada = document.createElement("div");
-
-                      divEntrada.appendChild(criadaEm);
-
-                      divEntrada.appendChild(paragrafonome);
-
-                    divEntrada.appendChild(paragrafoUsuarioAlt);
-
-                  divEntrada.appendChild(paragrafo);
-                divEntrada.appendChild(paragrafoConclusao);
-
-
-                                document.getElementById("direitadiv").appendChild(divEntrada);
 
 
                 var linkAlteracao = document.createElement("a");
@@ -343,6 +307,55 @@ function clicouAba(especialidadeid, exameid) {
                 }
             }
 
+
+
+
+                        var paragrafo = document.createElement("p");
+                        var paragrafoConclusao = document.createElement("p");
+                        var paragrafoUsuarioAlt = document.createElement("p");
+                        paragrafoUsuarioAlt.style.fontWeight = "bold";
+
+                           var paragrafonome = document.createElement("a");
+                           paragrafonome.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
+
+                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.7rem; font-weight: bold; text-decoration: none")
+
+
+                    var criadaEm = document.createElement("p");
+
+                    var criadaEmFormatada = "Criada em " + alteradosJSONObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ devolverUsuarioAlteracao(alteracaoId); + "</span>";
+
+
+                    criadaEm.innerHTML = criadaEmFormatada;
+
+
+                    paragrafonome.setAttribute("class", "nome_entrada");
+
+
+
+
+                paragrafo.innerHTML = relatorioAlterado;
+                 paragrafoConclusao.innerHTML = conclusaoAlterada;
+                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome;
+
+                      var divEntrada = document.createElement("div");
+
+                    divEntrada.appendChild(paragrafonome);
+
+
+                      divEntrada.appendChild(criadaEm);
+
+
+
+                  divEntrada.appendChild(paragrafo);
+                divEntrada.appendChild(paragrafoConclusao);
+
+
+                                document.getElementById("direitadiv").appendChild(divEntrada);
+
+
+                    linkAlteracao.innerHTML = "&lt;Copiar&gt;";
+                      linkAlteracao.setAttribute("style", "color: #c96100;")
 
                     linkAlteracao.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
