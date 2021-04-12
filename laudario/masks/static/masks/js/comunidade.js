@@ -1,8 +1,57 @@
+
+function devolverUsuarioAlteracao(alteracaoid) {
+
+        var mascarasJsonObject = JSON.parse(mascarasJson);
+        var alteradosJSONObject = JSON.parse(alterados);
+        var normaisObject = JSON.parse(normais);
+        var usuariosObject = JSON.parse(usuarios2);
+
+        var profilesObject = JSON.parse(profiles);
+
+        var topicoNormalId;
+        var mascaraId;
+
+        var usuarioId;
+
+        var usuarioResponsavel;
+
+        for(u=0; u < alteradosJSONObject.length; u++) {
+            if(alteradosJSONObject[u].pk == alteracaoid) {
+                topicoNormalId = alteradosJSONObject[u].fields.topico_normal;
+            }
+        }
+
+         for(u=0; u < normaisObject.length; u++) {
+            if(normaisObject[u].pk == topicoNormalId) {
+                mascaraId = normaisObject[u].fields.mascara;
+            }
+        }
+
+         for(u=0; u < mascarasJsonObject.length; u++) {
+            if(mascarasJsonObject[u].pk == mascaraId) {
+                usuarioId = mascarasJsonObject[u].fields.usuario;
+            }
+        }
+
+        for(u=0; u < usuariosObject.length; u++) {
+            if(usuariosObject[u].pk == usuarioId) {
+                usuarioResponsavel = usuariosObject[u].fields.username;
+            }
+
+        }
+
+        return usuarioResponsavel;
+
+
+}
+
+
 function clicouBotaoRadio() {
     var especialidadeid = document.getElementById("especialidadeHidden").value;
     var exameid = document.getElementById("exameHidden").value;
     clicouAba(especialidadeid, exameid);
 }
+
 
 
 function clicouAba(especialidadeid, exameid) {
@@ -110,11 +159,14 @@ function clicouAba(especialidadeid, exameid) {
 
                     paragrafo.setAttribute("style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
 
-                    var paragrafoNome = document.createElement("p");
+                    var paragrafoNome = document.createElement("a");
+                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.7rem; font-weight: bold; text-decoration: none")
+                  paragrafoNome.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
+
 
                     var criadaEm = document.createElement("p");
 
-                    var criadaEmFormatada = mascarasJsonObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/");
+                    var criadaEmFormatada = "Criada em " + mascarasJsonObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ usuarioResponsavel + "</span>";
 
 
                     criadaEm.innerHTML = criadaEmFormatada;
@@ -154,11 +206,10 @@ function clicouAba(especialidadeid, exameid) {
 
                     var paragrafoUsuario = document.createElement("p");
                     paragrafoUsuario.style.fontWeight = "bold";
+                    divEntrada.appendChild(paragrafoNome);
+
                   divEntrada.appendChild(criadaEm);
 
-                    paragrafoUsuario.innerHTML = usuarioResponsavel;
-                    divEntrada.appendChild(paragrafoNome);
-                    divEntrada.appendChild(paragrafoUsuario);
                   divEntrada.appendChild(paragrafo);
                   divEntrada.appendChild(paragrafoTecnicaHeader);
                   divEntrada.appendChild(paragrafoTecnica);
@@ -191,6 +242,8 @@ function clicouAba(especialidadeid, exameid) {
                   var linkMascara = document.createElement("a");
                   linkMascara.innerHTML = "Usar";
                   linkMascara.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
+                      linkMascara.setAttribute("style", "color: #c96100;")
+
                    divEntrada.appendChild(linkMascara);
 
 
@@ -222,6 +275,9 @@ function clicouAba(especialidadeid, exameid) {
                 }
             }
 
+
+
+
             for(i=0; i < normaisObject.length; i++) {
                 if(mascarasValidas.includes(normaisObject[i].fields.mascara)) {
                     topicosNormaisValidos.push(normaisObject[i].pk);
@@ -230,9 +286,12 @@ function clicouAba(especialidadeid, exameid) {
 
                 for(i = 0; i < alteradosJSONObject.length; i++) {
                             if(topicosNormaisValidos.includes(alteradosJSONObject[i].fields.topico_normal)) {
+                        var alteracaoId = alteradosJSONObject[i].pk;
                         nome = alteradosJSONObject[i].fields.nome;
                         relatorioAlterado = alteradosJSONObject[i].fields.relatorio;
                         conclusaoAlterada = alteradosJSONObject[i].fields.conclusao;
+
+
 
                         var paragrafo = document.createElement("p");
                         var paragrafoConclusao = document.createElement("p");
@@ -252,7 +311,7 @@ function clicouAba(especialidadeid, exameid) {
 
                 paragrafo.innerHTML = relatorioAlterado;
                  paragrafoConclusao.innerHTML = conclusaoAlterada;
-                  paragrafoUsuarioAlt.innerHTML = usuarioResponsavel;
+                  paragrafoUsuarioAlt.innerHTML = devolverUsuarioAlteracao(alteracaoId);
                   paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome;
 
                       var divEntrada = document.createElement("div");
