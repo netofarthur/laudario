@@ -47,10 +47,18 @@ function devolverUsuarioAlteracao(alteracaoid) {
 
 
 function clicouBotaoRadio() {
+    if(document.getElementById("frasesRadio").checked) {
+        document.getElementById("procurarFrases").setAttribute("placeholder", "Procurar frases");
+
+    } else {
+        document.getElementById("procurarFrases").setAttribute("placeholder", "Procurar máscaras");
+
+    }
     var especialidadeid = document.getElementById("especialidadeHidden").value;
     var exameid = document.getElementById("exameHidden").value;
     clicouAba(especialidadeid, exameid);
     procurarEntradas("procurarFrases");
+
 }
 
 
@@ -266,8 +274,9 @@ function clicouAba(especialidadeid, exameid) {
                 divLink.setAttribute("id", "divlink")
                 var linkMais = document.createElement("button");
                 linkMais.setAttribute("onclick", "mostrarMais()");
-                linkMais.setAttribute("class", "botaoLink");
+                linkMais.setAttribute("id", "linkmais");
                 linkMais.innerHTML = "Mais";
+                linkMais.setAttribute("class", "botaoLink");
                 divLink.appendChild(linkMais);
                  document.getElementById("direitadiv").appendChild(divLink);
 
@@ -398,7 +407,10 @@ function clicouAba(especialidadeid, exameid) {
                 var linkMais = document.createElement("button");
                 linkMais.setAttribute("onclick", "mostrarMais()");
                 linkMais.setAttribute("class", "botaoLink");
+                linkMais.setAttribute("id", "linkmais");
+
                 linkMais.innerHTML = "Mais";
+
                 divLink.appendChild(linkMais);
                  document.getElementById("direitadiv").appendChild(divLink);
 
@@ -409,6 +421,26 @@ function clicouAba(especialidadeid, exameid) {
 
     limitarEntradas();
 }
+
+
+function calcularResultadosEncontrados() {
+    var children = document.getElementById("direitadiv").children;
+       var counterEncontrados = 0;
+       var counterAbertos = 0;
+         for(i=0; i < children.length - 1; i++) {
+            if(children[i].firstChild.innerHTML.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+
+                counterEncontrados++;
+            }
+            if(children[i].style.display == "block") {
+                counterAbertos++;
+            }
+
+         }
+
+         return counterEncontrados - counterAbertos;
+}
+
 
 function eliminarLinkSeNecessario() {
      var children = document.getElementById("direitadiv").children;
@@ -433,6 +465,15 @@ function mostrarMais() {
 
        var children = document.getElementById("direitadiv").children;
        var counter = 0;
+
+        if(document.getElementById("procurarFrases").value.length == 0) {
+               resultado = calcularResultadosEncontrados()-10;
+
+        } else {
+           resultado = calcularResultadosEncontrados()-5;
+
+        }
+
          for(i=0; i < children.length; i++) {
             if(children[i].style.display == "none" && counter < 5 && children[i].firstChild.innerHTML.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
 
@@ -441,7 +482,10 @@ function mostrarMais() {
             }
 
          }
+                     document.getElementById("linkmais").innerHTML = "Mais " + resultado + " resultados";
+
         eliminarLinkSeNecessario();
+
 
 }
 
@@ -453,6 +497,9 @@ function limitarEntradas() {
 
          }
 }
+
+
+
 
 
 function procurarEntradas(id) {
@@ -477,6 +524,8 @@ function procurarEntradas(id) {
   }
 
     eliminarLinkSeNecessario();
+    document.getElementById("linkmais").innerHTML = "Mais " + calcularResultadosEncontrados() + " resultados";
+
 
 }
 
