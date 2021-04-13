@@ -275,7 +275,6 @@ function clicouAba(especialidadeid, exameid) {
                 var linkMais = document.createElement("button");
                 linkMais.setAttribute("onclick", "mostrarMais()");
                 linkMais.setAttribute("id", "linkmais");
-                linkMais.innerHTML = "Mais";
                 linkMais.setAttribute("class", "botaoLink");
                 divLink.appendChild(linkMais);
                  document.getElementById("direitadiv").appendChild(divLink);
@@ -409,7 +408,6 @@ function clicouAba(especialidadeid, exameid) {
                 linkMais.setAttribute("class", "botaoLink");
                 linkMais.setAttribute("id", "linkmais");
 
-                linkMais.innerHTML = "Mais";
 
                 divLink.appendChild(linkMais);
                  document.getElementById("direitadiv").appendChild(divLink);
@@ -417,7 +415,10 @@ function clicouAba(especialidadeid, exameid) {
 
 
         }
-
+                        var resultado = calcularResultadosEncontrados()-5;
+                        if(resultado > 0) {
+                        document.getElementById("linkmais").innerHTML = "Mais " + resultado + " resultados";
+}
 
     limitarEntradas();
 }
@@ -482,8 +483,9 @@ function mostrarMais() {
             }
 
          }
+                     if(resultado > 0) {
                      document.getElementById("linkmais").innerHTML = "Mais " + resultado + " resultados";
-
+                        }
         eliminarLinkSeNecessario();
 
 
