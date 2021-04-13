@@ -50,6 +50,7 @@ function clicouBotaoRadio() {
     var especialidadeid = document.getElementById("especialidadeHidden").value;
     var exameid = document.getElementById("exameHidden").value;
     clicouAba(especialidadeid, exameid);
+    procurarEntradas("procurarFrases");
 }
 
 
@@ -260,7 +261,15 @@ function clicouAba(especialidadeid, exameid) {
 
                 }
             }
-
+                var divLink = document.createElement("div");
+                divLink.setAttribute("style", "text-align: center")
+                divLink.setAttribute("id", "divlink")
+                var linkMais = document.createElement("button");
+                linkMais.setAttribute("onclick", "mostrarMais()");
+                linkMais.setAttribute("class", "botaoLink");
+                linkMais.innerHTML = "Mais";
+                divLink.appendChild(linkMais);
+                 document.getElementById("direitadiv").appendChild(divLink);
 
         } else {
 
@@ -383,12 +392,66 @@ function clicouAba(especialidadeid, exameid) {
                             }
 
                 }
+                var divLink = document.createElement("div");
+                divLink.setAttribute("style", "text-align: center")
+                divLink.setAttribute("id", "divlink")
+                var linkMais = document.createElement("button");
+                linkMais.setAttribute("onclick", "mostrarMais()");
+                linkMais.setAttribute("class", "botaoLink");
+                linkMais.innerHTML = "Mais";
+                divLink.appendChild(linkMais);
+                 document.getElementById("direitadiv").appendChild(divLink);
+
 
 
         }
 
 
+    limitarEntradas();
+}
 
+function eliminarLinkSeNecessario() {
+     var children = document.getElementById("direitadiv").children;
+       var counter = 0;
+       var mostrarBotao = false;
+         for(i=0; i < children.length - 1; i++) {
+            if(children[i].style.display == "none" && children[i].firstChild.innerHTML.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+                mostrarBotao = true;
+            }
+
+         }
+         if(mostrarBotao) {
+             document.getElementById("divlink").style.display = "block";
+
+         } else {
+            document.getElementById("divlink").style.display = "none";
+
+         }
+}
+
+function mostrarMais() {
+
+       var children = document.getElementById("direitadiv").children;
+       var counter = 0;
+         for(i=0; i < children.length; i++) {
+            if(children[i].style.display == "none" && counter < 5 && children[i].firstChild.innerHTML.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+
+                children[i].style.display = "block";
+                counter++;
+            }
+
+         }
+        eliminarLinkSeNecessario();
+
+}
+
+function limitarEntradas() {
+         var children = document.getElementById("direitadiv").children;
+         for(i=5; i < children.length - 1; i++) {
+
+            children[i].style.display = "none";
+
+         }
 }
 
 
@@ -399,16 +462,22 @@ function procurarEntradas(id) {
   filter = input.value.toUpperCase();
   li = document.getElementsByClassName('nome_entrada');
 
+  var counter = 0;
+
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
     txtValue = li[i].innerHTML;
-    if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1) {
+    if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1 && counter < 5) {
       li[i].parentNode.style.display = "block";
+      counter++;
     } else {
       li[i].parentNode.style.display = "none";
     }
 
   }
+
+    eliminarLinkSeNecessario();
+
 }
 
 

@@ -961,7 +961,7 @@ def comunidade(request):
     mascarasJsonUsuario = json_serializer.serialize(Mascara.objects.filter(usuario=request.user).order_by('nome'))
 
     normais = json_serializer.serialize(TopicoNormal.objects.all())
-    mascarasJson = json_serializer.serialize(Mascara.objects.all()) #alfabético
+    mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome')) #alfabético
 
     usuarios2 = json_serializer.serialize(User.objects.all())
     profiles = json_serializer.serialize(Profile.objects.all())
