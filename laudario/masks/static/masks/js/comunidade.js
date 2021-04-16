@@ -58,9 +58,43 @@ function clicouBotaoRadio() {
     var especialidadeid = document.getElementById("especialidadeHidden").value;
     var exameid = document.getElementById("exameHidden").value;
     clicouAba(especialidadeid, exameid);
+    procurarEntradasAdaptado();
 
 }
 
+function procurarEntradasAdaptado() {
+
+    var id = "procurarFrases";
+  // Declare variables
+  var input, filter, li, i, txtValue;
+  input = document.getElementById(id);
+  filter = input.value.toUpperCase();
+  li = document.getElementsByClassName('nome_entrada');
+
+
+  setCookie("procura", input.value, 12);
+
+
+  var counter = 0;
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    txtValue = li[i].innerHTML;
+    if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1 && counter < 5) {
+      li[i].parentNode.style.display = "block";
+      counter++;
+    } else {
+      li[i].parentNode.style.display = "none";
+    }
+
+  }
+
+    var resultado = calcularResultadosEncontrados()-5;
+
+    eliminarLinkSeNecessario();
+    document.getElementById("linkmais").innerHTML = "Mais " + calcularResultadosEncontrados()-5 + " resultados";
+
+}
 
 
 
