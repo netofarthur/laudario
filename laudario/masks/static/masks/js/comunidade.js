@@ -47,6 +47,7 @@ function devolverUsuarioAlteracao(alteracaoid) {
 
 
 function clicouBotaoRadio() {
+    setCookie("vezesClicadoMais", "0", 12);
     if(document.getElementById("frasesRadio").checked) {
         document.getElementById("procurarFrases").setAttribute("placeholder", "Procurar frases");
 
@@ -57,13 +58,187 @@ function clicouBotaoRadio() {
     var especialidadeid = document.getElementById("especialidadeHidden").value;
     var exameid = document.getElementById("exameHidden").value;
     clicouAba(especialidadeid, exameid);
-    procurarEntradas("procurarFrases");
 
 }
 
 
 
+
+//Execute after page loads
+document.addEventListener('DOMContentLoaded', function() {
+
+    if(getCookie("exameid") != null)  {
+        document.getElementById("collapse" + getCookie("exameid")).setAttribute("class", "collapse show");
+        document.getElementById("exameHidden").value = getCookie("exameid");
+        document.getElementById("especialidadeHidden").value = getCookie("especialidadeid");
+        if(getCookie("mascarasRadioChecked") != null &&  getCookie("mascarasRadioChecked") != "" && getCookie("mascarasRadioChecked") == "true") {
+            document.getElementById("mascarasRadio").checked = true;
+        } else {
+            document.getElementById("mascarasRadio").checked = false;
+
+        }
+
+        if(getCookie("frasesRadioChecked") != null &&  getCookie("frasesRadioChecked") != "" && getCookie("frasesRadioChecked") == "true") {
+            document.getElementById("frasesRadio").checked = true;
+        } else {
+            document.getElementById("frasesRadio").checked = false;
+
+        }
+
+
+        if(getCookie("popularRadioChecked") != null &&  getCookie("popularRadioChecked") != "" && getCookie("popularRadioChecked") == "true") {
+            document.getElementById("popularRadio").checked = true;
+        } else {
+            document.getElementById("popularRadio").checked = false;
+
+        }
+
+        if(getCookie("alfabeticoRadioChecked") != null &&  getCookie("alfabeticoRadioChecked") != "" && getCookie("alfabeticoRadioChecked") == "true") {
+            document.getElementById("alfabeticoRadio").checked = true;
+        } else {
+            document.getElementById("alfabeticoRadio").checked = false;
+
+        }
+        if(getCookie("minhasRadioChecked") != null &&  getCookie("minhasRadioChecked") != "" && getCookie("minhasRadioChecked") == "true") {
+            document.getElementById("minhasRadio").checked = true;
+        } else {
+            document.getElementById("minhasRadio").checked = false;
+
+        }
+
+        if(getCookie("procura") != null && getCookie("procura") != "") {
+            document.getElementById("procurarFrases").value = getCookie("procura");
+
+        }
+
+
+
+    clicouAba(getCookie("especialidadeid"), getCookie("exameid"));
+
+
+
+
+
+
+
+    var loop = parseInt(getCookie("vezesClicadoMais"));
+
+    for(i=0; i < loop; i++) {
+
+
+       var children = document.getElementById("direitadiv").children;
+       var counter = 0;
+
+
+
+         for(i=0; i < children.length; i++) {
+            if(children[i].style.display == "none" && counter < 5*loop && children[i].firstChild.innerHTML.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+
+                children[i].style.display = "block";
+                counter++;
+            }
+
+         }
+
+
+             if(document.getElementById("procurarFrases").value != "") {
+                procurarEntradas("procurarFrases");
+if(document.getElementById("procurarFrases").value.length == 0) {
+               resultado = calcularResultadosEncontrados()-10;
+
+        } else {
+           resultado = calcularResultadosEncontrados()-5;
+
+        }
+        } else {
+        if(document.getElementById("procurarFrases").value.length == 0) {
+               resultado = calcularResultadosEncontrados()-5;
+
+        } else {
+           resultado = calcularResultadosEncontrados();
+
+        }
+        }
+
+
+
+                     if(resultado > 0) {
+                     document.getElementById("linkmais").innerHTML = "Mais " + resultado + " resultados";
+                        }
+        eliminarLinkSeNecessario();
+    }
+
+
+
+    }
+
+            if(document.getElementById("procurarFrases").value.length > 0) {
+                    procurarEntradas("procurarFrases");
+
+            }
+
+
+
+
+    }, false);
+
+
+
+
+
 function clicouAba(especialidadeid, exameid) {
+
+
+        //seta Cookies
+        setCookie("exameid", exameid, 12);
+        setCookie("especialidadeid", especialidadeid, 12);
+
+
+             if(document.getElementById("mascarasRadio").checked) {
+            setCookie("mascarasRadioChecked", "true", 12);
+
+        } else {
+            setCookie("mascarasRadioChecked", "false", 12);
+
+        }
+
+
+        if(document.getElementById("frasesRadio").checked) {
+            setCookie("frasesRadioChecked", "true", 12);
+
+        } else {
+            setCookie("frasesRadioChecked", "false", 12);
+
+        }
+
+
+      if(document.getElementById("popularRadio").checked) {
+            setCookie("popularRadioChecked", "true", 12);
+
+        } else {
+            setCookie("popularRadioChecked", "false", 12);
+
+        }
+
+          if(document.getElementById("alfabeticoRadio").checked) {
+            setCookie("alfabeticoRadioChecked", "true", 12);
+
+        } else {
+            setCookie("alfabeticoRadioChecked", "false", 12);
+
+        }
+
+          if(document.getElementById("minhasRadio").checked) {
+            setCookie("minhasRadioChecked", "true", 12);
+
+        } else {
+            setCookie("minhasRadioChecked", "false", 12);
+
+        }
+
+
+
+
 
 
         document.getElementById("especialidadeHidden").value = especialidadeid;
@@ -464,6 +639,18 @@ function eliminarLinkSeNecessario() {
 
 function mostrarMais() {
 
+        var vezesClicado;
+
+        if(getCookie("vezesClicadoMais") == null || getCookie("vezesClicadoMais") == "") {
+            vezesClicado = 0;
+        } else {
+            vezesClicado = parseInt(getCookie("vezesClicadoMais"))+1;
+        }
+
+
+        setCookie("vezesClicadoMais", vezesClicado);
+
+
        var children = document.getElementById("direitadiv").children;
        var counter = 0;
 
@@ -505,11 +692,18 @@ function limitarEntradas() {
 
 
 function procurarEntradas(id) {
+
+
+
   // Declare variables
   var input, filter, li, i, txtValue;
   input = document.getElementById(id);
   filter = input.value.toUpperCase();
   li = document.getElementsByClassName('nome_entrada');
+
+
+  setCookie("procura", input.value, 12);
+
 
   var counter = 0;
 
@@ -529,6 +723,29 @@ function procurarEntradas(id) {
     document.getElementById("linkmais").innerHTML = "Mais " + calcularResultadosEncontrados() + " resultados";
 
 
+}
+
+function setCookie(cname, cvalue, exhours) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exhours*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 }
 
 
