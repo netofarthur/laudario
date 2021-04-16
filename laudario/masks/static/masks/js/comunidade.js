@@ -122,7 +122,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     var loop = parseInt(getCookie("vezesClicadoMais"));
+if(document.getElementById("procurarFrases").value.length > 0) {
+                    procurarEntradas("procurarFrases");
 
+            }
     for(i=0; i < loop; i++) {
 
 
@@ -142,12 +145,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
              if(document.getElementById("procurarFrases").value != "") {
-                procurarEntradas("procurarFrases");
+
 if(document.getElementById("procurarFrases").value.length == 0) {
-               resultado = calcularResultadosEncontrados()-10;
+               resultado = calcularResultadosEncontrados()-5;
 
         } else {
-           resultado = calcularResultadosEncontrados()-5;
+           resultado = calcularResultadosEncontrados();
 
         }
         } else {
@@ -172,10 +175,7 @@ if(document.getElementById("procurarFrases").value.length == 0) {
 
     }
 
-            if(document.getElementById("procurarFrases").value.length > 0) {
-                    procurarEntradas("procurarFrases");
 
-            }
 
 
 
