@@ -89,10 +89,10 @@ function procurarEntradasAdaptado() {
 
   }
 
-    var resultado = calcularResultadosEncontrados()-5;
+
 
     eliminarLinkSeNecessario();
-    document.getElementById("linkmais").innerHTML = "Mais " + calcularResultadosEncontrados()-5 + " resultados";
+    document.getElementById("linkmais").innerHTML = "Mais " + calcularResultadosEncontrados() + " resultados";
 
 }
 
