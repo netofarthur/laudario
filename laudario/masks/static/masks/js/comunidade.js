@@ -220,7 +220,14 @@ if(document.getElementById("procurarFrases").value.length == 0) {
 
 function procurarTudo() {
 
+        if(document.getElementById("procurarFrases").value.length == 0) {
+            return;
+        }
 
+        if(document.getElementById("procurarFrases").value.length < 3) {
+            alert("Digite ao menos três caracteres para procurar");
+            return;
+        }
 
 
         var alteradosJSONObject;
@@ -249,12 +256,15 @@ function procurarTudo() {
         var usuarioResponsavel;
 
 
+        var encontrou = false;
+
         if(document.getElementById("mascarasRadio").checked) {
 
 
              document.getElementById("direitadiv").innerHTML = "";
             for(i=0; i < mascarasJsonObject.length; i++) {
                 if(mascarasJsonObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+                    encontrou = true;
                     usuarioResponsavelInt = mascarasJsonObject[i].fields.usuario;
 
                     for(z=0; z < usuariosObject.length; z++) {
@@ -445,6 +455,8 @@ function procurarTudo() {
                 for(i = 0; i < alteradosJSONObject.length; i++) {
                             if(alteradosJSONObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
                         var alteracaoId = alteradosJSONObject[i].pk;
+                        encontrou = true;
+
                         nome = alteradosJSONObject[i].fields.nome;
                         relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + alteradosJSONObject[i].fields.relatorio;
                         conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + alteradosJSONObject[i].fields.conclusao;
@@ -500,12 +512,13 @@ function procurarTudo() {
                      var especiadidadeInt;
                     var exameInt;
 
+                    var mascarasJsonObject2 = JSON.parse(mascarasJson);
 
-                    for(p=0; p < mascarasJsonObject.length; p++) {
-                        if(mascarasJsonObject[p].pk == mascaraId) {
+                    for(p=0; p < mascarasJsonObject2.length; p++) {
+                        if(mascarasJsonObject2[p].pk == mascaraId) {
 
-                            especiadidadeInt = mascarasJsonObject[p].fields.especialidade;
-                            exameInt = mascarasJsonObject[p].fields.exame;
+                            especiadidadeInt = mascarasJsonObject2[p].fields.especialidade;
+                            exameInt = mascarasJsonObject2[p].fields.exame;
                         }
                     }
 
@@ -592,7 +605,12 @@ function procurarTudo() {
 }
 
     limitarEntradas();
-    document.getElementById("procurarFrases").value = "";
+
+    if(!encontrou) {
+                 document.getElementById("direitadiv").innerHTML = 'Nenhum resultado encontrado para o termo "' + document.getElementById("procurarFrases").value + '".';
+    }
+        document.getElementById("procurarFrases").value = "";
+
 
 }
 
@@ -1105,6 +1123,7 @@ function limitarEntradas() {
 
 function procurarEntradas(id) {
 
+    
 
 
   // Declare variables
