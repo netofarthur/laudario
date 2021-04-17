@@ -1909,6 +1909,11 @@ function htmlDecode(input) {
 
     function CopyToClipboard() {
 
+var voltars = document.getElementsByClassName("link_voltar");
+    for(i=0; i < voltars.length; i++) {
+        voltars[i].style.display = "none";
+    }
+
 
 document.getElementById("ModalVariaveis").style.display = "none";
 document.getElementById("myModalAlteracao").style.display = "none";
@@ -1917,6 +1922,15 @@ document.getElementById("myModal").style.display = "none";
     if(document.getElementById("mais_utilizadas") != null) {
 document.getElementById("mais_utilizadas").style.display = "none";
 }
+
+    var anchor2 = document.createElement("a");
+anchor2.setAttribute("href", window.location.href);
+anchor2.setAttribute("class", "link_voltar");
+
+anchor2.innerHTML = "Repetir exame";
+anchor2.style.fontSize = "1.5rem";
+document.getElementById("botoes_div").appendChild(anchor2);
+
     var anchor = document.createElement("a");
 anchor.setAttribute("href", "/mascaras");
 anchor.setAttribute("id", "link_voltar");
@@ -1924,6 +1938,9 @@ anchor.setAttribute("id", "link_voltar");
 anchor.innerHTML = "Novo exame";
 anchor.style.fontSize = "1.5rem";
 document.getElementById("botoes_div").appendChild(anchor);
+
+
+
 
 
 document.getElementById("copiar_laudo").style.display = "none";
@@ -2175,6 +2192,13 @@ if(document.getElementById("procurarFrases") != null) {
 }
 
 function editarLaudo() {
+
+var voltars = document.getElementsByClassName("link_voltar");
+    for(i=0; i < voltars.length; i++) {
+        voltars[i].style.display = "none";
+        voltars[i].parentNode.remove();
+    }
+
 document.getElementById("popular_variaveis").remove();
 limparDivsVazios();
 document.getElementById("mais_utilizadas").style.display = "none";

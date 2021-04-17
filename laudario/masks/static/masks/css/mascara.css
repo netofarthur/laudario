@@ -304,10 +304,25 @@ color: #c96100;
 
 #link_voltar {
     color: #c96100;
+    margin-right: 20px;
 }
 
 #link_voltar:hover {
     color: #c96100;
+    margin-right: 20px;
+
+}
+
+.link_voltar {
+    color: #c96100;
+        margin-right: 20px;
+
+}
+
+.link_voltar:hover {
+    color: #c96100;
+        margin-right: 20px;
+
 
 }
 

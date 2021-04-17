@@ -582,7 +582,7 @@ function procurarTudo() {
                                 document.getElementById("direitadiv").appendChild(divEntrada);
 
 
-                    linkAlteracao.innerHTML = "&lt;Copiar&gt;";
+                    linkAlteracao.innerHTML = "&lt;Usar Frase&gt;";
                       linkAlteracao.setAttribute("style", "color: #c96100;")
 
                     linkAlteracao.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
@@ -1032,7 +1032,7 @@ function clicouAba(especialidadeid, exameid) {
                                 document.getElementById("direitadiv").appendChild(divEntrada);
 
 
-                    linkAlteracao.innerHTML = "&lt;Copiar&gt;";
+                    linkAlteracao.innerHTML = "&lt;Usar Frase&gt;";
                       linkAlteracao.setAttribute("style", "color: #c96100;")
 
                     linkAlteracao.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
