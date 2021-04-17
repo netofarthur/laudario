@@ -311,13 +311,13 @@ function procurarTudo() {
 
                     paragrafo.setAttribute("style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
 
-                    var paragrafoExame = document.createElement("span");
-                    paragrafoExame.setAttribute("style", "margin-left: 4px; color: gray; font-weight: bold");
-                    paragrafoExame.innerHTML = document.getElementById(mascarasJsonObject[i].fields.exame).innerText;
-                    var paragrafoEspecialidade = document.createElement("span");
-                        paragrafoEspecialidade.setAttribute("style", "margin-left: 4px; color: gray; font-weight: bold");
+                    var paragrafoExame1 = document.createElement("span");
+                    paragrafoExame1.setAttribute("style", "margin-left: 4px; color: gray; font-weight: bold");
+                    paragrafoExame1.innerHTML = document.getElementById(mascarasJsonObject[i].fields.exame).innerText;
+                    var paragrafoEspecialidade1 = document.createElement("span");
+                        paragrafoEspecialidade1.setAttribute("style", "margin-left: 4px; color: gray; font-weight: bold");
 
-                        paragrafoEspecialidade.innerHTML = "(" + document.getElementsByName(mascarasJsonObject[i].fields.especialidade)[0].innerText + ")";
+                        paragrafoEspecialidade1.innerHTML = "(" + document.getElementsByName(mascarasJsonObject[i].fields.especialidade)[0].innerText + ")";
 
 
                     var paragrafoNome = document.createElement("a");
@@ -379,8 +379,8 @@ function procurarTudo() {
 
 
                     divEntrada.appendChild(paragrafoNome);
-                    divEntrada.appendChild(paragrafoExame);
-                    divEntrada.appendChild(paragrafoEspecialidade);
+                    divEntrada.appendChild(paragrafoExame1);
+                    divEntrada.appendChild(paragrafoEspecialidade1);
 
                   divEntrada.appendChild(criadaEm);
 
@@ -497,13 +497,29 @@ function procurarTudo() {
                     paragrafonome.setAttribute("class", "nome_entrada");
 
 
-     var paragrafoExame = document.createElement("span");
-                    paragrafoExame.innerHTML = document.getElementById(mascarasJsonObject[i].fields.exame).innerText;
-                    paragrafoExame.setAttribute("style", "margin-left: 4px; color: gray; font-weight: bold");
+                     var especiadidadeInt;
+                    var exameInt;
 
-                    var paragrafoEspecialidade = document.createElement("span");
-                        paragrafoEspecialidade.innerHTML = "(" + document.getElementsByName(mascarasJsonObject[i].fields.especialidade)[0].innerText + ")";
-                    paragrafoEspecialidade.setAttribute("style", "margin-left: 4px; color: gray; font-weight: bold");
+
+                    for(p=0; p < mascarasJsonObject.length; p++) {
+                        if(mascarasJsonObject[p].pk == mascaraId) {
+
+                            especiadidadeInt = mascarasJsonObject[p].fields.especialidade;
+                            exameInt = mascarasJsonObject[p].fields.exame;
+                        }
+                    }
+
+
+                    var paragrafoEspecialidade2 = document.createElement("span");
+                        paragrafoEspecialidade2.innerHTML = "(" + document.getElementsByName(especiadidadeInt)[0].innerText + ")";
+                    paragrafoEspecialidade2.setAttribute("style", "margin-left: 4px; color: gray; font-weight: bold");
+
+
+                     var paragrafoExame2 = document.createElement("span");
+                    paragrafoExame2.innerHTML = document.getElementById(exameInt).innerText;
+
+                    paragrafoExame2.setAttribute("style", "margin-left: 4px; color: gray; font-weight: bold");
+
 
 
                     var paragrafoNome = document.createElement("a");
@@ -526,8 +542,8 @@ function procurarTudo() {
 
 
                     divEntrada.appendChild(paragrafonome);
-                       divEntrada.appendChild(paragrafoExame);
-                                            divEntrada.appendChild(paragrafoEspecialidade);
+                       divEntrada.appendChild(paragrafoExame2);
+                                            divEntrada.appendChild(paragrafoEspecialidade2);
 
 
                       divEntrada.appendChild(criadaEm);
