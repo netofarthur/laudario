@@ -953,7 +953,7 @@ def comunidade(request):
     especialidades = Especialidade.objects.all()
     json_serializer = serializers.get_serializer("json")()
 
-    alterados = json_serializer.serialize(TopicoAnormal.objects.all().order_by('nome')) #alfabético
+    alterados = json_serializer.serialize(TopicoAnormal.objects.all().order_by('nome', '-popularidade')) #alfabético
     alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade'))
     alteradosUsuario = json_serializer.serialize(TopicoAnormal.objects.filter(topico_normal__mascara__usuario=request.user).order_by('nome'))
 
@@ -961,7 +961,11 @@ def comunidade(request):
     mascarasJsonUsuario = json_serializer.serialize(Mascara.objects.filter(usuario=request.user).order_by('nome'))
 
     normais = json_serializer.serialize(TopicoNormal.objects.all())
-    mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome')) #alfabético
+    mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome', '-popularidade')) #alfabético
+
+    mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.all().order_by('-data_criada', 'nome'))
+    alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-data_criada', 'nome'))
+
 
     usuarios2 = json_serializer.serialize(User.objects.all())
     profiles = json_serializer.serialize(Profile.objects.all())
@@ -970,5 +974,6 @@ def comunidade(request):
     titulo = "Masqs - Comunidade"
     context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados, 'normais': normais, 'mascarasJson': mascarasJson,
                'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario, 'mascarasJsonPopulares': mascarasJsonPopulares,
-               'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles}
+               'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles, 'mascarasMaisRecentes': mascarasMaisRecentes,
+               'alteradosMaisRecentes': alteradosMaisRecentes}
     return render(request, 'masks/comunidade.html', context)

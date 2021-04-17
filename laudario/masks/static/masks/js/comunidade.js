@@ -146,6 +146,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         }
 
+         if(getCookie("recentesRadioChecked") != null &&  getCookie("recentesRadioChecked") != "" && getCookie("recentesRadioChecked") == "true") {
+            document.getElementById("recentesRadio").checked = true;
+        } else {
+            document.getElementById("recentesRadio").checked = false;
+
+        }
+
         if(getCookie("procura") != null && getCookie("procura") != "") {
             document.getElementById("procurarFrases").value = getCookie("procura");
 
@@ -670,6 +677,14 @@ function clicouAba(especialidadeid, exameid) {
 
         }
 
+           if(document.getElementById("recentesRadio").checked) {
+            setCookie("recentesRadioChecked", "true", 12);
+
+        } else {
+            setCookie("recentesRadioChecked", "false", 12);
+
+        }
+
 
 
 
@@ -705,9 +720,13 @@ function clicouAba(especialidadeid, exameid) {
               mascarasJsonObject = JSON.parse(mascarasJsonPopulares);
               alteradosJSONObject = JSON.parse(alteradosPopulares);
 
-        } else {
+        } else if(document.getElementById("minhasRadio").checked) {
               mascarasJsonObject = JSON.parse(mascarasJsonUsuario);
               alteradosJSONObject = JSON.parse(alteradosUsuario);
+
+        } else {
+              alteradosJSONObject = JSON.parse(alteradosRecentes);
+              mascarasJsonObject = JSON.parse(mascarasRecentes);
 
         }
 
