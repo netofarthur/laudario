@@ -626,8 +626,26 @@ function procurarTudo() {
 
 }
 
+function limparTodosBotoes() {
+    var grupoEspecialidades = document.getElementsByName("grupoEspecialidades");
+    for(i=0; i < grupoEspecialidades.length; i++) {
+        var children = grupoEspecialidades[i].children;
+        for(z=0; z < children.length; z++) {
+            children[z].style.backgroundColor = "white";
+        }
+    }
+}
+
 
 function clicouAba(especialidadeid, exameid) {
+        limparTodosBotoes();
+        var todas = document.getElementsByName(especialidadeid);
+        for(i=0; i < todas.length; i++) {
+            if(todas[i].parentNode.parentNode.id == "collapse" + exameid) {
+                todas[i].style.backgroundColor = "red";
+            }
+
+        }
 
 
         //seta Cookies

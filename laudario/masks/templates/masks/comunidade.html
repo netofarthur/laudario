@@ -78,7 +78,7 @@
 
                 {% for especialidade in especialidades %}
 
-              <div class="list-group">
+              <div class="list-group" name="grupoEspecialidades">
                   <button onclick="clicouAba(this.name, this.value)" class="btn btn-link" value="{{ exame.pk }}" name="{{ especialidade.pk }}">{{ especialidade.descricao }}</button>
 
                 </div>
