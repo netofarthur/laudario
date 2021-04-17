@@ -58,7 +58,12 @@ function clicouBotaoRadio() {
     var especialidadeid = document.getElementById("especialidadeHidden").value;
     var exameid = document.getElementById("exameHidden").value;
     clicouAba(especialidadeid, exameid);
-    procurarEntradas("procurarFrases");
+    if(document.getElementById("procurarFrases").value == "") {
+
+    } else {
+        procurarEntradas("procurarFrases");
+
+    }
     document.getElementById("clicouBotaoRadio").value = 1;
 
 }
@@ -616,7 +621,6 @@ function procurarTudo() {
 
 
 function clicouAba(especialidadeid, exameid) {
-        document.getElementById("clicouBotaoRadio").value = 0;
 
 
         //seta Cookies
@@ -1026,7 +1030,12 @@ function clicouAba(especialidadeid, exameid) {
 }
 
     limitarEntradas();
-    document.getElementById("procurarFrases").value = "";
+    if(document.getElementById("procurarFrases").value == "") {
+
+    } else {
+        procurarEntradas("procurarFrases");
+
+    }
 }
 
 
