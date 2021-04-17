@@ -224,8 +224,8 @@ function procurarTudo() {
             return;
         }
 
-        if(document.getElementById("procurarFrases").value.length < 3) {
-            alert("Digite ao menos três caracteres para procurar");
+        if(document.getElementById("procurarFrases").value.length < 2) {
+            alert("Digite ao menos dois caracteres para procurar");
             return;
         }
 
@@ -1026,6 +1026,7 @@ function clicouAba(especialidadeid, exameid) {
 }
 
     limitarEntradas();
+    document.getElementById("procurarFrases").value = "";
 }
 
 
@@ -1123,7 +1124,6 @@ function limitarEntradas() {
 
 function procurarEntradas(id) {
 
-    
 
 
   // Declare variables
