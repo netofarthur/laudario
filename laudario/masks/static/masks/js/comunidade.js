@@ -1094,7 +1094,7 @@ function mostrarMais() {
        var children = document.getElementById("direitadiv").children;
        var counter = 0;
 
-        if(document.getElementById("procurarFrases").value.length == 0 && document.getElementById("clicouBotaoRadio").value == 0) {
+        if(document.getElementById("procurarFrases").value.length == 0 || document.getElementById("clicouBotaoRadio").value == 0) {
                resultado = calcularResultadosEncontrados()-10;
 
         } else {
