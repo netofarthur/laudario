@@ -103,6 +103,15 @@ function clicouCheckboxTopicos() {
     }
 }
 
+function clicouCheckboxQuadroMais() {
+    if(document.getElementById("quadroMaisCheckbox").checked) {
+        document.getElementById("quadroMaisCheckbox").value = "True";
+    } else {
+        document.getElementById("quadroMaisCheckbox").value = "False";
+
+    }
+}
+
 //apaga tópicos duplicados
 function apagar() {
 

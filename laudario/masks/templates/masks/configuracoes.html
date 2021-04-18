@@ -408,7 +408,16 @@
            value="{{ profile.cor_topicos }}">
 
                   </fieldset>
+                <br>
+                <div>
+                    {% if profile.quadro_mais == True %}
+                         <input onclick="clicouCheckboxQuadroMais()" type="checkbox" name="quadro_mais" id="quadroMaisCheckbox" checked value="True"> <label for="quadroMaisCheckbox">Mostrar quadro de frases mais utilizadas no final da máscara</label>
 
+                    {% else %}
+                        <input onclick="clicouCheckboxQuadroMais()" type="checkbox" name="quadro_mais" id="quadroMaisCheckbox" value="False"> <label for="quadroMaisCheckbox">Mostrar quadro de frases mais utilizadas no final da máscara</label>
+
+                    {% endif %}
+                </div>
             <div style="text-align: center;">
                 <br>
         <input class="btn btn-primary" type="submit" value="Salvar" data-toggle="modal" data-target="#modalAlerta" style="margin-bottom: 1rem;">

@@ -111,6 +111,7 @@ class Profile(models.Model):
     altura_linha = models.CharField(max_length=20, default='100%')
     margem_cabecalho = models.CharField(max_length=20, default='20px')
     mascara_topicos = models.BooleanField(default=False)
+    quadro_mais = models.BooleanField(default=False)
 
 
 

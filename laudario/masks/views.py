@@ -874,6 +874,7 @@ def salvar_configuracoes(request):
     altura_linha = request.POST['altura_linha']
     margem_cabecalho = request.POST['margem_cabecalho']
     mascara_topicos = request.POST.get('mascara_topicos')
+    quadro_mais = request.POST.get('quadro_mais')
 
     profile.tamanho_fonte = tamanho_fonte
     profile.fonte = fonte
@@ -893,6 +894,11 @@ def salvar_configuracoes(request):
         profile.mascara_topicos = True
     else:
         profile.mascara_topicos = False
+
+    if (quadro_mais == "True"):
+        profile.quadro_mais = True
+    else:
+        profile.quadro_mais = False
 
     profile.save()
     return HttpResponse(status=204)
