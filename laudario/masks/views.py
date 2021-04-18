@@ -117,13 +117,17 @@ def mostrar_mascara(request, id_mascara):
     mascara.save()
 
 
+
     profile = Profile.objects.get(usuario=request.user)
+
+    mascara_topicos = profile.mascara_topicos
 
     titulo = "Masqs - " + mascara.nome
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
                'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
                'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario, 'todos_topicos_anormais': todos_topicos_anormais,
-               'profiles': profiles, 'profile': profile, 'titulo': titulo, 'topicos_anormais_mais_usados': topicos_anormais_mais_usados, 'usuarioPermitido': usuarioPermitido}
+               'profiles': profiles, 'profile': profile, 'titulo': titulo, 'topicos_anormais_mais_usados': topicos_anormais_mais_usados, 'usuarioPermitido': usuarioPermitido,
+               'mascara_topicos': mascara_topicos}
     return render(request, 'masks/mascara.html', context)
 
 def nova_mascara(request):

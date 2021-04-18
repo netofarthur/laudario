@@ -1797,11 +1797,19 @@ function aplicarConfiguracoesUsuario() {
     styleTinyMceTables();
 
 
+
     var paragrafos = document.getElementsByClassName("paragrafo_mascara");
 
     for(paragrafo of paragrafos) {
         if(paragrafo.innerHTML != "") {
-            paragrafo.style.display = "block";
+            if(mascara_topicos == "True") {
+                paragrafo.style.display = "inline";
+
+            } else {
+                paragrafo.style.display = "block";
+
+            }
+
         }
     }
 
