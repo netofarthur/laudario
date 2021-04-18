@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-        {% load static %}
+{% extends "masks/base.html" %}
+
+   {% block css %}
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+    <script type="text/javascript" src="{% static 'masks/tinymce/js/tinymce/tinymce.min.js' %}"></script>
         <link rel="stylesheet" type="text/css" href="{% static 'masks/css/comunidade.css' %}">
-        <!-- Required meta tags for bootstrap-->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
- <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="{% static 'masks/js/comunidade.js' %}"></script>
 
-    <script>
+  <script>
         var alterados = '{{ alterados|escapejs }}';
         var alteradosPopulares = '{{ alteradosPopulares|escapejs }}';
         var alteradosUsuario = '{{ alteradosUsuario|escapejs }}';
@@ -38,11 +30,16 @@
 
     </script>
 
-</head>
-<body>
-<div class="container-fluid">
+    {% endblock css %}
 
-<div class="row">
+{% block conteudo %}
+
+
+
+
+<div class="container-fluid" style="margin-top: 10px;">
+
+<div class="row" style="margin-top: 30px;">
 
 <div class="col-4">
 
@@ -51,10 +48,11 @@
     <input type="hidden" id="clicouBotaoRadio" value=0>
 
 
-    <input type="radio" id="frasesRadio" value="frases" name="modo" checked onclick="clicouBotaoRadio()">
-    <label style="margin-right:30px" for="frasesRadio">Frases</label>
-    <input type="radio" id="mascarasRadio" value="mascaras" name="modo" onclick="clicouBotaoRadio()">
-    <label for="mascarasRadio">Máscaras</label>
+    <div style="display: inline; white-space: nowrap; margin-left: 5px;"><input type="radio" id="frasesRadio" value="frases" name="modo" checked onclick="clicouBotaoRadio()">
+        <label style="margin-right:30px" for="frasesRadio">Frases</label></div>
+    <div style="display: inline; white-space: nowrap;"><input type="radio" id="mascarasRadio" value="mascaras" name="modo" onclick="clicouBotaoRadio()">
+        <label for="mascarasRadio">Máscaras</label></div>
+    <hr>
 
 <div class="list-group">
 
@@ -79,7 +77,7 @@
                 {% for especialidade in especialidades %}
 
               <div class="list-group" name="grupoEspecialidades">
-                  <button onclick="clicouAba(this.name, this.value)" class="btn btn-link" value="{{ exame.pk }}" name="{{ especialidade.pk }}">{{ especialidade.descricao }}</button>
+                  <button style="color:black;" onclick="clicouAba(this.name, this.value)" class="btn btn-link" value="{{ exame.pk }}" name="{{ especialidade.pk }}">{{ especialidade.descricao }}</button>
 
                 </div>
 
@@ -104,19 +102,44 @@
 <div class="col">
 
 
-    <input type="radio" id="popularRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()">
-    <label for="popularRadio" style="margin-right:30px">Mais Populares</label>
-    <input type="radio" id="recentesRadio" name="submodo" value=mascarasRecentes checked onclick="clicouBotaoRadio()">
-    <label for="recentesRadio" style="margin-right:30px" style="margin-right:30px">Mais Recentes</label>
-    <input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico" onclick="clicouBotaoRadio()">
-    <label for="alfabeticoRadio" style="margin-right:30px">Ordem Alfabética</label>
-     <input type="radio" id="minhasRadio" name="submodo" value="minhas" onclick="clicouBotaoRadio()">
-    <label for="minhasRadio">Autoria Própria</label><br>
-    <input style="width: 50%" autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeyup="procurarEntradas(this.id)" onsearch="procurarEntradas(this.id)"/><button id="botaoProcurarTudo" onclick="procurarTudo()">Procurar</button>
-
+    <div style="display: inline; white-space: nowrap;"><input type="radio" id="popularRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()">
+        <label for="popularRadio" style="margin-right:30px">Mais Populares</label></div>
+    <div style="display: inline; white-space: nowrap;"><input type="radio" id="recentesRadio" name="submodo" value=mascarasRecentes checked onclick="clicouBotaoRadio()">
+        <label for="recentesRadio" style="margin-right:30px" style="margin-right:30px">Mais Recentes</label></div>
+    <div style="display: inline; white-space: nowrap;"><input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico" onclick="clicouBotaoRadio()">
+        <label for="alfabeticoRadio" style="margin-right:30px">Ordem Alfabética</label></div>
+    <div style="display: inline; white-space: nowrap;"> <input type="radio" id="minhasRadio" name="submodo" value="minhas" onclick="clicouBotaoRadio()">
+    <label id="minhasRadioLabel" for="minhasRadio">Autoria Própria</label></div>
+    <div>
+        <hr>
+    <input style="width: 70%" autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeyup="procurarEntradas(this.id)" onsearch="procurarEntradas(this.id)"/><button style="width: 30%" id="botaoProcurarTudo" onclick="procurarTudo()">Procurar</button>
+    </div>
     <hr>
 <div id="direitadiv">
-    teste
+    <h1 style="color: #c96100; text-align: center;">Seja bem vindo à comunidade Masqs!</h1>
+    <br>
+    <h3>Plataforma colaborativa de modelos de laudos e alterações em radiologia.</h3>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+      <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
 </div>
 </div>
 
@@ -125,5 +148,5 @@
 
 
 </div>
-</body>
-</html>
+
+{% endblock conteudo %}

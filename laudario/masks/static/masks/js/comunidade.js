@@ -139,13 +139,17 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById("alfabeticoRadio").checked = false;
 
         }
-        if(getCookie("minhasRadioChecked") != null &&  getCookie("minhasRadioChecked") != "" && getCookie("minhasRadioChecked") == "true") {
-            document.getElementById("minhasRadio").checked = true;
-        } else {
-            document.getElementById("minhasRadio").checked = false;
 
+        configurarPaginaComunidade();
+
+        if(document.getElementById("minhasRadio") != null) {
+            if(getCookie("minhasRadioChecked") != null &&  getCookie("minhasRadioChecked") != "" && getCookie("minhasRadioChecked") == "true") {
+                document.getElementById("minhasRadio").checked = true;
+            } else {
+                document.getElementById("minhasRadio").checked = false;
+
+            }
         }
-
          if(getCookie("recentesRadioChecked") != null &&  getCookie("recentesRadioChecked") != "" && getCookie("recentesRadioChecked") == "true") {
             document.getElementById("recentesRadio").checked = true;
         } else {
@@ -157,7 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById("procurarFrases").value = getCookie("procura");
 
         }
-
 
 
     clicouAba(getCookie("especialidadeid"), getCookie("exameid"));
@@ -626,6 +629,22 @@ function procurarTudo() {
 
 }
 
+
+function configurarPaginaComunidade() {
+ try {
+    var mascarasJsonUsuarioObject = JSON.parse(mascarasJsonUsuario);
+
+ } catch(e) {
+    document.getElementById("minhasRadio").remove();
+    document.getElementById("minhasRadioLabel").remove();
+
+
+ }
+
+
+
+}
+
 function limparTodosBotoes() {
     var grupoEspecialidades = document.getElementsByName("grupoEspecialidades");
     for(i=0; i < grupoEspecialidades.length; i++) {
@@ -637,12 +656,13 @@ function limparTodosBotoes() {
 }
 
 
+
 function clicouAba(especialidadeid, exameid) {
         limparTodosBotoes();
         var todas = document.getElementsByName(especialidadeid);
         for(i=0; i < todas.length; i++) {
             if(todas[i].parentNode.parentNode.id == "collapse" + exameid) {
-                todas[i].style.backgroundColor = "red";
+                todas[i].style.backgroundColor = "lightgray";
             }
 
         }
@@ -686,7 +706,7 @@ function clicouAba(especialidadeid, exameid) {
             setCookie("alfabeticoRadioChecked", "false", 12);
 
         }
-
+            if(document.getElementById("minhasRadio") != null) {
           if(document.getElementById("minhasRadio").checked) {
             setCookie("minhasRadioChecked", "true", 12);
 
@@ -694,7 +714,7 @@ function clicouAba(especialidadeid, exameid) {
             setCookie("minhasRadioChecked", "false", 12);
 
         }
-
+}
            if(document.getElementById("recentesRadio").checked) {
             setCookie("recentesRadioChecked", "true", 12);
 
@@ -702,7 +722,6 @@ function clicouAba(especialidadeid, exameid) {
             setCookie("recentesRadioChecked", "false", 12);
 
         }
-
 
 
 
@@ -738,10 +757,11 @@ function clicouAba(especialidadeid, exameid) {
               mascarasJsonObject = JSON.parse(mascarasJsonPopulares);
               alteradosJSONObject = JSON.parse(alteradosPopulares);
 
-        } else if(document.getElementById("minhasRadio").checked) {
+        } else if(document.getElementById("minhasRadio") != null && document.getElementById("minhasRadio").checked) {
+              if(document.getElementById("minhasRadio") != null) {
               mascarasJsonObject = JSON.parse(mascarasJsonUsuario);
               alteradosJSONObject = JSON.parse(alteradosUsuario);
-
+                }
         } else {
               alteradosJSONObject = JSON.parse(alteradosRecentes);
               mascarasJsonObject = JSON.parse(mascarasRecentes);

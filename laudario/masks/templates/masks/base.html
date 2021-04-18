@@ -52,15 +52,21 @@
 
 
     <nav class="navbar navbar-expand-sm">
+        {% if user.is_authenticated %}
         <a href="{% url 'mostrar_mascaras' %}" class="navbar-left"><img id="logo_navbar" src="{% static 'masks/images/icone.png' %}"></a>
+        {% else %}
+        <a href="/" class="navbar-left"><img id="logo_navbar" src="{% static 'masks/images/icone.png' %}"></a>
 
+        {% endif %}
         <div class="container">
             <button id="botao_expansor" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {% if user.is_authenticated %}
                 <ul class="navbar-nav mr-auto" id="barra_navegacao">
+
                     <li class="nav-item active">
                         <a id="mascaras" class="nav-link" href="{% url 'mostrar_mascaras' %}">Máscaras<span class="sr-only">(current)</span></a>
                     </li>
@@ -76,11 +82,39 @@
                     </li>
 
                 </ul>
+
                 <form id="form_username">
                     <span style="color: #c96100;" id="username">{{ user.username }}</span>
-                    <a style="font-size: 1.3rem;" href="{% url 'logout_usuario' %}">Logout</a>
+                    <a id="loginlogout" style="font-size: 1.3rem;" href="{% url 'logout_usuario' %}">Logout</a>
 
                 </form>
+
+                {% else %}
+                    <ul class="navbar-nav mr-auto" id="barra_navegacao">
+
+                    <li class="nav-item active">
+                        <a style="display: none" id="mascaras" class="nav-link" href="{% url 'mostrar_mascaras' %}">Máscaras<span class="sr-only">(current)</span></a>
+                    </li>
+                     <li class="nav-item">
+                        <a style="display: none" id="editar" class="nav-link" href="{% url 'configuracoes' %}">Configurações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="display: none" id="comunidade" class="nav-link" href="{% url 'comunidade' %}">Comunidade</a>
+                    </li>
+
+                     <li class="nav-item">
+                        <a style="display: none" id="ajuda" class="nav-link" href="{% url 'sobre' %}">Ajuda</a>
+                    </li>
+
+                </ul>
+
+                <form id="form_username" style="padding: 10px;">
+                    <span style="color: #c96100;" id="username">{{ user.username }}</span>
+                    <a id="loginlogout" style="font-size: 1.3rem; " href="{% url 'mostrar_index' %}">Login</a>
+
+
+                </form>
+                {% endif %}
             </div>
         </div>
     </nav>

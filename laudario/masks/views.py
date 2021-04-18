@@ -500,7 +500,7 @@ def activate(request, uid, token):
 
 def logout_usuario(request):
     logout(request)
-    return redirect(views.mostrar_mascaras)
+    return redirect(views.comunidade)
 
 
 def mostrar_mascaras(request):
@@ -966,31 +966,66 @@ def quemsomos(request):
     return render(request, 'masks/quemsomos.html', context)
 
 def comunidade(request):
-    exames = Exame.objects.all()
-    especialidades = Especialidade.objects.all()
-    json_serializer = serializers.get_serializer("json")()
 
-    alterados = json_serializer.serialize(TopicoAnormal.objects.all().order_by('nome', '-popularidade')) #alfabético
-    alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade'))
-    alteradosUsuario = json_serializer.serialize(TopicoAnormal.objects.filter(topico_normal__mascara__usuario=request.user).order_by('nome'))
+    if not request.user.is_anonymous:
 
-    mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade'))
-    mascarasJsonUsuario = json_serializer.serialize(Mascara.objects.filter(usuario=request.user).order_by('nome'))
+        exames = Exame.objects.all()
+        especialidades = Especialidade.objects.all()
+        json_serializer = serializers.get_serializer("json")()
 
-    normais = json_serializer.serialize(TopicoNormal.objects.all())
-    mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome', '-popularidade')) #alfabético
+        alterados = json_serializer.serialize(TopicoAnormal.objects.all().order_by('nome', '-popularidade')) #alfabético
+        alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade'))
+        alteradosUsuario = json_serializer.serialize(TopicoAnormal.objects.filter(topico_normal__mascara__usuario=request.user).order_by('nome'))
 
-    mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.all().order_by('-data_criada', 'nome'))
-    alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-data_criada', 'nome'))
+        mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade'))
+        mascarasJsonUsuario = json_serializer.serialize(Mascara.objects.filter(usuario=request.user).order_by('nome'))
+
+        normais = json_serializer.serialize(TopicoNormal.objects.all())
+        mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome', '-popularidade')) #alfabético
+
+        mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.all().order_by('-data_criada', 'nome'))
+        alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-data_criada', 'nome'))
 
 
-    usuarios2 = json_serializer.serialize(User.objects.all())
-    profiles = json_serializer.serialize(Profile.objects.all())
+        usuarios2 = json_serializer.serialize(User.objects.all())
+        profiles = json_serializer.serialize(Profile.objects.all())
 
 
-    titulo = "Masqs - Comunidade"
-    context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados, 'normais': normais, 'mascarasJson': mascarasJson,
-               'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario, 'mascarasJsonPopulares': mascarasJsonPopulares,
-               'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles, 'mascarasMaisRecentes': mascarasMaisRecentes,
-               'alteradosMaisRecentes': alteradosMaisRecentes}
-    return render(request, 'masks/comunidade.html', context)
+        titulo = "Masqs - Comunidade"
+        context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados, 'normais': normais, 'mascarasJson': mascarasJson,
+                   'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario, 'mascarasJsonPopulares': mascarasJsonPopulares,
+                   'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles, 'mascarasMaisRecentes': mascarasMaisRecentes,
+                   'alteradosMaisRecentes': alteradosMaisRecentes}
+        return render(request, 'masks/comunidade.html', context)
+
+    else:
+        exames = Exame.objects.all()
+        especialidades = Especialidade.objects.all()
+        json_serializer = serializers.get_serializer("json")()
+
+        alterados = json_serializer.serialize(
+            TopicoAnormal.objects.all().order_by('nome', '-popularidade'))  # alfabético
+        alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade'))
+        alteradosUsuario = "";
+
+        mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade'))
+        mascarasJsonUsuario = "";
+
+        normais = json_serializer.serialize(TopicoNormal.objects.all())
+        mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome', '-popularidade'))  # alfabético
+
+        mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.all().order_by('-data_criada', 'nome'))
+        alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-data_criada', 'nome'))
+
+        usuarios2 = json_serializer.serialize(User.objects.all())
+        profiles = json_serializer.serialize(Profile.objects.all())
+
+        titulo = "Masqs - Comunidade"
+        context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados,
+                   'normais': normais, 'mascarasJson': mascarasJson,
+                   'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario,
+                   'mascarasJsonPopulares': mascarasJsonPopulares,
+                   'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles,
+                   'mascarasMaisRecentes': mascarasMaisRecentes,
+                   'alteradosMaisRecentes': alteradosMaisRecentes}
+        return render(request, 'masks/comunidade.html', context)
