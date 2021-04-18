@@ -869,6 +869,7 @@ def salvar_configuracoes(request):
     espacamento_topicos = request.POST['espacamento_topicos']
     altura_linha = request.POST['altura_linha']
     margem_cabecalho = request.POST['margem_cabecalho']
+    mascara_topicos = request.POST.get('mascara_topicos')
 
     profile.tamanho_fonte = tamanho_fonte
     profile.fonte = fonte
@@ -883,6 +884,12 @@ def salvar_configuracoes(request):
     profile.espacamento_topicos = espacamento_topicos
     profile.altura_linha = altura_linha
     profile.margem_cabecalho = margem_cabecalho
+
+    if(mascara_topicos == "True"):
+        profile.mascara_topicos = True
+    else:
+        profile.mascara_topicos = False
+
     profile.save()
     return HttpResponse(status=204)
 

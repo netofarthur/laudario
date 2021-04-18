@@ -94,6 +94,15 @@ function colocaNomesAmigaveisFontes() {
 
 }
 
+function clicouCheckboxTopicos() {
+    if(document.getElementById("mascaraJamesCheck").checked) {
+        document.getElementById("mascaraJamesCheck").value = "True";
+    } else {
+        document.getElementById("mascaraJamesCheck").value = "False";
+
+    }
+}
+
 //apaga tópicos duplicados
 function apagar() {
 
