@@ -101,6 +101,7 @@
 
 <div id="mycontainer">
 
+
 <div class="container-fluid">
 
 <div class="row">
@@ -228,8 +229,7 @@
        <input type="checkbox" id="mascara_publica" name="mascara_publica" checked/>
         <label for="mascara_publica">Máscara pública</label>
     {% else %}
-        <input style="display: none;" type="checkbox" id="mascara_publica" name="mascara_publica" checked/>
-        <label style="display: none;" for="mascara_publica">Máscara pública</label>
+
     {% endif %}
 {% endfor %}
 
@@ -261,14 +261,20 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
 </div>
 
 
+
+
 <div id="coluna_mascaras" class="col-5" style="height: 90vh; overflow: auto;">
+
     <h4 style="text-align: center; margin-top: .1rem; margin-bottom: 1rem;">Máscaras públicas</h4>
+                             <input style="width: 100%;" autocomplete="off" id="procurarMascarasUsuarios" type="search" placeholder="Procurar por máscaras ou usuários" onkeyup="procurarMascarasUsuarios(this.id)" onsearch="procurarMascarasUsuariosAdaptada(this.id)"/>
+
 
   {% for mascara in mascaras %}
 
     <button type="button" class="botao_diagnostico" id="{{ mascara.pk }}" onclick="popularMascara(this.id)">{{ mascara.nome }} <span style="color: #000000;">({{ mascara.usuario.username }})</span></button>
 
   {% endfor %}
+
 
 </div>
 

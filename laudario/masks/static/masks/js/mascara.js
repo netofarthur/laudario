@@ -2094,7 +2094,7 @@ function procurarFrases(id) {
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
   if(li[i].getAttribute("name") == "botao_alteracao") {
-    txtValue = li[i].innerHTML;
+    txtValue = li[i].innerText;
     if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1) {
       li[i].style.display = "block";
     } else {
@@ -2114,7 +2114,7 @@ function procurarFrasesMascara(id) {
 
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
-    txtValue = li[i].innerHTML;
+    txtValue = li[i].innerText;
     if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1) {
       li[i].parentNode.parentNode.parentNode.style.display = "block";
     } else {
@@ -2127,6 +2127,63 @@ function procurarFrasesMascara(id) {
   }
 }
 
+function procurarMascarasUsuariosAdaptada(id) {
+
+  filtrarMascaras();
+
+
+
+  // Declare variables
+  var input, filter, li, i, txtValue;
+  input = document.getElementById(id);
+  filter = input.value.toUpperCase();
+  li = document.getElementsByClassName('botao_diagnostico');
+
+
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    txtValue = li[i].innerText;
+
+    if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1) {
+      if(li[i].style.display != "none") {
+        li[i].style.display = "block";
+      }
+    } else {
+      li[i].style.display = "none";
+    }
+
+  }
+}
+
+
+function procurarMascarasUsuarios(id) {
+
+
+
+
+  // Declare variables
+  var input, filter, li, i, txtValue;
+  input = document.getElementById(id);
+  filter = input.value.toUpperCase();
+  li = document.getElementsByClassName('botao_diagnostico');
+
+
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    txtValue = li[i].innerText;
+
+    if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1) {
+      if(li[i].style.display != "none") {
+        li[i].style.display = "block";
+      }
+    } else {
+      li[i].style.display = "none";
+    }
+
+  }
+}
 
 
 function css(selector, property, value) {

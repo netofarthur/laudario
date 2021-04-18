@@ -241,6 +241,7 @@ function removerTopicos() {
 
 
 function filtrarMascaras() {
+
       let especialidadeSelecionada = document.getElementById("especialidades").value;
       let exameSelecionado = document.getElementById("exames").value;
   let todasMascaras = document.getElementsByClassName("botao_diagnostico");
@@ -271,7 +272,10 @@ function filtrarMascaras() {
              }
 
         }
+        if(document.getElementById("procurarMascarasUsuarios").value.length > 0) {
+            procurarMascarasUsuarios("procurarMascarasUsuarios");
 
+        }
 }
 
 
