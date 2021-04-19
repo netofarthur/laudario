@@ -1107,8 +1107,23 @@ function clicouAbaEspecial(especialidadeid, exameid) {
         procurarEntradas("procurarFrases");
 
     }
-            document.getElementById("direitadiv").firstChild.scrollIntoView();
-            window.scroll(0, 185);
+
+     var quantos = 0;
+    var fraseNaoEncontrada = false;
+    var chils = document.getElementById("direitadiv").children;
+    for(p=0; p < chils.length; p++) {
+
+        if(chils[p].style.display == "block") {
+            quantos++
+        }
+    }
+    if(quantos == 0) {
+        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
+
+    } else {
+            document.getElementById("myfooter").setAttribute("class", "normalfooter");
+
+    }
 
 }
 
@@ -1551,8 +1566,8 @@ function clicouAba(especialidadeid, exameid) {
         procurarEntradas("procurarFrases");
 
     }
-            document.getElementById("direitadiv").firstChild.scrollIntoView();
-            window.scroll(0, 185);
+                        document.getElementById("container").scrollIntoView();
+
 
 
 }
