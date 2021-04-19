@@ -874,9 +874,7 @@ def confirmar_reset(request, uid, token):
 
 
 def sobre(request):
-    # Verifica se o usuário está logado
-    if not request.user.is_authenticated:
-        return redirect(views.mostrar_index)
+
 
 
 
@@ -973,9 +971,6 @@ def excluir_alteracao(request, id_alteracao):
 
 def descricao(request):
 
-    # Verifica se o usuário está logado
-    if not request.user.is_authenticated:
-        return redirect(views.mostrar_index)
 
 
     titulo = "Masqs - Descrição"
@@ -985,9 +980,7 @@ def descricao(request):
 
 def termos(request):
 
-    # Verifica se o usuário está logado
-    if not request.user.is_authenticated:
-        return redirect(views.mostrar_index)
+
 
 
     titulo = "Masqs - Termos de Uso"
@@ -1055,7 +1048,7 @@ def comunidade(request):
         usuarios2 = json_serializer.serialize(User.objects.all())
         profiles = json_serializer.serialize(Profile.objects.all())
 
-        titulo = "Masqs - Comunidade"
+        titulo = "Masqs"
         context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados,
                    'normais': normais, 'mascarasJson': mascarasJson,
                    'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario,
