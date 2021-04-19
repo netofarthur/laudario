@@ -1785,7 +1785,9 @@ function aplicarConfiguracoesUsuario() {
 
         }
         for(td of tds) {
+            if(tecnica != null) {
             td.setAttribute("data-mce-style", td.getAttribute("style") + "; font-size: " + tecnica.style.fontSize + "; font-family: " + tecnica.style.fontFamily);
+            }
         }
     }
 
