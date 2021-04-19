@@ -627,7 +627,7 @@ function procurarTudo() {
 
                 paragrafo.innerHTML = relatorioAlterado;
                  paragrafoConclusao.innerHTML = conclusaoAlterada;
-                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome + devolverUsuarioAlteracao(alteracaoId);
+                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome;
 
                       var divEntrada = document.createElement("div");
 
