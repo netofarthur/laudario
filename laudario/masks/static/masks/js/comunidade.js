@@ -269,7 +269,7 @@ if(document.getElementById("procurarFrases").value.length > 0) {
             }
 
          }
-        resultado = calcularResultadosEncontrados();
+        resultado = calcularResultadosEncontrados()-5;
      document.getElementById("linkmais").innerHTML = "Mais " + resultado + " resultados";
         eliminarLinkSeNecessario();
 
@@ -287,7 +287,9 @@ function procurarTudo() {
         setCookie("procurouTudo", "1", 12);
 
 
-        alert("alertinha");
+        if(document.getElementById("procurarFrases").value.length == 1) {
+            alert("Digite ao menos dois caracteres para realizar uma busca geral")
+        }
 
 
         if(document.getElementById("procurarFrases").value == "") {
@@ -613,8 +615,9 @@ function procurarTudo() {
 
                     var paragrafoNome = document.createElement("a");
                     paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none")
+                  if(mascarasJsonObject[i] != null) {
                   paragrafoNome.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
-
+                    }
 
 
 
