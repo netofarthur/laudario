@@ -409,7 +409,7 @@ function procurarTudo() {
 
 
                     var paragrafoNome = document.createElement("a");
-                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none")
+                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
                   paragrafoNome.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
 
 
@@ -566,7 +566,7 @@ function procurarTudo() {
                            var paragrafonome = document.createElement("a");
                            paragrafonome.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
-                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none")
+                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
 
 
                      if(alteradosJSONObject[i].fields.popularidade == 1) {
@@ -614,7 +614,7 @@ function procurarTudo() {
 
 
                     var paragrafoNome = document.createElement("a");
-                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none")
+                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
                   if(mascarasJsonObject[i] != null) {
                   paragrafoNome.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
                     }
@@ -912,7 +912,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                     paragrafo.setAttribute("style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
 
                     var paragrafoNome = document.createElement("a");
-                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none")
+                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
                   paragrafoNome.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
 
 
@@ -1086,7 +1086,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                            var paragrafonome = document.createElement("a");
                            paragrafonome.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
-                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none")
+                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
 
 
                      if(alteradosJSONObject[i].fields.popularidade == 1) {
@@ -1373,7 +1373,7 @@ function clicouAba(especialidadeid, exameid) {
                     paragrafo.setAttribute("style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
 
                     var paragrafoNome = document.createElement("a");
-                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none")
+                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
                   paragrafoNome.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
 
 
@@ -1547,7 +1547,7 @@ function clicouAba(especialidadeid, exameid) {
                            var paragrafonome = document.createElement("a");
                            paragrafonome.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
-                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none")
+                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
 
 
                      if(alteradosJSONObject[i].fields.popularidade == 1) {

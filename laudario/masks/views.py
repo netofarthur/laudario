@@ -996,12 +996,12 @@ def comunidade(request):
 
     if not request.user.is_anonymous:
 
-        exames = Exame.objects.all()
-        especialidades = Especialidade.objects.all()
+        exames = Exame.objects.all().order_by('descricao')
+        especialidades = Especialidade.objects.all().order_by('descricao')
 
         json_serializer = serializers.get_serializer("json")()
 
-        alterados = json_serializer.serialize(TopicoAnormal.objects.all().order_by('nome', '-popularidade')) #alfabético
+        alterados = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade', 'nome')) #alfabético
         alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade'))
         alteradosUsuario = json_serializer.serialize(TopicoAnormal.objects.filter(topico_normal__mascara__usuario=request.user).order_by('nome'))
 
@@ -1009,7 +1009,7 @@ def comunidade(request):
         mascarasJsonUsuario = json_serializer.serialize(Mascara.objects.filter(usuario=request.user).order_by('nome'))
 
         normais = json_serializer.serialize(TopicoNormal.objects.all())
-        mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome', '-popularidade')) #alfabético
+        mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade', 'nome')) #alfabético
 
         mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.all().order_by('-data_criada', 'nome'))
         alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-data_criada', 'nome'))
@@ -1027,12 +1027,12 @@ def comunidade(request):
         return render(request, 'masks/comunidade.html', context)
 
     else:
-        exames = Exame.objects.all()
-        especialidades = Especialidade.objects.all()
+        exames = Exame.objects.all().order_by('descricao')
+        especialidades = Especialidade.objects.all().order_by('descricao')
         json_serializer = serializers.get_serializer("json")()
 
         alterados = json_serializer.serialize(
-            TopicoAnormal.objects.all().order_by('nome', '-popularidade'))  # alfabético
+            TopicoAnormal.objects.all().order_by('-popularidade', 'nome'))  # alfabético
         alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade'))
         alteradosUsuario = "";
 
@@ -1040,7 +1040,7 @@ def comunidade(request):
         mascarasJsonUsuario = "";
 
         normais = json_serializer.serialize(TopicoNormal.objects.all())
-        mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome', '-popularidade'))  # alfabético
+        mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade', 'nome'))  # alfabético
 
         mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.all().order_by('-data_criada', 'nome'))
         alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-data_criada', 'nome'))

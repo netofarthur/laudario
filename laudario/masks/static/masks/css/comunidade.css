@@ -10,3 +10,15 @@ background-color: transparent;
   margin-bottom: 30px;
 }
 
+p {
+    margin: 2px;
+}
+
+hr {
+    margin: 3px;
+    padding: 0;
+}
+
+a {
+    margin: 0;
+}
