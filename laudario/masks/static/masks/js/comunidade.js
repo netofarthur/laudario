@@ -48,10 +48,10 @@ function devolverUsuarioAlteracao(alteracaoid) {
 
 function clicouBotaoRadio() {
     if(document.getElementById("frasesRadio").checked) {
-        document.getElementById("procurarFrases").setAttribute("placeholder", "Procurar frases");
+        document.getElementById("procurarFrases").setAttribute("placeholder", "Procurar frases ou usuários");
 
     } else {
-        document.getElementById("procurarFrases").setAttribute("placeholder", "Procurar máscaras");
+        document.getElementById("procurarFrases").setAttribute("placeholder", "Procurar máscaras ou usuários");
 
     }
     var especialidadeid = document.getElementById("especialidadeHidden").value;
@@ -345,9 +345,11 @@ function procurarTudo() {
                     encontrou = true;
                     usuarioResponsavelInt = mascarasJsonObject[i].fields.usuario;
 
+
                     for(z=0; z < usuariosObject.length; z++) {
                         if(usuariosObject[z].pk == usuarioResponsavelInt) {
                             usuarioResponsavel = usuariosObject[z].fields.username;
+
                         }
 
                     }
@@ -367,7 +369,6 @@ function procurarTudo() {
                     var cor_mascara;
                     var altura_linha;
                     var espacamento_topicos;
-
 
 
                     for(t=0; t < profilesObject.length; t++) {
@@ -395,6 +396,7 @@ function procurarTudo() {
                     }
 
                     var tituloExame = mascarasJsonObject[i].fields.titulo;
+
                     var paragrafo = document.createElement("p");
 
                     paragrafo.setAttribute("style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
@@ -424,7 +426,6 @@ function procurarTudo() {
                     var criadaEm = document.createElement("p");
 
                     var criadaEmFormatada = "Criada em " + mascarasJsonObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ usuarioResponsavel + "</span><span style='font-size: .9rem;'> (" + mascarasJsonObject[i].fields.popularidade + " " + frase + ")</span>";
-
 
                     criadaEm.innerHTML = criadaEmFormatada;
 
@@ -457,7 +458,7 @@ function procurarTudo() {
                 paragrafoRelatorioHeader.innerHTML = mascarasJsonObject[i].fields.relatorio_header;
                 paragrafoConclusaoHeader.innerHTML = mascarasJsonObject[i].fields.conclusao_header;
                 paragrafoConclusao.innerHTML = mascarasJsonObject[i].fields.conclusao;
-                paragrafoNome.innerHTML = mascarasJsonObject[i].fields.nome;
+                paragrafoNome.innerHTML = mascarasJsonObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
 
                     paragrafo.innerHTML = tituloExame;
 
@@ -525,15 +526,17 @@ function procurarTudo() {
                  document.getElementById("direitadiv").appendChild(divLink);
 
         } else {
-
+            var myUser;
 
              document.getElementById("direitadiv").innerHTML = "";
 
 
+
                 for(i = 0; i < alteradosJSONObject.length; i++) {
-                            if(alteradosJSONObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+                            if(devolverUsuarioAlteracao(alteradosJSONObject[i].pk).toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) || alteradosJSONObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
                         var alteracaoId = alteradosJSONObject[i].pk;
                         encontrou = true;
+                        myUser = devolverUsuarioAlteracao(alteracaoId);
 
                         nome = alteradosJSONObject[i].fields.nome;
                         relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + alteradosJSONObject[i].fields.relatorio;
@@ -624,7 +627,7 @@ function procurarTudo() {
 
                 paragrafo.innerHTML = relatorioAlterado;
                  paragrafoConclusao.innerHTML = conclusaoAlterada;
-                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome;
+                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome + devolverUsuarioAlteracao(alteracaoId);
 
                       var divEntrada = document.createElement("div");
 
@@ -960,7 +963,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                 paragrafoRelatorioHeader.innerHTML = mascarasJsonObject[i].fields.relatorio_header;
                 paragrafoConclusaoHeader.innerHTML = mascarasJsonObject[i].fields.conclusao_header;
                 paragrafoConclusao.innerHTML = mascarasJsonObject[i].fields.conclusao;
-                paragrafoNome.innerHTML = mascarasJsonObject[i].fields.nome;
+                paragrafoNome.innerHTML = mascarasJsonObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
 
                     paragrafo.innerHTML = tituloExame;
 
@@ -1111,7 +1114,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 
                 paragrafo.innerHTML = relatorioAlterado;
                  paragrafoConclusao.innerHTML = conclusaoAlterada;
-                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome;
+                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
 
                       var divEntrada = document.createElement("div");
 
@@ -1421,7 +1424,7 @@ function clicouAba(especialidadeid, exameid) {
                 paragrafoRelatorioHeader.innerHTML = mascarasJsonObject[i].fields.relatorio_header;
                 paragrafoConclusaoHeader.innerHTML = mascarasJsonObject[i].fields.conclusao_header;
                 paragrafoConclusao.innerHTML = mascarasJsonObject[i].fields.conclusao;
-                paragrafoNome.innerHTML = mascarasJsonObject[i].fields.nome;
+                paragrafoNome.innerHTML = mascarasJsonObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
 
                     paragrafo.innerHTML = tituloExame;
 
@@ -1572,7 +1575,7 @@ function clicouAba(especialidadeid, exameid) {
 
                 paragrafo.innerHTML = relatorioAlterado;
                  paragrafoConclusao.innerHTML = conclusaoAlterada;
-                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome;
+                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
 
                       var divEntrada = document.createElement("div");
 
