@@ -252,14 +252,6 @@ function procurarTudo() {
 
 
 
-        if(document.getElementById("procurarFrases").value.length == 0) {
-            return;
-        }
-
-        if(document.getElementById("procurarFrases").value.length < 2) {
-            alert("Digite ao menos dois caracteres para procurar");
-            return;
-        }
 
 
         var alteradosJSONObject;
