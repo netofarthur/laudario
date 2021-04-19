@@ -29,9 +29,7 @@ from .models import Mascara, TopicoNormal, TopicoAnormal, TopicoAnormalBuilder, 
 
 def mostrar_mascara_adaptada(request, id_mascara, id_topico, id_alteracao):
 
-    #Verifica se o usuário está logado
-    if not request.user.is_authenticated:
-        return redirect(views.mostrar_index)
+
 
     usuarioPermitido = True
 
@@ -56,16 +54,14 @@ def mostrar_mascara_adaptada(request, id_mascara, id_topico, id_alteracao):
     variaveis = json_serializer.serialize(Variavel.objects.all().order_by('ordem'))
     normais = json_serializer.serialize(TopicoNormal.objects.all())
     mascarasJson = json_serializer.serialize(Mascara.objects.all())
-    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
+    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=mascara.usuario).order_by('ordem'))
 
     usuarios2 = json_serializer.serialize(User.objects.all())
 
-    mascara.frequencia += 1
-    mascara.ultima_vez_usado = timezone.now()
-    mascara.save()
 
 
-    profile = Profile.objects.get(usuario=request.user)
+
+    profile = Profile.objects.get(usuario=mascara.usuario)
 
     titulo = "Masqs - " + mascara.nome
     context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
@@ -81,53 +77,91 @@ def mostrar_mascara_adaptada(request, id_mascara, id_topico, id_alteracao):
 
 def mostrar_mascara(request, id_mascara):
 
-    #Verifica se o usuário está logado
-    if not request.user.is_authenticated:
-        return redirect(views.mostrar_index)
 
-    usuarioPermitido = True
+
+    usuarioPermitido = False
 
     mascara = Mascara.objects.get(pk=id_mascara)
 
     # Verifica se o usuário tem permissão para ver essa máscara
-    if request.user != mascara.usuario:
-        usuarioPermitido = False
+    if request.user == mascara.usuario:
+        usuarioPermitido = True
 
 
-    topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara).order_by('ordem')
-    topicos_anormais_mais_usados = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('-frequencia', 'nome')[:9]
+        topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara).order_by('ordem')
+        topicos_anormais_mais_usados = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('-frequencia', 'nome')[:9]
 
-    topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('nome','-frequencia')
+        topicos_anormais = TopicoAnormal.objects.filter(topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('nome','-frequencia')
 
-    todos_topicos_anormais = TopicoAnormal.objects.all().order_by('-popularidade', 'nome')
-    topicos_anormais_builders = TopicoAnormalBuilder.objects.all()
-    profiles = Profile.objects.all()
+        todos_topicos_anormais = TopicoAnormal.objects.all().order_by('-popularidade', 'nome')
+        topicos_anormais_builders = TopicoAnormalBuilder.objects.all()
+        profiles = Profile.objects.all()
 
-    json_serializer = serializers.get_serializer("json")()
-    alterados = json_serializer.serialize(TopicoAnormal.objects.all())
-    variaveis = json_serializer.serialize(Variavel.objects.all().order_by('ordem'))
-    normais = json_serializer.serialize(TopicoNormal.objects.all())
-    mascarasJson = json_serializer.serialize(Mascara.objects.all())
-    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
+        json_serializer = serializers.get_serializer("json")()
+        alterados = json_serializer.serialize(TopicoAnormal.objects.all())
+        variaveis = json_serializer.serialize(Variavel.objects.all().order_by('ordem'))
+        normais = json_serializer.serialize(TopicoNormal.objects.all())
+        mascarasJson = json_serializer.serialize(Mascara.objects.all())
+        variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
 
-    usuarios2 = json_serializer.serialize(User.objects.all())
+        usuarios2 = json_serializer.serialize(User.objects.all())
 
-    mascara.frequencia += 1
-    mascara.ultima_vez_usado = timezone.now()
-    mascara.save()
+        mascara.frequencia += 1
+        mascara.ultima_vez_usado = timezone.now()
+        mascara.save()
 
 
 
-    profile = Profile.objects.get(usuario=request.user)
+        profile = Profile.objects.get(usuario=request.user)
 
-    mascara_topicos = profile.mascara_topicos
+        mascara_topicos = profile.mascara_topicos
 
-    titulo = "Masqs - " + mascara.nome
-    context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
-               'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
-               'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario, 'todos_topicos_anormais': todos_topicos_anormais,
-               'profiles': profiles, 'profile': profile, 'titulo': titulo, 'topicos_anormais_mais_usados': topicos_anormais_mais_usados, 'usuarioPermitido': usuarioPermitido,
-               'mascara_topicos': mascara_topicos}
+        titulo = "Masqs - " + mascara.nome
+        context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
+                   'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
+                   'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario, 'todos_topicos_anormais': todos_topicos_anormais,
+                   'profiles': profiles, 'profile': profile, 'titulo': titulo, 'topicos_anormais_mais_usados': topicos_anormais_mais_usados, 'usuarioPermitido': usuarioPermitido,
+                   'mascara_topicos': mascara_topicos}
+
+
+    else:
+        usuarioPermitido = True
+
+        topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara).order_by('ordem')
+        topicos_anormais_mais_usados = TopicoAnormal.objects.filter(
+            topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('-frequencia', 'nome')[:9]
+
+        topicos_anormais = TopicoAnormal.objects.filter(
+            topico_normal__in=TopicoNormal.objects.filter(mascara=id_mascara)).order_by('nome', '-frequencia')
+
+        todos_topicos_anormais = TopicoAnormal.objects.all().order_by('-popularidade', 'nome')
+        topicos_anormais_builders = TopicoAnormalBuilder.objects.all()
+        profiles = Profile.objects.all()
+
+        json_serializer = serializers.get_serializer("json")()
+        alterados = json_serializer.serialize(TopicoAnormal.objects.all())
+        variaveis = json_serializer.serialize(Variavel.objects.all().order_by('ordem'))
+        normais = json_serializer.serialize(TopicoNormal.objects.all())
+        mascarasJson = json_serializer.serialize(Mascara.objects.all())
+        variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=mascara.usuario).order_by('ordem'))
+
+        usuarios2 = json_serializer.serialize(User.objects.all())
+
+
+
+        profile = Profile.objects.get(usuario=mascara.usuario)
+
+        mascara_topicos = profile.mascara_topicos
+
+        titulo = "Masqs - " + mascara.nome
+        context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
+                   'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados,
+                   'variaveis': variaveis, 'normais': normais,
+                   'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario,
+                   'todos_topicos_anormais': todos_topicos_anormais,
+                   'profiles': profiles, 'profile': profile, 'titulo': titulo,
+                   'topicos_anormais_mais_usados': topicos_anormais_mais_usados, 'usuarioPermitido': usuarioPermitido,
+                   'mascara_topicos': mascara_topicos}
     return render(request, 'masks/mascara.html', context)
 
 def nova_mascara(request):
@@ -734,16 +768,16 @@ def salvar_alteracao(request):
 
 def upvote_frase(request):
     # Verifica se o usuário está logado
-    if not request.user.is_authenticated:
-        return redirect(views.mostrar_index)
-
-
-
-    fraseId = request.POST['frase_clicada']
-    topicoAnormal = TopicoAnormal.objects.get(pk=int(fraseId))
-    topicoAnormal.frequencia += 1
-    topicoAnormal.save()
+    if request.user.is_authenticated:
+        fraseId = request.POST['frase_clicada']
+        topicoAnormal = TopicoAnormal.objects.get(pk=int(fraseId))
+        topicoAnormal.frequencia += 1
+        topicoAnormal.save()
     return HttpResponse(status=204)
+
+
+
+
 
 def resetar_password(request):
     titulo = "Masqs - Redefinir Senha"
@@ -971,6 +1005,7 @@ def comunidade(request):
 
         exames = Exame.objects.all()
         especialidades = Especialidade.objects.all()
+
         json_serializer = serializers.get_serializer("json")()
 
         alterados = json_serializer.serialize(TopicoAnormal.objects.all().order_by('nome', '-popularidade')) #alfabético
