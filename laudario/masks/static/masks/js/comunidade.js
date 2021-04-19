@@ -248,10 +248,23 @@ var quantos = 0;
 
 function procurarTudo() {
 
+        alert("alertinha")
 
 
+        if(document.getElementById("procurarFrases").value == "") {
+            clicouBotaoRadio();
+            setCookie("vezesClicadoMais", "0", 12);
+            setCookie("procura", "", 12);
 
+        if(document.getElementById("direitadiv").children.length == 0) {
+                document.getElementById("myfooter").setAttribute("class", "fixedfooter");
 
+        } else {
+                document.getElementById("myfooter").setAttribute("class", "normalfooter");
+
+        }
+            return;
+        }
 
 
         var alteradosJSONObject;
@@ -627,6 +640,7 @@ function procurarTudo() {
                         if(resultado > 0) {
                         document.getElementById("linkmais").innerHTML = "Mais " + resultado + " resultados";
 }
+
 
     limitarEntradas();
 
@@ -1675,6 +1689,13 @@ function limitarEntradas() {
 
 function procurarEntradas(id) {
 
+ if(document.getElementById("procurarFrases").value == "") {
+            clicouBotaoRadio();
+            setCookie("vezesClicadoMais", "0", 12);
+                        setCookie("procura", "", 12);
+
+            return;
+        }
 
 
   // Declare variables
