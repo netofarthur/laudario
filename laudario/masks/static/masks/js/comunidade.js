@@ -170,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
     var loop = parseInt(getCookie("vezesClicadoMais"));
 if(document.getElementById("procurarFrases").value.length > 0) {
                     procurarEntradas("procurarFrases");
@@ -243,12 +244,50 @@ var quantos = 0;
         document.getElementById("clicouBotaoRadio").value = 1;
 
 
+
+          if(getCookie("procurouTudo") != null && getCookie("procurouTudo") == "1") {
+        procurarTudo("procurarFrases");
+
+           var loop = parseInt(getCookie("vezesClicadoMais"));
+if(document.getElementById("procurarFrases").value.length > 0) {
+                    procurarEntradas("procurarFrases");
+
+            }
+    for(i=0; i < loop; i++) {
+
+
+       var children = document.getElementById("direitadiv").children;
+       var counter = 0;
+
+
+
+         for(i=0; i < children.length; i++) {
+            if(children[i].style.display == "none" && counter < 5*loop && children[i].firstChild.innerHTML.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+
+                children[i].style.display = "block";
+                counter++;
+            }
+
+         }
+        resultado = calcularResultadosEncontrados();
+     document.getElementById("linkmais").innerHTML = "Mais " + resultado + " resultados";
+        eliminarLinkSeNecessario();
+
+
+
+    }
+
+}
+
     }, false);
 
 
 function procurarTudo() {
 
-        alert("alertinha")
+        setCookie("procurouTudo", "1", 12);
+
+
+        alert("alertinha");
 
 
         if(document.getElementById("procurarFrases").value == "") {
@@ -674,6 +713,7 @@ function limparTodosBotoes() {
 }
 
 function clicouAbaEspecial(especialidadeid, exameid) {
+
 
           var quantos = 0;
     var fraseNaoEncontrada = false;
@@ -1151,6 +1191,8 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 
 function clicouAba(especialidadeid, exameid) {
         setCookie("vezesClicadoMais", "0", 12);
+        setCookie("procurouTudo", "0", 12);
+
 
         limparTodosBotoes();
         var todas = document.getElementsByName(especialidadeid);
