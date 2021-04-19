@@ -686,7 +686,6 @@ function procurarTudo() {
     if(!encontrou) {
                  document.getElementById("direitadiv").innerHTML = 'Nenhum resultado encontrado para o termo "' + document.getElementById("procurarFrases").value + '".';
     }
-        document.getElementById("procurarFrases").value = "";
 
 
         if(document.getElementById("direitadiv").children.length == 0) {
