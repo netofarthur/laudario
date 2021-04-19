@@ -669,7 +669,22 @@ function limparTodosBotoes() {
 
 function clicouAbaEspecial(especialidadeid, exameid) {
 
+          var quantos = 0;
+    var fraseNaoEncontrada = false;
+    var chils = document.getElementById("direitadiv").children;
+    for(p=0; p < chils.length; p++) {
 
+        if(chils[p].style.display == "block") {
+            quantos++
+        }
+    }
+    if(quantos == 0) {
+        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
+
+    } else {
+            document.getElementById("myfooter").setAttribute("class", "normalfooter");
+
+    }
 
 
         limparTodosBotoes();
