@@ -107,7 +107,6 @@ function procurarEntradasAdaptado() {
 //Execute after page loads
 document.addEventListener('DOMContentLoaded', function() {
 
-
     if(getCookie("exameid") != null && document.getElementById("collapse" + getCookie("exameid")) != null)  {
         document.getElementById("collapse" + getCookie("exameid")).setAttribute("class", "collapse show");
         document.getElementById("exameHidden").value = getCookie("exameid");
@@ -167,9 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-        if(getCookie("clicouProcurarTudo") == "1") {
-            procurarTudo(getCookie("procura"));
-        }
 
 
 
@@ -231,9 +227,9 @@ if(document.getElementById("procurarFrases").value.length == 0) {
 var quantos = 0;
     var chils = document.getElementById("direitadiv").children;
     for(p=0; p < chils.length; p++) {
-
+        if(chils[p].style.display == "block") {
             quantos++
-
+        }
     }
     if(quantos == 0) {
         document.getElementById("myfooter").setAttribute("class", "fixedfooter");
@@ -245,8 +241,6 @@ var quantos = 0;
 
 
         document.getElementById("clicouBotaoRadio").value = 1;
-            setCookie("vezesClicadoMais", "0", 12);
-
 
 
     }, false);
@@ -255,7 +249,6 @@ var quantos = 0;
 function procurarTudo() {
 
 
-        setCookie("clicouProcurarTudo", "1", 12);
 
 
 
@@ -263,7 +256,10 @@ function procurarTudo() {
             return;
         }
 
-
+        if(document.getElementById("procurarFrases").value.length < 2) {
+            alert("Digite ao menos dois caracteres para procurar");
+            return;
+        }
 
 
         var alteradosJSONObject;
@@ -649,7 +645,6 @@ function procurarTudo() {
 
 
         if(document.getElementById("direitadiv").children.length == 0) {
-
                 document.getElementById("myfooter").setAttribute("class", "fixedfooter");
 
         } else {
@@ -1112,15 +1107,14 @@ function clicouAbaEspecial(especialidadeid, exameid) {
         procurarEntradas("procurarFrases");
 
     }
+            document.getElementById("direitadiv").firstChild.scrollIntoView();
+            window.scroll(0, 185);
 
 }
 
 
 function clicouAba(especialidadeid, exameid) {
         setCookie("vezesClicadoMais", "0", 12);
-                        setCookie("procura", "", 12);
-
-
 
         limparTodosBotoes();
         var todas = document.getElementsByName(especialidadeid);
@@ -1557,7 +1551,8 @@ function clicouAba(especialidadeid, exameid) {
         procurarEntradas("procurarFrases");
 
     }
-            document.getElementById("container").scrollIntoView();
+            document.getElementById("direitadiv").firstChild.scrollIntoView();
+            window.scroll(0, 185);
 
 
 }
