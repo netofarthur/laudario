@@ -1112,8 +1112,6 @@ function clicouAbaEspecial(especialidadeid, exameid) {
         procurarEntradas("procurarFrases");
 
     }
-            document.getElementById("direitadiv").firstChild.scrollIntoView();
-            window.scroll(0, 185);
 
 }
 
@@ -1559,8 +1557,7 @@ function clicouAba(especialidadeid, exameid) {
         procurarEntradas("procurarFrases");
 
     }
-            document.getElementById("direitadiv").firstChild.scrollIntoView();
-            window.scroll(0, 185);
+            document.getElementById("container").scrollIntoView();
 
 
 }
