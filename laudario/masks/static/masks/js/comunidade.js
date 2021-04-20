@@ -282,8 +282,10 @@ if(document.getElementById("procurarFrases").value.length > 0) {
     }, false);
 
 
-function procurarTudo() {
 
+
+
+function procurarTudo() {
         setCookie("procurouTudo", "1", 12);
 
 
@@ -339,9 +341,10 @@ function procurarTudo() {
         if(document.getElementById("mascarasRadio").checked) {
 
 
+
              document.getElementById("direitadiv").innerHTML = "";
             for(i=0; i < mascarasJsonObject.length; i++) {
-                if(mascarasJsonObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+                if(devolverUsuarioAlteracao(alteradosJSONObject[i].pk).toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) || mascarasJsonObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
                     encontrou = true;
                     usuarioResponsavelInt = mascarasJsonObject[i].fields.usuario;
 
@@ -369,6 +372,7 @@ function procurarTudo() {
                     var cor_mascara;
                     var altura_linha;
                     var espacamento_topicos;
+                    var mascara_topicos;
 
 
                     for(t=0; t < profilesObject.length; t++) {
@@ -389,6 +393,8 @@ function procurarTudo() {
                               cor_mascara = profilesObject[t].fields.cor_mascara
                             altura_linha = profilesObject[t].fields.altura_linha
                             espacamento_topicos = profilesObject[t].fields.espacamento_topicos
+                            mascara_topicos = profilesObject[t].fields.mascara_topicos
+
 
 
                         }
@@ -490,7 +496,11 @@ function procurarTudo() {
                   for(y=0; y < normaisObject.length; y++) {
                         if(normaisObject[y].fields.mascara == mascarasJsonObject[i].pk) {
                             var paragrafoRelatorio = document.createElement("div");
-                            paragrafoRelatorio.innerHTML = normaisObject[y].fields.relatorio;
+                            if(mascara_topicos === true && normaisObject[y].fields.orgao != "Nenhum órgão") {
+                                paragrafoRelatorio.innerHTML = "<strong>" + normaisObject[y].fields.orgao + ": </strong>" + normaisObject[y].fields.relatorio;
+                            } else {
+                                paragrafoRelatorio.innerHTML = normaisObject[y].fields.relatorio;
+                            }
                             paragrafoRelatorio.setAttribute("style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; margin-bottom: " + espacamento_topicos + "; line-height: " + altura_linha);
                               divGeral.appendChild(paragrafoRelatorio);
 
@@ -882,6 +892,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                     var cor_mascara;
                     var altura_linha;
                     var espacamento_topicos;
+                    var mascara_topicos;
 
 
 
@@ -903,6 +914,8 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                               cor_mascara = profilesObject[t].fields.cor_mascara
                             altura_linha = profilesObject[t].fields.altura_linha
                             espacamento_topicos = profilesObject[t].fields.espacamento_topicos
+                            mascara_topicos = profilesObject[t].fields.mascara_topicos
+
 
 
                         }
@@ -990,7 +1003,11 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                   for(y=0; y < normaisObject.length; y++) {
                         if(normaisObject[y].fields.mascara == mascarasJsonObject[i].pk) {
                             var paragrafoRelatorio = document.createElement("div");
-                            paragrafoRelatorio.innerHTML = normaisObject[y].fields.relatorio;
+                            if(mascara_topicos === true && normaisObject[y].fields.orgao != "Nenhum órgão") {
+                                paragrafoRelatorio.innerHTML = "<strong>" + normaisObject[y].fields.orgao + ": </strong>" + normaisObject[y].fields.relatorio;
+                            } else {
+                                paragrafoRelatorio.innerHTML = normaisObject[y].fields.relatorio;
+                            }
                             paragrafoRelatorio.setAttribute("style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; margin-bottom: " + espacamento_topicos + "; line-height: " + altura_linha);
                               divGeral.appendChild(paragrafoRelatorio);
 
@@ -1343,6 +1360,7 @@ function clicouAba(especialidadeid, exameid) {
                     var cor_mascara;
                     var altura_linha;
                     var espacamento_topicos;
+                    var mascara_topicos;
 
 
 
@@ -1364,6 +1382,7 @@ function clicouAba(especialidadeid, exameid) {
                               cor_mascara = profilesObject[t].fields.cor_mascara
                             altura_linha = profilesObject[t].fields.altura_linha
                             espacamento_topicos = profilesObject[t].fields.espacamento_topicos
+                            mascara_topicos = profilesObject[t].fields.mascara_topicos
 
 
                         }
@@ -1451,7 +1470,12 @@ function clicouAba(especialidadeid, exameid) {
                   for(y=0; y < normaisObject.length; y++) {
                         if(normaisObject[y].fields.mascara == mascarasJsonObject[i].pk) {
                             var paragrafoRelatorio = document.createElement("div");
-                            paragrafoRelatorio.innerHTML = normaisObject[y].fields.relatorio;
+                            if(mascara_topicos === true && normaisObject[y].fields.orgao != "Nenhum órgão") {
+                                paragrafoRelatorio.innerHTML = "<strong>" + normaisObject[y].fields.orgao + ": </strong>" + normaisObject[y].fields.relatorio;
+                            } else {
+                                paragrafoRelatorio.innerHTML = normaisObject[y].fields.relatorio;
+                            }
+
                             paragrafoRelatorio.setAttribute("style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; margin-bottom: " + espacamento_topicos + "; line-height: " + altura_linha);
                               divGeral.appendChild(paragrafoRelatorio);
 

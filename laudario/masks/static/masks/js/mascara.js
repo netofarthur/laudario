@@ -2467,12 +2467,23 @@ for(var i=0; i<len; i++)
 
          if(p.getAttribute("id") == "indicacoes_header") {
             var h2 = document.createElement("STRONG");
-            h2.innerHTML = p.innerHTML;
+            h2.innerHTML = p.innerHTML + "<br>";
                         h2.style.marginTop = "1rem";
 
             p.parentNode.replaceChild(h2, p);
         }
         }
+
+          for(p of ps) {
+        if(p.getAttribute("id") == "indicacoes") {
+            var h2 = document.createElement("span");
+            h2.innerHTML = p.innerHTML + "<br><br>";
+                        h2.style.marginTop = "1rem";
+
+            p.parentNode.replaceChild(h2, p);
+        }
+        }
+
 
         for(p of ps) {
         if(p.getAttribute("id") == "tecnica_header") {
@@ -2500,7 +2511,7 @@ for(var i=0; i<len; i++)
         for(p of ps) {
         if(p.getAttribute("id") == "relatorio_header") {
             var h2 = document.createElement("STRONG");
-            h2.innerHTML = p.innerHTML;
+            h2.innerHTML = p.innerHTML + "<br>";
                         h2.style.marginTop = "1rem";
 
             p.parentNode.replaceChild(h2, p);
