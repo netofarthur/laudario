@@ -208,12 +208,11 @@ def adicionar_nova_mascara(request):
     conclusao_header = request.POST['conclusao_header']
     conclusao = request.POST['conclusao']
 
-    pub = request.POST.get('mascara_publica', False)
+    publica = request.POST.get('mascara_publica', True)
 
-    if (pub == 'on'):
-        publica = True
-    else:
-        publica = False
+
+
+
 
     st = request.POST['titulo_exame']
 
