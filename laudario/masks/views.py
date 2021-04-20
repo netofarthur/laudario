@@ -125,7 +125,7 @@ def mostrar_mascara(request, id_mascara):
 
 
     else:
-        usuarioPermitido = True
+        usuarioPermitido = False
 
         topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara).order_by('ordem')
         topicos_anormais_mais_usados = TopicoAnormal.objects.filter(

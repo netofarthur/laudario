@@ -2268,7 +2268,10 @@ var voltars = document.getElementsByClassName("link_voltar");
 
 document.getElementById("popular_variaveis").remove();
 limparDivsVazios();
-document.getElementById("mais_utilizadas").style.display = "none";
+if(document.getElementById("mais_utilizadas") != null) {
+    document.getElementById("mais_utilizadas").style.display = "none";
+
+}
 document.getElementById("copiar_laudo").innerHTML = "Copiar Tudo";
 document.getElementById("copiar_laudo").style.display = "inline-block";
 document.getElementById("copiar_html").style.display = "inline-block";
