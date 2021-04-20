@@ -106,25 +106,25 @@
 
 
 
-<div id="topicos_div">
+<div id="topicos_div" style="margin: 0; padding: 0">
 {% for topico in topicos_normais %}
     {% autoescape off %}
 
 
     {% if profile.mascara_topicos == True %}
             {% if forloop.counter == 1 %}
-                {% if topico.orgao != "Nenhum órgão" %}
-                    <span style="font-weight: bold">{{ topico.orgao }}: </span>
-                {% endif %}
 
 
-                <div data-mce-style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: 0; line-height: {{ profile.altura_linha }}" style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: 0; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk }}" > {{ topico.relatorio }}</div><br>
+
+
+
+                <div data-mce-style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: 0; line-height: {{ profile.altura_linha }}" style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: 0; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk }}" >{% if topico.orgao != "Nenhum órgão" %}<strong>{{ topico.orgao }}: </strong>{% endif %} {{ topico.relatorio }}</div>{% if topico.orgao != "Nenhum órgão" %}<br>{% endif %}
             {% else %}
-                {% if topico.orgao != "Nenhum órgão" %}
-                    <span style="font-weight: bold">{{ topico.orgao }}: </span>
-                {% endif %}
 
-                <div data-mce-style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk }}" > {{ topico.relatorio }}</div><br>
+
+
+
+                <div data-mce-style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk }}" >{% if topico.orgao != "Nenhum órgão" %}<strong>{{ topico.orgao }}: </strong>{% endif %} {{ topico.relatorio }}</div>{% if topico.orgao != "Nenhum órgão" %}<br>{% endif %}
 
             {% endif %}
     {% else %}

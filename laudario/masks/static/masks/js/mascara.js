@@ -2363,7 +2363,7 @@ tinymce.remove();
 
     document.getElementById("mascara_div").innerHTML = conteudoTiny;
     limparTagsHtmlTotal();
-    document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "<br>");
+    document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "");
 
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
@@ -2390,7 +2390,7 @@ tinymce.remove();
 
     document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/^\s*$(?:\r\n?|\n)/gm, "");
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/\n/g, "<br>");
-document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "<br>");
+document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "");
 
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace("Preencher Variáveis<br>", "");
 
@@ -2422,12 +2422,15 @@ function removerBotoes() {
 
 
 function trocarCabecalhos() {
-
-
+        var ultimoElemento = document.getElementById("conclusao_header");
+        var branco = document.createElement("BR");
+        ultimoElemento.parentNode.insertBefore(branco, ultimoElemento);
 
 
     var divs = document.getElementsByTagName("div");
+    var counter = divs.length;
     for(div of divs) {
+
         if(div.getAttribute("class") == "paragrafo_mascara") {
 
         var mypar= document.createElement("p");
@@ -2438,6 +2441,8 @@ function trocarCabecalhos() {
 
         }
     }
+
+
 
     var ele= document.getElementsByClassName("aserremovido");
 len = ele.length;
@@ -2453,15 +2458,15 @@ for(var i=0; i<len; i++)
     for(p of ps) {
 
         if(p.getAttribute("id") == "titulo") {
-            var h2 = document.createElement("h2");
-            h2.innerHTML = p.innerHTML.toUpperCase();
+            var h2 = document.createElement("STRONG");
+            h2.innerHTML = p.innerHTML.toUpperCase() + "<br><br>";
 
             p.parentNode.replaceChild(h2, p);
         }
         for(p of ps) {
 
          if(p.getAttribute("id") == "indicacoes_header") {
-            var h2 = document.createElement("h3");
+            var h2 = document.createElement("STRONG");
             h2.innerHTML = p.innerHTML;
                         h2.style.marginTop = "1rem";
 
@@ -2471,17 +2476,30 @@ for(var i=0; i<len; i++)
 
         for(p of ps) {
         if(p.getAttribute("id") == "tecnica_header") {
-            var h2 = document.createElement("h3");
-            h2.innerHTML = p.innerHTML;
+            var h2 = document.createElement("STRONG");
+            h2.innerHTML = p.innerHTML + "<br>";
                         h2.style.marginTop = "1rem";
 
             p.parentNode.replaceChild(h2, p);
         }
         }
 
+
+         for(p of ps) {
+        if(p.getAttribute("id") == "tecnica") {
+            var h2 = document.createElement("span");
+            h2.innerHTML = p.innerHTML + "<br><br>";
+                        h2.style.marginTop = "1rem";
+
+            p.parentNode.replaceChild(h2, p);
+        }
+        }
+
+
+
         for(p of ps) {
         if(p.getAttribute("id") == "relatorio_header") {
-            var h2 = document.createElement("h3");
+            var h2 = document.createElement("STRONG");
             h2.innerHTML = p.innerHTML;
                         h2.style.marginTop = "1rem";
 
@@ -2491,25 +2509,38 @@ for(var i=0; i<len; i++)
 
         for(p of ps) {
         if(p.getAttribute("id") == "conclusao_header") {
-            var h2 = document.createElement("h3");
-            h2.innerHTML = p.innerHTML;
+            var h2 = document.createElement("STRONG");
+            h2.innerHTML = p.innerHTML + "<br>";
             h2.style.marginTop = "1rem";
 
             p.parentNode.replaceChild(h2, p);
         }
-}
+        }
+
+
+         for(p of ps) {
+        if(p.getAttribute("id") == "paragrafo_conclusao") {
+            var h2 = document.createElement("span");
+            h2.innerHTML = p.innerHTML + "<br>";
+                        h2.style.marginTop = "1rem";
+
+            p.parentNode.replaceChild(h2, p);
+        }
+        }
 
 
 
     }
 
 
-    var h3s = document.getElementsByTagName("H3");
+    var h3s = document.getElementsByTagName("STRONG");
     for(h3 of h3s) {
         var par = document.createElement("p");
         par.innerHTML = "espacoembranco";
         h3.parentNode.insertBefore(par, h3);
     }
+
+
 
 
 }
