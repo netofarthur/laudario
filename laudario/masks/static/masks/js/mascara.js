@@ -1031,7 +1031,8 @@ function recolocarTinys() {
                                 language: 'pt_BR',
 
                               menubar: false,
-                                      plugins: "table",
+                                      plugins: "table paste",
+                                        paste_as_text: true,
                                 forced_root_block: false,
                             toolbar: "bold italic underline forecolor table",
                               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
@@ -1047,7 +1048,8 @@ function recolocarTinys() {
                                 language: 'pt_BR',
 
                               menubar: false,
-                                      plugins: "table",
+                                      plugins: "table paste",
+                                    paste_as_text: true,
                         forced_root_block: false,
                             toolbar: "bold italic underline forecolor table",
                               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
@@ -1068,7 +1070,8 @@ function recolocarTinys() {
             language: 'pt_BR',
 
     forced_root_block: false,
-        plugins: "table",
+        plugins: "table paste",
+        paste_as_text: true,
           menubar: false,
         toolbar: "bold italic underline forecolor table",
           fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
@@ -1084,7 +1087,8 @@ function recolocarTinys() {
             language: 'pt_BR',
 
     forced_root_block: false,
-        plugins: "table",
+        plugins: "table paste",
+        paste_as_text: true,
           menubar: false,
         toolbar: "bold italic underline forecolor table",
           fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
@@ -1103,7 +1107,8 @@ function recolocarTinys() {
         forced_root_block: false,
             language: 'pt_BR',
 
-            plugins: "table",
+            plugins: "table paste",
+        paste_as_text: true,
               menubar: false,
             toolbar: "bold italic underline forecolor table",
               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
@@ -1119,7 +1124,8 @@ function recolocarTinys() {
             body_id : "tecnica",
     forced_root_block: false,
         selector: '#tecnica',
-        plugins: "table",
+        plugins: "table paste",
+        paste_as_text: true,
             language: 'pt_BR',
 
           menubar: false,
@@ -1136,7 +1142,8 @@ function recolocarTinys() {
         selector: '#conclusao',
     forced_root_block: false,
         body_id : "conclusao",
-        plugins: "table",
+        plugins: "table paste",
+        paste_as_text: true,
             language: 'pt_BR',
 
           menubar: false,
