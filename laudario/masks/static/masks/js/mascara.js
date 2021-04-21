@@ -2443,8 +2443,13 @@ function trocarCabecalhos() {
 
         if(div.getAttribute("class") == "paragrafo_mascara") {
 
-        var mypar= document.createElement("p");
+        var mypar = document.createElement("span");
+        if(mascara_topicos == "True") {
         mypar.innerHTML = div.innerHTML;
+        } else {
+                mypar.innerHTML = div.innerHTML + "<br>";
+
+        }
         div.parentNode.insertBefore(mypar, div.nextSibling);
         div.setAttribute("class", "aserremovido");
 
@@ -2466,6 +2471,8 @@ for(var i=0; i<len; i++)
 
     var ps = document.getElementsByTagName("p");
     for(p of ps) {
+
+
 
         if(p.getAttribute("id") == "titulo") {
             var h2 = document.createElement("STRONG");
@@ -2551,6 +2558,8 @@ for(var i=0; i<len; i++)
 
 
 
+
+
     }
 
 
@@ -2615,8 +2624,13 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
 
 
 
+    if(mascara_topicos == "True") {
+        var ps = document.getElementsByTagName("p");
 
+    } else {
     var ps = document.getElementsByTagName("p");
+    }
+
     var divs = document.getElementsByTagName("div");
     for(div of divs) {
         if(div.getAttribute("class") == "paragrafo_mascara") {
