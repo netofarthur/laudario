@@ -2674,6 +2674,7 @@ function limparDivsVazios() {
 
 function limparTagsHtmlParcial() {
 
+if(mascara_topicos == false) {
     if(document.getElementById("topicos_div") != null) {
 
        while (document.getElementById("topicos_div").firstChild) {
@@ -2683,6 +2684,9 @@ function limparTagsHtmlParcial() {
 
 document.getElementById("topicos_div").parentNode.removeChild(document.getElementById("topicos_div"));
 }
+}
+
+
 
     var ps = document.getElementsByTagName("p");
     var divs = document.getElementsByTagName("div");
