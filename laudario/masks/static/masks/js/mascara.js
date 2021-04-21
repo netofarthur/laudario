@@ -2315,14 +2315,17 @@ document.getElementById("titulo").style.margin = ".5rem";
 
 
                      tinymce.init({
+                            browser_spellcheck: true,
                             selector: '#mascara_div',
-                                language: 'pt_BR',
+                                 language: 'pt_BR',
+
+
 
                               menubar: false,
-                                      plugins: "table code",
-  force_p_newlines : true,
-  forced_root_block : '', // Needed for 3.x
-                            toolbar: "bold italic underline forecolor table code",
+                                      plugins: "table paste code",
+                                        paste_as_text: true,
+                                forced_root_block: false,
+                            toolbar: "fontselect fontsizeselect bold italic underline forecolor table code",
                               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
                                 branding: false,
                                   elementpath: false
