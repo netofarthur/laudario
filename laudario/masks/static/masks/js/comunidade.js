@@ -1,3 +1,39 @@
+function devolverUsuarioMascara(mascaraId) {
+
+        var mascarasJsonObject = JSON.parse(mascarasJson);
+        var normaisObject = JSON.parse(normais);
+        var usuariosObject = JSON.parse(usuarios2);
+
+        var profilesObject = JSON.parse(profiles);
+
+        var topicoNormalId;
+        var mascaraId;
+
+        var usuarioId;
+
+        var usuarioResponsavel;
+
+
+
+
+
+         for(u=0; u < mascarasJsonObject.length; u++) {
+            if(mascarasJsonObject[u].pk == mascaraId) {
+                usuarioId = mascarasJsonObject[u].fields.usuario;
+            }
+        }
+
+        for(u=0; u < usuariosObject.length; u++) {
+            if(usuariosObject[u].pk == usuarioId) {
+                usuarioResponsavel = usuariosObject[u].fields.username;
+            }
+
+        }
+
+        return usuarioResponsavel;
+
+}
+
 
 function devolverUsuarioAlteracao(alteracaoid) {
 
@@ -286,6 +322,7 @@ if(document.getElementById("procurarFrases").value.length > 0) {
 
 
 function procurarTudo() {
+        
         setCookie("procurouTudo", "1", 12);
 
 
@@ -341,10 +378,11 @@ function procurarTudo() {
         if(document.getElementById("mascarasRadio").checked) {
 
 
-
              document.getElementById("direitadiv").innerHTML = "";
             for(i=0; i < mascarasJsonObject.length; i++) {
-                if(devolverUsuarioAlteracao(alteradosJSONObject[i].pk).toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) || mascarasJsonObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+
+                if(devolverUsuarioMascara(mascarasJsonObject[i].pk).toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) || mascarasJsonObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+
                     encontrou = true;
                     usuarioResponsavelInt = mascarasJsonObject[i].fields.usuario;
 
@@ -536,7 +574,6 @@ function procurarTudo() {
                  document.getElementById("direitadiv").appendChild(divLink);
 
         } else {
-            var myUser;
 
              document.getElementById("direitadiv").innerHTML = "";
 
@@ -546,7 +583,6 @@ function procurarTudo() {
                             if(devolverUsuarioAlteracao(alteradosJSONObject[i].pk).toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) || alteradosJSONObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
                         var alteracaoId = alteradosJSONObject[i].pk;
                         encontrou = true;
-                        myUser = devolverUsuarioAlteracao(alteracaoId);
 
                         nome = alteradosJSONObject[i].fields.nome;
                         relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + alteradosJSONObject[i].fields.relatorio;
@@ -691,13 +727,9 @@ function procurarTudo() {
 
 
         }
-                        var resultado = calcularResultadosEncontrados()-5;
-                        if(resultado > 0) {
-                        document.getElementById("linkmais").innerHTML = "Mais " + resultado + " resultados";
-}
 
 
-    limitarEntradas();
+
 
     if(!encontrou) {
                  document.getElementById("direitadiv").innerHTML = 'Nenhum resultado encontrado para o termo "' + document.getElementById("procurarFrases").value + '".';
