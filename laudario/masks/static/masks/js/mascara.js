@@ -2391,16 +2391,20 @@ document.getElementById("botoes_div").appendChild(anchor);
 }
 
 function copiarTextoSomente() {
+tinymce.remove();
+
+document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML.replaceAll("<br>", "mierda");
+
 removerBotoes();
 
 
-tinymce.remove();
     limparTagsHtmlTotal();
     document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/<[^>]*>/g, '');;
 
     document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/^\s*$(?:\r\n?|\n)/gm, "");
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/\n/g, "<br>");
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "");
+document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("mierda", "<br>");
 
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace("Preencher Variáveis<br>", "");
 
