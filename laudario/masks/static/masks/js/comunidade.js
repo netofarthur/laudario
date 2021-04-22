@@ -729,10 +729,17 @@ function procurarTudo() {
         }
 
 
+    var regiaoProcurada;
+
+    if(document.getElementById("mascarasRadio").checked) {
+        regiaoProcurada = "máscara";
+    } else {
+        regiaoProcurada = "frase";
+    }
 
 
     if(!encontrou) {
-                 document.getElementById("direitadiv").innerHTML = 'Nenhum resultado encontrado para o termo "' + document.getElementById("procurarFrases").value + '".';
+                 document.getElementById("direitadiv").innerHTML = 'Nenhuma ' + regiaoProcurada + ' encontrada para o termo "' + document.getElementById("procurarFrases").value + '".';
     }
 
 
