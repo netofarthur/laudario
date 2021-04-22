@@ -250,13 +250,25 @@ mostrarBotaoPopularSeNecessario();
 
         var idSemB = id.substring(1, id.length);
         var alteradosJSONObject = JSON.parse(alterados);
+                var normaisObject = JSON.parse(normais);
+
         var relatorio;
         var conclusao;
+        var orgao;
         for(i = 0; i < alteradosJSONObject.length; i++) {
             if(alteradosJSONObject[i].pk == idSemB) {
                 relatorio = alteradosJSONObject[i].fields.relatorio;
                 conclusao = alteradosJSONObject[i].fields.conclusao;
+                for(z=0; z < normaisObject.length; z++) {
+                    if(alteradosJSONObject[i].fields.topico_normal == normaisObject[z].pk) {
+                        orgao = normaisObject[z].fields.orgao;
+                    }
+                }
             }
+        }
+
+        if(orgao == "Nenhum órgão" && mascara_topicos == "True") {
+            relatorio = relatorio + "<br>";
         }
 
         document.getElementById("frase_clicada").value = idSemB;
