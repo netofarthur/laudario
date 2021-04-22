@@ -1822,7 +1822,7 @@ function aplicarConfiguracoesUsuario() {
     var paragrafos = document.getElementsByClassName("paragrafo_mascara");
 
     for(paragrafo of paragrafos) {
-        if(paragrafo.innerHTML != "") {
+        if(paragrafo.innerHTML != "" && paragrafo.getAttribute("id") != "titulo") {
             if(mascara_topicos == "True") {
                 paragrafo.style.display = "inline";
 
