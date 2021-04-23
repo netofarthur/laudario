@@ -469,7 +469,7 @@ function procurarTudo() {
 
                     var criadaEm = document.createElement("p");
 
-                    var criadaEmFormatada = "Criada em " + mascarasJsonObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ usuarioResponsavel + "</span><span style='font-size: .9rem;'> (" + mascarasJsonObject[i].fields.popularidade + " " + frase + ")</span>";
+                    var criadaEmFormatada = "Criada em " + mascarasJsonObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold; color: #c96100;'>"+ usuarioResponsavel + "</span><span style='font-size: .9rem;'> (" + mascarasJsonObject[i].fields.popularidade + " " + frase + ")</span>";
 
                     criadaEm.innerHTML = criadaEmFormatada;
 
@@ -627,7 +627,7 @@ function procurarTudo() {
 
                     var criadaEm = document.createElement("p");
 
-                    var criadaEmFormatada = "Criada em " + alteradosJSONObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ devolverUsuarioAlteracao(alteracaoId) + "</span><span style='font-size: .9rem;'> (" + alteradosJSONObject[i].fields.popularidade + " " + frase + ")</span>";
+                    var criadaEmFormatada = "Criada em " + alteradosJSONObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold; color: #c96100;'>"+ devolverUsuarioAlteracao(alteracaoId) + "</span><span style='font-size: .9rem;'> (" + alteradosJSONObject[i].fields.popularidade + " " + frase + ")</span>";
 
 
                     criadaEm.innerHTML = criadaEmFormatada;
@@ -981,7 +981,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 
                     var criadaEm = document.createElement("p");
 
-                    var criadaEmFormatada = "Criada em " + mascarasJsonObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ usuarioResponsavel + "</span><span style='font-size: .9rem;'> (" + mascarasJsonObject[i].fields.popularidade + " " + frase + ")</span>";
+                    var criadaEmFormatada = "Criada em " + mascarasJsonObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold; color: #c96100;'>"+ usuarioResponsavel + "</span><span style='font-size: .9rem;'> (" + mascarasJsonObject[i].fields.popularidade + " " + frase + ")</span>";
 
 
                     criadaEm.innerHTML = criadaEmFormatada;
@@ -1164,7 +1164,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 
                     var criadaEm = document.createElement("p");
 
-                    var criadaEmFormatada = "Criada em " + alteradosJSONObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ devolverUsuarioAlteracao(alteracaoId) + "</span><span style='font-size: .9rem;'> (" + alteradosJSONObject[i].fields.popularidade + " " + frase + ")</span>";
+                    var criadaEmFormatada = "Criada em " + alteradosJSONObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold; color: #c96100;'>"+ devolverUsuarioAlteracao(alteracaoId) + "</span><span style='font-size: .9rem;'> (" + alteradosJSONObject[i].fields.popularidade + " " + frase + ")</span>";
 
 
                     criadaEm.innerHTML = criadaEmFormatada;
@@ -1458,7 +1458,7 @@ function clicouAba(especialidadeid, exameid) {
 
                     var criadaEm = document.createElement("p");
 
-                    var criadaEmFormatada = "Criada em " + mascarasJsonObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ usuarioResponsavel + "</span><span style='font-size: .9rem;'> (" + mascarasJsonObject[i].fields.popularidade + " " + frase + ")</span>";
+                    var criadaEmFormatada = "Criada em " + mascarasJsonObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold; color: #c96100;'>"+ usuarioResponsavel + "</span><span style='font-size: .9rem;'> (" + mascarasJsonObject[i].fields.popularidade + " " + frase + ")</span>";
 
 
                     criadaEm.innerHTML = criadaEmFormatada;
@@ -1644,7 +1644,7 @@ function clicouAba(especialidadeid, exameid) {
 
                     var criadaEm = document.createElement("p");
 
-                    var criadaEmFormatada = "Criada em " + alteradosJSONObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='font-weight: bold'>"+ devolverUsuarioAlteracao(alteracaoId) + "</span><span style='font-size: .9rem;'> (" + alteradosJSONObject[i].fields.popularidade + " " + frase + ")</span>";
+                    var criadaEmFormatada = "Criada em " + alteradosJSONObject[i].fields.data_criada.substring(0, 10).split("-").reverse().join("/") + ", por <span style='color: #c96100; font-weight: bold'>"+ devolverUsuarioAlteracao(alteracaoId) + "</span><span style='font-size: .9rem;'> (" + alteradosJSONObject[i].fields.popularidade + " " + frase + ")</span>";
 
 
                     criadaEm.innerHTML = criadaEmFormatada;
