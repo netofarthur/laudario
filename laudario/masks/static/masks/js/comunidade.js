@@ -1135,7 +1135,14 @@ function clicouAbaEspecial(especialidadeid, exameid) {
             }
 
 
+             var mascarasObj = JSON.parse(mascarasJson);
+            var nomeMascara;
 
+            for(c=0; c < mascarasObj.length; c++) {
+                if(mascarasObj[c].pk == mascaraId) {
+                    nomeMascara = mascarasObj[c].fields.nome;
+                }
+            }
 
                         var paragrafo = document.createElement("p");
                         var paragrafoConclusao = document.createElement("p");
@@ -1170,7 +1177,10 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 
                 paragrafo.innerHTML = relatorioAlterado;
                  paragrafoConclusao.innerHTML = conclusaoAlterada;
-                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
+
+               paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome + '<span style="color: gray; font-size: 1.0rem;"> (' + nomeMascara + ')</span><span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
+
+
 
                       var divEntrada = document.createElement("div");
 
@@ -1602,6 +1612,15 @@ function clicouAba(especialidadeid, exameid) {
                 }
             }
 
+            var mascarasObj = JSON.parse(mascarasJson);
+            var nomeMascara;
+
+            for(c=0; c < mascarasObj.length; c++) {
+                if(mascarasObj[c].pk == mascaraId) {
+                    nomeMascara = mascarasObj[c].fields.nome;
+                }
+            }
+
 
 
 
@@ -1638,7 +1657,9 @@ function clicouAba(especialidadeid, exameid) {
 
                 paragrafo.innerHTML = relatorioAlterado;
                  paragrafoConclusao.innerHTML = conclusaoAlterada;
-                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
+
+
+                  paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome + '<span style="color: gray; font-size: 1.0rem;"> (' + nomeMascara + ')</span><span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
 
                       var divEntrada = document.createElement("div");
 
