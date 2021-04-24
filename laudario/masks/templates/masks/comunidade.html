@@ -41,19 +41,9 @@
 
 <div class="row" style="margin-top: 30px;">
 
-<div class="col-4" style="padding-bottom: 3rem;">
-<div style="padding-top: 20px; position: sticky; position: -webkit-sticky; top: 0;" >
-    <input type="hidden" id="especialidadeHidden">
-    <input type="hidden" id="exameHidden">
-    <input type="hidden" id="clicouBotaoRadio" value=0>
+<div class="col-4">
+<div style="padding-top: 0; position: sticky; position: -webkit-sticky; top: 0;" >
 
-
-     <div class="radio-item"><input type="radio" id="mascarasRadio" value="mascaras" name="modo" checked onclick="clicouBotaoRadio()">
-        <label style="margin-right:30px" for="mascarasRadio">Máscaras</label></div>
-    <div class="radio-item"><input type="radio" id="frasesRadio" value="frases" name="modo" onclick="clicouBotaoRadio()">
-        <label for="frasesRadio">Frases</label></div>
-
-    <hr>
 
 <div class="list-group">
 
@@ -102,8 +92,18 @@
 
 <div class="col">
 
-<div style="padding-top: 20px; position: sticky; position: -webkit-sticky; top: 0; background-color: white;" >
+<div style="padding-top: 0; position: sticky; position: -webkit-sticky; top: 0; background-color: white;" >
+<input type="hidden" id="especialidadeHidden">
+    <input type="hidden" id="exameHidden">
+    <input type="hidden" id="clicouBotaoRadio" value=0>
 
+
+     <div class="radio-item"><input type="radio" id="mascarasRadio" value="mascaras" name="modo" checked onclick="clicouBotaoRadio()">
+        <label style="margin-right:30px" for="mascarasRadio">Máscaras</label></div>
+    <div class="radio-item"><input type="radio" id="frasesRadio" value="frases" name="modo" onclick="clicouBotaoRadio()">
+        <label for="frasesRadio">Frases</label></div>
+
+    <hr>
     <div class="radio-item"><input type="radio" id="popularRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()">
         <label for="popularRadio" style="margin-right:30px">Mais Populares</label></div>
     <div class="radio-item"><input type="radio" id="recentesRadio" name="submodo" value=mascarasRecentes checked onclick="clicouBotaoRadio()">
@@ -121,7 +121,7 @@
     </div>
     <hr>
 </div>
-<div id="direitadiv" style="padding-bottom: 6rem;">
+<div id="direitadiv" style="padding-bottom: 1rem; min-height: 100vh; height: 100vh; overflow-y: auto;">
 
 </div>
 
