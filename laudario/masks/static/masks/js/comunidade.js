@@ -502,7 +502,7 @@ function procurarTudo() {
                 paragrafoRelatorioHeader.innerHTML = mascarasJsonObject[i].fields.relatorio_header;
                 paragrafoConclusaoHeader.innerHTML = mascarasJsonObject[i].fields.conclusao_header;
                 paragrafoConclusao.innerHTML = mascarasJsonObject[i].fields.conclusao;
-                paragrafoNome.innerHTML = mascarasJsonObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
+                paragrafoNome.innerHTML = mascarasJsonObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioMascara(mascarasJsonObject[i].pk) + '</span>';
 
                     paragrafo.innerHTML = tituloExame;
 
@@ -1015,7 +1015,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                 paragrafoRelatorioHeader.innerHTML = mascarasJsonObject[i].fields.relatorio_header;
                 paragrafoConclusaoHeader.innerHTML = mascarasJsonObject[i].fields.conclusao_header;
                 paragrafoConclusao.innerHTML = mascarasJsonObject[i].fields.conclusao;
-                paragrafoNome.innerHTML = mascarasJsonObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
+                paragrafoNome.innerHTML = mascarasJsonObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioMascara(mascarasJsonObject[i].pk) + '</span>';
 
                     paragrafo.innerHTML = tituloExame;
 
@@ -1492,7 +1492,7 @@ function clicouAba(especialidadeid, exameid) {
                 paragrafoRelatorioHeader.innerHTML = mascarasJsonObject[i].fields.relatorio_header;
                 paragrafoConclusaoHeader.innerHTML = mascarasJsonObject[i].fields.conclusao_header;
                 paragrafoConclusao.innerHTML = mascarasJsonObject[i].fields.conclusao;
-                paragrafoNome.innerHTML = mascarasJsonObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
+                paragrafoNome.innerHTML = mascarasJsonObject[i].fields.nome + '<span style="display: none;">' + devolverUsuarioMascara(mascarasJsonObject[i].pk) + '</span>';
 
                     paragrafo.innerHTML = tituloExame;
 

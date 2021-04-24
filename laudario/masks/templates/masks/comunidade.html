@@ -48,9 +48,9 @@
     <input type="hidden" id="clicouBotaoRadio" value=0>
 
 
-     <div style="display: inline; white-space: nowrap; margin-left: 5px;"><input type="radio" id="mascarasRadio" value="mascaras" name="modo" checked onclick="clicouBotaoRadio()">
+     <div class="radio-item"><input type="radio" id="mascarasRadio" value="mascaras" name="modo" checked onclick="clicouBotaoRadio()">
         <label style="margin-right:30px" for="mascarasRadio">Máscaras</label></div>
-    <div style="display: inline; white-space: nowrap;"><input type="radio" id="frasesRadio" value="frases" name="modo" onclick="clicouBotaoRadio()">
+    <div class="radio-item"><input type="radio" id="frasesRadio" value="frases" name="modo" onclick="clicouBotaoRadio()">
         <label for="frasesRadio">Frases</label></div>
 
     <hr>
@@ -104,15 +104,15 @@
 
 <div style="padding-top: 20px; position: sticky; position: -webkit-sticky; top: 0; background-color: white;" >
 
-    <div style="display: inline; white-space: nowrap;"><input type="radio" id="popularRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()">
+    <div class="radio-item"><input type="radio" id="popularRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()">
         <label for="popularRadio" style="margin-right:30px">Mais Populares</label></div>
-    <div style="display: inline; white-space: nowrap;"><input type="radio" id="recentesRadio" name="submodo" value=mascarasRecentes checked onclick="clicouBotaoRadio()">
+    <div class="radio-item"><input type="radio" id="recentesRadio" name="submodo" value=mascarasRecentes checked onclick="clicouBotaoRadio()">
         <label for="recentesRadio" style="margin-right:30px" style="margin-right:30px">Mais Recentes</label></div>
-    <div style="display: inline; white-space: nowrap;"><input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico" onclick="clicouBotaoRadio()">
+    <div class="radio-item"><input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico" onclick="clicouBotaoRadio()">
         <label for="alfabeticoRadio" style="margin-right:30px">Ordem Alfabética</label></div>
             {% if user.is_authenticated %}
 
-    <div style="display: inline; white-space: nowrap;"> <input type="radio" id="minhasRadio" name="submodo" value="minhas" onclick="clicouBotaoRadio()">
+    <div class="radio-item"> <input type="radio" id="minhasRadio" name="submodo" value="minhas" onclick="clicouBotaoRadio()">
     <label id="minhasRadioLabel" for="minhasRadio">Autoria Própria</label></div>
     {% endif %}
     <div>
