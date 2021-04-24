@@ -52,7 +52,7 @@
 
  {% for exame in exames %}
     <div class="card">
-      <div class="card-header" id={{ exame.pk }}>
+      <div class="card-header" id={{ exame.pk }} style="padding: 2px;">
         <h5 class="mb-0">
 
 
@@ -68,7 +68,7 @@
                 {% for especialidade in especialidades %}
 
               <div class="list-group" name="grupoEspecialidades">
-                  <button style="color:black;" onclick="clicouAba(this.name, this.value)" class="btn btn-link" value="{{ exame.pk }}" name="{{ especialidade.pk }}">{{ especialidade.descricao }}</button>
+                  <button style="padding: 4px; color:black;" onclick="clicouAba(this.name, this.value)" class="btn btn-link" value="{{ exame.pk }}" name="{{ especialidade.pk }}">{{ especialidade.descricao }}</button>
 
                 </div>
 
