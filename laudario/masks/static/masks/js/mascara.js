@@ -2458,7 +2458,37 @@ document.getElementById("botoes_div").appendChild(anchor);
 function copiarTextoSomente() {
 tinymce.remove();
 
-document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML.replaceAll("<br>", "mierda");
+if(mascara_topicos == "True") {
+    var topicosDiv = document.getElementById("topicos_div");
+    var children = topicosDiv.children;
+    for(child of children) {
+        if(child.tagName == "STRONG") {
+
+            var paragrafodiv = document.getElementById(child.id.substr(1));
+            paragrafodiv.innerHTML = paragrafodiv.innerHTML.replaceAll("<br>", "espacinhos");
+
+            paragrafodiv.innerHTML = child.innerHTML + paragrafodiv.innerHTML;
+            child.remove();
+        }
+    }
+
+
+} else {
+        var topicosDiv = document.getElementById("topicos_div");
+         var children = topicosDiv.children;
+    for(child of children) {
+        if(child.getAttribute("class") == "paragrafo_mascara") {
+            child.innerHTML = child.innerHTML.replaceAll("<br>", "espacinhos");
+        }
+    }
+
+}
+
+
+
+
+
+document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML.replaceAll("<br>", "espacetos");
 
 removerBotoes();
 
@@ -2469,7 +2499,8 @@ removerBotoes();
     document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/^\s*$(?:\r\n?|\n)/gm, "");
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/\n/g, "<br>");
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "");
-document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("mierda", "<br>");
+document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacetos", "<br>");
+document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacinhos", "<br>");
 
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace("Preencher Variáveis<br>", "");
 
@@ -2546,7 +2577,7 @@ for(var i=0; i<len; i++)
 
         if(p.getAttribute("id") == "titulo") {
             var h2 = document.createElement("STRONG");
-            h2.innerHTML = p.innerHTML.toUpperCase() + "<br><br>";
+            h2.innerHTML = p.innerHTML + "<br><br>";
 
             p.parentNode.replaceChild(h2, p);
         }
@@ -2768,8 +2799,8 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
         strong.removeAttribute("id");
 
 
-        
-    }
+        }
+
 
     var ps = document.getElementsByTagName("p");
     var divs = document.getElementsByTagName("div");
