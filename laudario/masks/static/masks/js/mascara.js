@@ -2761,6 +2761,15 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
 }
 
 
+    var strongs = document.getElementsByTagName("strong");
+
+    for(strong of strongs) {
+
+        strong.removeAttribute("id");
+
+
+        
+    }
 
     var ps = document.getElementsByTagName("p");
     var divs = document.getElementsByTagName("div");
