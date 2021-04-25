@@ -124,7 +124,6 @@ mostrarBotaoPopularSeNecessario();
         if(document.getElementById("s" + name) != null) {
             topicoDiv.insertBefore(document.getElementById("s" + name), document.getElementById(name));
         topicoDiv.insertBefore(br, document.getElementById(name).nextSibling);
-
         }
 
 
@@ -141,7 +140,7 @@ mostrarBotaoPopularSeNecessario();
         var topicoDiv = document.getElementById("topicos_div");
         for(z = 0; z < lista.length; z++) {
 
-            if(mascara_topicos == "True") {
+            if(mascara_topicos == "True" && document.getElementById("s" + name) != null) {
                             document.getElementById(name).nextSibling.remove();
 
             }
