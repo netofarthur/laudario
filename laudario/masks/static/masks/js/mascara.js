@@ -101,6 +101,37 @@ mostrarBotaoPopularSeNecessario();
 
     }
 
+    function removerBrsDuplos() {
+            var topicoDiv = document.getElementById("topicos_div");
+            var children = topicoDiv.children;
+            var counter = 0;
+
+            for(i=0; i < children.length; i++) {
+                if(children[i].tagName == "BR" && children[i+1].tagName == "BR") {
+                    children[i].remove();
+                }
+            }
+
+    }
+
+    function colocarTopicosOrdemJames(name) {
+
+
+        var topicoDiv = document.getElementById("topicos_div");
+
+        var br = document.createElement("br");
+
+        if(document.getElementById("s" + name) != null) {
+            topicoDiv.insertBefore(document.getElementById("s" + name), document.getElementById(name));
+        topicoDiv.insertBefore(br, document.getElementById(name).nextSibling);
+
+        }
+
+
+
+
+
+    }
 
     //Função para colocar os tópicos diagnóstico na ordem em que as alterações forem adicionadas.
     function colocarElementosEmOrdem(name) {
@@ -109,11 +140,21 @@ mostrarBotaoPopularSeNecessario();
         var lista = document.getElementById("topicos_div").children;
         var topicoDiv = document.getElementById("topicos_div");
         for(z = 0; z < lista.length; z++) {
-            if(lista[z].getAttribute("name") != "alterado" && document.getElementById(name).getAttribute("name") != "alterado") {
+
+            if(mascara_topicos == "True") {
+                            document.getElementById(name).nextSibling.remove();
+
+            }
 
                 topicoDiv.insertBefore(document.getElementById(name), lista[z]);
-                break;
+
+                    if(mascara_topicos == "True") {
+                colocarTopicosOrdemJames(name);
+
             }
+
+                break;
+
         }
     }
 
@@ -177,13 +218,11 @@ mostrarBotaoPopularSeNecessario();
 
 
         document.getElementById("topicos_div").innerHTML = document.getElementById("ultima_alteracao_relatorio").innerHTML;
-        var pos = document.getElementById(name).innerHTML.lastIndexOf("<br>");
-        document.getElementById(name).innerHTML = document.getElementById(name).innerHTML.substring(0, pos);
+
 
         if(conclusaoAlterada != "") {
-            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML.replace(document.getElementById("ultima_alteracao_conclusao").innerHTML, "");
-            var pos = document.getElementById("paragrafo_conclusao").innerHTML.lastIndexOf("<br>");
-            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML.substring(0, pos);
+            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("ultima_alteracao_conclusao").innerHTML;
+
         }
 
 
@@ -198,10 +237,10 @@ mostrarBotaoPopularSeNecessario();
 
         }
 
-        if(document.getElementById("paragrafo_conclusao").innerHTML == "") {
+        if(document.getElementById("paragrafo_conclusao").innerText == htmlDecode(conclusaoMascaraAtual)) {
+
             document.getElementById("paragrafo_conclusao").setAttribute("name", "conclusao");
 
-            document.getElementById("paragrafo_conclusao").innerHTML = htmlDecode(conclusaoMascaraAtual);
         }
 
                 mostrarBotaoPopularSeNecessario();
@@ -275,7 +314,7 @@ mostrarBotaoPopularSeNecessario();
 
 
        document.getElementById("ultima_alteracao_relatorio").innerHTML = document.getElementById("topicos_div").innerHTML;
-                document.getElementById("ultima_alteracao_conclusao").innerHTML = conclusao;
+                document.getElementById("ultima_alteracao_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML;;
 
     if(id.charAt(0) == "p" || id.charAt(0) == "m") {
     colocarElementosEmOrdem(name);
@@ -302,7 +341,14 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById(name).setAttribute("class", "paragrafo_mascara");
 
         } else {
-           document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
+
+            if(id.charAt(0) == "p" || id.charAt(0) == "m") {
+                           document.getElementById(name).innerHTML =relatorio + "<br>" + document.getElementById(name).innerHTML ;
+
+            } else {
+                       document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
+
+            }
         }
 
         if(document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado" && relatorio != "" && relatorio != "<br>") {
@@ -320,7 +366,15 @@ mostrarBotaoPopularSeNecessario();
         } else {
 
             if(conclusao != null && conclusao != "") {
-                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + conclusao;
+                      if(id.charAt(0) == "p" || id.charAt(0) == "m") {
+                        colocarElementosEmOrdem(name);
+                                document.getElementById("paragrafo_conclusao").innerHTML = conclusao + "<br>" + document.getElementById("paragrafo_conclusao").innerHTML;
+
+                        } else {
+                                document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + conclusao;
+
+                        }
+
                                     document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
 
 
