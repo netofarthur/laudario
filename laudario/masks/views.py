@@ -1001,6 +1001,8 @@ def comunidade(request):
         json_serializer = serializers.get_serializer("json")()
 
         alterados = json_serializer.serialize(TopicoAnormal.objects.all().order_by('nome', '-popularidade')) #alfabético
+        alteradosTotal = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade', 'nome')) #alfabéticototal
+
         alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade'))
         alteradosUsuario = json_serializer.serialize(TopicoAnormal.objects.filter(topico_normal__mascara__usuario=request.user).order_by('nome'))
 
@@ -1009,6 +1011,8 @@ def comunidade(request):
 
         normais = json_serializer.serialize(TopicoNormal.objects.all())
         mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome', '-popularidade')) #alfabético
+        mascarasJsonTotal = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade', 'nome')) #alfabéticototal
+
 
         mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.all().order_by('-data_criada', 'nome'))
         alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-data_criada', 'nome'))
@@ -1022,7 +1026,8 @@ def comunidade(request):
         context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados, 'normais': normais, 'mascarasJson': mascarasJson,
                    'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario, 'mascarasJsonPopulares': mascarasJsonPopulares,
                    'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles, 'mascarasMaisRecentes': mascarasMaisRecentes,
-                   'alteradosMaisRecentes': alteradosMaisRecentes}
+                   'alteradosMaisRecentes': alteradosMaisRecentes, 'mascarasJsonTotal': mascarasJsonTotal,
+                   'alteradosTotal': alteradosTotal}
         return render(request, 'masks/comunidade.html', context)
 
     else:
@@ -1034,12 +1039,15 @@ def comunidade(request):
             TopicoAnormal.objects.all().order_by('nome', '-popularidade'))  # alfabético
         alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade'))
         alteradosUsuario = "";
+        alteradosTotal = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade', 'nome')) #alfabéticototal
 
         mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade'))
         mascarasJsonUsuario = "";
 
         normais = json_serializer.serialize(TopicoNormal.objects.all())
         mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome', '-popularidade'))  # alfabético
+        mascarasJsonTotal = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade', 'nome')) #alfabético
+
 
         mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.all().order_by('-data_criada', 'nome'))
         alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-data_criada', 'nome'))
@@ -1054,5 +1062,7 @@ def comunidade(request):
                    'mascarasJsonPopulares': mascarasJsonPopulares,
                    'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles,
                    'mascarasMaisRecentes': mascarasMaisRecentes,
-                   'alteradosMaisRecentes': alteradosMaisRecentes}
+                   'alteradosMaisRecentes': alteradosMaisRecentes,
+                   'mascarasJsonTotal': mascarasJsonTotal,
+                   'alteradosTotal': alteradosTotal}
         return render(request, 'masks/comunidade.html', context)

@@ -364,8 +364,8 @@ function procurarTudo() {
         var topicosNormaisValidos = [];
 
 
-              mascarasJsonObject = JSON.parse(mascarasJson);
-              alteradosJSONObject = JSON.parse(alterados);
+              mascarasJsonObject = JSON.parse(mascarasJsonTotal);
+              alteradosJSONObject = JSON.parse(alteradosTotal);
 
 
 
