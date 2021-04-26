@@ -236,7 +236,8 @@ mostrarBotaoPopularSeNecessario();
 
         }
 
-        if(document.getElementById("paragrafo_conclusao").innerText == htmlDecode(conclusaoMascaraAtual)) {
+
+        if(document.getElementById("paragrafo_conclusao").innerText == document.getElementById("conclusaoNormal").value) {
 
             document.getElementById("paragrafo_conclusao").setAttribute("name", "conclusao");
 
@@ -2274,6 +2275,8 @@ function clicouExcluir(id) {
 }
 
 function colocarIndicacaoClinica() {
+
+    document.getElementById("conclusaoNormal").value = document.getElementById("paragrafo_conclusao").innerText;
 
 
    if(document.getElementById("indicacoes") != null && document.getElementById("copiar_laudo") != null) {
