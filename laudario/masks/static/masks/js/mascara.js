@@ -2458,6 +2458,28 @@ document.getElementById("botoes_div").appendChild(anchor);
 function copiarTextoSomente() {
 tinymce.remove();
 
+    var mascaradiv = document.getElementById("mascara_div");
+    var par = document.createElement("p");
+    var par1 = document.createElement("p");
+    var par2 = document.createElement("p");
+    var par3 = document.createElement("p");
+    par.innerHTML = "XXXXXXXXXX";
+        par1.innerHTML = "XXXXXXXXXX";
+    par2.innerHTML = "XXXXXXXXXX";
+        par3.innerHTML = "XXXXXXXXXX";
+
+
+                 mascaradiv.insertBefore(par1, document.getElementById("indicacoes_header"));
+         mascaradiv.insertBefore(par2, document.getElementById("tecnica_header"));
+                  mascaradiv.insertBefore(par, document.getElementById("relatorio_header"));
+
+                  mascaradiv.insertBefore(par3, document.getElementById("conclusao_header"));
+
+
+
+
+
+
 if(mascara_topicos == "True") {
     var topicosDiv = document.getElementById("topicos_div");
     var children = topicosDiv.children;
@@ -2501,6 +2523,9 @@ document.getElementById("mascara_div").innerHTML = document.getElementById("masc
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "");
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacetos", "<br>");
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacinhos", "<br>");
+
+document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("XXXXXXXXXX", "<br>");
+
 
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace("Preencher Variáveis<br>", "");
 
