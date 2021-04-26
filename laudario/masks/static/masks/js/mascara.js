@@ -236,11 +236,10 @@ mostrarBotaoPopularSeNecessario();
 
         }
 
-        if(document.getElementById("paragrafo_conclusao").innerText == htmlDecode(conclusaoMascaraAtual)) {
 
             document.getElementById("paragrafo_conclusao").setAttribute("name", "conclusao");
 
-        }
+
 
                 mostrarBotaoPopularSeNecessario();
 
