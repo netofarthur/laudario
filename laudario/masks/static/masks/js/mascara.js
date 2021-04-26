@@ -2015,7 +2015,7 @@ anchor2.style.fontSize = "1.5rem";
 document.getElementById("botoes_div").appendChild(anchor2);
 
     var anchor = document.createElement("a");
-anchor.setAttribute("href", "/mascaras");
+anchor.setAttribute("href", "javascript:history.back()");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Novo exame";
@@ -2061,7 +2061,7 @@ limparTagsHtmlParcial();
 
 
       var anchor = document.createElement("a");
-    anchor.setAttribute("href", "/mascaras");
+    anchor.setAttribute("href", "javascript:history.back()");
     anchor.setAttribute("id", "link_voltar");
 
     anchor.innerHTML = "Novo exame";
@@ -2276,8 +2276,9 @@ function clicouExcluir(id) {
 
 function colocarIndicacaoClinica() {
 
+    if(document.getElementById("paragrafo_conclusao") != null) {
     document.getElementById("conclusaoNormal").value = document.getElementById("paragrafo_conclusao").innerText;
-
+}
 
    if(document.getElementById("indicacoes") != null && document.getElementById("copiar_laudo") != null) {
     var indicacoes = document.getElementById("indicacoes").innerHTML.split(",");
@@ -2421,7 +2422,7 @@ tinymce.remove();
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
-anchor.setAttribute("href", "/mascaras");
+anchor.setAttribute("href", "javascript:history.back()");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Novo exame";
@@ -2446,7 +2447,7 @@ tinymce.remove();
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
-anchor.setAttribute("href", "/mascaras");
+anchor.setAttribute("href", "javascript:history.back()");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Novo exame";
@@ -2537,7 +2538,7 @@ document.getElementById("mascara_div").innerHTML = document.getElementById("masc
     document.getElementById("mascara_div").style.whiteSpace = "pre-wrap";
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
-anchor.setAttribute("href", "/mascaras");
+anchor.setAttribute("href", "javascript:history.back()");
 anchor.setAttribute("id", "link_voltar");
 
 anchor.innerHTML = "Novo exame";
