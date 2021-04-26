@@ -220,7 +220,7 @@ mostrarBotaoPopularSeNecessario();
 
 
         if(conclusaoAlterada != "") {
-            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("ultima_alteracao_conclusao").innerHTML;
+            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("ultima_alteracao_conclusao").innerHTML;
 
         }
 
