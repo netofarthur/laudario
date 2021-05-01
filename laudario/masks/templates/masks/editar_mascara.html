@@ -36,7 +36,7 @@
 
 <div id="coluna_esquerda" class="col-6" style="height: 90vh; overflow: auto;">
 
-<h1> {{mascara.nome}} </h1>
+<h1 class="br"> {{mascara.nome}} </h1>
 
 
 <form action="{% url 'salvar_edicao' mascara.pk %}" method="post" id="formulario_nova_mascara">
@@ -76,13 +76,13 @@
 
 <label style="font-size: 1.2rem;" for="nome_exame" class="label_laranja">Nome/descrição do exame: </label>
 <input class="input_curto"  type="text" id="nome_exame" name="nome_exame" value="{{ mascara.nome }}">
-<br>
-<br>
+<br class="br">
+<br class="br">
 <fieldset class="fieldset_nova_mascara">
     <legend class="legend_nova_mascara label_laranja">Título</legend>
         <input placeholder="Título do exame no laudo" class="input_curto" type="text" id="titulo_exame" name="titulo_exame" value="{{ mascara.titulo }}">
 </fieldset>
-<br>
+<br class="br">
 
 
 
@@ -97,24 +97,24 @@
 
 
 
-     <br>
+     <br class="br">
 
 
  <fieldset class="fieldset_nova_mascara">
     <legend class="legend_nova_mascara label_laranja">Técnica</legend>
 <input style="margin-bottom:5px;" placeholder="Título da ténica" class="input_curto" type="text" id="tecnica_header" name="tecnica_header" value="{{ mascara.tecnica_header }}">
 
-     <br>
+     <br class="br">
 
     <textarea style="visibility: hidden; max-height: 0;" class="paragrafo_mascara" rows="2" class="input_curto" placeholder="Descrição da técnica" type="text" id="tecnica" name="tecnica">{{ mascara.tecnica }}</textarea>
  </fieldset>
-<br>
+<br class="br">
 
 <fieldset class="fieldset_nova_mascara">
     <legend class="legend_nova_mascara label_laranja">Relatório</legend>
 <input style="margin-bottom:10px;" placeholder="Título do relatório" class="input_curto" type="text" id="relatorio_header" name="relatorio_header" value="{{ mascara.relatorio_header }}">
 
-    <br>
+    <br class="br">
 
 <div id="lista_orgaos">
 
@@ -245,19 +245,19 @@
     <legend class="legend_nova_mascara label_laranja">Conclusão</legend>
     <input style="margin-bottom:5px;" class="input_curto" placeholder="Título da conclusão" type="text" id="conclusao_header" name="conclusao_header" value="{{ mascara.conclusao_header }}">
 
-    <br>
+    <br class="br">
 
 
 <textarea style="visibility: hidden; max-height: 0;" class="paragrafo_mascara" rows="2" class="input_curto" placeholder="Descrição da conclusão" type="text" id="conclusao" name="conclusao">{{ mascara.conclusao }}</textarea>
      </fieldset>
-      <br>
+      <br class="br">
 
             <fieldset class="fieldset_nova_mascara">
     <legend class="legend_nova_mascara label_laranja">Informações adicionais</legend>
 <textarea style="visibility: hidden; max-height: 0;" rows="4" class="input_curto" placeholder="Observações, referências, etc." type="text" id="info_adicional" name="info_adicional">{{ mascara.info_adicional }}</textarea>
 
         </fieldset>
-    <br>
+    <br class="br">
 
 <div id="corpo_alteracao">
 
@@ -289,8 +289,8 @@
 
 
 
-     <br>
-    <br>
+     <br class="br">
+    <br class="br">
 
 
 <div style="text-align: center;">
@@ -302,8 +302,8 @@
 
 
 </div>
-<br>
-    <br>
+<br class="br">
+    <br class="br">
 
 </form>
 
