@@ -968,6 +968,9 @@ function insertAtCursor(text) {
 
     function colocarNomesAmigaveisAlteracao() {
 
+
+
+
     var inputs2 = document.getElementsByName("nome_amigavel_variavel");
         for(input2 of inputs2) {
             if(input2.value.indexOf(">") >= 0 || input2.value.indexOf("<") >= 0) {
@@ -1021,6 +1024,18 @@ function insertAtCursor(text) {
 
 
     document.getElementById("salva_mudancas").disabled = true;
+
+
+    if(document.getElementById("salva_mudancas") != null) {
+                document.getElementById("salva_mudancas").style.display = "none";
+            }
+            if(document.getElementById("relatorio_final") != null) {
+                document.getElementById("relatorio_final").style.display = "none";
+            }
+            if(document.getElementById("corpo_variaveis") != null) {
+                document.getElementById("corpo_variaveis").style.display = "none";
+            }
+
 
     }
 
@@ -1093,7 +1108,17 @@ function voltarAlteracaoFim() {
 
     function apagarAlteracaoFim() {
 
+
+        if(document.getElementById("corpo_alteracao") != null) {
         document.getElementById("corpo_alteracao").style.display = "none";
+        } else {
+        var children = document.getElementById("formulario_alteracao").children;
+        for(child of children) {
+            if(child.id != "corpo_variaveis" && child.id != "salva_mudancas") {
+                child.style.display = "none";
+            }
+        }
+        }
     }
 
     function apagarMascaraFim() {
@@ -1188,8 +1213,9 @@ function voltarAlteracaoFim() {
     apagarAlteracaoFim();
 
     document.getElementById("salva_mudancas").value = "Concluir";
+    if(document.getElementById("botaoCancelar") != null) {
     document.getElementById("botaoCancelar").style.display = "none";
-
+}
 
         var botaoVoltar = document.createElement("button");
         botaoVoltar.innerHTML = "Voltar";
@@ -1201,9 +1227,9 @@ function voltarAlteracaoFim() {
         div.setAttribute("style", "text-align: center; margin: 1rem;");
         div.appendChild(botaoVoltar);
 
-
+        if(document.getElementById("modal_alteracao_body") != null) {
         document.getElementById("modal_alteracao_body").appendChild(div);
-
+        }
 
     } else {
     apagarMascaraFim();
@@ -1453,7 +1479,7 @@ function clicouEntrada(id) {
 
         }
 
-   if(document.getElementById("adicionar_no_atual") != null) {
+   if(document.getElementById("adicionar_no_atual") != null && document.getElementById("ultima_alteracao_relatorio") && document.getElementById("paragrafo_conclusao")) {
           document.getElementById("ultima_alteracao_relatorio").innerHTML = document.getElementById("topicos_div").innerHTML;
                 document.getElementById("ultima_alteracao_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML;
 }
@@ -1970,6 +1996,13 @@ function clicouEntrada(id) {
         if(document.getElementById("coluna_esquerda") != null) {
 
         if(document.getElementsByName("nome_amigavel_variavel").length == 0) {
+            if(document.getElementById("salva_mudancas") != null) {
+                document.getElementById("salva_mudancas").style.display = "none";
+            }
+            if(document.getElementById("relatorio_final") != null) {
+                document.getElementById("relatorio_final").style.display = "none";
+            }
+
             ancora = document.createElement("a");
         ancora.setAttribute("href", "javascript:history.back()");
         ancora.innerHTML = "Voltar";
