@@ -1595,12 +1595,14 @@ function clicouEntrada(id) {
         } else {
             var relatorioTexto = "";
             var relatorioOrgaos = document.getElementsByName("relatorio_orgao");
+
             for(relatorio of relatorioOrgaos) {
                     if(relatorio.style.display != "none") {
                    if(relatorioTexto == "") {
                           relatorioTexto = relatorio.value;
 
                    } else {
+
                       relatorioTexto = relatorioTexto + "<br>" + relatorio.value;
 
                    }
@@ -1611,8 +1613,17 @@ function clicouEntrada(id) {
             relatorioFinal.id = "relatorio_final";
             relatorioFinal.setAttribute("style","position: sticky; position: -webkit-sticky; top: -2rem; background: white; padding: 1rem;");
 
-            relatorioFinal.innerHTML = document.getElementById("titulo_exame").value + "<br>" + document.getElementById("tecnica_header").value + "<br>" + document.getElementById("tecnica").value + "<br>" + document.getElementById("relatorio_header").value + "<br>"
+            if(window.location.href.substring(window.location.href.length-5, window.location.href.length-1) == "nova") {
+relatorioFinal.innerHTML = document.getElementById("titulo_exame").value + "<br>" + document.getElementById("tecnica_header").value + "<br>" + document.getElementById("tecnica").value + "<br>" + document.getElementById("relatorio_header").value + "<br>"
             + relatorioTexto + "<br>" + document.getElementById("conclusao_header").value + "<br>" + document.getElementById("conclusao").value;
+
+            } else {
+relatorioFinal.innerHTML = document.getElementById("titulo_exame").value + "<br>" + document.getElementById("tecnica_header").value + "<br>" + document.getElementById("tecnica").value + "<br>" + document.getElementById("relatorio_header").value + "<br>"
+            + relatorioTexto + document.getElementById("conclusao_header").value + "<br>" + document.getElementById("conclusao").value;
+
+            }
+
+
             corpo.appendChild(relatorioFinal);
         }
 
@@ -2018,35 +2029,7 @@ function clicouEntrada(id) {
 
     }
 
-    //desabilita inputs. posso colocar em função separada.
-    var inputs = document.getElementsByClassName("input_curto");
-    for(input of inputs) {
-        input.readOnly = true;
-    }
 
-    var inputs2 = document.getElementsByClassName("paragrafo_mascara");
-    for(input of inputs2) {
-        input.readOnly = true;
-    }
-
-    var inputs3 = document.getElementsByName("orgao");
-    for(input of inputs3) {
-        input.readOnly = true;
-    }
-    var inputs4 = document.getElementsByName("botao_remover");
-    for(input of inputs4) {
-        input.disabled = true;
-    }
-
-        var inputs5 = document.getElementsByClassName("entrada_modal");
-    for(input of inputs5) {
-        input.readOnly = true;
-    }
-
-        var inputs6 = document.getElementsByClassName("botao_novo_topico");
-    for(input of inputs6) {
-        input.disabled = true;
-    }
 
     var pars = document.getElementsByClassName("paragrafo_mascara");
     for(par of pars) {
