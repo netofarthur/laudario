@@ -323,12 +323,13 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
 <div id="coluna_mascaras" class="col-6" style="padding-top: 1rem; height: 90vh; overflow: auto;">
     <div style="text-align:center; margin-bottom: 25px; color: #c96100;"><h3>Alterações</h3>
 </div>
+        <input style="width: 100%; margin-bottom: 1rem;" autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar alterações" onkeyup="procurarAlteracoes()" onsearch="procurarAlteracoes()"/>
   {% for topico_anormal in topicos_anormais %}
                         <div class="container-fluid" style="margin: 2px; padding: 2px;">
                     <div class="row" >
                     <div class="col-6">
 
-                        <span id="link_topico_anormal" href="#">{{ topico_anormal.nome }}</span>
+                        <span class="link_alteracao" id="link_topico_anormal" href="#">{{ topico_anormal.nome }}</span>
                     </div>
 
                     <div class="col">

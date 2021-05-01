@@ -3148,3 +3148,27 @@ function copiarRelatorioConclusao() {
         document.execCommand("copy");
       }
 }
+
+function procurarAlteracoes() {
+
+    var id = "procurarFrases";
+// Declare variables
+  var input, filter, li, i, txtValue;
+  input = document.getElementById(id);
+  filter = input.value.toUpperCase();
+  li = document.getElementsByClassName('link_alteracao');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    txtValue = li[i].innerText;
+    if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1) {
+      li[i].parentNode.parentNode.parentNode.style.display = "block";
+    } else {
+      li[i].parentNode.parentNode.parentNode.style.display = "none";
+    }
+    if(li[i].innerHTML == "Reverter") {
+      li[i].parentNode.parentNode.parentNode.style.display = "none";
+
+    }
+  }
+}

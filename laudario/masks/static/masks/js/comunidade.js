@@ -146,7 +146,7 @@ function procurarEntradasAdaptado() {
 document.addEventListener('DOMContentLoaded', function() {
 
   setarBoxUltimas();
-  
+
     if(getCookie("exameid") != null && document.getElementById("collapse" + getCookie("exameid")) != null)  {
         document.getElementById("collapse" + getCookie("exameid")).setAttribute("class", "collapse show");
         document.getElementById("exameHidden").value = getCookie("exameid");
@@ -1882,7 +1882,7 @@ function procurarEntradas(id) {
 
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
-    txtValue = li[i].innerHTML;
+    txtValue = li[i].innerText;
     if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1 && counter < 5) {
       li[i].parentNode.style.display = "block";
       counter++;
