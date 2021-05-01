@@ -113,7 +113,7 @@
 
 <div id="coluna_esquerda" class="col-7" style="height: 90vh; overflow: auto;">
 
-<h4 style="text-align: center;  margin-top: .3rem; margin-bottom: .2rem;"> Nova Máscara </h4>
+<h4 class="nova_mascara_titulo" style="text-align: center;  margin-top: .3rem; margin-bottom: .2rem;"> Nova Máscara </h4>
 
 
 <form action="{% url 'adicionar_nova_mascara' %}" method="post" id="formulario_nova_mascara">
@@ -143,15 +143,15 @@
 
 <label class="label_laranja" style="font-size: 1.2rem;" for="nome_exame">Nome/descrição do exame: </label>
 <input class="input_curto" type="text" id="nome_exame" name="nome_exame">
-<br>
-    <br>
+<br class="br">
+    <br class="br">
 
 
 <fieldset class="fieldset_nova_mascara">
     <legend class="legend_nova_mascara label_laranja">Título</legend>
         <input class="paragrafo_mascara" placeholder="Título do exame no laudo" type="text" id="titulo_exame" name="titulo_exame" style="width: 100%;">
 </fieldset>
-    <br>
+    <br class="br">
 
 
     <fieldset class="fieldset_nova_mascara">
@@ -165,7 +165,7 @@
 
 
 
-     <br>
+     <br class="br">
 
 
 
@@ -174,18 +174,18 @@
     <legend class="legend_nova_mascara label_laranja">Técnica</legend>
 <input style="margin-bottom:5px;" placeholder="Título da ténica" class="input_curto" type="text" id="tecnica_header" name="tecnica_header">
 
-     <br>
+     <br class="br">
 
     <textarea class="paragrafo_mascara" rows="2" class="input_curto" placeholder="Descrição da técnica" type="text" id="tecnica" name="tecnica"></textarea>
  </fieldset>
-     <br>
+     <br class="br">
 
 
  <fieldset class="fieldset_nova_mascara">
     <legend class="legend_nova_mascara label_laranja">Relatório</legend>
 <input style="margin-bottom:10px;" placeholder="Título do relatório" class="input_curto" type="text" id="relatorio_header" name="relatorio_header">
 
-     <br>
+     <br class="br">
 
 
 <div id="lista_orgaos">
@@ -207,18 +207,18 @@
 </div>
 
  </fieldset>
-<br>
+<br class="br">
 
     <fieldset class="fieldset_nova_mascara">
     <legend class="legend_nova_mascara label_laranja">Conclusão</legend>
     <input style="margin-bottom:5px;" class="input_curto" placeholder="Título da conclusão" type="text" id="conclusao_header" name="conclusao_header">
 
-        <br>
+        <br class="br">
 
 
 <textarea class="paragrafo_mascara" rows="2" class="input_curto" placeholder="Descrição da conclusão" type="text" id="conclusao" name="conclusao" class="paragrafo_mascara"></textarea>
      </fieldset>
-         <br>
+         <br class="br">
 
 
         <fieldset class="fieldset_nova_mascara">

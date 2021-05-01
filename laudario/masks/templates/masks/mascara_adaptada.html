@@ -68,8 +68,9 @@
 <div class="col" style="padding: 0px; padding-left: 1rem;">
 
 <div id="botoes_div" style="text-align: center; margin-top:7px">
-        <button id="copiar_laudo" style="width:40%; padding: .5rem;" class="btn btn-primary" onclick="copiarRelatorio()">Copiar Relatório</button>
-            <button id="editar_laudo" style="width:40%; padding: .5rem; margin-left: 1rem;" class="btn btn-primary" onclick="copiarConclusao()">Copiar Conclusão</button>
+        <button id="copiar_laudo" style="width:30%; padding: .5rem;" class="btn btn-primary" onclick="copiarRelatorio()">Copiar Relatório</button>
+            <button id="editar_laudo" style="width:30%; padding: .5rem; margin-left: 1rem;" class="btn btn-primary" onclick="copiarConclusao()">Copiar Conclusão</button>
+        <button id="copiar_tudo" style="width:30%; padding: .5rem; margin-left: 1rem;" class="btn btn-primary" onclick="copiarRelatorioConclusao()">Copiar Tudo</button>
 
            </div>
 <div id="mascara_div">
@@ -84,7 +85,7 @@
 
 <div style="margin: 2rem;">
 
-<p style="color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none">Relatório</p>
+<p id="relatorio_simples" style="color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none">Relatório</p>
 
 
 
@@ -108,11 +109,12 @@
 
 
 
-    <p style="margin-top: 3rem; color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none">Conclusão</p>
+    <p id="conclusao_simples" style="margin-top: 3rem; color: #c96100; font-size: 1.5rem; font-weight: bold; text-decoration: none">Conclusão</p>
     {% autoescape off %}
     <p class="paragrafo_mascara" id="paragrafo_conclusao" name="conclusao"> {{mascara.conclusao}} </p>
 
     {% endautoescape %}
+    <p style="display: none;" id="conclusao_relatorio"></p>
 
 <div style="text-align: center;">
     <a style="font-size: 1.5rem;" id="link_voltar" href="javascript:history.back()">Voltar</a>

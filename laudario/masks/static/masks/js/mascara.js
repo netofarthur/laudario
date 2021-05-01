@@ -1019,11 +1019,7 @@ function insertAtCursor(text) {
 
 
 
-    //desabilita inputs. posso colocar em função separada.
-    var inputs = document.getElementsByName("nome_amigavel_variavel");
-    for(input of inputs) {
-        input.readOnly = true;
-    }
+
     document.getElementById("salva_mudancas").disabled = true;
 
     }
@@ -1069,19 +1065,164 @@ function insertAtCursor(text) {
     }
 
 
-    function desabilitarEntradasConfiguracaoMascara() {
-        document.getElementsByClassName("paragrafo_mascara").disabled = true;
-        var botoes = document.getElementsByName("botao_remover");
-        for(botao of botoes) {
-            botao.style.display = "none";
+function voltarAlteracaoFim() {
+
+        document.getElementById("corpo_alteracao").style.display = "block";
+
+         document.getElementById("corpo_variaveis").innerHTML = "";
+
+        document.getElementById("salva_mudancas").value = "Adicionar";
+            document.getElementById("botaoCancelar").style.display = "block";
+
+
+        document.getElementById("salva_mudancas").setAttribute("onclick", "adicionarAlteracoNaMascara()");
+                document.getElementById("botaoVoltar").remove();
+
+
+        document.getElementById("topicos_div").innerHTML = document.getElementById("ultima_alteracao_relatorio").innerHTML;
+
+
+            document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("ultima_alteracao_conclusao").innerHTML;
+
+
+
+
+    }
+
+
+
+    function apagarAlteracaoFim() {
+
+        document.getElementById("corpo_alteracao").style.display = "none";
+    }
+
+    function apagarMascaraFim() {
+        var fields = document.getElementsByClassName("fieldset_nova_mascara");
+        for(field of fields) {
+            field.style.display = "none";
         }
+
+        var fields = document.getElementsByClassName("form-group");
+        for(field of fields) {
+            field.style.display = "none";
+        }
+
+        var fields = document.getElementsByClassName("label_laranja");
+        for(field of fields) {
+            field.style.display = "none";
+        }
+
+        var fields = document.getElementsByClassName("input_curto");
+        for(field of fields) {
+            field.style.display = "none";
+        }
+
+
+        var fields = document.getElementsByClassName("nova_mascara_titulo");
+        for(field of fields) {
+            field.style.display = "none";
+        }
+
+
+        var fields = document.getElementsByClassName("br");
+        for(field of fields) {
+            field.style.display = "none";
+        }
+
+
+
+    }
+
+
+      function voltarMascaraFim() {
+        var fields = document.getElementsByClassName("fieldset_nova_mascara");
+        for(field of fields) {
+            field.style.display = "block";
+        }
+
+        var fields = document.getElementsByClassName("form-group");
+        for(field of fields) {
+            field.style.display = "block";
+        }
+
+        var fields = document.getElementsByClassName("label_laranja");
+        for(field of fields) {
+            field.style.display = "block";
+        }
+
+        var fields = document.getElementsByClassName("input_curto");
+        for(field of fields) {
+            field.style.display = "block";
+        }
+
+
+        var fields = document.getElementsByClassName("nova_mascara_titulo");
+        for(field of fields) {
+            field.style.display = "block";
+        }
+
+
+        var fields = document.getElementsByClassName("br");
+        for(field of fields) {
+            field.style.display = "block";
+        }
+        document.getElementById("corpo_alteracao").innerHTML = "";
+
+        document.getElementById("salva_mudancas").value = "Adicionar";
+
+        document.getElementById("salva_mudancas").setAttribute("onclick", "adicionarAlteracoNaMascara()");
+                document.getElementById("botaoVoltar").remove();
+
+
+
+
+
+
+
+    }
+
+
+    function desabilitarEntradasConfiguracaoMascara() {
+
+    if(document.getElementById("adicionar_no_atual") != null) {
+    apagarAlteracaoFim();
+
+    document.getElementById("salva_mudancas").value = "Concluir";
+    document.getElementById("botaoCancelar").style.display = "none";
+
+
+        var botaoVoltar = document.createElement("button");
+        botaoVoltar.innerHTML = "Voltar";
+        botaoVoltar.id = "botaoVoltar";
+        botaoVoltar.setAttribute("onclick", "voltarAlteracaoFim();");
+                botaoVoltar.setAttribute("class", "btn-primary");
+
+        var div = document.createElement("div");
+        div.setAttribute("style", "text-align: center; margin: 1rem;");
+        div.appendChild(botaoVoltar);
+
+
+        document.getElementById("modal_alteracao_body").appendChild(div);
+
+
+    } else {
+    apagarMascaraFim();
+
         document.getElementById("salva_mudancas").value = "Concluir";
 
-        if(document.getElementById("coluna_mascaras") != null) {
-            document.getElementById("coluna_mascaras").parentNode.removeChild(document.getElementById("coluna_mascaras"));
- document.getElementById("coluna_esquerda").classList.remove('col-6');
-        document.getElementById("coluna_esquerda").classList.add('col-12');
-        }
+
+
+        var botaoVoltar = document.createElement("button");
+        botaoVoltar.innerHTML = "Voltar";
+        botaoVoltar.id = "botaoVoltar";
+        botaoVoltar.setAttribute("onclick", "voltarMascaraFim();");
+        botaoVoltar.setAttribute("class", "btn-primary");
+        var div = document.createElement("div");
+        div.setAttribute("style", "text-align: center; margin: 1rem; margin-bottom: 3rem;");
+        div.appendChild(botaoVoltar);
+
+        document.getElementById("formulario_nova_mascara").appendChild(div);
+    }
 
 
 
@@ -1225,7 +1366,24 @@ function recolocarTinys() {
 }
 
 
+
+function clicouEntrada(id) {
+
+
+    document.getElementById("relatorio_final").innerHTML = document.getElementById("relatorio_final").innerHTML.replaceAll('<span style="color: red; font-weight: bold">', '').replaceAll('</span>', "");
+    document.getElementById("relatorio_final").innerHTML = document.getElementById("relatorio_final").innerHTML.replaceAll("{" + id + "}", '{<span style="color: red; font-weight: bold">' + id + '</span>}');
+    document.getElementById("relatorio_final").innerHTML = document.getElementById("relatorio_final").innerHTML.replaceAll("|" + id + "|", '|<span style="color: red; font-weight: bold">' + id + '</span>|');
+    document.getElementById("relatorio_final").innerHTML = document.getElementById("relatorio_final").innerHTML.replaceAll("{" + id + "|", '{<span style="color: red; font-weight: bold">' + id + '</span>|');
+    document.getElementById("relatorio_final").innerHTML = document.getElementById("relatorio_final").innerHTML.replaceAll("|" + id + "}", '|<span style="color: red; font-weight: bold">' + id + '</span>}');
+
+
+}
+
+
     function adicionarAlteracoNaMascara() {
+
+
+
 
         if(document.getElementById("coluna_mascaras") != null && document.getElementById("coluna_esquerda") != null) {
             document.getElementById("coluna_mascaras").parentNode.removeChild(document.getElementById("coluna_mascaras"));
@@ -1295,6 +1453,10 @@ function recolocarTinys() {
 
         }
 
+   if(document.getElementById("adicionar_no_atual") != null) {
+          document.getElementById("ultima_alteracao_relatorio").innerHTML = document.getElementById("topicos_div").innerHTML;
+                document.getElementById("ultima_alteracao_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML;
+}
 
 
    var todasVariaveis = [];
@@ -1319,9 +1481,12 @@ function recolocarTinys() {
                 }
             }
 
+                desabilitarEntradasConfiguracaoMascara();
 
         } else {
         desabilitarEntradasConfiguracaoMascara();
+
+
             var variaveis = obterListaVariaveis("paragrafo_mascara");
 
             var result = [];
@@ -1394,6 +1559,40 @@ function recolocarTinys() {
 
         }
 
+
+        if(document.getElementById("adicionar_no_atual") != null) {
+            var relatorioFinal = document.createElement("div");
+            relatorioFinal.id = "relatorio_final";
+            relatorioFinal.setAttribute("style","position: sticky; position: -webkit-sticky; top: 0; background: white; padding: 1rem;");
+            relatorioFinal.innerHTML = document.getElementById("relatorio_modal").value + "<br>" + document.getElementById("conclusao_modal").value;
+            corpo.appendChild(relatorioFinal);
+        } else {
+            var relatorioTexto = "";
+            var relatorioOrgaos = document.getElementsByName("relatorio_orgao");
+            for(relatorio of relatorioOrgaos) {
+                    if(relatorio.style.display != "none") {
+                   if(relatorioTexto == "") {
+                          relatorioTexto = relatorio.value;
+
+                   } else {
+                      relatorioTexto = relatorioTexto + "<br>" + relatorio.value;
+
+                   }
+                   }
+            }
+
+            var relatorioFinal = document.createElement("div");
+            relatorioFinal.id = "relatorio_final";
+            relatorioFinal.setAttribute("style","position: sticky; position: -webkit-sticky; top: -2rem; background: white; padding: 1rem;");
+
+            relatorioFinal.innerHTML = document.getElementById("titulo_exame").value + "<br>" + document.getElementById("tecnica_header").value + "<br>" + document.getElementById("tecnica").value + "<br>" + document.getElementById("relatorio_header").value + "<br>"
+            + relatorioTexto + "<br>" + document.getElementById("conclusao_header").value + "<br>" + document.getElementById("conclusao").value;
+            corpo.appendChild(relatorioFinal);
+        }
+
+
+
+
         if(listaVars.length == 0) {
                 formulario.submit();
 
@@ -1422,13 +1621,19 @@ function recolocarTinys() {
               var inputMedida = document.createElement("input");
                 inputMedida.setAttribute("name", "unidade_de_medida");
                 inputMedida.style.marginBottom = "1rem";
+                inputMedida.style.width = "20%";
+
                 var input = document.createElement("input");
                 input.setAttribute("name", "nome_amigavel_variavel")
+                input.style.width = "75%";
                 input.style.marginBottom = "1rem";
                 input.style.whiteSpace = "pre";
 
                 input.setAttribute("id", listaVars[i]);
 
+                input.setAttribute("onclick", "clicouEntrada(this.id)");
+                input.setAttribute("onfocus", "clicouEntrada(this.id)");
+                input.setAttribute("autocomplete", "off");
 
                 var inputHidden = document.createElement("input");
                 inputHidden.setAttribute("type", "hidden");
@@ -1438,9 +1643,11 @@ function recolocarTinys() {
                   var label = document.createElement("label");
                   label.style.fontWeight = "bold";
                 label.style.color = "#c96100";
+                label.style.display = "block";
 
 
                 label.setAttribute("name", "label_variavel");
+
                     var br = document.createElement("br")
                 br.setAttribute("name", "label_br");
 
@@ -1453,19 +1660,19 @@ function recolocarTinys() {
                         inputMedida.style.display = "none"
 
                 } else if(listaVars[i].indexOf("|") > -1) {
-                        input.setAttribute("placeholder", "Nome amigável da variável");
+                        input.setAttribute("placeholder", "Nome da variável");
                         input.setAttribute("size", 40)
                         inputMedida.style.display = "none"
 
 
                 } else {
-                        inputMedida.setAttribute("placeholder", "Unidade de medida");
+                        inputMedida.setAttribute("placeholder", "Unidade medida");
                         inputMedida.setAttribute("size", 18);
                         inputMedida.style.marginLeft = ".2rem";
 
                         input.setAttribute("size", 40)
 
-                        input.setAttribute("placeholder", "Nome amigável da variável");
+                        input.setAttribute("placeholder", "Nome da variável");
 
                 }
 
@@ -1818,6 +2025,15 @@ function recolocarTinys() {
         par.style.width = "100%";
     }
 
+    recolocarTinys();
+
+            if(document.getElementById("adicionar_no_atual") != null) {
+                document.getElementById("corpo_variaveis").scrollIntoView();
+
+            } else {
+                document.getElementById("corpo_alteracao").scrollIntoView();
+
+            }
 
 
     }
@@ -2896,4 +3112,39 @@ function copiarConclusao() {
         document.execCommand("copy");
       }
 
+}
+
+function copiarRelatorioConclusao() {
+
+    document.getElementById("editar_laudo").onclick = "";
+    document.getElementById("copiar_laudo").onclick = "";
+        document.getElementById("copiar_tudo").onclick = "";
+
+
+
+   var containerid = document.getElementsByName("alterado")[0];
+
+   var conclusao = document.getElementById("paragrafo_conclusao").innerHTML;
+
+
+   containerid.innerHTML = containerid.innerHTML + "<br><br>" + conclusao;
+
+    document.getElementById("relatorio_simples").style.display = "none";
+        document.getElementById("conclusao_simples").style.display = "none";
+    document.getElementById("paragrafo_conclusao").style.display = "none";
+
+
+      if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select().createTextRange();
+        document.execCommand("copy");
+      } else if (window.getSelection) {
+        selection = window.getSelection();
+        var range = document.createRange();
+        range.selectNode(containerid);
+        selection.removeAllRanges();          // Remove all ranges from the selection.
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+      }
 }
