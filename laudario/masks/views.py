@@ -1021,13 +1021,17 @@ def comunidade(request):
         usuarios2 = json_serializer.serialize(User.objects.all())
         profiles = json_serializer.serialize(Profile.objects.all())
 
+        usuarioLogado = True
+
+
+
 
         titulo = "Masqs - Comunidade"
         context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados, 'normais': normais, 'mascarasJson': mascarasJson,
                    'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario, 'mascarasJsonPopulares': mascarasJsonPopulares,
                    'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles, 'mascarasMaisRecentes': mascarasMaisRecentes,
                    'alteradosMaisRecentes': alteradosMaisRecentes, 'mascarasJsonTotal': mascarasJsonTotal,
-                   'alteradosTotal': alteradosTotal}
+                   'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado}
         return render(request, 'masks/comunidade.html', context)
 
     else:
@@ -1055,6 +1059,9 @@ def comunidade(request):
         usuarios2 = json_serializer.serialize(User.objects.all())
         profiles = json_serializer.serialize(Profile.objects.all())
 
+        usuarioLogado = False
+
+
         titulo = "Masqs"
         context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados,
                    'normais': normais, 'mascarasJson': mascarasJson,
@@ -1064,5 +1071,5 @@ def comunidade(request):
                    'mascarasMaisRecentes': mascarasMaisRecentes,
                    'alteradosMaisRecentes': alteradosMaisRecentes,
                    'mascarasJsonTotal': mascarasJsonTotal,
-                   'alteradosTotal': alteradosTotal}
+                   'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado}
         return render(request, 'masks/comunidade.html', context)

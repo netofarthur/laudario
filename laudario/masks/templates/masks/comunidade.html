@@ -27,6 +27,7 @@
             var alteradosRecentes = '{{ alteradosMaisRecentes|escapejs }}';
                     var mascarasJsonTotal = '{{ mascarasJsonTotal|escapejs }}';
                             var alteradosTotal = '{{ alteradosTotal|escapejs }}';
+                            var usuarioLogado = '{{ usuarioLogado }}'
 
 
 
@@ -102,22 +103,43 @@
     <input type="hidden" id="clicouBotaoRadio" value=0>
 
 
-     <div class="radio-item2"><input type="radio" id="mascarasRadio" value="mascaras" name="modo" checked onclick="clicouBotaoRadio()">
-        <label style="margin-right:30px" for="mascarasRadio">Máscaras</label></div>
-    <div class="radio-item2"><input type="radio" id="frasesRadio" value="frases" name="modo" onclick="clicouBotaoRadio()">
-        <label for="frasesRadio">Frases</label></div>
+     <div class="radio-item2" style="margin-top: 0;"><input type="radio" id="frasesRadio" value="frases" name="modo" checked onclick="clicouBotaoRadio()">
+        <label for="frasesRadio" style="margin-right:30px">Frases</label></div>
+     <div class="radio-item2" style="margin-top: 0;"><input type="radio" id="mascarasRadio" value="mascaras" name="modo" onclick="clicouBotaoRadio()">
+        <label for="mascarasRadio">Máscaras</label></div>
 
-    <hr>
+
+
+
+    {% if user.is_authenticated %}
+<hr>
     <div class="radio-item"><input type="radio" id="popularRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()">
         <label for="popularRadio" style="margin-right:30px">Mais Populares</label></div>
     <div class="radio-item"><input type="radio" id="recentesRadio" name="submodo" value=mascarasRecentes onclick="clicouBotaoRadio()">
         <label for="recentesRadio" style="margin-right:30px" style="margin-right:30px">Mais Recentes</label></div>
     <div class="radio-item"><input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico" onclick="clicouBotaoRadio()">
         <label for="alfabeticoRadio" style="margin-right:30px">Ordem Alfabética</label></div>
-            {% if user.is_authenticated %}
+
 
     <div class="radio-item"> <input type="radio" id="minhasRadio" name="submodo" value="minhas" onclick="clicouBotaoRadio()">
     <label id="minhasRadioLabel" for="minhasRadio">Autoria Própria</label></div>
+
+
+    {% else %}
+
+
+    <div class="radio-item"><input type="radio" id="popularRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()" style="display: none">
+        <label for="popularRadio" style="margin-right:30px; display: none;">Mais Populares</label></div>
+    <div class="radio-item"><input type="radio" id="recentesRadio" name="submodo" value=mascarasRecentes onclick="clicouBotaoRadio()" style="display: none">
+        <label for="recentesRadio" style="margin-right:30px; display: none;" style="margin-right:30px">Mais Recentes</label></div>
+    <div class="radio-item"><input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico" onclick="clicouBotaoRadio()" style="display: none">
+        <label for="alfabeticoRadio" style="margin-right:30px; display: none;">Ordem Alfabética</label></div>
+
+
+    <div class="radio-item"> <input type="radio" id="minhasRadio" name="submodo" value="minhas" onclick="clicouBotaoRadio()" style="display: none">
+    <label id="minhasRadioLabel" for="minhasRadio" style="display: none">Autoria Própria</label></div>
+
+
     {% endif %}
     <div>
         <hr>
