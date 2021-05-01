@@ -2609,6 +2609,7 @@ document.getElementById("titulo").style.margin = ".5rem";
                             browser_spellcheck: true,
                             selector: '#mascara_div',
                                  language: 'pt_BR',
+                                 height: "600",
 
 
 
