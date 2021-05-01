@@ -145,6 +145,8 @@ function procurarEntradasAdaptado() {
 //Execute after page loads
 document.addEventListener('DOMContentLoaded', function() {
 
+  setarBoxUltimas();
+  
     if(getCookie("exameid") != null && document.getElementById("collapse" + getCookie("exameid")) != null)  {
         document.getElementById("collapse" + getCookie("exameid")).setAttribute("class", "collapse show");
         document.getElementById("exameHidden").value = getCookie("exameid");
@@ -201,7 +203,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     clicouAbaEspecial(getCookie("especialidadeid"), getCookie("exameid"));
-
 
 
 
@@ -727,7 +728,7 @@ function procurarTudo() {
     }
 
 
-        
+
 
 
 }
