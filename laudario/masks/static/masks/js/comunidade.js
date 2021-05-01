@@ -264,19 +264,7 @@ if(document.getElementById("procurarFrases").value.length == 0) {
     }
 
 var quantos = 0;
-    var chils = document.getElementById("direitadiv").children;
-    for(p=0; p < chils.length; p++) {
-        if(chils[p].style.display == "block") {
-            quantos++
-        }
-    }
-    if(quantos == 0) {
-        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
 
-    } else {
-            document.getElementById("myfooter").setAttribute("class", "normalfooter");
-
-    }
 
 
         document.getElementById("clicouBotaoRadio").value = 1;
@@ -338,13 +326,7 @@ function procurarTudo() {
             setCookie("vezesClicadoMais", "0", 12);
             setCookie("procura", "", 12);
 
-        if(document.getElementById("direitadiv").children.length == 0) {
-                document.getElementById("myfooter").setAttribute("class", "fixedfooter");
 
-        } else {
-                document.getElementById("myfooter").setAttribute("class", "normalfooter");
-
-        }
             return;
         }
 
@@ -745,13 +727,7 @@ function procurarTudo() {
     }
 
 
-        if(document.getElementById("direitadiv").children.length == 0) {
-                document.getElementById("myfooter").setAttribute("class", "fixedfooter");
-
-        } else {
-                document.getElementById("myfooter").setAttribute("class", "normalfooter");
-
-        }
+        
 
 
 }
@@ -791,7 +767,7 @@ function setarBoxUltimas() {
             var mascaraNome = mascarasJsonObjectBox[z].fields.nome;
             var mascaraLink = document.createElement("a");
             mascaraLink.setAttribute("class", "link_mascara_box");
-            mascaraLink.innerHTML = mascaraNome + " (" + mascaraUsuario + ")<br>";
+            mascaraLink.innerHTML = mascaraNome + ' <span style="color: #c96100;">(' + mascaraUsuario + ')</span><br>';
             mascaraLink.setAttribute("href", "../mascaras/" + mascaraId);
             document.getElementById("conteudo_box").appendChild(mascaraLink);
         }
@@ -832,7 +808,7 @@ function setarBoxUltimas() {
              var alteracaoLink = document.createElement("a");
                  alteracaoLink.setAttribute("class", "link_mascara_box");
 
-            alteracaoLink.innerHTML = alteracaoNome + " (" + alteracaoUsuario + ")<br>";
+            alteracaoLink.innerHTML = alteracaoNome + ' <span style="color: #c96100;">(' + alteracaoUsuario + ')</span><br>';
             alteracaoLink.setAttribute("href", "../mascaras/alteracao/" + idMascara + "/" + idTopico + "/" + idAlteracao);
             document.getElementById("conteudo_box").appendChild(alteracaoLink);
 
@@ -848,22 +824,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
         setarBoxUltimas();
 
 
-          var quantos = 0;
-    var fraseNaoEncontrada = false;
-    var chils = document.getElementById("direitadiv").children;
-    for(p=0; p < chils.length; p++) {
 
-        if(chils[p].style.display == "block") {
-            quantos++
-        }
-    }
-    if(quantos == 0) {
-        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
-
-    } else {
-            document.getElementById("myfooter").setAttribute("class", "normalfooter");
-
-    }
 
 
         limparTodosBotoes();
@@ -1325,22 +1286,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 
     }
 
-     var quantos = 0;
-    var fraseNaoEncontrada = false;
-    var chils = document.getElementById("direitadiv").children;
-    for(p=0; p < chils.length; p++) {
 
-        if(chils[p].style.display == "block") {
-            quantos++
-        }
-    }
-    if(quantos == 0) {
-        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
-
-    } else {
-            document.getElementById("myfooter").setAttribute("class", "normalfooter");
-
-    }
 
 }
 
@@ -1949,22 +1895,7 @@ function procurarEntradas(id) {
     if(document.getElementById("linkmais") != null) {
     document.getElementById("linkmais").innerHTML = "Mais " + calcularResultadosEncontrados() + " resultados";
 }
-    var quantos = 0;
-    var fraseNaoEncontrada = false;
-    var chils = document.getElementById("direitadiv").children;
-    for(p=0; p < chils.length; p++) {
 
-        if(chils[p].style.display == "block") {
-            quantos++
-        }
-    }
-    if(quantos == 0) {
-        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
-
-    } else {
-            document.getElementById("myfooter").setAttribute("class", "normalfooter");
-
-    }
 
 
 
