@@ -336,14 +336,30 @@ mostrarBotaoPopularSeNecessario();
 
 
         if(document.getElementById(name).getAttribute("name") != "alterado") {
-            document.getElementById(name).innerHTML = relatorio;
+            if(mascara_topicos == "True" && document.getElementById(name).previousSibling.id == "s" + name) {
+                document.getElementById(name).innerHTML = relatorio.charAt(0).toLowerCase() + relatorio.slice(1);
+
+            } else {
+                document.getElementById(name).innerHTML = relatorio;
+
+            }
+
             document.getElementById(name).setAttribute("name", "alterado");
             document.getElementById(name).setAttribute("class", "paragrafo_mascara");
 
         } else {
 
             if(id.charAt(0) == "p" || id.charAt(0) == "m") {
+                    if(mascara_topicos == "True" && document.getElementById(name).previousSibling.id == "s" + name) {
+                           document.getElementById(name).innerHTML =relatorio.charAt(0).toLowerCase() + relatorio.slice(1) + "<br>" + document.getElementById(name).innerHTML.charAt(0).toUpperCase() + document.getElementById(name).innerHTML.slice(1);
+
+                    } else {
                            document.getElementById(name).innerHTML =relatorio + "<br>" + document.getElementById(name).innerHTML ;
+
+                    }
+
+
+
 
             } else {
                        document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
@@ -1973,7 +1989,15 @@ function clicouEntrada(id) {
 
 
                 if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
+                    if(mascara_topicos == "True" && document.getElementById(topicoNormalParaAlterar).previousSibling.id == "s" + topicoNormalParaAlterar) {
+                 document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value.charAt(0).toLowerCase() + document.getElementById("relatorio_modal").value.slice(1);
+
+                } else {
                     document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
+
+                }
+
+
                     if(document.getElementById("conclusao_modal").value != "") {
                             document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
                             document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
