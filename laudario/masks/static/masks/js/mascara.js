@@ -1627,7 +1627,6 @@ function clicouEntrada(id) {
 
             var relatorioFinal = document.createElement("div");
             relatorioFinal.id = "relatorio_final";
-            relatorioFinal.setAttribute("style","position: sticky; position: -webkit-sticky; top: -2rem; background: white; padding: 1rem;");
             relatorioFinal.innerHTML = document.getElementById("titulo_exame").value + "<br>" + document.getElementById("tecnica_header").value + "<br>" + document.getElementById("tecnica").value + "<br>" + document.getElementById("relatorio_header").value + "<br>"
             + relatorioTexto + "<br>" + document.getElementById("conclusao_header").value + "<br>" + document.getElementById("conclusao").value;
             corpo.appendChild(relatorioFinal);
