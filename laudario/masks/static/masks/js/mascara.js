@@ -1613,7 +1613,7 @@ function clicouEntrada(id) {
             var relatorioOrgaos = document.getElementsByName("relatorio_orgao");
 
             for(relatorio of relatorioOrgaos) {
-                    if(relatorio.style.display != "none") {
+                    if(relatorio.style.display != "none" && relatorio.value != "") {
                    if(relatorioTexto == "") {
                           relatorioTexto = relatorio.value;
 
