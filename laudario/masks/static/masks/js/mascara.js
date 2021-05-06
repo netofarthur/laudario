@@ -2433,6 +2433,7 @@ function procurarFrasesMascara(id) {
 
 var topicoSelecionado;
 
+if(document.getElementById("botoezinhos_div") != null) {
 var botoes = document.getElementById("botoezinhos_div").children;
 
 for(botao of botoes) {
@@ -2440,6 +2441,9 @@ for(botao of botoes) {
         topicoSelecionado = botao.id.substring(1);
     }
 }
+
+}
+
 
 
   // Declare variables
