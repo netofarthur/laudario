@@ -3328,3 +3328,7 @@ for(bot of bots) {
 }
 
 }
+
+function clicouBotaoAdicionarAlteracao() {
+    document.getElementById("todas").click();
+}
