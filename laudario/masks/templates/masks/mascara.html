@@ -212,7 +212,10 @@
         {% endif %}
 
             <input autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeyup="procurarFrasesMascara(this.id)" onsearch="procurarFrasesMascara(this.id)"/>
-<div id="botoezinhos_div">
+
+            {% if usuarioPermitido and user.is_authenticated %}
+
+            <div id="botoezinhos_div">
                 {% for topico in topicos_normais %}
                     {% if forloop.counter == 1 %}
                         <button style="background: #c96100;" id="todas" onclick="clicouBotaozinho(this.id)">Todas</button>
@@ -231,7 +234,7 @@
 
                 {% endfor %}
             </div>
-
+        {% endif %}
         </div>
 
     <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
