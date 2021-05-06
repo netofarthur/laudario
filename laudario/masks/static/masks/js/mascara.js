@@ -1997,10 +1997,14 @@ function clicouEntrada(id) {
                 }
 
 
-                    if(document.getElementById("conclusao_modal").value != "") {
+                    if(document.getElementById("conclusao_modal").value != "" && document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado") {
                             document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
                             document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
-                    }
+                    } else {
+                    document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML + "<br>" + document.getElementById("conclusao_modal").value;
+                            document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
+
+                   }
 
                     document.getElementById(topicoNormalParaAlterar).setAttribute("name", "alterado");
 
