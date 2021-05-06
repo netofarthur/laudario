@@ -2575,6 +2575,7 @@ function clicouExcluir(id) {
 
 function colocarIndicacaoClinica() {
 
+
     if(document.getElementById("paragrafo_conclusao") != null) {
     document.getElementById("conclusaoNormal").value = document.getElementById("paragrafo_conclusao").innerText;
 }

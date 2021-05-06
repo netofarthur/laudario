@@ -210,10 +210,12 @@
             {% if usuarioPermitido and user.is_authenticated %}
     <button id="botaoAdicionarAlteracao" type="button" data-toggle="modal" data-target="#myModalAlteracao">Adicionar Alteração</button>
         {% endif %}
-            <div id="botoezinhos_div">
+
+            <input autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeyup="procurarFrasesMascara(this.id)" onsearch="procurarFrasesMascara(this.id)"/>
+<div id="botoezinhos_div">
                 {% for topico in topicos_normais %}
                     {% if forloop.counter == 1 %}
-                        <button id="todas" onclick="clicouBotaozinho(this.id)">Todas</button>
+                        <button style="background: #c96100;" id="todas" onclick="clicouBotaozinho(this.id)">Todas</button>
 
                     {% endif %}
 
@@ -229,8 +231,6 @@
 
                 {% endfor %}
             </div>
-            <input autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeyup="procurarFrasesMascara(this.id)" onsearch="procurarFrasesMascara(this.id)"/>
-
 
         </div>
 

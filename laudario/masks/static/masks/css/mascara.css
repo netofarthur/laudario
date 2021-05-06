@@ -617,7 +617,8 @@ height: auto;
    background: white;
    height:50%;
    overflow-y: auto;
-   margin-bottom: 6px;
+   margin-top: 6px;
+      margin-bottom: 6px;
 }
 
 #botoezinhos_div button {
