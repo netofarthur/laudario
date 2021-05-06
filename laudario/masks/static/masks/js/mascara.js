@@ -2426,6 +2426,18 @@ function procurarFrases(id) {
 }
 
 function procurarFrasesMascara(id) {
+
+var topicoSelecionado;
+
+var botoes = document.getElementById("botoezinhos_div").children;
+
+for(botao of botoes) {
+    if(botao.style.background != "") {
+        topicoSelecionado = botao.id.substring(1);
+    }
+}
+
+
   // Declare variables
   var input, filter, li, i, txtValue;
   input = document.getElementById(id);
@@ -2434,16 +2446,58 @@ function procurarFrasesMascara(id) {
 
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
-    txtValue = li[i].innerText;
-    if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1) {
-      li[i].parentNode.parentNode.parentNode.style.display = "block";
-    } else {
-      li[i].parentNode.parentNode.parentNode.style.display = "none";
-    }
-    if(li[i].innerHTML == "Reverter") {
-      li[i].parentNode.parentNode.parentNode.style.display = "none";
 
+    if(topicoSelecionado == "odas") {
+        txtValue = li[i].innerText;
+
+        if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1) {
+
+          li[i].parentNode.parentNode.parentNode.style.display = "block";
+        } else {
+          li[i].parentNode.parentNode.parentNode.style.display = "none";
+        }
+        if(li[i].innerHTML == "Reverter") {
+          li[i].parentNode.parentNode.parentNode.style.display = "none";
+
+        }
+    } else if(topicoSelecionado == "utras") {
+            var topicosNenhum = [];
+
+        var normaisJSONObject = JSON.parse(normaisusuario);
+        for(z=0; z < normaisJSONObject.length; z++) {
+            if(normaisJSONObject[z].fields.orgao == "Nenhum órgão") {
+                topicosNenhum.push(normaisJSONObject[z].pk);
+            }
+        }
+        txtValue = li[i].innerText;
+
+        if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1 &&  topicosNenhum.includes(parseInt(li[i].name))) {
+
+          li[i].parentNode.parentNode.parentNode.style.display = "block";
+        } else {
+          li[i].parentNode.parentNode.parentNode.style.display = "none";
+        }
+        if(li[i].innerHTML == "Reverter") {
+          li[i].parentNode.parentNode.parentNode.style.display = "none";
+
+        }
+
+
+    } else {
+        txtValue = li[i].innerText;
+
+        if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1 && li[i].name == topicoSelecionado) {
+
+          li[i].parentNode.parentNode.parentNode.style.display = "block";
+        } else {
+          li[i].parentNode.parentNode.parentNode.style.display = "none";
+        }
+        if(li[i].innerHTML == "Reverter") {
+          li[i].parentNode.parentNode.parentNode.style.display = "none";
+
+        }
     }
+
   }
 }
 
@@ -3201,4 +3255,75 @@ function procurarAlteracoes() {
 
     }
   }
+}
+
+function clicouBotaozinho(id) {
+
+
+
+
+    document.getElementById("procurarFrases").value = "";
+
+    document.getElementById(id).style.background = "#c96100";
+
+
+    var botoes = document.getElementById("botoezinhos_div").children;
+
+    for(botao of botoes) {
+        if(botao.id != id) {
+            botao.style = "";
+        }
+    }
+
+
+    var botoesDiagnosticos = document.getElementsByClassName("botao_diagnostico");
+
+    for(botao of botoesDiagnosticos) {
+        if(botao.name == id.substring(1)) {
+            botao.parentNode.parentNode.parentNode.style.display = "block";
+        } else {
+                        botao.parentNode.parentNode.parentNode.style.display = "none";
+
+        }
+    }
+
+    var topicosNenhum = [];
+
+        var normaisJSONObject = JSON.parse(normaisusuario);
+        for(i=0; i < normaisJSONObject.length; i++) {
+            if(normaisJSONObject[i].fields.orgao == "Nenhum órgão") {
+                topicosNenhum.push(normaisJSONObject[i].pk);
+            }
+        }
+
+
+
+    if(id == "outras") {
+         for(botao of botoesDiagnosticos) {
+            if(topicosNenhum.includes(parseInt(botao.name))) {
+                botao.parentNode.parentNode.parentNode.style.display = "block";
+            } else {
+                            botao.parentNode.parentNode.parentNode.style.display = "none";
+
+            }
+        }
+    }
+
+     if(id == "todas") {
+         for(botao of botoesDiagnosticos) {
+                botao.parentNode.parentNode.parentNode.style.display = "block";
+
+        }
+    }
+
+
+var bots = document.getElementsByClassName("botao_diagnostico");
+
+for(bot of bots) {
+    if(bot.innerHTML == "Reverter") {
+          bot.parentNode.parentNode.parentNode.style.display = "none";
+
+    }
+}
+
 }

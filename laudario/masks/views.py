@@ -101,6 +101,10 @@ def mostrar_mascara(request, id_mascara):
         alterados = json_serializer.serialize(TopicoAnormal.objects.all())
         variaveis = json_serializer.serialize(Variavel.objects.all().order_by('ordem'))
         normais = json_serializer.serialize(TopicoNormal.objects.all())
+
+        normaisusuario = json_serializer.serialize(TopicoNormal.objects.filter(mascara=id_mascara))
+
+
         mascarasJson = json_serializer.serialize(Mascara.objects.all())
         variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
 
@@ -121,7 +125,7 @@ def mostrar_mascara(request, id_mascara):
                    'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
                    'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario, 'todos_topicos_anormais': todos_topicos_anormais,
                    'profiles': profiles, 'profile': profile, 'titulo': titulo, 'topicos_anormais_mais_usados': topicos_anormais_mais_usados, 'usuarioPermitido': usuarioPermitido,
-                   'mascara_topicos': mascara_topicos}
+                   'mascara_topicos': mascara_topicos, 'normaisusuario': normaisusuario}
 
 
     else:

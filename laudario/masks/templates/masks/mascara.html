@@ -210,9 +210,29 @@
             {% if usuarioPermitido and user.is_authenticated %}
     <button id="botaoAdicionarAlteracao" type="button" data-toggle="modal" data-target="#myModalAlteracao">Adicionar Alteração</button>
         {% endif %}
+            <div id="botoezinhos_div">
+                {% for topico in topicos_normais %}
+                    {% if forloop.counter == 1 %}
+                        <button id="todas" onclick="clicouBotaozinho(this.id)">Todas</button>
 
+                    {% endif %}
+
+
+                    {% if topico.orgao != "Nenhum órgão" %}
+                    <button id="t{{ topico.pk }}" onclick="clicouBotaozinho(this.id)">{{ topico.orgao }}</button>
+                    {% endif %}
+
+                 {% if forloop.last %}
+                        <button id="outras" onclick="clicouBotaozinho(this.id)">Outras</button>
+
+                    {% endif %}
+
+                {% endfor %}
+            </div>
             <input autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeyup="procurarFrasesMascara(this.id)" onsearch="procurarFrasesMascara(this.id)"/>
-    </div>
+
+
+        </div>
 
     <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
     No primeiro loop são setados os ids dos topicos normais nos bancos de dados e no segundo loop o nome dos arquivos
