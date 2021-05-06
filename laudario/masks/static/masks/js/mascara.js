@@ -2442,6 +2442,8 @@ for(botao of botoes) {
     }
 }
 
+} else {
+    topicoSelecionado = "odas"
 }
 
 
