@@ -631,7 +631,6 @@ padding-top: 3px;
 font-size: .9rem;
 width: 7rem;
 overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
 
 }
