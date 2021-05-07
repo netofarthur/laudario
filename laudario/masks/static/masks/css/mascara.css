@@ -629,7 +629,7 @@ border-radius: 8px;
 margin-right: 5px;
 padding-top: 3px;
 font-size: .9rem;
-width: 30%;
+max-width: 30%;
 overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
