@@ -2259,13 +2259,22 @@ document.getElementById("mais_utilizadas").style.display = "none";
 anchor2.setAttribute("href", window.location.href);
 anchor2.setAttribute("class", "link_voltar");
 
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/") {
+    anchor2.style.display = "none";
+}
+
 anchor2.innerHTML = "Repetir exame";
 anchor2.style.fontSize = "1.5rem";
 document.getElementById("botoes_div").appendChild(anchor2);
 
     var anchor = document.createElement("a");
-anchor.setAttribute("href", "javascript:history.back()");
+anchor.setAttribute("href", "../../mascaras");
 anchor.setAttribute("id", "link_voltar");
+
+
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/") {
+        anchor.setAttribute("href", "javascript:history.back()");
+    }
 
 anchor.innerHTML = "Novo exame";
 anchor.style.fontSize = "1.5rem";
@@ -2310,8 +2319,13 @@ limparTagsHtmlParcial();
 
 
       var anchor = document.createElement("a");
-    anchor.setAttribute("href", "javascript:history.back()");
-    anchor.setAttribute("id", "link_voltar");
+anchor.setAttribute("href", "../../mascaras");
+anchor.setAttribute("id", "link_voltar");
+
+
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/") {
+        anchor.setAttribute("href", "javascript:history.back()");
+    }
 
     anchor.innerHTML = "Novo exame";
     anchor.style.marginLeft = "45%";
@@ -2585,6 +2599,12 @@ function clicouExcluir(id) {
 
 function colocarIndicacaoClinica() {
 
+    if(document.referrer.split("/").reverse()[0] == "comunidade") {
+        if(document.getElementById("voltar_baixo") != null) {
+        document.getElementById("voltar_baixo").setAttribute("href", "javascript:history.back()");
+        }
+    }
+
 
     if(document.getElementById("paragrafo_conclusao") != null) {
     document.getElementById("conclusaoNormal").value = document.getElementById("paragrafo_conclusao").innerText;
@@ -2735,8 +2755,13 @@ tinymce.remove();
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
-anchor.setAttribute("href", "javascript:history.back()");
+anchor.setAttribute("href", "../../mascaras");
 anchor.setAttribute("id", "link_voltar");
+
+
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/") {
+        anchor.setAttribute("href", "javascript:history.back()");
+    }
 
 anchor.innerHTML = "Novo exame";
 anchor.style.fontSize = "1.5rem";
@@ -2760,8 +2785,13 @@ tinymce.remove();
     CopyToClipboard();
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
-anchor.setAttribute("href", "javascript:history.back()");
+anchor.setAttribute("href", "../../mascaras");
 anchor.setAttribute("id", "link_voltar");
+
+
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/") {
+        anchor.setAttribute("href", "javascript:history.back()");
+    }
 
 anchor.innerHTML = "Novo exame";
 anchor.style.fontSize = "1.5rem";
@@ -2851,8 +2881,13 @@ document.getElementById("mascara_div").innerHTML = document.getElementById("masc
     document.getElementById("mascara_div").style.whiteSpace = "pre-wrap";
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
-anchor.setAttribute("href", "javascript:history.back()");
+anchor.setAttribute("href", "../../mascaras");
 anchor.setAttribute("id", "link_voltar");
+
+
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/") {
+        anchor.setAttribute("href", "javascript:history.back()");
+    }
 
 anchor.innerHTML = "Novo exame";
 anchor.style.fontSize = "1.5rem";
