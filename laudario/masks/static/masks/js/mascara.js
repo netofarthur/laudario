@@ -1997,7 +1997,7 @@ function clicouEntrada(id) {
                 }
 
 
-                    if(document.getElementById("conclusao_modal").value != "" && document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado") {
+                    if(document.getElementById("conclusao_modal").value != "" && document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado" && document.getElementById("relatorio_modal").value != "") {
                             document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("conclusao_modal").value;
                             document.getElementById("paragrafo_conclusao").setAttribute("name", "alterado");
                     } else {
