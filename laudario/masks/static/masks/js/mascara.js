@@ -2646,6 +2646,8 @@ if(document.getElementById("procurarFrases") != null) {
 
 function editarLaudo() {
 
+document.getElementById("botoes_div2").remove();
+
 var voltars = document.getElementsByClassName("link_voltar");
     for(i=0; i < voltars.length; i++) {
         voltars[i].style.display = "none";

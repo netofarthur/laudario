@@ -168,6 +168,14 @@
 
 </div>
 
+       <div id="botoes_div2" style="text-align: center; margin-top:3rem; margin-bottom: 3rem;">
+        <button id="copiar_laudo" style="width:40%; padding: .5rem;" class="btn btn-primary" onclick="CopyToClipboard()">Copiar Laudo</button>
+            <button id="editar_laudo" style="width:40%; padding: .5rem; margin-left: 1rem;" class="btn btn-primary" onclick="editarLaudo()">Editar Laudo</button>
+            <button id="copiar_html" style="width:40%; padding: .5rem; display: none; margin-left: 1rem;" class="btn btn-primary" onclick="copiarTinySemEstilo()">Copiar HTML</button>
+            <button id="copiar_texto" style="width:40%; padding: .5rem; display: none; margin-left: 1rem;" class="btn btn-primary" onclick="copiarTextoSomente()">Copiar Texto</button>
+
+           </div>
+
     {% if profile.quadro_mais == True %}
             <div id="mais_utilizadas" class="container-fluid" style="border:1px solid black; background-color: black; margin-right: 1rem; margin-bottom: 1rem;">
     <div style="background-color: black; color: white; text-align: center; width: 100%; margin: 0px;">Mais utilizadas</div>
@@ -193,6 +201,8 @@
 
 </div>
     {% endif %}
+
+
 
 <div style="text-align: center;">
     <a style="font-size: 1.5rem;" class="link_voltar" href="javascript:history.back()">Voltar</a>
