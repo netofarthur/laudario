@@ -2241,6 +2241,11 @@ function htmlDecode(input) {
 
     function CopyToClipboard() {
 
+
+    if(document.getElementById("botoes_div2") != null) {
+        document.getElementById("botoes_div2").remove();
+    }
+
 var voltars = document.getElementsByClassName("link_voltar");
     for(i=0; i < voltars.length; i++) {
         voltars[i].style.display = "none";
@@ -2335,9 +2340,6 @@ anchor.setAttribute("id", "link_voltar");
     }
 
 
-    if(document.getElementById("botoes_div2") != null) {
-        document.getElementById("botoes_div2").remove();
-    }
 
 }
 
