@@ -2335,6 +2335,10 @@ anchor.setAttribute("id", "link_voltar");
     }
 
 
+    if(document.getElementById("botoes_div2") != null) {
+        document.getElementById("botoes_div2").remove();
+    }
+
 }
 
 
