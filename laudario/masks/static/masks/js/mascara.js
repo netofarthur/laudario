@@ -2259,7 +2259,7 @@ document.getElementById("mais_utilizadas").style.display = "none";
 anchor2.setAttribute("href", window.location.href);
 anchor2.setAttribute("class", "link_voltar");
 
-    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/") {
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + "/") {
     anchor2.style.display = "none";
 }
 
@@ -2272,7 +2272,7 @@ anchor.setAttribute("href", "../../mascaras");
 anchor.setAttribute("id", "link_voltar");
 
 
-    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/") {
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + "/") {
         anchor.setAttribute("href", "javascript:history.back()");
     }
 
@@ -2323,7 +2323,7 @@ anchor.setAttribute("href", "../../mascaras");
 anchor.setAttribute("id", "link_voltar");
 
 
-    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/") {
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + "/") {
         anchor.setAttribute("href", "javascript:history.back()");
     }
 
@@ -2599,7 +2599,7 @@ function clicouExcluir(id) {
 
 function colocarIndicacaoClinica() {
 
-    if(document.referrer.split("/").reverse()[0] == "comunidade") {
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + "/") {
         if(document.getElementById("voltar_baixo") != null) {
         document.getElementById("voltar_baixo").setAttribute("href", "javascript:history.back()");
         }
@@ -2759,7 +2759,7 @@ anchor.setAttribute("href", "../../mascaras");
 anchor.setAttribute("id", "link_voltar");
 
 
-    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/") {
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + "/") {
         anchor.setAttribute("href", "javascript:history.back()");
     }
 
@@ -2789,7 +2789,7 @@ anchor.setAttribute("href", "../../mascaras");
 anchor.setAttribute("id", "link_voltar");
 
 
-    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/") {
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + "/") {
         anchor.setAttribute("href", "javascript:history.back()");
     }
 
@@ -2885,7 +2885,7 @@ anchor.setAttribute("href", "../../mascaras");
 anchor.setAttribute("id", "link_voltar");
 
 
-    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/") {
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + "/") {
         anchor.setAttribute("href", "javascript:history.back()");
     }
 
