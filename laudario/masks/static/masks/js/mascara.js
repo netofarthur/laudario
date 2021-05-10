@@ -2673,6 +2673,8 @@ if(document.getElementById("procurarFrases") != null) {
 function editarLaudo() {
 
 document.getElementById("botoes_div2").remove();
+document.getElementById("botoes_div").setAttribute("style", "margin-bottom: 0; text-align: center;")
+document.getElementById("mycontainer").setAttribute("style", "position: -webkit-sticky; position: sticky; top: 0")
 
 var voltars = document.getElementsByClassName("link_voltar");
     for(i=0; i < voltars.length; i++) {
@@ -2725,7 +2727,7 @@ document.getElementById("titulo").style.margin = ".5rem";
                             browser_spellcheck: true,
                             selector: '#mascara_div',
                                  language: 'pt_BR',
-                                height: "600",
+                                height: "70vh",
 
 
                               menubar: false,
