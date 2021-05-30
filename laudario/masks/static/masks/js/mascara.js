@@ -2696,6 +2696,10 @@ if(document.getElementById("procurarFrases") != null) {
 
 function editarLaudo() {
 
+	document.onmousedown = (e) => {
+  e.preventDefault();
+}
+
 document.getElementById("botoes_div2").remove();
 document.getElementById("botoes_div").setAttribute("style", "margin-bottom: 0; text-align: center;")
 document.getElementById("mycontainer").setAttribute("style", "position: -webkit-sticky; position: sticky; top: 0")
