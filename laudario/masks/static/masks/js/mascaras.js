@@ -122,7 +122,7 @@ function apagar() {
                 document.getElementById(getCookie('aba')).setAttribute("class", "collapse show");
 
             }
-            if(getCookie('exame') != null && getCookie('exame') != "") {
+            if(getCookie('exame') != null && getCookie('exame') != "" && document.getElementById("exames") != null) {
                 document.getElementById("exames").value = getCookie('exame');
                 tornarExamesInvisiveis();
             }
