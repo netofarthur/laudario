@@ -3424,16 +3424,25 @@ function clicouBotaoAdicionarAlteracao() {
 }
 
 function GetSpellBtn() {
-		var node = document.querySelector('[title="Ditar no microfone"]');
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition || null;
 
-		if(node.firstChild.firstChild.getAttribute("src") == tinymce.baseURL.replace("tinymce/js/tinymce", "images/microfonevermelho.png")) {
+        //caso não suporte esta API DE VOZ
+        if (window.SpeechRecognition === null) {
+            alert("O recurso para reconhecimento de voz somente está disponível para o navegador Google Chrome versão 25 ou superior");
+        }else {
+            var node = document.querySelector('[title="Ditar no microfone"]');
 
-            node.innerHTML = '<span class="tox-tbtn__select-label"><image src=' + tinymce.baseURL.replace("tinymce/js/tinymce", "images/microfone.png") + ' style="height: 20px;width: 20px;"/ ></span>';
-		} else {
-            node.innerHTML = '<span class="tox-tbtn__select-label"><image src=' + tinymce.baseURL.replace("tinymce/js/tinymce", "images/microfonevermelho.png") + ' style="height: 20px;width: 20px;"/ ></span>';
+            if(node.firstChild.firstChild.getAttribute("src") == tinymce.baseURL.replace("tinymce/js/tinymce", "images/microfonevermelho.png")) {
 
-		}
-        toggleStartStop();
+                node.innerHTML = '<span class="tox-tbtn__select-label"><image src=' + tinymce.baseURL.replace("tinymce/js/tinymce", "images/microfone.png") + ' style="height: 20px;width: 20px;"/ ></span>';
+            } else {
+                node.innerHTML = '<span class="tox-tbtn__select-label"><image src=' + tinymce.baseURL.replace("tinymce/js/tinymce", "images/microfonevermelho.png") + ' style="height: 20px;width: 20px;"/ ></span>';
+
+            }
+            toggleStartStop();
+        }
+
+
 
 
 
