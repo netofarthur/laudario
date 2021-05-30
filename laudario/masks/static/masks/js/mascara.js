@@ -3449,6 +3449,3 @@ function GetSpellBtn() {
 
 	}
 
-	document.onmousedown = (e) => {
-  e.preventDefault();
-}
