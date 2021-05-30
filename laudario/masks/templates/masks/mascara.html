@@ -196,7 +196,7 @@ var recognizing;
   recognition.onresult = function (event) {
     for (var i = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
-              var final = event.results[i][0].transcript.replaceAll(" vírgula", ",").replaceAll(" ponto", ".").replaceAll(" parágrafo", "<br>").replaceAll("parágrafo", "<br>");
+              var final = event.results[i][0].transcript.replaceAll(" vírgula", ",").replaceAll(" ponto", ".").replaceAll(" parágrafo", "<br>").replaceAll("parágrafo", "<br>").replaceAll(" interrogação", "?");
               var indices = [];
               for(var z = 0; z < final.length; z++) {
                 if(final[z] === "." || final[z] === ">") {
