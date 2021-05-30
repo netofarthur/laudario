@@ -570,8 +570,8 @@ function procurarTudo() {
                         encontrou = true;
 
                         nome = alteradosJSONObject[i].fields.nome;
-                        relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + alteradosJSONObject[i].fields.relatorio;
-                        conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + alteradosJSONObject[i].fields.conclusao;
+                        relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.relatorio, usuarioResponsavelInt);
+                        conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.conclusao, usuarioResponsavelInt);
 
 
 
@@ -1162,8 +1162,8 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                             if(topicosNormaisValidos.includes(alteradosJSONObject[i].fields.topico_normal)) {
                         var alteracaoId = alteradosJSONObject[i].pk;
                         nome = alteradosJSONObject[i].fields.nome;
-                        relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + alteradosJSONObject[i].fields.relatorio;
-                        conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + alteradosJSONObject[i].fields.conclusao;
+                        relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.relatorio, usuarioResponsavelInt);
+                        conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.conclusao, usuarioResponsavelInt);
 
 
 
@@ -1631,8 +1631,8 @@ function clicouAba(especialidadeid, exameid) {
                             if(topicosNormaisValidos.includes(alteradosJSONObject[i].fields.topico_normal)) {
                         var alteracaoId = alteradosJSONObject[i].pk;
                         nome = alteradosJSONObject[i].fields.nome;
-                        relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + alteradosJSONObject[i].fields.relatorio;
-                        conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + alteradosJSONObject[i].fields.conclusao;
+                        relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.relatorio, usuarioResponsavelInt);
+                        conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.conclusao, usuarioResponsavelInt);
 
 
 
@@ -1925,7 +1925,77 @@ function getCookie(cname) {
   return "";
 }
 
+function substituirVariaveis(descricao, usuarioId) {
 
+        var provisoria = descricao;
+
+        var variaveisJSONObject = JSON.parse(variaveis);
+
+        var variaveisUsuarioJSONObject = [];
+
+          for(var z = 0; z < variaveisJSONObject.length; z++) {
+                if(variaveisJSONObject[z].fields.usuario == usuarioId) {
+                variaveisUsuarioJSONObject.push(variaveisJSONObject[z]);
+                }
+
+                }
+
+        var pattern = /\{([^}]+)\}/g;
+        var matches = descricao.match(pattern);
+        var result = [];
+
+        if(matches != null) {
+            for(match of matches) {
+                result.push(match);
+            }
+        }
+
+
+            var listaVariaveisNominais = [];
+
+
+
+            if(result.length != 0) {
+
+
+            //separa as variáveis nominais e depois faz um concat com as outras. Agora as variáveis nominais são
+            //separadas no banco com nomes amigáveis para poderem existir várias, teoricamente iguais (lateralidade, por exemplo)
+            //em um mesmo laudo.
+            var count = 0;
+            for(variavel of result) {
+
+                var variaveisNominais = variavel.split("|")
+
+                    for(variavelNominal of variaveisNominais) {
+                        variavelNominal = variavelNominal.replace("{", "");
+                        variavelNominal = variavelNominal.replace("}", "");
+                        if(!listaVariaveisNominais.includes(variavelNominal)) {
+                            listaVariaveisNominais[count] = variavelNominal;
+                            count++;
+                        }
+
+                    }
+
+            }
+
+
+
+
+            }
+
+            for(variavel of listaVariaveisNominais) {
+
+                for(variavelUsuario of variaveisUsuarioJSONObject) {
+                    if(variavelUsuario.fields.nome_da_variavel == variavel) {
+                        provisoria = provisoria.replaceAll(variavel, variavelUsuario.fields.nome_amigavel);
+                    }
+                }
+
+            }
+
+            return provisoria;
+
+}
 
 
 

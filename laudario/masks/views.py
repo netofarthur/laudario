@@ -1027,15 +1027,14 @@ def comunidade(request):
 
         usuarioLogado = True
 
-
-
+        variaveis = json_serializer.serialize(Variavel.objects.all())
 
         titulo = "Masqs - Comunidade"
         context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados, 'normais': normais, 'mascarasJson': mascarasJson,
                    'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario, 'mascarasJsonPopulares': mascarasJsonPopulares,
                    'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles, 'mascarasMaisRecentes': mascarasMaisRecentes,
                    'alteradosMaisRecentes': alteradosMaisRecentes, 'mascarasJsonTotal': mascarasJsonTotal,
-                   'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado}
+                   'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado, 'variaveis': variaveis}
         return render(request, 'masks/comunidade.html', context)
 
     else:
