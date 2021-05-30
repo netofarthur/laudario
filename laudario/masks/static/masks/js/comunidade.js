@@ -2053,7 +2053,7 @@ var variaveisQuantitativas = [];
 
                 for(variavelUsuario of variaveisUsuarioJSONObject) {
                     if(variavelUsuario.fields.nome_da_variavel == variavel) {
-                        provisoria = provisoria.replace(variavel, " # ");
+                        provisoria = provisoria.replace(variavel, "#");
 
                     }
                 }
