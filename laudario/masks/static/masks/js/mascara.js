@@ -280,6 +280,9 @@ mostrarBotaoPopularSeNecessario();
 
  // Altera o diagnóstico Padrão diretamente, sem abrir outras janelas. Tive que usar serialização com JSON objects.
     function alterarDiagnosticoDireto(name, id) {
+        if(document.getElementById("cancelarIndicacoes") != null) {
+document.getElementById("cancelarIndicacoes").remove();
+}
 
 
       if(document.getElementById("procurarFrases").value != "") {
@@ -1448,7 +1451,9 @@ function clicouEntrada(id) {
 
     function adicionarAlteracoNaMascara() {
 
-
+    if(document.getElementById("cancelarIndicacoes") != null) {
+document.getElementById("cancelarIndicacoes").remove();
+}
 
 
         if(document.getElementById("coluna_mascaras") != null && document.getElementById("coluna_esquerda") != null) {
@@ -2264,7 +2269,13 @@ function htmlDecode(input) {
 
 
     function CopyToClipboard() {
+    if(document.getElementById("indicacoesEscondida") != null) {
+        document.getElementById("indicacoesEscondida").remove();
+    }
 
+    if(document.getElementById("cancelarIndicacoes") != null) {
+document.getElementById("cancelarIndicacoes").remove();
+}
 
     if(document.getElementById("botoes_div2") != null) {
         document.getElementById("botoes_div2").remove();
@@ -2669,16 +2680,20 @@ function colocarIndicacaoClinica() {
 }
 
 function setarIndicacao() {
+    var deixouEmBranco = false;
     var indicacoesDiv = document.getElementById("indicacoes");
 
     var select = document.getElementById("lista_indicacoes");
     var selecao = select.options[select.selectedIndex].innerHTML;
 
     if(selecao.trim() == "Não mostrar") {
-        document.getElementById("indicacoes_header").parentNode.removeChild(document.getElementById("indicacoes_header"));
-        select.parentNode.parentNode.removeChild(select.parentNode);
+document.getElementById("indicacoes_header").style.display = "none";
+        select.parentNode.style.display = "none";
     } else if(selecao.trim() == "Deixar em branco") {
-        indicacoesDiv.innerHTML = "<br>";
+        indicacoesDiv.setAttribute("contentEditable", "true");
+
+        indicacoesDiv.innerHTML = "    ";
+        deixouEmBranco = true;
     } else {
     indicacoesDiv.innerHTML = "";
         indicacoesDiv.innerHTML = selecao;
@@ -2691,11 +2706,25 @@ if(document.getElementById("procurarFrases") != null) {
             document.getElementById("procurarFrases").focus();
         }
 
+        if(deixouEmBranco) {
+            indicacoesDiv.focus();
+        }
 
+    document.getElementById("cancelarIndicacoes").style.display = "block";
 }
 
 function editarLaudo() {
 
+
+
+
+if(document.getElementById("indicacoesEscondida") != null) {
+        document.getElementById("indicacoesEscondida").remove();
+    }
+
+    if(document.getElementById("cancelarIndicacoes") != null) {
+document.getElementById("cancelarIndicacoes").remove();
+}
 	document.onmousedown = (e) => {
   e.preventDefault();
 }
@@ -3453,3 +3482,29 @@ function GetSpellBtn() {
 
 	}
 
+
+function reverterIndicacoes() {
+var indicacoes = document.getElementById("indicacoesEscondida").innerHTML.split(",");
+    var indicacoesDiv = document.getElementById("indicacoes");
+    var select = document.createElement("select");
+    select.setAttribute("id", "lista_indicacoes");
+    select.setAttribute("onchange", "setarIndicacao()");
+    for(indicacao of indicacoes) {
+        var option = document.createElement("option");
+        option.innerHTML = indicacao;
+        select.appendChild(option);
+    }
+
+    indicacoesDiv.innerHTML = "";
+            indicacoesDiv.setAttribute("contentEditable", "false");
+
+            if(indicacoesDiv.style.display == "none") {
+                indicacoesDiv.style.display = "block";
+                document.getElementById("indicacoes_header").style.display = "block";
+            }
+
+
+        indicacoesDiv.appendChild(select);
+            document.getElementById("cancelarIndicacoes").style.display = "none";
+
+}

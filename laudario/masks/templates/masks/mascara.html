@@ -87,8 +87,11 @@
 
 <p id="indicacoes_header" data-mce-style="font-weight: bold; margin-bottom: 2px; color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}"  style="color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 2px; font-weight: bold;"> {{ mascara.indicacoes_header }} </p>
 {% autoescape off %}
-<p id="indicacoes" data-mce-style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" style="font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}"><span style="display: none;">Selecione, Não mostrar, </span>{{mascara.indicacoes }}, Deixar em branco</p>
-{% endautoescape %}
+<p id="indicacoes" data-mce-style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}"><span style="display: none;">Selecione, Não mostrar, </span>{{mascara.indicacoes }}, Deixar em branco</p>
+    <p id="indicacoesEscondida" data-mce-style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" style="margin-top: 0; display: none; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}"><span style="display: none;">Selecione, Não mostrar, </span>{{mascara.indicacoes }}, Deixar em branco</p>
+
+<button onclick="reverterIndicacoes()" style="display: none; border: none; background: white; padding: 3px; margin-left: 0; padding-left: 0px; color: #c96100;" id="cancelarIndicacoes">Reverter</button>
+    {% endautoescape %}
 
  {% endif %}
 
