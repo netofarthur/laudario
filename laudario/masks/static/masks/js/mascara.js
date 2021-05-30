@@ -2,6 +2,30 @@
 
 
 
+  function reset() {
+var node = document.querySelector('[title="Ditar no microfone"]');
+
+	if(node != null) {
+        node.innerHTML = '<span class="tox-tbtn__select-label"><image src=' + tinymce.baseURL.replace("tinymce/js/tinymce", "images/microfone.png") + ' style="height: 20px;width: 20px;"/ ></span>';
+	}
+    recognizing = false;
+
+
+  }
+
+  function toggleStartStop() {
+
+
+
+    if (recognizing) {
+      recognition.stop();
+      reset();
+    } else {
+      recognition.start();
+      recognizing = true;
+    }
+  }
+
 
 
 
@@ -2734,7 +2758,19 @@ document.getElementById("titulo").style.margin = ".5rem";
                                       plugins: "table paste code",
                                         paste_as_text: true,
                                 forced_root_block: false,
-                            toolbar: "fontselect fontsizeselect bold italic underline forecolor table code",
+                            toolbar: "fontselect fontsizeselect bold italic underline forecolor table code spell",
+                            setup: function (editor) {
+                                editor.ui.registry.addButton('spell', {
+                                  tooltip: 'Ditar no microfone',
+                                  autofocus: false,
+                                      text: '<image src=' + tinymce.baseURL.replace("tinymce/js/tinymce", "images/microfone.png") + ' style="height: 20px;width: 20px;"/ >',
+
+                                  onAction: function () {
+                                    GetSpellBtn();
+                                  }
+                                });
+                              },
+
                               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
                                 branding: false,
                                   elementpath: false
@@ -3385,4 +3421,25 @@ for(bot of bots) {
 
 function clicouBotaoAdicionarAlteracao() {
     document.getElementById("todas").click();
+}
+
+function GetSpellBtn() {
+		var node = document.querySelector('[title="Ditar no microfone"]');
+
+		if(node.firstChild.firstChild.getAttribute("src") == tinymce.baseURL.replace("tinymce/js/tinymce", "images/microfonevermelho.png")) {
+
+            node.innerHTML = '<span class="tox-tbtn__select-label"><image src=' + tinymce.baseURL.replace("tinymce/js/tinymce", "images/microfone.png") + ' style="height: 20px;width: 20px;"/ ></span>';
+		} else {
+            node.innerHTML = '<span class="tox-tbtn__select-label"><image src=' + tinymce.baseURL.replace("tinymce/js/tinymce", "images/microfonevermelho.png") + ' style="height: 20px;width: 20px;"/ ></span>';
+
+		}
+        toggleStartStop();
+
+
+
+
+	}
+
+	document.onmousedown = (e) => {
+  e.preventDefault();
 }

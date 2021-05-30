@@ -73,6 +73,9 @@
             <button id="copiar_texto" style="width:40%; padding: .5rem; display: none; margin-left: 1rem;" class="btn btn-primary" onclick="copiarTextoSomente()">Copiar Texto</button>
 
            </div>
+
+
+
 <div id="mascara_div">
     <button style="display: none;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalVariaveis" id=popular_variaveis onclick="popularVariaveis()">Preencher Variáveis</button>
 
@@ -167,6 +170,51 @@
 
 
 </div>
+
+
+
+
+
+<script type="text/javascript">
+
+function setCharAt(str,index,chr) {
+    if(index > str.length-1) return str;
+    return str.substring(0,index) + chr + str.substring(index+1);
+}
+
+var recognizing;
+  var recognition = new webkitSpeechRecognition();
+  recognition.lang = 'pt-BR';
+  recognition.continuous = true;
+    recognition.interimResults = true;
+
+  reset();
+  recognition.onend = reset;
+  var textarea = document.getElementById("mascara_div");
+
+
+  recognition.onresult = function (event) {
+    for (var i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+              var final = event.results[i][0].transcript.replaceAll(" vírgula", ",").replaceAll(" ponto", ".").replaceAll(" parágrafo", "<br>").replaceAll("parágrafo", "<br>");
+              var indices = [];
+              for(var z = 0; z < final.length; z++) {
+                if(final[z] === "." || final[z] === ">") {
+                    indices.push(z+2);
+                }
+              }
+              for(var y = 0; y < indices.length; y++) {
+                final = setCharAt(final, indices[y], final.charAt(indices[y]).toUpperCase());
+              }
+              tinymce.get("mascara_div").execCommand('mceInsertContent', false, final);
+
+
+      }
+    }
+  }
+
+</script>
+
 
        <div id="botoes_div2" style="text-align: center; margin-top:3rem; margin-bottom: 3rem;">
         <button id="copiar_laudo" style="width:40%; padding: .5rem;" class="btn btn-primary" onclick="CopyToClipboard()">Copiar Laudo</button>
