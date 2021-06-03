@@ -1,0 +1,178 @@
+{% extends "masks/base.html" %}
+
+   {% block css %}
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+    <script type="text/javascript" src="{% static 'masks/tinymce/js/tinymce/tinymce.min.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'masks/css/comunidade.css' %}">
+
+    <script type="text/javascript" src="{% static 'masks/js/home.js' %}"></script>
+
+  <script>
+        var alterados = '{{ alterados|escapejs }}';
+        var alteradosPopulares = '{{ alteradosPopulares|escapejs }}';
+        var alteradosUsuario = '{{ alteradosUsuario|escapejs }}';
+        var mascarasJson = '{{ mascarasJson|escapejs }}';
+        var mascarasJsonPopulares = '{{ mascarasJsonPopulares|escapejs }}';
+        var mascarasJsonUsuario = '{{ mascarasJsonUsuario|escapejs }}';
+            var usuarios2 = '{{ usuarios2|escapejs }}';
+
+            var normais = '{{ normais|escapejs }}';
+            var profiles = '{{ profiles|escapejs }}';
+
+                    var mascarasJsonTotal = '{{ mascarasJsonTotal|escapejs }}';
+                            var alteradosTotal = '{{ alteradosTotal|escapejs }}';
+                            var usuarioLogado = '{{ usuarioLogado }}';
+                                        var variaveis = '{{ variaveis|escapejs }}';
+
+
+
+
+
+
+    </script>
+
+    {% endblock css %}
+
+{% block conteudo %}
+<script>
+
+        if(document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)) != null) {
+            document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)).style.color = "#c96100";
+
+    } else {
+        document.getElementById("comunidade").style.color = "#c96100";
+    }
+
+
+</script>
+
+
+
+<div class="container-fluid" style="margin-top: 10px; padding-bottom; 2rem;" id="container">
+
+<div class="row" style="margin-top: 30px;">
+
+<div class="col-4">
+<div style="padding-top: 0; position: sticky; position: -webkit-sticky; top: 0;" >
+
+
+<div class="list-group">
+
+
+  <div id="accordion">
+
+ {% for exame in exames %}
+    <div class="card">
+      <div class="card-header" id={{ exame.pk }} style="padding: 2px;">
+        <h5 class="mb-0">
+
+
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ exame.pk }}" aria-expanded="true" aria-controls="collapse{{ exame.pk }}">
+                {{ exame.descricao }}
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapse{{ exame.pk }}" class="collapse" aria-labelledby={{ exame.pk }} data-parent="#accordion">
+
+
+                {% for especialidade in especialidades %}
+
+              <div class="list-group" name="grupoEspecialidades">
+                  <button style="padding: 4px; color:black;" onclick="clicouAba(this.name, this.value)" class="btn btn-link" value="{{ exame.pk }}" name="{{ especialidade.pk }}">{{ especialidade.descricao }}</button>
+
+                </div>
+
+
+                {% endfor %}
+
+
+
+          </div>
+        </div>
+        {% endfor %}
+
+  </div>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+<div class="col">
+
+<div style="padding-top: 0; margin-top:0; position: sticky; position: -webkit-sticky; top: 0; background-color: white;" >
+<input type="hidden" id="especialidadeHidden">
+    <input type="hidden" id="exameHidden">
+    <input type="hidden" id="clicouBotaoRadio" value=0>
+
+
+     <div class="radio-item2" style="margin-top: 0;"><input type="radio" id="frasesRadio" value="frases" name="modo" checked onclick="clicouBotaoRadio()">
+        <label for="frasesRadio" style="margin-right:30px">Frases</label></div>
+     <div class="radio-item2" style="margin-top: 0;"><input type="radio" id="mascarasRadio" value="mascaras" name="modo" onclick="clicouBotaoRadio()">
+        <label for="mascarasRadio">Máscaras</label></div>
+
+
+
+
+    {% if user.is_authenticated %}
+<hr>
+    <div class="radio-item"><input type="radio" id="popularRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()">
+        <label for="popularRadio" style="margin-right:30px">Mais Populares</label></div>
+    <div class="radio-item"><input type="radio" id="recentesRadio" name="submodo" value=mascarasRecentes onclick="clicouBotaoRadio()">
+        <label for="recentesRadio" style="margin-right:30px" style="margin-right:30px">Mais Recentes</label></div>
+    <div class="radio-item"><input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico" onclick="clicouBotaoRadio()">
+        <label for="alfabeticoRadio" style="margin-right:30px">Ordem Alfabética</label></div>
+
+
+    <div class="radio-item"> <input type="radio" id="minhasRadio" name="submodo" value="minhas" onclick="clicouBotaoRadio()">
+    <label id="minhasRadioLabel" for="minhasRadio">Autoria Própria</label></div>
+
+
+    {% else %}
+
+
+    <div class="radio-item"><input type="radio" id="popularRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()" style="display: none">
+        <label for="popularRadio" style="margin-right:30px; display: none;">Mais Populares</label></div>
+    <div class="radio-item"><input type="radio" id="recentesRadio" name="submodo" value=mascarasRecentes onclick="clicouBotaoRadio()" style="display: none">
+        <label for="recentesRadio" style="margin-right:30px; display: none;" style="margin-right:30px">Mais Recentes</label></div>
+    <div class="radio-item"><input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico" onclick="clicouBotaoRadio()" style="display: none">
+        <label for="alfabeticoRadio" style="margin-right:30px; display: none;">Ordem Alfabética</label></div>
+
+
+    <div class="radio-item"> <input type="radio" id="minhasRadio" name="submodo" value="minhas" onclick="clicouBotaoRadio()" style="display: none">
+    <label id="minhasRadioLabel" for="minhasRadio" style="display: none">Autoria Própria</label></div>
+
+
+    {% endif %}
+    <div>
+        <hr>
+    <input style="width: 70%" autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeydown="procurarEntradas(this.id)" onsearch="procurarTudo()"/><button style="width: 30%" id="botaoProcurarTudo" onclick="procurarTudo()">Procurar</button>
+    </div>
+    <hr>
+</div>
+<div id="direitadiv" style="padding-bottom: 1rem;">
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+{% endblock conteudo %}

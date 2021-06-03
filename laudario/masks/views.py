@@ -537,7 +537,7 @@ def activate(request, uid, token):
 
 def logout_usuario(request):
     logout(request)
-    return redirect(views.comunidade)
+    return redirect(views.home)
 
 
 def mostrar_mascaras(request):
@@ -1041,32 +1041,29 @@ def comunidade(request):
         exames = Exame.objects.all().order_by('descricao')
         especialidades = Especialidade.objects.all().order_by('descricao')
         json_serializer = serializers.get_serializer("json")()
-
+        usuario = User.objects.get(email='netofarthur@gmail.com')
         alterados = json_serializer.serialize(
-            TopicoAnormal.objects.all().order_by('nome', '-popularidade'))  # alfabético
-        alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade'))
-        alteradosUsuario = "";
-        alteradosTotal = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade', 'nome')) #alfabéticototal
+            TopicoAnormal.objects.filter(topico_normal__mascara__usuario=usuario).order_by('nome'))
 
-        mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade'))
+        alteradosPopulares = json_serializer.serialize(
+            TopicoAnormal.objects.filter(topico_normal__mascara__usuario=usuario).order_by('nome'))
+        alteradosUsuario = "";
+        alteradosTotal = json_serializer.serialize(
+            TopicoAnormal.objects.filter(topico_normal__mascara__usuario=usuario).order_by('nome'))  # alfabéticototal
+
+        mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
         mascarasJsonUsuario = "";
 
-        normais = json_serializer.serialize(TopicoNormal.objects.all())
-        mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome', '-popularidade'))  # alfabético
-        mascarasJsonTotal = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade', 'nome')) #alfabético
+        normais = json_serializer.serialize(TopicoNormal.objects.filter(mascara__usuario=usuario))
+        mascarasJson = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
+        mascarasJsonTotal = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
 
-
-        mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.all().order_by('-data_criada', 'nome'))
-        alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-data_criada', 'nome'))
-
-        usuarios2 = json_serializer.serialize(User.objects.all())
-        profiles = json_serializer.serialize(Profile.objects.all())
+        usuarios2 = json_serializer.serialize(User.objects.filter(email='netofarthur@gmail.com'))
+        profiles = json_serializer.serialize(Profile.objects.filter(usuario=usuario))
 
         usuarioLogado = False
 
-        variaveis = json_serializer.serialize(Variavel.objects.all())
-
-
+        variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=usuario))
 
         titulo = "Masqs"
         context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados,
@@ -1074,8 +1071,45 @@ def comunidade(request):
                    'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario,
                    'mascarasJsonPopulares': mascarasJsonPopulares,
                    'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles,
-                   'mascarasMaisRecentes': mascarasMaisRecentes,
-                   'alteradosMaisRecentes': alteradosMaisRecentes,
                    'mascarasJsonTotal': mascarasJsonTotal,
                    'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado, 'variaveis': variaveis}
-        return render(request, 'masks/comunidade.html', context)
+        return render(request, 'masks/home.html', context)
+
+
+def home(request):
+    exames = Exame.objects.all().order_by('descricao')
+    especialidades = Especialidade.objects.all().order_by('descricao')
+    json_serializer = serializers.get_serializer("json")()
+    usuario = User.objects.get(email='netofarthur@gmail.com')
+    alterados = json_serializer.serialize(
+        TopicoAnormal.objects.filter(topico_normal__mascara__usuario=usuario).order_by('nome'))
+
+    alteradosPopulares = json_serializer.serialize(
+        TopicoAnormal.objects.filter(topico_normal__mascara__usuario=usuario).order_by('nome'))
+    alteradosUsuario = "";
+    alteradosTotal = json_serializer.serialize(TopicoAnormal.objects.filter(topico_normal__mascara__usuario=usuario).order_by('nome'))  # alfabéticototal
+
+    mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
+    mascarasJsonUsuario = "";
+
+    normais = json_serializer.serialize(TopicoNormal.objects.filter(mascara__usuario=usuario))
+    mascarasJson = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
+    mascarasJsonTotal = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
+
+
+    usuarios2 = json_serializer.serialize(User.objects.filter(email='netofarthur@gmail.com'))
+    profiles = json_serializer.serialize(Profile.objects.filter(usuario=usuario))
+
+    usuarioLogado = False
+
+    variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=usuario))
+
+    titulo = "Masqs"
+    context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados,
+               'normais': normais, 'mascarasJson': mascarasJson,
+               'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario,
+               'mascarasJsonPopulares': mascarasJsonPopulares,
+               'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles,
+               'mascarasJsonTotal': mascarasJsonTotal,
+               'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado, 'variaveis': variaveis}
+    return render(request, 'masks/home.html', context)
