@@ -1099,6 +1099,9 @@ def home(request):
 
     normais = json_serializer.serialize(TopicoNormal.objects.filter(mascara__usuario=usuario))
 
+    normaisAlt = json_serializer.serialize(TopicoNormal.objects.filter(mascara__usuario=usuario2))
+
+
     normaisTemplate = TopicoNormal.objects.filter(mascara__usuario=usuario)
 
 
@@ -1108,7 +1111,7 @@ def home(request):
 
 
     usuarios2 = json_serializer.serialize(User.objects.filter(email='arthneto@hotmail.com'))
-    profiles = json_serializer.serialize(Profile.objects.filter(usuario=usuario))
+    profiles = json_serializer.serialize(Profile.objects.filter(usuario=usuario2))
 
     usuarioLogado = False
 
@@ -1122,5 +1125,6 @@ def home(request):
                'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles,
                'mascarasJsonTotal': mascarasJsonTotal,
                'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado, 'variaveis': variaveis,
-               'normaisTemplate': normaisTemplate, 'mascarasJsonPopularesAlt': mascarasJsonPopularesAlt}
+               'normaisTemplate': normaisTemplate, 'mascarasJsonPopularesAlt': mascarasJsonPopularesAlt,
+               'normaisAlt': normaisAlt}
     return render(request, 'masks/home.html', context)

@@ -192,6 +192,7 @@ function procurarEntradasAdaptado() {
 //Execute after page loads
 document.addEventListener('DOMContentLoaded', function() {
 
+    document.getElementById("myfooter").style.display = "none";
 
     if(getCookie("exameid") != null && document.getElementById("collapse" + getCookie("exameid")) != null)  {
         document.getElementById("collapse" + getCookie("exameid")).setAttribute("class", "collapse show");
@@ -808,6 +809,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
         } else if(document.getElementById("popularRadio").checked || usuarioLogado == "False") {
             if(document.getElementById("mascarasRadio").checked) {
                   mascarasJsonObject = JSON.parse(mascarasJsonPopularesAlt);
+                  normaisObject = JSON.parse(normaisAlt);
 
             } else {
                 mascarasJsonObject = JSON.parse(mascarasJsonPopulares);
@@ -1321,6 +1323,7 @@ function clicouAba(especialidadeid, exameid) {
         } else if(document.getElementById("popularRadio").checked || usuarioLogado == "False") {
             if(document.getElementById("mascarasRadio").checked) {
                            mascarasJsonObject = JSON.parse(mascarasJsonPopularesAlt);
+                           normaisObject = JSON.parse(normaisAlt);
 
              } else {
                            mascarasJsonObject = JSON.parse(mascarasJsonPopulares);

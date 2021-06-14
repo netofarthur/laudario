@@ -25,6 +25,10 @@
             var usuarios2 = '{{ usuarios2|escapejs }}';
 
             var normais = '{{ normais|escapejs }}';
+
+                        var normaisAlt = '{{ normaisAlt|escapejs }}';
+
+
             var profiles = '{{ profiles|escapejs }}';
 
                     var mascarasJsonTotal = '{{ mascarasJsonTotal|escapejs }}';
@@ -161,7 +165,7 @@
     <input style="width: 70%" autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeydown="procurarEntradas(this.id)" onsearch="procurarTudo()"/><button style="width: 30%" id="botaoProcurarTudo" onclick="procurarTudo()">Procurar</button>
     </div>
 
-               <div id="botoezinhos_div">
+               <div id="botoezinhos_div" style="margin-top: 10px;">
                 {% for topico in normaisTemplate %}
 
 
