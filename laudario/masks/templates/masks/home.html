@@ -16,6 +16,11 @@
         var alteradosUsuario = '{{ alteradosUsuario|escapejs }}';
         var mascarasJson = '{{ mascarasJson|escapejs }}';
         var mascarasJsonPopulares = '{{ mascarasJsonPopulares|escapejs }}';
+
+                var mascarasJsonPopularesAlt = '{{ mascarasJsonPopularesAlt|escapejs }}';
+
+
+
         var mascarasJsonUsuario = '{{ mascarasJsonUsuario|escapejs }}';
             var usuarios2 = '{{ usuarios2|escapejs }}';
 
@@ -155,6 +160,22 @@
         <hr>
     <input style="width: 70%" autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeydown="procurarEntradas(this.id)" onsearch="procurarTudo()"/><button style="width: 30%" id="botaoProcurarTudo" onclick="procurarTudo()">Procurar</button>
     </div>
+
+               <div id="botoezinhos_div">
+                {% for topico in normaisTemplate %}
+
+
+
+                    {% if topico.orgao != "Nenhum órgão" %}
+                    <button style="display: none;" id="t{{ topico.pk }}" onclick="clicouTopico(this.id)">{{ topico.orgao }}</button>
+                    {% endif %}
+
+
+
+                {% endfor %}
+            </div>
+
+
     <hr>
 </div>
 <div id="direitadiv" style="padding-bottom: 1rem;">

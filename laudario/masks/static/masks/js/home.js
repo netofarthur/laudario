@@ -450,6 +450,7 @@ function procurarTudo() {
                 var divEntrada = document.createElement("div");
 
 
+
                 paragrafoTecnicaHeader.innerHTML = mascarasJsonObject[i].fields.tecnica_header;
                 paragrafoTecnica.innerHTML = mascarasJsonObject[i].fields.tecnica;
                 paragrafoRelatorioHeader.innerHTML = mascarasJsonObject[i].fields.relatorio_header;
@@ -618,7 +619,7 @@ function procurarTudo() {
 
                       var divEntrada = document.createElement("div");
 
-
+                        divEntrada.setAttribute("name", topicoParaAlterar);
 
 
 
@@ -681,6 +682,9 @@ function procurarTudo() {
 
 
 function limparTodosBotoes() {
+
+
+
     var grupoEspecialidades = document.getElementsByName("grupoEspecialidades");
     for(i=0; i < grupoEspecialidades.length; i++) {
         var children = grupoEspecialidades[i].children;
@@ -695,6 +699,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 
 
 
+        configurarBotoesTopicos(especialidadeid,exameid);
 
 
 
@@ -801,7 +806,14 @@ function clicouAbaEspecial(especialidadeid, exameid) {
               alteradosJSONObject = JSON.parse(alterados);
 
         } else if(document.getElementById("popularRadio").checked || usuarioLogado == "False") {
-              mascarasJsonObject = JSON.parse(mascarasJsonPopulares);
+            if(document.getElementById("mascarasRadio").checked) {
+                  mascarasJsonObject = JSON.parse(mascarasJsonPopularesAlt);
+
+            } else {
+                mascarasJsonObject = JSON.parse(mascarasJsonPopulares);
+
+            }
+
               alteradosJSONObject = JSON.parse(alteradosPopulares);
 
         } else if(document.getElementById("minhasRadio") != null && document.getElementById("minhasRadio").style.display != "none" && document.getElementById("minhasRadio").checked) {
@@ -1086,6 +1098,9 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 
                       var divEntrada = document.createElement("div");
 
+                          divEntrada.setAttribute("name", topicoParaAlterar);
+
+
                     divEntrada.appendChild(paragrafonome);
 
 
@@ -1132,7 +1147,72 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 }
 
 
+function configurarBotoesTopicos(especialidadeid, exameid) {
+
+
+     if(document.getElementById("mascarasRadio").checked) {
+
+             var botoes = document.getElementById("botoezinhos_div").children;
+
+        for(botao of botoes) {
+                botao.style.display = "none";
+
+
+        }
+
+     } else {
+
+
+
+ var mascarasJsonObject = JSON.parse(mascarasJson);
+        var normaisObject = JSON.parse(normais);
+
+        var mascarasPermitidas = [];
+
+        var topicosPermitidos = [];
+
+        for(mascara of mascarasJsonObject) {
+            if(mascara.fields.especialidade == especialidadeid && mascara.fields.exame == exameid) {
+                mascarasPermitidas.push(mascara.pk);
+            }
+        }
+
+        for(normal of normaisObject) {
+            if(mascarasPermitidas.includes(normal.fields.mascara) && normal.fields.orgao != "Nenhum órgão") {
+                topicosPermitidos.push(normal.pk)
+            }
+        }
+
+
+
+        var botoes = document.getElementById("botoezinhos_div").children;
+
+        for(botao of botoes) {
+            if(topicosPermitidos.includes(parseInt(botao.id.substring(1)))) {
+                botao.style.display = "inline";
+            } else {
+                botao.style.display = "none";
+
+            }
+        }
+
+
+     }
+
+
+
+
+
+
+}
+
+
+
 function clicouAba(especialidadeid, exameid) {
+
+        configurarBotoesTopicos(especialidadeid,exameid);
+
+
         setCookie("vezesClicadoMais", "0", 12);
         setCookie("procurouTudo", "0", 12);
 
@@ -1239,7 +1319,13 @@ function clicouAba(especialidadeid, exameid) {
               alteradosJSONObject = JSON.parse(alterados);
 
         } else if(document.getElementById("popularRadio").checked || usuarioLogado == "False") {
-              mascarasJsonObject = JSON.parse(mascarasJsonPopulares);
+            if(document.getElementById("mascarasRadio").checked) {
+                           mascarasJsonObject = JSON.parse(mascarasJsonPopularesAlt);
+
+             } else {
+                           mascarasJsonObject = JSON.parse(mascarasJsonPopulares);
+
+             }
               alteradosJSONObject = JSON.parse(alteradosPopulares);
 
         } else if(document.getElementById("minhasRadio") != null && document.getElementById("minhasRadio").style.display != "none" && document.getElementById("minhasRadio").checked) {
@@ -1525,6 +1611,9 @@ function clicouAba(especialidadeid, exameid) {
 
                       var divEntrada = document.createElement("div");
 
+                      divEntrada.setAttribute("name", topicoParaAlterar);
+
+
                     divEntrada.appendChild(paragrafonome);
 
 
@@ -1577,7 +1666,33 @@ function clicouAba(especialidadeid, exameid) {
 
 
 
+function clicouTopico(id) {
 
+
+
+
+    var entradas = document.getElementById("direitadiv").children;
+
+    for(entrada of entradas) {
+        if(entrada.getAttribute("name") == id.substring(1)) {
+            entrada.style.display = "block";
+        } else {
+            entrada.style.display = "none";
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
 
 

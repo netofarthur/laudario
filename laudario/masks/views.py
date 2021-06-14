@@ -1080,7 +1080,8 @@ def home(request):
     exames = Exame.objects.all().order_by('descricao')
     especialidades = Especialidade.objects.all().order_by('descricao')
     json_serializer = serializers.get_serializer("json")()
-    usuario = User.objects.get(email='netofarthur@gmail.com')
+    usuario = User.objects.get(email='arthneto@hotmail.com')
+    usuario2 = User.objects.get(email='netofarthur@gmail.com')
     alterados = json_serializer.serialize(
         TopicoAnormal.objects.filter(topico_normal__mascara__usuario=usuario).order_by('nome'))
 
@@ -1090,14 +1091,23 @@ def home(request):
     alteradosTotal = json_serializer.serialize(TopicoAnormal.objects.filter(topico_normal__mascara__usuario=usuario).order_by('nome'))  # alfabéticototal
 
     mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
+
+    mascarasJsonPopularesAlt = json_serializer.serialize(Mascara.objects.filter(usuario=usuario2).order_by('nome'))
+
+
     mascarasJsonUsuario = "";
 
     normais = json_serializer.serialize(TopicoNormal.objects.filter(mascara__usuario=usuario))
+
+    normaisTemplate = TopicoNormal.objects.filter(mascara__usuario=usuario)
+
+
+
     mascarasJson = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
     mascarasJsonTotal = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
 
 
-    usuarios2 = json_serializer.serialize(User.objects.filter(email='netofarthur@gmail.com'))
+    usuarios2 = json_serializer.serialize(User.objects.filter(email='arthneto@hotmail.com'))
     profiles = json_serializer.serialize(Profile.objects.filter(usuario=usuario))
 
     usuarioLogado = False
@@ -1111,5 +1121,6 @@ def home(request):
                'mascarasJsonPopulares': mascarasJsonPopulares,
                'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles,
                'mascarasJsonTotal': mascarasJsonTotal,
-               'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado, 'variaveis': variaveis}
+               'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado, 'variaveis': variaveis,
+               'normaisTemplate': normaisTemplate, 'mascarasJsonPopularesAlt': mascarasJsonPopularesAlt}
     return render(request, 'masks/home.html', context)
