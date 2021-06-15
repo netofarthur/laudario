@@ -306,7 +306,7 @@ function procurarTudo() {
 
         var alteradosJSONObject;
         var mascarasJsonObject;
-        var normaisObject = JSON.parse(normais);
+        var normaisObject = JSON.parse(normaisAlt);
         var usuariosObject = JSON.parse(usuarios2);
 
         var profilesObject = JSON.parse(profiles);
@@ -401,6 +401,7 @@ function procurarTudo() {
                     var paragrafo = document.createElement("p");
 
                     paragrafo.setAttribute("style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
+                    paragrafo.setAttribute("data-mce-style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
 
                     var paragrafoExame1 = document.createElement("span");
                     paragrafoExame1.setAttribute("style", "margin-left: 4px; color: gray; font-weight: bold");
@@ -432,23 +433,36 @@ function procurarTudo() {
                     var paragrafoTecnicaHeader = document.createElement("p");
 
                     paragrafoTecnicaHeader.setAttribute("style", "color: " + cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
+                    paragrafoTecnicaHeader.setAttribute("data-mce-style", "color: " + cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
 
                     var paragrafoTecnica = document.createElement("p");
 
                     paragrafoTecnica.setAttribute("style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; line-height: " + altura_linha + "; margin-bottom: " + espacamento_topicos)
+                    paragrafoTecnica.setAttribute("data-mce-style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; line-height: " + altura_linha + "; margin-bottom: " + espacamento_topicos)
 
                   var paragrafoRelatorioHeader = document.createElement("p");
 
                   paragrafoRelatorioHeader.setAttribute("style", "color: " + cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
+                  paragrafoRelatorioHeader.setAttribute("data-mce-style", "color: " + cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
 
                 var paragrafoConclusaoHeader = document.createElement("p");
 
                 paragrafoConclusaoHeader.setAttribute("style", "color: "+ cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
+                paragrafoConclusaoHeader.setAttribute("data-mce-style", "color: "+ cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
 
 
                 var paragrafoConclusao = document.createElement("p");
 
                 var divEntrada = document.createElement("div");
+
+                var divEntrada2 = document.createElement("div");
+
+                                var divEntrada3 = document.createElement("div");
+
+
+
+                divEntrada2.setAttribute("id", "div" + mascarasJsonObject[i].pk);
+
 
 
 
@@ -471,17 +485,21 @@ function procurarTudo() {
                     divEntrada.appendChild(paragrafoEspecialidade1);
 
 
-                  divEntrada.appendChild(paragrafo);
-                  divEntrada.appendChild(paragrafoTecnicaHeader);
-                  divEntrada.appendChild(paragrafoTecnica);
-                  divEntrada.appendChild(paragrafoRelatorioHeader);
+                  divEntrada2.appendChild(paragrafo);
+                  divEntrada2.appendChild(paragrafoTecnicaHeader);
+                  divEntrada2.appendChild(paragrafoTecnica);
+                  divEntrada2.appendChild(paragrafoRelatorioHeader);
 
                     document.getElementById("direitadiv").appendChild(divEntrada);
+                                        document.getElementById("direitadiv").appendChild(divEntrada2);
+                                                                                document.getElementById("direitadiv").appendChild(divEntrada3);
+
+
 
 
 
                 var divGeral = document.createElement("div");
-                  divEntrada.appendChild(divGeral);
+                  divEntrada2.appendChild(divGeral);
 
 
 
@@ -494,26 +512,39 @@ function procurarTudo() {
                                 paragrafoRelatorio.innerHTML = normaisObject[y].fields.relatorio;
                             }
                             paragrafoRelatorio.setAttribute("style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; margin-bottom: " + espacamento_topicos + "; line-height: " + altura_linha);
+                                      paragrafoRelatorio.setAttribute("data-mce-style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; margin-bottom: " + espacamento_topicos + "; line-height: " + altura_linha);
+
                               divGeral.appendChild(paragrafoRelatorio);
 
 
                         }
                     }
 
-                  divEntrada.appendChild(paragrafoConclusaoHeader);
-                  divEntrada.appendChild(paragrafoConclusao);
+                  divEntrada2.appendChild(paragrafoConclusaoHeader);
+                  divEntrada2.appendChild(paragrafoConclusao);
 
+                  var copiarMascara = document.createElement("button");
+                  copiarMascara.innerHTML = "Copiar";
+                  copiarMascara.setAttribute("id", "copy" + mascarasJsonObject[i].pk);
 
+                  copiarMascara.setAttribute("onclick", "copiarMascaraPublica(this.id)");
+                  copiarMascara.setAttribute("class", "botao_configuracao3");
+divEntrada3.appendChild(copiarMascara);
+
+                    var butao = document.createElement("button");
+                    butao.setAttribute("class", "botao_configuracao3");
+
+divEntrada3.appendChild(butao);
                   var linkMascara = document.createElement("a");
-                  linkMascara.innerHTML = "&lt;Usar Máscara&gt;";
+                  linkMascara.innerHTML = "Usar Máscara";
                   linkMascara.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
-                      linkMascara.setAttribute("style", "color: #c96100;")
+                      linkMascara.setAttribute("style", "color: #ffffff; text-decoration: none");
 
-                   divEntrada.appendChild(linkMascara);
+                   butao.appendChild(linkMascara);
 
 
                   var divisoria = document.createElement("hr")
-                  divEntrada.appendChild(divisoria);
+                  divEntrada3.appendChild(divisoria);
 
                 }
             }
@@ -526,7 +557,7 @@ function procurarTudo() {
 
 
                 for(i = 0; i < alteradosJSONObject.length; i++) {
-                            if(devolverUsuarioAlteracao(alteradosJSONObject[i].pk).toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) || alteradosJSONObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+                            if(alteradosJSONObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
                         var alteracaoId = alteradosJSONObject[i].pk;
                         encontrou = true;
 
@@ -544,12 +575,13 @@ function procurarTudo() {
                   var alteracaoId = alteradosJSONObject[i].pk;
                   var mascaraId;
 
-            for(b=0; b < normaisObject.length; b++) {
-                if(normaisObject[b].pk == topicoParaAlterar) {
-                    mascaraId = normaisObject[b].fields.mascara;
+                  var normaisObject2 = JSON.parse(normais);
+
+            for(b=0; b < normaisObject2.length; b++) {
+                if(normaisObject2[b].pk == topicoParaAlterar) {
+                    mascaraId = normaisObject2[b].fields.mascara;
                 }
             }
-
 
 
 
@@ -582,7 +614,7 @@ function procurarTudo() {
                      var especiadidadeInt;
                     var exameInt;
 
-                    var mascarasJsonObject2 = JSON.parse(mascarasJson);
+                    var mascarasJsonObject2 = JSON.parse(mascarasJsonPopulares);
 
                     for(p=0; p < mascarasJsonObject2.length; p++) {
                         if(mascarasJsonObject2[p].pk == mascaraId) {
@@ -591,7 +623,6 @@ function procurarTudo() {
                             exameInt = mascarasJsonObject2[p].fields.exame;
                         }
                     }
-
 
                     var paragrafoEspecialidade2 = document.createElement("span");
                         paragrafoEspecialidade2.innerHTML = "(" + document.getElementsByName(especiadidadeInt)[0].innerText + ")";
@@ -631,21 +662,63 @@ function procurarTudo() {
 
 
 
+                                            divEntrada.appendChild(document.createElement("br"));
+
+
+
 
 
                   divEntrada.appendChild(paragrafo);
+
+                    paragrafo.setAttribute("style", "display: inline;");
+
+                    var copiarRelatorio = document.createElement("button");
+                    copiarRelatorio.setAttribute("id", "relatorio" + alteradosJSONObject[i].pk);
+                    copiarRelatorio.setAttribute("onclick", "copiarEntradaPublica(this.id)");
+                                              copiarRelatorio.innerHTML = "Copiar";
+                                                copiarRelatorio.setAttribute("class", "botao_configuracao2");
+
+
+                                                divEntrada.appendChild(copiarRelatorio);
+                                                      divEntrada.appendChild(document.createElement("br"));
+
                 divEntrada.appendChild(paragrafoConclusao);
+                                    paragrafoConclusao.setAttribute("style", "display: inline;");
+
+                  var copiarConclusao = document.createElement("button");
+                                      copiarConclusao.setAttribute("id", "conclusao" + alteradosJSONObject[i].pk);
+                                                          copiarConclusao.setAttribute("onclick", "copiarEntradaPublica(this.id)");
+
+
+                  copiarConclusao.setAttribute("class", "botao_configuracao2");
+                                              copiarConclusao.innerHTML = "Copiar";
+
+                                                divEntrada.appendChild(copiarConclusao);
+                                                            divEntrada.appendChild(document.createElement("br"));
+
 
 
                                 document.getElementById("direitadiv").appendChild(divEntrada);
 
 
-                    linkAlteracao.innerHTML = "&lt;Usar Frase&gt;";
+        var pattern = /\{([^}]+)\}/g;
+        var matches1 = paragrafo.innerHTML.match(pattern);
+        var matches2 = paragrafoConclusao.innerHTML.match(pattern);
+
+        if(matches1 != null || matches2 != null) {
+            linkAlteracao.innerHTML = "&lt;Preencher variáveis&gt;";
                       linkAlteracao.setAttribute("style", "color: #c96100;")
 
                     linkAlteracao.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
                    divEntrada.appendChild(linkAlteracao);
+        }
+
+
+
+
+
+
 
                   var divisoria = document.createElement("hr")
                   divEntrada.appendChild(divisoria);
@@ -897,9 +970,11 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                     var paragrafo = document.createElement("p");
 
                     paragrafo.setAttribute("style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
+                    paragrafo.setAttribute("data-mce-style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
 
                     var paragrafoNome = document.createElement("a");
-                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
+                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none");
+
                   paragrafoNome.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
 
 
@@ -920,23 +995,35 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                     var paragrafoTecnicaHeader = document.createElement("p");
 
                     paragrafoTecnicaHeader.setAttribute("style", "color: " + cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
+                    paragrafoTecnicaHeader.setAttribute("data-mce-style", "color: " + cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
 
                     var paragrafoTecnica = document.createElement("p");
 
                     paragrafoTecnica.setAttribute("style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; line-height: " + altura_linha + "; margin-bottom: " + espacamento_topicos)
+                    paragrafoTecnica.setAttribute("data-mce-style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; line-height: " + altura_linha + "; margin-bottom: " + espacamento_topicos)
 
                   var paragrafoRelatorioHeader = document.createElement("p");
 
                   paragrafoRelatorioHeader.setAttribute("style", "color: " + cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
+                  paragrafoRelatorioHeader.setAttribute("data-mce-style", "color: " + cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
 
                 var paragrafoConclusaoHeader = document.createElement("p");
 
                 paragrafoConclusaoHeader.setAttribute("style", "color: "+ cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
+                paragrafoConclusaoHeader.setAttribute("data-mce-style", "color: "+ cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
 
 
                 var paragrafoConclusao = document.createElement("p");
 
                 var divEntrada = document.createElement("div");
+
+                 var divEntrada2 = document.createElement("div");
+
+                                var divEntrada3 = document.createElement("div");
+
+
+
+                divEntrada2.setAttribute("id", "div" + mascarasJsonObject[i].pk);
 
 
                 paragrafoTecnicaHeader.innerHTML = mascarasJsonObject[i].fields.tecnica_header;
@@ -953,17 +1040,20 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                     divEntrada.appendChild(paragrafoNome);
 
 
-                  divEntrada.appendChild(paragrafo);
-                  divEntrada.appendChild(paragrafoTecnicaHeader);
-                  divEntrada.appendChild(paragrafoTecnica);
-                  divEntrada.appendChild(paragrafoRelatorioHeader);
+                  divEntrada2.appendChild(paragrafo);
+                  divEntrada2.appendChild(paragrafoTecnicaHeader);
+                  divEntrada2.appendChild(paragrafoTecnica);
+                  divEntrada2.appendChild(paragrafoRelatorioHeader);
 
                     document.getElementById("direitadiv").appendChild(divEntrada);
+                        document.getElementById("direitadiv").appendChild(divEntrada2);
+                    document.getElementById("direitadiv").appendChild(divEntrada3);
+
 
 
 
                 var divGeral = document.createElement("div");
-                  divEntrada.appendChild(divGeral);
+                  divEntrada2.appendChild(divGeral);
 
 
 
@@ -976,26 +1066,39 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                                 paragrafoRelatorio.innerHTML = normaisObject[y].fields.relatorio;
                             }
                             paragrafoRelatorio.setAttribute("style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; margin-bottom: " + espacamento_topicos + "; line-height: " + altura_linha);
+                                         paragrafoRelatorio.setAttribute("data-mce-style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; margin-bottom: " + espacamento_topicos + "; line-height: " + altura_linha);
+
                               divGeral.appendChild(paragrafoRelatorio);
 
 
                         }
                     }
 
-                  divEntrada.appendChild(paragrafoConclusaoHeader);
-                  divEntrada.appendChild(paragrafoConclusao);
+                  divEntrada2.appendChild(paragrafoConclusaoHeader);
+                  divEntrada2.appendChild(paragrafoConclusao);
 
+ var copiarMascara = document.createElement("button");
+                  copiarMascara.innerHTML = "Copiar";
+                  copiarMascara.setAttribute("id", "copy" + mascarasJsonObject[i].pk);
 
+                  copiarMascara.setAttribute("onclick", "copiarMascaraPublica(this.id)");
+                  copiarMascara.setAttribute("class", "botao_configuracao3");
+divEntrada3.appendChild(copiarMascara);
+
+                    var butao = document.createElement("button");
+                    butao.setAttribute("class", "botao_configuracao3");
+
+divEntrada3.appendChild(butao);
                   var linkMascara = document.createElement("a");
-                  linkMascara.innerHTML = "&lt;Usar Máscara&gt;";
+                  linkMascara.innerHTML = "Usar Máscara";
                   linkMascara.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
-                      linkMascara.setAttribute("style", "color: #c96100;")
+                      linkMascara.setAttribute("style", "color: #ffffff; text-decoration: none");
 
-                   divEntrada.appendChild(linkMascara);
+                   butao.appendChild(linkMascara);
 
 
                   var divisoria = document.createElement("hr")
-                  divEntrada.appendChild(divisoria);
+                  divEntrada3.appendChild(divisoria);
 
                 }
             }
@@ -1054,7 +1157,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
             }
 
 
-             var mascarasObj = JSON.parse(mascarasJson);
+             var mascarasObj = JSON.parse(mascarasJsonPopulares);
             var nomeMascara;
 
             for(c=0; c < mascarasObj.length; c++) {
@@ -1106,22 +1209,54 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                     divEntrada.appendChild(paragrafonome);
 
 
+                              divEntrada.appendChild(document.createElement("br"));
 
 
 
                   divEntrada.appendChild(paragrafo);
                 divEntrada.appendChild(paragrafoConclusao);
 
+           paragrafo.setAttribute("style", "display: inline;");
+
+                    var copiarRelatorio = document.createElement("button");
+                                              copiarRelatorio.innerHTML = "Copiar";
+                                                copiarRelatorio.setAttribute("class", "botao_configuracao2");
+                                                copiarRelatorio.setAttribute("id", "relatorio" + alteradosJSONObject[i].pk);
+                    copiarRelatorio.setAttribute("onclick", "copiarEntradaPublica(this.id)");
+
+
+                                                divEntrada.appendChild(copiarRelatorio);
+                                                      divEntrada.appendChild(document.createElement("br"));
+
+                divEntrada.appendChild(paragrafoConclusao);
+                                    paragrafoConclusao.setAttribute("style", "display: inline;");
+
+                  var copiarConclusao = document.createElement("button");
+                  copiarConclusao.setAttribute("class", "botao_configuracao2");
+                  copiarConclusao.setAttribute("id", "conclusao" + alteradosJSONObject[i].pk);
+                    copiarConclusao.setAttribute("onclick", "copiarEntradaPublica(this.id)");
+                                              copiarConclusao.innerHTML = "Copiar";
+
+                                                divEntrada.appendChild(copiarConclusao);
+                                                            divEntrada.appendChild(document.createElement("br"));
+
+
 
                                 document.getElementById("direitadiv").appendChild(divEntrada);
 
 
-                    linkAlteracao.innerHTML = "&lt;Usar Frase&gt;";
+        var pattern = /\{([^}]+)\}/g;
+        var matches1 = paragrafo.innerHTML.match(pattern);
+        var matches2 = paragrafoConclusao.innerHTML.match(pattern);
+
+        if(matches1 != null || matches2 != null) {
+            linkAlteracao.innerHTML = "&lt;Preencher variáveis&gt;";
                       linkAlteracao.setAttribute("style", "color: #c96100;")
 
                     linkAlteracao.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
                    divEntrada.appendChild(linkAlteracao);
+        }
 
                   var divisoria = document.createElement("hr")
                   divEntrada.appendChild(divisoria);
@@ -1409,6 +1544,9 @@ function clicouAba(especialidadeid, exameid) {
                     var paragrafo = document.createElement("p");
 
                     paragrafo.setAttribute("style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
+                    paragrafo.setAttribute("data-mce-style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
+
+
 
                     var paragrafoNome = document.createElement("a");
                     paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
@@ -1432,23 +1570,39 @@ function clicouAba(especialidadeid, exameid) {
                     var paragrafoTecnicaHeader = document.createElement("p");
 
                     paragrafoTecnicaHeader.setAttribute("style", "color: " + cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
+                    paragrafoTecnicaHeader.setAttribute("data-mce-style", "color: " + cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
 
                     var paragrafoTecnica = document.createElement("p");
 
                     paragrafoTecnica.setAttribute("style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; line-height: " + altura_linha + "; margin-bottom: " + espacamento_topicos)
+                    paragrafoTecnica.setAttribute("data-mce-style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; line-height: " + altura_linha + "; margin-bottom: " + espacamento_topicos)
 
                   var paragrafoRelatorioHeader = document.createElement("p");
 
                   paragrafoRelatorioHeader.setAttribute("style", "color: " + cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
+                  paragrafoRelatorioHeader.setAttribute("data-mce-style", "color: " + cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
 
                 var paragrafoConclusaoHeader = document.createElement("p");
 
                 paragrafoConclusaoHeader.setAttribute("style", "color: "+ cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
+                paragrafoConclusaoHeader.setAttribute("data-mce-style", "color: "+ cor_topicos + "; text-align: " + alinhamento_topicos + "; font-size: " + tamanho_topicos + "; margin-top: " + margem_cabecalho + "; margin-bottom: 2px; font-weight: bold;")
 
 
                 var paragrafoConclusao = document.createElement("p");
 
                 var divEntrada = document.createElement("div");
+
+                  var divEntrada2 = document.createElement("div");
+
+                                var divEntrada3 = document.createElement("div");
+
+
+
+                divEntrada2.setAttribute("id", "div" + mascarasJsonObject[i].pk);
+
+
+
+
 
 
                 paragrafoTecnicaHeader.innerHTML = mascarasJsonObject[i].fields.tecnica_header;
@@ -1465,17 +1619,19 @@ function clicouAba(especialidadeid, exameid) {
                     divEntrada.appendChild(paragrafoNome);
 
 
-                  divEntrada.appendChild(paragrafo);
-                  divEntrada.appendChild(paragrafoTecnicaHeader);
-                  divEntrada.appendChild(paragrafoTecnica);
-                  divEntrada.appendChild(paragrafoRelatorioHeader);
+                  divEntrada2.appendChild(paragrafo);
+                  divEntrada2.appendChild(paragrafoTecnicaHeader);
+                  divEntrada2.appendChild(paragrafoTecnica);
+                  divEntrada2.appendChild(paragrafoRelatorioHeader);
 
                     document.getElementById("direitadiv").appendChild(divEntrada);
 
+                    document.getElementById("direitadiv").appendChild(divEntrada2);
+                    document.getElementById("direitadiv").appendChild(divEntrada3);
 
 
                 var divGeral = document.createElement("div");
-                  divEntrada.appendChild(divGeral);
+                  divEntrada2.appendChild(divGeral);
 
 
 
@@ -1489,26 +1645,42 @@ function clicouAba(especialidadeid, exameid) {
                             }
 
                             paragrafoRelatorio.setAttribute("style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; margin-bottom: " + espacamento_topicos + "; line-height: " + altura_linha);
+                                                          paragrafoRelatorio.setAttribute("data-mce-style", "margin-top: 0; font-size: " + tamanho_fonte + "; font-family: " + fonte + "; color: " + cor_mascara + "; margin-bottom: " + espacamento_topicos + "; line-height: " + altura_linha);
+
                               divGeral.appendChild(paragrafoRelatorio);
 
 
                         }
                     }
 
-                  divEntrada.appendChild(paragrafoConclusaoHeader);
-                  divEntrada.appendChild(paragrafoConclusao);
+                  divEntrada2.appendChild(paragrafoConclusaoHeader);
+                  divEntrada2.appendChild(paragrafoConclusao);
 
 
+
+ var copiarMascara = document.createElement("button");
+                  copiarMascara.innerHTML = "Copiar";
+                  copiarMascara.setAttribute("id", "copy" + mascarasJsonObject[i].pk);
+
+                  copiarMascara.setAttribute("onclick", "copiarMascaraPublica(this.id)");
+                  copiarMascara.setAttribute("class", "botao_configuracao3");
+divEntrada3.appendChild(copiarMascara);
+
+                    var butao = document.createElement("button");
+                    butao.setAttribute("class", "botao_configuracao3");
+
+divEntrada3.appendChild(butao);
                   var linkMascara = document.createElement("a");
-                  linkMascara.innerHTML = "&lt;Usar Máscara&gt;";
+                  linkMascara.innerHTML = "Usar Máscara";
                   linkMascara.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
-                      linkMascara.setAttribute("style", "color: #c96100;")
+                      linkMascara.setAttribute("style", "color: #ffffff; text-decoration: none");
 
-                   divEntrada.appendChild(linkMascara);
+                   butao.appendChild(linkMascara);
 
 
                   var divisoria = document.createElement("hr")
-                  divEntrada.appendChild(divisoria);
+                  divEntrada3.appendChild(divisoria);
+
 
                 }
             }
@@ -1566,7 +1738,7 @@ function clicouAba(especialidadeid, exameid) {
                 }
             }
 
-            var mascarasObj = JSON.parse(mascarasJson);
+            var mascarasObj = JSON.parse(mascarasJsonPopulares);
             var nomeMascara;
 
             for(c=0; c < mascarasObj.length; c++) {
@@ -1620,22 +1792,55 @@ function clicouAba(especialidadeid, exameid) {
                     divEntrada.appendChild(paragrafonome);
 
 
+                              divEntrada.appendChild(document.createElement("br"));
 
 
 
                   divEntrada.appendChild(paragrafo);
+
+                         paragrafo.setAttribute("style", "display: inline;");
+
+                    var copiarRelatorio = document.createElement("button");
+                                              copiarRelatorio.innerHTML = "Copiar";
+                                                copiarRelatorio.setAttribute("class", "botao_configuracao2");
+                                                  copiarRelatorio.setAttribute("id", "relatorio" + alteradosJSONObject[i].pk);
+                    copiarRelatorio.setAttribute("onclick", "copiarEntradaPublica(this.id)");
+
+
+
+                                                divEntrada.appendChild(copiarRelatorio);
+                                                      divEntrada.appendChild(document.createElement("br"));
+
                 divEntrada.appendChild(paragrafoConclusao);
+                                    paragrafoConclusao.setAttribute("style", "display: inline;");
+
+                  var copiarConclusao = document.createElement("button");
+                  copiarConclusao.setAttribute("class", "botao_configuracao2");
+                    copiarConclusao.setAttribute("id", "conclusao" + alteradosJSONObject[i].pk);
+                    copiarConclusao.setAttribute("onclick", "copiarEntradaPublica(this.id)");
+
+                                              copiarConclusao.innerHTML = "Copiar";
+
+                                                divEntrada.appendChild(copiarConclusao);
+                                                            divEntrada.appendChild(document.createElement("br"));
+
 
 
                                 document.getElementById("direitadiv").appendChild(divEntrada);
 
 
-                    linkAlteracao.innerHTML = "&lt;Usar Frase&gt;";
+        var pattern = /\{([^}]+)\}/g;
+        var matches1 = paragrafo.innerHTML.match(pattern);
+        var matches2 = paragrafoConclusao.innerHTML.match(pattern);
+
+        if(matches1 != null || matches2 != null) {
+            linkAlteracao.innerHTML = "&lt;Preencher variáveis&gt;";
                       linkAlteracao.setAttribute("style", "color: #c96100;")
 
                     linkAlteracao.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
                    divEntrada.appendChild(linkAlteracao);
+        }
 
                   var divisoria = document.createElement("hr")
                   divEntrada.appendChild(divisoria);
@@ -1863,4 +2068,156 @@ var variaveisQuantitativas = [];
 }
 
 
+function copiarEntradaPublica(id) {
 
+
+   var containerid = document.getElementById(id).previousSibling;
+
+      if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select().createTextRange();
+        document.execCommand("copy");
+      } else if (window.getSelection) {
+        selection = window.getSelection();
+        var range = document.createRange();
+        range.selectNode(containerid);
+        selection.removeAllRanges();          // Remove all ranges from the selection.
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+      }
+
+}
+
+function copiarMascaraPublica(id) {
+
+  if(document.getElementById("indicacoesEscondida") != null) {
+        document.getElementById("indicacoesEscondida").remove();
+    }
+
+    if(document.getElementById("cancelarIndicacoes") != null) {
+document.getElementById("cancelarIndicacoes").remove();
+}
+
+    if(document.getElementById("botoes_div2") != null) {
+        document.getElementById("botoes_div2").remove();
+    }
+
+var voltars = document.getElementsByClassName("link_voltar");
+    for(i=0; i < voltars.length; i++) {
+        voltars[i].style.display = "none";
+    }
+
+
+
+
+    if(document.getElementById("mais_utilizadas") != null) {
+document.getElementById("mais_utilizadas").style.display = "none";
+}
+
+    var anchor2 = document.createElement("a");
+anchor2.setAttribute("href", window.location.href);
+anchor2.setAttribute("class", "link_voltar");
+
+    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + "/") {
+    anchor2.style.display = "none";
+}
+
+
+
+
+
+
+
+
+
+
+limparTagsHtml();
+
+
+    var containerid = "mascara_div";
+
+
+
+
+
+
+
+
+
+
+
+
+   var containerid = document.getElementById("div" + id.substring(4));
+
+      if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select().createTextRange();
+        document.execCommand("copy");
+      } else if (window.getSelection) {
+        selection = window.getSelection();
+        var range = document.createRange();
+        range.selectNode(containerid);
+        selection.removeAllRanges();          // Remove all ranges from the selection.
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+      }
+
+}
+
+
+
+
+
+function limparTagsHtml() {
+
+if(mascara_topicos == false) {
+    if(document.getElementById("topicos_div") != null) {
+
+       while (document.getElementById("topicos_div").firstChild) {
+    document.getElementById("topicos_div").parentNode.insertBefore(document.getElementById("topicos_div").firstChild,
+                                            document.getElementById("topicos_div"));
+}
+
+document.getElementById("topicos_div").parentNode.removeChild(document.getElementById("topicos_div"));
+}
+}
+
+
+    var strongs = document.getElementsByTagName("strong");
+
+    for(strong of strongs) {
+
+        strong.removeAttribute("id");
+
+
+        }
+
+
+    var ps = document.getElementsByTagName("p");
+    var divs = document.getElementsByTagName("div");
+    for(div of divs) {
+        if(div.getAttribute("class") == "paragrafo_mascara") {
+            div.removeAttribute("class");
+        div.removeAttribute("id");
+        if(div.innerHTML == " ") {
+            div.style.display = "none";
+        }
+
+        }
+    }
+
+    for(p of ps) {
+        p.removeAttribute("class");
+        p.removeAttribute("id");
+        if(p.innerHTML == " ") {
+            p.style.display = "none";
+        }
+    }
+    $("p:empty").remove()
+    $("div:empty").remove()
+
+
+
+}

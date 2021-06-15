@@ -2072,3 +2072,7 @@ var variaveisQuantitativas = [];
 
 
 
+
+
+
+

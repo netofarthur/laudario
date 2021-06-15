@@ -1106,11 +1106,11 @@ def home(request):
 
 
 
-    mascarasJson = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
-    mascarasJsonTotal = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
+    mascarasJson = json_serializer.serialize(Mascara.objects.filter(usuario=usuario2).order_by('nome'))
+    mascarasJsonTotal = json_serializer.serialize(Mascara.objects.filter(usuario=usuario2).order_by('nome'))
 
 
-    usuarios2 = json_serializer.serialize(User.objects.filter(email='arthneto@hotmail.com'))
+    usuarios2 = json_serializer.serialize(User.objects.filter(email='netofarthur@gmail.com'))
     profiles = json_serializer.serialize(Profile.objects.filter(usuario=usuario2))
 
     usuarioLogado = False
