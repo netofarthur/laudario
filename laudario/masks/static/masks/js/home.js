@@ -562,8 +562,17 @@ divEntrada3.appendChild(butao);
                         encontrou = true;
 
                         nome = alteradosJSONObject[i].fields.nome;
-                        relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.relatorio, devolverUsuarioAlteracaoInt(alteracaoId));
-                        conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.conclusao, devolverUsuarioAlteracaoInt(alteracaoId));
+
+                        var relatorioSpan = document.createElement("span");
+                        relatorioSpan.setAttribute("style", "font-weight: bold");
+                        relatorioSpan.innerHTML = "Relatório: ";
+                        var conclusaoSpan = document.createElement("span");
+                        conclusaoSpan.setAttribute("style", "font-weight: bold");
+                        conclusaoSpan.innerHTML = "Conclusão: ";
+
+
+                        relatorioAlterado = substituirVariaveis(alteradosJSONObject[i].fields.relatorio, devolverUsuarioAlteracaoInt(alteracaoId));
+                        conclusaoAlterada = substituirVariaveis(alteradosJSONObject[i].fields.conclusao, devolverUsuarioAlteracaoInt(alteracaoId));
 
 
 
@@ -667,6 +676,7 @@ divEntrada3.appendChild(butao);
 
 
 
+                  divEntrada.appendChild(relatorioSpan);
 
                   divEntrada.appendChild(paragrafo);
 
@@ -681,6 +691,7 @@ divEntrada3.appendChild(butao);
 
                                                 divEntrada.appendChild(copiarRelatorio);
                                                       divEntrada.appendChild(document.createElement("br"));
+                  divEntrada.appendChild(conclusaoSpan);
 
                 divEntrada.appendChild(paragrafoConclusao);
                                     paragrafoConclusao.setAttribute("style", "display: inline;");
@@ -1137,9 +1148,18 @@ divEntrada3.appendChild(butao);
                             if(topicosNormaisValidos.includes(alteradosJSONObject[i].fields.topico_normal)) {
                         var alteracaoId = alteradosJSONObject[i].pk;
                         nome = alteradosJSONObject[i].fields.nome;
-                        relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.relatorio, devolverUsuarioAlteracaoInt(alteracaoId));
-                        conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.conclusao, devolverUsuarioAlteracaoInt(alteracaoId));
 
+
+                         var relatorioSpan = document.createElement("span");
+                        relatorioSpan.setAttribute("style", "font-weight: bold");
+                        relatorioSpan.innerHTML = "Relatório: ";
+                        var conclusaoSpan = document.createElement("span");
+                        conclusaoSpan.setAttribute("style", "font-weight: bold");
+                        conclusaoSpan.innerHTML = "Conclusão: ";
+
+
+                        relatorioAlterado = substituirVariaveis(alteradosJSONObject[i].fields.relatorio, devolverUsuarioAlteracaoInt(alteracaoId));
+                        conclusaoAlterada = substituirVariaveis(alteradosJSONObject[i].fields.conclusao, devolverUsuarioAlteracaoInt(alteracaoId));
 
 
                 var linkAlteracao = document.createElement("a");
@@ -1212,9 +1232,10 @@ divEntrada3.appendChild(butao);
                               divEntrada.appendChild(document.createElement("br"));
 
 
+                      divEntrada.appendChild(relatorioSpan);
 
                   divEntrada.appendChild(paragrafo);
-                divEntrada.appendChild(paragrafoConclusao);
+
 
            paragrafo.setAttribute("style", "display: inline;");
 
@@ -1227,6 +1248,7 @@ divEntrada3.appendChild(butao);
 
                                                 divEntrada.appendChild(copiarRelatorio);
                                                       divEntrada.appendChild(document.createElement("br"));
+                                        divEntrada.appendChild(conclusaoSpan);
 
                 divEntrada.appendChild(paragrafoConclusao);
                                     paragrafoConclusao.setAttribute("style", "display: inline;");
@@ -1719,9 +1741,17 @@ divEntrada3.appendChild(butao);
                             if(topicosNormaisValidos.includes(alteradosJSONObject[i].fields.topico_normal)) {
                         var alteracaoId = alteradosJSONObject[i].pk;
                         nome = alteradosJSONObject[i].fields.nome;
-                        relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.relatorio, devolverUsuarioAlteracaoInt(alteracaoId));
-                        conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.conclusao, devolverUsuarioAlteracaoInt(alteracaoId));
 
+                        var relatorioSpan = document.createElement("span");
+                        relatorioSpan.setAttribute("style", "font-weight: bold");
+                        relatorioSpan.innerHTML = "Relatório: ";
+                        var conclusaoSpan = document.createElement("span");
+                        conclusaoSpan.setAttribute("style", "font-weight: bold");
+                        conclusaoSpan.innerHTML = "Conclusão: ";
+
+
+                        relatorioAlterado = substituirVariaveis(alteradosJSONObject[i].fields.relatorio, devolverUsuarioAlteracaoInt(alteracaoId));
+                        conclusaoAlterada = substituirVariaveis(alteradosJSONObject[i].fields.conclusao, devolverUsuarioAlteracaoInt(alteracaoId));
 
 
                 var linkAlteracao = document.createElement("a");
@@ -1795,6 +1825,7 @@ divEntrada3.appendChild(butao);
                               divEntrada.appendChild(document.createElement("br"));
 
 
+                      divEntrada.appendChild(relatorioSpan);
 
                   divEntrada.appendChild(paragrafo);
 
@@ -1810,6 +1841,7 @@ divEntrada3.appendChild(butao);
 
                                                 divEntrada.appendChild(copiarRelatorio);
                                                       divEntrada.appendChild(document.createElement("br"));
+                      divEntrada.appendChild(conclusaoSpan);
 
                 divEntrada.appendChild(paragrafoConclusao);
                                     paragrafoConclusao.setAttribute("style", "display: inline;");
