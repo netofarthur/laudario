@@ -338,7 +338,7 @@ function procurarTudo() {
              document.getElementById("direitadiv").innerHTML = "";
             for(i=0; i < mascarasJsonObject.length; i++) {
 
-                if(devolverUsuarioMascara(mascarasJsonObject[i].pk).toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) || mascarasJsonObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+                if(mascarasJsonObject[i].fields.nome.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(document.getElementById("procurarFrases").value.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
 
                     encontrou = true;
                     usuarioResponsavelInt = mascarasJsonObject[i].fields.usuario;

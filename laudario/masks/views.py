@@ -1106,7 +1106,7 @@ def home(request):
 
 
 
-    mascarasJson = json_serializer.serialize(Mascara.objects.filter(usuario=usuario2).order_by('nome'))
+    mascarasJson = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
     mascarasJsonTotal = json_serializer.serialize(Mascara.objects.filter(usuario=usuario2).order_by('nome'))
 
 
