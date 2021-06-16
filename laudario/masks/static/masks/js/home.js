@@ -192,7 +192,7 @@ function procurarEntradasAdaptado() {
 //Execute after page loads
 document.addEventListener('DOMContentLoaded', function() {
 
-    document.getElementById("myfooter").style.display = "none";
+
 
     if(getCookie("exameid") != null && document.getElementById("collapse" + getCookie("exameid")) != null)  {
         document.getElementById("collapse" + getCookie("exameid")).setAttribute("class", "collapse show");
@@ -277,6 +277,13 @@ var quantos = 0;
 
 
 }
+
+ if(isScrolledIntoView(document.getElementById("myfooter"))) {
+        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
+     } else {
+        document.getElementById("myfooter").setAttribute("class", "normalfooter");
+
+     }
 
     }, false);
 
@@ -1400,6 +1407,10 @@ function configurarBotoesTopicos(especialidadeid, exameid) {
 
 
 function clicouAba(especialidadeid, exameid) {
+        document.getElementById("myfooter").setAttribute("class", "normalfooter");
+
+
+
 
         configurarBotoesTopicos(especialidadeid,exameid);
 
@@ -1943,7 +1954,12 @@ divEntrada3.appendChild(butao);
                         document.getElementById("container").scrollIntoView();
 
 
+if(isScrolledIntoView(document.getElementById("myfooter"))) {
+        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
+     } else {
+        document.getElementById("myfooter").setAttribute("class", "normalfooter");
 
+     }
 }
 
 
@@ -2438,4 +2454,16 @@ function devolverUsuarioMascaraInt(mascaraId) {
 
         return usuarioId;
 
+}
+
+
+function isScrolledIntoView(elem)
+{
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+
+    var elemTop = $(elem).offset().top;
+    var elemBottom = elemTop + $(elem).height();
+
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 }
