@@ -2029,10 +2029,22 @@ function procurarEntradas(id) {
   for (i = 0; i < li.length; i++) {
     txtValue = li[i].innerText;
     if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1 && counter < 5) {
+            if(document.getElementById("mascarasRadio").checked) {
+
       li[i].parentNode.parentNode.style.display = "block";
+      } else {
+            li[i].parentNode.style.display = "block";
+
+      }
       counter++;
     } else {
+                if(document.getElementById("mascarasRadio").checked) {
+
       li[i].parentNode.parentNode.style.display = "none";
+      } else {
+            li[i].parentNode.style.display = "none";
+
+      }
     }
 
   }
