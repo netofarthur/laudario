@@ -2087,8 +2087,8 @@ var variaveisQuantitativas = [];
 
                     if(variaveisNominais.length > 1) {
                     for(variavelNominal of variaveisNominais) {
-                        variavelNominal = variavelNominal.replace("{", "");
-                        variavelNominal = variavelNominal.replace("}", "");
+                        variavelNominal = variavelNominal.replaceAll("{", "");
+                        variavelNominal = variavelNominal.replaceAll("}", "");
                         if(!listaVariaveisNominais.includes(variavelNominal)) {
                             listaVariaveisNominais[count] = variavelNominal;
                             count++;
@@ -2096,7 +2096,7 @@ var variaveisQuantitativas = [];
 
                     }
                     } else {
-                        variaveisQuantitativas.push(variavel.replace("{", "").replace("}", ""));
+                        variaveisQuantitativas.push(variavel.replaceAll("{", "").replaceAll("}", ""));
                     }
             }
 
@@ -2109,11 +2109,11 @@ var variaveisQuantitativas = [];
 
                 for(variavelUsuario of variaveisUsuarioJSONObject) {
                     if(variavelUsuario.fields.nome_da_variavel == variavel) {
-                        provisoria = provisoria.replace("{" + variavel + "}", "{" + variavelUsuario.fields.nome_amigavel + "}");
-                        provisoria = provisoria.replace("|" + variavel + "|", "|" + variavelUsuario.fields.nome_amigavel + "|");
-                        provisoria = provisoria.replace("{" + variavel + "|", "{" + variavelUsuario.fields.nome_amigavel + "|");
+                        provisoria = provisoria.replaceAll("{" + variavel + "}", "{" + variavelUsuario.fields.nome_amigavel + "}");
+                        provisoria = provisoria.replaceAll("|" + variavel + "|", "|" + variavelUsuario.fields.nome_amigavel + "|");
+                        provisoria = provisoria.replaceAll("{" + variavel + "|", "{" + variavelUsuario.fields.nome_amigavel + "|");
 
-                        provisoria = provisoria.replace("|" + variavel + "}", "|" + variavelUsuario.fields.nome_amigavel + "}");
+                        provisoria = provisoria.replaceAll("|" + variavel + "}", "|" + variavelUsuario.fields.nome_amigavel + "}");
 
 
 
@@ -2126,7 +2126,7 @@ var variaveisQuantitativas = [];
 
                 for(variavelUsuario of variaveisUsuarioJSONObject) {
                     if(variavelUsuario.fields.nome_da_variavel == variavel) {
-                        provisoria = provisoria.replace("{" + variavel + "}", "{#}");
+                        provisoria = provisoria.replaceAll("{" + variavel + "}", "{#}");
 
                     }
                 }
@@ -2189,8 +2189,8 @@ var variaveisQuantitativas = [];
 
                     if(variaveisNominais.length > 1) {
                     for(variavelNominal of variaveisNominais) {
-                        variavelNominal = variavelNominal.replace("{", "");
-                        variavelNominal = variavelNominal.replace("}", "");
+                        variavelNominal = variavelNominal.replaceAll("{", "");
+                        variavelNominal = variavelNominal.replaceAll("}", "");
                         if(!listaVariaveisNominais.includes(variavelNominal)) {
                             listaVariaveisNominais[count] = variavelNominal;
                             count++;
@@ -2198,7 +2198,7 @@ var variaveisQuantitativas = [];
 
                     }
                     } else {
-                        variaveisQuantitativas.push(variavel.replace("{", "").replace("}", ""));
+                        variaveisQuantitativas.push(variavel.replaceAll("{", "").replaceAll("}", ""));
                     }
             }
 
@@ -2211,11 +2211,11 @@ var variaveisQuantitativas = [];
 
                 for(variavelUsuario of variaveisUsuarioJSONObject) {
                     if(variavelUsuario.fields.nome_da_variavel == variavel) {
-                        provisoria = provisoria.replace("{" + variavel + "}", "{" + variavelUsuario.fields.nome_amigavel + "}");
-                        provisoria = provisoria.replace("|" + variavel + "|", "|" + variavelUsuario.fields.nome_amigavel + "|");
-                        provisoria = provisoria.replace("{" + variavel + "|", "{" + variavelUsuario.fields.nome_amigavel + "|");
+                        provisoria = provisoria.replaceAll("{" + variavel + "}", "{" + variavelUsuario.fields.nome_amigavel + "}");
+                        provisoria = provisoria.replaceAll("|" + variavel + "|", "|" + variavelUsuario.fields.nome_amigavel + "|");
+                        provisoria = provisoria.replaceAll("{" + variavel + "|", "{" + variavelUsuario.fields.nome_amigavel + "|");
 
-                        provisoria = provisoria.replace("|" + variavel + "}", "|" + variavelUsuario.fields.nome_amigavel + "}");
+                        provisoria = provisoria.replaceAll("|" + variavel + "}", "|" + variavelUsuario.fields.nome_amigavel + "}");
 
 
 
@@ -2228,7 +2228,7 @@ var variaveisQuantitativas = [];
 
                 for(variavelUsuario of variaveisUsuarioJSONObject) {
                     if(variavelUsuario.fields.nome_da_variavel == variavel) {
-                        provisoria = provisoria.replace("{" + variavel + "}", "{#}");
+                        provisoria = provisoria.replaceAll("{" + variavel + "}", "{#}");
 
                     }
                 }
