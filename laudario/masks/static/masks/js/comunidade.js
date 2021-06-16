@@ -584,6 +584,8 @@ function procurarTudo() {
                   divEntrada.appendChild(paragrafoConclusaoHeader);
                   divEntrada.appendChild(paragrafoConclusao);
 
+                    divEntrada.innerHTML = substituirVariaveisMascara(divEntrada.innerHTML, devolverUsuarioMascaraInt(mascarasJsonObject[i].pk));
+
 
                   var linkMascara = document.createElement("a");
                   linkMascara.innerHTML = "&lt;Usar Máscara&gt;";
@@ -1153,6 +1155,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 
                   divEntrada.appendChild(paragrafoConclusaoHeader);
                   divEntrada.appendChild(paragrafoConclusao);
+                    divEntrada.innerHTML = substituirVariaveisMascara(divEntrada.innerHTML, devolverUsuarioMascaraInt(mascarasJsonObject[i].pk));
 
 
                   var linkMascara = document.createElement("a");
@@ -1623,6 +1626,9 @@ function clicouAba(especialidadeid, exameid) {
                   divEntrada.appendChild(paragrafoConclusaoHeader);
                   divEntrada.appendChild(paragrafoConclusao);
 
+                    divEntrada.innerHTML = substituirVariaveisMascara(divEntrada.innerHTML, devolverUsuarioMascaraInt(mascarasJsonObject[i].pk));
+
+
 
                   var linkMascara = document.createElement("a");
                   linkMascara.innerHTML = "&lt;Usar Máscara&gt;";
@@ -2073,6 +2079,136 @@ var variaveisQuantitativas = [];
 
 
 
+function devolverUsuarioMascaraInt(mascaraId) {
+
+        var mascarasJsonObject = JSON.parse(mascarasJsonTotal);
+        var normaisObject = JSON.parse(normais);
+        var usuariosObject = JSON.parse(usuarios2);
+
+        var profilesObject = JSON.parse(profiles);
+
+        var topicoNormalId;
+
+
+        var usuarioId;
+
+
+
+
+
+         for(u=0; u < mascarasJsonObject.length; u++) {
+            if(mascarasJsonObject[u].pk == mascaraId) {
+                usuarioId = mascarasJsonObject[u].fields.usuario;
+            }
+        }
+
+
+
+        return usuarioId;
+
+}
+
+
+
+
+
+function substituirVariaveisMascara(descricao, usuarioId) {
+
+        var provisoria = descricao;
+
+        var variaveisJSONObject = JSON.parse(variaveis);
+
+        var variaveisUsuarioJSONObject = [];
+
+
+          for(var z = 0; z < variaveisJSONObject.length; z++) {
+                if(variaveisJSONObject[z].fields.usuario == usuarioId) {
+                variaveisUsuarioJSONObject.push(variaveisJSONObject[z]);
+                }
+
+                }
+
+
+        var pattern = /\{([^}]+)\}/g;
+        var matches = descricao.match(pattern);
+        var result = [];
+
+
+        if(matches != null) {
+            for(match of matches) {
+                result.push(match);
+            }
+        }
+
+
+            var listaVariaveisNominais = [];
+
+
+
+var variaveisQuantitativas = [];
+
+            //separa as variáveis nominais e depois faz um concat com as outras. Agora as variáveis nominais são
+            //separadas no banco com nomes amigáveis para poderem existir várias, teoricamente iguais (lateralidade, por exemplo)
+            //em um mesmo laudo.
+            var count = 0;
+            for(variavel of result) {
+
+
+
+                var variaveisNominais = variavel.split("|");
+
+
+                    if(variaveisNominais.length > 1) {
+                    for(variavelNominal of variaveisNominais) {
+                        variavelNominal = variavelNominal.replace("{", "");
+                        variavelNominal = variavelNominal.replace("}", "");
+                        if(!listaVariaveisNominais.includes(variavelNominal)) {
+                            listaVariaveisNominais[count] = variavelNominal;
+                            count++;
+                        }
+
+                    }
+                    } else {
+                        variaveisQuantitativas.push(variavel.replace("{", "").replace("}", ""));
+                    }
+            }
+
+
+
+
+
+
+            for(variavel of listaVariaveisNominais) {
+
+                for(variavelUsuario of variaveisUsuarioJSONObject) {
+                    if(variavelUsuario.fields.nome_da_variavel == variavel) {
+                        provisoria = provisoria.replace("{" + variavel + "}", "{" + variavelUsuario.fields.nome_amigavel + "}");
+                        provisoria = provisoria.replace("|" + variavel + "|", "|" + variavelUsuario.fields.nome_amigavel + "|");
+                        provisoria = provisoria.replace("{" + variavel + "|", "{" + variavelUsuario.fields.nome_amigavel + "|");
+
+                        provisoria = provisoria.replace("|" + variavel + "}", "|" + variavelUsuario.fields.nome_amigavel + "}");
+
+
+
+                    }
+                }
+
+            }
+
+            for(variavel of variaveisQuantitativas) {
+
+                for(variavelUsuario of variaveisUsuarioJSONObject) {
+                    if(variavelUsuario.fields.nome_da_variavel == variavel) {
+                        provisoria = provisoria.replace("{" + variavel + "}", "{#}");
+
+                    }
+                }
+
+            }
+
+            return provisoria;
+
+}
 
 
 

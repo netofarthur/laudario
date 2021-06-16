@@ -1117,7 +1117,7 @@ def home(request):
 
     variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=usuario))
 
-    variaveis2 = json_serializer.serialize(Variavel.objects.filter(usuario=usuario2))
+    variaveis2 = json_serializer.serialize(Variavel.objects.all())
 
 
 
