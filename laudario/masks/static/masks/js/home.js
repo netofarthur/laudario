@@ -681,9 +681,11 @@ divEntrada3.appendChild(butao);
                        divEntrada.appendChild(paragrafoExame2);
                                             divEntrada.appendChild(paragrafoEspecialidade2);
 
+                                var mypar = document.createElement("p");
+                                mypar.setAttribute("style", "margin-bottom: 8px;");
 
+                                            divEntrada.appendChild(mypar);
 
-                                            divEntrada.appendChild(document.createElement("br"));
 
 
 
@@ -1253,8 +1255,10 @@ divEntrada3.appendChild(butao);
                     divEntrada.appendChild(paragrafonome);
 
 
-                              divEntrada.appendChild(document.createElement("br"));
+      var mypar = document.createElement("p");
+                                mypar.setAttribute("style", "margin-bottom: 8px;");
 
+                                            divEntrada.appendChild(mypar);
 
                       divEntrada.appendChild(relatorioSpan);
 
@@ -1857,8 +1861,10 @@ divEntrada3.appendChild(butao);
                     divEntrada.appendChild(paragrafonome);
 
 
-                              divEntrada.appendChild(document.createElement("br"));
+      var mypar = document.createElement("p");
+                                mypar.setAttribute("style", "margin-bottom: 8px;");
 
+                                            divEntrada.appendChild(mypar);
 
                       divEntrada.appendChild(relatorioSpan);
 
