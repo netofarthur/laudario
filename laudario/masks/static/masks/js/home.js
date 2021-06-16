@@ -555,8 +555,10 @@ divEntrada3.appendChild(butao);
 
                   var divisoria = document.createElement("hr")
                                     divisoria.setAttribute("style", "border-color: #000000");
+                  divEntrada2.appendChild(document.createElement("br"));
 
                   divEntrada2.appendChild(divisoria);
+
 
                 }
             }
@@ -746,7 +748,9 @@ divEntrada3.appendChild(butao);
 
 
                   var divisoria = document.createElement("hr")
-                  divEntrada.appendChild(divisoria);
+                   divEntrada2.appendChild(document.createElement("br"));
+
+                  divEntrada2.appendChild(divisoria);
 
 
                             }
@@ -1135,6 +1139,8 @@ divEntrada3.appendChild(butao);
                   var divisoria = document.createElement("hr");
                                     divisoria.setAttribute("style", "border-color: #000000");
 
+                   divEntrada2.appendChild(document.createElement("br"));
+
                   divEntrada2.appendChild(divisoria);
 
                 }
@@ -1309,7 +1315,9 @@ divEntrada3.appendChild(butao);
         }
 
                   var divisoria = document.createElement("hr")
-                  divEntrada.appendChild(divisoria);
+                  divEntrada2.appendChild(document.createElement("br"));
+
+                  divEntrada2.appendChild(divisoria);
 
 
                             }
@@ -1740,6 +1748,8 @@ divEntrada3.appendChild(butao);
 
                   var divisoria = document.createElement("hr");
                   divisoria.setAttribute("style", "border-color: #000000");
+                   divEntrada2.appendChild(document.createElement("br"));
+
                   divEntrada2.appendChild(divisoria);
 
 
@@ -1916,7 +1926,9 @@ divEntrada3.appendChild(butao);
         }
 
                   var divisoria = document.createElement("hr")
-                  divEntrada.appendChild(divisoria);
+                   divEntrada2.appendChild(document.createElement("br"));
+
+                  divEntrada2.appendChild(divisoria);
 
 
                             }
