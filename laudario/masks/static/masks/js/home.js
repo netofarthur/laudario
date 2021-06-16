@@ -531,6 +531,8 @@ function procurarTudo() {
                   divEntrada2.appendChild(paragrafoConclusaoHeader);
                   divEntrada2.appendChild(paragrafoConclusao);
 
+                  divEntrada2.innerHTML = substituirVariaveisMascara(divEntrada2.innerHTML, devolverUsuarioMascaraInt(mascarasJsonObject[i].pk));
+
                   var copiarMascara = document.createElement("button");
                   copiarMascara.innerHTML = "Copiar";
                   copiarMascara.setAttribute("id", "copy" + mascarasJsonObject[i].pk);
@@ -1105,6 +1107,8 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 
                   divEntrada2.appendChild(paragrafoConclusaoHeader);
                   divEntrada2.appendChild(paragrafoConclusao);
+                                    divEntrada2.innerHTML = substituirVariaveisMascara(divEntrada2.innerHTML, devolverUsuarioMascaraInt(mascarasJsonObject[i].pk));
+
 
  var copiarMascara = document.createElement("button");
                   copiarMascara.innerHTML = "Copiar";
@@ -1705,6 +1709,8 @@ function clicouAba(especialidadeid, exameid) {
 
                   divEntrada2.appendChild(paragrafoConclusaoHeader);
                   divEntrada2.appendChild(paragrafoConclusao);
+                                    divEntrada2.innerHTML = substituirVariaveisMascara(divEntrada2.innerHTML, devolverUsuarioMascaraInt(mascarasJsonObject[i].pk));
+
 
 
 
@@ -2041,6 +2047,7 @@ function substituirVariaveis(descricao, usuarioId) {
 
         var variaveisUsuarioJSONObject = [];
 
+
           for(var z = 0; z < variaveisJSONObject.length; z++) {
                 if(variaveisJSONObject[z].fields.usuario == usuarioId) {
                 variaveisUsuarioJSONObject.push(variaveisJSONObject[z]);
@@ -2048,9 +2055,11 @@ function substituirVariaveis(descricao, usuarioId) {
 
                 }
 
+
         var pattern = /\{([^}]+)\}/g;
         var matches = descricao.match(pattern);
         var result = [];
+
 
         if(matches != null) {
             for(match of matches) {
@@ -2127,6 +2136,111 @@ var variaveisQuantitativas = [];
             return provisoria;
 
 }
+
+
+
+
+
+function substituirVariaveisMascara(descricao, usuarioId) {
+
+        var provisoria = descricao;
+
+        var variaveisJSONObject = JSON.parse(variaveis2);
+
+        var variaveisUsuarioJSONObject = [];
+
+
+          for(var z = 0; z < variaveisJSONObject.length; z++) {
+                if(variaveisJSONObject[z].fields.usuario == usuarioId) {
+                variaveisUsuarioJSONObject.push(variaveisJSONObject[z]);
+                }
+
+                }
+
+
+        var pattern = /\{([^}]+)\}/g;
+        var matches = descricao.match(pattern);
+        var result = [];
+
+
+        if(matches != null) {
+            for(match of matches) {
+                result.push(match);
+            }
+        }
+
+
+            var listaVariaveisNominais = [];
+
+
+
+var variaveisQuantitativas = [];
+
+            //separa as variáveis nominais e depois faz um concat com as outras. Agora as variáveis nominais são
+            //separadas no banco com nomes amigáveis para poderem existir várias, teoricamente iguais (lateralidade, por exemplo)
+            //em um mesmo laudo.
+            var count = 0;
+            for(variavel of result) {
+
+
+
+                var variaveisNominais = variavel.split("|");
+
+
+                    if(variaveisNominais.length > 1) {
+                    for(variavelNominal of variaveisNominais) {
+                        variavelNominal = variavelNominal.replace("{", "");
+                        variavelNominal = variavelNominal.replace("}", "");
+                        if(!listaVariaveisNominais.includes(variavelNominal)) {
+                            listaVariaveisNominais[count] = variavelNominal;
+                            count++;
+                        }
+
+                    }
+                    } else {
+                        variaveisQuantitativas.push(variavel.replace("{", "").replace("}", ""));
+                    }
+            }
+
+
+
+
+
+
+            for(variavel of listaVariaveisNominais) {
+
+                for(variavelUsuario of variaveisUsuarioJSONObject) {
+                    if(variavelUsuario.fields.nome_da_variavel == variavel) {
+                        provisoria = provisoria.replace("{" + variavel + "}", "{" + variavelUsuario.fields.nome_amigavel + "}");
+                        provisoria = provisoria.replace("|" + variavel + "|", "|" + variavelUsuario.fields.nome_amigavel + "|");
+                        provisoria = provisoria.replace("{" + variavel + "|", "{" + variavelUsuario.fields.nome_amigavel + "|");
+
+                        provisoria = provisoria.replace("|" + variavel + "}", "|" + variavelUsuario.fields.nome_amigavel + "}");
+
+
+
+                    }
+                }
+
+            }
+
+            for(variavel of variaveisQuantitativas) {
+
+                for(variavelUsuario of variaveisUsuarioJSONObject) {
+                    if(variavelUsuario.fields.nome_da_variavel == variavel) {
+                        provisoria = provisoria.replace("{" + variavel + "}", "{#}");
+
+                    }
+                }
+
+            }
+
+            return provisoria;
+
+}
+
+
+
 
 
 function copiarEntradaPublica(id) {
@@ -2280,5 +2394,36 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
     $("div:empty").remove()
 
 
+
+}
+
+
+
+function devolverUsuarioMascaraInt(mascaraId) {
+
+        var mascarasJsonObject = JSON.parse(mascarasJsonTotal);
+        var normaisObject = JSON.parse(normais);
+        var usuariosObject = JSON.parse(usuarios2);
+
+        var profilesObject = JSON.parse(profiles);
+
+        var topicoNormalId;
+
+
+        var usuarioId;
+
+
+
+
+
+         for(u=0; u < mascarasJsonObject.length; u++) {
+            if(mascarasJsonObject[u].pk == mascaraId) {
+                usuarioId = mascarasJsonObject[u].fields.usuario;
+            }
+        }
+
+
+
+        return usuarioId;
 
 }

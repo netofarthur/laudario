@@ -1117,6 +1117,10 @@ def home(request):
 
     variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=usuario))
 
+    variaveis2 = json_serializer.serialize(Variavel.objects.filter(usuario=usuario2))
+
+
+
     titulo = "Masqs"
     context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados,
                'normais': normais, 'mascarasJson': mascarasJson,
@@ -1126,5 +1130,5 @@ def home(request):
                'mascarasJsonTotal': mascarasJsonTotal,
                'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado, 'variaveis': variaveis,
                'normaisTemplate': normaisTemplate, 'mascarasJsonPopularesAlt': mascarasJsonPopularesAlt,
-               'normaisAlt': normaisAlt}
+               'normaisAlt': normaisAlt, 'variaveis2': variaveis2}
     return render(request, 'masks/home.html', context)
