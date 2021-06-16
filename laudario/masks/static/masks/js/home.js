@@ -459,7 +459,8 @@ function procurarTudo() {
 
                                 var divEntrada3 = document.createElement("div");
 
-
+        divEntrada3.setAttribute("style", "display: inline; margin-left: 5px;");
+                                divEntrada.setAttribute("style", "display: inline");
 
                 divEntrada2.setAttribute("id", "div" + mascarasJsonObject[i].pk);
 
@@ -490,9 +491,16 @@ function procurarTudo() {
                   divEntrada2.appendChild(paragrafoTecnica);
                   divEntrada2.appendChild(paragrafoRelatorioHeader);
 
-                    document.getElementById("direitadiv").appendChild(divEntrada);
-                                        document.getElementById("direitadiv").appendChild(divEntrada2);
-                                                                                document.getElementById("direitadiv").appendChild(divEntrada3);
+                  var divExterno = document.createElement("div");
+                  divExterno.appendChild(divEntrada);
+                                    divExterno.appendChild(divEntrada3);
+                                                      divExterno.appendChild(divEntrada2);
+
+
+
+
+                    document.getElementById("direitadiv").appendChild(divExterno);
+
 
 
 
@@ -544,7 +552,9 @@ divEntrada3.appendChild(butao);
 
 
                   var divisoria = document.createElement("hr")
-                  divEntrada3.appendChild(divisoria);
+                                    divisoria.setAttribute("style", "border-color: #000000");
+
+                  divEntrada2.appendChild(divisoria);
 
                 }
             }
@@ -1032,9 +1042,11 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 
                                 var divEntrada3 = document.createElement("div");
 
+        divEntrada3.setAttribute("style", "display: inline; margin-left: 5px;");
 
 
                 divEntrada2.setAttribute("id", "div" + mascarasJsonObject[i].pk);
+                                divEntrada.setAttribute("style", "display: inline");
 
 
                 paragrafoTecnicaHeader.innerHTML = mascarasJsonObject[i].fields.tecnica_header;
@@ -1056,9 +1068,15 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                   divEntrada2.appendChild(paragrafoTecnica);
                   divEntrada2.appendChild(paragrafoRelatorioHeader);
 
-                    document.getElementById("direitadiv").appendChild(divEntrada);
-                        document.getElementById("direitadiv").appendChild(divEntrada2);
-                    document.getElementById("direitadiv").appendChild(divEntrada3);
+                    var divExterno = document.createElement("div");
+                  divExterno.appendChild(divEntrada);
+                                    divExterno.appendChild(divEntrada3);
+                                                      divExterno.appendChild(divEntrada2);
+
+
+
+
+                    document.getElementById("direitadiv").appendChild(divExterno);
 
 
 
@@ -1108,8 +1126,10 @@ divEntrada3.appendChild(butao);
                    butao.appendChild(linkMascara);
 
 
-                  var divisoria = document.createElement("hr")
-                  divEntrada3.appendChild(divisoria);
+                  var divisoria = document.createElement("hr");
+                                    divisoria.setAttribute("style", "border-color: #000000");
+
+                  divEntrada2.appendChild(divisoria);
 
                 }
             }
@@ -1619,6 +1639,9 @@ function clicouAba(especialidadeid, exameid) {
                                 var divEntrada3 = document.createElement("div");
 
 
+        divEntrada3.setAttribute("style", "display: inline; margin-left: 5px;");
+                                divEntrada.setAttribute("style", "display: inline");
+
 
                 divEntrada2.setAttribute("id", "div" + mascarasJsonObject[i].pk);
 
@@ -1646,10 +1669,15 @@ function clicouAba(especialidadeid, exameid) {
                   divEntrada2.appendChild(paragrafoTecnica);
                   divEntrada2.appendChild(paragrafoRelatorioHeader);
 
-                    document.getElementById("direitadiv").appendChild(divEntrada);
+                    var divExterno = document.createElement("div");
+                  divExterno.appendChild(divEntrada);
+                                    divExterno.appendChild(divEntrada3);
+                                                      divExterno.appendChild(divEntrada2);
 
-                    document.getElementById("direitadiv").appendChild(divEntrada2);
-                    document.getElementById("direitadiv").appendChild(divEntrada3);
+
+
+
+                    document.getElementById("direitadiv").appendChild(divExterno);
 
 
                 var divGeral = document.createElement("div");
@@ -1700,8 +1728,9 @@ divEntrada3.appendChild(butao);
                    butao.appendChild(linkMascara);
 
 
-                  var divisoria = document.createElement("hr")
-                  divEntrada3.appendChild(divisoria);
+                  var divisoria = document.createElement("hr");
+                  divisoria.setAttribute("style", "border-color: #000000");
+                  divEntrada2.appendChild(divisoria);
 
 
                 }
@@ -1966,10 +1995,10 @@ function procurarEntradas(id) {
   for (i = 0; i < li.length; i++) {
     txtValue = li[i].innerText;
     if (txtValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().indexOf(filter.normalize("NFD").replace(/[\u0300-\u036f]/g, "")) > -1 && counter < 5) {
-      li[i].parentNode.style.display = "block";
+      li[i].parentNode.parentNode.style.display = "block";
       counter++;
     } else {
-      li[i].parentNode.style.display = "none";
+      li[i].parentNode.parentNode.style.display = "none";
     }
 
   }
