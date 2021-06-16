@@ -747,9 +747,9 @@ divEntrada3.appendChild(butao);
 
 
                   var divisoria = document.createElement("hr")
-                   divEntrada2.appendChild(document.createElement("br"));
+                   divEntrada.appendChild(document.createElement("br"));
 
-                  divEntrada2.appendChild(divisoria);
+                  divEntrada.appendChild(divisoria);
 
 
                             }
@@ -1923,9 +1923,9 @@ divEntrada3.appendChild(butao);
         }
 
                   var divisoria = document.createElement("hr")
-                   divEntrada2.appendChild(document.createElement("br"));
+                   divEntrada.appendChild(document.createElement("br"));
 
-                  divEntrada2.appendChild(divisoria);
+                  divEntrada.appendChild(divisoria);
 
 
                             }
