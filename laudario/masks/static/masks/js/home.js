@@ -2405,6 +2405,14 @@ function copiarEntradaPublica(id) {
 
 function copiarMascaraPublica(id) {
 
+    if(document.getElementById("div" + id.substr(4)).style.display == "none") {
+        document.getElementById("b" + id.substr(4)).click();
+
+    }
+
+
+
+
   if(document.getElementById("indicacoesEscondida") != null) {
         document.getElementById("indicacoesEscondida").remove();
     }
