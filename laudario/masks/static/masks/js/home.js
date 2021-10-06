@@ -1404,7 +1404,19 @@ function configurarBotoesTopicos(especialidadeid, exameid) {
 
 }
 
+function clicouEntradaMascara(id) {
+    var div = document.getElementById("div" + id.substr(1));
 
+    if(div.style.display == "none") {
+    div.setAttribute("style", "display: inline");
+
+    } else {
+    div.setAttribute("style", "display: none");
+
+    }
+
+
+}
 
 function clicouAba(especialidadeid, exameid) {
         document.getElementById("myfooter").setAttribute("class", "normalfooter");
@@ -1613,9 +1625,11 @@ function clicouAba(especialidadeid, exameid) {
 
 
 
-                    var paragrafoNome = document.createElement("a");
+                    var paragrafoNome = document.createElement("button");
                     paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
-                  paragrafoNome.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
+                                      paragrafoNome.setAttribute("id", "b" + mascarasJsonObject[i].pk);
+
+                  paragrafoNome.setAttribute("onclick", "clicouEntradaMascara(this.id)");
 
 
                     var frase;
@@ -1667,6 +1681,7 @@ function clicouAba(especialidadeid, exameid) {
 
 
                 divEntrada2.setAttribute("id", "div" + mascarasJsonObject[i].pk);
+                                divEntrada2.setAttribute("style", "display: none");
 
 
 
