@@ -2538,12 +2538,11 @@ function devolverUsuarioMascaraInt(mascaraId) {
 
 
 
-         for(u=0; u < mascarasJsonObject.length; u++) {
-            if(mascarasJsonObject[u].pk == mascaraId) {
-                usuarioId = mascarasJsonObject[u].fields.usuario;
+         for(u=0; u < usuariosObject.length; u++) {
+            if(usuariosObject[u].fields.username == "masqs") {
+                usuarioId = usuariosObject[u].pk;
             }
         }
-
 
 
         return usuarioId;
