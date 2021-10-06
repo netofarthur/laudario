@@ -736,7 +736,6 @@ paragrafonome.setAttribute("id", alteracaoId);
 
                                 document.getElementById("direitadiv").appendChild(divEntrada);
 
-clicouEntradaAlteracao(alteracaoId);
 
         var pattern = /\{([^}]+)\}/g;
         var matches1 = paragrafo.innerHTML.match(pattern);
@@ -754,6 +753,7 @@ clicouEntradaAlteracao(alteracaoId);
 
 
 
+clicouEntradaAlteracao(alteracaoId);
 
 
 
@@ -1313,7 +1313,6 @@ paragrafonome.setAttribute("id", alteracaoId);
 
 
                                 document.getElementById("direitadiv").appendChild(divEntrada);
-clicouEntradaAlteracao(alteracaoId);
 
 
         var pattern = /\{([^}]+)\}/g;
@@ -1345,6 +1344,7 @@ clicouEntradaAlteracao(alteracaoId);
 
         }
 
+clicouEntradaAlteracao(alteracaoId);
 
     if(document.getElementById("procurarFrases").value == "") {
 
@@ -1988,7 +1988,6 @@ paragrafonome.setAttribute("id", alteracaoId);
 
 
                                 document.getElementById("direitadiv").appendChild(divEntrada);
-clicouEntradaAlteracao(alteracaoId);
 
         var pattern = /\{([^}]+)\}/g;
         var matches1 = paragrafo.innerHTML.match(pattern);
@@ -2016,6 +2015,7 @@ clicouEntradaAlteracao(alteracaoId);
 
         }
 
+clicouEntradaAlteracao(alteracaoId);
 
     if(document.getElementById("procurarFrases").value == "") {
 
