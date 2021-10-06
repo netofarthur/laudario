@@ -419,10 +419,11 @@ function procurarTudo() {
                         paragrafoEspecialidade1.innerHTML = "(" + document.getElementsByName(mascarasJsonObject[i].fields.especialidade)[0].innerText + ")";
 
 
-                    var paragrafoNome = document.createElement("a");
+                    var paragrafoNome = document.createElement("button");
                     paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
-                  paragrafoNome.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
+paragrafoNome.setAttribute("id", "b" + mascarasJsonObject[i].pk);
 
+                  paragrafoNome.setAttribute("onclick", "clicouEntradaMascara(this.id)");
 
                     var frase;
 
@@ -470,6 +471,7 @@ function procurarTudo() {
                                 divEntrada.setAttribute("style", "display: inline");
 
                 divEntrada2.setAttribute("id", "div" + mascarasJsonObject[i].pk);
+                                divEntrada2.setAttribute("style", "display: none");
 
 
 
@@ -1006,10 +1008,11 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                     paragrafo.setAttribute("style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
                     paragrafo.setAttribute("data-mce-style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
 
-                    var paragrafoNome = document.createElement("a");
+                    var paragrafoNome = document.createElement("button");
                     paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none");
 
-                  paragrafoNome.setAttribute("href", "../mascaras/" + mascarasJsonObject[i].pk);
+                    paragrafoNome.setAttribute("id", "b" + mascarasJsonObject[i].pk);
+                                      paragrafoNome.setAttribute("onclick", "clicouEntradaMascara(this.id)");
 
 
                     var frase;
@@ -1060,6 +1063,8 @@ function clicouAbaEspecial(especialidadeid, exameid) {
 
                 divEntrada2.setAttribute("id", "div" + mascarasJsonObject[i].pk);
                                 divEntrada.setAttribute("style", "display: inline");
+                                                                divEntrada2.setAttribute("style", "display: none");
+
 
 
                 paragrafoTecnicaHeader.innerHTML = mascarasJsonObject[i].fields.tecnica_header;
