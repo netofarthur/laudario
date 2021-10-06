@@ -621,8 +621,10 @@ divEntrada3.appendChild(butao);
                         var paragrafoUsuarioAlt = document.createElement("p");
                         paragrafoUsuarioAlt.style.fontWeight = "bold";
 
-                           var paragrafonome = document.createElement("a");
-                           paragrafonome.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
+                           var paragrafonome = document.createElement("button");
+paragrafonome.setAttribute("id", alteracaoId);
+
+                  paragrafonome.setAttribute("onclick", "clicouEntradaAlteracao2(this.id)");
 
                     paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
 
@@ -1232,8 +1234,10 @@ divEntrada3.appendChild(butao);
                         var paragrafoUsuarioAlt = document.createElement("p");
                         paragrafoUsuarioAlt.style.fontWeight = "bold";
 
-                           var paragrafonome = document.createElement("a");
-                           paragrafonome.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
+                          var paragrafonome = document.createElement("button");
+paragrafonome.setAttribute("id", alteracaoId);
+
+                  paragrafonome.setAttribute("onclick", "clicouEntradaAlteracao(this.id)");
 
                     paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
 
@@ -1457,6 +1461,44 @@ function clicouEntradaAlteracao(id) {
 
 
 }
+
+
+
+function clicouEntradaAlteracao2(id) {
+    var children = document.getElementById(id).parentNode.children;
+    var vazio = false;
+
+    if(children[1].style.display == "none") {
+      for(i=0; i < children.length; i++) {
+    if(children[i].getAttribute("class") != "nome_entrada") {
+
+        children[i].style.display = "inline";
+
+    }
+    children[0].style.display = "inline";
+        children[3].style.display = "block";
+        children[children.length-1].removeAttribute("style");
+                children[children.length-2].removeAttribute("style");
+
+
+
+   }
+    } else {
+      for(child of children) {
+    if(child.getAttribute("class") != "nome_entrada") {
+        child.style.display = "none";
+    }
+   }
+    }
+
+
+
+
+
+
+
+}
+
 
 
 function clicouAba(especialidadeid, exameid) {
