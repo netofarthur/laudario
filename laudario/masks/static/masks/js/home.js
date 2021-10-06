@@ -491,8 +491,7 @@ paragrafoNome.setAttribute("id", "b" + mascarasJsonObject[i].pk);
 
 
                     divEntrada.appendChild(paragrafoNome);
-                    divEntrada.appendChild(paragrafoExame1);
-                    divEntrada.appendChild(paragrafoEspecialidade1);
+
 
 
                   divEntrada2.appendChild(paragrafo);
@@ -1241,7 +1240,7 @@ paragrafonome.setAttribute("id", alteracaoId);
 
                   paragrafonome.setAttribute("onclick", "clicouEntradaAlteracao(this.id)");
 
-                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
+                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-align: left; width: 100%;")
 
 
                      if(alteradosJSONObject[i].fields.popularidade == 1) {
@@ -1469,40 +1468,7 @@ function clicouEntradaAlteracao(id) {
 
 
 
-function clicouEntradaAlteracao2(id) {
-    var children = document.getElementById(id).parentNode.children;
-    var vazio = false;
 
-    if(children[1].style.display == "none") {
-      for(i=0; i < children.length; i++) {
-    if(children[i].getAttribute("class") != "nome_entrada") {
-
-        children[i].style.display = "inline";
-
-    }
-    children[0].style.display = "inline";
-        children[3].style.display = "block";
-        children[children.length-1].removeAttribute("style");
-                children[children.length-2].removeAttribute("style");
-
-
-
-   }
-    } else {
-      for(child of children) {
-    if(child.getAttribute("class") != "nome_entrada") {
-        child.style.display = "none";
-    }
-   }
-    }
-
-
-
-
-
-
-
-}
 
 
 
@@ -1949,7 +1915,7 @@ paragrafonome.setAttribute("id", alteracaoId);
 
 
                   paragrafonome.setAttribute("onclick", "clicouEntradaAlteracao(this.id)");
-                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
+                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-align: left; width: 100%;")
 
 
                      if(alteradosJSONObject[i].fields.popularidade == 1) {
