@@ -750,10 +750,10 @@ paragrafonome.setAttribute("id", alteracaoId);
                    divEntrada.appendChild(linkAlteracao);
         }
 
-
-
-
 clicouEntradaAlteracao(alteracaoId);
+
+
+
 
 
 
@@ -1327,6 +1327,8 @@ paragrafonome.setAttribute("id", alteracaoId);
 
                    divEntrada.appendChild(linkAlteracao);
         }
+        clicouEntradaAlteracao(alteracaoId);
+
 
                   var divisoria = document.createElement("hr")
                                       divisoria.style.display = "none";
@@ -1344,7 +1346,6 @@ paragrafonome.setAttribute("id", alteracaoId);
 
         }
 
-clicouEntradaAlteracao(alteracaoId);
 
     if(document.getElementById("procurarFrases").value == "") {
 
@@ -2001,6 +2002,8 @@ paragrafonome.setAttribute("id", alteracaoId);
 
                    divEntrada.appendChild(linkAlteracao);
         }
+        clicouEntradaAlteracao(alteracaoId);
+
 
                   var divisoria = document.createElement("hr")
 
@@ -2015,7 +2018,6 @@ paragrafonome.setAttribute("id", alteracaoId);
 
         }
 
-clicouEntradaAlteracao(alteracaoId);
 
     if(document.getElementById("procurarFrases").value == "") {
 
