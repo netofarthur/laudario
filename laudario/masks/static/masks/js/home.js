@@ -624,7 +624,7 @@ divEntrada3.appendChild(butao);
                            var paragrafonome = document.createElement("button");
 paragrafonome.setAttribute("id", alteracaoId);
 
-                  paragrafonome.setAttribute("onclick", "clicouEntradaAlteracao2(this.id)");
+                  paragrafonome.setAttribute("onclick", "clicouEntradaAlteracao(this.id)");
 
                     paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
 
@@ -690,8 +690,8 @@ paragrafonome.setAttribute("id", alteracaoId);
 
 
                     divEntrada.appendChild(paragrafonome);
-                       divEntrada.appendChild(paragrafoExame2);
-                                            divEntrada.appendChild(paragrafoEspecialidade2);
+                       paragrafonome.appendChild(paragrafoExame2);
+                                            paragrafonome.appendChild(paragrafoEspecialidade2);
 
                                 var mypar = document.createElement("p");
                                 mypar.setAttribute("style", "margin-bottom: 8px;");
@@ -737,6 +737,7 @@ paragrafonome.setAttribute("id", alteracaoId);
 
                                 document.getElementById("direitadiv").appendChild(divEntrada);
 
+clicouEntradaAlteracao(alteracaoId);
 
         var pattern = /\{([^}]+)\}/g;
         var matches1 = paragrafo.innerHTML.match(pattern);
@@ -758,6 +759,7 @@ paragrafonome.setAttribute("id", alteracaoId);
 
 
                   var divisoria = document.createElement("hr")
+                    divisoria.style.display = "none";
 
                   divEntrada.appendChild(divisoria);
 
@@ -1312,6 +1314,7 @@ paragrafonome.setAttribute("id", alteracaoId);
 
 
                                 document.getElementById("direitadiv").appendChild(divEntrada);
+clicouEntradaAlteracao(alteracaoId);
 
 
         var pattern = /\{([^}]+)\}/g;
@@ -1328,6 +1331,8 @@ paragrafonome.setAttribute("id", alteracaoId);
         }
 
                   var divisoria = document.createElement("hr")
+                                      divisoria.style.display = "none";
+
 
                   divEntrada.appendChild(divisoria);
 
