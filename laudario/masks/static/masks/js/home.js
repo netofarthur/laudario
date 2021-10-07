@@ -395,7 +395,7 @@ function procurarTudo() {
 
 
                     var paragrafoNome = document.createElement("button");
-                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none; border: none; background: none;")
+                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none; border: none; background: none; outline: none; box-shadow: none; padding-left: 0;")
 paragrafoNome.setAttribute("id", "b" + mascarasJsonObject[i].pk);
 
                   paragrafoNome.setAttribute("onclick", "clicouEntradaMascara(this.id)");
@@ -600,7 +600,7 @@ paragrafonome.setAttribute("id", alteracaoId);
 
                   paragrafonome.setAttribute("onclick", "clicouEntradaAlteracao(this.id)");
 
-                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none; border: none; background: none;")
+                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none; border: none; background: none; outline: none; box-shadow: none; padding-left: 0;")
 
 
                      if(alteradosJSONObject[i].fields.popularidade == 1) {
@@ -987,7 +987,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                     paragrafo.setAttribute("data-mce-style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
 
                     var paragrafoNome = document.createElement("button");
-                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none; border: none; background: none;");
+                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none; border: none; background: none; outline: none; box-shadow: none; padding-left: 0;");
 
                     paragrafoNome.setAttribute("id", "b" + mascarasJsonObject[i].pk);
                                       paragrafoNome.setAttribute("onclick", "clicouEntradaMascara(this.id)");
@@ -1215,7 +1215,7 @@ paragrafonome.setAttribute("id", alteracaoId);
 
                   paragrafonome.setAttribute("onclick", "clicouEntradaAlteracao(this.id)");
 
-                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-align: left; width: 100%; border: none; background: none;")
+                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-align: left; width: 100%; border: none; background: none; outline: none; box-shadow: none; padding-left: 0;")
 
 
                      if(alteradosJSONObject[i].fields.popularidade == 1) {
@@ -1655,7 +1655,7 @@ function clicouAba(especialidadeid, exameid) {
 
 
                     var paragrafoNome = document.createElement("button");
-                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none; border: none; background: none;")
+                    paragrafoNome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none; border: none; background: none; outline: none; box-shadow: none; padding-left: 0;")
                                       paragrafoNome.setAttribute("id", "b" + mascarasJsonObject[i].pk);
 
                   paragrafoNome.setAttribute("onclick", "clicouEntradaMascara(this.id)");
@@ -1890,7 +1890,7 @@ paragrafonome.setAttribute("id", alteracaoId);
 
 
                   paragrafonome.setAttribute("onclick", "clicouEntradaAlteracao(this.id)");
-                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-align: left; width: 100%; border: none; background: none;")
+                    paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-align: left; width: 100%; border: none; background: none; outline: none; box-shadow: none; padding-left: 0;")
 
 
                      if(alteradosJSONObject[i].fields.popularidade == 1) {
