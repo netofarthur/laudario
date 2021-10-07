@@ -785,7 +785,7 @@ function limparTodosBotoes() {
 
 function clicouAbaEspecial(especialidadeid, exameid) {
 
-
+document.getElementById("popularRadio").checked = true;
 
         configurarBotoesTopicos(especialidadeid,exameid);
 
@@ -1448,6 +1448,9 @@ function clicouEntradaAlteracao(id) {
 
 
 function clicouAba(especialidadeid, exameid) {
+
+        document.getElementById("popularRadio").checked = true;
+
         document.getElementById("myfooter").setAttribute("class", "normalfooter");
 
 
