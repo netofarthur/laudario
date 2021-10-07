@@ -39,45 +39,20 @@ function devolverUsuarioMascara(mascaraId) {
 
 function devolverUsuarioAlteracaoInt(alteracaoid) {
 
-        var mascarasJsonObject = JSON.parse(mascarasJson);
-        var alteradosJSONObject = JSON.parse(alterados);
-        var normaisObject = JSON.parse(normais);
+
         var usuariosObject = JSON.parse(usuarios2);
 
-        var profilesObject = JSON.parse(profiles);
 
-        var topicoNormalId;
-        var mascaraId;
-
-        var usuarioId;
 
         var usuarioResponsavel;
 
-        for(u=0; u < alteradosJSONObject.length; u++) {
-            if(alteradosJSONObject[u].pk == alteracaoid) {
-                topicoNormalId = alteradosJSONObject[u].fields.topico_normal;
-            }
-        }
-
-         for(u=0; u < normaisObject.length; u++) {
-            if(normaisObject[u].pk == topicoNormalId) {
-                mascaraId = normaisObject[u].fields.mascara;
-            }
-        }
-
-         for(u=0; u < mascarasJsonObject.length; u++) {
-            if(mascarasJsonObject[u].pk == mascaraId) {
-                usuarioId = mascarasJsonObject[u].fields.usuario;
-            }
-        }
 
         for(u=0; u < usuariosObject.length; u++) {
-            if(usuariosObject[u].pk == usuarioId) {
+            if(usuariosObject[u].fields.email == "arthneto@hotmail.com") {
                 usuarioResponsavel = usuariosObject[u].pk;
             }
 
         }
-
         return usuarioResponsavel;
 
 
@@ -1446,7 +1421,6 @@ function clicouEntradaAlteracao(id) {
     children[0].style.display = "block";
         children[1].style.display = "block";
         children[children.length-1].removeAttribute("style");
-                children[children.length-2].removeAttribute("style");
 
 
 

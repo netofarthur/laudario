@@ -1110,7 +1110,7 @@ def home(request):
     mascarasJsonTotal = json_serializer.serialize(Mascara.objects.filter(usuario=usuario2).order_by('nome'))
 
 
-    usuarios2 = json_serializer.serialize(User.objects.filter(email='netofarthur@gmail.com'))
+    usuarios2 = json_serializer.serialize(User.objects.filter(email='arthneto@hotmail.com'))
     profiles = json_serializer.serialize(Profile.objects.filter(usuario=usuario2))
 
     usuarioLogado = False
