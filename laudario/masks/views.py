@@ -1102,7 +1102,7 @@ def home(request):
     normaisAlt = json_serializer.serialize(TopicoNormal.objects.filter(mascara__usuario=usuario2))
 
 
-    normaisTemplate = TopicoNormal.objects.filter(mascara__usuario=usuario).order_by('ordem')
+    normaisTemplate = TopicoNormal.objects.filter(mascara__usuario=usuario).order_by('orgao')
 
 
 
