@@ -181,7 +181,7 @@ def nova_mascara(request):
 
     mascaras = Mascara.objects.filter(publica=True)
     profiles = Profile.objects.all()
-    topicos_normais = json_serializer.serialize(TopicoNormal.objects.all())
+    topicos_normais = json_serializer.serialize(TopicoNormal.objects.all().order_by('ordem'))
     variaveis = json_serializer.serialize(Variavel.objects.all().order_by('ordem'))
     variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
     titulo = "Masqs - Nova Máscara"
