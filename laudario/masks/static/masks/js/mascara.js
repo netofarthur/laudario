@@ -2269,6 +2269,9 @@ function htmlDecode(input) {
 
 
     function CopyToClipboard() {
+
+        document.getElementById("copiar_laudo").scrollIntoView();
+
     if(document.getElementById("indicacoesEscondida") != null) {
         document.getElementById("indicacoesEscondida").remove();
     }
@@ -2639,6 +2642,8 @@ function clicouExcluir(id) {
 }
 
 function colocarIndicacaoClinica() {
+
+    document.getElementById("copiar_laudo").scrollIntoView();
 
     if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + "/") {
         if(document.getElementById("voltar_baixo") != null) {
