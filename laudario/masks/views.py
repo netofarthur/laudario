@@ -730,7 +730,7 @@ def editar_alteracao(request, id_alteracao, id_mascara):
     variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
     variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
     profiles = Profile.objects.all()
-    topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara)
+    topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara).order_by('ordem')
     topico_anormal = TopicoAnormal.objects.get(pk=id_alteracao)
     titulo = "Masqs - Editar Alteração"
     context = {'id_alteracao': id_alteracao, 'topico_anormal': topico_anormal, 'topicos_normais': topicos_normais,
