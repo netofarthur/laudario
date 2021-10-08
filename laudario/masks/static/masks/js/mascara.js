@@ -2643,7 +2643,9 @@ function clicouExcluir(id) {
 
 function colocarIndicacaoClinica() {
 
+    if(document.getElementById("copiar_laudo") != null) {
     document.getElementById("copiar_laudo").scrollIntoView();
+    }
 
     if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + "/") {
         if(document.getElementById("voltar_baixo") != null) {
