@@ -1013,7 +1013,7 @@ def comunidade(request):
         mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade'))
         mascarasJsonUsuario = json_serializer.serialize(Mascara.objects.filter(usuario=request.user).order_by('nome'))
 
-        normais = json_serializer.serialize(TopicoNormal.objects.all())
+        normais = json_serializer.serialize(TopicoNormal.objects.all().order_by('ordem'))
         mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome', '-popularidade')) #alfabético
         mascarasJsonTotal = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade', 'nome')) #alfabéticototal
 

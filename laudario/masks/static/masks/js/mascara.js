@@ -2740,11 +2740,10 @@ if(mascara_topicos == "True") {
     var idTopico;
     var idAlteracao;
 
-
+if(document.getElementById("ultima_alteracao_relatorio") != null) {
  document.getElementById("ultima_alteracao_relatorio").innerHTML = document.getElementById("topicos_div").innerHTML;
                 document.getElementById("ultima_alteracao_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML;
-
-
+}
 }
 
 function setarIndicacao() {

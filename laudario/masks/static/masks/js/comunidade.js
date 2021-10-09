@@ -569,7 +569,7 @@ function procurarTudo() {
                   for(y=0; y < normaisObject.length; y++) {
                         if(normaisObject[y].fields.mascara == mascarasJsonObject[i].pk) {
                             var paragrafoRelatorio = document.createElement("div");
-                            if(mascara_topicos === true && normaisObject[y].fields.orgao != "Nenhum órgão") {
+                            if(mascara_topicos === true && normaisObject[y].fields.orgao != "Nenhum órgão" && normaisObject[y].fields.relatorio != "") {
                                 paragrafoRelatorio.innerHTML = "<strong>" + normaisObject[y].fields.orgao + ": </strong>" + normaisObject[y].fields.relatorio;
                             } else {
                                 paragrafoRelatorio.innerHTML = normaisObject[y].fields.relatorio;
@@ -1141,7 +1141,7 @@ function clicouAbaEspecial(especialidadeid, exameid) {
                   for(y=0; y < normaisObject.length; y++) {
                         if(normaisObject[y].fields.mascara == mascarasJsonObject[i].pk) {
                             var paragrafoRelatorio = document.createElement("div");
-                            if(mascara_topicos === true && normaisObject[y].fields.orgao != "Nenhum órgão") {
+                            if(mascara_topicos === true && normaisObject[y].fields.orgao != "Nenhum órgão" && normaisObject[y].fields.relatorio != "") {
                                 paragrafoRelatorio.innerHTML = "<strong>" + normaisObject[y].fields.orgao + ": </strong>" + normaisObject[y].fields.relatorio;
                             } else {
                                 paragrafoRelatorio.innerHTML = normaisObject[y].fields.relatorio;
@@ -1610,7 +1610,7 @@ function clicouAba(especialidadeid, exameid) {
                   for(y=0; y < normaisObject.length; y++) {
                         if(normaisObject[y].fields.mascara == mascarasJsonObject[i].pk) {
                             var paragrafoRelatorio = document.createElement("div");
-                            if(mascara_topicos === true && normaisObject[y].fields.orgao != "Nenhum órgão") {
+                            if(mascara_topicos === true && normaisObject[y].fields.orgao != "Nenhum órgão" && normaisObject[y].fields.relatorio != "") {
                                 paragrafoRelatorio.innerHTML = "<strong>" + normaisObject[y].fields.orgao + ": </strong>" + normaisObject[y].fields.relatorio;
                             } else {
                                 paragrafoRelatorio.innerHTML = normaisObject[y].fields.relatorio;
