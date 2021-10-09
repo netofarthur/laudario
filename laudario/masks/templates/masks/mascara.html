@@ -137,13 +137,13 @@
 
 
 
-                {% if topico.orgao != "Nenhum órgão" and topico.relatorio and topico.relatorio.strip %}<strong id="s{{ topico.pk }}">{{ topico.orgao }}: </strong>{% endif %}<div data-mce-style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: 0; line-height: {{ profile.altura_linha }}" style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: 0; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk }}">{{ topico.relatorio }}</div>{% if topico.orgao != "Nenhum órgão" and topico.relatorio and topico.relatorio.strip %}<br>{% endif %}
+                {% if topico.orgao != "Nenhum órgão" %}<strong id="s{{ topico.pk }}">{{ topico.orgao }}: </strong>{% endif %}<div data-mce-style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: 0; line-height: {{ profile.altura_linha }}" style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: 0; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk }}">{{ topico.relatorio }}</div>{% if topico.orgao != "Nenhum órgão" %}<br>{% endif %}
             {% else %}
 
 
 
 
-                {% if topico.orgao != "Nenhum órgão" and topico.relatorio and topico.relatorio.strip  %}<strong id="s{{ topico.pk }}">{{ topico.orgao }}: </strong>{% endif %}<div data-mce-style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk }}">{{ topico.relatorio }}</div>{% if topico.orgao != "Nenhum órgão" and topico.relatorio and topico.relatorio.strip %}<br>{% endif %}
+                {% if topico.orgao != "Nenhum órgão" %}<strong id="s{{ topico.pk }}">{{ topico.orgao }}: </strong>{% endif %}<div data-mce-style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" style="display: inline; margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; margin-bottom: {{ profile.espacamento_topicos }}; line-height: {{ profile.altura_linha }}" class="paragrafo_mascara" name="topico" id="{{ topico.pk }}">{{ topico.relatorio }}</div>{% if topico.orgao != "Nenhum órgão" %}<br>{% endif %}
 
             {% endif %}
     {% else %}
