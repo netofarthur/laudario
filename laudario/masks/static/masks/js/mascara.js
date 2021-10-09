@@ -2268,7 +2268,34 @@ function htmlDecode(input) {
     }
 
 
+//não ativa nas máscaras estilo James.
+    function aumentarPrimeiraLetraRelatorio() {
+
+    if(document.getElementById("mascara_topicos") != null) {
+
+        if(document.getElementById("mascara_topicos").value == "False") {
+             if(document.getElementById("topicos_div") != null) {
+        var topicos = document.getElementById("topicos_div").children;
+        for(child of topicos) {
+            child.innerHTML = child.innerHTML.trim();
+            child.innerHTML = child.innerHTML.charAt(0).toUpperCase() + child.innerHTML.slice(1);
+        }
+    }
+        }
+        }
+    }
+
+
     function CopyToClipboard() {
+
+
+
+
+aumentarPrimeiraLetraRelatorio();
+
+
+
+
 
         document.getElementById("copiar_laudo").scrollIntoView();
 
@@ -2381,7 +2408,9 @@ anchor.setAttribute("id", "link_voltar");
 
 }
 
-
+function isLetter(c) {
+  return c.toLowerCase() != c.toUpperCase();
+}
 
 
  function obterVariaveisOriginaisDaEdicao() {
@@ -2722,6 +2751,7 @@ if(document.getElementById("procurarFrases") != null) {
 
 function editarLaudo() {
 
+aumentarPrimeiraLetraRelatorio();
 
 
 
