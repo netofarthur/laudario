@@ -1097,9 +1097,9 @@ def home(request):
 
     mascarasJsonUsuario = "";
 
-    normais = json_serializer.serialize(TopicoNormal.objects.filter(mascara__usuario=usuario))
+    normais = json_serializer.serialize(TopicoNormal.objects.filter(mascara__usuario=usuario).order_by('ordem'))
 
-    normaisAlt = json_serializer.serialize(TopicoNormal.objects.filter(mascara__usuario=usuario2))
+    normaisAlt = json_serializer.serialize(TopicoNormal.objects.filter(mascara__usuario=usuario2).order_by('ordem'))
 
 
     normaisTemplate = TopicoNormal.objects.filter(mascara__usuario=usuario).order_by('orgao')
