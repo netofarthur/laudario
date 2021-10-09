@@ -2782,6 +2782,12 @@ if(document.getElementById("procurarFrases") != null) {
 
 function editarLaudo() {
 
+if(document.getElementById("indicacoes_header").style.display == "none") {
+document.getElementById("indicacoes_header").remove();
+        document.getElementById("lista_indicacoes").remove();
+                document.getElementById("indicacoes").remove();
+
+}
 aumentarPrimeiraLetraRelatorio();
 
 
