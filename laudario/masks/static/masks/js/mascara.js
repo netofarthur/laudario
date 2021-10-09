@@ -280,6 +280,9 @@ mostrarBotaoPopularSeNecessario();
 
  // Altera o diagnóstico Padrão diretamente, sem abrir outras janelas. Tive que usar serialização com JSON objects.
     function alterarDiagnosticoDireto(name, id) {
+      document.getElementById("ultima_alteracao_relatorio").innerHTML = document.getElementById("topicos_div").innerHTML;
+                document.getElementById("ultima_alteracao_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML;;
+
         if(document.getElementById("cancelarIndicacoes") != null) {
 document.getElementById("cancelarIndicacoes").remove();
 }
@@ -321,6 +324,7 @@ document.getElementById("cancelarIndicacoes").remove();
         var relatorio;
         var conclusao;
         var orgao;
+        var orgaoid;
         for(i = 0; i < alteradosJSONObject.length; i++) {
             if(alteradosJSONObject[i].pk == idSemB) {
                 relatorio = alteradosJSONObject[i].fields.relatorio;
@@ -328,6 +332,7 @@ document.getElementById("cancelarIndicacoes").remove();
                 for(z=0; z < normaisObject.length; z++) {
                     if(alteradosJSONObject[i].fields.topico_normal == normaisObject[z].pk) {
                         orgao = normaisObject[z].fields.orgao;
+                        orgaoid = normaisObject[z].pk;
                     }
                 }
             }
@@ -335,13 +340,23 @@ document.getElementById("cancelarIndicacoes").remove();
 
         if(orgao == "Nenhum órgão" && mascara_topicos == "True" && relatorio != "") {
             relatorio = relatorio + "<br>";
+
         }
+
+        if(document.getElementById("s" + orgaoid) != null) {
+        if(document.getElementById("s" + orgaoid).style.display == "none") {
+                            document.getElementById("s" + name).style.display = "inline";
+                            document.getElementById("s" + name).nextSibling.parentNode.insertBefore(document.createElement("br"), document.getElementById("s" + name).nextSibling.nextSibling);
+
+
+                            }
+}
+
 
         document.getElementById("frase_clicada").value = idSemB;
 
 
-       document.getElementById("ultima_alteracao_relatorio").innerHTML = document.getElementById("topicos_div").innerHTML;
-                document.getElementById("ultima_alteracao_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML;;
+
 
     if(id.charAt(0) == "p" || id.charAt(0) == "m") {
     colocarElementosEmOrdem(name);
@@ -2290,7 +2305,6 @@ function htmlDecode(input) {
 
 
 
-
 aumentarPrimeiraLetraRelatorio();
 
 
@@ -2672,6 +2686,23 @@ function clicouExcluir(id) {
 
 function colocarIndicacaoClinica() {
 
+
+//funçãozinha que remove os tópicos vazios máscara james de copiar sem editar. Se for editar, não remove.
+if(mascara_topicos == "True") {
+ var topicos = document.getElementsByName("topico");
+ for(topico of topicos) {
+    if(topico.innerHTML === '') {
+        if(topico.previousSibling.innerHTML != undefined) {
+        topico.previousSibling.style.display = "none";
+                topico.nextSibling.remove();
+
+        }
+    }
+ }
+}
+
+
+
     if(document.getElementById("copiar_laudo") != null) {
     document.getElementById("copiar_laudo").scrollIntoView();
     }
@@ -2710,7 +2741,8 @@ function colocarIndicacaoClinica() {
     var idAlteracao;
 
 
-
+ document.getElementById("ultima_alteracao_relatorio").innerHTML = document.getElementById("topicos_div").innerHTML;
+                document.getElementById("ultima_alteracao_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML;
 
 
 }
