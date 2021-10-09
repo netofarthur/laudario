@@ -157,7 +157,12 @@ function procurarEntradasAdaptado() {
 
   }
 
+ if(isScrolledIntoView(document.getElementById("myfooter"))) {
+        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
+     } else {
+        document.getElementById("myfooter").setAttribute("class", "normalfooter");
 
+     }
 
 
 }
@@ -763,7 +768,12 @@ clicouEntradaAlteracao(alteracaoId);
 
 
 
+ if(isScrolledIntoView(document.getElementById("myfooter"))) {
+        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
+     } else {
+        document.getElementById("myfooter").setAttribute("class", "normalfooter");
 
+     }
 
 }
 
@@ -1329,7 +1339,12 @@ paragrafonome.setAttribute("id", alteracaoId);
 
     }
 
+ if(isScrolledIntoView(document.getElementById("myfooter"))) {
+        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
+     } else {
+        document.getElementById("myfooter").setAttribute("class", "normalfooter");
 
+     }
 
 }
 
@@ -2103,7 +2118,12 @@ function procurarEntradas(id) {
 
 
 
+ if(isScrolledIntoView(document.getElementById("myfooter"))) {
+        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
+     } else {
+        document.getElementById("myfooter").setAttribute("class", "normalfooter");
 
+     }
 
 }
 
