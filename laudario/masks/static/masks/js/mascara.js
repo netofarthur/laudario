@@ -1322,10 +1322,10 @@ function recolocarTinys() {
                                 language: 'pt_BR',
 
                               menubar: false,
-                                      plugins: "table paste",
+                                      plugins: "table paste lists",
                                         paste_as_text: true,
                                 forced_root_block: false,
-                            toolbar: "bold italic underline forecolor table",
+                            toolbar: "bold italic underline forecolor table bullist",
                               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
                                 branding: false,
                                   elementpath: false
@@ -1339,10 +1339,10 @@ function recolocarTinys() {
                                 language: 'pt_BR',
 
                               menubar: false,
-                                      plugins: "table paste",
+                                      plugins: "table paste lists",
                                     paste_as_text: true,
                         forced_root_block: false,
-                            toolbar: "bold italic underline forecolor table",
+                            toolbar: "bold italic underline forecolor table bullist",
                               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
                                 branding: false,
                                   elementpath: false
@@ -1361,10 +1361,10 @@ function recolocarTinys() {
             language: 'pt_BR',
 
     forced_root_block: false,
-        plugins: "table paste",
+        plugins: "table paste lists",
         paste_as_text: true,
           menubar: false,
-        toolbar: "bold italic underline forecolor table",
+        toolbar: "bold italic underline forecolor table bullist",
           fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
             branding: false,
               elementpath: false
@@ -1378,10 +1378,10 @@ function recolocarTinys() {
             language: 'pt_BR',
 
     forced_root_block: false,
-        plugins: "table paste",
+        plugins: "table paste lists",
         paste_as_text: true,
           menubar: false,
-        toolbar: "bold italic underline forecolor table",
+        toolbar: "bold italic underline forecolor table bullist",
           fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
             branding: false,
               elementpath: false
@@ -1398,10 +1398,10 @@ function recolocarTinys() {
         forced_root_block: false,
             language: 'pt_BR',
 
-            plugins: "table paste",
+            plugins: "table paste lists",
         paste_as_text: true,
               menubar: false,
-            toolbar: "bold italic underline forecolor table",
+            toolbar: "bold italic underline forecolor table bullist",
               fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
                 branding: false,
                   elementpath: false
@@ -1415,12 +1415,12 @@ function recolocarTinys() {
             body_id : "tecnica",
     forced_root_block: false,
         selector: '#tecnica',
-        plugins: "table paste",
+        plugins: "table paste lists",
         paste_as_text: true,
             language: 'pt_BR',
 
           menubar: false,
-        toolbar: "bold italic underline forecolor table",
+        toolbar: "bold italic underline forecolor table bullist",
           fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
             branding: false,
               elementpath: false
@@ -1433,12 +1433,12 @@ function recolocarTinys() {
         selector: '#conclusao',
     forced_root_block: false,
         body_id : "conclusao",
-        plugins: "table paste",
+        plugins: "table paste lists",
         paste_as_text: true,
             language: 'pt_BR',
 
           menubar: false,
-        toolbar: "bold italic underline forecolor table",
+        toolbar: "bold italic underline forecolor table bullist",
           fontsize_formats: '11px 12px 14px 16px 18px 24px 36px 48px',
             branding: false,
               elementpath: false
@@ -2904,10 +2904,10 @@ document.getElementById("titulo").style.margin = ".5rem";
 
 
                               menubar: false,
-                                      plugins: "table paste code",
+                                      plugins: "table paste code lists",
                                         paste_as_text: true,
                                 forced_root_block: false,
-                            toolbar: "fontselect fontsizeselect bold italic underline forecolor table code spell",
+                            toolbar: "fontselect fontsizeselect bold italic underline forecolor table bullist code spell",
                             setup: function (editor) {
                                 editor.ui.registry.addButton('spell', {
                                   tooltip: 'Ditar no microfone',
