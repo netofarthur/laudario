@@ -186,11 +186,73 @@ function popularMascara(mascaraId) {
         anchor.setAttribute("id", "adicionar_entrada_orgao" + numero);
         anchor.innerHTML = "Novo tópico";
     document.getElementById(id).parentNode.parentNode.insertBefore(orgaoDiv, document.getElementById(id).parentNode.nextSibling);
+
+
+
+
         orgaoDiv.appendChild(orgaoDivFlex);
-    orgaoDivFlex.appendChild(topicoIdHidden);
+
+
+        let jamesDiv = document.createElement("div");
+        orgaoDiv.appendChild(jamesDiv);
+        orgaoDiv.setAttribute("name", "opcoesJames");
+if(document.getElementById("mascara_topicos").value != "True") {
+            jamesDiv.style.display = "none";
+        }
+
+    let checkboxBullet = document.createElement("input");
+    checkboxBullet.setAttribute("type", "checkbox");
+    checkboxBullet.setAttribute("id", "bullet" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+    checkboxBullet.setAttribute("onclick", "clicouBullet(this.id)");
+
+    let bulletLabel = document.createElement("label");
+    bulletLabel.setAttribute("for", "bullet" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+    bulletLabel.innerHTML ="Bullet";
+
+
+    jamesDiv.appendChild(checkboxBullet);
+    jamesDiv.appendChild(bulletLabel);
+
+
+
+    let checkboxEspaco = document.createElement("input");
+        checkboxEspaco.setAttribute("type", "checkbox");
+
+    checkboxEspaco.setAttribute("id", "espaco" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+    checkboxEspaco.setAttribute("onclick", "clicouEspaco(this.id)");
+
+    let espacoLabel = document.createElement("label");
+    espacoLabel.setAttribute("for", "espaco" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+    espacoLabel.innerHTML = "Espaço";
+
+
+    jamesDiv.appendChild(checkboxEspaco);
+    jamesDiv.appendChild(espacoLabel);
+
+
+        let checkboxItalico = document.createElement("input");
+                checkboxItalico.setAttribute("type", "checkbox");
+
+    checkboxItalico.setAttribute("id", "italico" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+    checkboxItalico.setAttribute("onclick", "clicouItalico(this.id)");
+
+    let italicoLabel = document.createElement("label");
+    italicoLabel.setAttribute("for", "italico" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+    italicoLabel.innerHTML = "Itálico";
+
+
+    jamesDiv.appendChild(checkboxItalico);
+    jamesDiv.appendChild(italicoLabel);
+
+
+
+
+
 
    orgaoDivFlex.appendChild(label);
     orgaoDivFlex.appendChild(orgao);
+        orgaoDivFlex.appendChild(topicoIdHidden);
+
     orgaoDivFlex.appendChild(remover);
     orgaoDiv.appendChild(descricaoOrgao);
 
@@ -375,10 +437,71 @@ function filtrarMascaras() {
     }
     listaOrgaos.appendChild(orgaoDiv);
         orgaoDiv.appendChild(orgaoDivFlex);
-    orgaoDivFlex.appendChild(topicoIdHidden);
+
+        let jamesDiv = document.createElement("div");
+                orgaoDiv.setAttribute("name", "opcoesJames");
+                if(document.getElementById("mascara_topicos").value != "True") {
+            jamesDiv.style.display = "none";
+        }
+
+
+        orgaoDiv.appendChild(jamesDiv);
+
+    let checkboxBullet = document.createElement("input");
+    checkboxBullet.setAttribute("type", "checkbox");
+    checkboxBullet.setAttribute("id", "bullet" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+    checkboxBullet.setAttribute("onclick", "clicouBullet(this.id)");
+
+    let bulletLabel = document.createElement("label");
+    bulletLabel.setAttribute("for", "bullet" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+    bulletLabel.innerHTML ="Bullet";
+
+
+    jamesDiv.appendChild(checkboxBullet);
+    jamesDiv.appendChild(bulletLabel);
+
+
+
+    let checkboxEspaco = document.createElement("input");
+        checkboxEspaco.setAttribute("type", "checkbox");
+
+    checkboxEspaco.setAttribute("id", "espaco" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+    checkboxEspaco.setAttribute("onclick", "clicouEspaco(this.id)");
+
+    let espacoLabel = document.createElement("label");
+    espacoLabel.setAttribute("for", "espaco" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+    espacoLabel.innerHTML = "Espaço";
+
+
+    jamesDiv.appendChild(checkboxEspaco);
+    jamesDiv.appendChild(espacoLabel);
+
+
+        let checkboxItalico = document.createElement("input");
+                checkboxItalico.setAttribute("type", "checkbox");
+
+    checkboxItalico.setAttribute("id", "italico" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+    checkboxItalico.setAttribute("onclick", "clicouItalico(this.id)");
+
+    let italicoLabel = document.createElement("label");
+    italicoLabel.setAttribute("for", "italico" + (listaOrgaos.children.length - 1 + parseInt(document.getElementById("clicou_remover").value)));
+    italicoLabel.innerHTML = "Itálico";
+
+
+
+    jamesDiv.appendChild(checkboxItalico);
+    jamesDiv.appendChild(italicoLabel);
+
+
+
+
+
+
 
    orgaoDivFlex.appendChild(label);
     orgaoDivFlex.appendChild(orgao);
+        orgaoDivFlex.appendChild(topicoIdHidden);
+
     orgaoDivFlex.appendChild(remover);
     orgaoDiv.appendChild(descricaoOrgao);
     orgaoDiv.appendChild(butao);
@@ -406,3 +529,59 @@ function filtrarMascaras() {
     anchor.style.display = "none";
 
   }
+
+
+
+function clicouBullet(id) {
+
+
+
+var children = document.getElementById(id).parentNode.previousElementSibling.children;
+
+if(document.getElementById(id).checked) {
+children[1].value = "\u2022" + children[1].value;
+
+} else {
+children[1].value = children[1].value.replace("\u2022", "");
+
+
+}
+
+
+
+}
+
+function clicouEspaco(id) {
+
+var children = document.getElementById(id).parentNode.previousElementSibling.children;
+
+if(document.getElementById(id).checked) {
+children[1].value = "\u2001" + children[1].value;
+
+} else {
+children[1].value = children[1].value.replace("\u2001", "");
+
+
+}
+
+
+
+}
+
+function clicouItalico(id) {
+
+var children = document.getElementById(id).parentNode.previousElementSibling.children;
+
+if(document.getElementById(id).checked) {
+children[1].value = "<i>" + children[1].value + "</i>";
+
+} else {
+children[1].value = children[1].value.replace("<i>", "");
+children[1].value = children[1].value.replace("</i>", "");
+
+
+}
+
+
+
+}

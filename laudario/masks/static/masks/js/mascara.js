@@ -2288,7 +2288,6 @@ function htmlDecode(input) {
 
     if(document.getElementById("mascara_topicos") != null) {
 
-        if(document.getElementById("mascara_topicos").value == "False") {
              if(document.getElementById("topicos_div") != null) {
         var topicos = document.getElementById("topicos_div").children;
         for(child of topicos) {
@@ -2296,7 +2295,7 @@ function htmlDecode(input) {
             child.innerHTML = child.innerHTML.charAt(0).toUpperCase() + child.innerHTML.slice(1);
         }
     }
-        }
+
         }
     }
 
@@ -2687,6 +2686,9 @@ function clicouExcluir(id) {
 function colocarIndicacaoClinica() {
 
 
+configurarBotoezinhosJames();
+
+
 //funçãozinha que remove os tópicos vazios máscara james de copiar sem editar. Se for editar, não remove.
 if(mascara_topicos == "True") {
  var topicos = document.getElementsByName("topico");
@@ -2744,6 +2746,38 @@ if(document.getElementById("ultima_alteracao_relatorio") != null) {
  document.getElementById("ultima_alteracao_relatorio").innerHTML = document.getElementById("topicos_div").innerHTML;
                 document.getElementById("ultima_alteracao_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML;
 }
+
+
+if(document.getElementsByName("opcoesJames") != null) {
+    var orgaos = document.getElementsByName("orgao");
+    for(orgao of orgaos) {
+        if(orgao.value.includes("\u2022")) {
+            orgao.parentNode.parentNode.children[1].children[0].checked = true;
+
+        }
+        if(orgao.value.includes("\u2001")) {
+            orgao.parentNode.parentNode.children[1].children[2].checked = true;
+
+        }
+        if(orgao.value.includes("<i>") && orgao.value.includes("</i>")) {
+            orgao.parentNode.parentNode.children[1].children[4].checked = true;
+
+        }
+
+    }
+}
+
+    if(document.getElementById("mascara_topicos") != null && document.getElementById("mascara_topicos").value != "True") {
+            var children = document.getElementsByName("opcoesJames");
+            for (child of children) {
+                child.style.display = "none";
+            }
+
+
+
+
+        }
+
 }
 
 function setarIndicacao() {
@@ -2782,15 +2816,23 @@ if(document.getElementById("procurarFrases") != null) {
 
 function editarLaudo() {
 
+
+if(document.getElementById("indicacoes_header") != null) {
+
 if(document.getElementById("indicacoes_header").style.display == "none") {
 document.getElementById("indicacoes_header").remove();
         document.getElementById("lista_indicacoes").remove();
                 document.getElementById("indicacoes").remove();
 
 }
+
+}
+
+if(mascara_topicos != "True") {
+
 aumentarPrimeiraLetraRelatorio();
 
-
+}
 
 if(document.getElementById("indicacoesEscondida") != null) {
         document.getElementById("indicacoesEscondida").remove();
@@ -3581,4 +3623,28 @@ var indicacoes = document.getElementById("indicacoesEscondida").innerHTML.split(
         indicacoesDiv.appendChild(select);
             document.getElementById("cancelarIndicacoes").style.display = "none";
 
+}
+
+function configurarBotoezinhosJames() {
+if(document.getElementById("botoezinhos_div") != null) {
+    var children = document.getElementById("botoezinhos_div").children;
+    for(child of children) {
+        child.style.display = "inline";
+        child.innerHTML = child.innerText.replaceAll('&nbsp;','');
+                child.innerHTML = child.innerText.replaceAll('\u2022','').trim();
+
+
+    }
+    }
+
+    if(document.getElementById("exames") != null) {
+     var children = document.getElementById("exames").children;
+    for(child of children) {
+        child.style.display = "inline";
+        child.innerHTML = child.innerText.replaceAll('&nbsp;','');
+                child.innerHTML = child.innerText.replaceAll('\u2022','').trim();
+
+
+    }
+}
 }

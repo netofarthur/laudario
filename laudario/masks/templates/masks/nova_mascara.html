@@ -192,13 +192,32 @@
 
 
 <div name="orgao_div">
+{% autoescape off %}
 <div style="display: flex">
+
 <label name="orgaolabel">Tópico: </label>
+
+
 <input style="flex: 2; margin-bottom: 5px; width: 100%" type="text" name="orgao">
 
-<button name="botao_remover" class="botao_remover" type="button" onclick="removerEntradaOrgao(this.id)" id="0">Remover</button>
-</div>
 
+
+                {% endautoescape %}
+
+
+<button name="botao_remover" class="botao_remover" type="button" onclick="removerEntradaOrgao(this.id)" id="0">Remover</button>
+
+</div>
+    <div name="opcoesJames">
+<input type="checkbox" id="bullet" onclick="clicouBullet(this.id)">
+    <label for="bullet">Bullet</label>
+
+    <input type="checkbox" id="espaco" onclick="clicouEspaco(this.id)">
+    <label for="espaco">Espaço</label>
+
+    <input type="checkbox" id="italico" onclick="clicouItalico(this.id)">
+    <label for="italico">Itálico</label>
+</div>
 <textarea rows="3" class="paragrafo_mascara" id="text_area_orgao" name="relatorio_orgao" placeholder="Descrição normal do tópico"></textarea>
 <button class="botao_novo_topico" type="button" onclick="adicionarEntradaOrgao(this.id)" id="adicionar_entrada_orgao1">Novo tópico</button>
 
@@ -260,6 +279,7 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
   <p style="text-align: center; font-weight: bold; text-decoration: underline;">Dica</p><p style="text-align: center;">Aprenda como utilizar as <a style="color: #c96100;" href="{% url 'descricao' %}#variaveis" target="_blank">variáveis</a> nos seu laudos.
 </div>
 
+    <input type="hidden" name="mascara_topicos" id="mascara_topicos" value="{{ profile.mascara_topicos }}">
 
 
 

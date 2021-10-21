@@ -185,8 +185,10 @@ def nova_mascara(request):
     variaveis = json_serializer.serialize(Variavel.objects.all().order_by('ordem'))
     variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
     titulo = "Masqs - Nova Máscara"
+    profile = Profile.objects.get(usuario=request.user)
+
     context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson, 'topicos_normais': topicos_normais, 'variaveis': variaveis,
-               'variaveisusuario': variaveisusuario, 'profiles': profiles, 'titulo': titulo}
+               'variaveisusuario': variaveisusuario, 'profiles': profiles, 'titulo': titulo, 'profile': profile}
     return render(request, 'masks/nova_mascara.html', context)
 
 def adicionar_nova_mascara(request):
@@ -611,9 +613,11 @@ def editar_mascara(request, id_mascara):
     exames = Exame.objects.all()
     topicos_normais = TopicoNormal.objects.filter(mascara=id_mascara).order_by('ordem')
     titulo = "Masqs - Editar Máscara"
+    profile = Profile.objects.get(usuario=request.user)
+
     context = {'mascara': mascara, 'especialidades': especialidades, 'exames': exames, 'topicos_normais': topicos_normais,
                'topicos_anormais': topicos_anormais,'variaveis': variaveis, 'variaveisusuario': variaveisusuario,
-               'profiles': profiles, 'titulo': titulo}
+               'profiles': profiles, 'titulo': titulo, 'profile': profile}
     return render(request, 'masks/editar_mascara.html', context)
 
 

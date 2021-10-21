@@ -123,33 +123,55 @@
 
 <div name="orgao_div">
     <div style="display: flex">
-<input type="hidden" value="{{ topico_normal.pk }}" name="id_orgao">
 <label name="orgaolabel">Tópico: </label>
 <input style="flex: 2; margin-bottom: 5px;" type="text" name="orgao" value="{{ topico_normal.orgao }}">
+<input type="hidden" value="{{ topico_normal.pk }}" name="id_orgao">
 
 <button class="botao_remover" name="botao_remover" style="margin-bottom:5px;" type="button" onclick="removerEntradaOrgao(this.id)" id="{{ forloop.counter0 }}">Remover</button>
     </div>
 
+    <div name="opcoesJames">
+<input type="checkbox" id="bullet{{ topico_normal.pk }}" onclick="clicouBullet(this.id)">
+    <label for="bullet{{ topico_normal.pk }}">Bullet</label>
 
+    <input type="checkbox" id="espaco{{ topico_normal.pk }}" onclick="clicouEspaco(this.id)">
+    <label for="espaco{{ topico_normal.pk }}">Espaço</label>
 
-<textarea style="visibility: hidden; max-height: 0;" rows="3" class="paragrafo_mascara" id="text_area_orgao{{ forloop.counter }}" name="relatorio_orgao" placeholder="Descrição normal do tópico">{{ topico_normal.relatorio }}</textarea>
-<button class="botao_novo_topico" type="button" onclick="adicionarEntradaOrgao(this.id)" id="adicionar_entrada_orgao{{ forloop.counter }}">Novo tópico</button>
+    <input type="checkbox" id="italico{{ topico_normal.pk }}" onclick="clicouItalico(this.id)">
+    <label for="italico{{ topico_normal.pk }}">Itálico</label>
+</div>
+{% autoescape off %}
+
+    <textarea style="visibility: hidden; max-height: 0;" rows="3" class="paragrafo_mascara" id="text_area_orgao{{ forloop.counter }}" name="relatorio_orgao" placeholder="Descrição normal do tópico">{{ topico_normal.relatorio }}</textarea>
+{% endautoescape %}
+    <button class="botao_novo_topico" type="button" onclick="adicionarEntradaOrgao(this.id)" id="adicionar_entrada_orgao{{ forloop.counter }}">Novo tópico</button>
 
 
     </div>
     {% else %}
     <div style="display: none;" name="orgao_div">
     <div style="display: flex">
-<input type="hidden" value="{{ topico_normal.pk }}" name="id_orgao" id="h{{ topico_normal.pk }}">
 <label name="orgaolabel">Tópico: </label>
 <input style="flex: 2; margin-bottom: 5px;" type="text" name="orgao" value="{{ topico_normal.orgao }}">
+<input type="hidden" value="{{ topico_normal.pk }}" name="id_orgao" id="h{{ topico_normal.pk }}">
 
 <button  name="botao_remover" style="margin-bottom:5px;" type="button" onclick="removerEntradaOrgao(this.id)" id="{{ forloop.counter0 }}">Remover</button>
     </div>
 
 
-<textarea style="visibility: hidden; max-height: 0;" rows="3" class="paragrafo_mascara" id="text_area_orgao{{ forloop.counter }}" name="relatorio_orgao" placeholder="Descrição normal do tópico">{{ topico_normal.relatorio }}</textarea>
+            <div name="opcoesJames">
+<input type="checkbox" id="bullet{{ topico_normal.pk }}" onclick="clicouBullet(this.id)">
+    <label for="bullet{{ topico_normal.pk }}">Bullet</label>
 
+    <input type="checkbox" id="espaco{{ topico_normal.pk }}" onclick="clicouEspaco(this.id)">
+    <label for="espaco{{ topico_normal.pk }}">Espaço</label>
+
+    <input type="checkbox" id="italico{{ topico_normal.pk }}" onclick="clicouItalico(this.id)">
+    <label for="italico{{ topico_normal.pk }}">Itálico</label>
+</div>
+{% autoescape off %}
+<textarea style="visibility: hidden; max-height: 0;" rows="3" class="paragrafo_mascara" id="text_area_orgao{{ forloop.counter }}" name="relatorio_orgao" placeholder="Descrição normal do tópico">{{ topico_normal.relatorio }}</textarea>
+{% endautoescape %}
 <br name="orgaobr">
     </div>
 
@@ -319,6 +341,9 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
 
 
 </div>
+
+        <input type="hidden" name="mascara_topicos" id="mascara_topicos" value="{{ profile.mascara_topicos }}">
+
 
 <div id="coluna_mascaras" class="col-6" style="padding-top: 1rem; height: 90vh; overflow: auto;">
     <div style="text-align:center; margin-bottom: 25px; color: #c96100;"><h3>Alterações</h3>

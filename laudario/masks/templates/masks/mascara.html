@@ -285,10 +285,12 @@ var recognizing;
         {% endif %}
 
             <input autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeyup="procurarFrasesMascara(this.id)" onsearch="procurarFrasesMascara(this.id)"/>
+                    {% autoescape off %}
 
             {% if usuarioPermitido and user.is_authenticated %}
 
             <div id="botoezinhos_div">
+
                 {% for topico in topicos_normais %}
                     {% if forloop.counter == 1 %}
                         <button style="background: #c96100;" id="todas" onclick="clicouBotaozinho(this.id)">Todas</button>
@@ -297,7 +299,18 @@ var recognizing;
 
 
                     {% if topico.orgao != "Nenhum órgão" %}
+                    {% if profile.mascara_topicos == True %}
+
+                    <button id="t{{ topico.pk }}" onclick="clicouBotaozinho(this.id)" style="display: none;">{{ topico.orgao }}</button>
+                    {% else %}
+
                     <button id="t{{ topico.pk }}" onclick="clicouBotaozinho(this.id)">{{ topico.orgao }}</button>
+
+
+
+                    {% endif %}
+
+
                     {% endif %}
 
                  {% if forloop.last %}
@@ -308,6 +321,8 @@ var recognizing;
                 {% endfor %}
             </div>
         {% endif %}
+                {% endautoescape %}
+
         </div>
 
     <!--Seta ids únicos para os botões poderem ser reconhecidos e possibiliar abrir Modals com htmls diferentes.
@@ -563,10 +578,12 @@ var recognizing;
                             <div style="margin-bottom: 1rem; margin-top: 1rem;">
                           <label class="label_laranja" id="label_topicos" for="exames">Tópico a ser alterado </label>
                           <select class="form-control" name ="exames" id="exames">
+                                                  {% autoescape off %}
+
                             {% for topico_normal in topicos_normais %}
                               <option value={{ topico_normal.pk }}>{{topico_normal.orgao}}</option>
                             {% endfor %}
-
+{% endautoescape %}
                           </select>
                                 </div>
 
