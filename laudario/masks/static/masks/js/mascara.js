@@ -373,9 +373,8 @@ document.getElementById("cancelarIndicacoes").remove();
 
 
 
-        alert(relatorio);
 
-        if(relatorio != "&nbsp;") {
+        if(relatorio != "&nbsp;" && relatorio != "&nbsp;<br>") {
 
 
 
