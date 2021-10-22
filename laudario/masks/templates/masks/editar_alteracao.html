@@ -93,7 +93,10 @@
     <br>
 
 <label for="relatorio_modal">Descrição da alteração: </label>
+                                {% autoescape off %}
+
     <textarea style="width: 100%; rows:4;" class="entrada_modal" type="text" id="relatorio_modal" name="relatorio_modal">{{ topico_anormal.relatorio }}</textarea>
+    {% endautoescape %}
 <br>
 
 <label for="conclusao_modal">Conclusão da alteração: </label>

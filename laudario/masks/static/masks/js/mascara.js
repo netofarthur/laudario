@@ -373,7 +373,9 @@ document.getElementById("cancelarIndicacoes").remove();
 
 
 
+        alert(relatorio);
 
+        if(relatorio != "&nbsp;") {
 
 
 
@@ -407,6 +409,8 @@ document.getElementById("cancelarIndicacoes").remove();
                        document.getElementById(name).innerHTML = document.getElementById(name).innerHTML + "<br>" + relatorio;
 
             }
+        }
+
         }
 
         if(document.getElementById("paragrafo_conclusao").getAttribute("name") != "alterado" && relatorio != "" && relatorio != "<br>") {
