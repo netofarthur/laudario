@@ -2302,12 +2302,13 @@ function htmlDecode(input) {
 
     function CopyToClipboard() {
 
+if(mascara_topicos != "True") {
 
 
 aumentarPrimeiraLetraRelatorio();
 
 
-
+}
 
 
         document.getElementById("copiar_laudo").scrollIntoView();
