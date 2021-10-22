@@ -2105,7 +2105,6 @@ document.getElementById("cancelarIndicacoes").remove();
         par.style.width = "100%";
     }
 
-    recolocarTinys();
 
             if(document.getElementById("adicionar_no_atual") != null) {
                 document.getElementById("corpo_variaveis").scrollIntoView();
