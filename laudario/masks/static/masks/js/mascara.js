@@ -2891,7 +2891,7 @@ document.getElementById("indicacoes").style.marginTop = "0px";
 
 }
 if(document.getElementById("titulo") != null) {
-document.getElementById("titulo").style.margin = ".5rem";
+document.getElementById("titulo").style.margin = "0px";
 
 }
 
