@@ -241,6 +241,9 @@ def adicionar_nova_mascara(request):
 
     for i in range(len(lista_orgaos)):
 
+        if (lista_relatorios_orgaos[i] == " "):
+            lista_relatorios_orgaos[i] = '&nbsp';
+
         topico_normal = TopicoNormal(mascara=nova_mascara, orgao=lista_orgaos[i], relatorio=lista_relatorios_orgaos[i], ordem=i)
         topico_normal.save()
 
@@ -677,6 +680,9 @@ def salvar_edicao(request, id_mascara):
 
     for i in range(len(lista_relatorios_orgaos)):
         counter = TopicoNormal.objects.filter(mascara=mascara, relatorio=lista_relatorios_orgaos[i])
+
+        if(lista_relatorios_orgaos[i] == " "):
+            lista_relatorios_orgaos[i] = '&nbsp';
 
         if(i < len(orgaosDaMascara) - int(vezesClicadoRemover)):
             if(lista_ids_orgaos[i] == "vazio"):
