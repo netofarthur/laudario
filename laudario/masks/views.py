@@ -1142,3 +1142,11 @@ def home(request):
                'normaisTemplate': normaisTemplate, 'mascarasJsonPopularesAlt': mascarasJsonPopularesAlt,
                'normaisAlt': normaisAlt, 'variaveis2': variaveis2}
     return render(request, 'masks/home.html', context)
+
+
+
+def entrar(request):
+
+    titulo = "Masqs"
+    context = {'titulo': titulo,}
+    return render(request, 'masks/entrar.html', context)

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Masqs</title>
+    {% load static %}
+
+
+
+     <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+          <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+
+        <!-- Required meta tags for bootstrap-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" type="text/css" href="{% static 'masks/css/entrar.css' %}">
+</head>
+<body>
+
+
+ <nav class="navbar navbar-dark navbar-expand-sm">
+        <a href="/" class="navbar-left"><img width="250" height="60" id="logo_navbar" src="{% static 'masks/images/icone2.png' %}"></a>
+
+        <div class="container">
+            <button id="botao_expansor" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav mr-auto" id="barra_navegacao">
+
+
+                    <li class="nav-item">
+                        <a id="comunidade" class="nav-link" href="/">Home</a>
+                    </li>
+
+                     <li class="nav-item">
+                        <a id="sobre" class="nav-link" href="{% url 'sobre' %}">Sobre</a>
+                    </li>
+
+
+
+                            <li class="nav-item">
+                        <a id="contato" class="nav-link" href="{% url 'sobre' %}">Contato</a>
+                    </li>
+
+                </ul>
+
+                <form id="form_username" style="padding: 10px; text-align: right;">
+                    <span style="color: #c96100;" id="username">{{ user.username }}</span>
+                    <a id="loginlogout" style="font-size: 1.3rem; " href="{% url 'mostrar_index' %}">Login</a>
+
+
+                </form>
+
+            </div>
+        </div>
+    </nav>
+
+
+<div class="container-fluid" id="container">
+
+<div class="row">
+
+<div class="col-md-6 col-xs-12" style="padding: 3rem;">
+
+    <img width="110%" height="auto" src="{% static 'masks/images/laptop.png' %}">
+
+</div>
+
+    <div class="col-md-6 col-xs-12" style="padding: 3rem;">
+    <h1 style="text-align: left; padding-top: 0.2rem;">Laude mais rápido e mais inteligente</h1>
+        <h5 style="text-align: left; padding-top: 2rem;">Adicione alterações personalizadas em suas máscaras ao toque do mouse.</h5>
+        <button id="botaocadastro">Crie sua conta gratuitamente</button>
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="container-fluid" id="container2" style="background-color: #c96100;">
+
+<div class="row">
+
+            <div class="col-md-4 col-xs-12" style="padding: 3rem;">
+       <img width="80rem;" height="auto" src="{% static 'masks/images/mouse.png' %}">
+                <h5 style="color: white; padding-top: 1.5rem;">Adicione diagnósticos com um clique</h5>
+</div>
+
+<div class="col-md-4 col-xs-12" style="padding: 3rem;">
+
+        <img width="80rem;" height="auto" src="{% static 'masks/images/microfone2.png' %}">
+                <h5 style="color: white; padding-top: 1.5rem;">Reconhecimento por voz</h5>
+
+
+
+</div>
+
+    <div class="col-md-4 col-xs-12" style="padding: 3rem;">
+       <img width="80rem;" height="auto" src="{% static 'masks/images/nuvem.png' %}">
+                <h5 style="color: white; padding-top: 1.5rem;">Trabalhe de qualquer lugar</h5>
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<div>
+
+
+    <br>
+    <br>
+       <img width="100rem;" height="auto" src="{% static 'masks/images/interrogacao.png' %}">
+        <h1>Perguntas Frequentes</h1>
+        <p class="pergunta">1. O que é o masqs?</p>
+        <p class="resposta">Plataforma idealizada por médicos radiologistas para aumentar a produtividade, sem perda da qualidade, nos laudos radiológicos.</p>
+        <p class="resposta">Adicione alterações e diagnósticos personalizados em suas máscaras com um clique do mouse.</p>
+        <p class="pergunta">2. O masqs é gratuito?</p>
+        <p class="resposta">O masqs sempre foi e sempre será gratuito. Oferecemos algumas funcionalidades extras para usuários premium, como forma de manutenção do nosso projeto</p>
+        <p class="pergunta">3. Quais são as funcionalidades extras para usuários premium?</p>
+        <p class="resposta">Usuários premium podem copiar máscaras e diagnósticos de outros usuários com apenas um clique além de criar perfis diferentes para armazenamento de máscaras de diversos serviços.</p>
+        <p class="pergunta">4. Existe algum risco de perder minhas máscaras e diagnósticos cadastrados no masqs?</p>
+        <p class="resposta">O usuário sempre possui acesso total às suas máscaras e diagnósticos cadastrados. O armazenamento é feito de forma segura e com backups frequentes.</p>
+        <p class="pergunta">5. Onde posso usar o masqs?</p>
+        <p class="resposta">Em qualquer computador que possua um navegador com acesso à internet.</p>
+
+    <br>
+    <br>
+</div>
+
+ <!--
+<iframe title="Masqs Promocional" width="800" height="360"
+src="https://www.youtube.com/embed/Hss3WRYrqLY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+-->
+
+    <footer id="myfooter">Copyright © 2021 Masqs</footer>
+
+
+
+
+</body>
+
+
+
+</html>

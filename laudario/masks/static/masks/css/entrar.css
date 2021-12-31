@@ -1,0 +1,172 @@
+.navbar-toggler{
+margin-top: 1.5rem;
+}
+
+.navbar {
+    background-color: #000000;
+    min-height: 8rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+
+
+.nav-item {
+text-align: left;
+}
+
+
+a:hover {
+ color: #c96100;
+ text-decoration: none;
+
+}
+
+a {
+font-size: 1.4rem;
+color: #ffffff;
+
+margin: 5px;
+}
+
+#botao_entrar:hover {
+    background-color: #000000;
+    color: #c96100;
+    border-radius: .7rem;
+
+
+}
+
+#botao_entrar {
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: .7rem;
+
+
+}
+
+body {
+    text-align: center;
+}
+
+#form_login {
+    margin-top: 40vh;
+
+}
+
+#cadastro_div {
+text-align: left;
+ margin-right: 23%;
+        margin-left: 23%;
+
+
+ }
+
+label {
+    margin-bottom: .2rem;
+}
+
+#usuario_login {
+    background-color: #dedede;
+}
+
+#senha_login {
+    background-color: #dedede;
+
+}
+
+.cadastro_input {
+    width: 100%;
+    margin-bottom: .8rem;
+}
+
+#botao_cadastro_div {
+    text-align: center;
+}
+
+.modal-header {
+    text-align: center;
+}
+
+#novo_cadastro_title {
+    color: #c96100;
+    margin-bottom: .9rem;
+}
+
+#botao_cadastrar {
+      background-color: #000000;
+      color: #ffffff;
+      border-radius: .5rem;
+      margin-top: .7rem;
+
+
+
+}
+
+.mensagem_erro {
+    color: red;
+    margin-top: 0rem;
+}
+
+
+
+}
+
+#contato_href {
+    color: #c96100;
+}
+
+#contato_href:hover {
+    color: #c96100;
+
+}
+
+#figura {
+height: 460px;
+background: url(../images/laptop.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#botaocadastro {
+    color: #ffffff;
+margin-top: 2.7rem;
+border-radius: 2rem;
+      background-color: #c96100;
+
+    width: 100%;
+padding: 0.4rem;
+
+                    font-size: 1.3rem;
+}
+
+.resposta {
+    text-align: left;
+    padding-left: 6rem;
+        padding-right: 6rem;
+            font-size: 1.2rem;
+
+
+}
+
+.pergunta {
+    margin-top: 2rem;
+            padding-right: 6rem;
+
+    padding-left: 6rem;
+    text-align: left;
+    font-weight: bold;
+    color: #c96100;
+    font-size: 1.6rem;
+
+}
+
+#myfooter {
+  text-align: center;
+    background-color: #000000;
+    color: #ffffff;
+    padding: .5rem;
+    height: 2.5rem;
+    }
