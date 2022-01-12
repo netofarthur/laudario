@@ -118,6 +118,8 @@ def mostrar_mascara(request, id_mascara):
 
         profile = Profile.objects.get(usuario=request.user)
 
+        profileJson = json_serializer.serialize(Profile.objects.filter(usuario=request.user))
+
         mascara_topicos = profile.mascara_topicos
 
         titulo = "Masqs - " + mascara.nome
@@ -125,7 +127,7 @@ def mostrar_mascara(request, id_mascara):
                    'topicos_anormais_builders': topicos_anormais_builders, 'alterados': alterados, 'variaveis': variaveis, 'normais': normais,
                    'usuarios2': usuarios2, 'mascarasJson': mascarasJson, 'variaveisusuario': variaveisusuario, 'todos_topicos_anormais': todos_topicos_anormais,
                    'profiles': profiles, 'profile': profile, 'titulo': titulo, 'topicos_anormais_mais_usados': topicos_anormais_mais_usados, 'usuarioPermitido': usuarioPermitido,
-                   'mascara_topicos': mascara_topicos, 'normaisusuario': normaisusuario}
+                   'mascara_topicos': mascara_topicos, 'normaisusuario': normaisusuario, 'profileJson': profileJson}
 
 
     else:
@@ -187,9 +189,45 @@ def nova_mascara(request):
     titulo = "Masqs - Nova Máscara"
     profile = Profile.objects.get(usuario=request.user)
 
+    profileJson = json_serializer.serialize(Profile.objects.filter(usuario=request.user))
+
     context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson, 'topicos_normais': topicos_normais, 'variaveis': variaveis,
-               'variaveisusuario': variaveisusuario, 'profiles': profiles, 'titulo': titulo, 'profile': profile}
+               'variaveisusuario': variaveisusuario, 'profiles': profiles, 'titulo': titulo, 'profile': profile,
+               'profileJson': profileJson}
     return render(request, 'masks/nova_mascara.html', context)
+
+def premium(request):
+    context = {}
+    return render(request, 'masks/premium.html', context)
+
+
+def copiar_mascaras(request):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+    especialidades = Especialidade.objects.all()
+    exames = Exame.objects.all()
+
+    usuarios = User.objects.all().order_by('username')
+
+    json_serializer = serializers.get_serializer("json")()
+
+    mascarasJson = json_serializer.serialize(Mascara.objects.filter(publica=True))
+    alteracoes = TopicoAnormal.objects.all().order_by('nome')
+    mascaras = Mascara.objects.filter(publica=True).order_by('nome')
+
+
+    profiles = Profile.objects.all()
+    topicos_normais = json_serializer.serialize(TopicoNormal.objects.all().order_by('ordem'))
+    variaveis = json_serializer.serialize(Variavel.objects.all().order_by('ordem'))
+    variaveisusuario = json_serializer.serialize(Variavel.objects.filter(usuario=request.user).order_by('ordem'))
+    titulo = "Masqs - Nova Máscara"
+    profile = Profile.objects.get(usuario=request.user)
+
+    context = {'especialidades': especialidades, 'exames': exames, 'mascaras': mascaras, 'mascarasJson': mascarasJson, 'topicos_normais': topicos_normais, 'variaveis': variaveis,
+               'variaveisusuario': variaveisusuario, 'profiles': profiles, 'titulo': titulo, 'profile': profile, 'usuarios': usuarios, 'alteracoes': alteracoes}
+    return render(request, 'masks/copiar_mascaras.html', context)
+
 
 def adicionar_nova_mascara(request):
     # Verifica se o usuário está logado
@@ -217,8 +255,10 @@ def adicionar_nova_mascara(request):
     publica = request.POST.get('mascara_publica', True)
 
 
-
-
+    if publica == 'on':
+        publica = True
+    else:
+        publica = False
 
     st = request.POST['titulo_exame']
 
@@ -591,6 +631,52 @@ def configuracoes(request):
     context = {'especialidades': especialidades, 'mascaras': mascaras, 'exames': exames,
                'profile': profile, 'titulo': titulo}
     return render(request, 'masks/configuracoes.html', context)
+
+
+def copiar_tudo(request, id_usuario):
+    usuario = User.objects.get(pk=id_usuario)
+    profile = Profile.objects.get(usuario=request.user)
+
+    if profile.is_premium == True:
+
+        mascaras = Mascara.objects.filter(usuario=usuario)
+        for mascara in mascaras:
+            nova_mascara = Mascara(usuario=request.user, especialidade=mascara.especialidade, exame=mascara.exame,
+                                   nome=mascara.nome, titulo=mascara.titulo,
+                                   indicacoes_header=mascara.indicacoes_header, indicacoes=mascara.indicacoes,
+                                   tecnica_header=mascara.tecnica_header, tecnica=mascara.tecnica, relatorio_header=mascara.relatorio_header,
+                                   conclusao_header=mascara.conclusao_header, conclusao=mascara.conclusao, publica=mascara.publica,
+                                   info_adicional=mascara.info_adicional, data_criada=timezone.now())
+            nova_mascara.save()
+            topicos_normais = TopicoNormal.objects.filter(mascara=mascara)
+            for topico_normal in topicos_normais:
+                topico_normal_novo = TopicoNormal(mascara=nova_mascara, orgao=topico_normal.orgao,
+                                             relatorio=topico_normal.relatorio, ordem=topico_normal.ordem)
+                topico_normal_novo.save()
+
+                topicos_anormais = TopicoAnormal.objects.filter(topico_normal=topico_normal)
+                for topico_anormal in topicos_anormais:
+                    topico_anormal_novo = TopicoAnormal(topico_normal=topico_normal_novo, nome=topico_anormal.nome,
+                                                  relatorio=topico_anormal.relatorio,
+                                                  conclusao=topico_anormal.conclusao,
+                                                  publica=topico_anormal.publica, data_criada=timezone.now())
+
+                    topico_anormal_novo.save()
+
+        variaveis = Variavel.objects.filter(usuario=usuario)
+        for variavel in variaveis:
+            variavel_nova = Variavel(usuario=request.user, ordem=variavel.ordem, nome_da_variavel=variavel.nome_da_variavel,
+                                     nome_amigavel=variavel.nome_amigavel, unidade_medida=variavel.unidade_medida)
+            variavel_nova.save()
+        titulo = "Copiar Máscaras"
+
+        context = {'titulo': titulo}
+        return render(request, 'masks/aviso_copiadas.html', context)
+    else:
+        titulo = "Copiar Máscaras"
+
+        context = {'titulo': titulo}
+        return render(request, 'masks/erropremium.html', context)
 
 
 def editar_mascara(request, id_mascara):

@@ -50,14 +50,18 @@
 </div>
 {% else %}
 <br>
-<h3>Seja bem vindo(a), {{ request.user.first_name }}. Ao utilizar nosso website você concorda com nossos <a style="color: #c96100" href="{% url 'termos' %}">termos de uso</a>.</h3>
+<h3>Seja bem vindo(a), {{ request.user.first_name }}. Você ainda não possui máscaras cadastradas. Como deseja adicionar suas primeiras máscaras?</h3>
 <br>
-    <h3><a style="color: #c96100" href="{% url 'nova_mascara' %}">Clique aqui</a> para adicionar sua primeira máscara. </h3>
+
+    <h3><a style="color: #c96100" href="{% url 'copiar_mascaras' %}">Copiar coletânea do nosso banco de dados</a> (usuários premium)</h3>
+    <br>
+    <h3><a style="color: #c96100" href="{% url 'nova_mascara' %}">Manualmente/individualmente</a> (qualquer usuário)</h3>
     <br>
     <br>
     <br>
     <br>
     <br>
+    <h3>Ao utilizar nosso website você concorda com nossos <a style="color: #c96100" href="{% url 'termos' %}">termos de uso</a>.</h3>
     <br>
     <br>
     <br>

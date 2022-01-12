@@ -8,6 +8,9 @@ urlpatterns = [
 
     path('mascaras/diagnosticos/<str:template_name>/', views.mostrar_mascara_builder, name='mostrar_mascara_buider'),
     path('mascaras/nova', views.nova_mascara, name='nova_mascara'),
+    path('premium', views.premium, name='premium'),
+    path('mascaras/copiar', views.copiar_mascaras, name='copiar_mascaras'),
+
     path('mascaras/nova/adicionar', views.adicionar_nova_mascara, name='adicionar_nova_mascara'),
     path('home', views.home, name='home'),
     path('', views.entrar, name='entrar'),
@@ -19,6 +22,8 @@ urlpatterns = [
     path('mascaras/variaveis/adicionar', views.adicionar_variaveis, name='adicionar_variaveis'),
     path('configuracoes', views.configuracoes, name='configuracoes'),
     path('configuracoes/editarmascara/<int:id_mascara>/', views.editar_mascara, name='editar_mascara'),
+    path('copiar_tudo/<int:id_usuario>/', views.copiar_tudo, name='copiar_tudo'),
+
     path('configuracoes/editarmascara/<int:id_mascara>/salvar', views.salvar_edicao, name='salvar_edicao'),
     path('configuracoes/editaralteracao/<int:id_mascara>/<int:id_alteracao>/', views.editar_alteracao, name='editar_alteracao'),
     path('alteracao/salvaralteracao', views.salvar_alteracao, name='salvar_alteracao'),

@@ -1,0 +1,51 @@
+{% extends "masks/base.html" %}
+
+{% block css %}
+
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'masks/css/erro.css' %}">
+
+
+{% endblock css %}
+
+
+{% block conteudo %}
+    <br>
+    <br>
+    <br>
+    <br>
+<script>
+    document.getElementById("barra_navegacao").style.display = "none";
+
+        document.getElementById("form_username").style.display = "none";
+
+        document.getElementById("botao_expansor").style.display = "none";
+
+
+
+
+
+
+
+</script>
+<div style="text-align: center; margin-left:5rem; margin-right:5rem;">
+
+
+<h1>
+    Essa função somente é permitida para usuários premium.
+</h1>
+
+    <h1><a id="link_inicio" href="{% url 'premium' %}">Fazer upgrade</a></h1>
+
+
+<br>
+
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock conteudo %}
+

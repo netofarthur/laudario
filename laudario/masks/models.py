@@ -112,8 +112,11 @@ class Profile(models.Model):
     margem_cabecalho = models.CharField(max_length=20, default='20px')
     mascara_topicos = models.BooleanField(default=False)
     quadro_mais = models.BooleanField(default=False)
+    vencimento_premium = models.DateTimeField(default=timezone.now)
 
 
+    def __str__(self):
+        return self.usuario.username
 
 
 

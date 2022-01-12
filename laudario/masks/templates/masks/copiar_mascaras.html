@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ {% for usuario in usuarios %}
+ {% if usuario.username != "admin" %}
+    <p style="display: inline; color: #c96100; font-size: 1.4rem; font-weight: bold; margin-right: .5rem;">{{ usuario }}</p>  <form style="display: inline;" method="get" action="{% url 'copiar_tudo' id_usuario=usuario.pk %}">
+                                    <input type="submit" value="Copiar" style="margin-bottom: .3rem; display: inline; border-radius: .5rem; background-color: #000000; color: white; font-size: .8rem;"/>
+                                </form>
+ <br>
+
+        {% for mascara in mascaras %}
+            {% if mascara.usuario == usuario %}
+                <p style="font-weight: bold; display: inline">{{ mascara.nome }}</p><span> ( / </span>{% for alteracao in alteracoes %}{% if alteracao.topico_normal.mascara == mascara %}{{ alteracao }}<span> / </span>{% endif %}{% endfor %}<span>) </span>
+            {% endif %}
+        {% endfor %}
+    <hr>
+    {% endif %}
+    {% endfor %}
+<p>fsflçaksfçjflç</p>
+</body>
+</html>

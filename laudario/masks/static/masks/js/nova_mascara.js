@@ -1,5 +1,23 @@
 
 function popularMascara(mascaraId) {
+
+  var profileJsonObject = JSON.parse(profileJson);
+
+     if(profileJsonObject[0].fields.is_premium) {
+
+     } else {
+
+        if (confirm('Essa função somente é permitida para usuários premium. Deseja se tornar premium?')) {
+          // Save it!
+          window.open("../../premium");
+
+        } else {
+          // Do nothing!
+        }
+        return;
+
+     }
+
         removerTopicos();
         var usuarioSelecionadoId;
         var mascaras = JSON.parse(mascarasJson);
