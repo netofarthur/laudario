@@ -113,6 +113,7 @@ class Profile(models.Model):
     mascara_topicos = models.BooleanField(default=False)
     quadro_mais = models.BooleanField(default=False)
     vencimento_premium = models.DateTimeField(default=timezone.now)
+    preference_id = models.CharField(max_length=1000, default='')
 
 
     def __str__(self):

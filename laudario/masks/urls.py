@@ -9,6 +9,12 @@ urlpatterns = [
     path('mascaras/diagnosticos/<str:template_name>/', views.mostrar_mascara_builder, name='mostrar_mascara_buider'),
     path('mascaras/nova', views.nova_mascara, name='nova_mascara'),
     path('premium', views.premium, name='premium'),
+    path('pagamento/', views.pagamento, name='pagamento'),
+    path('vencimento/', views.vencimento, name='vencimento'),
+    path('pagamento/aprovado/', views.pagamento_aprovado, name='pagamento_aprovado'),
+    path('pagamento/recusado/', views.pagamento_recusado, name='pagamento_recusado'),
+    path('pagamento/pendente/', views.pagamento_pendente, name='pagamento_pendente'),
+
     path('mascaras/copiar', views.copiar_mascaras, name='copiar_mascaras'),
 
     path('mascaras/nova/adicionar', views.adicionar_nova_mascara, name='adicionar_nova_mascara'),

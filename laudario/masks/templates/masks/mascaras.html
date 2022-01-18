@@ -38,6 +38,32 @@
 
 <div class="col-8" style="padding: 0px; padding-left: 15px;">
 
+
+{% if diasrestantes < 30 and diasrestantes > 1%}
+    <div style="cursor: pointer; background-color: #808080; color: #ffffff; padding: 1rem; margin-bottom: 1rem">
+        <span id='close' onclick='this.parentNode.remove(); return false;' style="float:right; display:inline-block; padding:2px 5px; background:#808080; color: #ffffff">x</span>
+        <h5>Faltam {{ diasrestantes }} dias para o vencimento da sua anuidade Premium</h5>
+        <h5><a style="color: #06007c" href="{% url 'premium' %}">Clique aqui</a> para renovar.</h5>
+    </div>
+{% endif %}
+
+{% if diasrestantes == 1%}
+    <div style="cursor: pointer; background-color: #808080; color: #ffffff; padding: 1rem; margin-bottom: 1rem">
+        <span id='close' onclick='this.parentNode.remove(); return false;' style="float:right; display:inline-block; padding:2px 5px; background:#808080; color: #ffffff">x</span>
+        <h5>Falta {{ diasrestantes }} dia para o vencimento da sua anuidade Premium</h5>
+        <h5><a style="color: #06007c" href="{% url 'premium' %}">Clique aqui</a> para renovar.</h5>
+    </div>
+{% endif %}
+
+{% if diasrestantes == 0%}
+    <div style="cursor: pointer; background-color: #808080; color: #ffffff; padding: 1rem; margin-bottom: 1rem">
+        <span id='close' onclick='this.parentNode.remove(); return false;' style="float:right; display:inline-block; padding:2px 5px; background:#808080; color: #ffffff">x</span>
+
+        <h5>Falta menos de 1 dia para o vencimento da sua anuidade Premium</h5>
+        <h5><a style="color: #06007c" href="{% url 'premium' %}">Clique aqui</a> para renovar.</h5>
+    </div>
+{% endif %}
+
 {% if mascaras %}
     <div class="form-group">
   <select class="form-control" name ="exames" id="exames" onchange="tornarExamesInvisiveis()">

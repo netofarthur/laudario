@@ -11,13 +11,57 @@
 
 {% block conteudo %}
 
-<div style="padding: 2rem;">
+<div class="cho-container" style="padding: 2rem;">
     <h1>Quais as vantagens em ser PREMIUM?</h1>
     <p>1. Pré-popular suas máscaras e diagnósticos alterados a partir da coletânea do nosso banco de dados (útil para novos usuários).</p>
     <p>2. Copiar máscaras e alterações de outros usuários com apenas um clique.</p>
     <p>2. Marcar suas máscaras e diagnósticos como privados.</p>
 
 </div>
+
+
+{% if profile.is_premium %}
+<script>
+// Adicione as credenciais do SDK
+  const mp = new MercadoPago('TEST-4a70cc91-6db8-43ce-aff9-bcad242ad615', {
+        locale: 'pt-BR'
+  });
+
+  // Inicialize o checkout
+  mp.checkout({
+      preference: {
+          id: '{{ preference.id }}'
+      },
+      render: {
+            container: '.cho-container', // Indique o nome da class onde será exibido o botão de pagamento
+            label: 'Renovar', // Muda o texto do botão de pagamento (opcional)
+      }
+});
+</script>
+{% else %}
+<script>
+// Adicione as credenciais do SDK
+  const mp = new MercadoPago('TEST-4a70cc91-6db8-43ce-aff9-bcad242ad615', {
+        locale: 'pt-BR'
+  });
+
+  // Inicialize o checkout
+  mp.checkout({
+      preference: {
+          id: '{{ preference.id }}'
+      },
+      render: {
+            container: '.cho-container', // Indique o nome da class onde será exibido o botão de pagamento
+            label: 'Pagar', // Muda o texto do botão de pagamento (opcional)
+      }
+});
+</script>
+{% endif %}
+
+
+
+
+
 {% endblock conteudo %}
 
 

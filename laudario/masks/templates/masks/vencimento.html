@@ -1,0 +1,44 @@
+{% extends "masks/base.html" %}
+
+{% block css %}
+
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'masks/css/erro.css' %}">
+
+
+{% endblock css %}
+
+
+{% block conteudo %}
+    <br>
+    <br>
+    <br>
+    <br>
+<script>
+    document.getElementById("barra_navegacao").style.display = "none";
+
+        document.getElementById("form_username").style.display = "none";
+
+        document.getElementById("botao_expansor").style.display = "none";
+
+
+
+
+
+
+</script>
+<div style="text-align: center; margin-left:5rem; margin-right:5rem">
+<h1>A anuidade da sua conta premium venceu {{ request.user.first_name }}. Deseja renovar?</h1>
+
+<a id="link_voltar" href="{% url 'premium' %}">Sim</a><a id="link_voltar" href="{% url 'mostrar_mascaras' %}">Não</a>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock conteudo %}
+
+
+

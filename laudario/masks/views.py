@@ -11,8 +11,15 @@ from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
+import mercadopago
+from datetime import datetime, timedelta
+
+import json
 
 
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+import requests
 
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -196,8 +203,155 @@ def nova_mascara(request):
                'profileJson': profileJson}
     return render(request, 'masks/nova_mascara.html', context)
 
-def premium(request):
+
+
+def pagamento_aprovado(request):
+    profile = Profile.objects.get(usuario=request.user)
+    context = {'profile': profile}
+    return render(request, 'masks/pagamento_aprovado.html', context)
+
+
+def pagamento_recusado(request):
     context = {}
+    return render(request, 'masks/pagamento_recusado.html', context)
+
+def pagamento_pendente(request):
+    context = {}
+    return render(request, 'masks/pagamento_pendente.html', context)
+
+def vencimento(request):
+    context = {}
+    return render(request, 'masks/vencimento.html', context)
+
+
+
+
+#TESTE MERCADO PAGO (apagar na produção)
+
+def pagamento(request):
+    status = request.GET.get('status', 'recused')
+    preference_id = request.GET.get('preference_id', '')
+
+    profile = Profile.objects.get(usuario=request.user)
+
+    if(profile.preference_id == preference_id and request.user.is_authenticated and status == 'approved'):
+        if(profile.is_premium):
+            profile.vencimento_premium = profile.vencimento_premium + timedelta(days=365)
+        else:
+            profile.vencimento_premium = datetime.now() + timedelta(days=365)
+            profile.is_premium = True
+        profile.save()
+        context = {'status': status, 'preference_id': preference_id, 'profile': profile}
+        return render(request, 'masks/pagamento_aprovado.html', context)
+    else:
+        context = {'status': status, 'preference_id': preference_id}
+        return render(request, 'masks/pagamento_recusado.html', context)
+
+
+
+
+#PRODUÇÃO MERCADO PAGO (chamado de fora pelo MercadoPago)
+#
+#@csrf_exempt
+#@require_POST
+#def pagamento(request):
+#    with open('/home/arthur/vars/token') as f:
+#        token = f.read().strip()
+#
+#
+#
+#    json_data = json.loads(request.body)
+#
+#    myid = json_data['data']['id']
+#
+#    headers = {
+#        'Authorization': 'Bearer ' + token,
+#    }
+#
+#    response = requests.get('https://api.mercadopago.com/v1/payments/' + myid, headers=headers)
+#
+#    content = json.loads(response.content)
+#
+#    conteudo = content['status']
+#
+#    usuario2 = User.objects.get(email=content['additional_info']['items'][0]['id'])
+#
+#    profile = Profile.objects.get(usuario=usuario2)
+#
+#    if conteudo == "approved":
+#        if (profile.is_premium):
+#            profile.vencimento_premium = profile.vencimento_premium + timedelta(days=365)
+#        else:
+#            profile.vencimento_premium = datetime.now() + timedelta(days=365)
+#            profile.is_premium = True
+#        profile.save()
+#
+#    return HttpResponse(status=200)
+
+
+
+
+def premium(request):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        mensagem_erro = "É necessário estar logado para comprar sua assinatura Premium."
+        titulo = "Masqs - Erro"
+        context = {'mensagem_erro': mensagem_erro, 'titulo': titulo}
+        return render(request, 'masks/erro.html', context)
+
+    profile = Profile.objects.get(usuario=request.user)
+
+    #TESTE (apagar na producao)
+    sdk = mercadopago.SDK("TEST-137201290973095-011300-387553cc9baa03de75299bea1ab45d9b-233389953")
+
+
+    #PRODUCAO
+    #with open('/home/arthur/vars/token') as f:
+    #    token = f.read().strip()
+    #sdk = mercadopago.SDK(token)
+
+
+    preference_data = {
+        "items": [
+            {
+                "id": request.user.email,
+                "title": "Assinatura Premium Masqs (anuidade)",
+                "quantity": 1,
+                "unit_price": 99.99
+            }
+        ],
+        "payer": {
+            "name": request.user.first_name,
+            "surname": request.user.last_name,
+            "email": request.user.email,
+
+        },
+        "additional_info": "testando",
+        "notification_url": "https://masqs.com.br/pagamento/",
+        "back_urls": {
+            #PRODUCAO
+            #"success": "https://masqs.com.br/pagamento/aprovado/",
+            #"failure": "https://masqs.com.br/pagamento/recusado/",
+            #"pending": "https://masqs.com.br/pagamento/pendente/",
+
+            #TESTE (apagar na PRODUCAO)
+            "success": "127.0.0.1:8000/pagamento/",
+            "failure": "127.0.0.1:8000/pagamento/recusado/",
+            "pending": "127.0.0.1:8000/pagamento/pendente/"
+        },
+        "auto_return": "approved"
+
+    }
+
+    preference_response = sdk.preference().create(preference_data)
+    preference = preference_response["response"]
+
+    profile = Profile.objects.get(usuario=request.user)
+
+
+    profile.preference_id = preference["id"]
+    profile.save()
+    context = {'preference': preference, 'profile': profile}
     return render(request, 'masks/premium.html', context)
 
 
@@ -437,6 +591,12 @@ def login_usuario(request):
     usr = authenticate(request, username=usuario, password=senha)
     if usr is not None:
         login(request, usr)
+        profile = Profile.objects.get(usuario=usr)
+        if profile.vencimento_premium < timezone.now() and profile.is_premium == True:
+            profile.is_premium = False
+            profile.save()
+            return redirect(views.vencimento)
+
         return redirect(views.mostrar_mascaras)
 
     else:
@@ -589,6 +749,8 @@ def mostrar_mascaras(request):
     # Verifica se o usuário está logado
     if not request.user.is_authenticated:
         return redirect(views.mostrar_index)
+    profile = Profile.objects.get(usuario=request.user)
+    diasrestantes = (profile.vencimento_premium - timezone.now()).days
     mascaras = Mascara.objects.filter(usuario=request.user).order_by('nome')
     mascaras_populares = Mascara.objects.filter(usuario=request.user).order_by('-frequencia', 'nome')[:10]
     ultimas_mascaras = Mascara.objects.filter(usuario=request.user).order_by('-ultima_vez_usado', 'nome')[:10]
@@ -602,7 +764,7 @@ def mostrar_mascaras(request):
     especialidades = especialidades_com_mascara
     titulo = "Masqs - Máscaras"
     context = {'mascaras': mascaras, 'exames': exames, 'especialidades': especialidades, 'ultimas_mascaras': ultimas_mascaras,
-               'mascaras_populares': mascaras_populares, 'titulo': titulo}
+               'mascaras_populares': mascaras_populares, 'titulo': titulo, 'diasrestantes': diasrestantes}
     return render(request, 'masks/mascaras.html', context)
 
 
