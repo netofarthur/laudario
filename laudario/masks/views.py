@@ -30,7 +30,7 @@ from . import views
 
 
 
-from .models import Mascara, TopicoNormal, TopicoAnormal, TopicoAnormalBuilder, Variavel, Especialidade, Exame, Profile
+from .models import Mascara, TopicoNormal, TopicoAnormal, TopicoAnormalBuilder, Variavel, Especialidade, Exame, Profile, Mensagem
 
 
 
@@ -742,7 +742,7 @@ def activate(request, uid, token):
 
 def logout_usuario(request):
     logout(request)
-    return redirect(views.home)
+    return redirect(views.entrar)
 
 
 def mostrar_mascaras(request):
@@ -1394,7 +1394,61 @@ def home(request):
 
 
 def entrar(request):
+    # Verifica se o usuário está logado
+    if request.user.is_authenticated:
+        mensagem_erro = "É necessário estar logado para comprar sua assinatura Premium."
+        titulo = "Masqs - Máscaras"
+        context = {'titulo': titulo}
+        return render(request, 'masks/mascaras.html', context)
+
+    json_serializer = serializers.get_serializer("json")()
+    usuarios = json_serializer.serialize(User.objects.all())
 
     titulo = "Masqs"
-    context = {'titulo': titulo,}
+    context = {'usuarios': usuarios, 'titulo': titulo}
+
+
     return render(request, 'masks/entrar.html', context)
+
+
+def contato_login(request):
+    if request.user.is_authenticated:
+        autenticado = True
+    else:
+        autenticado = False
+    titulo = "Masqs - Contato"
+    context = {'titulo': titulo, 'autenticado': autenticado}
+
+
+    return render(request, 'masks/contato_login.html', context)
+
+
+def contato(request):
+    if request.user.is_authenticated:
+        autenticado = True
+    else:
+        autenticado = False
+    titulo = "Masqs - Contato"
+    context = {'titulo': titulo, 'autenticado': autenticado}
+
+
+    return render(request, 'masks/contato.html', context)
+
+
+def enviar_mensagem(request):
+    if request.user.is_authenticated:
+        profile = Profile.objects.get(usuario=request.user)
+        usuario = request.user.username
+        if profile.is_premium:
+            usuario = usuario + " (PREMIUM)"
+    else:
+        usuario = "ANÔNIMO"
+
+    titulo = "Masqs - Mensagem enviada"
+    novamensagem = Mensagem(usuario=usuario, assunto=request.POST['assunto'], mensagem=request.POST['mensagem'], email=request.POST['email'], data_enviada=timezone.now())
+    novamensagem.save()
+    titulo = "Masqs - Mensagem Enviada"
+
+
+    context = {'titulo': titulo}
+    return render(request, 'masks/aviso_mensagem.html', context)

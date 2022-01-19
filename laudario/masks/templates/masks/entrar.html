@@ -17,7 +17,11 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
+<script type="text/javascript" src="{% static 'masks/js/index.js' %}"></script>
+<script>
+            var usuarios = '{{ usuarios|escapejs }}';
 
+        </script>
 
         <!-- Required meta tags for bootstrap-->
         <meta charset="utf-8">
@@ -42,18 +46,21 @@
 
 
                     <li class="nav-item">
-                        <a id="comunidade" class="nav-link" href="/">Home</a>
+                        <a id="home" class="nav-link" href="/">Home</a>
                     </li>
 
                      <li class="nav-item">
-                        <a id="sobre" class="nav-link" href="{% url 'sobre' %}">Sobre</a>
+                        <a id="sobre" class="nav-link" href="{% url 'quemsomos' %}">Sobre</a>
                     </li>
 
 
 
                             <li class="nav-item">
-                        <a id="contato" class="nav-link" href="{% url 'sobre' %}">Contato</a>
+                        <a id="contato" class="nav-link" href="{% url 'contato' %}">Contato</a>
                     </li>
+
+
+
 
                 </ul>
 
@@ -80,9 +87,9 @@
 </div>
 
     <div class="col-md-6 col-xs-12" style="padding: 3rem;">
-    <h1 style="text-align: left; padding-top: 0.2rem;">Laude mais rápido e mais inteligente</h1>
-        <h5 style="text-align: left; padding-top: 2rem;">Adicione alterações personalizadas em suas máscaras ao toque do mouse.</h5>
-        <button id="botaocadastro">Crie sua conta gratuitamente</button>
+    <h1 style="text-align: center; padding-top: 0.2rem;">Laude mais rápido e mais inteligente</h1>
+        <h4 style="text-align: center; padding-top: 2rem;">Crie alterações personalizadas para suas máscaras e adicione-as ao toque do mouse.</h4>
+        <button data-target="#modalCadastro" data-toggle="modal" id="botaocadastro">Crie sua conta gratuitamente</button>
 </div>
 
 </div>
@@ -137,11 +144,11 @@
         <p class="resposta">Plataforma idealizada por médicos radiologistas para aumentar a produtividade, sem perda da qualidade, nos laudos radiológicos.</p>
         <p class="resposta">Adicione alterações e diagnósticos personalizados em suas máscaras com um clique do mouse.</p>
         <p class="pergunta">2. O masqs é gratuito?</p>
-        <p class="resposta">O masqs sempre foi e sempre será gratuito. Oferecemos algumas funcionalidades extras para usuários premium, como forma de manutenção do nosso projeto</p>
+        <p class="resposta">O masqs sempre foi e sempre será gratuito. Oferecemos algumas funcionalidades extras para usuários premium, como forma de manutenção do nosso projeto.</p>
         <p class="pergunta">3. Quais são as funcionalidades extras para usuários premium?</p>
-        <p class="resposta">Usuários premium podem copiar máscaras e diagnósticos de outros usuários com apenas um clique além de criar perfis diferentes para armazenamento de máscaras de diversos serviços.</p>
+        <p class="resposta">Usuários premium podem visualizar e copiar máscaras e diagnósticos de outros usuários, podem marcar suas máscaras e alterações como privadas e possuem acesso ao nosso compêndio exclusivo de máscaras e alterações.</p>
         <p class="pergunta">4. Existe algum risco de perder minhas máscaras e diagnósticos cadastrados no masqs?</p>
-        <p class="resposta">O usuário sempre possui acesso total às suas máscaras e diagnósticos cadastrados. O armazenamento é feito de forma segura e com backups frequentes.</p>
+        <p class="resposta">O usuário sempre possui acesso total e gratuito às suas máscaras e diagnósticos cadastrados. O armazenamento é feito de forma segura e com backups frequentes.</p>
         <p class="pergunta">5. Onde posso usar o masqs?</p>
         <p class="resposta">Em qualquer computador que possua um navegador com acesso à internet.</p>
 
@@ -155,10 +162,67 @@ src="https://www.youtube.com/embed/Hss3WRYrqLY" frameborder="0" allow="accelerom
 </iframe>
 -->
 
-    <footer id="myfooter">Copyright © 2021 Masqs</footer>
+    <footer id="myfooter">Copyright © 2022 Masqs</footer>
 
 
+<!-- Modal de Cadastro-->
+    <div class="modal fade" id="modalCadastro" tabindex="-1" role="dialog" aria-labelledby="modalCadastroTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                  <h5 id="novo_cadastro_title">Novo Cadastro</h5>
+                  <div id="cadastro_div">
+                  <form id="formulario_cadastro" action="{% url 'cadastrar' %}" method="post">
+                    {% csrf_token %}
+                        <div id="usuario_div">
+                        <label for="usuario">Usuário: </label>
+                        <input type="text" name="usuario" id="usuario" class="cadastro_input">
+                            </div>
 
+                        <div id="primeiro_nome_div">
+                        <label for="primeiro_nome">Primeiro Nome: </label>
+                        <input type="text" name="primeiro_nome" id="primeiro_nome" class="cadastro_input">
+                        </div>
+
+                      <div id="sobrenome_div">
+                        <label for="sobrenome">Sobrenome: </label>
+
+                        <input type="text" name="segundo_nome" id="sobrenome" class="cadastro_input">
+                        </div>
+
+                      <div id="email_div">
+                        <label for="email">Email: </label>
+
+                        <input type="email" name="email" id="email" class="cadastro_input">
+                        </div>
+
+
+                      <div id="senha_div">
+                        <label for="senha">Senha: </label>
+                        <input type="password" name="senha" id="senha" class="cadastro_input">
+                        </div>
+
+                         <div id="repetir_senha_div">
+                        <label for="repetir_senha">Repetir Senha: </label>
+                        <input type="password" name="repetir_senha" id="repetir_senha" class="cadastro_input">
+                        </div>
+
+                      <div id="botao_cadastro_div">
+                        <input type="button" value="Cadastrar" id="botao_cadastrar" onclick="clicouCadastrar()">
+                        </div>
+                    </form>
+
+                </div>
+              </div>
+
+            </div>
+        </div>
+
+
+    </div>
 
 </body>
 

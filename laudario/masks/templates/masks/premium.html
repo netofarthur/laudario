@@ -11,14 +11,46 @@
 
 {% block conteudo %}
 
-<div class="cho-container" style="padding: 2rem;">
-    <h1>Quais as vantagens em ser PREMIUM?</h1>
-    <p>1. Pré-popular suas máscaras e diagnósticos alterados a partir da coletânea do nosso banco de dados (útil para novos usuários).</p>
-    <p>2. Copiar máscaras e alterações de outros usuários com apenas um clique.</p>
-    <p>2. Marcar suas máscaras e diagnósticos como privados.</p>
+<div class="container-fluid" id="container">
+    <div style="text-align: center; padding: 1rem;">
+        <h1>Assinatura Premium</h1>
+        {% if profile.is_premium %}
+        <h4 style="color: red;">Sua assinatura Premium vence em {{ profile.vencimento_premium|date:'d/m/Y' }}</h4>
+        {% endif %}
+    </div>
+
+<div class="row">
+
+<div class="col-md-6 col-xs-12" style="margin-bottom: 2rem;">
+<div style="padding: 2rem; border: solid 2px; height: 100%; background: #c96100; color: white; border-radius: 2rem;">
+    <h1 style="text-align: center; margin-bottom: 1rem; color: black;"><img style="padding-bottom: .5rem;" width="40rem;" height="auto" src="{% static 'masks/images/ferramentas.png' %}">&nbsp;&nbsp;Funcionalidades</h1>
+    <p style="font-size: 1.3rem;">Copiar máscaras e diagnósticos de outros usuários.</p>
+    <p style="font-size: 1.3rem;">Marcar máscaras e diagnósticos como privados.</p>
+    <p style="font-size: 1.3rem;">Acesso ao nosso compêndio de máscaras e alterações diagnósticas.</p>
+    <p style="font-size: 1.3rem;">Canal de comunicação exclusivo.</p>
 
 </div>
 
+    </div>
+
+    <div class="col-md-6 col-xs-12" style="margin-bottom: 2rem;">
+
+<div style="padding: 2rem; border: solid 2px; height: 100%; background: #c96100; color: white; border-radius: 2rem;">
+    <h1 style="text-align: center; margin-bottom: 1rem; color: black;"><img style="padding-bottom: .9rem;" width="40rem;" height="auto" src="{% static 'masks/images/plano.png' %}">&nbsp;Plano</h1>
+    <p style="font-size: 1.3rem;">Assinatura por R$ 99,99, cobrada anualmente (R$ 8,33/mês).</p>
+    <p style="font-size: 1.3rem;">Assinatura não recorrente (renove quando, se e quantas vezes quiser).</p>
+    <p style="font-size: 1.3rem;">Formas de pagamento: cartão de crédito, boleto bancário, Mercado Pago ou PayPal.</p>
+
+</div>
+    </div>
+
+</div>
+
+</div>
+
+<div class="cho-container" style="text-align: center;">
+
+</div>
 
 {% if profile.is_premium %}
 <script>
@@ -52,7 +84,7 @@
       },
       render: {
             container: '.cho-container', // Indique o nome da class onde será exibido o botão de pagamento
-            label: 'Pagar', // Muda o texto do botão de pagamento (opcional)
+            label: 'Assinar', // Muda o texto do botão de pagamento (opcional)
       }
 });
 </script>

@@ -47,6 +47,9 @@ urlpatterns = [
     path('eula', views.termos, name='termos'),
     path('quemsomos', views.quemsomos, name='quemsomos'),
     path('comunidade', views.comunidade, name='comunidade'),
-    path('entrar', views.mostrar_index, name='mostrar_index')
+    path('entrar', views.mostrar_index, name='mostrar_index'),
+    path('contato/anonimo', views.contato, name='contato'),
+    path('contato', views.contato_login, name='contato_login'),
+    path('enviarmensagem', views.enviar_mensagem, name='enviar_mensagem'),
 
 ]

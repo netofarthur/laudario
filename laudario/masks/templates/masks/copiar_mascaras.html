@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+        {% load static %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'masks/css/mascara.css' %}">
+
 </head>
-<body>
+<body style="padding: 1rem;">
  {% for usuario in usuarios %}
  {% if usuario.username != "admin" %}
     <p style="display: inline; color: #c96100; font-size: 1.4rem; font-weight: bold; margin-right: .5rem;">{{ usuario }}</p>  <form style="display: inline;" method="get" action="{% url 'copiar_tudo' id_usuario=usuario.pk %}">
@@ -20,6 +24,10 @@
     <hr>
     {% endif %}
     {% endfor %}
-<p>fsflçaksfçjflç</p>
+    <div style="text-align: center">
+        <br>
+    <a style="font-size: 2rem;" id="link_voltar" href="{% url 'mostrar_mascaras' %}">Voltar</a>
+        <br>
+</div>
 </body>
 </html>

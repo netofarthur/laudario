@@ -58,7 +58,7 @@ class TopicoAnormal(models.Model):
     topico_normal = models.ForeignKey(TopicoNormal, on_delete=models.CASCADE)
     nome = models.CharField(max_length=200)
     descricao = models.CharField(max_length=500)
-    relatorio = models.CharField(max_length=2000)
+    relatorio = models.CharField(max_length=4000)
     conclusao = models.CharField(max_length=4000, blank=True, null=True)
     publica = models.BooleanField(default=True)
     popularidade = models.IntegerField(default=0)
@@ -120,8 +120,15 @@ class Profile(models.Model):
         return self.usuario.username
 
 
+class Mensagem(models.Model):
+    usuario = models.CharField(max_length=100)
+    assunto = models.CharField(max_length=100)
+    mensagem = models.TextField(max_length=4000)
+    email = models.CharField(max_length=100)
+    data_enviada = models.DateTimeField(default=timezone.now)
 
-
+    def __str__(self):
+        return self.usuario
 
 
 

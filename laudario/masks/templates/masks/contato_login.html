@@ -1,0 +1,102 @@
+{% extends "masks/base.html" %}
+
+{% block css %}
+
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'masks/css/sobre.css' %}">
+
+
+
+{% endblock css %}
+
+
+{% block conteudo %}
+<script>
+
+        if(document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)) != null) {
+            document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)).style.color = "#c96100";
+
+    }
+
+
+</script>
+
+<div class="container-fluid" style="text-align:center;">
+
+<div class="row">
+
+
+    <div class="col-1">
+
+
+</div>
+
+
+
+<div class="col-10">
+
+<form action="{% url 'enviar_mensagem' %}" method="post" id="formulario_enviar_mensagem">
+{% csrf_token %}
+    <div id="enviarmensagemdiv">
+    <br>
+        <label for="assunto">Assunto:</label>
+        <select name="assunto" id="assunto">
+            <option value="Reportar bug">Reportar bug</option>
+            <option value="Assinatura Premium">Assinatura Premium</option>
+            <option value="Problemas de cadastro">Problemas de cadastro</option>
+            <option value="Ajuda sobre o aplicativo">Ajuda sobre o aplicativo</option>
+            <option value="Sugestão de ferramenta nova">Sugestão de ferramenta nova</option>
+            <option value="Críticas e sugestões">Críticas e sugestões</option>
+            <option value="Outros">Outros</option>
+        </select>
+        {% if autenticado %}
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ request.user.email }}" readonly>
+        {% else %}
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu email">
+        {% endif %}
+
+        <div>
+            <br>
+        <label for="mensagem">Mensagem:</label>
+            <br>
+        <textarea rows="7" cols="100" placeholder="Escreva sua mensagem" type="text" id="mensagem" name="mensagem" style="width: 50%;"></textarea>
+        <br>
+            <br>
+        <input type="submit" value="Enviar">
+        </div>
+
+    </div>
+</form>
+
+    <div style="text-align: center;" id="contato">
+<br>
+    <img id="contato_image" src="{% static 'masks/images/email.png' %}">
+        <br>
+        <a href="mailto:contato@masqs.com.br">contato@masqs.com.br</a>
+        <br>
+
+        <br>
+    </div>
+
+                   <div style="text-align: center">
+    <a href="javascript:history.back()">Voltar</a>
+        <br>
+        <br>
+
+    </div>
+
+</div>
+
+        <div class="col-1">
+
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock conteudo %}
+

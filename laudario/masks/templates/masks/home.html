@@ -132,21 +132,7 @@
 
 
 
-    {% if user.is_authenticated %}
-<hr>
-    <div class="radio-item"><input type="radio" id="popularRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()">
-        <label for="popularRadio" style="margin-right:30px">Mais Populares</label></div>
-    <div class="radio-item"><input type="radio" id="recentesRadio" name="submodo" value=mascarasRecentes onclick="clicouBotaoRadio()">
-        <label for="recentesRadio" style="margin-right:30px" style="margin-right:30px">Mais Recentes</label></div>
-    <div class="radio-item"><input type="radio" id="alfabeticoRadio" name="submodo" value="alfabetico" onclick="clicouBotaoRadio()">
-        <label for="alfabeticoRadio" style="margin-right:30px">Ordem Alfabética</label></div>
 
-
-    <div class="radio-item"> <input type="radio" id="minhasRadio" name="submodo" value="minhas" onclick="clicouBotaoRadio()">
-    <label id="minhasRadioLabel" for="minhasRadio">Autoria Própria</label></div>
-
-
-    {% else %}
 
 
     <div class="radio-item"><input type="radio" id="popularRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()" style="display: none">
@@ -161,7 +147,6 @@
     <label id="minhasRadioLabel" for="minhasRadio" style="display: none">Autoria Própria</label></div>
 
 
-    {% endif %}
     <div>
         <hr>
     <input style="width: 70%" autocomplete="off" id="procurarFrases" type="search" placeholder="Procurar frases" onkeydown="procurarEntradas(this.id)" onsearch="procurarTudo()"/><button style="width: 30%; background-color: #d3d3d3;" id="botaoProcurarTudo" onclick="procurarTudo()">Procurar</button>

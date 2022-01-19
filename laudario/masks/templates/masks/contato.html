@@ -30,11 +30,6 @@
 <link rel="stylesheet" type="text/css" href="{% static 'masks/css/entrar.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'masks/css/quemsomos.css' %}">
 
-
-     <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v10.0" nonce="xfQzlqk7"></script>
-
-
 </head>
 <body>
 
@@ -58,12 +53,11 @@
 
                      <li class="nav-item">
                         <a id="sobre" class="nav-link" href="{% url 'quemsomos' %}">Sobre</a>
-                    </li>
 
 
 
                             <li class="nav-item">
-                        <a id="contato" class="nav-link" href="{% url 'contato' %}">Contato</a>
+                        <a id="contato" class="nav-link" href="{% url 'sobre' %}">Contato</a>
                     </li>
 
                 </ul>
@@ -95,51 +89,53 @@
 
 <div class="col-10">
 
-    <div style="padding:2rem; text-align: left;" id="info">
-            <h1 style="text-align: center">Quem Somos</h1>
-            <p style="font-size: 1.3rem; text-align: justify; text-justify: inter-word;">Criado em 2020, a partir da união entre desenvolvedores e médicos radiologistas, nosso projeto nasceu de uma necessidade real em abordar as atividades repetitivas do dia a dia do radiologista no momento do laudo. Sabe aquelas frases
-            que sempre repetimos e aqueles diagnósticos usados com frequência? Cadastre-os uma única vez, e nunca mais tenha que digitá-los ou repeti-los novamente.</p>
+<form action="{% url 'enviar_mensagem' %}" method="post" id="formulario_enviar_mensagem">
+{% csrf_token %}
+    <div id="enviarmensagemdiv">
+    <br>
+        <label for="assunto">Assunto:</label>
+        <select name="assunto" id="assunto">
+            <option value="Reportar bug">Reportar bug</option>
+            <option value="Assinatura Premium">Assinatura Premium</option>
+            <option value="Problemas de cadastro">Problemas de cadastro</option>
+            <option value="Ajuda sobre o aplicativo">Ajuda sobre o aplicativo</option>
+            <option value="Sugestão de ferramenta nova">Sugestão de ferramenta nova</option>
+            <option value="Críticas e sugestões">Críticas e sugestões</option>
+            <option value="Outros">Outros</option>
+        </select>
+        {% if autenticado %}
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ request.user.email }}" readonly>
+        {% else %}
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu email">
+        {% endif %}
 
-            <h1 style="text-align: center">Propósito</h1>
-            <p style="font-size: 1.3rem; text-align: justify; text-justify: inter-word;">Facilitar a confecção e reduzir o tempo de produção do laudo médico radiológico, reconhecendo que existem padrões e
-            frases recorrentes no trabalho diário do radiologista, representados pelas <span>máscaras, alterações e variáveis</span>
-                no aplicativo.</p>
+        <div>
+            <br>
+        <label for="mensagem">Mensagem:</label>
+            <br>
+        <textarea rows="7" cols="100" placeholder="Escreva sua mensagem" type="text" id="mensagem" name="mensagem" style="width: 50%;"></textarea>
         <br>
-            <h1 style="text-align: center">Máscaras</h1>
-            <p style="font-size: 1.3rem; text-align: justify; text-justify: inter-word;">A máscara é onde tudo começa e representa o laudo padrão
-            normal. São totalmente personalizáveis e possuem os tópicos normais
-            do laudo, os quais serão modificados pelas alterações.</p>
-         <br>
-            <h1 style="text-align: center">Alterações</h1>
-            <p style="font-size: 1.3rem; text-align: justify; text-justify: inter-word;">As alterações são frases padrões criadas pelo usuário. Cada alteração
-            modifica um tópico normal da máscara e altera a conclusão, quando desejado. As alterações
-                representam as frases mais utilizadas pelo radiologista no seu dia a dia e os diagnósticos mais comuns
-            na sua rotina de trabalho.</p>
-         <br>
-             <h1 style="text-align: center">Variáveis</h1>
-            <p style="font-size: 1.3rem; text-align: justify; text-justify: inter-word;">As variáveis dão versatilidade ao aplicativo, evitam a duplicidade de máscaras
-            e alterações, bem como facilitam a entrada de valores numéricos e realização de
-            operações matemáticas (cálculo de volume, por exemplo).</p>
-         <br>
-            <h1 style="text-align: center">Comunidade</h1>
-        <p style="font-size: 1.3rem; text-align: justify; text-justify: inter-word;">As <span>máscaras, alterações e variáveis</span> são compartilhadas entre os usuários do
-            aplicativo, fortalecendo o espírito comunitário e a disseminação do
-            conhecimento.</p>
+            <br>
+        <input type="submit" value="Enviar">
+        </div>
 
     </div>
+</form>
 
+    <div style="text-align: center;" id="contato">
+<br>
+    <img id="contato_image" src="{% static 'masks/images/email.png' %}">
+        <br>
+        <a href="mailto:contato@masqs.com.br">contato@masqs.com.br</a>
+        <br>
 
-        <div style="text-align: center;">
-    <div class="fb-like" data-href="https://masqs.com.br" data-width="" data-layout="button" data-action="like" data-size="large" data-share="true"></div>
-
-
-
-
-</div>
-
+        <br>
+    </div>
 
                    <div style="text-align: center">
-
+    <a href="javascript:history.back()">Voltar</a>
         <br>
         <br>
 
@@ -157,7 +153,7 @@
 </div>
 
 
-    <footer id="myfooter">Copyright © 2022 Masqs</footer>
+    <footer id="myfooter" style="position: fixed; bottom: 0; left: 0; width: 100%;">Copyright © 2022 Masqs</footer>
 
 
 

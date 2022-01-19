@@ -2228,7 +2228,7 @@ function htmlDecode(input) {
 
      } else {
 
-        if (confirm('Essa função somente é permitida para usuários premium. Deseja se tornar premium?')) {
+        if (confirm('Somente usuários Premium podem visualizar e copiar alterações de outros usuários. Deseja se tornar Premium para ativar este recurso?')) {
           // Save it!
           window.open("../../premium");
 
