@@ -9,7 +9,8 @@ function popularMascara(mascaraId) {
 
         if (confirm('Somente usuários Premium podem visualizar e copiar máscaras de outros usuários. Deseja se tornar Premium para ativar este recurso?')) {
           // Save it!
-          window.open("../../premium");
+          window.location.href="../../premium"
+
 
         } else {
           // Do nothing!

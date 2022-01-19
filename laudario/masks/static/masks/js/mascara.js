@@ -2230,7 +2230,7 @@ function htmlDecode(input) {
 
         if (confirm('Somente usuários Premium podem visualizar e copiar alterações de outros usuários. Deseja se tornar Premium para ativar este recurso?')) {
           // Save it!
-          window.open("../../premium");
+          window.location.href="../../premium"
 
         } else {
           // Do nothing!
