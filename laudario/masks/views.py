@@ -359,6 +359,10 @@ def copiar_mascaras(request):
     # Verifica se o usuário está logado
     if not request.user.is_authenticated:
         return redirect(views.mostrar_index)
+    mascaras = Mascara.objects.filter(usuario=request.user)
+    # Não deixa copiar se usuário já tiver máscaras.
+    if(mascaras):
+        return redirect(views.mostrar_index)
     especialidades = Especialidade.objects.all()
     exames = Exame.objects.all()
 
@@ -1396,9 +1400,23 @@ def home(request):
 def entrar(request):
     # Verifica se o usuário está logado
     if request.user.is_authenticated:
-        mensagem_erro = "É necessário estar logado para comprar sua assinatura Premium."
+        profile = Profile.objects.get(usuario=request.user)
+        diasrestantes = (profile.vencimento_premium - timezone.now()).days
+        mascaras = Mascara.objects.filter(usuario=request.user).order_by('nome')
+        mascaras_populares = Mascara.objects.filter(usuario=request.user).order_by('-frequencia', 'nome')[:10]
+        ultimas_mascaras = Mascara.objects.filter(usuario=request.user).order_by('-ultima_vez_usado', 'nome')[:10]
+        todasespecialidades = Especialidade.objects.all().order_by('descricao')
+        especialidades_com_mascara = []
+        for especialidade in todasespecialidades:
+            mascarasEspecialidade = Mascara.objects.filter(usuario=request.user, especialidade=especialidade)
+            if len(mascarasEspecialidade) > 0:
+                especialidades_com_mascara.append(especialidade)
+        exames = Exame.objects.all()
+        especialidades = especialidades_com_mascara
         titulo = "Masqs - Máscaras"
-        context = {'titulo': titulo}
+        context = {'mascaras': mascaras, 'exames': exames, 'especialidades': especialidades,
+                   'ultimas_mascaras': ultimas_mascaras,
+                   'mascaras_populares': mascaras_populares, 'titulo': titulo, 'diasrestantes': diasrestantes}
         return render(request, 'masks/mascaras.html', context)
 
     json_serializer = serializers.get_serializer("json")()
