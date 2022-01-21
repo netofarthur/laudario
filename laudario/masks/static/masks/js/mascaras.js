@@ -115,6 +115,8 @@ function clicouCheckboxQuadroMais() {
 //apaga tópicos duplicados
 function apagar() {
 
+    document.getElementById("outerdiv").setAttribute("class", "divflexivel");
+
 
 
 
