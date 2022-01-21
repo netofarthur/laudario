@@ -18,7 +18,7 @@ urlpatterns = [
     path('mascaras/copiar', views.copiar_mascaras, name='copiar_mascaras'),
 
     path('mascaras/nova/adicionar', views.adicionar_nova_mascara, name='adicionar_nova_mascara'),
-    path('home', views.home, name='home'),
+    path('compendio', views.home, name='home'),
     path('', views.entrar, name='entrar'),
     path('login', views.login_usuario, name='login_usuario'),
     path('cadastrar', views.cadastrar, name='cadastrar'),

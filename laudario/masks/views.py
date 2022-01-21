@@ -351,7 +351,8 @@ def premium(request):
 
     profile.preference_id = preference["id"]
     profile.save()
-    context = {'preference': preference, 'profile': profile}
+    titulo = "Masqs - Premium"
+    context = {'preference': preference, 'profile': profile, 'titulo': titulo}
     return render(request, 'masks/premium.html', context)
 
 
@@ -1143,7 +1144,7 @@ def sobre(request):
 
 
 
-    titulo = "Masqs - Sobre"
+    titulo = "Masqs - Ajuda"
     context = {'titulo': titulo}
     return render(request, 'masks/sobre.html', context)
 
@@ -1339,6 +1340,12 @@ def comunidade(request):
 
 
 def home(request):
+    profile = Profile.objects.get(usuario=request.user)
+    if(not profile.is_premium):
+        titulo = "Masqs - Compêndio"
+
+        context = {'titulo': titulo}
+        return render(request, 'masks/erropremium.html', context)
     exames = Exame.objects.all().order_by('descricao')
     especialidades = Especialidade.objects.all().order_by('descricao')
     json_serializer = serializers.get_serializer("json")()
@@ -1383,7 +1390,7 @@ def home(request):
 
 
 
-    titulo = "Masqs"
+    titulo = "Masqs - Compêndio"
     context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados,
                'normais': normais, 'mascarasJson': mascarasJson,
                'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario,
