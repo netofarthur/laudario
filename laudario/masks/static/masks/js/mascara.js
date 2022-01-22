@@ -2984,6 +2984,17 @@ document.getElementById("botoes_div").appendChild(anchor);
 
 }
 
+function titleCase(str) {
+   var splitStr = str.toLowerCase().split(' ');
+   for (var i = 0; i < splitStr.length; i++) {
+       // You do not need to check if i is larger than splitStr length, as your for does that for you
+       // Assign it back to the array
+       splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+   }
+   // Directly return the joined string
+   return splitStr.join(' ');
+}
+
 function copiarTinySemEstilo() {
 removerBotoes();
 
@@ -2991,6 +3002,17 @@ var conteudoTiny = tinymce.get("mascara_div").getBody().innerHTML;
 tinymce.remove();
 
     document.getElementById("mascara_div").innerHTML = conteudoTiny;
+
+    if(document.getElementById("titulo").style.textTransform == "uppercase") {
+        document.getElementById("titulo").innerHTML = document.getElementById("titulo").innerHTML.toUpperCase();
+
+    }
+
+    if(document.getElementById("titulo").style.textTransform == "capitalize") {
+        document.getElementById("titulo").innerHTML = titleCase(document.getElementById("titulo").innerHTML);
+
+    }
+
     limparTagsHtmlTotal();
     document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "");
 
@@ -3015,7 +3037,35 @@ document.getElementById("botoes_div").appendChild(anchor);
 }
 
 function copiarTextoSomente() {
+
+var isTituloUpperCase = false;
+
+var isTitutloFirstLettersUppercase = false;
+
+if(document.getElementById("titulo").style.textTransform == "uppercase") {
+        isTituloUpperCase = true;
+
+    }
+
+    if(document.getElementById("titulo").style.textTransform == "capitalize") {
+        isTitutloFirstLettersUppercase = true;
+
+    }
+
+
 tinymce.remove();
+
+
+if(isTituloUpperCase) {
+        document.getElementById("titulo").innerHTML = document.getElementById("titulo").innerHTML.toUpperCase();
+
+}
+
+ if(isTitutloFirstLettersUppercase) {
+        document.getElementById("titulo").innerHTML = titleCase(document.getElementById("titulo").innerHTML);
+
+    }
+
 
     var mascaradiv = document.getElementById("mascara_div");
     var par = document.createElement("p");
@@ -3151,12 +3201,13 @@ function trocarCabecalhos() {
 
     var ele= document.getElementsByClassName("aserremovido");
 len = ele.length;
+if(len > 1) {
 parentNode = ele[0].parentNode;
 for(var i=0; i<len; i++)
 {
   ele[0].remove();
 }
-
+}
 
 
     var ps = document.getElementsByTagName("p");
