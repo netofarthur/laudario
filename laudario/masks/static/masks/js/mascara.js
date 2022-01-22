@@ -2830,8 +2830,9 @@ if(document.getElementById("procurarFrases") != null) {
         if(deixouEmBranco) {
             indicacoesDiv.focus();
         }
-
+    if(document.getElementById("cancelarIndicacoes") != null) {
     document.getElementById("cancelarIndicacoes").style.display = "block";
+    }
 }
 
 function editarLaudo() {
@@ -3003,15 +3004,83 @@ tinymce.remove();
 
     document.getElementById("mascara_div").innerHTML = conteudoTiny;
 
+if(document.getElementById("titulo") != null) {
     if(document.getElementById("titulo").style.textTransform == "uppercase") {
         document.getElementById("titulo").innerHTML = document.getElementById("titulo").innerHTML.toUpperCase();
 
     }
-
+}
+if(document.getElementById("titulo") != null) {
     if(document.getElementById("titulo").style.textTransform == "capitalize") {
         document.getElementById("titulo").innerHTML = titleCase(document.getElementById("titulo").innerHTML);
 
     }
+}
+if(document.getElementById("tecnica_header") != null) {
+    if(document.getElementById("tecnica_header").style.textTransform == "capitalize") {
+        document.getElementById("tecnica_header").innerHTML = titleCase(document.getElementById("tecnica_header").innerHTML);
+
+    }
+}
+
+if(document.getElementById("indicacoes_header") != null) {
+    if(document.getElementById("indicacoes_header").style.textTransform == "capitalize") {
+        document.getElementById("indicacoes_header").innerHTML = titleCase(document.getElementById("indicacoes_header").innerHTML);
+
+    }
+    }
+    if(document.getElementById("relatorio_header") != null) {
+    if(document.getElementById("relatorio_header").style.textTransform == "capitalize") {
+        document.getElementById("relatorio_header").innerHTML = titleCase(document.getElementById("relatorio_header").innerHTML);
+
+    }
+    }
+    if(document.getElementById("conclusao_header") != null) {
+    if(document.getElementById("conclusao_header").style.textTransform == "capitalize") {
+        document.getElementById("conclusao_header").innerHTML = titleCase(document.getElementById("conclusao_header").innerHTML);
+
+    }
+}
+if(document.getElementById("info_adicional") != null) {
+    if(document.getElementById("info_adicional").style.textTransform == "capitalize") {
+        document.getElementById("info_adicional").innerHTML = titleCase(document.getElementById("info_adicional").innerHTML);
+
+    }
+}
+if(document.getElementById("tecnica_header") != null) {
+     if(document.getElementById("tecnica_header").style.textTransform == "uppercase") {
+        document.getElementById("tecnica_header").innerHTML = document.getElementById("tecnica_header").innerHTML.toUpperCase();
+
+    }
+    }
+if(document.getElementById("indicacoes_header") != null) {
+    if(document.getElementById("indicacoes_header").style.textTransform == "uppercase") {
+        document.getElementById("indicacoes_header").innerHTML = document.getElementById("indicacoes_header").innerHTML.toUpperCase();
+
+    }
+    }
+    if(document.getElementById("relatorio_header") != null) {
+    if(document.getElementById("relatorio_header").style.textTransform == "uppercase") {
+        document.getElementById("relatorio_header").innerHTML = document.getElementById("relatorio_header").innerHTML.toUpperCase();
+
+    }
+    }
+        if(document.getElementById("conclusao_header") != null) {
+    if(document.getElementById("conclusao_header").style.textTransform == "uppercase") {
+        document.getElementById("conclusao_header").innerHTML = document.getElementById("conclusao_header").innerHTML.toUpperCase();
+
+    }
+    }
+        if(document.getElementById("info_adicional") != null) {
+    if(document.getElementById("info_adicional").style.textTransform == "uppercase") {
+        document.getElementById("info_adicional").innerHTML = document.getElementById("info_adicional").innerHTML.toUpperCase();
+
+    }
+}
+
+
+
+
 
     limparTagsHtmlTotal();
     document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "");
@@ -3042,15 +3111,108 @@ var isTituloUpperCase = false;
 
 var isTitutloFirstLettersUppercase = false;
 
+var isTituloUpperCase = false;
+
+var isTitutloFirstLettersUppercase = false;
+
+
+var isIndicacoesHeaderUpperCase = false;
+
+var isIndicacoesHeaderFirstLettersUppercase = false;
+
+var isTecnicaHeaderUpperCase = false;
+
+var isTecnicaHeaderFirstLettersUppercase = false;
+
+var isRelatorioHeaderUpperCase = false;
+
+var isRelatorioHeaderFirstLettersUppercase = false;
+
+var isConclusaoHeaderUpperCase = false;
+
+var isConclusaoHeaderFirstLettersUppercase = false;
+
+
+var isInformacoesAdicionaisUpperCase = false;
+
+var isInformacoesAdicionaisFirstLettersUppercase = false;
+
+
+
+
+if(document.getElementById("titulo") != null) {
 if(document.getElementById("titulo").style.textTransform == "uppercase") {
         isTituloUpperCase = true;
 
     }
-
+    }
+if(document.getElementById("titulo") != null) {
     if(document.getElementById("titulo").style.textTransform == "capitalize") {
         isTitutloFirstLettersUppercase = true;
 
     }
+}
+if(document.getElementById("indicacoes_header") != null) {
+    if(document.getElementById("indicacoes_header").style.textTransform == "uppercase") {
+        isIndicacoesHeaderUpperCase = true;
+
+    }
+}
+if(document.getElementById("indicacoes_header") != null) {
+    if(document.getElementById("indicacoes_header").style.textTransform == "capitalize") {
+        isIndicacoesHeaderFirstLettersUppercase = true;
+
+    }
+}
+if(document.getElementById("tecnica_header") != null) {
+    if(document.getElementById("tecnica_header").style.textTransform == "uppercase") {
+        isTecnicaHeaderUpperCase = true;
+
+    }
+}
+if(document.getElementById("tecnica_header") != null) {
+    if(document.getElementById("tecnica_header").style.textTransform == "capitalize") {
+        isTecnicaHeaderFirstLettersUppercase = true;
+
+    }
+}
+if(document.getElementById("relatorio_header") != null) {
+      if(document.getElementById("relatorio_header").style.textTransform == "uppercase") {
+        isRelatorioHeaderUpperCase = true;
+
+    }
+}
+if(document.getElementById("relatorio_header") != null) {
+    if(document.getElementById("relatorio_header").style.textTransform == "capitalize") {
+        isRelatorioHeaderFirstLettersUppercase = true;
+
+    }
+}
+if(document.getElementById("conclusao_header") != null) {
+          if(document.getElementById("conclusao_header").style.textTransform == "uppercase") {
+        isConclusaoHeaderUpperCase = true;
+
+    }
+}
+if(document.getElementById("conclusao_header") != null) {
+    if(document.getElementById("conclusao_header").style.textTransform == "capitalize") {
+        isConclusaoHeaderFirstLettersUppercase = true;
+
+    }
+    }
+if(document.getElementById("info_adicional") != null) {
+              if(document.getElementById("info_adicional").style.textTransform == "uppercase") {
+        isInformacoesAdicionaisUpperCase = true;
+
+    }
+}
+if(document.getElementById("info_adicional") != null) {
+    if(document.getElementById("info_adicional").style.textTransform == "capitalize") {
+        isInformacoesAdicionaisFirstLettersUppercase = true;
+
+    }
+}
+
 
 
 tinymce.remove();
@@ -3065,6 +3227,60 @@ if(isTituloUpperCase) {
         document.getElementById("titulo").innerHTML = titleCase(document.getElementById("titulo").innerHTML);
 
     }
+
+if(document.getElementById("indicacoes_header") != null) {
+    if(isIndicacoesHeaderUpperCase) {
+        document.getElementById("indicacoes_header").innerHTML = document.getElementById("indicacoes_header").innerHTML.toUpperCase();
+
+}
+}
+    if(document.getElementById("indicacoes_header") != null) {
+ if(isIndicacoesHeaderFirstLettersUppercase) {
+        document.getElementById("indicacoes_header").innerHTML = titleCase(document.getElementById("indicacoes_header").innerHTML);
+
+    }
+}
+        if(isTecnicaHeaderUpperCase) {
+        document.getElementById("tecnica_header").innerHTML = document.getElementById("tecnica_header").innerHTML.toUpperCase();
+
+}
+
+ if(isTecnicaHeaderFirstLettersUppercase) {
+        document.getElementById("tecnica_header").innerHTML = titleCase(document.getElementById("tecnica_header").innerHTML);
+
+    }
+
+            if(isRelatorioHeaderUpperCase) {
+        document.getElementById("relatorio_header").innerHTML = document.getElementById("relatorio_header").innerHTML.toUpperCase();
+
+}
+
+ if(isRelatorioHeaderFirstLettersUppercase) {
+        document.getElementById("relatorio_header").innerHTML = titleCase(document.getElementById("relatorio_header").innerHTML);
+
+    }
+
+                if(isConclusaoHeaderUpperCase) {
+        document.getElementById("conclusao_header").innerHTML = document.getElementById("conclusao_header").innerHTML.toUpperCase();
+
+}
+
+ if(isConclusaoHeaderFirstLettersUppercase) {
+        document.getElementById("conclusao_header").innerHTML = titleCase(document.getElementById("conclusao_header").innerHTML);
+
+    }
+
+
+                    if(isInformacoesAdicionaisUpperCase) {
+        document.getElementById("info_adicional").innerHTML = document.getElementById("info_adicional").innerHTML.toUpperCase();
+
+}
+
+ if(isInformacoesAdicionaisFirstLettersUppercase) {
+        document.getElementById("info_adicional").innerHTML = titleCase(document.getElementById("info_adicional").innerHTML);
+
+    }
+
 
 
     var mascaradiv = document.getElementById("mascara_div");

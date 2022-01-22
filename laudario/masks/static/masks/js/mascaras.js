@@ -236,6 +236,27 @@ for(var i = 1; i < opcoes.length; i++) {
      }
 
 
+              var opcoes2 = document.getElementById("capitalizacao_topicos").options;
+
+
+        if(opcoes2[0].value == "capitalize") {
+            opcoes2[0].innerHTML = "Primeiras letras das palavras";
+        } else if (opcoes2[0].value == "uppercase") {
+            opcoes2[0].innerHTML = "Todas as letras do cabeçalho";
+        } else {
+            opcoes2[0].innerHTML = "Não forçar capitalização";
+
+        }
+        var opcaoSelecionada = opcoes2[0].innerHTML;
+for(var i = 1; i < opcoes2.length; i++) {
+
+
+        if(opcoes2[i].innerHTML == opcaoSelecionada) {
+                        opcoes2.remove(i);
+        }
+     }
+
+
 }
 
 

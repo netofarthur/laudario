@@ -433,6 +433,24 @@
       <label>Cor da fonte dos cabeçalhos</label>
             <input style="margin-bottom: .7rem;" type="color" id="cor_topicos" name="cor_topicos"
            value="{{ profile.cor_topicos }}">
+            <br>
+                      <hr>
+
+                            <label>Capitalização dos Cabeçalhos</label>
+    <div class="form-group">
+  <select class="form-control" name ="capitalizacao_topicos" id="capitalizacao_topicos">
+         <option value="{{ profile.capitalizacao_topicos }}">{{ profile.capitalizacao_topicos }}</option>
+
+   <option value="none">Não forçar capitalização</option>
+   <option value="capitalize">Primeiras letras das palavras</option>
+      <option value="uppercase">Todas as letras do cabeçalho</option>
+
+
+
+
+  </select>
+    </div>
+
 
                   </fieldset>
                 <br>

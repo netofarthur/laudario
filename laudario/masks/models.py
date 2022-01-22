@@ -103,6 +103,8 @@ class Profile(models.Model):
     cor_mascara = models.CharField(max_length=20, default='#000000')
     cor_titulo = models.CharField(max_length=20, default='#000000')
     capitalizacao = models.CharField(max_length=20, default='none')
+    capitalizacao_topicos = models.CharField(max_length=20, default='none')
+
     alinhamento_titulo = models.CharField(max_length=20, default='center')
     alinhamento_topicos = models.CharField(max_length=20, default='left')
     tamanho_titulo = models.CharField(max_length=20, default='32px')
