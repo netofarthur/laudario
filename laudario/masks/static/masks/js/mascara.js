@@ -3154,7 +3154,7 @@ len = ele.length;
 parentNode = ele[0].parentNode;
 for(var i=0; i<len; i++)
 {
-  parentNode.removeChild(ele[0]);
+  ele[0].remove();
 }
 
 
