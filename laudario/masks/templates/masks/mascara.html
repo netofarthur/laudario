@@ -796,6 +796,13 @@ $("#myModalAlteracao").on("shown.bs.modal", function(){
     document.getElementById("salva_mudancas").disabled = false;
 
     document.getElementById("salva_mudancas").setAttribute("onclick", "adicionarAlteracoNaMascara()");
+            document.getElementById("salva_mudancas").style.display = "block";
+document.getElementById("corpo_variaveis").style.display = "block";
+
+document.getElementById("corpo_alteracao").style.display = "block";
+    document.getElementById("salva_mudancas").value = "Adicionar";
+            document.getElementById("botaoCancelar").style.display = "block";
+
 
 
     var corpo = document.getElementById("corpo_variaveis");
