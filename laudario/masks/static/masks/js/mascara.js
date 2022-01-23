@@ -2837,6 +2837,13 @@ if(document.getElementById("procurarFrases") != null) {
 
 function editarLaudo() {
 
+var topics = document.getElementsByClassName("paragrafo_mascara");
+for(topic of topics) {
+    if(topic.innerHTML == "&nbsp;") {
+        topic.remove();
+    }
+}
+
 
 if(document.getElementById("indicacoes_header") != null) {
 
@@ -3288,17 +3295,34 @@ if(document.getElementById("indicacoes_header") != null) {
     var par1 = document.createElement("p");
     var par2 = document.createElement("p");
     var par3 = document.createElement("p");
+    var par4 = document.createElement("p");
+    var par5 = document.createElement("p");
+    var par6 = document.createElement("p");
+    var par7 = document.createElement("p");
     par.innerHTML = "XXXXXXXXXX";
         par1.innerHTML = "XXXXXXXXXX";
     par2.innerHTML = "XXXXXXXXXX";
         par3.innerHTML = "XXXXXXXXXX";
+        par4.innerHTML = "XXXXXXXXXX";
+        par5.innerHTML = "XXXXXXXXXX";
+        par6.innerHTML = "XXXXXXXXXX";
+        par7.innerHTML = "XXXXXXXXXX";
 
 
                  mascaradiv.insertBefore(par1, document.getElementById("indicacoes_header"));
+                 mascaradiv.insertBefore(par4, document.getElementById("indicacoes"));
          mascaradiv.insertBefore(par2, document.getElementById("tecnica_header"));
+         mascaradiv.insertBefore(par5, document.getElementById("tecnica"));
                   mascaradiv.insertBefore(par, document.getElementById("relatorio_header"));
 
+                  if(mascara_topicos == "True") {
+                  mascaradiv.insertBefore(par6, document.getElementById("topicos_div"));
+
+                  }
+
                   mascaradiv.insertBefore(par3, document.getElementById("conclusao_header"));
+                                    mascaradiv.insertBefore(par7, document.getElementById("paragrafo_conclusao"));
+
 
 
 
@@ -3344,19 +3368,32 @@ removerBotoes();
     document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/<[^>]*>/g, '');;
 
     document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/^\s*$(?:\r\n?|\n)/gm, "");
-document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/\n/g, "<br>");
-document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "");
+    if(mascara_topicos) {
+    document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "<br>");
+    } else {
+        document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace(/\n/g, "<br>");;
+
+    document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacoembranco", "");
+
+
+    }
+
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacetos", "<br>");
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacinhos", "<br>");
 
+if(mascara_topicos == "True") {
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("XXXXXXXXXX", "<br>");
+
+} else {
+document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("XXXXXXXXXX", "");
+document.getElementById("mascara_div").style.whiteSpace = "pre-wrap";
+
+}
 
 
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replace("Preencher Variáveis<br>", "");
-
         CopyToClipboard();
 
-    document.getElementById("mascara_div").style.whiteSpace = "pre-wrap";
 document.getElementById("copiar_laudo").parentNode.removeChild(document.getElementById("copiar_laudo"));
 var anchor = document.getElementById("link_voltar");
 anchor.setAttribute("href", "../../mascaras");
@@ -3521,10 +3558,28 @@ for(var i=0; i<len; i++)
 
 
     var h3s = document.getElementsByTagName("STRONG");
+
+   var counter = 0;
+   var counter2 = 0;
+   var fim = false;
+   var primeiroTopico;
+
     for(h3 of h3s) {
+
+        counter++;
+        counter2++;
+        if(h3.getAttribute("id") != null && fim != true) {
+            primeiroTopico = counter2;
+            fim = true;
+        }
+
+        if(counter > 1 && counter != primeiroTopico) {
         var par = document.createElement("p");
         par.innerHTML = "espacoembranco";
         h3.parentNode.insertBefore(par, h3);
+        }
+
+
     }
 
 
