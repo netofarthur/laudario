@@ -3655,6 +3655,23 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
         }
     }
 
+
+        var divs2 = document.getElementsByTagName("div");
+    for(div2 of divs2) {
+        if(div2.getAttribute("class") == "outerstrong") {
+            div2.removeAttribute("class");
+        div2.removeAttribute("id");
+        div2.removeAttribute("data-mce-style");
+        div2.removeAttribute("style");
+        }
+    }
+
+    document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("<div>", "");
+        document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("</div>", "");
+
+
+
+
     for(p of ps) {
         p.removeAttribute("class");
         p.removeAttribute("id");
