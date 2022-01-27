@@ -818,7 +818,7 @@ def copiar_tudo(request, id_usuario):
                                    nome=mascara.nome, titulo=mascara.titulo,
                                    indicacoes_header=mascara.indicacoes_header, indicacoes=mascara.indicacoes,
                                    tecnica_header=mascara.tecnica_header, tecnica=mascara.tecnica, relatorio_header=mascara.relatorio_header,
-                                   conclusao_header=mascara.conclusao_header, conclusao=mascara.conclusao, publica=mascara.publica,
+                                   conclusao_header=mascara.conclusao_header, conclusao=mascara.conclusao, publica=mascara.publica, mascara_topicos=mascara.mascara_topicos,
                                    info_adicional=mascara.info_adicional, data_criada=timezone.now())
             nova_mascara.save()
             topicos_normais = TopicoNormal.objects.filter(mascara=mascara)
