@@ -37,6 +37,7 @@ class Mascara(models.Model):
     ultima_vez_usado = models.DateTimeField(default=timezone.now)
     info_adicional = models.TextField(max_length=2000)
     data_criada = models.DateTimeField(default=timezone.now)
+    mascara_topicos = models.BooleanField(default=False)
 
 
 

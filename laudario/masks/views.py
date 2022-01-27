@@ -127,7 +127,7 @@ def mostrar_mascara(request, id_mascara):
 
         profileJson = json_serializer.serialize(Profile.objects.filter(usuario=request.user))
 
-        mascara_topicos = profile.mascara_topicos
+        mascara_topicos = mascara.mascara_topicos
 
         titulo = "Masqs - " + mascara.nome
         context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
@@ -164,7 +164,7 @@ def mostrar_mascara(request, id_mascara):
 
         profile = Profile.objects.get(usuario=mascara.usuario)
 
-        mascara_topicos = profile.mascara_topicos
+        mascara_topicos = mascara.mascara_topicos
 
         titulo = "Masqs - " + mascara.nome
         context = {'mascara': mascara, 'topicos_normais': topicos_normais, 'topicos_anormais': topicos_anormais,
@@ -421,6 +421,12 @@ def adicionar_nova_mascara(request):
 
     st = request.POST['titulo_exame']
 
+    top = request.POST.get('mascaraJamesCheck', False)
+
+    if (top == 'on'):
+        mascara_topicos = True
+    else:
+        mascara_topicos = False
 
 
 
@@ -431,7 +437,7 @@ def adicionar_nova_mascara(request):
     nova_mascara = Mascara(usuario=usuario, especialidade=especialidadeInstance, exame=exameInstance, nome=nome_exame, titulo=titulo_exame,
                            indicacoes_header=indicacoes_header, indicacoes=indicacoes,
                            tecnica_header=tecnica_header, tecnica=tecnica, relatorio_header=relatorio_header,
-                          conclusao_header=conclusao_header, conclusao=conclusao, publica=publica, info_adicional=info_adicional, data_criada=timezone.now())
+                          conclusao_header=conclusao_header, conclusao=conclusao, publica=publica, mascara_topicos=mascara_topicos, info_adicional=info_adicional, data_criada=timezone.now())
     nova_mascara.save()
 
 
@@ -907,6 +913,17 @@ def salvar_edicao(request, id_mascara):
     mascara.conclusao = request.POST['conclusao']
     mascara.info_adicional = request.POST['info_adicional']
 
+    top = request.POST.get('mascaraJamesCheck', False)
+
+    if (top == 'on'):
+        topicos = True
+    else:
+        topicos = False
+
+
+
+    mascara.mascara_topicos = topicos
+
     pub = request.POST.get('mascara_publica', False)
 
     if(pub == 'on'):
@@ -1173,7 +1190,6 @@ def salvar_configuracoes(request):
     espacamento_topicos = request.POST['espacamento_topicos']
     altura_linha = request.POST['altura_linha']
     margem_cabecalho = request.POST['margem_cabecalho']
-    mascara_topicos = request.POST.get('mascara_topicos')
     quadro_mais = request.POST.get('quadro_mais')
 
     profile.tamanho_fonte = tamanho_fonte
@@ -1191,10 +1207,7 @@ def salvar_configuracoes(request):
     profile.altura_linha = altura_linha
     profile.margem_cabecalho = margem_cabecalho
 
-    if(mascara_topicos == "True"):
-        profile.mascara_topicos = True
-    else:
-        profile.mascara_topicos = False
+
 
     if (quadro_mais == "True"):
         profile.quadro_mais = True

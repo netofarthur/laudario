@@ -256,6 +256,14 @@
 
     {% endif %}
 {% endfor %}
+    <br>
+
+
+                <input type="checkbox" name="mascaraJamesCheck" id="mascaraJamesCheck"> <label for="mascaraJamesCheck">Máscara com tópicos</label>
+
+
+
+                <p>Selecione esta opção para que os nomes dos órgãos apareçam como tópicos imutáveis em suas máscaras.</p>
 
 <br>
     <br>
@@ -279,7 +287,7 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
   <p style="text-align: center; font-weight: bold; text-decoration: underline;">Dica</p><p style="text-align: center;">Aprenda como utilizar as <a style="color: #c96100;" href="{% url 'descricao' %}#variaveis" target="_blank">variáveis</a> nos seu laudos.
 </div>
 
-    <input type="hidden" name="mascara_topicos" id="mascara_topicos" value="{{ profile.mascara_topicos }}">
+    <input type="hidden" name="mascara_topicos" id="mascara_topicos" value="{{ mascara.mascara_topicos }}">
 
 
 

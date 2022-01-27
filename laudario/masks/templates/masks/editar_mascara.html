@@ -307,8 +307,16 @@
         {% endif %}
     {% endif %}
 {% endfor %}
+<br>
+            {% if mascara.mascara_topicos == True %}
+                <input type="checkbox" name="mascaraJamesCheck" id="mascaraJamesCheck" checked> <label for="mascaraJamesCheck">Máscara com tópicos</label>
 
+            {% else %}
+                <input type="checkbox" name="mascaraJamesCheck" id="mascaraJamesCheck"> <label for="mascaraJamesCheck">Máscara com tópicos</label>
 
+            {% endif %}
+
+                <p>Selecione esta opção para que os nomes dos órgãos apareçam como tópicos imutáveis em suas máscaras.</p>
 
 
      <br class="br">
@@ -342,7 +350,7 @@ e evitar duplicidade de funções. Depois posso melhora isso aqui.-->
 
 </div>
 
-        <input type="hidden" name="mascara_topicos" id="mascara_topicos" value="{{ profile.mascara_topicos }}">
+        <input type="hidden" name="mascara_topicos" id="mascara_topicos" value="{{ mascara.mascara_topicos }}">
 
 
 <div id="coluna_mascaras" class="col-6" style="padding-top: 1rem; height: 90vh; overflow: auto;">
