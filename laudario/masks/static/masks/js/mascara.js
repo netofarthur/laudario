@@ -1523,6 +1523,26 @@ document.getElementById("cancelarIndicacoes").remove();
 
                 var topicoNormalParaAlterar = document.getElementById("exames").value;
 
+                orgaoid = topicoNormalParaAlterar;
+                name = orgaoid;
+
+        if(document.getElementById("s" + orgaoid) != null) {
+        if(document.getElementById("s" + orgaoid).parentNode.style.display == "none") {
+
+                            document.getElementById("s" + name).style.display = "inline";
+                            document.getElementById(name).style.display = "inline";
+                                                        document.getElementById(name).parentNode.style.display = "inline";
+
+                                document.getElementById("s" + name).nextSibling.parentNode.insertBefore(document.createElement("br"), document.getElementById("s" + name).nextSibling.nextSibling);
+
+
+                document.getElementById("s" + name).nextSibling.setAttribute("data-mce-style", document.getElementById("s" + name).nextSibling.getAttribute("data-mce-style").replaceAll("none", "inline"));
+                document.getElementById("s" + name).parentNode.setAttribute("data-mce-style", document.getElementById("s" + name).parentNode.getAttribute("data-mce-style").replaceAll("none", "inline"));
+
+
+                            }
+}
+
 
             tinymce.remove();
 
