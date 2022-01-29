@@ -146,7 +146,7 @@ mostrarBotaoPopularSeNecessario();
         var br = document.createElement("br");
 
         if(document.getElementById("s" + name) != null) {
-            topicoDiv.insertBefore(document.getElementById("s" + name), document.getElementById(name));
+            topicoDiv.insertBefore(document.getElementById("s" + name).parentNode, document.getElementById(name));
         topicoDiv.insertBefore(br, document.getElementById(name).nextSibling);
         }
 
@@ -166,6 +166,7 @@ mostrarBotaoPopularSeNecessario();
 
             if(mascara_topicos == "True" && document.getElementById("s" + name) != null) {
                             document.getElementById(name).nextSibling.remove();
+
 
             }
 
@@ -344,9 +345,17 @@ document.getElementById("cancelarIndicacoes").remove();
         }
 
         if(document.getElementById("s" + orgaoid) != null) {
-        if(document.getElementById("s" + orgaoid).style.display == "none") {
+        if(document.getElementById("s" + orgaoid).parentNode.style.display == "none") {
+
                             document.getElementById("s" + name).style.display = "inline";
-                            document.getElementById("s" + name).nextSibling.parentNode.insertBefore(document.createElement("br"), document.getElementById("s" + name).nextSibling.nextSibling);
+                            document.getElementById(name).style.display = "inline";
+                                                        document.getElementById(name).parentNode.style.display = "inline";
+
+                                document.getElementById("s" + name).nextSibling.parentNode.insertBefore(document.createElement("br"), document.getElementById("s" + name).nextSibling.nextSibling);
+
+
+                document.getElementById("s" + name).nextSibling.setAttribute("data-mce-style", document.getElementById("s" + name).nextSibling.getAttribute("data-mce-style").replaceAll("none", "inline"));
+                document.getElementById("s" + name).parentNode.setAttribute("data-mce-style", document.getElementById("s" + name).parentNode.getAttribute("data-mce-style").replaceAll("none", "inline"));
 
 
                             }
@@ -380,10 +389,15 @@ document.getElementById("cancelarIndicacoes").remove();
 
         if(document.getElementById(name).getAttribute("name") != "alterado") {
             if(mascara_topicos == "True" && document.getElementById(name).previousSibling.id == "s" + name) {
-                document.getElementById(name).innerHTML = relatorio.charAt(0).toLowerCase() + relatorio.slice(1);
+                document.getElementById(name).innerHTML = "&nbsp;" + relatorio.charAt(0).toLowerCase() + relatorio.slice(1);
 
             } else {
+                if(mascara_topicos == "True") {
+                document.getElementById(name).innerHTML = "&nbsp;" + relatorio;
+                } else {
                 document.getElementById(name).innerHTML = relatorio;
+                }
+
 
             }
 
@@ -394,10 +408,16 @@ document.getElementById("cancelarIndicacoes").remove();
 
             if(id.charAt(0) == "p" || id.charAt(0) == "m") {
                     if(mascara_topicos == "True" && document.getElementById(name).previousSibling.id == "s" + name) {
-                           document.getElementById(name).innerHTML =relatorio.charAt(0).toLowerCase() + relatorio.slice(1) + "<br>" + document.getElementById(name).innerHTML.charAt(0).toUpperCase() + document.getElementById(name).innerHTML.slice(1);
+                           document.getElementById(name).innerHTML ="PORRA" + relatorio.charAt(0).toLowerCase() + relatorio.slice(1) + "<br>" + document.getElementById(name).innerHTML.charAt(0).toUpperCase() + document.getElementById(name).innerHTML.slice(1);
 
                     } else {
-                           document.getElementById(name).innerHTML =relatorio + "<br>" + document.getElementById(name).innerHTML ;
+                    if(mascara_topicos == "True") {
+                    document.getElementById(name).innerHTML = "&nbsp;" + relatorio + "<br>" + document.getElementById(name).innerHTML ;
+
+                    } else {
+                    document.getElementById(name).innerHTML = relatorio + "<br>" + document.getElementById(name).innerHTML ;
+                    }
+
 
                     }
 
@@ -2036,10 +2056,15 @@ document.getElementById("cancelarIndicacoes").remove();
 
                 if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
                     if(mascara_topicos == "True" && document.getElementById(topicoNormalParaAlterar).previousSibling.id == "s" + topicoNormalParaAlterar) {
-                 document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value.charAt(0).toLowerCase() + document.getElementById("relatorio_modal").value.slice(1);
+                 document.getElementById(topicoNormalParaAlterar).innerHTML = "&nbsp;" + document.getElementById("relatorio_modal").value.charAt(0).toLowerCase() + document.getElementById("relatorio_modal").value.slice(1);
 
                 } else {
-                    document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
+                if(mascara_topicos == "True") {
+                document.getElementById(topicoNormalParaAlterar).innerHTML = "&nbsp;" + document.getElementById("relatorio_modal").value;
+                } else {
+                document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value;
+                }
+
 
                 }
 
@@ -2710,18 +2735,7 @@ configurarBotoezinhosJames();
 
 
 //funçãozinha que remove os tópicos vazios máscara james de copiar sem editar. Se for editar, não remove.
-if(mascara_topicos == "True") {
- var topicos = document.getElementsByName("topico");
- for(topico of topicos) {
-    if(topico.innerHTML === '') {
-        if(topico.previousSibling.innerHTML != undefined) {
-        topico.previousSibling.style.display = "none";
-                topico.nextSibling.remove();
 
-        }
-    }
- }
-}
 
 
 
@@ -2836,7 +2850,15 @@ if(document.getElementById("procurarFrases") != null) {
 }
 
 function editarLaudo() {
+ var divs2 = document.getElementsByTagName("div");
+    for(div2 of divs2) {
+        if(div2.getAttribute("class") == "outerstrong") {
+            if(div2.innerHTML == "") {
+                div2.remove();
+            }
 
+        }
+}
 var topics = document.getElementsByClassName("paragrafo_mascara");
 for(topic of topics) {
     if(topic.innerHTML == "&nbsp;") {
@@ -3377,12 +3399,15 @@ removerBotoes();
 
 
     }
+document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("TOPICOPARAREMOCAO", "");
 
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacetos", "<br>");
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("espacinhos", "<br>");
 
 if(mascara_topicos == "True") {
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("XXXXXXXXXX", "<br>");
+document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("&nbsp;", "");
+
 
 } else {
 document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("XXXXXXXXXX", "");
@@ -3590,6 +3615,19 @@ for(var i=0; i<len; i++)
 
 
 function limparTagsHtmlTotal() {
+
+var outerstrongs = document.getElementById("topicos_div").children;
+for(outerstrong of outerstrongs) {
+
+
+    if(outerstrong.style.display == "none") {
+                outerstrong.innerHTML = "TOPICOPARAREMOCAO";
+
+    }
+
+
+}
+document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("TOPICOPARAREMOCAO", "");
 
 
 trocarCabecalhos();
