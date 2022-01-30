@@ -2955,6 +2955,11 @@ document.getElementById("paragrafo_conclusao").style.marginTop = "0px";
 
 }
 
+if(document.getElementById("relatorio_header") == null) {
+document.getElementById("topicos_div").style.marginTop = "15px";
+
+}
+
 if(document.getElementById("indicacoes") != null) {
 document.getElementById("indicacoes").style.marginTop = "0px";
 
