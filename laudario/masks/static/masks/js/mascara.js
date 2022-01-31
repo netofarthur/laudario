@@ -3731,7 +3731,7 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
 
     document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("<div>", "");
         document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("</div>", "");
-
+        document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("<br><br><br>", "<br><br>");
 
 
 
