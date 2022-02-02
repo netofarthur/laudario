@@ -89,8 +89,8 @@
 
 <p id="indicacoes_header" data-mce-style="font-weight: bold; font-family: {{ profile.fonte }}; margin-bottom: 2px; color: {{ profile.cor_topicos }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}"  style="color: {{ profile.cor_topicos }}; text-transform: {{ profile.capitalizacao_topicos }}; font-family: {{ profile.fonte }}; text-align: {{ profile.alinhamento_topicos }}; font-size: {{profile.tamanho_topicos }}; margin-top: {{profile.margem_cabecalho }}; margin-bottom: 2px; font-weight: bold;"> {{ mascara.indicacoes_header }} </p>
 {% autoescape off %}
-<p id="indicacoes" data-mce-style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}"><span style="display: none;">Selecione, Não mostrar, </span>{{mascara.indicacoes }}, Deixar em branco</p>
-    <p id="indicacoesEscondida" data-mce-style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" style="margin-top: 0; display: none; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}"><span style="display: none;">Selecione, Não mostrar, </span>{{mascara.indicacoes }}, Deixar em branco</p>
+<p id="indicacoes" data-mce-style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}"><span style="display: none;">Selecione, Deixar em branco, Não mostrar, </span>{{mascara.indicacoes }}</p>
+    <p id="indicacoesEscondida" data-mce-style="margin-top: 0; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}" style="margin-top: 0; display: none; font-size: {{profile.tamanho_fonte }}; font-family: {{ profile.fonte }}; color: {{ profile.cor_mascara }}; line-height: {{ profile.altura_linha }}; margin-bottom: {{ profile.espacamento_topicos }}"><span style="display: none;">Selecione, Deixar em branco, Não mostrar, </span>{{mascara.indicacoes }}</p>
 
 <button onclick="reverterIndicacoes()" style="display: none; border: none; background: white; padding: 3px; margin-left: 0; padding-left: 0px; color: #c96100;" id="cancelarIndicacoes">Reverter</button>
     {% endautoescape %}
@@ -865,6 +865,47 @@ $('button').on('mousedown',
     }
 );
 
+</script>
+
+
+<script>
+    $('#indicacoes').on('keydown', function (event) {
+    if (window.getSelection && event.which == 8) { // backspace
+        // fix backspace bug in FF
+        // https://bugzilla.mozilla.org/show_bug.cgi?id=685445
+        var selection = window.getSelection();
+        if (!selection.isCollapsed || !selection.rangeCount) {
+            return;
+        }
+
+        var curRange = selection.getRangeAt(selection.rangeCount - 1);
+        if (curRange.commonAncestorContainer.nodeType == 3 && curRange.startOffset > 0) {
+            // we are in child selection. The characters of the text node is being deleted
+            return;
+        }
+
+        var range = document.createRange();
+        if (selection.anchorNode != this) {
+            // selection is in character mode. expand it to the whole editable field
+            range.selectNodeContents(this);
+            range.setEndBefore(selection.anchorNode);
+        } else if (selection.anchorOffset > 0) {
+            range.setEnd(this, selection.anchorOffset);
+        } else {
+            // reached the beginning of editable field
+            return;
+        }
+        range.setStart(this, range.endOffset - 1);
+
+
+        var previousNode = range.cloneContents().lastChild;
+        if (previousNode && previousNode.contentEditable == 'false') {
+            // this is some rich content, e.g. smile. We should help the user to delete it
+            range.deleteContents();
+            event.preventDefault();
+        }
+    }
+});
 </script>
 
     {% endblock conteudo %}

@@ -340,7 +340,7 @@ document.getElementById("cancelarIndicacoes").remove();
         }
 
         if(orgao == "Nenhum órgão" && mascara_topicos == "True" && relatorio != "") {
-            relatorio = relatorio + "<br>";
+            relatorio = relatorio;
 
         }
 
@@ -463,7 +463,16 @@ document.getElementById("cancelarIndicacoes").remove();
         }
 
 
+ if(orgao == "Nenhum órgão"&& mascara_topicos == "True") {
+                document.getElementById("s" + orgaoid).style.display = "none";
+                document.getElementById(orgaoid).innerHTML = document.getElementById(orgaoid).innerHTML.replace("&nbsp;", "");
+                if(relatorio == "") {
+                document.getElementById(orgaoid).parentNode.style.display = "none";
 
+
+               }
+
+    }
 
 
 
@@ -2847,7 +2856,7 @@ document.getElementById("indicacoes_header").style.display = "none";
     } else if(selecao.trim() == "Deixar em branco") {
         indicacoesDiv.setAttribute("contentEditable", "true");
 
-        indicacoesDiv.innerHTML = "    ";
+        indicacoesDiv.innerHTML = "&nbsp;";
         deixouEmBranco = true;
     } else {
     indicacoesDiv.innerHTML = "";
