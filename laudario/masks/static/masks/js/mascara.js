@@ -2759,6 +2759,19 @@ function clicouExcluir(id) {
 
 function colocarIndicacaoClinica() {
 
+if(mascara_topicos == "True") {
+
+var paragrafos = document.getElementsByTagName("ul");
+for(paragrafo of paragrafos) {
+
+
+    if(paragrafo.parentNode.parentNode.nextSibling.tagName == "BR") {
+        paragrafo.parentNode.parentNode.nextSibling.remove();
+    }
+}
+
+
+}
 
 configurarBotoezinhosJames();
 
@@ -2879,6 +2892,15 @@ if(document.getElementById("procurarFrases") != null) {
 }
 
 function editarLaudo() {
+var paragrafos = document.getElementsByTagName("ul");
+for(paragrafo of paragrafos) {
+
+    if(paragrafo.id != "barra_navegacao") {
+    paragrafo.style.marginTop = 0;
+    paragrafo.style.marginBottom = 0;
+    }
+}
+
  var divs2 = document.getElementsByTagName("div");
     for(div2 of divs2) {
         if(div2.getAttribute("class") == "outerstrong") {
