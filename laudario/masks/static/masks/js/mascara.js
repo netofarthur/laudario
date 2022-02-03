@@ -148,6 +148,7 @@ mostrarBotaoPopularSeNecessario();
         if(document.getElementById("s" + name) != null) {
             topicoDiv.insertBefore(document.getElementById("s" + name).parentNode, document.getElementById(name));
         topicoDiv.insertBefore(br, document.getElementById(name).nextSibling);
+        document.getElementById(name).innerHTML = document.getElementById(name).innerHTML.replace("<br>&nbsp;", "<br>");
         }
 
 
@@ -398,7 +399,7 @@ document.getElementById("cancelarIndicacoes").remove();
 
             } else {
                 if(mascara_topicos == "True") {
-                document.getElementById(name).innerHTML = "&nbsp;" + relatorio;
+                document.getElementById(name).innerHTML = "&nbsp;" + relatorio.charAt(0).toLowerCase() + relatorio.slice(1);
                 } else {
                 document.getElementById(name).innerHTML = relatorio;
                 }
@@ -413,11 +414,14 @@ document.getElementById("cancelarIndicacoes").remove();
 
             if(id.charAt(0) == "p" || id.charAt(0) == "m") {
                     if(mascara_topicos == "True" && document.getElementById(name).previousSibling.id == "s" + name) {
-                           document.getElementById(name).innerHTML ="PORRA" + relatorio.charAt(0).toLowerCase() + relatorio.slice(1) + "<br>" + document.getElementById(name).innerHTML.charAt(0).toUpperCase() + document.getElementById(name).innerHTML.slice(1);
+                           document.getElementById(name).innerHTML ="&nbsp;" + relatorio.charAt(0).toLowerCase() + relatorio.slice(1) + "<br>" + document.getElementById(name).innerHTML.charAt(0).toUpperCase() + document.getElementById(name).innerHTML.slice(1);
 
                     } else {
                     if(mascara_topicos == "True") {
-                    document.getElementById(name).innerHTML = "&nbsp;" + relatorio + "<br>" + document.getElementById(name).innerHTML ;
+                                    document.getElementById(name).innerHTML = "&nbsp;" + relatorio.charAt(0).toLowerCase() + relatorio.slice(1) + "<br>" + document.getElementById(name).innerHTML;
+
+
+
 
                     } else {
                     document.getElementById(name).innerHTML = relatorio + "<br>" + document.getElementById(name).innerHTML ;
