@@ -762,25 +762,6 @@ $("#myModalAlteracao").on("shown.bs.modal", function(){
     $('#procurarFrasesPublicas').focus();
 
 
-        var opcoes = document.getElementById("exames").options;
-
-     var opcaoSelecionada = opcoes[0].innerHTML;
-     for(var i = 0; i < opcoes.length; i++) {
-             if(opcoes[i].innerHTML == "Nenhum órgão") {
-                        opcoes[i].style.display = "none";
-
-
-        }
-     }
-
-     for(var i = 0; i < opcoes.length; i++) {
-             if(opcoes[i].innerHTML == "Nenhum órgão") {
-                        opcoes[i].style.display = "block";
-                        break;
-
-
-        }
-     }
 
 
         if(document.getElementById("procurarFrases") != null) {

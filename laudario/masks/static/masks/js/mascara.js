@@ -2759,6 +2759,7 @@ function clicouExcluir(id) {
 
 function colocarIndicacaoClinica() {
 
+
 if(mascara_topicos == "True") {
 
 var paragrafos = document.getElementsByTagName("ul");
@@ -2853,6 +2854,30 @@ if(document.getElementsByName("opcoesJames") != null) {
 
 
         }
+
+            if(document.getElementById("exames") != null) {
+
+                var opcoes = document.getElementById("exames").options;
+
+     var opcaoSelecionada = opcoes[0].innerHTML;
+     for(var i = 0; i < opcoes.length; i++) {
+             if(opcoes[i].innerHTML == "Nenhum órgão") {
+                        opcoes[i].style.display = "none";
+
+
+        }
+     }
+
+     for(var i = 0; i < opcoes.length; i++) {
+             if(opcoes[i].innerHTML == "Nenhum órgão") {
+                        opcoes[i].style.display = "block";
+                        break;
+
+
+        }
+     }
+
+     }
 
 }
 
