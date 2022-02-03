@@ -165,7 +165,12 @@ mostrarBotaoPopularSeNecessario();
         for(z = 0; z < lista.length; z++) {
 
             if(mascara_topicos == "True" && document.getElementById("s" + name) != null) {
+                            if(document.getElementById(name).nextSibling == null) {
+                            document.getElementById(name).parentNode.nextSibling.remove();
+                            } else {
                             document.getElementById(name).nextSibling.remove();
+                            }
+
 
 
             }
