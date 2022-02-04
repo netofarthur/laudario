@@ -4135,3 +4135,18 @@ if(document.getElementById("botoezinhos_div") != null) {
     }
 }
 }
+
+
+function setCaret() {
+    if(document.getElementById("indicacoes").firstChild.id != "lista_indicacoes") {
+    var el = document.getElementById("indicacoes")
+    var range = document.createRange()
+    var sel = window.getSelection()
+
+    range.setStart(el.childNodes[0], document.getElementById("indicacoes").innerText.length - 1)
+    range.collapse(true)
+
+    sel.removeAllRanges()
+    sel.addRange(range)
+    }
+}
