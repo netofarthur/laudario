@@ -876,7 +876,7 @@ $('button').on('mousedown',
             // reached the beginning of editable field
             return;
         }
-        range.setStart(this, range.endOffset - 1);
+        range.setStart(this, range.endOffset);
 
 
         var previousNode = range.cloneContents().lastChild;
