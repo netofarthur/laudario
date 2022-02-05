@@ -254,7 +254,6 @@ mostrarBotaoPopularSeNecessario();
 
 
         if(conclusaoAlterada != "") {
-        document.getElementById("paragrafo_conclusao").setAttribute("name", "topico");
             document.getElementById("paragrafo_conclusao").innerHTML = document.getElementById("ultima_alteracao_conclusao").innerHTML;
 
         }
@@ -270,6 +269,8 @@ mostrarBotaoPopularSeNecessario();
             document.getElementById(name).innerHTML = relatorioNormal;
 
         }
+
+
 
 
         if(document.getElementById("paragrafo_conclusao").innerText == document.getElementById("conclusaoNormal").value) {
@@ -291,6 +292,13 @@ mostrarBotaoPopularSeNecessario();
 
  // Altera o diagnóstico Padrão diretamente, sem abrir outras janelas. Tive que usar serialização com JSON objects.
     function alterarDiagnosticoDireto(name, id) {
+
+        if(document.getElementById("conclusaoNormal").value == "") {
+
+    document.getElementById("conclusaoNormal").value = document.getElementById("paragrafo_conclusao").innerText;
+}
+
+
       document.getElementById("ultima_alteracao_relatorio").innerHTML = document.getElementById("topicos_div").innerHTML;
                 document.getElementById("ultima_alteracao_conclusao").innerHTML = document.getElementById("paragrafo_conclusao").innerHTML;;
 
@@ -2810,9 +2818,7 @@ configurarBotoezinhosJames();
     }
 
 
-    if(document.getElementById("paragrafo_conclusao") != null) {
-    document.getElementById("conclusaoNormal").value = document.getElementById("paragrafo_conclusao").innerText;
-}
+
 
    if(document.getElementById("indicacoes") != null && document.getElementById("copiar_laudo") != null) {
     var indicacoes = document.getElementById("indicacoes").innerHTML.split(",");
