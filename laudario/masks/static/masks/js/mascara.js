@@ -1583,6 +1583,7 @@ document.getElementById("cancelarIndicacoes").remove();
                 document.getElementById("s" + name).nextSibling.setAttribute("data-mce-style", document.getElementById("s" + name).nextSibling.getAttribute("data-mce-style").replaceAll("none", "inline"));
                 document.getElementById("s" + name).parentNode.setAttribute("data-mce-style", document.getElementById("s" + name).parentNode.getAttribute("data-mce-style").replaceAll("none", "inline"));
 
+
     if(document.getElementById(name).innerHTML == "&nbsp;" && document.getElementById("s" + orgaoid).innerHTML == "Nenhum órgão:") {
         document.getElementById(name).parentNode.style.display = "none";
     }
@@ -1590,6 +1591,25 @@ document.getElementById("cancelarIndicacoes").remove();
                             }
 }
 
+try {
+ var topicosNormais = JSON.parse(normais);
+
+
+            for(topico of topicosNormais) {
+                if(topico.pk == name) {
+                    orgao = topico.fields.orgao;
+                }
+
+            }
+
+
+    if(document.getElementById(name).innerText == "" && orgao == "Nenhum órgão" && mascara_topicos == "False") {
+        document.getElementById(name).style.display = "none";
+    }
+
+} catch (err) {
+
+}
 
             tinymce.remove();
 
