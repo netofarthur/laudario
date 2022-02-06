@@ -1568,8 +1568,12 @@ document.getElementById("cancelarIndicacoes").remove();
 
         if(document.getElementById("s" + orgaoid) != null) {
         if(document.getElementById("s" + orgaoid).parentNode.style.display == "none") {
-
+                            if(document.getElementById("s" + orgaoid).innerHTML != "Nenhum órgão:") {
                             document.getElementById("s" + name).style.display = "inline";
+                            } else {
+
+                            }
+
                             document.getElementById(name).style.display = "inline";
                                                         document.getElementById(name).parentNode.style.display = "inline";
 
@@ -1579,6 +1583,9 @@ document.getElementById("cancelarIndicacoes").remove();
                 document.getElementById("s" + name).nextSibling.setAttribute("data-mce-style", document.getElementById("s" + name).nextSibling.getAttribute("data-mce-style").replaceAll("none", "inline"));
                 document.getElementById("s" + name).parentNode.setAttribute("data-mce-style", document.getElementById("s" + name).parentNode.getAttribute("data-mce-style").replaceAll("none", "inline"));
 
+    if(document.getElementById(name).innerHTML == "&nbsp;" && document.getElementById("s" + orgaoid).innerHTML == "Nenhum órgão:") {
+        document.getElementById(name).parentNode.style.display = "none";
+    }
 
                             }
 }
@@ -2116,7 +2123,15 @@ document.getElementById("cancelarIndicacoes").remove();
 
                 if(document.getElementById(topicoNormalParaAlterar).getAttribute("name") != "alterado") {
                     if(mascara_topicos == "True" && document.getElementById(topicoNormalParaAlterar).previousSibling.id == "s" + topicoNormalParaAlterar) {
-                 document.getElementById(topicoNormalParaAlterar).innerHTML = "&nbsp;" + document.getElementById("relatorio_modal").value.charAt(0).toLowerCase() + document.getElementById("relatorio_modal").value.slice(1);
+                    if(document.getElementById(topicoNormalParaAlterar).previousSibling.innerHTML == "Nenhum órgão:") {
+                                     document.getElementById(topicoNormalParaAlterar).innerHTML = document.getElementById("relatorio_modal").value.charAt(0).toLowerCase() + document.getElementById("relatorio_modal").value.slice(1);
+
+                    } else {
+                                     document.getElementById(topicoNormalParaAlterar).innerHTML = "&nbsp;" + document.getElementById("relatorio_modal").value.charAt(0).toLowerCase() + document.getElementById("relatorio_modal").value.slice(1);
+
+                    }
+
+
 
                 } else {
                 if(mascara_topicos == "True") {
@@ -2198,6 +2213,7 @@ document.getElementById("cancelarIndicacoes").remove();
                 document.getElementById("corpo_alteracao").scrollIntoView();
 
             }
+
 
 
     }
