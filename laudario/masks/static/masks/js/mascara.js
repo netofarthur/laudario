@@ -172,7 +172,13 @@ mostrarBotaoPopularSeNecessario();
                             if(document.getElementById(name).nextSibling == null) {
                             document.getElementById(name).parentNode.nextSibling.remove();
                             } else {
-                            document.getElementById(name).nextSibling.remove();
+                            if(document.getElementById(name).previousSibling.innerText == "Nenhum órgão:" || document.getElementById(name).previousSibling.firstChild.innerText == "Nenhum órgão:") {
+                                                        document.getElementById(name).previousSibling.style.display = "none";
+
+                            } else {
+                                                        document.getElementById(name).nextSibling.remove();
+
+                            }
                             }
 
 
