@@ -2983,6 +2983,7 @@ if(document.getElementById("procurarFrases") != null) {
 
 function editarLaudo() {
 
+if(mascara_topicos == "True") {
 var topicosVisiveis = document.getElementById("topicos_div").children;
 var ultimoTopicoVisivel;
 
@@ -2992,6 +2993,8 @@ for(topico of topicosVisiveis) {
     }
 }
 ultimoTopicoVisivel.nextSibling.remove();
+
+}
 
 
 var paragrafos = document.getElementsByTagName("ul");
