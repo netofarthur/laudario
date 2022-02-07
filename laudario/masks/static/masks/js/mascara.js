@@ -2982,6 +2982,18 @@ if(document.getElementById("procurarFrases") != null) {
 }
 
 function editarLaudo() {
+
+var topicosVisiveis = document.getElementById("topicos_div").children;
+var ultimoTopicoVisivel;
+
+for(topico of topicosVisiveis) {
+    if(topico.style.display == "inline") {
+    ultimoTopicoVisivel = topico;
+    }
+}
+ultimoTopicoVisivel.nextSibling.remove();
+
+
 var paragrafos = document.getElementsByTagName("ul");
 for(paragrafo of paragrafos) {
 
@@ -3891,6 +3903,7 @@ function limparDivsVazios() {
 
 function limparTagsHtmlParcial() {
 
+
 if(mascara_topicos == false) {
     if(document.getElementById("topicos_div") != null) {
 
@@ -3929,6 +3942,7 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
 
     for(p of ps) {
         p.removeAttribute("class");
+        p.removeAttribute("contenteditable");
         p.removeAttribute("id");
         if(p.innerHTML == " ") {
             p.style.display = "none";
