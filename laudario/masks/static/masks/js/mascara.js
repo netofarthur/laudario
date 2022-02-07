@@ -3100,7 +3100,7 @@ document.getElementById("titulo").style.margin = "0px";
 
 
                               menubar: false,
-                                      plugins: "table paste code lists",
+                                      plugins: "noneditable, table paste code lists",
                                         paste_as_text: true,
                                 forced_root_block: false,
                             toolbar: "fontselect fontsizeselect bold italic underline forecolor table bullist code spell",
