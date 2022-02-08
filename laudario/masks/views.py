@@ -823,7 +823,31 @@ def copiar_tudo(request, id_usuario):
     usuario = User.objects.get(pk=id_usuario)
     profile = Profile.objects.get(usuario=request.user)
 
+
+
+
+
+
+
+
     if profile.is_premium == True:
+
+        profileacopiar = Profile.objects.get(usuario=usuario)
+        profile.fonte = profileacopiar.fonte
+        profile.tamanho_fonte = profileacopiar.tamanho_fonte
+        profile.cor_topicos = profileacopiar.cor_topicos
+        profile.cor_mascara = profileacopiar.cor_mascara
+        profile.cor_titulo = profileacopiar.cor_titulo
+        profile.capitalizacao = profileacopiar.capitalizacao
+        profile.capitalizacao_topicos = profileacopiar.capitalizacao_topicos
+        profile.alinhamento_titulo = profileacopiar.alinhamento_titulo
+        profile.alinhamento_topicos = profileacopiar.alinhamento_topicos
+        profile.tamanho_titulo = profileacopiar.tamanho_titulo
+        profile.tamanho_topicos = profileacopiar.tamanho_topicos
+        profile.espacamento_topicos = profileacopiar.espacamento_topicos
+        profile.altura_linha = profileacopiar.altura_linha
+        profile.margem_cabecalho = profileacopiar.margem_cabecalho
+        profile.save()
 
         mascaras = Mascara.objects.filter(usuario=usuario)
         for mascara in mascaras:
