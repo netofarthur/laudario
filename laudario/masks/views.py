@@ -352,7 +352,14 @@ def premium(request):
     profile.preference_id = preference["id"]
     profile.save()
     titulo = "Masqs - Premium"
-    context = {'preference': preference, 'profile': profile, 'titulo': titulo}
+
+    usuariovitalicio = False
+
+    if (profile.vencimento_premium > timezone.now() + timedelta(days=100 * 365)):
+        usuariovitalicio = True
+
+
+    context = {'preference': preference, 'profile': profile, 'titulo': titulo, 'usuariovitalicio': usuariovitalicio}
     return render(request, 'masks/premium.html', context)
 
 
@@ -801,8 +808,14 @@ def configuracoes(request):
 
     profile = Profile.objects.get(usuario=request.user)
     titulo = "Masqs - Configurações"
+
+    usuariovitalicio = False
+
+    if(profile.vencimento_premium > timezone.now() + timedelta(days=100*365)):
+        usuariovitalicio = True
+
     context = {'especialidades': especialidades, 'mascaras': mascaras, 'exames': exames,
-               'profile': profile, 'titulo': titulo}
+               'profile': profile, 'titulo': titulo, 'usuariovitalicio': usuariovitalicio}
     return render(request, 'masks/configuracoes.html', context)
 
 
@@ -1493,3 +1506,54 @@ def enviar_mensagem(request):
 
     context = {'titulo': titulo}
     return render(request, 'masks/aviso_mensagem.html', context)
+
+
+def voucher(request):
+    # Verifica se o usuário está logado
+    if not request.user.is_authenticated:
+        return redirect(views.mostrar_index)
+
+    titulo = "Masqs - Voucher"
+    context = {'titulo': titulo}
+
+
+    #TESTE (apagar na producao)
+    achou = False
+    with open("/Users/arthur/Projects/laudario/voucher", "r") as f:
+        lines = f.readlines()
+    with open("/Users/arthur/Projects/laudario/voucher", "w") as f:
+        for line in lines:
+            if line.strip("\n") != request.POST['voucher']:
+                f.write(line)
+            else:
+                achou = True
+
+
+
+    #PRODUCAO
+    #achou = False
+    #with open("/home/arthur/vars/voucher", "r") as f:
+    #    lines = f.readlines()
+    #with open("/home/arthur/vars/voucher", "w") as f:
+    #    for line in lines:
+    #        if line.strip("\n") != request.POST['voucher']:
+    #            f.write(line)
+    #        else:
+    #            achou = True
+
+
+
+    if achou == True:
+        profile = Profile.objects.get(usuario=request.user)
+        profile.is_premium = True
+        profile.vencimento_premium = datetime.now() + timedelta(days=200*365)
+        profile.save()
+        mensagem = "Parabéns " + request.user.first_name + ", você ativou sua assinatura Premium vitalícia!"
+
+    else:
+        mensagem = "Voucher inválido ou já utilizado"
+
+    titulo = "Masqs - Voucher"
+
+    context = {'titulo': titulo, 'achou': achou, 'mensagem': mensagem}
+    return render(request, 'masks/voucher.html', context)

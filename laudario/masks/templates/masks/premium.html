@@ -15,7 +15,14 @@
     <div style="text-align: center; padding: 1rem;">
         <h1>Assinatura Premium</h1>
         {% if profile.is_premium %}
-        <h4 style="color: red;">Sua assinatura Premium vence em {{ profile.vencimento_premium|date:'d/m/Y' }}</h4>
+            {% if usuariovitalicio %}
+                <h4 style="color: red;">Sua assinatura Premium é vitalícia</h4>
+
+            {% else %}
+                <h4 style="color: red;">Sua assinatura Premium vence em {{ profile.vencimento_premium|date:'d/m/Y' }}</h4>
+
+            {% endif %}
+
         {% endif %}
     </div>
 
@@ -40,9 +47,38 @@
     <p style="font-size: 1.3rem;">Assinatura por R$ 99,99, cobrada anualmente (R$ 8,33/mês).</p>
     <p style="font-size: 1.3rem;">Assinatura não recorrente (renove quando, se e quantas vezes quiser).</p>
     <p style="font-size: 1.3rem;">Formas de pagamento: cartão de crédito, boleto bancário, Mercado Pago ou PayPal.</p>
-    <div class="cho-container" style="text-align: center; margin-top: 2rem;">
+
+    {% if usuariovitalicio %}
+                <div class="cho-container" style="text-align: center; margin-top: 2rem; display: none;">
 
     </div>
+
+            {% else %}
+                <div class="cho-container" style="text-align: center; margin-top: 2rem;">
+
+    </div>
+            {% endif %}
+
+
+
+    {% if usuariovitalicio %}
+                    <div style="text-align: center; display: none;">
+        <br>
+        <p>Possui um Voucher? <a style="color: blue;" data-target="#modalVoucher" data-toggle="modal" href="#modalVoucher">Clique aqui</a></p>
+        </div>
+    </div>
+
+            {% else %}
+                    <div style="text-align: center;">
+        <br>
+        <p>Possui um Voucher? <a style="color: blue;" data-target="#modalVoucher" data-toggle="modal" href="#modalVoucher">Clique aqui</a></p>
+        </div>
+    </div>
+            {% endif %}
+
+
+
+
 </div>
     </div>
 
@@ -93,6 +129,38 @@
 
 
 
+<!-- Modal de Cadastro-->
+    <div class="modal fade" id="modalVoucher" tabindex="-1" role="dialog" aria-labelledby="modalVoucherTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body" style="padding: 2rem;">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                  <h4 style="text-align: center; color: #c96100;" id="novo_voucher_title">Digite os caracteres do seu Voucher</h4>
+                  <br>
+                  <div id="voucher_div">
+                  <form id="formulario_voucher" action="{% url 'voucher' %}" method="post">
+                    {% csrf_token %}
+                        <div style="text-align: center;" id="numero_voucher_div">
+
+
+                            <input type="text" name="voucher" id="voucher" class="voucher_input"><input style="margin-left: 1rem;" type="submit" value="OK" id="botao_voucher">
+
+                            </div>
+
+
+
+                    </form>
+
+                </div>
+              </div>
+
+            </div>
+        </div>
+
+
+    </div>
 
 {% endblock conteudo %}
 

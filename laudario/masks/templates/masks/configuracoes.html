@@ -49,7 +49,13 @@
     <div><p style="color: white; font-size: 1.4rem; font-weight: bold;"><img style="margin-bottom: .3rem;" width="50rem;" height="auto" src="{% static 'masks/images/diamante.png' %}"> CONTA PREMIUM</p></div>
     </div>
         <div class="col-6" style="background-color: #808080; height: 6rem; line-height: 6rem; margin-bottom: 1rem; text-align: right;">
-            <p style="color: white; font-size: 1.1rem;">Expira em {{ profile.vencimento_premium|date:'d/m/Y' }} </p>
+            {% if usuariovitalicio %}
+                        <p style="color: white; font-size: 2.3rem; font-family: 'Brush Script MT', cursive;">Assinatura Vitalícia</p>
+
+            {% else %}
+                        <p style="color: white; font-size: 1.4rem;">Expira em {{ profile.vencimento_premium|date:'d/m/Y' }} </p>
+
+            {% endif %}
         </div>
 
 </div>

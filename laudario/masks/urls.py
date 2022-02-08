@@ -22,6 +22,8 @@ urlpatterns = [
     path('', views.entrar, name='entrar'),
     path('login', views.login_usuario, name='login_usuario'),
     path('cadastrar', views.cadastrar, name='cadastrar'),
+    path('voucher', views.voucher, name='voucher'),
+
     path('logout', views.logout_usuario, name='logout_usuario'),
     path('mascaras', views.mostrar_mascaras, name='mostrar_mascaras'),
     path('salvaralteracao/', views.adicionar_alteracao, name='adicionar_alteracao'),
