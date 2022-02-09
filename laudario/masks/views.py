@@ -1572,7 +1572,7 @@ def voucher(request):
         profile.is_premium = True
         profile.vencimento_premium = datetime.now() + timedelta(days=200*365)
         profile.save()
-        mensagem = "Parabéns " + request.user.first_name + ", você ativou sua assinatura Premium vitalícia!"
+        mensagem = "Parabéns, " + request.user.first_name + "! Você ativou sua assinatura Premium vitalícia."
 
     else:
         mensagem = "Voucher inválido ou já utilizado"

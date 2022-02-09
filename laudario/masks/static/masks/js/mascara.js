@@ -2483,9 +2483,6 @@ document.getElementById("mais_utilizadas").style.display = "none";
 anchor2.setAttribute("href", window.location.href);
 anchor2.setAttribute("class", "link_voltar");
 
-    if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + "/") {
-    anchor2.style.display = "none";
-}
 
 anchor2.innerHTML = "Repetir exame";
 anchor2.style.fontSize = "1.5rem";
