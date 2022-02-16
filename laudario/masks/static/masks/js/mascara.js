@@ -2991,6 +2991,8 @@ for(paragrafo of paragrafos) {
     if(paragrafo.id != "barra_navegacao") {
     paragrafo.style.marginTop = 0;
     paragrafo.style.marginBottom = 0;
+
+
     }
 }
 
@@ -3814,6 +3816,22 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
     var tbodys = document.getElementsByTagName("tbody");
     var trs = document.getElementsByTagName("tr");
     var tds = document.getElementsByTagName("td");
+
+
+    var uls = document.getElementsByTagName("ul");
+for(ul of uls) {
+
+    if(ul.id != "barra_navegacao") {
+    ul.removeAttribute("class");
+        ul.removeAttribute("id");
+        ul.removeAttribute("data-mce-style");
+        ul.removeAttribute("style");
+
+
+    }
+}
+
+
 
     for(table of tables) {
         table.removeAttribute("class");
