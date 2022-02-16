@@ -3113,7 +3113,7 @@ document.getElementById("titulo").style.margin = "0px";
 
                               menubar: false,
                                       plugins: "noneditable, table paste code lists",
-                                        
+
                                 forced_root_block: false,
                             toolbar: "fontselect fontsizeselect bold italic underline forecolor table bullist code spell",
                             setup: function (editor) {
@@ -3637,7 +3637,7 @@ function trocarCabecalhos() {
 
     var ele= document.getElementsByClassName("aserremovido");
 len = ele.length;
-if(len > 1) {
+if(len > 0) {
 parentNode = ele[0].parentNode;
 for(var i=0; i<len; i++)
 {
