@@ -2906,16 +2906,7 @@ if(document.getElementsByName("opcoesJames") != null) {
     }
 }
 
-    if(document.getElementById("mascara_topicos") != null && document.getElementById("mascara_topicos").value != "True") {
-            var children = document.getElementsByName("opcoesJames");
-            for (child of children) {
-                child.style.display = "none";
-            }
 
-
-
-
-        }
 
             if(document.getElementById("exames") != null) {
 
@@ -3884,6 +3875,7 @@ document.getElementById("topicos_div").parentNode.removeChild(document.getElemen
     document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("<div>", "");
         document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("</div>", "");
         document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("<br><br><br>", "<br><br>");
+                document.getElementById("mascara_div").innerHTML = document.getElementById("mascara_div").innerHTML.replaceAll("</ul><br>", "</ul>");
 
 
 
