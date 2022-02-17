@@ -1313,83 +1313,45 @@ def quemsomos(request):
 
 def comunidade(request):
 
-    if not request.user.is_anonymous:
+    exames = Exame.objects.all().order_by('descricao')
+    especialidades = Especialidade.objects.all().order_by('descricao')
 
-        exames = Exame.objects.all().order_by('descricao')
-        especialidades = Especialidade.objects.all().order_by('descricao')
+    json_serializer = serializers.get_serializer("json")()
 
-        json_serializer = serializers.get_serializer("json")()
+    alterados = json_serializer.serialize(TopicoAnormal.objects.all().order_by('nome', '-popularidade')) #alfabético
+    alteradosTotal = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade', 'nome')) #alfabéticototal
 
-        alterados = json_serializer.serialize(TopicoAnormal.objects.all().order_by('nome', '-popularidade')) #alfabético
-        alteradosTotal = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade', 'nome')) #alfabéticototal
+    alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade'))
+    alteradosUsuario = json_serializer.serialize(TopicoAnormal.objects.filter(topico_normal__mascara__usuario=request.user).order_by('nome'))
 
-        alteradosPopulares = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-popularidade'))
-        alteradosUsuario = json_serializer.serialize(TopicoAnormal.objects.filter(topico_normal__mascara__usuario=request.user).order_by('nome'))
+    mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade'))
+    mascarasJsonUsuario = json_serializer.serialize(Mascara.objects.filter(usuario=request.user).order_by('nome'))
 
-        mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade'))
-        mascarasJsonUsuario = json_serializer.serialize(Mascara.objects.filter(usuario=request.user).order_by('nome'))
-
-        normais = json_serializer.serialize(TopicoNormal.objects.all().order_by('ordem'))
-        mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome', '-popularidade')) #alfabético
-        mascarasJsonTotal = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade', 'nome')) #alfabéticototal
+    normais = json_serializer.serialize(TopicoNormal.objects.all().order_by('ordem'))
+    mascarasJson = json_serializer.serialize(Mascara.objects.all().order_by('nome', '-popularidade')) #alfabético
+    mascarasJsonTotal = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade', 'nome')) #alfabéticototal
 
 
-        mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.all().order_by('-data_criada', 'nome'))
-        alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-data_criada', 'nome'))
+    mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.all().order_by('-data_criada', 'nome'))
+    alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-data_criada', 'nome'))
 
 
-        usuarios2 = json_serializer.serialize(User.objects.all())
-        profiles = json_serializer.serialize(Profile.objects.all())
+    usuarios2 = json_serializer.serialize(User.objects.all())
+    profiles = json_serializer.serialize(Profile.objects.all())
 
-        usuarioLogado = True
+    usuarioLogado = True
 
-        variaveis = json_serializer.serialize(Variavel.objects.all())
+    variaveis = json_serializer.serialize(Variavel.objects.all())
 
-        titulo = "Masqs - Comunidade"
-        context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados, 'normais': normais, 'mascarasJson': mascarasJson,
-                   'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario, 'mascarasJsonPopulares': mascarasJsonPopulares,
-                   'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles, 'mascarasMaisRecentes': mascarasMaisRecentes,
-                   'alteradosMaisRecentes': alteradosMaisRecentes, 'mascarasJsonTotal': mascarasJsonTotal,
-                   'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado, 'variaveis': variaveis}
-        return render(request, 'masks/comunidade.html', context)
+    titulo = "Masqs - Comunidade"
+    context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados, 'normais': normais, 'mascarasJson': mascarasJson,
+               'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario, 'mascarasJsonPopulares': mascarasJsonPopulares,
+               'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles, 'mascarasMaisRecentes': mascarasMaisRecentes,
+               'alteradosMaisRecentes': alteradosMaisRecentes, 'mascarasJsonTotal': mascarasJsonTotal,
+               'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado, 'variaveis': variaveis}
+    return render(request, 'masks/comunidade.html', context)
 
-    else:
-        exames = Exame.objects.all().order_by('descricao')
-        especialidades = Especialidade.objects.all().order_by('descricao')
-        json_serializer = serializers.get_serializer("json")()
-        usuario = User.objects.get(email='netofarthur@gmail.com')
-        alterados = json_serializer.serialize(
-            TopicoAnormal.objects.filter(topico_normal__mascara__usuario=usuario).order_by('nome'))
 
-        alteradosPopulares = json_serializer.serialize(
-            TopicoAnormal.objects.filter(topico_normal__mascara__usuario=usuario).order_by('nome'))
-        alteradosUsuario = "";
-        alteradosTotal = json_serializer.serialize(
-            TopicoAnormal.objects.filter(topico_normal__mascara__usuario=usuario).order_by('nome'))  # alfabéticototal
-
-        mascarasJsonPopulares = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
-        mascarasJsonUsuario = "";
-
-        normais = json_serializer.serialize(TopicoNormal.objects.filter(mascara__usuario=usuario))
-        mascarasJson = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
-        mascarasJsonTotal = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
-
-        usuarios2 = json_serializer.serialize(User.objects.filter(email='netofarthur@gmail.com'))
-        profiles = json_serializer.serialize(Profile.objects.filter(usuario=usuario))
-
-        usuarioLogado = False
-
-        variaveis = json_serializer.serialize(Variavel.objects.filter(usuario=usuario))
-
-        titulo = "Masqs"
-        context = {'titulo': titulo, 'exames': exames, 'especialidades': especialidades, 'alterados': alterados,
-                   'normais': normais, 'mascarasJson': mascarasJson,
-                   'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario,
-                   'mascarasJsonPopulares': mascarasJsonPopulares,
-                   'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles,
-                   'mascarasJsonTotal': mascarasJsonTotal,
-                   'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado, 'variaveis': variaveis}
-        return render(request, 'masks/home.html', context)
 
 
 def home(request):
