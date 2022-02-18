@@ -313,7 +313,7 @@ function clicouAba(especialidadeid, exameid, counter, resetar) {
 
                     }
                     var mascara_topicos = mascarasJsonObject[i].fields.mascara_topicos
-                    var tituloExame = mascarasJsonObject[i].fields.titulo + i;
+                    var tituloExame = mascarasJsonObject[i].fields.titulo;
                     var paragrafo = document.createElement("p");
 
                     paragrafo.setAttribute("style", "text-transform: " + capitalizacao + "; color: " + cor_titulo + "; text-align: " + alinhamento_titulo + "; font-size: " + tamanho_titulo + "; font-weight: bold;")
