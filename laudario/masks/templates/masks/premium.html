@@ -11,6 +11,17 @@
 
 {% block conteudo %}
 
+<script>
+
+        if(document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)) != null) {
+            document.getElementById(window.location.href.substring(window.location.href.lastIndexOf('/') + 1)).style.color = "#c96100";
+
+    }
+
+
+</script>
+
+
 <div class="container-fluid" id="container">
     <div style="text-align: center; padding: 1rem;">
         <h1>Assinatura Premium</h1>

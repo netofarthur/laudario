@@ -299,7 +299,7 @@ mostrarBotaoPopularSeNecessario();
  // Altera o diagnóstico Padrão diretamente, sem abrir outras janelas. Tive que usar serialização com JSON objects.
     function alterarDiagnosticoDireto(name, id) {
 
-        if(document.getElementById("conclusaoNormal").value == "") {
+        if(document.getElementById("conclusaoNormal") != null && document.getElementById("conclusaoNormal").value == "") {
 
     document.getElementById("conclusaoNormal").value = document.getElementById("paragrafo_conclusao").innerText;
 }
@@ -2852,7 +2852,7 @@ configurarBotoezinhosJames();
 
     if(document.referrer.split("/").reverse()[0] == "comunidade" || document.referrer == window.location.protocol + "//" + window.location.hostname + "/") {
         if(document.getElementById("voltar_baixo") != null) {
-        document.getElementById("voltar_baixo").setAttribute("href", "javascript:history.back()");
+        document.getElementById("voltar_baixo").setAttribute("href", "javascript:window.close()");
         }
     }
 

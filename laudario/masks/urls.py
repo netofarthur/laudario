@@ -18,7 +18,6 @@ urlpatterns = [
     path('mascaras/copiar', views.copiar_mascaras, name='copiar_mascaras'),
 
     path('mascaras/nova/adicionar', views.adicionar_nova_mascara, name='adicionar_nova_mascara'),
-    path('compendio', views.home, name='home'),
     path('', views.entrar, name='entrar'),
     path('login', views.login_usuario, name='login_usuario'),
     path('cadastrar', views.cadastrar, name='cadastrar'),
@@ -48,7 +47,7 @@ urlpatterns = [
     path('sobre/descricao', views.descricao, name='descricao'),
     path('eula', views.termos, name='termos'),
     path('quemsomos', views.quemsomos, name='quemsomos'),
-    path('comunidade', views.comunidade, name='comunidade'),
+    path('compendio', views.comunidade, name='comunidade'),
     path('entrar', views.mostrar_index, name='mostrar_index'),
     path('contato/anonimo', views.contato, name='contato'),
     path('contato', views.contato_login, name='contato_login'),

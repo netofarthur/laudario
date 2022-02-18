@@ -115,8 +115,8 @@ function clicouCheckboxQuadroMais() {
 //apaga tópicos duplicados
 function apagar() {
 
-    document.getElementById("outerdiv").setAttribute("class", "divflexivel");
 
+        document.getElementById("myfooter").setAttribute("class", "normalfooter");
 
 
 
@@ -260,6 +260,14 @@ for(var i = 1; i < opcoes2.length; i++) {
 }
 
 
+ if(isScrolledIntoView(document.getElementById("myfooter"))) {
+        document.getElementById("myfooter").setAttribute("class", "fixedfooter");
+     } else {
+        document.getElementById("myfooter").setAttribute("class", "normalfooter");
+
+     }
+
+
 }
 
 
@@ -277,5 +285,14 @@ window.onload = apagar;
 
 
 
+function isScrolledIntoView(elem)
+{
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
 
+    var elemTop = $(elem).offset().top;
+    var elemBottom = elemTop + $(elem).height();
+
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
 

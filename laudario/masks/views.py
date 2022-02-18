@@ -1313,6 +1313,8 @@ def quemsomos(request):
 
 def comunidade(request):
 
+    usuario = User.objects.get(email='arthneto@hotmail.com')
+
     exames = Exame.objects.all().order_by('descricao')
     especialidades = Especialidade.objects.all().order_by('descricao')
 
@@ -1332,8 +1334,8 @@ def comunidade(request):
     mascarasJsonTotal = json_serializer.serialize(Mascara.objects.all().order_by('-popularidade', 'nome')) #alfabéticototal
 
 
-    mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.all().order_by('-data_criada', 'nome'))
-    alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.all().order_by('-data_criada', 'nome'))
+    mascarasMaisRecentes = json_serializer.serialize(Mascara.objects.filter(usuario=usuario).order_by('nome'))
+    alteradosMaisRecentes = json_serializer.serialize(TopicoAnormal.objects.filter(topico_normal__mascara__usuario=usuario).order_by('nome'))
 
 
     usuarios2 = json_serializer.serialize(User.objects.all())
