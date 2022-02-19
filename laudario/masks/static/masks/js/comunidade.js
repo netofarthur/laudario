@@ -640,8 +640,25 @@ if(document.getElementById("next") != null) {
         var topicosNormaisValidos = [];
 
 
-              mascarasJsonObject = JSON.parse(mascarasJsonTotal);
-              alteradosJSONObject = JSON.parse(alteradosTotal);
+
+
+        if(document.getElementById("minhasRadio").checked) {
+
+              mascarasJsonObject = JSON.parse(mascarasJsonUsuario);
+              alteradosJSONObject = JSON.parse(alteradosUsuario);
+
+        } else if(document.getElementById("masqsRadio").checked) {
+              alteradosJSONObject = JSON.parse(alteradosRecentes);
+              mascarasJsonObject = JSON.parse(mascarasRecentes);
+
+        } else {
+            mascarasJsonObject = JSON.parse(mascarasJsonPopulares);
+              alteradosJSONObject = JSON.parse(alteradosPopulares);
+        }
+
+
+
+
 
 
 

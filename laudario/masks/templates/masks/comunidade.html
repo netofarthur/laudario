@@ -65,18 +65,19 @@
         <div style="text-align: left">
 <fieldset class="fieldset_nova_mascara">
     <legend class="legend_nova_mascara label_laranja" style="margin-bottom: 0; padding-bottom: 0;">Filtros</legend>
-                    <div class="radio-item2"><input type="radio" id="tudoRadio" value="frases" name="modo" checked onclick="clicouBotaoRadio()">
+    <div class="radio-item"><input type="radio" id="frasesRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()">
+        <label for="frasesRadio">Frases</label></div>
+    <div class="radio-item"><input type="radio" id="mascarasRadio" name="submodo" value=mascarasRecentes onclick="clicouBotaoRadio()">
+        <label for="mascarasRadio">Máscaras</label></div>
+
+    <hr>
+                      <div class="radio-item2"><input type="radio" id="tudoRadio" value="frases" name="modo" checked onclick="clicouBotaoRadio()">
         <label for="tudoRadio">Tudo</label></div>
      <div class="radio-item2"><input type="radio" id="masqsRadio" value="mascaras" name="modo" onclick="clicouBotaoRadio()">
         <label for="masqsRadio">Masqs</label></div>
              <div class="radio-item2"><input type="radio" id="minhasRadio" value="mascaras2" name="modo" onclick="clicouBotaoRadio()">
         <label for="minhasRadio">Minhas</label></div>
 
-    <hr>
-    <div class="radio-item"><input type="radio" id="frasesRadio" name="submodo" value="popular" checked onclick="clicouBotaoRadio()">
-        <label for="frasesRadio">Frases</label></div>
-    <div class="radio-item"><input type="radio" id="mascarasRadio" name="submodo" value=mascarasRecentes onclick="clicouBotaoRadio()">
-        <label for="mascarasRadio">Máscaras</label></div>
 </fieldset>
 
 
