@@ -588,10 +588,12 @@ var recognizing;
                           <label class="label_laranja" id="label_topicos" for="exames">Tópico a ser alterado </label>
                           <select class="form-control" name ="exames" id="exames">
                                                   {% autoescape off %}
+{% if usuarioPermitido and user.is_authenticated %}
 
                             {% for topico_normal in topicos_normais %}
                               <option value={{ topico_normal.pk }}>{{topico_normal.orgao}}</option>
                             {% endfor %}
+                              {% endif %}
 {% endautoescape %}
                           </select>
                                 </div>
@@ -626,6 +628,7 @@ var recognizing;
                             <label for="adicionar_no_banco">Adicionar no meu banco de frases</label>
                             <br>
 
+{% if usuarioPermitido and user.is_authenticated %}
 
                             {% for profile in profiles %}
                                 {% if profile.usuario == request.user and profile.is_premium %}
@@ -636,7 +639,7 @@ var recognizing;
                                     <label style="display: none;" for="frase_publica">Frase pública</label>
                                 {% endif %}
                             {% endfor %}
-
+{% endif %}
 
 
                             <input type="hidden" id="usuario_id_alteracao" style="display: none;">
@@ -650,12 +653,14 @@ var recognizing;
                      <div id="frases_comunidade" class="col-6" style="height: 90vh; overflow: auto;">
                              <input autocomplete="off" id="procurarFrasesPublicas" type="search" placeholder="Procurar frases públicas" onkeyup="procurarFrases(this.id)" onsearch="procurarFrases(this.id)"/>
 
+{% if usuarioPermitido and user.is_authenticated %}
 
                               {% for topicoanormal in todos_topicos_anormais %}
                                 {% if topicoanormal.topico_normal.mascara.especialidade == mascara.especialidade and topicoanormal.topico_normal.mascara.exame == mascara.exame and topicoanormal.publica == True %}
                          <button type="button" name="botao_alteracao" class="botao_diagnostico" id="t{{ topicoanormal.pk }}" onclick="popularFraseAlterada(this.id)">{{ topicoanormal.nome }} <span style="color: black">({{ topicoanormal.topico_normal.mascara.usuario.username }})</span></button>
                                 {% endif %}
                             {% endfor %}
+                         {% endif %}
                       </div>
                             </div>
                     </div>
