@@ -132,3 +132,74 @@ background: none!important;
   text-decoration: underline;
   cursor: pointer;
 }
+
+
+
+.botaoAbrirModal {
+background: none!important;
+  margin-left: 1rem;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #c96100;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.botaoAbrirModal:hover {
+background: none!important;
+  border: none;
+  margin-left: 1rem;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #c96100;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.botaoAbrirModal:focus {
+background: none!important;
+  border: none;
+  margin-left: 1rem;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #c96100;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.link_alteracao:hover {
+background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #c96100;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link_alteracao {
+background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #c96100;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#link_inicio {
+    font-size: 2rem;
+     color: #c96100;
+}

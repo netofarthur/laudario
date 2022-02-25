@@ -29,6 +29,7 @@
                             var alteradosTotal = '{{ alteradosTotal|escapejs }}';
                             var usuarioLogado = '{{ usuarioLogado }}';
                                         var variaveis = '{{ variaveis|escapejs }}';
+                                        var topicosUsuarioJson = '{{ topicosUsuarioJson|escapejs }}';
 
 
 
@@ -175,5 +176,226 @@
 
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Modal de Copiar Alteração-->
+    <div class="modal fade" id="myModalCopiarAlteracao" tabindex="-1" role="dialog" aria-labelledby="myModalCopiarAlteracaoTitle" aria-hidden="true">
+        <div id="modal_copiar_alteracoes" class="modal-dialog" role="document">
+            <div class="modal-content">
+                 <form action="" method="post" id="formulario_copiar_alteracao">
+                        {% csrf_token %}
+
+              <div class="modal-header">
+                <h5 style="color: #c96100;" class="modal-title" id="myModalCopiarAlteracaoTitle">Copiar Alteração</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="modal_copiar_alteracao_body">
+                  <div id="corpo_modal" style="padding: 1rem;">
+
+
+
+
+
+                        <div class="form-group">
+                            <div style="margin-bottom: 1rem; margin-top: 1rem;">
+                          <label class="label_laranja" id="label_exames" for="exames">Exame</label>
+                          <select class="form-control" name ="exames" id="exames" onchange="clicouExame()"">
+                              <option id="padraoexames" value="-1" disabled selected value>Selecione um exame</option>
+
+                            {% for exame in exames %}
+                              <option value={{ exame.pk }}>{{ exame.descricao }}</option>
+                            {% endfor %}
+
+
+                          </select>
+                                </div>
+
+                        </div>
+
+                             <div class="form-group">
+                            <div style="margin-bottom: 1rem; margin-top: 1rem;">
+                          <label class="label_laranja" id="label_especialidades" for="especialidades">Especialidade</label>
+                          <select class="form-control" name ="especialidades" id="especialidades" onchange="clicouEspecialidade()">
+                              <option id="padraoespecialidade" value="-1" disabled selected value>Selecione uma especialidade</option>
+
+                            {% for especialidade in especialidades %}
+                              <option value={{ especialidade.pk }}>{{ especialidade.descricao }}</option>
+                            {% endfor %}
+
+
+                          </select>
+                                </div>
+                             </div>
+
+
+
+                                                   <div class="form-group">
+                            <div style="margin-bottom: 1rem; margin-top: 1rem;">
+                          <label class="label_laranja" id="label_mascaras" for="mascarasselect">Máscara</label>
+                          <select class="form-control" name ="mascarasselect" id="mascarasselect" onchange="clicouMascara()">
+                              <option id="padrao" value="-1" disabled selected value>Selecione uma máscara</option>
+
+                            {% for mascara in mascarasUsuario %}
+                              <option name="opcaomascara" value={{ mascara.pk }}>{{ mascara.nome }}</option>
+                            {% endfor %}
+
+
+                          </select>
+                                </div>
+                             </div>
+
+
+                             <div class="form-group">
+                            <div style="margin-bottom: 1rem; margin-top: 1rem;">
+                          <label class="label_laranja" id="label_topicos" for="topicos">Tópico</label>
+                          <select class="form-control" name ="topicos" id="topicos" onchange="clicouTopico()">
+                              <option id="padraotopicos" value="-1" disabled selected value>Selecione um tópico</option>
+
+                            {% for topico in topicosUsuario %}
+                              <option name="opcaotopico" value={{ topico.pk }}>{{ topico.orgao }}</option>
+                            {% endfor %}
+
+
+                          </select>
+                                </div>
+                             </div>
+
+
+
+                            <div style="margin-bottom: 0rem;">
+                            <label class="label_laranja" for="nome_modal">Nome: </label>
+                             <input type="text" id="nome_modal" name="nome_modal"/>
+                           </div>
+
+
+
+                            <input type="hidden" id="relatorio_modal" name="relatorio_modal">
+                          <input type="hidden" id="conclusao_modal" name="conclusao_modal">
+
+                            <br>
+
+
+
+
+
+
+
+
+
+
+                            {% for profile in profiles %}
+                                {% if profile.usuario == request.user and profile.is_premium %}
+                                    <input type="checkbox" id="frase_publica" name="frase_publica" checked/>
+                                    <label for="frase_publica">Frase pública</label>
+                                {% elif profile.usuario == request.user %}
+                                    <input style="display: none;" type="checkbox" id="frase_publica" name="frase_publica" checked/>
+                                    <label style="display: none;" for="frase_publica">Frase pública</label>
+                                {% endif %}
+                            {% endfor %}
+
+
+
+                            <input type="hidden" id="usuario_id_alteracao" style="display: none;">
+                            <input type="hidden" id="usuario_orgao_alteracao" name="usuario_orgao_alteracao" style="display: none;">
+
+                            <input type="hidden" id="frase_aproveitada" name="frase_aproveitada" style="display: none;">
+                            <input type="hidden" id="conclusaoNormal" name="conclusaoNormal" style="display: none;">
+
+
+
+
+
+
+
+
+
+                  <div id="corpo_variaveis"style="margin: 1rem;">
+
+
+
+                  </div>
+
+
+
+              </div>
+
+              </div>
+
+              <div style="text-align: center; margin-bottom: 1rem;">
+                  <a style="color: #c96100;" id="salva_mudancas">Adicionar</a>
+                <a style="color: #000000; margin-left: 2rem;" href="#" onclick="$('#myModalCopiarAlteracao').modal('hide')">Cancelar</a>
+
+              </div>
+             </form>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+<script>
+     $('#myModalCopiarAlteracao').on('show.bs.modal', function (e) {
+
+              document.getElementById("especialidades").setAttribute("disabled", "disabled");
+                            document.getElementById("mascarasselect").setAttribute("disabled", "disabled");
+              document.getElementById("topicos").setAttribute("disabled", "disabled");
+
+        });
+
+        $("#nome_modal").on('change keyup paste', function() {
+    clicouTopico();
+});
+
+
+
+ $('#myModalCopiarAlteracao').on('hide.bs.modal', function (e) {
+
+                    document.getElementById("exames").value = -1;
+                    document.getElementById("especialidades").value = -1;
+                    document.getElementById("mascarasselect").value = -1;
+                    document.getElementById("topicos").value = -1;
+                  document.getElementById("especialidades").setAttribute("disabled", "disabled");
+                  document.getElementById("mascarasselect").setAttribute("disabled", "disabled");
+                  document.getElementById("topicos").setAttribute("disabled", "disabled");
+                  document.getElementById("nome_modal").value = "";
+                document.getElementById("salva_mudancas").removeAttribute("href");
+
+
+
+        });
+
+
+</script>
+
+
+
+
+
 
 {% endblock conteudo %}

@@ -52,5 +52,6 @@ urlpatterns = [
     path('contato/anonimo', views.contato, name='contato'),
     path('contato', views.contato_login, name='contato_login'),
     path('enviarmensagem', views.enviar_mensagem, name='enviar_mensagem'),
+    path('compendio/copiar/alteracao/<int:id_alteracao>/<int:id_usuario>/<int:id_topico>/<str:nome>', views.copiar_alteracao, name='copiar_alteracao')
 
 ]

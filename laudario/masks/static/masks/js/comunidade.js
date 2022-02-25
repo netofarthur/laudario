@@ -476,6 +476,24 @@ function clicouAba(especialidadeid, exameid, counter, resetar) {
                             count++;
                         var alteracaoId = alteradosJSONObject[i].pk;
                         nome = alteradosJSONObject[i].fields.nome;
+
+                        var divEntrada = document.createElement("div");
+
+
+
+
+                        var relatorioHidden = document.createElement("input");
+                   relatorioHidden.setAttribute("type", "hidden");
+                   relatorioHidden.setAttribute("id", "relatorioHidden" + alteracaoId);
+                   relatorioHidden.value = "./compendio/copiar/alteracao/" + alteracaoId + "/" + devolverUsuarioAlteracaoInt(alteracaoId)
+
+
+
+                   divEntrada.appendChild(relatorioHidden);
+
+
+
+
                         relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.relatorio, devolverUsuarioAlteracaoInt(alteracaoId));
                         conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.conclusao, devolverUsuarioAlteracaoInt(alteracaoId));
 
@@ -516,6 +534,7 @@ function clicouAba(especialidadeid, exameid, counter, resetar) {
                            paragrafonome.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
                     paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
+                           paragrafonome.setAttribute("target", "_blank");
 
 
                      if(alteradosJSONObject[i].fields.popularidade == 1) {
@@ -544,7 +563,7 @@ function clicouAba(especialidadeid, exameid, counter, resetar) {
 
                   paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome + '<span style="color: gray; font-size: 1.0rem;"> (' + nomeMascara + ')</span><span style="display: none;">' + devolverUsuarioAlteracao(alteracaoId) + '</span>';
 
-                      var divEntrada = document.createElement("div");
+
 
                     divEntrada.appendChild(paragrafonome);
 
@@ -560,14 +579,35 @@ function clicouAba(especialidadeid, exameid, counter, resetar) {
                                 document.getElementById("direitadiv").appendChild(divEntrada);
 
 
-                    linkAlteracao.innerHTML = "&lt;Usar Frase&gt;";
-                      linkAlteracao.setAttribute("style", "color: #c96100;")
+                    linkAlteracao.innerHTML = "&lt;Usar Alteração&gt;";
+                      linkAlteracao.setAttribute("style", "color: #c96100;");
+                      linkAlteracao.setAttribute("class", "link_alteracao");
 
                     linkAlteracao.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
                     linkAlteracao.setAttribute("target", "_blank");
 
                    divEntrada.appendChild(linkAlteracao);
+
+                   var botaoModal = document.createElement("button");
+                   botaoModal.setAttribute("data-target", "#myModalCopiarAlteracao");
+                   botaoModal.setAttribute("data-toggle", "modal");
+                   botaoModal.setAttribute("class", "botaoAbrirModal");
+                  botaoModal.innerHTML = "&lt;Copiar Alteração&gt;";
+
+
+
+                                      botaoModal.setAttribute("onclick", "copiarAlteracao(" + alteracaoId + ")");
+                                      paragrafonome.setAttribute("id", "nome" + alteracaoId);
+
+                   divEntrada.appendChild(botaoModal);
+
+
+
+
+
+
+
 
                   var divisoria = document.createElement("hr")
                   divEntrada.appendChild(divisoria);
@@ -890,6 +930,23 @@ if(document.getElementById("next") != null) {
                         encontrou = true;
                         count++;
 
+
+                                 var divEntrada = document.createElement("div");
+
+
+
+                        var relatorioHidden = document.createElement("input");
+                   relatorioHidden.setAttribute("type", "hidden");
+                   relatorioHidden.setAttribute("id", "relatorioHidden" + alteracaoId);
+                   relatorioHidden.value = "./compendio/copiar/alteracao/" + alteracaoId + "/" + devolverUsuarioAlteracaoInt(alteracaoId)
+
+
+
+                   divEntrada.appendChild(relatorioHidden);
+
+
+
+
                         nome = alteradosJSONObject[i].fields.nome;
                         relatorioAlterado = "<span style='font-weight: bold'>Relatório: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.relatorio, devolverUsuarioAlteracaoInt(alteracaoId));
                         conclusaoAlterada = "<span style='font-weight: bold'>Conclusão: </span>" + substituirVariaveis(alteradosJSONObject[i].fields.conclusao, devolverUsuarioAlteracaoInt(alteracaoId));
@@ -928,6 +985,8 @@ if(document.getElementById("next") != null) {
                         paragrafoUsuarioAlt.style.fontWeight = "bold";
 
                            var paragrafonome = document.createElement("a");
+                           paragrafonome.setAttribute("target", "_blank");
+
                            paragrafonome.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
                     paragrafonome.setAttribute("style", "color: #c96100; font-size: 1.3rem; font-weight: bold; text-decoration: none")
@@ -990,7 +1049,6 @@ if(document.getElementById("next") != null) {
                  paragrafoConclusao.innerHTML = conclusaoAlterada;
                   paragrafonome.innerHTML = alteradosJSONObject[i].fields.nome;
 
-                      var divEntrada = document.createElement("div");
 
 
 
@@ -1013,8 +1071,9 @@ if(document.getElementById("next") != null) {
                                 document.getElementById("direitadiv").appendChild(divEntrada);
 
 
-                    linkAlteracao.innerHTML = "&lt;Usar Frase&gt;";
+                    linkAlteracao.innerHTML = "&lt;Usar Alteração&gt;";
                       linkAlteracao.setAttribute("style", "color: #c96100;")
+                      linkAlteracao.setAttribute("class", "link_alteracao");
 
                     linkAlteracao.setAttribute("href", "../mascaras/alteracao/" + mascaraId + "/" + topicoParaAlterar + "/" + alteracaoId);
 
@@ -1023,8 +1082,22 @@ if(document.getElementById("next") != null) {
 
                    divEntrada.appendChild(linkAlteracao);
 
+
+                   var botaoModal = document.createElement("button");
+                   botaoModal.setAttribute("data-target", "#myModalCopiarAlteracao");
+                   botaoModal.setAttribute("data-toggle", "modal");
+                  botaoModal.setAttribute("class", "botaoAbrirModal");
+                  botaoModal.innerHTML = "&lt;Copiar Alteração&gt;";
+
+                   botaoModal.setAttribute("onclick", "copiarAlteracao(" + alteracaoId + ")");
+
+                   paragrafonome.setAttribute("id", "nome" + alteracaoId);
+
+                   divEntrada.appendChild(botaoModal);
+
                   var divisoria = document.createElement("hr")
                   divEntrada.appendChild(divisoria);
+
 
 
                             }
@@ -1347,4 +1420,176 @@ function isScrolledIntoView(elem)
     var elemBottom = elemTop + $(elem).height();
 
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
+
+function copiarAlteracao(alteracaoId) {
+    document.getElementById("relatorio_modal").value = document.getElementById("relatorioHidden" + alteracaoId).value;
+    if(document.getElementById("nome" + alteracaoId).innerHTML.indexOf('<') == -1) {
+    document.getElementById("nome_modal").value = document.getElementById("nome" + alteracaoId).innerHTML;
+
+    } else {
+    document.getElementById("nome_modal").value = document.getElementById("nome" + alteracaoId).innerHTML.substring(0, document.getElementById("nome" + alteracaoId).innerHTML.indexOf('<'));
+
+    }
+
+}
+
+function clicouTopico() {
+    document.getElementById("conclusao_modal").value = document.getElementById("topicos").value + "/" + document.getElementById("nome_modal").value;
+    document.getElementById("salva_mudancas").setAttribute("href", document.getElementById("relatorio_modal").value + "/" + document.getElementById("conclusao_modal").value)
+}
+
+function clicouExame() {
+
+              document.getElementById("especialidades").removeAttribute("disabled");
+
+
+filtrarMascaras();
+if(document.getElementById("mascarasselect").value == -1) {
+                    document.getElementById("topicos").value = -1
+                                  document.getElementById("topicos").setAttribute("disabled", "disabled");
+                                document.getElementById("salva_mudancas").removeAttribute("href");
+                }
+
+
+}
+
+function clicouEspecialidade() {
+
+              document.getElementById("mascarasselect").removeAttribute("disabled");
+
+    filtrarMascaras();
+    if(document.getElementById("mascarasselect").value == -1) {
+                    document.getElementById("topicos").value = -1
+                     document.getElementById("topicos").setAttribute("disabled", "disabled");
+                     document.getElementById("salva_mudancas").removeAttribute("href");
+                }
+
+
+
+}
+
+function clicouMascara() {
+
+              document.getElementById("topicos").removeAttribute("disabled");
+
+    filtrarTopicos();
+}
+
+
+function filtrarMascaras() {
+
+
+    var mascarasPermitidas = [];
+
+      mascarasUsuario = JSON.parse(mascarasJsonUsuario);
+
+
+
+    for(i=0; i < mascarasUsuario.length; i++) {
+
+        if(mascarasUsuario[i].fields.exame == document.getElementById("exames").value && mascarasUsuario[i].fields.especialidade == document.getElementById("especialidades").value) {
+            mascarasPermitidas.push(mascarasUsuario[i].pk);
+        }
+
+    }
+
+    var mascaras = document.getElementsByName("opcaomascara");
+
+    for(i=0; i < mascaras.length; i++) {
+
+        if(mascarasPermitidas.includes(parseInt(mascaras[i].value))) {
+            mascaras[i].setAttribute("style", "display: block;");
+
+        } else {
+            mascaras[i].setAttribute("style", "display: none;");
+
+        }
+    }
+
+
+document.getElementById('padrao').selected = 'selected';
+}
+
+function filtrarTopicos() {
+
+                 var children = document.getElementById("topicos").children;
+    for(child of children) {
+        child.style.display = "inline";
+        child.innerHTML = child.innerText.replaceAll('&nbsp;','');
+                child.innerHTML = child.innerText.replaceAll('\u2022','').trim();
+
+
+    }
+
+
+    var topicosPermitidos = [];
+
+      topicosUsuario = JSON.parse(topicosUsuarioJson);
+
+
+
+    for(i=0; i < topicosUsuario.length; i++) {
+
+        if(topicosUsuario[i].fields.mascara == document.getElementById("mascarasselect").value) {
+
+            topicosPermitidos.push(topicosUsuario[i].pk);
+        }
+
+    }
+    var topicos = document.getElementsByName("opcaotopico");
+
+    for(i=0; i < topicos.length; i++) {
+
+        if(topicosPermitidos.includes(parseInt(topicos[i].value))) {
+            topicos[i].setAttribute("style", "display: block;");
+
+        } else {
+            topicos[i].setAttribute("style", "display: none;");
+
+        }
+    }
+
+
+
+
+            if(document.getElementById("exames") != null) {
+
+
+
+
+                    var opcoes = document.getElementsByName("opcaotopico");
+
+
+
+
+     for(var i = 0; i < opcoes.length; i++) {
+             if(opcoes[i].innerHTML == "Nenhum órgão") {
+                        opcoes[i].style.display = "none";
+
+
+        }
+     }
+
+     for(var i = 0; i < opcoes.length; i++) {
+             if(opcoes[i].innerHTML == "Nenhum órgão" && topicosPermitidos.includes(parseInt(opcoes[i].value))) {
+                        opcoes[i].style.display = "block";
+                        break;
+
+
+        }
+     }
+
+
+
+
+
+
+
+     }
+
+
+
+
+document.getElementById('padraotopicos').selected = 'selected';
 }

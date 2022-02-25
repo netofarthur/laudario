@@ -1341,6 +1341,12 @@ def comunidade(request):
     usuarios2 = json_serializer.serialize(User.objects.all())
     profiles = json_serializer.serialize(Profile.objects.all())
 
+    mascarasUsuario = Mascara.objects.filter(usuario=request.user).order_by('nome')
+    topicosUsuario = TopicoNormal.objects.filter(mascara__usuario=request.user).order_by('ordem')
+    topicosUsuarioJson = json_serializer.serialize(TopicoNormal.objects.filter(mascara__usuario=request.user).order_by('ordem'))
+
+
+
     usuarioLogado = True
 
     variaveis = json_serializer.serialize(Variavel.objects.all())
@@ -1350,7 +1356,8 @@ def comunidade(request):
                'alteradosPopulares': alteradosPopulares, 'alteradosUsuario': alteradosUsuario, 'mascarasJsonPopulares': mascarasJsonPopulares,
                'mascarasJsonUsuario': mascarasJsonUsuario, 'usuarios2': usuarios2, 'profiles': profiles, 'mascarasMaisRecentes': mascarasMaisRecentes,
                'alteradosMaisRecentes': alteradosMaisRecentes, 'mascarasJsonTotal': mascarasJsonTotal,
-               'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado, 'variaveis': variaveis}
+               'alteradosTotal': alteradosTotal, 'usuarioLogado': usuarioLogado, 'variaveis': variaveis, 'mascarasUsuario': mascarasUsuario,
+               'topicosUsuario': topicosUsuario, 'topicosUsuarioJson': topicosUsuarioJson}
     return render(request, 'masks/comunidade.html', context)
 
 
@@ -1545,3 +1552,115 @@ def voucher(request):
 
     context = {'titulo': titulo, 'achou': achou, 'mensagem': mensagem}
     return render(request, 'masks/voucher.html', context)
+
+
+def copiar_alteracao(request, id_alteracao, id_usuario, id_topico, nome):
+
+    topico_anormal = TopicoAnormal.objects.get(pk=id_alteracao)
+    relatorio = topico_anormal.relatorio
+    conclusao = topico_anormal.conclusao
+
+    variaveis = []
+
+    variaveis_relatorio = obter_variaveis(relatorio)
+
+    for variavel in variaveis_relatorio:
+        variaveis.append(variavel)
+        splits = variavel.split('|')
+        for split in splits:
+            variaveis.append(split)
+
+
+    variaveis_conclusao = obter_variaveis(conclusao)
+
+    for variavel in variaveis_conclusao:
+        variaveis.append(variavel)
+        splits = variavel.split('|')
+        for split in splits:
+            variaveis.append(split)
+
+
+
+    todasvariaveis = set(variaveis)
+
+    usuario = User.objects.get(pk=id_usuario)
+
+    variaveis_compostas = []
+
+    variaveis_simples = []
+
+    variaveis_antigas1 = []
+
+    variaveis_antigas2 = []
+
+    variaveis_novas1 = []
+
+    variaveis_novas2 = []
+
+    lenght = len(Variavel.objects.filter(usuario=request.user))
+
+
+
+    for variavel in todasvariaveis:
+        if len(variavel.split('|')) > 1 or len(variavel.split('*')) > 1 or len(variavel.split('/')) > 1 or len(variavel.split('+')) > 1 or len(variavel.split('-')) > 1:
+            variaveis_compostas.append(variavel)
+            variaveis_antigas1.append(variavel)
+
+        else:
+            variaveis_antigas2.append(variavel)
+            variaveis_simples.append(variavel)
+
+    todasvariaveisantigas = variaveis_antigas1 + variaveis_antigas2
+
+    for varcomp in variaveis_compostas:
+        novavar = varcomp
+        for varsimp in variaveis_simples:
+            if varsimp in varcomp:
+                novavar = novavar.replace(varsimp, varsimp + str(lenght))
+        variaveis_novas1.append(novavar)
+
+    for varsimp in variaveis_simples:
+        variaveis_novas2.append(varsimp + str(lenght))
+
+
+    todasvariaveisatualizadas = variaveis_novas1 + variaveis_novas2
+
+    counter = 0
+    for variavel in todasvariaveisatualizadas:
+        variavelusr = Variavel.objects.get(usuario=usuario, nome_da_variavel=todasvariaveisantigas[counter])
+
+        novavar = Variavel(usuario=request.user, nome_da_variavel=variavel,
+                           nome_amigavel=variavelusr.nome_amigavel, unidade_medida=variavelusr.unidade_medida)
+
+        novavar.save()
+        counter = counter + 1
+
+    for variavel in todasvariaveis:
+        if len(variavel.split('|')) == 1 and len(variavel.split('*')) == 1 and len(variavel.split('/')) == 1 and len(variavel.split('+')) == 1 and len(variavel.split('-')) == 1:
+            relatorio = relatorio.replace("{" + variavel, "{" + variavel + str(lenght))
+            relatorio = relatorio.replace("|" + variavel, "|" + variavel + str(lenght))
+            relatorio = relatorio.replace("*" + variavel, "*" + variavel + str(lenght))
+            relatorio = relatorio.replace("/" + variavel, "/" + variavel + str(lenght))
+            relatorio = relatorio.replace("-" + variavel, "-" + variavel + str(lenght))
+            relatorio = relatorio.replace("+" + variavel, "+" + variavel + str(lenght))
+            relatorio = relatorio.replace("(" + variavel, "(" + variavel + str(lenght))
+
+            conclusao = conclusao.replace("{" + variavel, "{" + variavel + str(lenght))
+            conclusao = conclusao.replace("|" + variavel, "|" + variavel + str(lenght))
+            conclusao = conclusao.replace("*" + variavel, "*" + variavel + str(lenght))
+            conclusao = conclusao.replace("/" + variavel, "/" + variavel + str(lenght))
+            conclusao = conclusao.replace("-" + variavel, "-" + variavel + str(lenght))
+            conclusao = conclusao.replace("+" + variavel, "+" + variavel + str(lenght))
+            conclusao = conclusao.replace("(" + variavel, "(" + variavel + str(lenght))
+
+
+    topico_normal = TopicoNormal.objects.get(pk=id_topico)
+
+    nova_alteracao = TopicoAnormal(topico_normal=topico_normal, nome=nome, relatorio=relatorio, conclusao=conclusao)
+    nova_alteracao.save()
+
+    titulo = "Masqs - Compêndio"
+    context = {'relatorio': relatorio, 'conclusao': conclusao, 'todasvariaveis': todasvariaveis}
+
+
+    return render(request, 'masks/copiar_alteracao.html', context)
