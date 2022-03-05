@@ -524,19 +524,23 @@ text-align: center;
 
 }
 
+
+
 .card-header {
-    background-color: #c96100;
+    background-color: #e2e2e2;
     color: #000000;
 
 }
 
 .btn-link {
-    color: #ffffff;
+    color: #c96100;
+    font-weight: bold;
 
 }
 
 .btn-link:hover {
-    color: #ffffff;
+    color: #c96100;
+    font-weight: bold;
     text-decoration: none;
     outline: none;
 }
@@ -544,7 +548,8 @@ text-align: center;
 
 .btn-link:focus {
     text-decoration: none;
-        color: #ffffff;
+        color: #c96100;
+        font-weight: bold;
         outline: none;
    box-shadow: none;
 
