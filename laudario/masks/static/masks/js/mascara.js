@@ -2503,6 +2503,7 @@ document.getElementById("botoes_div").appendChild(anchor);
 
 
 
+$('#copiar_laudo').tooltip('dispose');
 
 
 document.getElementById("copiar_laudo").style.display = "none";
@@ -2824,6 +2825,8 @@ function clicouExcluir(id) {
 function colocarIndicacaoClinica() {
 
 
+
+
 if(mascara_topicos == "True") {
 
 var paragrafos = document.getElementsByTagName("ul");
@@ -2970,6 +2973,25 @@ if(document.getElementById("procurarFrases") != null) {
 }
 
 function editarLaudo() {
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+document.getElementById("copiar_laudo").setAttribute("data-toggle", "tooltip");
+document.getElementById("copiar_laudo").setAttribute("data-placement", "bottom");
+document.getElementById("copiar_laudo").setAttribute("title", "Copia texto, formatação e estilo. Para colar em outro WEBSITE");
+
+
+document.getElementById("copiar_html").setAttribute("data-toggle", "tooltip");
+document.getElementById("copiar_html").setAttribute("data-placement", "bottom");
+document.getElementById("copiar_html").setAttribute("title", "Copia somente texto e formatação. Para colar em aplicativos DESKTOP");
+
+document.getElementById("copiar_texto").setAttribute("data-toggle", "tooltip");
+document.getElementById("copiar_texto").setAttribute("data-placement", "bottom");
+document.getElementById("copiar_texto").setAttribute("title", "Copia somente texto, sem formatação ou estilo");
+
+
+
 
 if(mascara_topicos == "True") {
 var topicosVisiveis = document.getElementById("topicos_div").children;
@@ -3591,6 +3613,9 @@ document.getElementById("botoes_div").appendChild(anchor);
 
 
 function removerBotoes() {
+$('#copiar_laudo').tooltip('dispose');
+$('#copiar_html').tooltip('dispose');
+$('#copiar_texto').tooltip('dispose');
     document.getElementById("copiar_laudo").style.display = "none";
         document.getElementById("copiar_html").style.display = "none";
     document.getElementById("copiar_texto").style.display = "none";
