@@ -2980,15 +2980,19 @@ $(function () {
 document.getElementById("copiar_laudo").setAttribute("data-toggle", "tooltip");
 document.getElementById("copiar_laudo").setAttribute("data-placement", "bottom");
 document.getElementById("copiar_laudo").setAttribute("title", "Copia texto, formatação e estilo. Para colar em outro WEBSITE");
-
+document.getElementById("copiar_laudo").setAttribute("data-delay", '{"show":"700", "hide":"0"}');
 
 document.getElementById("copiar_html").setAttribute("data-toggle", "tooltip");
 document.getElementById("copiar_html").setAttribute("data-placement", "bottom");
 document.getElementById("copiar_html").setAttribute("title", "Copia somente texto e formatação. Para colar em aplicativos DESKTOP");
+document.getElementById("copiar_html").setAttribute("data-delay", '{"show":"700", "hide":"0"}');
+
 
 document.getElementById("copiar_texto").setAttribute("data-toggle", "tooltip");
 document.getElementById("copiar_texto").setAttribute("data-placement", "bottom");
 document.getElementById("copiar_texto").setAttribute("title", "Copia somente texto, sem formatação ou estilo");
+document.getElementById("copiar_texto").setAttribute("data-delay", '{"show":"700", "hide":"0"}');
+
 
 
 
