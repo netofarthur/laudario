@@ -2973,6 +2973,19 @@ if(document.getElementById("procurarFrases") != null) {
 }
 
 function editarLaudo() {
+
+ var topics = document.getElementsByClassName("paragrafo_mascara");
+for(topic of topics) {
+    if(topic.innerHTML == " ") {
+        topic.style.display = "none";
+    }
+}
+$('.paragrafo_mascara:hidden').remove();
+$('.outerstrong:hidden').remove();
+
+
+
+
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
