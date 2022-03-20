@@ -2976,7 +2976,7 @@ function editarLaudo() {
 
  var topics = document.getElementsByClassName("paragrafo_mascara");
 for(topic of topics) {
-    if(topic.innerHTML == " ") {
+    if(topic.innerHTML == " " || topic.innerHTML == "") {
         topic.style.display = "none";
     }
 }
